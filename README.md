@@ -18,29 +18,158 @@ devtools::install_github('bretsw/rTAGS)
 Example
 -------
 
-This is a basic example which shows you how to solve a common problem:
+This is a basic example which shows you how to read a TAGS sheet and then use {rtweet} (via `pull_data()`) to access additional data.
 
 ``` r
-## basic example code
+library(rTAGS)
+#> Loading required package: rtweet
+#> Loading required package: googlesheets
+#> Loading required package: stringr
+#> Loading required package: purrr
+#> 
+#> Attaching package: 'purrr'
+#> The following object is masked from 'package:rtweet':
+#> 
+#>     flatten
+library(tidyverse)
+#> ── Attaching packages ─────────────────────────────────────────────────────────────────────────────── tidyverse 1.2.1 ──
+#> ✔ ggplot2 3.1.0       ✔ readr   1.3.1  
+#> ✔ tibble  2.1.1       ✔ dplyr   0.8.0.1
+#> ✔ tidyr   0.8.3       ✔ forcats 0.3.0
+#> ── Conflicts ────────────────────────────────────────────────────────────────────────────────── tidyverse_conflicts() ──
+#> ✖ dplyr::filter()  masks stats::filter()
+#> ✖ purrr::flatten() masks rtweet::flatten()
+#> ✖ dplyr::lag()     masks stats::lag()
+
+d <- "https://docs.google.com/spreadsheets/d/1WM2xWG9B0Wqn3YG5uakfy_NSAEzIFP2nEAJ5U_fqufc/edit#gid=8743918" %>% 
+        read_tags() %>% 
+        pull_data(n = 1000)
+#> Sheet-identifying info appears to be a browser URL.
+#> googlesheets will attempt to extract sheet key from the URL.
+#> Putative key: 1WM2xWG9B0Wqn3YG5uakfy_NSAEzIFP2nEAJ5U_fqufc
+#> Sheet successfully identified: "#AERA19 Tweets"
+#> Accessing worksheet titled 'Archive'.
+#> Parsed with column specification:
+#> cols(
+#>   id_str = col_double(),
+#>   from_user = col_character(),
+#>   text = col_character(),
+#>   created_at = col_character(),
+#>   time = col_character(),
+#>   geo_coordinates = col_character(),
+#>   user_lang = col_character(),
+#>   in_reply_to_user_id_str = col_double(),
+#>   in_reply_to_screen_name = col_character(),
+#>   from_user_id_str = col_double(),
+#>   in_reply_to_status_id_str = col_double(),
+#>   source = col_character(),
+#>   profile_image_url = col_character(),
+#>   user_followers_count = col_double(),
+#>   user_friends_count = col_double(),
+#>   user_location = col_character(),
+#>   status_url = col_character(),
+#>   entities_str = col_character()
+#> )
+
+d
+#> # A tibble: 955 x 88
+#>    user_id status_id created_at          screen_name text  source
+#>    <chr>   <chr>     <dttm>              <chr>       <chr> <chr> 
+#>  1 318432… 11165312… 2019-04-12 02:39:28 CPSuccessC… Way … Twitt…
+#>  2 146547… 11166521… 2019-04-12 10:39:47 trevmon28   #AER… Twitt…
+#>  3 244755… 11164508… 2019-04-11 21:20:05 OgdenIntl   Way … Twitt…
+#>  4 829144… 11165730… 2019-04-12 05:25:24 mserikasai… Pepp… Twitt…
+#>  5 612926… 11164330… 2019-04-11 20:09:23 dali_ozturk #AER… Twitt…
+#>  6 612926… 11164327… 2019-04-11 20:08:10 dali_ozturk "#AE… Twitt…
+#>  7 612926… 11164331… 2019-04-11 20:09:43 dali_ozturk #AER… Twitt…
+#>  8 612926… 11164330… 2019-04-11 20:09:04 dali_ozturk #AER… Twitt…
+#>  9 612926… 11164332… 2019-04-11 20:10:05 dali_ozturk #AER… Twitt…
+#> 10 164450… 11165841… 2019-04-12 06:09:49 seder_rich… Fina… Twitt…
+#> # … with 945 more rows, and 82 more variables: display_text_width <dbl>,
+#> #   reply_to_status_id <chr>, reply_to_user_id <chr>,
+#> #   reply_to_screen_name <chr>, is_quote <lgl>, is_retweet <lgl>,
+#> #   favorite_count <int>, retweet_count <int>, hashtags <list>,
+#> #   symbols <list>, urls_url <list>, urls_t.co <list>,
+#> #   urls_expanded_url <list>, media_url <list>, media_t.co <list>,
+#> #   media_expanded_url <list>, media_type <list>, ext_media_url <list>,
+#> #   ext_media_t.co <list>, ext_media_expanded_url <list>,
+#> #   ext_media_type <chr>, mentions_user_id <list>,
+#> #   mentions_screen_name <list>, lang <chr>, quoted_status_id <chr>,
+#> #   quoted_text <chr>, quoted_created_at <dttm>, quoted_source <chr>,
+#> #   quoted_favorite_count <int>, quoted_retweet_count <int>,
+#> #   quoted_user_id <chr>, quoted_screen_name <chr>, quoted_name <chr>,
+#> #   quoted_followers_count <int>, quoted_friends_count <int>,
+#> #   quoted_statuses_count <int>, quoted_location <chr>,
+#> #   quoted_description <chr>, quoted_verified <lgl>,
+#> #   retweet_status_id <chr>, retweet_text <chr>,
+#> #   retweet_created_at <dttm>, retweet_source <chr>,
+#> #   retweet_favorite_count <int>, retweet_retweet_count <int>,
+#> #   retweet_user_id <chr>, retweet_screen_name <chr>, retweet_name <chr>,
+#> #   retweet_followers_count <int>, retweet_friends_count <int>,
+#> #   retweet_statuses_count <int>, retweet_location <chr>,
+#> #   retweet_description <chr>, retweet_verified <lgl>, place_url <chr>,
+#> #   place_name <chr>, place_full_name <chr>, place_type <chr>,
+#> #   country <chr>, country_code <chr>, geo_coords <list>,
+#> #   coords_coords <list>, bbox_coords <list>, status_url <chr>,
+#> #   name <chr>, location <chr>, description <chr>, url <chr>,
+#> #   protected <lgl>, followers_count <int>, friends_count <int>,
+#> #   listed_count <int>, statuses_count <int>, favourites_count <int>,
+#> #   account_created_at <dttm>, verified <lgl>, profile_url <chr>,
+#> #   profile_expanded_url <chr>, account_lang <chr>,
+#> #   profile_banner_url <chr>, profile_background_url <chr>,
+#> #   profile_image_url <chr>
 ```
 
-What is special about using `README.Rmd` instead of just `README.md`? You can include R chunks like so:
+If you want to simply view the TAGS archive, you can use `read_tags()`:
 
 ``` r
-summary(cars)
-#>      speed           dist       
-#>  Min.   : 4.0   Min.   :  2.00  
-#>  1st Qu.:12.0   1st Qu.: 26.00  
-#>  Median :15.0   Median : 36.00  
-#>  Mean   :15.4   Mean   : 42.98  
-#>  3rd Qu.:19.0   3rd Qu.: 56.00  
-#>  Max.   :25.0   Max.   :120.00
+d1 <- "https://docs.google.com/spreadsheets/d/1WM2xWG9B0Wqn3YG5uakfy_NSAEzIFP2nEAJ5U_fqufc/edit#gid=8743918" %>% 
+        read_tags()
+#> Sheet-identifying info appears to be a browser URL.
+#> googlesheets will attempt to extract sheet key from the URL.
+#> Putative key: 1WM2xWG9B0Wqn3YG5uakfy_NSAEzIFP2nEAJ5U_fqufc
+#> Sheet successfully identified: "#AERA19 Tweets"
+#> Accessing worksheet titled 'Archive'.
+#> Parsed with column specification:
+#> cols(
+#>   id_str = col_double(),
+#>   from_user = col_character(),
+#>   text = col_character(),
+#>   created_at = col_character(),
+#>   time = col_character(),
+#>   geo_coordinates = col_character(),
+#>   user_lang = col_character(),
+#>   in_reply_to_user_id_str = col_double(),
+#>   in_reply_to_screen_name = col_character(),
+#>   from_user_id_str = col_double(),
+#>   in_reply_to_status_id_str = col_double(),
+#>   source = col_character(),
+#>   profile_image_url = col_character(),
+#>   user_followers_count = col_double(),
+#>   user_friends_count = col_double(),
+#>   user_location = col_character(),
+#>   status_url = col_character(),
+#>   entities_str = col_character()
+#> )
+
+d1
+#> # A tibble: 30,479 x 18
+#>     id_str from_user text  created_at time  geo_coordinates user_lang
+#>      <dbl> <chr>     <chr> <chr>      <chr> <chr>           <chr>    
+#>  1 1.12e18 DrKatina… RT @… Fri Apr 1… 12/0… <NA>            en       
+#>  2 1.12e18 DrKatina… "RT … Fri Apr 1… 12/0… <NA>            en       
+#>  3 1.12e18 DrKatina… "RT … Fri Apr 1… 12/0… <NA>            en       
+#>  4 1.12e18 krob      "RT … Fri Apr 1… 12/0… <NA>            en       
+#>  5 1.12e18 ScalarHu… RT @… Fri Apr 1… 12/0… <NA>            en       
+#>  6 1.12e18 Climb_MtC RT @… Fri Apr 1… 12/0… <NA>            en       
+#>  7 1.12e18 PSU_Coll… RT @… Fri Apr 1… 12/0… <NA>            en       
+#>  8 1.12e18 PKarenMu… RT @… Fri Apr 1… 12/0… <NA>            en       
+#>  9 1.12e18 Leadersh… "RT … Fri Apr 1… 12/0… <NA>            es       
+#> 10 1.12e18 vsumping  RT @… Fri Apr 1… 12/0… <NA>            en       
+#> # … with 30,469 more rows, and 11 more variables:
+#> #   in_reply_to_user_id_str <dbl>, in_reply_to_screen_name <chr>,
+#> #   from_user_id_str <dbl>, in_reply_to_status_id_str <dbl>, source <chr>,
+#> #   profile_image_url <chr>, user_followers_count <dbl>,
+#> #   user_friends_count <dbl>, user_location <chr>, status_url <chr>,
+#> #   entities_str <chr>
 ```
-
-You'll still need to render `README.Rmd` regularly, to keep `README.md` up-to-date.
-
-You can also embed plots, for example:
-
-<img src="man/figures/README-pressure-1.png" width="100%" />
-
-In that case, don't forget to commit and push the resulting figure files, so they display on GitHub!

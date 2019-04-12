@@ -27,24 +27,26 @@ devtools::install_github('bretsw/rTAGS)
 
 ## Example
 
-This is a basic example which shows you how to solve a common problem:
+This is a basic example which shows you how to read a TAGS sheet and then use {rtweet} (via `pull_data()`) to access additional data.
 
-```{r example}
-## basic example code
+```{r example, eval = TRUE}
+library(rTAGS)
+library(tidyverse)
+
+d <- "https://docs.google.com/spreadsheets/d/1WM2xWG9B0Wqn3YG5uakfy_NSAEzIFP2nEAJ5U_fqufc/edit#gid=8743918" %>% 
+        read_tags() %>% 
+        pull_data(n = 1000)
+
+d
 ```
 
-What is special about using `README.Rmd` instead of just `README.md`? You can include R chunks like so:
+If you want to simply view the TAGS archive, you can use `read_tags()`:
 
-```{r cars}
-summary(cars)
+```{r, eval = TRUE}
+d1 <- "https://docs.google.com/spreadsheets/d/1WM2xWG9B0Wqn3YG5uakfy_NSAEzIFP2nEAJ5U_fqufc/edit#gid=8743918" %>% 
+        read_tags()
+
+d1
 ```
 
-You'll still need to render `README.Rmd` regularly, to keep `README.md` up-to-date.
 
-You can also embed plots, for example:
-
-```{r pressure, echo = FALSE}
-plot(pressure)
-```
-
-In that case, don't forget to commit and push the resulting figure files, so they display on GitHub!

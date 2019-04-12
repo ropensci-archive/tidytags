@@ -1,16 +1,26 @@
-library(dplyr)
+# library(dplyr)
+# library(googlesheets)
 
-library(googlesheets)
 ## https://github.com/jennybc/googlesheets
 
-url <- "https://docs.google.com/spreadsheets/d/1s5Zyd0u_Y0GLooNgQDUanXZDACZxdnc4fHc5wgZ6JE0/edit#gid=8743918"
-file <- "siteconf.csv"
+# b_url <- "https://docs.google.com/spreadsheets/d/1s5Zyd0u_Y0GLooNgQDUanXZDACZxdnc4fHc5wgZ6JE0/edit#gid=8743918"
+# file <- "siteconf.csv"
+j_url <- "https://docs.google.com/spreadsheets/d/1WM2xWG9B0Wqn3YG5uakfy_NSAEzIFP2nEAJ5U_fqufc/edit#gid=8743918"
 
-df <- gs_url(url) %>%
-        gs_download(ws=2, to=file, overwrite=TRUE) %>%
-        file %>% read.csv(header=TRUE, colClasses='character')
-dim(df)
+read_tags <- function(url) {
+    u <- googlesheets::gs_url(url)
+    d <- googlesheets::gs_read(u, ws = 2)
+    d
+}
 
+
+pull_data <- function(df, n) {
+    split_status <- stringr::str_split(df$status_url, "/")
+    status_id <- purrr::map(split_status, ~ .[[6]])
+    status_id <- unlist(status_id)
+    d <- rtweet::lookup_statuses(status_id[1:n])
+    d
+}
 
 ## --------------------------------------------------------------
 ## pull full tweet content using library(rtweet)
@@ -35,4 +45,3 @@ dim(df)
 #ntchat_rtweet <- statuses %>% lookup_tweets %>% flatten  # Returns data on up to 90,000 Twitter statuses.
 #ntchat_rtweet %>% dim
 #ntchat_rtweet %>% write.csv("ntchat_rtweet.csv", row.names=FALSE)
-

@@ -9,7 +9,9 @@ Description: More about what it does (maybe more than one line)
 Depends: 
         R (>= 3.1.0),
         rtweet, 
-        googlesheets
+        googlesheets,
+        stringr,
+        purrr
 License: What license is it under?
 Encoding: UTF-8
 Suggests: 
