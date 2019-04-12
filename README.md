@@ -22,55 +22,16 @@ This is a basic example which shows you how to read a TAGS sheet and then use {r
 
 ``` r
 library(rTAGS)
-#> Loading required package: rtweet
-#> Loading required package: googlesheets
-#> Loading required package: stringr
-#> Loading required package: purrr
-#> 
-#> Attaching package: 'purrr'
-#> The following object is masked from 'package:rtweet':
-#> 
-#>     flatten
 library(tidyverse)
-#> ── Attaching packages ─────────────────────────────────────────────────────────────────────────────── tidyverse 1.2.1 ──
-#> ✔ ggplot2 3.1.0       ✔ readr   1.3.1  
-#> ✔ tibble  2.1.1       ✔ dplyr   0.8.0.1
-#> ✔ tidyr   0.8.3       ✔ forcats 0.3.0
-#> ── Conflicts ────────────────────────────────────────────────────────────────────────────────── tidyverse_conflicts() ──
-#> ✖ dplyr::filter()  masks stats::filter()
-#> ✖ purrr::flatten() masks rtweet::flatten()
-#> ✖ dplyr::lag()     masks stats::lag()
 
 d <- "https://docs.google.com/spreadsheets/d/1WM2xWG9B0Wqn3YG5uakfy_NSAEzIFP2nEAJ5U_fqufc/edit#gid=8743918" %>% 
         read_tags() %>% 
         pull_data(n = 1000)
-#> Sheet-identifying info appears to be a browser URL.
-#> googlesheets will attempt to extract sheet key from the URL.
-#> Putative key: 1WM2xWG9B0Wqn3YG5uakfy_NSAEzIFP2nEAJ5U_fqufc
-#> Sheet successfully identified: "#AERA19 Tweets"
-#> Accessing worksheet titled 'Archive'.
-#> Parsed with column specification:
-#> cols(
-#>   id_str = col_double(),
-#>   from_user = col_character(),
-#>   text = col_character(),
-#>   created_at = col_character(),
-#>   time = col_character(),
-#>   geo_coordinates = col_character(),
-#>   user_lang = col_character(),
-#>   in_reply_to_user_id_str = col_double(),
-#>   in_reply_to_screen_name = col_character(),
-#>   from_user_id_str = col_double(),
-#>   in_reply_to_status_id_str = col_double(),
-#>   source = col_character(),
-#>   profile_image_url = col_character(),
-#>   user_followers_count = col_double(),
-#>   user_friends_count = col_double(),
-#>   user_location = col_character(),
-#>   status_url = col_character(),
-#>   entities_str = col_character()
-#> )
+```
 
+Here is the result:
+
+``` r
 d
 #> # A tibble: 955 x 88
 #>    user_id status_id created_at          screen_name text  source
@@ -125,33 +86,11 @@ If you want to simply view the TAGS archive, you can use `read_tags()`:
 ``` r
 d1 <- "https://docs.google.com/spreadsheets/d/1WM2xWG9B0Wqn3YG5uakfy_NSAEzIFP2nEAJ5U_fqufc/edit#gid=8743918" %>% 
         read_tags()
-#> Sheet-identifying info appears to be a browser URL.
-#> googlesheets will attempt to extract sheet key from the URL.
-#> Putative key: 1WM2xWG9B0Wqn3YG5uakfy_NSAEzIFP2nEAJ5U_fqufc
-#> Sheet successfully identified: "#AERA19 Tweets"
-#> Accessing worksheet titled 'Archive'.
-#> Parsed with column specification:
-#> cols(
-#>   id_str = col_double(),
-#>   from_user = col_character(),
-#>   text = col_character(),
-#>   created_at = col_character(),
-#>   time = col_character(),
-#>   geo_coordinates = col_character(),
-#>   user_lang = col_character(),
-#>   in_reply_to_user_id_str = col_double(),
-#>   in_reply_to_screen_name = col_character(),
-#>   from_user_id_str = col_double(),
-#>   in_reply_to_status_id_str = col_double(),
-#>   source = col_character(),
-#>   profile_image_url = col_character(),
-#>   user_followers_count = col_double(),
-#>   user_friends_count = col_double(),
-#>   user_location = col_character(),
-#>   status_url = col_character(),
-#>   entities_str = col_character()
-#> )
+```
 
+Here is the result:
+
+``` r
 d1
 #> # A tibble: 30,479 x 18
 #>     id_str from_user text  created_at time  geo_coordinates user_lang
