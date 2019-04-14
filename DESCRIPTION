@@ -20,3 +20,4 @@ Suggests:
         rmarkdown
 LazyData: TRUE
 URL: https://github.com/bretsw/rtags
+RoxygenNote: 6.1.1

@@ -42,7 +42,7 @@ d <- "https://docs.google.com/spreadsheets/d/1WM2xWG9B0Wqn3YG5uakfy_NSAEzIFP2nEA
 Here is the result:
 
 ```{r}
-d
+glimpse(d)
 ```
 
 If you want to simply view the TAGS archive, you can use `read_tags()`:
@@ -55,5 +55,5 @@ d1 <- "https://docs.google.com/spreadsheets/d/1WM2xWG9B0Wqn3YG5uakfy_NSAEzIFP2nE
 Here is the result:
 
 ```{r}
-d1
+glimpse(d1)
 ```
