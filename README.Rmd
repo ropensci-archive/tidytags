@@ -13,6 +13,7 @@ knitr::opts_chunk$set(
   message = FALSE
 )
 ```
+
 # rTAGS
 
 The goal of rTAGS is to make it easy to work with Twitter data collected via [TAGS](https://tags.hawksey.info/) in R. This package makes ample use of the [{rtweet} package](https://rtweet.info/) to process and prepare the data.
@@ -34,7 +35,7 @@ This is a basic example which shows you how to read a TAGS sheet and then use {r
 library(rTAGS)
 library(tidyverse)
 
-d <- "https://docs.google.com/spreadsheets/d/1WM2xWG9B0Wqn3YG5uakfy_NSAEzIFP2nEAJ5U_fqufc/edit#gid=8743918" %>% 
+d <- "https://docs.google.com/spreadsheets/d/1WM2xWG9B0Wqn3YG5uakfy_NSAEzIFP2nEAJ5U_fqufc/edit#gid=8743918" %>%
         read_tags() %>% 
         pull_data(n = 1000)
 ```
@@ -45,15 +46,26 @@ Here is the result:
 glimpse(d)
 ```
 
+## Creating an edgelist from the TAGS data
+
+```{r}
+edgelist <- create_edgelist(d)
+
+edgelist
+
+edgelist %>% 
+  count(edge_type)
+```
+
 If you want to simply view the TAGS archive, you can use `read_tags()`:
 
-```{r, eval = TRUE}
+```{r, eval = FALSE}
 d1 <- "https://docs.google.com/spreadsheets/d/1WM2xWG9B0Wqn3YG5uakfy_NSAEzIFP2nEAJ5U_fqufc/edit#gid=8743918" %>% 
         read_tags()
 ```
 
 Here is the result:
 
-```{r}
+```{r, eval = FALSE}
 glimpse(d1)
 ```

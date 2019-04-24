@@ -7,62 +7,105 @@
 # j_url <- "https://docs.google.com/spreadsheets/d/1WM2xWG9B0Wqn3YG5uakfy_NSAEzIFP2nEAJ5U_fqufc/edit#gid=8743918"
 
 read_tags <- function(url) {
-    u <- googlesheets::gs_url(url)
-    d <- googlesheets::gs_read(u, ws = 2)
-    d
+  u <- googlesheets::gs_url(url)
+  d <- googlesheets::gs_read(u, ws = 2)
+  d
 }
 
 
 pull_data <- function(df, n = NULL) {
-    if(is.null(n)) n <- nrow(df)
-    split_status <- stringr::str_split(df$status_url, "/")
-    status_id <- purrr::map(split_status, ~ .[[6]])
-    status_id <- unlist(status_id)
-    d <- rtweet::lookup_statuses(status_id[1:n])
-    d
+  if(is.null(n)) n <- nrow(df)
+  split_status <- stringr::str_split(df$status_url, "/")
+  status_id <- purrr::map(split_status, ~ .[[6]])
+  status_id <- unlist(status_id)
+  d <- rtweet::lookup_statuses(status_id[1:n])
+  d
 }
 
-create_edgelist <- function() {
-
+proc_tweets <- function(d) {
+  d %>%
+    mutate(mentions_count = map_int(mentions_screen_name, length),
+           hashtags_count = map_int(str_split(as.character(hashtags), " "), length),
+           urls_count = map_int(str_split(as.character(urls_url), " "), length),
+           is_reply = if_else(!is.na(reply_to_status_id), TRUE, FALSE))
 }
 
-reply_tweets <- df_ss %>%
-        filter(type=="REPLY") %>%
-        count(reply_to_status_id) %>%
-        rename(replies_count = n)
+# Replies
 
-d <- d %>%
-        mutate(mentions_count = sapply(mentions_screen_name, length),
-               hashtags_count = sapply(str_split(hashtags, " "), length),
-               urls_count = sapply(str_split(urls_url, " "), length),
-               is_reply = if_else(!is.na(reply_to_status_id), 1, 0))
+get_replies <- function(d) {
+  reply_tweets <- d %>%
+    filter(is_reply == 1) %>%
+    count(screen_name, status_id, reply_to_status_id) %>%
+    select(sender = screen_name, replies_count = n, reply_status_id = status_id, status_id = reply_to_status_id)
 
-prepped_data <- df_ss %>%
-        filter(type=="ORIG") %>%
-        mutate(reply_to_status_id = status_id) %>%
-        left_join(reply_tweets, by = "reply_to_status_id") %>%
-        mutate(replies_count = ifelse(is.na(replies_count), 0, replies_count)) %>%
+  replied_to_tweets <- lookup_statuses(reply_tweets$status_id)
+  replied_to_tweets <- proc_tweets(replied_to_tweets)
 
-## --------------------------------------------------------------
-## pull full tweet content using library(rtweet)
-## --------------------------------------------------------------
+  replied_to_tweets %>%
+    left_join(reply_tweets, by = c("status_id")) %>%
+    select(sender, receiver = screen_name) %>%
+    mutate(edge_type = "reply")
+}
 
-## See https://rtweet.info/ for details on library(rtweet)
-## See https://rtweet.info/reference/index.html for all rtweet functions
-## See https://apps.twitter.com/ for details on Twitter developer application
+# Retweets
 
-#tokens <- read.csv(file="~/private_data/bretsw_twitter_research_app.csv",
-#                   header=TRUE, sep=",", colClasses='character')
+get_retweets <- function(d) {
+  d %>%
+    filter(is_retweet) %>%
+    select(sender = screen_name, receiver = retweet_screen_name) %>%
+    mutate(edge_type = "retweet")
+}
 
-#create_token(
-#        app = "bretsw_twitter_research_app",
-#        consumer_key = tokens$consumer_key,
-#        consumer_secret = tokens$consumer_secret,
-#        access_token = tokens$access_token,
-#        access_secret = tokens$access_secret)
 
-#statuses <- ntchat_all[[1]] %>% as.data.frame %>% pull(id_str)
+# Favorites
 
-#ntchat_rtweet <- statuses %>% lookup_tweets %>% flatten  # Returns data on up to 90,000 Twitter statuses.
-#ntchat_rtweet %>% dim
-#ntchat_rtweet %>% write.csv("ntchat_rtweet.csv", row.names=FALSE)
+# dd %>%
+#   select(status_id, screen_name)
+#
+# get_favorites(user = dd[1, ]$screen_name,
+#               since_id = dd[1, ]$status_id,
+#               max_id = dd[1, ]$status_id)
+#
+# list(status_id = dd$status_id, screen_name = dd$screen_name) %>%
+#   map2(.f = get_favorites())
+
+# Quotes
+
+get_quotes <- function(d) {
+  d %>%
+    filter(is_quote) %>%
+    select(sender = screen_name, receiver  =quoted_screen_name) %>%
+    mutate(edge_type = "quotes")
+}
+
+
+# Mentions
+
+get_mentions <- function(d) {
+  d %>%
+    select(screen_name, mentions_screen_name) %>%
+    unnest() %>%
+    rename(sender = screen_name, receiver = mentions_screen_name) %>%
+    mutate(edge_type = "mention")
+}
+
+# Create edgelist
+
+create_edgelist <- function(d) {
+
+  dd <- proc_tweets(d)
+
+  # these can be processed from the data
+  retweet_edges <- get_retweets(dd)
+  quote_edges <- get_quotes(dd)
+  mention_edges <- get_mentions(dd)
+
+  # these require additional API calls
+  reply_edges <- get_replies(dd)
+  # favorite_edges <- get_favorites(dd)
+
+  bind_rows(retweet_edges,
+            quote_edges,
+            mention_edges,
+            reply_edges)
+}
