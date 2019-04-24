@@ -12,6 +12,10 @@ read_tags <- function(url) {
   d
 }
 
+# "https://docs.google.com/spreadsheets/d/1WM2xWG9B0Wqn3YG5uakfy_NSAEzIFP2nEAJ5U_fqufc/edit#gid=8743918" %>%
+#   read_tags() %>%
+#   pull_data(n = 1000) %>%
+#   create_edgelist()
 
 pull_data <- function(df, n = NULL) {
   if(is.null(n)) n <- nrow(df)
@@ -62,9 +66,11 @@ get_retweets <- function(d) {
 # dd %>%
 #   select(status_id, screen_name)
 #
-# get_favorites(user = dd[1, ]$screen_name,
-#               since_id = dd[1, ]$status_id,
-#               max_id = dd[1, ]$status_id)
+ex_favs <- get_favorites(user = d[1, ]$screen_name,
+              max_id = d[1, ]$status_id)
+
+ex_favs$status_id %in% d[1, ]$status_id
+View(ex_favs)
 #
 # list(status_id = dd$status_id, screen_name = dd$screen_name) %>%
 #   map2(.f = get_favorites())
@@ -109,3 +115,7 @@ create_edgelist <- function(d) {
             mention_edges,
             reply_edges)
 }
+
+# Example
+
+# install.packages("gender")
