@@ -66,11 +66,11 @@ get_retweets <- function(d) {
 # dd %>%
 #   select(status_id, screen_name)
 #
-ex_favs <- get_favorites(user = d[1, ]$screen_name,
-              max_id = d[1, ]$status_id)
-
-ex_favs$status_id %in% d[1, ]$status_id
-View(ex_favs)
+# ex_favs <- get_favorites(user = d[1, ]$screen_name,
+#               max_id = d[1, ]$status_id)
+#
+# ex_favs$status_id %in% d[1, ]$status_id
+# View(ex_favs)
 #
 # list(status_id = dd$status_id, screen_name = dd$screen_name) %>%
 #   map2(.f = get_favorites())
@@ -115,7 +115,3 @@ create_edgelist <- function(d) {
             mention_edges,
             reply_edges)
 }
-
-# Example
-
-# install.packages("gender")

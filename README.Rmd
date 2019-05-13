@@ -37,7 +37,7 @@ library(tidyverse)
 
 d <- "https://docs.google.com/spreadsheets/d/1WM2xWG9B0Wqn3YG5uakfy_NSAEzIFP2nEAJ5U_fqufc/edit#gid=8743918" %>%
         read_tags() %>% 
-        pull_data()
+        pull_data(n = 500)
 ```
 
 Here is the result:
@@ -64,8 +64,6 @@ d1 <- "https://docs.google.com/spreadsheets/d/1WM2xWG9B0Wqn3YG5uakfy_NSAEzIFP2nE
         read_tags()
 ```
 
-Here is the result:
+## Other functionality
 
-```{r, eval = FALSE}
-glimpse(d1)
-```
+We are working to add gender coding (see `gender-coding.R` for a worked example).

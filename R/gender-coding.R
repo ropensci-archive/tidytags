@@ -6,6 +6,10 @@
 # users <- users_data(d) %>%
 #   distinct()
 #
+# users %>%
+#   sample_n(400) %>%
+#   write_csv('sample-user-profiles.csv')
+#
 # coded_users <- users %>%
 #   tidytext::unnest_tokens(word, description) %>%
 #   left_join(profiles_gender, by = "word") %>%
