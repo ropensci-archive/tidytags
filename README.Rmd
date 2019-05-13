@@ -37,7 +37,7 @@ library(tidyverse)
 
 d <- "https://docs.google.com/spreadsheets/d/1WM2xWG9B0Wqn3YG5uakfy_NSAEzIFP2nEAJ5U_fqufc/edit#gid=8743918" %>%
         read_tags() %>% 
-        pull_data(n = 500)
+        pull_data()
 ```
 
 Here is the result:
@@ -50,8 +50,6 @@ glimpse(d)
 
 ```{r}
 edgelist <- create_edgelist(d)
-
-edgelist
 
 edgelist %>% 
   count(edge_type)
