@@ -23,7 +23,7 @@ add_users_data <- function(edgelist, users){
     mutate(screen_name = tolower(receiver))
 
   names(users_ss)[2:length(users_ss)] <-
-    str_c(names(users_ss), "_receiver")[2:length(users_ss)]
+    str_replace(names(users_ss), "_sender", "_receiver")
 
   left_join(d, users_ss, by = "screen_name")
 
