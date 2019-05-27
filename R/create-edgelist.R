@@ -8,6 +8,8 @@ get_replies <- function(d) {
     select(sender = screen_name, replies_count = n, reply_status_id = status_id, status_id = reply_to_status_id) %>%
     mutate(status_id = as.character(status_id))
 
+  message("Getting ", nrow(reply_tweets), " additional replies; may take a few moments.")
+
   replied_to_tweets <- lookup_statuses(reply_tweets$status_id)
   replied_to_tweets <- proc_tweets(replied_to_tweets)
 
