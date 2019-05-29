@@ -64,4 +64,21 @@ d1 <- "https://docs.google.com/spreadsheets/d/1WM2xWG9B0Wqn3YG5uakfy_NSAEzIFP2nE
 
 ## Other functionality
 
-We are working to add gender coding (see `gender-coding.R` for a worked example).
+- We are working to add gender coding (see `gender-coding.R` for a worked example).
+
+### Adding user data
+
+- We also have functionality to add user-level data to an edgelist (see `add-users-data-.R`)
+
+```{r}
+u <- rtweet::users_data(d)
+
+dd <- add_users_data(edgelist, u)
+
+dd
+```
+
+## Future functionality
+
+- We are looking to add geo-coding functionality
+- This package is new and we welcome contributors

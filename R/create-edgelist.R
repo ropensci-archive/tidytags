@@ -71,6 +71,10 @@ create_edgelist <- function(d) {
 
   dd <- proc_tweets(d)
 
+  if (!is.list(dd$mentions_screen_name)) {
+    dd$mentions_screen_name <- str_split(dd$mentions_screen_name, " ")
+  }
+
   # these can be processed from the data
   retweet_edges <- get_retweets(dd)
   quote_edges <- get_quotes(dd)
