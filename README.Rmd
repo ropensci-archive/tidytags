@@ -13,6 +13,7 @@ knitr::opts_chunk$set(
   message = FALSE
 )
 ```
+
 # rTAGS
 
 The goal of rTAGS is to make it easy to work with Twitter data collected via [TAGS](https://tags.hawksey.info/) in R. This package makes ample use of the [{rtweet} package](https://rtweet.info/) to process and prepare the data.
@@ -33,10 +34,15 @@ This is a basic example which shows you how to read a TAGS sheet and then use {r
 ```{r example, eval = TRUE}
 library(rTAGS)
 library(tidyverse)
+j_url <- "https://docs.google.com/spreadsheets/d/1WM2xWG9B0Wqn3YG5uakfy_NSAEzIFP2nEAJ5U_fqufc/edit#gid=8743918"
 
-d <- "https://docs.google.com/spreadsheets/d/1WM2xWG9B0Wqn3YG5uakfy_NSAEzIFP2nEAJ5U_fqufc/edit#gid=8743918" %>% 
-        read_tags() %>% 
-        pull_data(n = 1000)
+# d <- "https://docs.google.com/spreadsheets/d/1WM2xWG9B0Wqn3YG5uakfy_NSAEzIFP2nEAJ5U_fqufc/edit#gid=8743918" %>%
+#         read_tags() %>% 
+#         pull_data()
+
+d <- "https://docs.google.com/spreadsheets/d/1WM2xWG9B0Wqn3YG5uakfy_NSAEzIFP2nEAJ5U_fqufc/edit#gid=8743918" %>%
+        read_tags() %>%
+        pull_data()
 ```
 
 Here is the result:
@@ -45,15 +51,43 @@ Here is the result:
 glimpse(d)
 ```
 
+## Creating an edgelist from the TAGS data
+
+```{r}
+edgelist <- create_edgelist(d)
+
+edgelist %>% 
+  count(edge_type)
+```
+
 If you want to simply view the TAGS archive, you can use `read_tags()`:
 
-```{r, eval = TRUE}
+```{r, eval = FALSE}
 d1 <- "https://docs.google.com/spreadsheets/d/1WM2xWG9B0Wqn3YG5uakfy_NSAEzIFP2nEAJ5U_fqufc/edit#gid=8743918" %>% 
         read_tags()
 ```
 
-Here is the result:
+## Other functionality
+
+- We are working to add gender coding (see `gender-coding.R` for a worked example).
+
+### Adding user data
+
+- We also have functionality to add user-level data to an edgelist (see `add-users-data-.R`)
 
 ```{r}
+<<<<<<< HEAD
 glimpse(d1)
+=======
+u <- rtweet::users_data(d)
+
+dd <- add_users_data(edgelist, u)
+
+dd
+>>>>>>> 283b6e4f6a9937874e4f99111517177811cdafad
 ```
+
+## Future functionality
+
+- We are looking to add geo-coding functionality
+- This package is new and we welcome contributors

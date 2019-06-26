@@ -24,15 +24,18 @@ This is a basic example which shows you how to read a TAGS sheet and then use {r
 library(rTAGS)
 library(tidyverse)
 
-d <- "https://docs.google.com/spreadsheets/d/1WM2xWG9B0Wqn3YG5uakfy_NSAEzIFP2nEAJ5U_fqufc/edit#gid=8743918" %>% 
+# googlesheets::gs_auth()
+
+d <- "https://docs.google.com/spreadsheets/d/1KZBbO0JB4PySzaeBMzHHgBB0DR8IgEeeg6YpK_oA6ko/edit?usp=sharing" %>%
         read_tags() %>% 
-        pull_data(n = 1000)
+        pull_data()
 ```
 
 Here is the result:
 
 ``` r
 glimpse(d)
+<<<<<<< HEAD
 #> Observations: 954
 #> Variables: 88
 #> $ user_id                 <chr> "888451225192214528", "27845032", "27845…
@@ -123,6 +126,18 @@ glimpse(d)
 #> $ profile_banner_url      <chr> "https://pbs.twimg.com/profile_banners/8…
 #> $ profile_background_url  <chr> "http://abs.twimg.com/images/themes/them…
 #> $ profile_image_url       <chr> "http://pbs.twimg.com/profile_images/888…
+=======
+```
+
+Creating an edgelist from the TAGS data
+---------------------------------------
+
+``` r
+edgelist <- create_edgelist(d)
+
+edgelist %>% 
+  count(edge_type)
+>>>>>>> 283b6e4f6a9937874e4f99111517177811cdafad
 ```
 
 If you want to simply view the TAGS archive, you can use `read_tags()`:
@@ -132,9 +147,17 @@ d1 <- "https://docs.google.com/spreadsheets/d/1WM2xWG9B0Wqn3YG5uakfy_NSAEzIFP2nE
         read_tags()
 ```
 
-Here is the result:
+Other functionality
+-------------------
+
+-   We are working to add gender coding (see `gender-coding.R` for a worked example).
+
+### Adding user data
+
+-   We also have functionality to add user-level data to an edgelist (see `add-users-data-.R`)
 
 ``` r
+<<<<<<< HEAD
 glimpse(d1)
 #> Observations: 30,586
 #> Variables: 18
@@ -156,4 +179,17 @@ glimpse(d1)
 #> $ user_location             <chr> NA, NA, "Toronto \U0001f1e8\U0001f1e6 …
 #> $ status_url                <chr> "http://twitter.com/JGUNNIII/statuses/…
 #> $ entities_str              <chr> "{\"hashtags\":[],\"symbols\":[],\"use…
+=======
+u <- rtweet::users_data(d)
+
+dd <- add_users_data(edgelist, u)
+
+dd
+>>>>>>> 283b6e4f6a9937874e4f99111517177811cdafad
 ```
+
+Future functionality
+--------------------
+
+-   We are looking to add geo-coding functionality
+-   This package is new and we welcome contributors
