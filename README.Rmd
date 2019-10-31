@@ -76,15 +76,13 @@ d1 <- "https://docs.google.com/spreadsheets/d/1WM2xWG9B0Wqn3YG5uakfy_NSAEzIFP2nE
 - We also have functionality to add user-level data to an edgelist (see `add-users-data-.R`)
 
 ```{r}
-<<<<<<< HEAD
 glimpse(d1)
-=======
-  u <- rtweet::users_data(d)
+
+u <- rtweet::users_data(d)
 
 dd <- add_users_data(edgelist, u)
 
 dd
->>>>>>> 283b6e4f6a9937874e4f99111517177811cdafad
 ```
 
 ## Future functionality

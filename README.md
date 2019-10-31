@@ -35,7 +35,6 @@ Here is the result:
 
 ``` r
 glimpse(d)
-<<<<<<< HEAD
 #> Observations: 954
 #> Variables: 88
 #> $ user_id                 <chr> "888451225192214528", "27845032", "27845…
@@ -137,7 +136,6 @@ edgelist <- create_edgelist(d)
 
 edgelist %>% 
   count(edge_type)
->>>>>>> 283b6e4f6a9937874e4f99111517177811cdafad
 ```
 
 If you want to simply view the TAGS archive, you can use `read_tags()`:
@@ -157,7 +155,6 @@ Other functionality
 -   We also have functionality to add user-level data to an edgelist (see `add-users-data-.R`)
 
 ``` r
-<<<<<<< HEAD
 glimpse(d1)
 #> Observations: 30,586
 #> Variables: 18
@@ -185,7 +182,6 @@ u <- rtweet::users_data(d)
 dd <- add_users_data(edgelist, u)
 
 dd
->>>>>>> 283b6e4f6a9937874e4f99111517177811cdafad
 ```
 
 Future functionality
