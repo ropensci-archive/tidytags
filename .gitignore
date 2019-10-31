@@ -5,3 +5,4 @@ siteconf.csv
 .RData
 .Ruserdata
 .httr-oauth
+*.rds

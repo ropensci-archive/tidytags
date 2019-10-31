@@ -40,9 +40,9 @@ j_url <- "https://docs.google.com/spreadsheets/d/1WM2xWG9B0Wqn3YG5uakfy_NSAEzIFP
 #         read_tags() %>% 
 #         pull_data()
 
-d <- "https://docs.google.com/spreadsheets/d/1WM2xWG9B0Wqn3YG5uakfy_NSAEzIFP2nEAJ5U_fqufc/edit#gid=8743918" %>%
-        read_tags() %>%
-        pull_data()
+d <- j_url %>%
+  read_tags() %>%
+  pull_data()
 ```
 
 Here is the result:
@@ -64,7 +64,7 @@ If you want to simply view the TAGS archive, you can use `read_tags()`:
 
 ```{r, eval = FALSE}
 d1 <- "https://docs.google.com/spreadsheets/d/1WM2xWG9B0Wqn3YG5uakfy_NSAEzIFP2nEAJ5U_fqufc/edit#gid=8743918" %>% 
-        read_tags()
+  read_tags()
 ```
 
 ## Other functionality
@@ -79,7 +79,7 @@ d1 <- "https://docs.google.com/spreadsheets/d/1WM2xWG9B0Wqn3YG5uakfy_NSAEzIFP2nE
 <<<<<<< HEAD
 glimpse(d1)
 =======
-u <- rtweet::users_data(d)
+  u <- rtweet::users_data(d)
 
 dd <- add_users_data(edgelist, u)
 
