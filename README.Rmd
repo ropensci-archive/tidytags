@@ -2,13 +2,13 @@
 output: github_document
 ---
 
-<!-- README.md is generated from README.Rmd. Please edit that file -->
+*Note: This file ('README.Rmd') generates the file README.md file. Edit here to make changes to that output file.*
 
 ```{r setup, include = FALSE}
 knitr::opts_chunk$set(
   collapse = TRUE,
   comment = "#>",
-  fig.path = "man/figures/README-",
+  fig.path = "main/figures/README-",
   out.width = "100%",
   message = FALSE
 )
@@ -16,7 +16,7 @@ knitr::opts_chunk$set(
 
 # rTAGS
 
-The goal of rTAGS is to make it easy to work with Twitter data collected via [TAGS](https://tags.hawksey.info/) in R. This package makes ample use of the [{rtweet} package](https://rtweet.info/) to process and prepare the data.
+The goal of rTAGS is to make it easy to work with Twitter data collected via a Twitter Archiving Google Sheet ([TAGS](https://tags.hawksey.info/)) in R. This package makes ample use of the [{rtweet} package](https://rtweet.info/) to process and prepare the data.
 
 ## Installation
 
@@ -27,31 +27,52 @@ install.packages("devtools")
 devtools::install_github('bretsw/rTAGS)
 ```
 
-## Example
-
-This is a basic example which shows you how to read a TAGS sheet and then use {rtweet} (via `pull_data()`) to access additional data.
-
-```{r example, eval = TRUE}
+```{r packages, eval = FALSE}
 library(rTAGS)
+library(rtweet)
 library(tidyverse)
-j_url <- "https://docs.google.com/spreadsheets/d/1WM2xWG9B0Wqn3YG5uakfy_NSAEzIFP2nEAJ5U_fqufc/edit#gid=8743918"
+```
 
-# d <- "https://docs.google.com/spreadsheets/d/1WM2xWG9B0Wqn3YG5uakfy_NSAEzIFP2nEAJ5U_fqufc/edit#gid=8743918" %>%
-#         read_tags() %>% 
-#         pull_data()
+## Core rTAGS functions
 
-d <- j_url %>%
+### read_tags()
+
+If you want to simply view the TAGS archive, you can use `read_tags()`:
+
+```{r}
+url <- "https://docs.google.com/spreadsheets/d/1WM2xWG9B0Wqn3YG5uakfy_NSAEzIFP2nEAJ5U_fqufc/edit#gid=8743918"
+
+url %>%
+  read_tags()
+```
+
+### pull_data()
+
+This is a basic example which shows you how to read a TAGS sheet and then use {rtweet} (via `rtweet::pull_data()`) to access additional data. The data for this example were gathered with TAGS, querying the Twitter API to collect tweets containing the #AERA19 or #AERA2019 hashtags throughout most of the year 2019 (beginning February 22, 2019). The `rTAGS::read_tags()` and `rTAGS::pull_data()` functions work together to retrieve data from a TAGS source.
+
+```{r}
+d <- url %>%
   read_tags() %>%
   pull_data()
 ```
 
-Here is the result:
+Here is the result, viewed with the `glimpse()` function from **dplyr**:
 
 ```{r}
 glimpse(d)
 ```
 
-## Creating an edgelist from the TAGS data
+### get_replies()
+
+### get_retweets()
+
+### get_quotes()
+
+### get_mentions()
+
+### create_edgelist()
+
+Create an edgelist from the TAGS data using the `rTAGS::create_edgelist()` function:
 
 ```{r}
 edgelist <- create_edgelist(d)
@@ -60,24 +81,11 @@ edgelist %>%
   count(edge_type)
 ```
 
-If you want to simply view the TAGS archive, you can use `read_tags()`:
-
-```{r, eval = FALSE}
-d1 <- "https://docs.google.com/spreadsheets/d/1WM2xWG9B0Wqn3YG5uakfy_NSAEzIFP2nEAJ5U_fqufc/edit#gid=8743918" %>% 
-  read_tags()
-```
-
-## Other functionality
-
-- We are working to add gender coding (see `gender-coding.R` for a worked example).
-
-### Adding user data
+### add_users_data()
 
 - We also have functionality to add user-level data to an edgelist (see `add-users-data-.R`)
 
 ```{r}
-glimpse(d1)
-
 u <- rtweet::users_data(d)
 
 dd <- add_users_data(edgelist, u)
@@ -85,7 +93,18 @@ dd <- add_users_data(edgelist, u)
 dd
 ```
 
-## Future functionality
+### geocode()
 
-- We are looking to add geo-coding functionality
-- This package is new and we welcome contributors
+### lookup_many_tweets()
+
+### find_domain()
+
+- Working with URLs
+
+### code_gender()
+
+- We are working to add gender coding (see `coding-gender.R` for an example).
+
+## Future collaborations
+
+This is a new package and we welcome contributors.

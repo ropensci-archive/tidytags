@@ -12,7 +12,7 @@ You can install the released version of rTAGS from [CRAN](https://CRAN.R-project
 
 ``` r
 install.packages("devtools")
-devtools::install_github('bretsw/rTAGS)
+devtools::install_github('bretsw/rTAGS')
 ```
 
 Example
