@@ -1,12 +1,6 @@
-library(tidyverse)
-library(longurl)
-library(urltools)
-
-find_domain <- function(x) {
-  expand_urls(x) %>%
-    pull(expanded_url) %>%
-    domain() %>%
-    gsub("www[0-9]?.", "", .)
+get_url_domain <- function(x) {
+  new_urls <- longurl::expand_urls(x, seconds=10)
+  domains <- urltools::domain(new_urls$expanded_url)
+  domains <- gsub("www[0-9]?.", "", domains)
+  domains
 }
-
-#find_domain("bit.ly/2SfWO3K")

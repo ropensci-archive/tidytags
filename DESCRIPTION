@@ -1,6 +1,6 @@
 Package: rTAGS
 Type: Package
-Title: Syncing TAGS Tweet Collector to library(rtweet)
+Title: An R package for easy tweet collection over time and powerful analysis
 Version: 0.1.0
 Author: K. Bret Staudt Willet, Joshua M. Rosenberg, Spencer P. Greenhalgh
 Maintainer: K. Bret Staudt Willet <bret@bretsw.com>
@@ -10,10 +10,13 @@ Depends:
         R (>= 3.1.0),
         rtweet, 
         googlesheets,
+        dplyr,
         stringr,
         purrr,
         class,
-        mapsapi
+        mapsapi,
+        longurl,
+        urltools
 License: What license is it under?
 Encoding: UTF-8
 Suggests: 

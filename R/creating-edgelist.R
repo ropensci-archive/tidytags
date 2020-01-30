@@ -1,6 +1,3 @@
-
-# Replies
-
 get_replies <- function(d) {
   reply_tweets <- d %>%
     filter(is_reply == 1) %>%
@@ -20,7 +17,6 @@ get_replies <- function(d) {
     mutate(edge_type = "reply")
 }
 
-# Retweets
 
 get_retweets <- function(d) {
   d %>%

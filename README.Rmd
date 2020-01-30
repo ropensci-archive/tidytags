@@ -16,59 +16,93 @@ knitr::opts_chunk$set(
 
 # rTAGS
 
-The goal of rTAGS is to make it easy to work with Twitter data collected via a Twitter Archiving Google Sheet ([TAGS](https://tags.hawksey.info/)) in R. This package makes ample use of the [{rtweet} package](https://rtweet.info/) to process and prepare the data.
+An R package for easy tweet collection over time and powerful analysis.
+
+The goal of **rTAGS** is to sync together (a) the ease of collecting tweets over time with a **Twitter Archiving Google Sheet** [TAGS](https://tags.hawksey.info/), (b) the power of the **rtweet** [package](https://rtweet.info/) for processing and preparing additional Twitter metadata, and (c) a number of different functions we have found useful in our own social media research. 
 
 ## Installation
 
 You can install the released version of rTAGS from [CRAN](https://CRAN.R-project.org) with:
 
-``` r
+```{r cran-installation, eval = FALSE}
+install.packages("rTAGS")
+```
+
+You can also install the development version of rTAGS from GitHub with:
+
+```{r gh-installation, eval = FALSE}
 install.packages("devtools")
-devtools::install_github('bretsw/rTAGS)
+devtools::install_github("bretsw/rTAGS")
 ```
 
-```{r packages, eval = FALSE}
+## Examples
+
+In these examples, we pass the results of one function to the next by *piping* (using the `%>%` operator, loaded from the **dplyr** package).
+
+```{r, message=FALSE}
 library(rTAGS)
-library(rtweet)
-library(tidyverse)
+library(dplyr)
 ```
-
-## Core rTAGS functions
 
 ### read_tags()
 
-If you want to simply view the TAGS archive, you can use `read_tags()`:
+If you want to simply view a TAGS archive, you can use `read_tags()`. Here, we've openly shared a TAGS tracker that has been collecting tweets associated with the American Education Researcher Assocation (AERA) conference in 2019. Tweets containing the keyword text "#AERA19" or "#AERA2019" have been collected since February 2019, and this process is still active through today.
 
-```{r}
-url <- "https://docs.google.com/spreadsheets/d/1WM2xWG9B0Wqn3YG5uakfy_NSAEzIFP2nEAJ5U_fqufc/edit#gid=8743918"
+```{r, message=FALSE}
+exmaple_url <- "https://docs.google.com/spreadsheets/d/1WM2xWG9B0Wqn3YG5uakfy_NSAEzIFP2nEAJ5U_fqufc/edit#gid=8743918"
 
-url %>%
-  read_tags()
+example_df <- read_tags(exmaple_url)
+example_df <- tail(example_df, 100)
 ```
 
-### pull_data()
+### pull_tweet_data()
 
-This is a basic example which shows you how to read a TAGS sheet and then use {rtweet} (via `rtweet::pull_data()`) to access additional data. The data for this example were gathered with TAGS, querying the Twitter API to collect tweets containing the #AERA19 or #AERA2019 hashtags throughout most of the year 2019 (beginning February 22, 2019). The `rTAGS::read_tags()` and `rTAGS::pull_data()` functions work together to retrieve data from a TAGS source.
+This is a basic example which shows you how to read a TAGS sheet and then use {rtweet} (via `rtweet::lookup_statuses()`) to access additional data. The data for this example were gathered with TAGS, querying the Twitter API to collect tweets containing the #AERA19 or #AERA2019 hashtags throughout most of the year 2019 (beginning February 22, 2019). The `rTAGS::read_tags()` and `rTAGS::pull_tweet_data()` functions work together to retrieve data from a TAGS source.
+
+Note that your dataset will often contain fewer rows after running `rTAGS::pull_tweet_data()`. This is because `rtweet::lookup_statuses()` is searching for tweet IDs that are currently available. Any tweets that have been deleted or made "protected" (i.e., private) since TAGS first collected them are dropped from the dataset. Rather than view this as a limitation, we see this as an asset to help ensure our data better reflects the intentions of the accounts whose tweets we have collected (see Fiesler & Proferes, 2018).d
 
 ```{r}
-d <- url %>%
-  read_tags() %>%
-  pull_data()
+example_full <- pull_tweet_data(example_df)
 ```
 
 Here is the result, viewed with the `glimpse()` function from **dplyr**:
 
 ```{r}
-glimpse(d)
+dplyr::glimpse(example_full)
 ```
 
-### get_replies()
+### lookup_many_tweets()
 
-### get_retweets()
+The Twitter API only allows the looking up of 90,000 tweets at a time (a rate limit which resets after 15 minutes), and so `rtweet::lookup_statuses()` will only return results for the first 90,000 tweet IDs in your dataset. The function `rTAGS::lookup_many_tweets()` will automotically break your dataset into batches of 90,000 tweets, looking up one batch per hour until finished. Note that `lookup_many_tweets()` also works for datasets with fewer than 90,000 tweets as well.
 
-### get_quotes()
+Because `lookup_many_tweets()` involves waiting for 15 minutes between batches, we do not include an example here. However, this function can be used the same as `pull_tweet_data()`.
 
-### get_mentions()
+### process_tweets(), process_tweets_flattened()
+
+```{r}
+example_processed <- process_tweets(example_full)
+#example_processed %>% select(urls_url, urls_count) %>% View()
+```
+
+### get_url_domain()
+
+```{r}
+test_url <- "http://bit.ly/2SfWO3K"
+get_url_domain(test_url)
+```
+
+```{r}
+example_domains <- get_url_domain(example_processed$urls_url)
+example_domains
+```
+
+### geocode()
+
+```{r}
+geocode(example_full)
+
+#example_processed %>% select(urls_url, urls_count) %>% View()
+```
 
 ### create_edgelist()
 
@@ -93,18 +127,10 @@ dd <- add_users_data(edgelist, u)
 dd
 ```
 
-### geocode()
-
-### lookup_many_tweets()
-
-### find_domain()
-
-- Working with URLs
-
 ### code_gender()
 
-- We are working to add gender coding (see `coding-gender.R` for an example).
+- We are working to add gender coding (see `R/coding-gender.R` for an example).
 
 ## Future collaborations
 
-This is a new package and we welcome contributors.
+This is package is still in development, and we welcome new contributors.

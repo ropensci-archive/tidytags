@@ -1,8 +1,7 @@
-siteconf-tags-v6-1-2-5-17-5-5-17.xlsx
-siteconf.csv
 .Rproj.user
 .Rhistory
 .RData
 .Ruserdata
 .httr-oauth
 *.rds
+*.csv

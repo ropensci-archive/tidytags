@@ -1,0 +1,70 @@
+## Read more about library(googlesheets) at https://github.com/jennybc/googlesheets
+## Read more about library(rtweet) at https://rtweet.info/
+
+
+read_tags <- function(url) {
+  full_workbook <- googlesheets::gs_url(url)
+  one_sheet <- googlesheets::gs_read(full_workbook, ws = 2)
+  one_sheet
+}
+
+
+get_char_tweet_ids <- function(x) {
+  split_tweet_url <- stringr::str_split(x, "/")
+  char_ids <- purrr::map(split_tweet_url, ~ .[[6]])
+  char_ids <- unlist(char_ids)
+  char_ids
+}
+
+
+pull_tweet_data <- function(df, n = NULL) {
+  if(is.null(n)) {n <- nrow(df)}
+  tweet_ids <- get_char_tweet_ids(df$status_url)
+  if (length(tweet_ids) > 90000) {
+    warning("Twitter API only allows lookup of 90,000 tweets at a time;",
+            "collecting data for first 90,000 tweet IDs.",
+            "To process more, use `lookup_many_tweets()`.")
+    tweet_ids <- tweet_ids[1:90000]
+  }
+  new_df <- rtweet::lookup_statuses(tweet_ids[1:n])
+  new_df
+}
+
+
+lookup_many_tweets <- function(df, alarm = FALSE) {
+  n_batches <- ceiling(nrow(df) / 90000)
+  new_df <- data.frame()
+  for(i in 1:n_batches) {
+    min_id <- 90000*i - 89999
+    max_id <- ifelse(90000*i < nrow(df), 90000*i, nrow(df))
+    tmp_df <- pull_tweet_data(df[min_id:max_id, ]) #purrr::flatten() %>%
+    new_df <- rbind(new_df, tmp_df)
+    if(alarm == TRUE) {beepr::beep(2)}
+    if(n_batches > 1) {message("Processed batch: ", i)}
+    if (i != n_batches) {message("Now sleeping..."); Sys.sleep(901); message("Awake!")}
+  }
+  new_df
+}
+
+
+length_with_na <- function(x) {
+  ifelse(is.na(x), 0, map_int(x, length))
+}
+
+
+process_tweets <- function(df) {
+  dplyr::mutate(df,
+                  mentions_count = length_with_na(mentions_screen_name),
+                  hashtags_count = length_with_na(hashtags),
+                  urls_count = length_with_na(urls_url),
+                  is_reply = if_else(!is.na(reply_to_status_id), TRUE, FALSE))
+}
+
+
+process_tweets_flattened <- function(df) {
+  dplyr::mutate(df,
+                mentions_count = length_with_na(str_split(mentions_screen_name, " ")),
+                hashtags_count = length_with_na(str_split(hashtags, " ")),
+                urls_count = length_with_na(str_split(urls_url, " ")),
+                is_reply = if_else(!is.na(reply_to_status_id), TRUE, FALSE))
+}
