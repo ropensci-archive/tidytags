@@ -1,27 +1,25 @@
-# code_gender <- function(df) {
+################################
+## under construction
+################################
+#code_gender <- function(df) {
+#  profile_keywords_gender <- read.csv('profiles-gender.csv', header=FALSE, colClasses='character')
+#  names(profile_keywords_gender) <- c("word", "gender")
 #
-#   profiles_gender <- read_csv("profiles-gender.csv",
-#                               col_names = FALSE, skip = 1) %>%
-#     rename(word = X1, gender = X2)
+#  users <- dplyr::distinct(add_users_data(df))
+#  sample_n(users, 400) %>% write_csv('sample-user-profiles.csv')
 #
-#   users <- users_data(df) %>%
-#     distinct()
+#  expanded_user_descriptions <- tidytext::unnest_tokens(users, word, description)
+#  coded_users <- dplyr::left_join(expanded_user_descriptions, profile_keywords_gender, by = "word")
+#  distinct_coded_users <- dplyr::distinct(coded_users, screen_name, gender, .keep_all=TRUE)
+#  dplyr::count(distinct_coded_users, gender)
 #
-#   users %>%
-#     sample_n(400) %>%
-#     write_csv('sample-user-profiles.csv')
+#  joined_users_all <- dplyr::left_join(distinct(users, screen_name, name), distinct_coded_users)
+#  joined_users <- dplyr::filter(joined_users_all, !is.na(gender))
 #
-#   coded_users <- users %>%
-#     tidytext::unnest_tokens(word, description) %>%
-#     left_join(profiles_gender, by = "word") %>%
-#     distinct(screen_name, gender, .keep_all = TRUE)
 #
-#   coded_users %>% count(gender)
 #
-#   joined_users <- users %>%
-#     distinct(screen_name, name) %>%
-#     left_join(coded_users) %>%
-#     filter(!is.na(gender))
+#
+#
 #
 #   unique_names <- users %>%
 #     anti_join(joined_users, by = "screen_name") %>%
@@ -81,5 +79,4 @@
 #     right_join(joined_users_d) %>%
 #     distinct(screen_name, name, .keep_all = TRUE) %>%
 #     janitor::tabyl(gender, predicted_gender)
-#
-# }
+#}

@@ -2,6 +2,9 @@
 ## Read more about library(rtweet) at https://rtweet.info/
 
 
+`%notin%` <- Negate(`%in%`)
+
+
 read_tags <- function(url) {
   full_workbook <- googlesheets::gs_url(url)
   one_sheet <- googlesheets::gs_read(full_workbook, ws = 2)
@@ -13,7 +16,8 @@ get_char_tweet_ids <- function(x) {
   split_tweet_url <- stringr::str_split(x, "/")
   char_ids <- purrr::map(split_tweet_url, ~ .[[6]])
   char_ids <- unlist(char_ids)
-  char_ids
+  distinct_char_ids <- unique(char_ids)
+  distinct_char_ids
 }
 
 
@@ -54,10 +58,17 @@ length_with_na <- function(x) {
 
 process_tweets <- function(df) {
   dplyr::mutate(df,
-                  mentions_count = length_with_na(mentions_screen_name),
-                  hashtags_count = length_with_na(hashtags),
-                  urls_count = length_with_na(urls_url),
-                  is_reply = dplyr::if_else(!is.na(reply_to_status_id), TRUE, FALSE))
+                mentions_count = length_with_na(mentions_screen_name),
+                hashtags_count = length_with_na(hashtags),
+                urls_count = length_with_na(urls_url),
+                is_reply = dplyr::if_else(!is.na(reply_to_status_id), TRUE, FALSE),
+                is_self_reply = dplyr::if_else(is_reply,
+                                              dplyr::if_else(user_id==reply_to_user_id,
+                                                            TRUE,
+                                                            FALSE),
+                                              FALSE
+                                              )
+                )
 }
 
 
@@ -66,5 +77,12 @@ process_tweets_flattened <- function(df) {
                 mentions_count = length_with_na(str_split(mentions_screen_name, " ")),
                 hashtags_count = length_with_na(str_split(hashtags, " ")),
                 urls_count = length_with_na(str_split(urls_url, " ")),
-                is_reply = dplyr::if_else(!is.na(reply_to_status_id), TRUE, FALSE))
+                is_reply = dplyr::if_else(!is.na(reply_to_status_id), TRUE, FALSE),
+                is_self_reply = dplyr::if_else(is_reply,
+                                              dplyr::if_else(user_id==reply_to_user_id,
+                                                            TRUE,
+                                                            FALSE),
+                                              FALSE
+                                              )
+                )
 }

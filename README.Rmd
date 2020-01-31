@@ -4,7 +4,7 @@ output: github_document
 
 *Note: This file ('README.Rmd') generates the file README.md file. Edit here to make changes to that output file.*
 
-```{r setup, include = FALSE}
+```{r setup, include=FALSE}
 knitr::opts_chunk$set(
   collapse = TRUE,
   comment = "#>",
@@ -16,9 +16,9 @@ knitr::opts_chunk$set(
 
 # rTAGS
 
-An R package for easy tweet collection over time and powerful analysis.
+An R package for easy collection and powerful analysis of Twitter data.
 
-The goal of **rTAGS** is to sync together (a) the ease of collecting tweets over time with a **Twitter Archiving Google Sheet** [TAGS](https://tags.hawksey.info/), (b) the power of the **rtweet** [package](https://rtweet.info/) for processing and preparing additional Twitter metadata, and (c) a number of different functions we have found useful in our own social media research. 
+The goal of **rTAGS** is to sync together (a) the ease of collecting tweets over time with a **Twitter Archiving Google Sheet** [TAGS](https://tags.hawksey.info/), (b) the utility of the **rtweet** [package](https://rtweet.info/) for processing and preparing additional Twitter metadata, and (c) a collection of different analytic functions we have developed during our own social media research. 
 
 ## Installation
 
@@ -37,11 +37,8 @@ devtools::install_github("bretsw/rTAGS")
 
 ## Examples
 
-In these examples, we pass the results of one function to the next by *piping* (using the `%>%` operator, loaded from the **dplyr** package).
-
 ```{r, message=FALSE}
 library(rTAGS)
-library(dplyr)
 ```
 
 ### read_tags()
@@ -51,61 +48,89 @@ If you want to simply view a TAGS archive, you can use `read_tags()`. Here, we'v
 ```{r, message=FALSE}
 example_url <- "https://docs.google.com/spreadsheets/d/1WM2xWG9B0Wqn3YG5uakfy_NSAEzIFP2nEAJ5U_fqufc/edit#gid=8743918"
 
-example_df <- read_tags(example_url)
-example_df <- tail(example_df, 100)
+example_df_all <- read_tags(example_url)
+dim(example_df_all)
 ```
 
 ### pull_tweet_data()
 
 This is a basic example which shows you how to read a TAGS sheet and then use {rtweet} (via `rtweet::lookup_statuses()`) to access additional data. The data for this example were gathered with TAGS, querying the Twitter API to collect tweets containing the #AERA19 or #AERA2019 hashtags throughout most of the year 2019 (beginning February 22, 2019). The `rTAGS::read_tags()` and `rTAGS::pull_tweet_data()` functions work together to retrieve data from a TAGS source.
 
-Note that your dataset will often contain fewer rows after running `rTAGS::pull_tweet_data()`. This is because `rtweet::lookup_statuses()` is searching for tweet IDs that are currently available. Any tweets that have been deleted or made "protected" (i.e., private) since TAGS first collected them are dropped from the dataset. Rather than view this as a limitation, we see this as an asset to help ensure our data better reflects the intentions of the accounts whose tweets we have collected (see Fiesler & Proferes, 2018).d
+Note that your dataset will often contain fewer rows after running `rTAGS::pull_tweet_data()`. This is because `rtweet::lookup_statuses()` is searching for tweet IDs that are currently available. Any tweets that have been deleted or made "protected" (i.e., private) since TAGS first collected them are dropped from the dataset. Rather than view this as a limitation, we see this as an asset to help ensure our data better reflects the intentions of the accounts whose tweets we have collected (see Fiesler & Proferes, 2018).
 
 ```{r}
-example_full <- pull_tweet_data(example_df)
+example_snippet <- tail(example_df_all, 100)
+example_after_rtweet <- pull_tweet_data(example_snippet)
 ```
 
 Here is the result, viewed with the `glimpse()` function from **dplyr**:
 
 ```{r}
-dplyr::glimpse(example_full)
+dplyr::glimpse(example_after_rtweet)
+```
+
+At this point, the purpose of `rTAGS` should be restated. **TAGS** is eaaily set up and maintained, and does an excellent job passively collecting tweets over time. For instance, our example TAGS we demo here has collected thousands of tweets containing the keyword text "#AERA19 OR #AERA2019". In contrast, running this query now using `rtweet::search_tweets()` is limited by Twitter's API, and this search can only go back in time 6-9 days, and is limited to returning at most 18,000 tweets per query. So, if you are interested in tweets about the 2019 AERA conference in Toronto, today you could get almost no meaningful data using **rtweet** alone. 
+
+```{r}
+rtweet_today <- search_tweets("#AERA19 OR #AERA2019", n=18000)
+```
+
+While **TAGS** is great at easily collecting tweets over time (breadth), it lacks depth in terms of metadata is returned related to the gathered tweets. Specifically, **TAGS** returns information on at most 18 variables; in contrast, **rtweet** returns information on up to 90 variables. Thus our package **rTAGS** is needed to combine the breadth of TAGS with the depth of rtweet. This is succinctly demonstrated by comparing the dimensions of the full TAGS dataset `example_df_all` with the snippet expanded with rtweet, `example_full`.
+
+```{r}
+dim(example_df_all); dim(example_after_rtweet)
 ```
 
 ### lookup_many_tweets()
 
-The Twitter API only allows the looking up of 90,000 tweets at a time (a rate limit which resets after 15 minutes), and so `rtweet::lookup_statuses()` will only return results for the first 90,000 tweet IDs in your dataset. The function `rTAGS::lookup_many_tweets()` will automotically break your dataset into batches of 90,000 tweets, looking up one batch per hour until finished. Note that `lookup_many_tweets()` also works for datasets with fewer than 90,000 tweets as well.
+The Twitter API only allows the looking up of 90,000 tweet IDs at a time, a rate limit which resets after 15 minutes. Hence `rtweet::lookup_statuses()` will only return results for the first 90,000 tweet IDs in your dataset. The function `rTAGS::lookup_many_tweets()` will automotically break your dataset into batches of 90,000 tweets, looking up one batch per hour until finished. Note that `lookup_many_tweets()` also works for datasets with fewer than 90,000 tweets as well.
 
 Because `lookup_many_tweets()` involves waiting for 15 minutes between batches, we do not include an example here. However, this function can be used the same as `pull_tweet_data()`.
 
 ### process_tweets(), process_tweets_flattened()
 
 ```{r}
-example_processed <- process_tweets(example_full)
+example_processed <- process_tweets(example_after_rtweet)
+dim(example_processed)
 ```
 
 ### get_url_domain()
 
 ```{r}
-test_url <- "http://bit.ly/2SfWO3K"
+test_url <- "http://bit.ly/36KWct1"
 get_url_domain(test_url)
 ```
 
-```{r}
-example_domains <- get_url_domain(example_processed$urls_url)
-example_domains
+```{r, warning=FALSE}
+example_domains <- get_url_domain(example_after_rtweet$urls_url)
+example_domains[which(!is.na(example_domains))]
 ```
 
 ### geocode_tags()
 
-First, `rTAGS::geocode_tags()` pulls from the Google Geocoding API, which requires a Google Geocoding API Key. You can easily secure a key through Google Cloud Platform; [read more here](ttps://developers.google.com/maps/documentation/geocoding/get-api-key). Next, we recommend saving your Google Geocoding API Key in the .Renviron file as **'Google_API_key'**. You can quickly access this file using the R code `usethis::edit_r_environ(scope='user')`. Once you've saved your this file, quit your R session and restart. The function `rTAGS::geocode_tags()` will work for you from now on. 
+First, `rTAGS::geocode_tags()` pulls from the Google Geocoding API, which requires a Google Geocoding API Key. You can easily secure a key through Google Cloud Platform; [read more here](https://developers.google.com/maps/documentation/geocoding/get-api-key). Next, we recommend saving your Google Geocoding API Key in the .Renviron file as **'Google_API_key'**. You can quickly access this file using the R code `usethis::edit_r_environ(scope='user')`.
+
+Note that `rTAGS::geocode_tags()` should be used after additional metadata has been retrieved with `rTAGS::pull_tweet_data()`.
+
+```{r edit-r-environ, eval=FALSE}
+usethis::edit_r_environ(scope='user')
+```
+
+Once you've saved your this file, quit your R session and restart. The function `rTAGS::geocode_tags()` will work for you from now on. 
 
 We've paired `rTAGS::geocode_tags()` with the **mapview** package for quick, inteactive viewing of the geocoded data. Read more about mapview [here](https://r-spatial.github.io/mapview/).
 
-```{r}
-example_geo_coords <- geocode_tags(example_full)
+```{r, message=FALSE}
+example_geo_coords <- geocode_tags(example_after_rtweet)
 example_map <- mapview::mapview(example_geo_coords$pnt) 
-example_map
 mapview::mapshot(example_map, file="example-map.png")
+example_map
+```
+
+### get_replies(), get_retweets(), get_quotes(), get_mentions()
+
+```{r}
+nrow(get_replies(example_after_rtweet)); nrow(get_retweets(example_after_rtweet)); nrow(get_quotes(example_after_rtweet)); nrow(get_mentions(example_after_rtweet))
 ```
 
 ### create_edgelist()
@@ -113,18 +138,19 @@ mapview::mapshot(example_map, file="example-map.png")
 Create an edgelist from the TAGS data using the `rTAGS::create_edgelist()` function:
 
 ```{r}
-edgelist <- create_edgelist(d)
-
-edgelist %>% 
-  count(edge_type)
+example_edgelist <- create_edgelist(example_after_rtweet)
+head(example_edgelist, 20)
+count(example_edgelist, edge_type)
 ```
 
 ### add_users_data()
 
-- We also have functionality to add user-level data to an edgelist (see `add-users-data-.R`)
+**rTAGS** also has functionality to add user-level data to an edgelist through the function `rTAGS::add_users_data()`.
 
 ```{r}
 u <- rtweet::users_data(d)
+
+example_full
 
 dd <- add_users_data(edgelist, u)
 
@@ -138,3 +164,7 @@ dd
 ## Future collaborations
 
 This is package is still in development, and we welcome new contributors.
+
+## License
+
+The **rTAGS** package is licensed under a GNU General Public License v3.0, or [GPL-3](https://choosealicense.com/licenses/lgpl-3.0/). Read more at http://r-pkgs.had.co.nz/description.html#license.
