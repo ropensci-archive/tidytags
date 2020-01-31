@@ -48,7 +48,7 @@ lookup_many_tweets <- function(df, alarm = FALSE) {
 
 
 length_with_na <- function(x) {
-  ifelse(is.na(x), 0, map_int(x, length))
+  ifelse(is.na(x), 0, purrr::map_int(x, length))
 }
 
 
@@ -57,7 +57,7 @@ process_tweets <- function(df) {
                   mentions_count = length_with_na(mentions_screen_name),
                   hashtags_count = length_with_na(hashtags),
                   urls_count = length_with_na(urls_url),
-                  is_reply = if_else(!is.na(reply_to_status_id), TRUE, FALSE))
+                  is_reply = dplyr::if_else(!is.na(reply_to_status_id), TRUE, FALSE))
 }
 
 
@@ -66,5 +66,5 @@ process_tweets_flattened <- function(df) {
                 mentions_count = length_with_na(str_split(mentions_screen_name, " ")),
                 hashtags_count = length_with_na(str_split(hashtags, " ")),
                 urls_count = length_with_na(str_split(urls_url, " ")),
-                is_reply = if_else(!is.na(reply_to_status_id), TRUE, FALSE))
+                is_reply = dplyr::if_else(!is.na(reply_to_status_id), TRUE, FALSE))
 }

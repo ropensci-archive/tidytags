@@ -24,13 +24,13 @@ The goal of **rTAGS** is to sync together (a) the ease of collecting tweets over
 
 You can install the released version of rTAGS from [CRAN](https://CRAN.R-project.org) with:
 
-```{r cran-installation, eval = FALSE}
+```{r cran-installation, eval=FALSE}
 install.packages("rTAGS")
 ```
 
 You can also install the development version of rTAGS from GitHub with:
 
-```{r gh-installation, eval = FALSE}
+```{r gh-installation, eval=FALSE}
 install.packages("devtools")
 devtools::install_github("bretsw/rTAGS")
 ```
@@ -49,9 +49,9 @@ library(dplyr)
 If you want to simply view a TAGS archive, you can use `read_tags()`. Here, we've openly shared a TAGS tracker that has been collecting tweets associated with the American Education Researcher Assocation (AERA) conference in 2019. Tweets containing the keyword text "#AERA19" or "#AERA2019" have been collected since February 2019, and this process is still active through today.
 
 ```{r, message=FALSE}
-exmaple_url <- "https://docs.google.com/spreadsheets/d/1WM2xWG9B0Wqn3YG5uakfy_NSAEzIFP2nEAJ5U_fqufc/edit#gid=8743918"
+example_url <- "https://docs.google.com/spreadsheets/d/1WM2xWG9B0Wqn3YG5uakfy_NSAEzIFP2nEAJ5U_fqufc/edit#gid=8743918"
 
-example_df <- read_tags(exmaple_url)
+example_df <- read_tags(example_url)
 example_df <- tail(example_df, 100)
 ```
 
@@ -81,7 +81,6 @@ Because `lookup_many_tweets()` involves waiting for 15 minutes between batches, 
 
 ```{r}
 example_processed <- process_tweets(example_full)
-#example_processed %>% select(urls_url, urls_count) %>% View()
 ```
 
 ### get_url_domain()
@@ -96,12 +95,17 @@ example_domains <- get_url_domain(example_processed$urls_url)
 example_domains
 ```
 
-### geocode()
+### geocode_tags()
+
+First, `rTAGS::geocode_tags()` pulls from the Google Geocoding API, which requires a Google Geocoding API Key. You can easily secure a key through Google Cloud Platform; [read more here](ttps://developers.google.com/maps/documentation/geocoding/get-api-key). Next, we recommend saving your Google Geocoding API Key in the .Renviron file as **'Google_API_key'**. You can quickly access this file using the R code `usethis::edit_r_environ(scope='user')`. Once you've saved your this file, quit your R session and restart. The function `rTAGS::geocode_tags()` will work for you from now on. 
+
+We've paired `rTAGS::geocode_tags()` with the **mapview** package for quick, inteactive viewing of the geocoded data. Read more about mapview [here](https://r-spatial.github.io/mapview/).
 
 ```{r}
-geocode(example_full)
-
-#example_processed %>% select(urls_url, urls_count) %>% View()
+example_geo_coords <- geocode_tags(example_full)
+example_map <- mapview::mapview(example_geo_coords$pnt) 
+example_map
+mapview::mapshot(example_map, file="example-map.png")
 ```
 
 ### create_edgelist()

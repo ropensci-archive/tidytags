@@ -1,10 +1,10 @@
-# code_gender <- function(d) {
+# code_gender <- function(df) {
 #
 #   profiles_gender <- read_csv("profiles-gender.csv",
 #                               col_names = FALSE, skip = 1) %>%
 #     rename(word = X1, gender = X2)
 #
-#   users <- users_data(d) %>%
+#   users <- users_data(df) %>%
 #     distinct()
 #
 #   users %>%

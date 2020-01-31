@@ -8,15 +8,16 @@ Description: More about what it does (maybe more than one line)
     Use four spaces when indenting paragraphs within the Description.
 Depends: 
         R (>= 3.1.0),
-        rtweet, 
-        googlesheets,
-        dplyr,
-        stringr,
-        purrr,
         class,
-        mapsapi,
+        dplyr,
+        googlesheets,
         longurl,
-        urltools
+        mapsapi,
+        purrr,
+        rtweet,
+        stringr,
+        urltools,
+        usethis
 License: What license is it under?
 Encoding: UTF-8
 Suggests: 
