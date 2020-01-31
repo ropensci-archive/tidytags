@@ -1,37 +1,47 @@
-add_users_data <- function(edgelist, users){
+add_users_data <- function(edgelist, users_data_from_rtweet){
+  users_prepped <- dplyr::mutate(users_data_from_rtweet,
+                                 screen_name = tolower(screen_name)
+                                 )
+  users_prepped <- dplyr::select(users_prepped,
+                                 screen_name,
+                                 tidyselect::everything()
+                                 )
+  users_prepped <- dplyr::distinct(users_prepped,
+                                   screen_name, .keep_all = TRUE)
+  senders_prepped <- dplyr::mutate(edgelist,
+                                   screen_name = tolower(sender)
+                                   )
 
-  # proc users
+  ## edit all sender variable names to have "_sender" in them
+  names(users_prepped)[2:length(users_prepped)] <-
+    stringr::str_c(names(users_prepped), "_sender")[2:length(users_prepped)]
+  edgelist_with_senders_data <- dplyr::left_join(senders_prepped,
+                                                 users_prepped,
+                                                 by = "screen_name")
 
-  users_ss <- users %>%
-    mutate(screen_name = tolower(screen_name)) %>%
-    select(screen_name, everything()) %>%
-    distinct(screen_name, .keep_all = TRUE)
+  ## change the name of screen_name back to sender
+  receivers_prepped <- dplyr::mutate(edgelist_with_senders_data,
+                                     sender = screen_name,
+                                     screen_name = tolower(receiver)
+                                     )
 
-  # for senders
+  ## would be nice to not have to do this again! (it is because of the names issue - an easy fix)
+  users_prepped <- dplyr::mutate(users_data_from_rtweet,
+                                 screen_name = tolower(screen_name)
+                                 )
+  users_prepped <- dplyr::select(users_prepped,
+                                 screen_name,
+                                 tidyselect::everything()
+                                 )
+  users_prepped <- dplyr::distinct(users_prepped,
+                                   screen_name, .keep_all = TRUE)
 
-  ds_edge_sender <- edgelist %>%
-    mutate(screen_name = tolower(sender))
+  ## edit all sender variable names to have "_receiver" in them
+  names(users_prepped)[2:length(users_prepped)] <-
+    stringr::str_c(names(users_prepped), "_receiver")[2:length(users_prepped)]
 
-  names(users_ss)[2:length(users_ss)] <-
-    str_c(names(users_ss), "_sender")[2:length(users_ss)] # this makes the names of all sender vars have sender in them
-
-  d <- left_join(ds_edge_sender, users_ss, by = "screen_name")
-
-  # for receivers
-
-  ds_edge_receiver <- d %>%
-    mutate(sender = screen_name, # changing the name of screen_name back to sender
-           screen_name = tolower(receiver))
-
-  users_ss <- users %>% # would be nice to not have to do this again!
-    # it is because of the names issue - an easy fix
-    mutate(screen_name = tolower(screen_name)) %>%
-    select(screen_name, everything()) %>%
-    distinct(screen_name, .keep_all = TRUE)
-
-  names(users_ss)[2:length(users_ss)] <-
-    str_c(names(users_ss), "_receiver")[2:length(users_ss)]
-
-  left_join(ds_edge_receiver, users_ss, by = "screen_name") %>%
-    select(-screen_name)
+  edgelist_with_all_users_data <- dplyr::left_join(receivers_prepped,
+                                                   users_prepped,
+                                                   by = "screen_name")
+  edgelist_with_all_users_data <- dplyr::select(edgelist_with_all_users_data, -screen_name)
 }

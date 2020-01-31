@@ -45,7 +45,7 @@ library(rTAGS)
 
 If you want to simply view a TAGS archive, you can use `read_tags()`. Here, we've openly shared a TAGS tracker that has been collecting tweets associated with the American Education Researcher Assocation (AERA) conference in 2019. Tweets containing the keyword text "#AERA19" or "#AERA2019" have been collected since February 2019, and this process is still active through today.
 
-```{r, message=FALSE}
+```{r, message=FALSE, warning=FALSE}
 example_url <- "https://docs.google.com/spreadsheets/d/1WM2xWG9B0Wqn3YG5uakfy_NSAEzIFP2nEAJ5U_fqufc/edit#gid=8743918"
 
 example_df_all <- read_tags(example_url)
@@ -73,6 +73,7 @@ At this point, the purpose of `rTAGS` should be restated. **TAGS** is eaaily set
 
 ```{r}
 rtweet_today <- search_tweets("#AERA19 OR #AERA2019", n=18000)
+paste("Number of tweets returned by an rtweet search today:", nrow(rtweet_today))
 ```
 
 While **TAGS** is great at easily collecting tweets over time (breadth), it lacks depth in terms of metadata is returned related to the gathered tweets. Specifically, **TAGS** returns information on at most 18 variables; in contrast, **rtweet** returns information on up to 90 variables. Thus our package **rTAGS** is needed to combine the breadth of TAGS with the depth of rtweet. This is succinctly demonstrated by comparing the dimensions of the full TAGS dataset `example_df_all` with the snippet expanded with rtweet, `example_full`.
@@ -97,8 +98,8 @@ dim(example_processed)
 ### get_url_domain()
 
 ```{r}
-test_url <- "http://bit.ly/36KWct1"
-get_url_domain(test_url)
+longurl::expand_urls("http://bit.ly/36KWct1", seconds=10)
+get_url_domain("http://bit.ly/36KWct1")
 ```
 
 ```{r, warning=FALSE}
@@ -148,18 +149,14 @@ count(example_edgelist, edge_type)
 **rTAGS** also has functionality to add user-level data to an edgelist through the function `rTAGS::add_users_data()`.
 
 ```{r}
-u <- rtweet::users_data(d)
-
-example_full
-
-dd <- add_users_data(edgelist, u)
-
-dd
+example_users_data <- rtweet::users_data(example_after_rtweet)
+example_senders_receivers_data <- add_users_data(example_edgelist, example_users_data)
+dplyr::glimpse(example_senders_receivers_data)
 ```
 
 ### code_gender()
 
-- We are working to add gender coding (see `R/coding-gender.R` for an example).
+We are still working to add gender coding (see `R/code-gender.R` for an example).
 
 ## Future collaborations
 
@@ -167,4 +164,4 @@ This is package is still in development, and we welcome new contributors.
 
 ## License
 
-The **rTAGS** package is licensed under a GNU General Public License v3.0, or [GPL-3](https://choosealicense.com/licenses/lgpl-3.0/). Read more at http://r-pkgs.had.co.nz/description.html#license.
+The **rTAGS** package is licensed under a GNU General Public License v3.0, or [GPL-3](https://choosealicense.com/licenses/lgpl-3.0/). For background on why we chose this license, read Hadley's take at http://r-pkgs.had.co.nz/description.html#license.
