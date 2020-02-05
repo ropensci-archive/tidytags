@@ -60,7 +60,9 @@ Note that your dataset will often contain fewer rows after running `rTAGS::pull_
 
 ```{r}
 example_snippet <- tail(example_df_all, 100)
-example_after_rtweet <- pull_tweet_data(example_snippet)
+example_after_rtweet0 <- pull_tweet_data(example_snippet$id_str)
+example_after_rtweet <- pull_tweet_data(get_char_tweet_ids(example_snippet))
+dim(example_after_rtweet0); dim(example_after_rtweet)
 ```
 
 Here is the result, viewed with the `glimpse()` function from **dplyr**:
@@ -126,6 +128,14 @@ example_geo_coords <- geocode_tags(example_after_rtweet)
 example_map <- mapview::mapview(example_geo_coords$pnt) 
 mapview::mapshot(example_map, file="example-map.png")
 example_map
+```
+
+### get_upstream_replies()
+
+```{r}
+sample1000 <- pull_tweet_data(get_char_tweet_ids(sample_n(example_df_all, 1000)))
+sample_with_upstream <- get_upstream_replies(sample1000)
+dim(sample1000); dim(sample_with_upstream)
 ```
 
 ### get_replies(), get_retweets(), get_quotes(), get_mentions()
