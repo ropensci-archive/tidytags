@@ -52,7 +52,7 @@ lookup_many_tweets <- function(df, alarm = FALSE) {
 
 
 length_with_na <- function(x) {
-  dplyr::if_else(is.na(x), 0, purrr::map_int(x, length))
+  ifelse(is.na(x), 0, purrr::map_int(x, length))
 }
 
 
