@@ -13,27 +13,28 @@ Description: The goal of rTAGS is to sync together
     processing and preparing additional Twitter metadata, and 
     (c) a collection of different analytic functions we have developed 
     during our own social media research.
-Depends: R (>= 3.6.2),
+License: GPL-3
+URL: https://github.com/bretsw/rtags
+Depends: R (>= 3.6.2)
 Imports:
-    dplyr (>=0.8.4),
-    googlesheets (>=0.3.0),
-    longurl (>=0.3.0),
-    mapsapi (>=0.4.2),
-    purrr (>=0.3.3),
-    rtweet (>=0.7.0),
-    stringr (>=1.4.0),
-    tidyr (>=1.0.2),
-    tidyselect (>=1.0.0),
-    tidytext (>=0.2.2),
-    urltools (>=1.7.3),
-    usethis (>=1.5.1)
+    dplyr (>= 0.8.4),
+    googlesheets (>= 0.3.0),
+    longurl (>= 0.3.0),
+    mapsapi (>= 0.4.2),
+    purrr (>= 0.3.3),
+    rtweet (>= 0.7.0),
+    stringr (>= 1.4.0),
+    tidyr (>= 1.0.2),
+    tidyselect (>= 1.0.0),
+    tidytext (>= 0.2.2),
+    urltools (>= 1.7.3),
+    usethis (>= 1.5.1)
 Suggests:
     ggplot2,
     knitr,
     rmarkdown,
     testthat,
     tidyverse
-License: GPL-3
 LazyData: TRUE
-URL: https://github.com/bretsw/rtags
+Encoding: UTF-8
 RoxygenNote: 7.0.2
