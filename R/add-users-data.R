@@ -1,3 +1,19 @@
+#' Retrieve user information for everyone in an edgelist
+#'
+#' \code{add_users_data()} updates an edgelist created with \code{create_edgelist()}
+#'   by appending user data retrieved with \code{rtweet::users_data()}. The resulting
+#'   dataframe keeps all the columns from \code{rtweet} but adds "_sender" or
+#'   "_receiver" to the column names
+#' @param edgelist An edgelist of senders and receivers, such as that returned by
+#'   the function \code{create_edgelist()}.
+#' @param users_data_from_rtweet A dataframe with Twitter users data retrieved using
+#'   the function \code{rtweet::users_data()}.
+#' @return A dataframe in the form of an edgelist (i.e., with senders and receivers)
+#'   as well as numerous, appropriately named columns of details about the senders
+#'   and receivers.
+#' @seealso Review documentation for \code{rtweet::users_data()} for a full list
+#'   of metadat retrieved (i.e., column names) by this function.
+
 add_users_data <- function(edgelist, users_data_from_rtweet){
   users_prepped <- dplyr::mutate(users_data_from_rtweet,
                                  screen_name = tolower(screen_name)

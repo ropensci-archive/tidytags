@@ -13,6 +13,6 @@ get_upstream_replies(df)
 A new dataframe which includes any retrievable upstream replies
 }
 \description{
-\code{get_upstream_replies} collects upstream replies not previously found
+\code{get_upstream_replies()} collects upstream replies not previously found
   in the dataset.
 }

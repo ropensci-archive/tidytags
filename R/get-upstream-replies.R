@@ -1,9 +1,10 @@
 #' Collect upstream replies and add to dataset
 #'
-#' \code{get_upstream_replies} collects upstream replies not previously found
+#' \code{get_upstream_replies()} collects upstream replies not previously found
 #'   in the dataset.
 #' @param df A dataframe or tibble
 #' @return A new dataframe which includes any retrievable upstream replies
+
 get_upstream_replies <- function(df) {
   processed_df <- process_tweets(df)
   unknown_replies <- dplyr::filter(processed_df,
