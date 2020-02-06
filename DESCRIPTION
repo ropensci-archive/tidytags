@@ -1,31 +1,39 @@
 Package: rTAGS
-Type: Package
-Title: An R package for easy collection and powerful analysis of Twitter data
+Title: Easy Collection and Powerful Analysis of Twitter Data
 Version: 0.1.0
-Author: K. Bret Staudt Willet, Joshua M. Rosenberg, Spencer P. Greenhalgh
-Maintainer: K. Bret Staudt Willet <bret@bretsw.com>
-Description: The goal of rTAGS is to sync together (a) the ease of collecting tweets over time with a **Twitter Archiving Google Sheet** [TAGS](https://tags.hawksey.info/), (b) the utility of the **rtweet** [package](https://rtweet.info/) for processing and preparing additional Twitter metadata, and (c) a collection of different analytic functions we have developed during our own social media research.
-License: GPL-3
-Encoding: UTF-8
-Depends: 
-        R (>= 3.1.0),
-        dplyr,
-        googlesheets,
-        longurl,
-        mapsapi,
-        purrr,
-        rtweet,
-        stringr,
-        tidyr,
-        tidyselect,
-        tidytext,
-        urltools,
-        usethis
+Authors@R: c(
+    person("Staudt Willet", "K. Bret", email = "bret@bretsw.com", role = c("aut", "cre")),
+    person("Rosenberg", "Joshua M.", email = "jmrosenberg@utk.edu", role = "aut"),
+    person("Greenhalgh", "Spencer P.", email = "spencer.greenhalgh@uky.edu", role = "aut")
+    )
+Description: The goal of rTAGS is to sync together 
+    (a) the ease of collecting tweets over time with a 
+    **Twitter Archiving Google Sheet** [TAGS](https://tags.hawksey.info/), 
+    (b) the utility of the **rtweet** [package](https://rtweet.info/) for 
+    processing and preparing additional Twitter metadata, and 
+    (c) a collection of different analytic functions we have developed 
+    during our own social media research.
+Depends: R (>= 3.6.2),
+Imports:
+    dplyr (>=0.8.4),
+    googlesheets (>=0.3.0),
+    longurl (>=0.3.0),
+    mapsapi (>=0.4.2),
+    purrr (>=0.3.3),
+    rtweet (>=0.7.0),
+    stringr (>=1.4.0),
+    tidyr (>=1.0.2),
+    tidyselect (>=1.0.0),
+    tidytext (>=0.2.2),
+    urltools (>=1.7.3),
+    usethis (>=1.5.1)
 Suggests:
-        ggplot2,
-        knitr,
-        rmarkdown,
-        tidyverse
+    ggplot2,
+    knitr,
+    rmarkdown,
+    testthat,
+    tidyverse
+License: GPL-3
 LazyData: TRUE
 URL: https://github.com/bretsw/rtags
-RoxygenNote: 6.1.1
+RoxygenNote: 7.0.2

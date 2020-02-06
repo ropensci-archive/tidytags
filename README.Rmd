@@ -175,3 +175,7 @@ This is package is still in development, and we welcome new contributors.
 ## License
 
 The **rTAGS** package is licensed under a GNU General Public License v3.0, or [GPL-3](https://choosealicense.com/licenses/lgpl-3.0/). For background on why we chose this license, read Hadley's take at http://r-pkgs.had.co.nz/description.html#license.
+
+```{r}
+devtools::session_info()
+```

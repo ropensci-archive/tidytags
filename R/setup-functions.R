@@ -2,10 +2,6 @@
 ## Read more about library(rtweet) at https://rtweet.info/
 
 
-url_regex <- "http[s]?://(?:[a-zA-Z]|[0-9]|[$-_@.&+]|[!*\\(\\),]|(?:%[0-9a-fA-F][0-9a-fA-F]))+"
-hashtag_regex <- "#([0-9]|[a-zA-Z])+"
-
-
 read_tags <- function(url) {
   full_workbook <- googlesheets::gs_url(url)
   one_sheet <- googlesheets::gs_read(full_workbook, ws = 2)
@@ -56,6 +52,8 @@ length_with_na <- function(x) {
 
 
 process_tweets <- function(df) {
+  url_regex <- "http[s]?://(?:[a-zA-Z]|[0-9]|[$-_@.&+]|[!*\\(\\),]|(?:%[0-9a-fA-F][0-9a-fA-F]))+"
+  hashtag_regex <- "#([0-9]|[a-zA-Z])+"
   dplyr::mutate(df,
                 word_count = stringr::str_count(text, "\\s+") + 1,
                 character_count = stringr::str_length(text),
@@ -77,6 +75,8 @@ process_tweets <- function(df) {
 
 
 process_tweets_flattened <- function(df) {
+  url_regex <- "http[s]?://(?:[a-zA-Z]|[0-9]|[$-_@.&+]|[!*\\(\\),]|(?:%[0-9a-fA-F][0-9a-fA-F]))+"
+  hashtag_regex <- "#([0-9]|[a-zA-Z])+"
   dplyr::mutate(df,
                 word_count = stringr::str_count(text, "\\s+") + 1,
                 character_count = stringr::str_length(text),

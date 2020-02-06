@@ -2,7 +2,7 @@
 ## under construction
 ################################
 #code_gender <- function(df) {
-#  profile_keywords_gender <- read.csv('profiles-gender.csv', header=FALSE, colClasses='character')
+#  profile_keywords_gender <- read.csv('data/profiles-gender.csv', header=FALSE, colClasses='character')
 #  names(profile_keywords_gender) <- c("word", "gender")
 #
 #  users <- dplyr::distinct(add_users_data(df))
