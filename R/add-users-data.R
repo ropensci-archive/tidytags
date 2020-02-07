@@ -13,7 +13,6 @@
 #'   and receivers.
 #' @seealso Review documentation for \code{rtweet::users_data()} for a full list
 #'   of metadat retrieved (i.e., column names) by this function.
-
 add_users_data <- function(edgelist, users_data_from_rtweet){
   users_prepped <- dplyr::mutate(users_data_from_rtweet,
                                  screen_name = tolower(screen_name)

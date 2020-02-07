@@ -7,7 +7,7 @@
 get_url_domain(x, wait = 10)
 }
 \arguments{
-\item{x}{A list of vector of hyperlinks, whether shortened or expanded}
+\item{x}{A list or vector of hyperlinks, whether shortened or expanded}
 
 \item{wait}{How long (in seconds) to wait on the \code{longurl::expand_urls()}
 function to retrieve the full, expanded URL from a shortened URL (e.g., a bit.ly).
@@ -23,6 +23,6 @@ A list or vector of Web domain names
   longitude) based on the locations listed in Twitter user profiles
 }
 \seealso{
-Read the documenation for \code{longurl::expand_urls()} and
+Read the documentation for \code{longurl::expand_urls()} and
   \code{urltools::domain()}.
 }

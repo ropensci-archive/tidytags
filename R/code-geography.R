@@ -16,7 +16,6 @@
 #'   may also provide additional inspiration for geocoding. Finally, the
 #'   \code{ggmap} package can provide additional functionality for visualizing
 #'   geographic data.
-
 geocode_tags <- function(df, google_key=Sys.getenv('Google_API_key')) {
   geo_coordinates <- mapsapi::mp_geocode(df$location, key=google_key)
   geo_points <- mapsapi::mp_get_points(geo_coordinates)
