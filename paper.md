@@ -1,5 +1,5 @@
 ---
-title: 'rTAGS: An R package for easy tweet collection over time and powerful analysis'
+title: 'tidytags: Easy Collection and Powerful Analysis of Twitter Data'
 tags:
   - R
   - Twitter
@@ -48,7 +48,7 @@ Aside from toy problems and demonstrations, the majority of problems require
 efficient numerical tools, many of which require the same base code (e.g., for
 performing numerical orbit integration).
 
-``rTAGS`` is an Astropy-affiliated R package for galactic dynamics. Python
+``tidytags`` is an Astropy-affiliated R package for galactic dynamics. Python
 enables wrapping low-level languages (e.g., C) for speed without losing
 flexibility or ease-of-use in the user-interface. The API for ``Gala`` was
 designed to provide a class-based and user-friendly interface to fast (C or
