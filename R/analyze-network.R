@@ -7,7 +7,7 @@
 #' @param df A dataframe returned by \code{pull_tweet_data()}
 #' @return A dataframe edgelist with column names 'sender', 'receiver', and
 #'   \code{edge_type}, which in this case the edge type is "reply"
-#' @seealso Compare to other \code{rTags} functions such as \code{get_retweets()},
+#' @seealso Compare to other \code{tidtags} functions such as \code{get_retweets()},
 #'   \code{get_quotes()}, \code{get_mentions()}, and \code{create_edgelist()}.
 get_replies <- function(df) {
   processed_df <- process_tweets(df)
@@ -29,7 +29,7 @@ get_replies <- function(df) {
 #' @param df A dataframe returned by \code{pull_tweet_data()}
 #' @return A dataframe edgelist with column names 'sender', 'receiver', and
 #'   \code{edge_type}, which in this case the edge type is "retweet"
-#' @seealso Compare to other \code{rTags} functions such as \code{get_replies()},
+#' @seealso Compare to other \code{tidtags} functions such as \code{get_replies()},
 #'   \code{get_quotes()}, \code{get_mentions()}, and \code{create_edgelist()}.
 get_retweets <- function(df) {
   processed_df <- process_tweets(df)
@@ -51,7 +51,7 @@ get_retweets <- function(df) {
 #' @param df A dataframe returned by \code{pull_tweet_data()}
 #' @return A dataframe edgelist with column names 'sender', 'receiver', and
 #'   \code{edge_type}, which in this case the edge type is "quote-tweet"
-#' @seealso Compare to other \code{rTags} functions such as \code{get_replies()},
+#' @seealso Compare to other \code{tidtags} functions such as \code{get_replies()},
 #'   \code{get_retweets()}, \code{get_mentions()}, and \code{create_edgelist()}.
 get_quotes <- function(df) {
   processed_df <- process_tweets(df)
@@ -73,7 +73,7 @@ get_quotes <- function(df) {
 #' @param df A dataframe returned by \code{pull_tweet_data()}
 #' @return A dataframe edgelist with column names 'sender', 'receiver', and
 #'   \code{edge_type}, which in this case the edge type is "mention"
-#' @seealso Compare to other \code{rTags} functions such as \code{get_replies()},
+#' @seealso Compare to other \code{tidtags} functions such as \code{get_replies()},
 #'   \code{get_retweets()}, \code{get_quotes()}, and \code{create_edgelist()}.
 get_mentions <- function(df) {
   processed_df <- process_tweets(df)
@@ -96,7 +96,7 @@ get_mentions <- function(df) {
 #' @return A dataframe edgelist with column names 'sender', 'receiver', and
 #'   \code{edge_type}, which in this case the edge type may be "reply", "retweet",
 #'   "quote", or "mention"
-#' @seealso Compare to other \code{rTags} functions such as \code{get_replies()},
+#' @seealso Compare to other \code{tidtags} functions such as \code{get_replies()},
 #'   \code{get_retweets()}, \code{get_quotes()}, and \code{get_mentions()}.
 create_edgelist <- function(df) {
   processed_df <- process_tweets(df)
