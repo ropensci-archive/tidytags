@@ -9,6 +9,7 @@
 #'   \code{edge_type}, which in this case the edge type is "reply"
 #' @seealso Compare to other \code{tidtags} functions such as \code{get_retweets()},
 #'   \code{get_quotes()}, \code{get_mentions()}, and \code{create_edgelist()}.
+#' @export
 get_replies <- function(df) {
   processed_df <- process_tweets(df)
   replies <- dplyr::filter(processed_df, is_reply)
@@ -31,6 +32,7 @@ get_replies <- function(df) {
 #'   \code{edge_type}, which in this case the edge type is "retweet"
 #' @seealso Compare to other \code{tidtags} functions such as \code{get_replies()},
 #'   \code{get_quotes()}, \code{get_mentions()}, and \code{create_edgelist()}.
+#' @export
 get_retweets <- function(df) {
   processed_df <- process_tweets(df)
   RTs <- dplyr::filter(processed_df, is_retweet)
@@ -53,6 +55,7 @@ get_retweets <- function(df) {
 #'   \code{edge_type}, which in this case the edge type is "quote-tweet"
 #' @seealso Compare to other \code{tidtags} functions such as \code{get_replies()},
 #'   \code{get_retweets()}, \code{get_mentions()}, and \code{create_edgelist()}.
+#' @export
 get_quotes <- function(df) {
   processed_df <- process_tweets(df)
   quotes <- dplyr::filter(processed_df, is_quote)
@@ -75,6 +78,7 @@ get_quotes <- function(df) {
 #'   \code{edge_type}, which in this case the edge type is "mention"
 #' @seealso Compare to other \code{tidtags} functions such as \code{get_replies()},
 #'   \code{get_retweets()}, \code{get_quotes()}, and \code{create_edgelist()}.
+#' @export
 get_mentions <- function(df) {
   processed_df <- process_tweets(df)
   mentions <- dplyr::select(processed_df,
@@ -98,6 +102,7 @@ get_mentions <- function(df) {
 #'   "quote", or "mention"
 #' @seealso Compare to other \code{tidtags} functions such as \code{get_replies()},
 #'   \code{get_retweets()}, \code{get_quotes()}, and \code{get_mentions()}.
+#' @export
 create_edgelist <- function(df) {
   processed_df <- process_tweets(df)
 

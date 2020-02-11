@@ -4,6 +4,7 @@
 #'   in the dataset.
 #' @param df A dataframe or tibble
 #' @return A new dataframe which includes any retrievable upstream replies
+#' @export
 get_upstream_replies <- function(df) {
   processed_df <- process_tweets(df)
   unknown_replies <- dplyr::filter(processed_df,

@@ -11,6 +11,7 @@
 #' @return A list or vector of Web domain names
 #' @seealso Read the documentation for \code{longurl::expand_urls()} and
 #'   \code{urltools::domain()}.
+#' @export
 get_url_domain <- function(x, wait = 10) {
   new_urls <- longurl::expand_urls(x, seconds = wait)
   domains <- urltools::domain(new_urls$expanded_url)

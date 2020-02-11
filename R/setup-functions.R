@@ -3,6 +3,7 @@
 #' @param url A valid URL (i.e., hyperlink) to a TAGS tracker
 #' @return A dataframe of the TAGS archive of tweets
 #' @seealso Read more about \code{library(googlesheets)} \href{https://github.com/jennybc/googlesheets}{here}.
+#' @export
 read_tags <- function(url) {
   full_workbook <- googlesheets::gs_url(url)
   one_sheet <- googlesheets::gs_read(full_workbook, ws = 2)
@@ -20,6 +21,7 @@ read_tags <- function(url) {
 #' @param df A dataframe of containing the column name 'status_url'
 #'   (i.e., the hyperlink to specific tweets)
 #' @return A list or vector of tweet IDs as character strings
+#' @export
 get_char_tweet_ids <- function(df) {
   df <- dplyr::mutate(df,
                 status_id_char = stringr::str_split_fixed(status_url, "/", n=6)[ ,6]
@@ -34,6 +36,7 @@ get_char_tweet_ids <- function(df) {
 #'   ID numbers available, but capped at 90,000 due to Twitter API limitations.
 #' @return A dataframe of tweets and full metadata from the Twitter API
 #' @seealso Read more about \code{library(rtweet)} \href{https://rtweet.info/}{here}.
+#' @export
 pull_tweet_data <- function(x, n = NULL) {
   if(is.null(n)) {n <- length(x)}
   if (length(x) > 90000) {
@@ -54,6 +57,7 @@ pull_tweet_data <- function(x, n = NULL) {
 #' @param alarm An audible notification that a batch of 90,000 tweets has been
 #'   completed
 #' @return A dataframe of tweets and full metadata from the Twitter API
+#' @export
 lookup_many_tweets <- function(x, alarm = FALSE) {
   n_batches <- ceiling(length(x) / 90000)
   new_df <- data.frame()
@@ -73,6 +77,7 @@ lookup_many_tweets <- function(x, alarm = FALSE) {
 #'
 #' @param x A list
 #' @return The number of items in the list
+#' @export
 length_with_na <- function(x) {
   ifelse(is.na(x), 0, purrr::map_int(x, length))
 }
@@ -83,6 +88,7 @@ length_with_na <- function(x) {
 #' @return A dataframe with several additional columns: word_count, character_count,
 #'   mentions_count, hashtags_count_api, hashtags_count_regex, has_hashtags,
 #'   urls_count_api, urls_count_regex, is_reply, is_self_reply
+#' @export
 process_tweets <- function(df) {
   url_regex <- "http[s]?://(?:[a-zA-Z]|[0-9]|[$-_@.&+]|[!*\\(\\),]|(?:%[0-9a-fA-F][0-9a-fA-F]))+"
   hashtag_regex <- "#([0-9]|[a-zA-Z])+"
@@ -111,6 +117,7 @@ process_tweets <- function(df) {
 #' @return A dataframe with several additional columns: word_count, character_count,
 #'   mentions_count, hashtags_count_api, hashtags_count_regex, has_hashtags,
 #'   urls_count_api, urls_count_regex, is_reply, is_self_reply
+#' @export
 process_tweets_flattened <- function(df) {
   url_regex <- "http[s]?://(?:[a-zA-Z]|[0-9]|[$-_@.&+]|[!*\\(\\),]|(?:%[0-9a-fA-F][0-9a-fA-F]))+"
   hashtag_regex <- "#([0-9]|[a-zA-Z])+"
