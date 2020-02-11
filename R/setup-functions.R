@@ -1,6 +1,18 @@
-## Read more about library(googlesheets) at https://github.com/jennybc/googlesheets
-## Read more about library(rtweet) at https://rtweet.info/
 
+
+#' Create an edgelist where interaction is defined by replying
+#'
+#' Starting with a dataframe returned by \code{pull_tweet_data()},
+#'   \code{get_replies()} pulls out senders and receivers of reply tweets and
+#'   adds a new column \code{edge_type}. \code{get_replies()} is a useful function
+#'   in itself, but is also used in \code{create_edgelist()}.
+#' @param df A dataframe returned by \code{pull_tweet_data()}
+#' @return A dataframe edgelist with column names 'sender', 'receiver', and
+#'   \code{edge_type}, which in this case the edge type is "reply"
+#' @seealso Compare to other \code{rTags} functions such as \code{get_retweets()},
+#'   \code{get_quotes()}, \code{get_mentions()}, and \code{create_edgelist()}.
+
+## Read more about library(googlesheets) at https://github.com/jennybc/googlesheets
 
 read_tags <- function(url) {
   full_workbook <- googlesheets::gs_url(url)
@@ -17,6 +29,7 @@ get_char_tweet_ids <- function(df) {
 }
 
 
+## Read more about library(rtweet) at https://rtweet.info/
 pull_tweet_data <- function(x, n = NULL) {
   if(is.null(n)) {n <- length(x)}
   if (length(x) > 90000) {
