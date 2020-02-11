@@ -21,6 +21,6 @@ Starting with a dataframe returned by \code{pull_tweet_data()},
   \code{edge_type}.
 }
 \seealso{
-Compare to other \code{rTags} functions such as \code{get_replies()},
+Compare to other \code{tidtags} functions such as \code{get_replies()},
   \code{get_retweets()}, \code{get_quotes()}, and \code{get_mentions()}.
 }

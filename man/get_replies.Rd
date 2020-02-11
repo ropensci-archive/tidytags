@@ -20,6 +20,6 @@ Starting with a dataframe returned by \code{pull_tweet_data()},
   in itself, but is also used in \code{create_edgelist()}.
 }
 \seealso{
-Compare to other \code{rTags} functions such as \code{get_retweets()},
+Compare to other \code{tidtags} functions such as \code{get_retweets()},
   \code{get_quotes()}, \code{get_mentions()}, and \code{create_edgelist()}.
 }
