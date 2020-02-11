@@ -33,6 +33,7 @@ Imports:
 Suggests:
     ggplot2,
     knitr,
+    mapview,
     rmarkdown,
     testthat,
     tidyverse

@@ -74,7 +74,7 @@ dplyr::glimpse(example_after_rtweet)
 At this point, the purpose of the **tidytags** R package should be restated. **TAGS** Tweet trackers are easily set up and maintained, and does an excellent job passively collecting tweets over time. For instance, our example TAGS we demo here has collected thousands of tweets containing the keyword text "#AERA19 OR #AERA2019". In contrast, running this query now using `rtweet::search_tweets()` is limited by Twitter's API, and this search can only go back in time 6-9 days, and is limited to returning at most 18,000 tweets per query. So, if you are interested in tweets about the 2019 AERA conference in Toronto, today you could get almost no meaningful data using **rtweet** alone. 
 
 ```{r}
-rtweet_today <- search_tweets("#AERA19 OR #AERA2019", n=18000)
+rtweet_today <- rtweet::search_tweets("#AERA19 OR #AERA2019", n=18000)
 paste("Number of tweets returned by an rtweet search today:", nrow(rtweet_today))
 ```
 
@@ -133,7 +133,7 @@ example_map
 ### get_upstream_replies()
 
 ```{r}
-sample1000 <- pull_tweet_data(get_char_tweet_ids(sample_n(example_df_all, 1000)))
+sample1000 <- pull_tweet_data(get_char_tweet_ids(dplyr::sample_n(example_df_all, 1000)))
 sample_with_upstream <- get_upstream_replies(sample1000)
 dim(sample1000); dim(sample_with_upstream)
 ```
@@ -151,7 +151,7 @@ Create an edgelist from the TAGS data using the `tidytags::create_edgelist()` fu
 ```{r}
 example_edgelist <- create_edgelist(example_after_rtweet)
 head(example_edgelist, 20)
-count(example_edgelist, edge_type)
+dplyr::count(example_edgelist, edge_type)
 ```
 
 ### add_users_data()
