@@ -1,1 +1,13 @@
 destination: docs
+
+authors:
+  K. Bret Staudt Willet:
+    href: http://bretsw.com/
+  Joshua M. Rosenberg:
+    href: https://joshuamrosenberg.com/
+  Spencer P. Greenhalgh:
+    href: https://spencergreenhalgh.com/
+navbar:
+  right:
+  - icon: fa-github fa-lg
+    href: https://github.com/bretsw/tidytags

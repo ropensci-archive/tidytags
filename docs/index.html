@@ -68,7 +68,7 @@
 <ul class="nav navbar-nav navbar-right">
 <li>
   <a href="https://github.com/bretsw/tidytags">
-    <span class="fab fa fab fa-github fa-lg"></span>
+    <span class="fa fa-github fa-lg"></span>
      
   </a>
 </li>
@@ -106,22 +106,31 @@ devtools<span class="op">::</span><span class="kw"><a href="https://devtools.r-l
 <div id="usage" class="section level2">
 <h2 class="hasAnchor">
 <a href="#usage" class="anchor"></a>Usage</h2>
-<p>At its most basic level, <strong>tidytags</strong> allows you to work with a <a href="https://tags.hawksey.info/">Twitter Archiving Google Sheet</a> (TAGS) in R. This is done with the <a href="https://cran.r-project.org/web/packages/googlesheets/vignettes/basic-usage.html">googlesheets package</a>.</p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span>(tidytags)</code></pre></div>
+<div id="read_tags" class="section level3">
+<h3 class="hasAnchor">
+<a href="#read_tags" class="anchor"></a>read_tags()</h3>
+<p>At its most basic level, <strong>tidytags</strong> allows you to work with a <a href="https://tags.hawksey.info/">Twitter Archiving Google Sheet</a> (TAGS) in R. This is done with the <a href="https://cran.r-project.org/web/packages/googlesheets/vignettes/basic-usage.html">googlesheets package</a>. One requirement for using the <strong>googlesheets</strong> package is that your TAGS has been published to the web. To do this, with the TAGS page open in a browser, go to <code>File</code> &gt;&gt; <code>Publish to the web</code>. The <code>Link</code> field should be ‘Entire document’ and the <code>Embed</code> field should be ‘Web page.’ If everything looks right, then click the <code>Publish</code> button and you should be ready to go.</p>
+<p>At this point you can view or read your TAGS archive into R using <code><a href="reference/read_tags.html">read_tags()</a></code>.</p>
+</div>
+<div id="pull_tweet_data" class="section level3">
+<h3 class="hasAnchor">
+<a href="#pull_tweet_data" class="anchor"></a>pull_tweet_data()</h3>
+<p>With TAGS imported into R, <strong>tidytags</strong> allows you to gather quite a bit more information related to the collected tweets with the <code><a href="reference/pull_tweet_data.html">pull_tweet_data()</a></code>. This function uses the <a href="https://rtweet.info/">rtweet package</a> to query the Twitter API. Using <strong>rtweet</strong> requires a Twitter developer account; see the rtweet vignette <a href="https://rtweet.info/articles/auth.html">Obtaining and using access tokens</a> as guide to get started.</p>
 <ol>
 <li>the utility of the <a href="https://rtweet.info/">rtweet package</a> for processing and preparing additional Twitter metadata, and (c) a collection of different analytic functions we have developed during our own social media research.</li>
 </ol>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span>(tidytags)</code></pre></div>
 </div>
-<div id="learning-tidytags" class="section level2">
+</div>
+<div id="learning-more-about-tidytags" class="section level2">
 <h2 class="hasAnchor">
-<a href="#learning-tidytags" class="anchor"></a>Learning tidytags</h2>
-<p>For a walkthrough of many of the <strong>tidytags</strong> functions, visit the <a href="https://bretsw.github.io/tidytags/articles/tidytags-with-conf-hashtags.html">Vignettes webpage</a>.</p>
+<a href="#learning-more-about-tidytags" class="anchor"></a>Learning more about tidytags</h2>
+<p>For a walkthrough of numerous additional <strong>tidytags</strong> functions, visit the <a href="https://bretsw.github.io/tidytags/articles/tidytags-with-conf-hashtags.html">Using tidytags with a conference hashtag</a> vignette webpage.</p>
 </div>
 <div id="getting-help" class="section level2">
 <h2 class="hasAnchor">
 <a href="#getting-help" class="anchor"></a>Getting help</h2>
 <p><strong>tidytags</strong> is still a work in progress, so we fully expect that there are still some bugs to work out and functions to document better. If you find an issue, have a question, or think of something that you really wish <strong>tidytags</strong> would do for you, don’t hesitate to <a href="mailto:bret@bretsw.com">email Bret</a> or reach out on Twitter: [@bretsw](<a href="https://twitter.com/bretsw" class="uri">https://twitter.com/bretsw</a>), [@jrosenberg6432](<a href="https://twitter.com/jrosenberg6432" class="uri">https://twitter.com/jrosenberg6432</a>), and [@spgreenhalgh](<a href="https://twitter.com/spgreenhalgh" class="uri">https://twitter.com/spgreenhalgh</a>).</p>
+<p>You can also <a href="https://github.com/bretsw/tidytags">file an issue on Github</a>.</p>
 </div>
 <div id="future-collaborations" class="section level2">
 <h2 class="hasAnchor">
@@ -131,7 +140,7 @@ devtools<span class="op">::</span><span class="kw"><a href="https://devtools.r-l
 <div id="license" class="section level2">
 <h2 class="hasAnchor">
 <a href="#license" class="anchor"></a>License</h2>
-<p>The <strong>tidytags</strong> package is licensed under a GNU General Public License v3.0, or <a href="https://choosealicense.com/licenses/lgpl-3.0/">GPL-3</a>. For background on why we chose this license, read Hadley Wickham’s take on <a href="http://r-pkgs.had.co.nz/description.html#license">R package licensing</a>.</p>
+<p>The <strong>tidytags</strong> package is licensed under a <em>GNU General Public License v3.0</em>, or <a href="https://choosealicense.com/licenses/lgpl-3.0/">GPL-3</a>. For background on why we chose this license, read Hadley Wickham’s take on <a href="http://r-pkgs.had.co.nz/description.html#license">R package licensing</a>.</p>
 </div>
 </div>
   </div>
@@ -153,9 +162,12 @@ devtools<span class="op">::</span><span class="kw"><a href="https://devtools.r-l
 <div class="developers">
 <h2>Developers</h2>
 <ul class="list-unstyled">
-<li>K. Bret Staudt Willet <br><small class="roles"> Author, maintainer </small> <a href="https://orcid.org/0000-0002-6984-416X" target="orcid.widget"><img src="https://members.orcid.org/sites/default/files/vector_iD_icon.svg" class="orcid" alt="ORCID"></a> </li>
-<li>Joshua M. Rosenberg <br><small class="roles"> Author </small> <a href="https://orcid.org/0000-0003-2170-0447" target="orcid.widget"><img src="https://members.orcid.org/sites/default/files/vector_iD_icon.svg" class="orcid" alt="ORCID"></a> </li>
-<li>Spencer P. Greenhalgh <br><small class="roles"> Author </small> <a href="https://orcid.org/0000-0002-8894-3198" target="orcid.widget"><img src="https://members.orcid.org/sites/default/files/vector_iD_icon.svg" class="orcid" alt="ORCID"></a> </li>
+<li>
+<a href="http://bretsw.com/">K. Bret Staudt Willet</a> <br><small class="roles"> Author, maintainer </small> <a href="https://orcid.org/0000-0002-6984-416X" target="orcid.widget"><img src="https://members.orcid.org/sites/default/files/vector_iD_icon.svg" class="orcid" alt="ORCID"></a> </li>
+<li>
+<a href="https://joshuamrosenberg.com/">Joshua M. Rosenberg</a> <br><small class="roles"> Author </small> <a href="https://orcid.org/0000-0003-2170-0447" target="orcid.widget"><img src="https://members.orcid.org/sites/default/files/vector_iD_icon.svg" class="orcid" alt="ORCID"></a> </li>
+<li>
+<a href="https://spencergreenhalgh.com/">Spencer P. Greenhalgh</a> <br><small class="roles"> Author </small> <a href="https://orcid.org/0000-0002-8894-3198" target="orcid.widget"><img src="https://members.orcid.org/sites/default/files/vector_iD_icon.svg" class="orcid" alt="ORCID"></a> </li>
 </ul>
 </div>
 
@@ -164,7 +176,7 @@ devtools<span class="op">::</span><span class="kw"><a href="https://devtools.r-l
 
 
       <footer><div class="copyright">
-  <p>Developed by K. Bret Staudt Willet, Joshua M. Rosenberg, Spencer P. Greenhalgh.</p>
+  <p>Developed by <a href="http://bretsw.com/">K. Bret Staudt Willet</a>, <a href="https://joshuamrosenberg.com/">Joshua M. Rosenberg</a>, <a href="https://spencergreenhalgh.com/">Spencer P. Greenhalgh</a>.</p>
 </div>
 
 <div class="pkgdown">

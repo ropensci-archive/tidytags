@@ -23,7 +23,7 @@ Description: The goal of tidytags is to sync together
     (c) a collection of different analytic functions we have developed 
     during our own social media research.
 License: GPL-3
-URL: https://github.com/bretsw/tidytags
+URL: https://bretsw.github.io/tidytags/, https://github.com/bretsw/tidytags
 Depends: 
     R (>= 3.6.2)
 Imports:

@@ -1,6 +1,7 @@
 ---
 title: "Using tidytags with a conference hashtag"
-output: rmarkdown::html_vignette
+output: 
+  rmarkdown::html_vignette
 vignette: >
   %\VignetteIndexEntry{Using tidytags with a conference hashtag}
   %\VignetteEngine{knitr::rmarkdown}
@@ -12,15 +13,19 @@ knitr::opts_chunk$set(collapse = TRUE, comment = "#>", fig.show = "hide")
 library(tidytags)
 ```
 
-This vignette is intended for...
+This vignette introduces how to use many **tidytags** functions through the example of analyzing tweets associated with the 2019 annual convention of the [Association for Educational Communications & Technology](https://aect.org/) (AECT): `#aect19`, `#aect2019`, or `#aect19inspired`.
 
+Most of the information in this vignette is available scattered throughout the R documentation. This appendix brings it all together in one place.
 
 ### read_tags()
 
-If you want to simply view a TAGS archive, you can use `read_tags()`. Here, we've openly shared a TAGS tracker that has been collecting tweets associated with the American Education Researcher Assocation (AERA) conference in 2019. Tweets containing the keyword text "#AERA19" or "#AERA2019" have been collected since February 2019, and this process is still active through today.
+To simply view a TAGS archive, you can use `read_tags()`. Here, we've openly shared a TAGS tracker that has been collecting tweets associated with the AECT 2019 since September 30, 2019. This tracker is active through today.
+
+Keep in mind that `read_tags()` uses the **googlesheets** package, and one requirement is that your TAGS has been published to the web. To do this, with the TAGS page open in a browser, go to `File` >> `Publish to the web`. The `Link` field should be 'Entire document' and the `Embed` field should be 'Web page.' If everything looks right, then click the `Publish` button. Next, click the `Share` button in the top right corner of the Google Sheets window, select `Get shareable link`, and set the permissions to 'Anyone with the link can view.' Now you should be ready to go.
+
 
 ```{r, message=FALSE, warning=FALSE}
-example_url <- "https://docs.google.com/spreadsheets/d/1WM2xWG9B0Wqn3YG5uakfy_NSAEzIFP2nEAJ5U_fqufc/edit#gid=8743918"
+example_url <- "https://docs.google.com/spreadsheets/d/18clYlQeJOc6W5QRuSlJ6_v3snqKJImFhU42bRkM_OX8/edit#gid=8743918"
 
 example_df_all <- read_tags(example_url)
 dim(example_df_all)
@@ -28,7 +33,9 @@ dim(example_df_all)
 
 ### pull_tweet_data()
 
-This is a basic example which shows you how to read a TAGS sheet and then use {rtweet} (via `rtweet::lookup_statuses()`) to access additional data. The data for this example were gathered with TAGS, querying the Twitter API to collect tweets containing the #AERA19 or #AERA2019 hashtags throughout most of the year 2019 (beginning February 22, 2019). The `tidytags::read_tags()` and `tidytags::pull_tweet_data()` functions work together to retrieve data from a TAGS source.
+With a TAGS archive read into R, the next step is to use the **rtweet** package (via `rtweet::lookup_statuses()`) to access additional tweet data. The `tidytags::read_tags()` and `tidytags::pull_tweet_data()` functions work together to retrieve data from a TAGS source.
+
+With TAGS imported into R, **tidytags** allows you to gather quite a bit more information related to the collected tweets with the `pull_tweet_data()`. This function uses the [rtweet package](https://rtweet.info/) to query the Twitter API. Using **rtweet** requires a Twitter developer account; see the rtweet vignette [Obtaining and using access tokens](https://rtweet.info/articles/auth.html) as guide to get started. 
 
 Note that your dataset will often contain fewer rows after running `tidytags::pull_tweet_data()`. This is because `rtweet::lookup_statuses()` is searching for tweet IDs that are currently available. Any tweets that have been deleted or made "protected" (i.e., private) since TAGS first collected them are dropped from the dataset. Rather than view this as a limitation, we see this as an asset to help ensure our data better reflects the intentions of the accounts whose tweets we have collected (see Fiesler & Proferes, 2018).
 

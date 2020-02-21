@@ -1,5 +1,14 @@
 #' Retrieve a TAGS archive of tweets and bring into R
 #'
+#' Keep in mind that `read_tags()` uses the **googlesheets** package,
+#'   and one requirement is that your TAGS has been published to the web.
+#'   To do this, with the TAGS page open in a browser, go to
+#'   `File` >> `Publish to the web`. The `Link` field should be 'Entire document'
+#'   and the `Embed` field should be 'Web page.' If everything looks right,
+#'   then click the `Publish` button. Next, click the `Share` button in the
+#'   top right corner of the Google Sheets window, select `Get shareable link`,
+#'   and set the permissions to 'Anyone with the link can view.' Now you should
+#'   be ready to go.
 #' @param url A valid URL (i.e., hyperlink) to a TAGS tracker
 #' @return A dataframe of the TAGS archive of tweets
 #' @seealso Read more about \code{library(googlesheets)} \href{https://github.com/jennybc/googlesheets}{here}.
@@ -31,6 +40,10 @@ get_char_tweet_ids <- function(df) {
 
 #' Retrieve the fullest extent of tweet metadata available from the Twitter API
 #'
+#' With TAGS imported into R, `pull_tweet_data()` uses the **rtweet** package
+#'   to query the Twitter API. Using rtweet requires a Twitter developer account;
+#'   see the rtweet vignette \href{https://rtweet.info/articles/auth.html}{Obtaining and using access tokens}
+#'   as guide to get started.
 #' @param x A list or vector of tweet ID numbers
 #' @param n The number of tweets to look up, by default the total number of tweet
 #'   ID numbers available, but capped at 90,000 due to Twitter API limitations.
