@@ -52,6 +52,18 @@
 <li>
   <a href="reference/index.html">Reference</a>
 </li>
+<li class="dropdown">
+  <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
+    Articles
+     
+    <span class="caret"></span>
+  </a>
+  <ul class="dropdown-menu" role="menu">
+<li>
+      <a href="articles/tidytags-with-conf-hashtags.html">Using tidytags with a conference hashtag</a>
+    </li>
+  </ul>
+</li>
       </ul>
 <ul class="nav navbar-nav navbar-right">
 <li>
@@ -74,451 +86,35 @@
   <div class="contents col-md-9">
 <div id="tidytags" class="section level1">
 <div class="page-header"><h1 class="hasAnchor">
-<a href="#tidytags" class="anchor"></a>tidytags</h1></div>
+<a href="#tidytags" class="anchor"></a>tidytags <img src="reference/figures/tidytags-logo.png" align="right" width="120">
+</h1></div>
 <p>Simple Collection and Powerful Analysis of Twitter Data</p>
-<p>The goal of <strong>tidytags</strong> is to sync together (a) the simplicity of collecting tweets over time with a <strong>Twitter Archiving Google Sheet</strong> <a href="https://tags.hawksey.info/">TAGS</a>, (b) the utility of the <strong>rtweet</strong> <a href="https://rtweet.info/">package</a> for processing and preparing additional Twitter metadata, and (c) a collection of different analytic functions we have developed during our own social media research.</p>
+<div id="overview" class="section level2">
+<h2 class="hasAnchor">
+<a href="#overview" class="anchor"></a>Overview</h2>
+<p>The goal of <strong>tidytags</strong> is to sync together (a) the simplicity of collecting tweets over time with a <a href="https://tags.hawksey.info/">Twitter Archiving Google Sheet</a> (TAGS), (b) the utility of the <a href="https://rtweet.info/">rtweet package</a> for processing and preparing additional Twitter metadata, and (c) a collection of different analytic functions we have developed during our own social media research.</p>
+</div>
 <div id="installation" class="section level2">
 <h2 class="hasAnchor">
 <a href="#installation" class="anchor"></a>Installation</h2>
-<p>You can install the released version of <strong>tidytags</strong> from <a href="https://CRAN.R-project.org">CRAN</a> with:</p>
+<p>Soon, you will be able to install the released version of <strong>tidytags</strong> from <a href="https://CRAN.R-project.org">CRAN</a> with:</p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="co">#install.packages("tidytags")</span></code></pre></div>
 <p>You can also install the development version of <strong>tidytags</strong> from GitHub with:</p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw"><a href="https://rdrr.io/r/utils/install.packages.html">install.packages</a></span>(<span class="st">"devtools"</span>)
-devtools<span class="op">::</span><span class="kw"><a href="https://devtools.r-lib.org//reference/remote-reexports.html">install_github</a></span>(<span class="st">"bretsw/tidytags"</span>)</code></pre></div>
+devtools<span class="op">::</span><span class="kw"><a href="https://rdrr.io/pkg/devtools/man/remote-reexports.html">install_github</a></span>(<span class="st">"bretsw/tidytags"</span>)</code></pre></div>
 </div>
-<div id="examples" class="section level2">
+<div id="usage" class="section level2">
 <h2 class="hasAnchor">
-<a href="#examples" class="anchor"></a>Examples</h2>
+<a href="#usage" class="anchor"></a>Usage</h2>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span>(tidytags)</code></pre></div>
-<div id="read_tags" class="section level3">
-<h3 class="hasAnchor">
-<a href="#read_tags" class="anchor"></a>read_tags()</h3>
-<p>If you want to simply view a TAGS archive, you can use <code><a href="reference/read_tags.html">read_tags()</a></code>. Here, we’ve openly shared a TAGS tracker that has been collecting tweets associated with the American Education Researcher Assocation (AERA) conference in 2019. Tweets containing the keyword text “#AERA19” or “#AERA2019” have been collected since February 2019, and this process is still active through today.</p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">example_url &lt;-<span class="st"> "https://docs.google.com/spreadsheets/d/1WM2xWG9B0Wqn3YG5uakfy_NSAEzIFP2nEAJ5U_fqufc/edit#gid=8743918"</span>
-
-example_df_all &lt;-<span class="st"> </span><span class="kw"><a href="reference/read_tags.html">read_tags</a></span>(example_url)
-<span class="kw"><a href="https://rdrr.io/r/base/dim.html">dim</a></span>(example_df_all)
-<span class="co">#&gt; [1] 35416    18</span></code></pre></div>
 </div>
-<div id="pull_tweet_data" class="section level3">
-<h3 class="hasAnchor">
-<a href="#pull_tweet_data" class="anchor"></a>pull_tweet_data()</h3>
-<p>This is a basic example which shows you how to read a TAGS sheet and then use {rtweet} (via <code><a href="https://rdrr.io/pkg/rtweet/man/lookup_statuses.html">rtweet::lookup_statuses()</a></code>) to access additional data. The data for this example were gathered with TAGS, querying the Twitter API to collect tweets containing the #AERA19 or #AERA2019 hashtags throughout most of the year 2019 (beginning February 22, 2019). The <code><a href="reference/read_tags.html">tidytags::read_tags()</a></code> and <code><a href="reference/pull_tweet_data.html">tidytags::pull_tweet_data()</a></code> functions work together to retrieve data from a TAGS source.</p>
-<p>Note that your dataset will often contain fewer rows after running <code><a href="reference/pull_tweet_data.html">tidytags::pull_tweet_data()</a></code>. This is because <code><a href="https://rdrr.io/pkg/rtweet/man/lookup_statuses.html">rtweet::lookup_statuses()</a></code> is searching for tweet IDs that are currently available. Any tweets that have been deleted or made “protected” (i.e., private) since TAGS first collected them are dropped from the dataset. Rather than view this as a limitation, we see this as an asset to help ensure our data better reflects the intentions of the accounts whose tweets we have collected (see Fiesler &amp; Proferes, 2018).</p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">example_snippet &lt;-<span class="st"> </span><span class="kw"><a href="https://rdrr.io/r/utils/head.html">tail</a></span>(example_df_all, <span class="dv">100</span>)
-example_after_rtweet0 &lt;-<span class="st"> </span><span class="kw"><a href="reference/pull_tweet_data.html">pull_tweet_data</a></span>(example_snippet<span class="op">$</span>id_str)
-example_after_rtweet &lt;-<span class="st"> </span><span class="kw"><a href="reference/pull_tweet_data.html">pull_tweet_data</a></span>(<span class="kw"><a href="reference/get_char_tweet_ids.html">get_char_tweet_ids</a></span>(example_snippet))
-<span class="kw"><a href="https://rdrr.io/r/base/dim.html">dim</a></span>(example_after_rtweet0); <span class="kw"><a href="https://rdrr.io/r/base/dim.html">dim</a></span>(example_after_rtweet)
-<span class="co">#&gt; [1] 54 90</span>
-<span class="co">#&gt; [1] 95 90</span></code></pre></div>
-<p>Here is the result, viewed with the <code>glimpse()</code> function from <strong>dplyr</strong>:</p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">dplyr<span class="op">::</span><span class="kw"><a href="https://dplyr.tidyverse.org/reference/reexports.html">glimpse</a></span>(example_after_rtweet)
-<span class="co">#&gt; Observations: 95</span>
-<span class="co">#&gt; Variables: 90</span>
-<span class="co">#&gt; $ user_id                 &lt;chr&gt; "2994964450", "33107559", "33107559", "331075…</span>
-<span class="co">#&gt; $ status_id               &lt;chr&gt; "1099077877960708096", "1099435242501287937",…</span>
-<span class="co">#&gt; $ created_at              &lt;dttm&gt; 2019-02-22 22:46:00, 2019-02-23 22:26:02, 20…</span>
-<span class="co">#&gt; $ screen_name             &lt;chr&gt; "stephlezotte", "lizjmeyer", "lizjmeyer", "li…</span>
-<span class="co">#&gt; $ text                    &lt;chr&gt; "If you are interested in understanding and e…</span>
-<span class="co">#&gt; $ source                  &lt;chr&gt; "Twitter for iPhone", "Twitter for iPhone", "…</span>
-<span class="co">#&gt; $ display_text_width      &lt;dbl&gt; 150, 101, 156, 111, 163, 271, 144, 140, 207, …</span>
-<span class="co">#&gt; $ reply_to_status_id      &lt;chr&gt; NA, "1099433973195800576", "10994339731958005…</span>
-<span class="co">#&gt; $ reply_to_user_id        &lt;chr&gt; NA, "33107559", "33107559", NA, "33107559", "…</span>
-<span class="co">#&gt; $ reply_to_screen_name    &lt;chr&gt; NA, "lizjmeyer", "lizjmeyer", NA, "lizjmeyer"…</span>
-<span class="co">#&gt; $ is_quote                &lt;lgl&gt; FALSE, FALSE, FALSE, TRUE, FALSE, FALSE, FALS…</span>
-<span class="co">#&gt; $ is_retweet              &lt;lgl&gt; FALSE, FALSE, FALSE, FALSE, FALSE, FALSE, TRU…</span>
-<span class="co">#&gt; $ favorite_count          &lt;int&gt; 3, 5, 4, 1, 4, 6, 0, 0, 13, 0, 0, 0, 0, 0, 0,…</span>
-<span class="co">#&gt; $ retweet_count           &lt;int&gt; 1, 1, 1, 4, 1, 1, 33, 7, 1, 33, 33, 1, 1, 1, …</span>
-<span class="co">#&gt; $ quote_count             &lt;int&gt; NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, N…</span>
-<span class="co">#&gt; $ reply_count             &lt;int&gt; NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, N…</span>
-<span class="co">#&gt; $ hashtags                &lt;list&gt; ["AERA19", &lt;"titleix", "aera19"&gt;, &lt;"metoo", …</span>
-<span class="co">#&gt; $ symbols                 &lt;list&gt; [NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA,…</span>
-<span class="co">#&gt; $ urls_url                &lt;list&gt; [NA, NA, NA, "twitter.com/AERADivisionK/…", …</span>
-<span class="co">#&gt; $ urls_t.co               &lt;list&gt; [NA, NA, NA, "https://t.co/O4kF3miiHp", NA, …</span>
-<span class="co">#&gt; $ urls_expanded_url       &lt;list&gt; [NA, NA, NA, "https://twitter.com/AERADivisi…</span>
-<span class="co">#&gt; $ media_url               &lt;list&gt; ["http://pbs.twimg.com/media/D0C1gKVX0AMgLxH…</span>
-<span class="co">#&gt; $ media_t.co              &lt;list&gt; ["https://t.co/fvpuZPmBqC", "https://t.co/RH…</span>
-<span class="co">#&gt; $ media_expanded_url      &lt;list&gt; ["https://twitter.com/stephlezotte/status/10…</span>
-<span class="co">#&gt; $ media_type              &lt;list&gt; ["photo", "photo", "photo", NA, "photo", NA,…</span>
-<span class="co">#&gt; $ ext_media_url           &lt;list&gt; ["http://pbs.twimg.com/media/D0C1gKVX0AMgLxH…</span>
-<span class="co">#&gt; $ ext_media_t.co          &lt;list&gt; ["https://t.co/fvpuZPmBqC", "https://t.co/RH…</span>
-<span class="co">#&gt; $ ext_media_expanded_url  &lt;list&gt; ["https://twitter.com/stephlezotte/status/10…</span>
-<span class="co">#&gt; $ ext_media_type          &lt;chr&gt; NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, N…</span>
-<span class="co">#&gt; $ mentions_user_id        &lt;list&gt; [NA, &lt;"831239402932289538", "3158586588", "1…</span>
-<span class="co">#&gt; $ mentions_screen_name    &lt;list&gt; [NA, &lt;"DrKatieLewis", "AERADivisionK", "aera…</span>
-<span class="co">#&gt; $ lang                    &lt;chr&gt; "en", "en", "en", "en", "en", "en", "en", "en…</span>
-<span class="co">#&gt; $ quoted_status_id        &lt;chr&gt; NA, NA, NA, "1099039335104442370", NA, NA, NA…</span>
-<span class="co">#&gt; $ quoted_text             &lt;chr&gt; NA, NA, NA, "#AERADivK's Equity &amp;amp; Inclusi…</span>
-<span class="co">#&gt; $ quoted_created_at       &lt;dttm&gt; NA, NA, NA, 2019-02-22 20:12:51, NA, NA, NA,…</span>
-<span class="co">#&gt; $ quoted_source           &lt;chr&gt; NA, NA, NA, "Twitter Web Client", NA, NA, NA,…</span>
-<span class="co">#&gt; $ quoted_favorite_count   &lt;int&gt; NA, NA, NA, 38, NA, NA, NA, NA, NA, NA, NA, N…</span>
-<span class="co">#&gt; $ quoted_retweet_count    &lt;int&gt; NA, NA, NA, 33, NA, NA, NA, NA, NA, NA, NA, N…</span>
-<span class="co">#&gt; $ quoted_user_id          &lt;chr&gt; NA, NA, NA, "3158586588", NA, NA, NA, NA, NA,…</span>
-<span class="co">#&gt; $ quoted_screen_name      &lt;chr&gt; NA, NA, NA, "AERADivisionK", NA, NA, NA, NA, …</span>
-<span class="co">#&gt; $ quoted_name             &lt;chr&gt; NA, NA, NA, "DivisionK", NA, NA, NA, NA, NA, …</span>
-<span class="co">#&gt; $ quoted_followers_count  &lt;int&gt; NA, NA, NA, 957, NA, NA, NA, NA, NA, NA, NA, …</span>
-<span class="co">#&gt; $ quoted_friends_count    &lt;int&gt; NA, NA, NA, 322, NA, NA, NA, NA, NA, NA, NA, …</span>
-<span class="co">#&gt; $ quoted_statuses_count   &lt;int&gt; NA, NA, NA, 397, NA, NA, NA, NA, NA, NA, NA, …</span>
-<span class="co">#&gt; $ quoted_location         &lt;chr&gt; NA, NA, NA, "", NA, NA, NA, NA, NA, NA, NA, N…</span>
-<span class="co">#&gt; $ quoted_description      &lt;chr&gt; NA, NA, NA, "The Official AERA Division K Twi…</span>
-<span class="co">#&gt; $ quoted_verified         &lt;lgl&gt; NA, NA, NA, FALSE, NA, NA, NA, NA, NA, NA, NA…</span>
-<span class="co">#&gt; $ retweet_status_id       &lt;chr&gt; NA, NA, NA, NA, NA, NA, "1099039335104442370"…</span>
-<span class="co">#&gt; $ retweet_text            &lt;chr&gt; NA, NA, NA, NA, NA, NA, "#AERADivK's Equity &amp;…</span>
-<span class="co">#&gt; $ retweet_created_at      &lt;dttm&gt; NA, NA, NA, NA, NA, NA, 2019-02-22 20:12:51,…</span>
-<span class="co">#&gt; $ retweet_source          &lt;chr&gt; NA, NA, NA, NA, NA, NA, "Twitter Web Client",…</span>
-<span class="co">#&gt; $ retweet_favorite_count  &lt;int&gt; NA, NA, NA, NA, NA, NA, 38, 5, NA, 38, 38, 4,…</span>
-<span class="co">#&gt; $ retweet_retweet_count   &lt;int&gt; NA, NA, NA, NA, NA, NA, 33, 7, NA, 33, 33, 1,…</span>
-<span class="co">#&gt; $ retweet_user_id         &lt;chr&gt; NA, NA, NA, NA, NA, NA, "3158586588", "143203…</span>
-<span class="co">#&gt; $ retweet_screen_name     &lt;chr&gt; NA, NA, NA, NA, NA, NA, "AERADivisionK", "AER…</span>
-<span class="co">#&gt; $ retweet_name            &lt;chr&gt; NA, NA, NA, NA, NA, NA, "DivisionK", "Div J G…</span>
-<span class="co">#&gt; $ retweet_followers_count &lt;int&gt; NA, NA, NA, NA, NA, NA, 957, 2367, NA, 957, 9…</span>
-<span class="co">#&gt; $ retweet_friends_count   &lt;int&gt; NA, NA, NA, NA, NA, NA, 322, 2325, NA, 322, 3…</span>
-<span class="co">#&gt; $ retweet_statuses_count  &lt;int&gt; NA, NA, NA, NA, NA, NA, 397, 4603, NA, 397, 3…</span>
-<span class="co">#&gt; $ retweet_location        &lt;chr&gt; NA, NA, NA, NA, NA, NA, "", "", NA, "", "", "…</span>
-<span class="co">#&gt; $ retweet_description     &lt;chr&gt; NA, NA, NA, NA, NA, NA, "The Official AERA Di…</span>
-<span class="co">#&gt; $ retweet_verified        &lt;lgl&gt; NA, NA, NA, NA, NA, NA, FALSE, FALSE, NA, FAL…</span>
-<span class="co">#&gt; $ place_url               &lt;chr&gt; NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, N…</span>
-<span class="co">#&gt; $ place_name              &lt;chr&gt; NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, N…</span>
-<span class="co">#&gt; $ place_full_name         &lt;chr&gt; NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, N…</span>
-<span class="co">#&gt; $ place_type              &lt;chr&gt; NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, N…</span>
-<span class="co">#&gt; $ country                 &lt;chr&gt; NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, N…</span>
-<span class="co">#&gt; $ country_code            &lt;chr&gt; NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, N…</span>
-<span class="co">#&gt; $ geo_coords              &lt;list&gt; [&lt;NA, NA&gt;, &lt;NA, NA&gt;, &lt;NA, NA&gt;, &lt;NA, NA&gt;, &lt;NA…</span>
-<span class="co">#&gt; $ coords_coords           &lt;list&gt; [&lt;NA, NA&gt;, &lt;NA, NA&gt;, &lt;NA, NA&gt;, &lt;NA, NA&gt;, &lt;NA…</span>
-<span class="co">#&gt; $ bbox_coords             &lt;list&gt; [&lt;NA, NA, NA, NA, NA, NA, NA, NA&gt;, &lt;NA, NA, …</span>
-<span class="co">#&gt; $ status_url              &lt;chr&gt; "https://twitter.com/stephlezotte/status/1099…</span>
-<span class="co">#&gt; $ name                    &lt;chr&gt; "Stephanie Lezotte", "Elizabeth J. Meyer", "E…</span>
-<span class="co">#&gt; $ location                &lt;chr&gt; "South Jersey", "Boulder, CO", "Boulder, CO",…</span>
-<span class="co">#&gt; $ description             &lt;chr&gt; "PhD candidate (higher ed org theory), Resear…</span>
-<span class="co">#&gt; $ url                     &lt;chr&gt; NA, "https://t.co/XlATn4P6VT", "https://t.co/…</span>
-<span class="co">#&gt; $ protected               &lt;lgl&gt; FALSE, FALSE, FALSE, FALSE, FALSE, FALSE, FAL…</span>
-<span class="co">#&gt; $ followers_count         &lt;int&gt; 102, 2380, 2380, 2380, 2380, 2380, 548, 4180,…</span>
-<span class="co">#&gt; $ friends_count           &lt;int&gt; 321, 1592, 1592, 1592, 1592, 1592, 556, 2950,…</span>
-<span class="co">#&gt; $ listed_count            &lt;int&gt; 2, 154, 154, 154, 154, 154, 4, 69, 1, 11, 53,…</span>
-<span class="co">#&gt; $ statuses_count          &lt;int&gt; 211, 14369, 14369, 14369, 14369, 14369, 11337…</span>
-<span class="co">#&gt; $ favourites_count        &lt;int&gt; 298, 6335, 6335, 6335, 6335, 6335, 28508, 250…</span>
-<span class="co">#&gt; $ account_created_at      &lt;dttm&gt; 2015-01-23 22:29:03, 2009-04-19 02:58:52, 20…</span>
-<span class="co">#&gt; $ verified                &lt;lgl&gt; FALSE, FALSE, FALSE, FALSE, FALSE, FALSE, FAL…</span>
-<span class="co">#&gt; $ profile_url             &lt;chr&gt; NA, "https://t.co/XlATn4P6VT", "https://t.co/…</span>
-<span class="co">#&gt; $ profile_expanded_url    &lt;chr&gt; NA, "http://elizabethjmeyer.com", "http://eli…</span>
-<span class="co">#&gt; $ account_lang            &lt;lgl&gt; NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, N…</span>
-<span class="co">#&gt; $ profile_banner_url      &lt;chr&gt; "https://pbs.twimg.com/profile_banners/299496…</span>
-<span class="co">#&gt; $ profile_background_url  &lt;chr&gt; "http://abs.twimg.com/images/themes/theme1/bg…</span>
-<span class="co">#&gt; $ profile_image_url       &lt;chr&gt; "http://pbs.twimg.com/profile_images/96213769…</span></code></pre></div>
-<p>At this point, the purpose of the <strong>tidytags</strong> R package should be restated. <strong>TAGS</strong> Tweet trackers are easily set up and maintained, and does an excellent job passively collecting tweets over time. For instance, our example TAGS we demo here has collected thousands of tweets containing the keyword text “#AERA19 OR #AERA2019”. In contrast, running this query now using <code><a href="https://rdrr.io/pkg/rtweet/man/search_tweets.html">rtweet::search_tweets()</a></code> is limited by Twitter’s API, and this search can only go back in time 6-9 days, and is limited to returning at most 18,000 tweets per query. So, if you are interested in tweets about the 2019 AERA conference in Toronto, today you could get almost no meaningful data using <strong>rtweet</strong> alone.</p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">rtweet_today &lt;-<span class="st"> </span>rtweet<span class="op">::</span><span class="kw"><a href="https://rdrr.io/pkg/rtweet/man/search_tweets.html">search_tweets</a></span>(<span class="st">"#AERA19 OR #AERA2019"</span>, <span class="dt">n=</span><span class="dv">18000</span>)
-<span class="kw"><a href="https://rdrr.io/r/base/paste.html">paste</a></span>(<span class="st">"Number of tweets returned by an rtweet search today:"</span>, <span class="kw"><a href="https://rdrr.io/r/base/nrow.html">nrow</a></span>(rtweet_today))
-<span class="co">#&gt; [1] "Number of tweets returned by an rtweet search today: 2"</span></code></pre></div>
-<p>While <strong>TAGS</strong> is great at easily collecting tweets over time (breadth), it lacks depth in terms of metadata is returned related to the gathered tweets. Specifically, <strong>TAGS</strong> returns information on at most 18 variables; in contrast, <strong>rtweet</strong> returns information on up to 90 variables. Thus our package <strong>tidytags</strong> is needed to combine the breadth of TAGS with the depth of rtweet. This is succinctly demonstrated by comparing the dimensions of the full TAGS dataset <code>example_df_all</code> with the snippet expanded with rtweet, <code>example_full</code>.</p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw"><a href="https://rdrr.io/r/base/dim.html">dim</a></span>(example_df_all); <span class="kw"><a href="https://rdrr.io/r/base/dim.html">dim</a></span>(example_after_rtweet)
-<span class="co">#&gt; [1] 35416    18</span>
-<span class="co">#&gt; [1] 95 90</span></code></pre></div>
+<div id="learning-tidytags" class="section level2">
+<h2 class="hasAnchor">
+<a href="#learning-tidytags" class="anchor"></a>Learning tidytags</h2>
 </div>
-<div id="lookup_many_tweets" class="section level3">
-<h3 class="hasAnchor">
-<a href="#lookup_many_tweets" class="anchor"></a>lookup_many_tweets()</h3>
-<p>The Twitter API only allows the looking up of 90,000 tweet IDs at a time, a rate limit which resets after 15 minutes. Hence <code><a href="https://rdrr.io/pkg/rtweet/man/lookup_statuses.html">rtweet::lookup_statuses()</a></code> will only return results for the first 90,000 tweet IDs in your dataset. The function <code><a href="reference/lookup_many_tweets.html">tidytags::lookup_many_tweets()</a></code> will automotically break your dataset into batches of 90,000 tweets, looking up one batch per hour until finished. Note that <code><a href="reference/lookup_many_tweets.html">lookup_many_tweets()</a></code> also works for datasets with fewer than 90,000 tweets as well.</p>
-<p>Because <code><a href="reference/lookup_many_tweets.html">lookup_many_tweets()</a></code> involves waiting for 15 minutes between batches, we do not include an example here. However, this function can be used the same as <code><a href="reference/pull_tweet_data.html">pull_tweet_data()</a></code>.</p>
-</div>
-<div id="process_tweets-process_tweets_flattened" class="section level3">
-<h3 class="hasAnchor">
-<a href="#process_tweets-process_tweets_flattened" class="anchor"></a>process_tweets(), process_tweets_flattened()</h3>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">example_processed &lt;-<span class="st"> </span><span class="kw"><a href="reference/process_tweets.html">process_tweets</a></span>(example_after_rtweet)
-<span class="kw"><a href="https://rdrr.io/r/base/dim.html">dim</a></span>(example_processed)
-<span class="co">#&gt; [1]  95 100</span></code></pre></div>
-</div>
-<div id="get_url_domain" class="section level3">
-<h3 class="hasAnchor">
-<a href="#get_url_domain" class="anchor"></a>get_url_domain()</h3>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">longurl<span class="op">::</span><span class="kw"><a href="https://rdrr.io/pkg/longurl/man/expand_urls.html">expand_urls</a></span>(<span class="st">"http://bit.ly/36KWct1"</span>, <span class="dt">seconds=</span><span class="dv">10</span>)
-<span class="co">#&gt; # A tibble: 1 x 3</span>
-<span class="co">#&gt;   orig_url              expanded_url                    status_code</span>
-<span class="co">#&gt;   &lt;chr&gt;                 &lt;chr&gt;                                 &lt;int&gt;</span>
-<span class="co">#&gt; 1 http://bit.ly/36KWct1 https://www.aera.net/About-AERA         200</span>
-<span class="kw"><a href="reference/get_url_domain.html">get_url_domain</a></span>(<span class="st">"http://bit.ly/36KWct1"</span>)
-<span class="co">#&gt; [1] "aera.net"</span></code></pre></div>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">example_domains &lt;-<span class="st"> </span><span class="kw"><a href="reference/get_url_domain.html">get_url_domain</a></span>(example_after_rtweet<span class="op">$</span>urls_url)
-example_domains[<span class="kw"><a href="https://rdrr.io/r/base/which.html">which</a></span>(<span class="op">!</span><span class="kw"><a href="https://rdrr.io/r/base/NA.html">is.na</a></span>(example_domains))]
-<span class="co">#&gt;  [1] "twitter.com"                 "twitter.com"                </span>
-<span class="co">#&gt;  [3] "aera.net"                    "docs.google.com"            </span>
-<span class="co">#&gt;  [5] "events.uw.edu"               "docs.google.com"            </span>
-<span class="co">#&gt;  [7] "docs.google.com"             "twitter.com"                </span>
-<span class="co">#&gt;  [9] "motsig.org"                  "convention2.allacademic.com"</span>
-<span class="co">#&gt; [11] "insidehighered.com"          "docs.google.com"            </span>
-<span class="co">#&gt; [13] "twitter.com"                 "twitter.com"                </span>
-<span class="co">#&gt; [15] "convention2.allacademic.com" "docs.google.com"            </span>
-<span class="co">#&gt; [17] "twitter.com"                 "aera19.net"                 </span>
-<span class="co">#&gt; [19] "convention2.allacademic.com"</span></code></pre></div>
-</div>
-<div id="geocode_tags" class="section level3">
-<h3 class="hasAnchor">
-<a href="#geocode_tags" class="anchor"></a>geocode_tags()</h3>
-<p>First, <code><a href="reference/geocode_tags.html">tidytags::geocode_tags()</a></code> pulls from the Google Geocoding API, which requires a Google Geocoding API Key. You can easily secure a key through Google Cloud Platform; <a href="https://developers.google.com/maps/documentation/geocoding/get-api-key">read more here</a>. Next, we recommend saving your Google Geocoding API Key in the .Renviron file as <strong>‘Google_API_key’</strong>. You can quickly access this file using the R code <code><a href="https://rdrr.io/pkg/usethis/man/edit.html">usethis::edit_r_environ(scope='user')</a></code>.</p>
-<p>Note that <code><a href="reference/geocode_tags.html">tidytags::geocode_tags()</a></code> should be used after additional metadata has been retrieved with <code><a href="reference/pull_tweet_data.html">tidytags::pull_tweet_data()</a></code>.</p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">usethis<span class="op">::</span><span class="kw"><a href="https://rdrr.io/pkg/usethis/man/edit.html">edit_r_environ</a></span>(<span class="dt">scope=</span><span class="st">'user'</span>)</code></pre></div>
-<p>Once you’ve saved your this file, quit your R session and restart. The function <code><a href="reference/geocode_tags.html">tidytags::geocode_tags()</a></code> will work for you from now on.</p>
-<p>We’ve paired <code><a href="reference/geocode_tags.html">tidytags::geocode_tags()</a></code> with the <strong>mapview</strong> package for quick, inteactive viewing of the geocoded data. Read more about mapview <a href="https://r-spatial.github.io/mapview/">here</a>.</p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">example_geo_coords &lt;-<span class="st"> </span><span class="kw"><a href="reference/geocode_tags.html">geocode_tags</a></span>(example_after_rtweet)
-<span class="co">#&gt; South Jersey............................OK</span>
-<span class="co">#&gt; Boulder, CO.............................OK</span>
-<span class="co">#&gt; Boulder, CO.............................OK</span>
-<span class="co">#&gt; Boulder, CO.............................OK</span>
-<span class="co">#&gt; Boulder, CO.............................OK</span>
-<span class="co">#&gt; Boulder, CO.............................OK</span>
-<span class="co">#&gt; So Cal..................................OK</span>
-<span class="co">#&gt; NA......................................</span>
-<span class="co">#&gt; Greater Toronto Area, Ontario,..........OK</span>
-<span class="co">#&gt; NA......................................</span>
-<span class="co">#&gt; New York, NY............................OK</span>
-<span class="co">#&gt; renold@cf.ac.uk.........................ZERO_RESULTS</span>
-<span class="co">#&gt; renold@cf.ac.uk.........................ZERO_RESULTS</span>
-<span class="co">#&gt; renold@cf.ac.uk.........................ZERO_RESULTS</span>
-<span class="co">#&gt; Richmond Hill, Ontario..................OK</span>
-<span class="co">#&gt; Austin, TX..............................OK</span>
-<span class="co">#&gt; disrespected piscataway lands...........OK</span>
-<span class="co">#&gt; Philly jawn in Bmore, again.............OK</span>
-<span class="co">#&gt; Oakland, CA.............................OK</span>
-<span class="co">#&gt; Milwaukee, WI...........................OK</span>
-<span class="co">#&gt; Global..................................OK</span>
-<span class="co">#&gt; George Mason, VA........................OK</span>
-<span class="co">#&gt; George Mason, VA........................OK</span>
-<span class="co">#&gt; Portland, ME............................OK</span>
-<span class="co">#&gt; Boulder, CO.............................OK</span>
-<span class="co">#&gt; From Stamford CT to the DMV.............ZERO_RESULTS</span>
-<span class="co">#&gt; Louisville, KY, USA.....................OK</span>
-<span class="co">#&gt; Eastleigh, England......................OK</span>
-<span class="co">#&gt; Washington, DC..........................OK</span>
-<span class="co">#&gt; State College, PA.......................OK</span>
-<span class="co">#&gt; Denver, CO..............................OK</span>
-<span class="co">#&gt; International...........................OK</span>
-<span class="co">#&gt; NA......................................</span>
-<span class="co">#&gt; New York City...........................OK</span>
-<span class="co">#&gt; LONDON UK...............................OK</span>
-<span class="co">#&gt; Iowa City...............................OK</span>
-<span class="co">#&gt; NA......................................</span>
-<span class="co">#&gt; NA......................................</span>
-<span class="co">#&gt; Seattle, WA.............................OK</span>
-<span class="co">#&gt; ENFIELD.................................OK</span>
-<span class="co">#&gt; Columbia, MO............................OK</span>
-<span class="co">#&gt; Toronto, Ontario, Canada................OK</span>
-<span class="co">#&gt; San Jose, CA............................OK</span>
-<span class="co">#&gt;  Osage &amp; Haudenosauneega Lands..........OK</span>
-<span class="co">#&gt; Toronto, Ontario........................OK</span>
-<span class="co">#&gt; Grand Prairie, TX.......................OK</span>
-<span class="co">#&gt; NA......................................</span>
-<span class="co">#&gt; NA......................................</span>
-<span class="co">#&gt; Philadelphia, PA........................OK</span>
-<span class="co">#&gt; NA......................................</span>
-<span class="co">#&gt; Long Beach, California..................OK</span>
-<span class="co">#&gt; Waterloo, Ontario, Canada...............OK</span>
-<span class="co">#&gt; North Carolina, USA.....................OK</span>
-<span class="co">#&gt; Pico Rivera, CA.........................OK</span>
-<span class="co">#&gt; 🕉 💪🏽🧠...................................ZERO_RESULTS</span>
-<span class="co">#&gt; United States...........................OK</span>
-<span class="co">#&gt; Salt Lake City, UT......................OK</span>
-<span class="co">#&gt; Pittsburgh, PA..........................OK</span>
-<span class="co">#&gt; MN ➡ DC.................................OK</span>
-<span class="co">#&gt; MI......................................OK</span>
-<span class="co">#&gt; NA......................................</span>
-<span class="co">#&gt; Berkeley, CA............................OK</span>
-<span class="co">#&gt; Atlanta, GA.............................OK</span>
-<span class="co">#&gt; North Vancouver.........................OK</span>
-<span class="co">#&gt; NA......................................</span>
-<span class="co">#&gt; University of Toronto...................OK</span>
-<span class="co">#&gt; Greensboro, North Carolina..............OK</span>
-<span class="co">#&gt; NA......................................</span>
-<span class="co">#&gt; NA......................................</span>
-<span class="co">#&gt; Brazil/Canada...........................OK</span>
-<span class="co">#&gt; Brazil/Canada...........................OK</span>
-<span class="co">#&gt; Savannah, TX............................OK</span>
-<span class="co">#&gt; Richmond, VA............................OK</span>
-<span class="co">#&gt; Las Vegas, NV...........................OK</span>
-<span class="co">#&gt; London, England.........................OK</span>
-<span class="co">#&gt; Louth, Ireland..........................OK</span>
-<span class="co">#&gt; Colorado, USA...........................OK</span>
-<span class="co">#&gt; Albany, NY..............................OK</span>
-<span class="co">#&gt; Nashville, TN...........................OK</span>
-<span class="co">#&gt; korean “america” and london.............OK</span>
-<span class="co">#&gt; Montréal | Toronto......................OK</span>
-<span class="co">#&gt; College Park, MD........................OK</span>
-<span class="co">#&gt; Ohio....................................OK</span>
-<span class="co">#&gt; Louisville, KY..........................OK</span>
-<span class="co">#&gt; Ames, IA................................OK</span>
-<span class="co">#&gt; Ames, IA................................OK</span>
-<span class="co">#&gt; Nashville, TN...........................OK</span>
-<span class="co">#&gt; San Francisco, CA.......................OK</span>
-<span class="co">#&gt; Boston MA...............................OK</span>
-<span class="co">#&gt; Boston MA...............................OK</span>
-<span class="co">#&gt; Wampanoag &amp; Massachussett land..........OK</span>
-<span class="co">#&gt; California..............................OK</span>
-<span class="co">#&gt; United States...........................OK</span>
-<span class="co">#&gt; New York, NY............................OK</span>
-<span class="co">#&gt; Baltimore, MD...........................OK</span>
-example_map &lt;-<span class="st"> </span>mapview<span class="op">::</span><span class="kw"><a href="https://rdrr.io/pkg/mapview/man/mapView.html">mapview</a></span>(example_geo_coords<span class="op">$</span>pnt) 
-<span class="co">#&gt; Warning in validateCoords(lng, lat, funcName): Data contains 17 rows with either</span>
-<span class="co">#&gt; missing or invalid lat/lon values and will be ignored</span>
-mapview<span class="op">::</span><span class="kw"><a href="https://rdrr.io/pkg/mapview/man/mapshot.html">mapshot</a></span>(example_map, <span class="dt">file=</span><span class="st">"example-map.png"</span>)
-example_map</code></pre></div>
-<p><img src="reference/figures/README-unnamed-chunk-10-1.png" width="100%"></p>
-</div>
-<div id="get_upstream_replies" class="section level3">
-<h3 class="hasAnchor">
-<a href="#get_upstream_replies" class="anchor"></a>get_upstream_replies()</h3>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">sample1000 &lt;-<span class="st"> </span><span class="kw"><a href="reference/pull_tweet_data.html">pull_tweet_data</a></span>(<span class="kw"><a href="reference/get_char_tweet_ids.html">get_char_tweet_ids</a></span>(dplyr<span class="op">::</span><span class="kw"><a href="https://dplyr.tidyverse.org/reference/sample.html">sample_n</a></span>(example_df_all, <span class="dv">1000</span>)))
-sample_with_upstream &lt;-<span class="st"> </span><span class="kw"><a href="reference/get_upstream_replies.html">get_upstream_replies</a></span>(sample1000)
-<span class="co">#&gt; [1] "Iteration: 1"</span>
-<span class="co">#&gt; [1] "New tweets added: 36; Unknown replies:22; Searchable replies: 22"</span>
-<span class="co">#&gt; [1] "Iteration: 2"</span>
-<span class="co">#&gt; [1] "New tweets added: 22; Unknown replies:15; Searchable replies: 15"</span>
-<span class="co">#&gt; [1] "Iteration: 3"</span>
-<span class="co">#&gt; [1] "New tweets added: 15; Unknown replies:14; Searchable replies: 14"</span>
-<span class="co">#&gt; [1] "Iteration: 4"</span>
-<span class="co">#&gt; [1] "New tweets added: 14; Unknown replies:13; Searchable replies: 13"</span>
-<span class="co">#&gt; [1] "Iteration: 5"</span>
-<span class="co">#&gt; [1] "New tweets added: 13; Unknown replies:13; Searchable replies: 13"</span>
-<span class="co">#&gt; [1] "Iteration: 6"</span>
-<span class="co">#&gt; [1] "New tweets added: 13; Unknown replies:12; Searchable replies: 12"</span>
-<span class="co">#&gt; [1] "Iteration: 7"</span>
-<span class="co">#&gt; [1] "New tweets added: 12; Unknown replies:12; Searchable replies: 12"</span>
-<span class="co">#&gt; [1] "Iteration: 8"</span>
-<span class="co">#&gt; [1] "New tweets added: 12; Unknown replies:12; Searchable replies: 12"</span>
-<span class="co">#&gt; [1] "Iteration: 9"</span>
-<span class="co">#&gt; [1] "New tweets added: 12; Unknown replies:11; Searchable replies: 11"</span>
-<span class="co">#&gt; [1] "Iteration: 10"</span>
-<span class="co">#&gt; [1] "New tweets added: 11; Unknown replies:10; Searchable replies: 10"</span>
-<span class="co">#&gt; [1] "Iteration: 11"</span>
-<span class="co">#&gt; [1] "New tweets added: 10; Unknown replies:9; Searchable replies: 9"</span>
-<span class="co">#&gt; [1] "Iteration: 12"</span>
-<span class="co">#&gt; [1] "New tweets added: 9; Unknown replies:8; Searchable replies: 8"</span>
-<span class="co">#&gt; [1] "Iteration: 13"</span>
-<span class="co">#&gt; [1] "New tweets added: 8; Unknown replies:6; Searchable replies: 6"</span>
-<span class="co">#&gt; [1] "Iteration: 14"</span>
-<span class="co">#&gt; [1] "New tweets added: 6; Unknown replies:4; Searchable replies: 4"</span>
-<span class="co">#&gt; [1] "Iteration: 15"</span>
-<span class="co">#&gt; [1] "New tweets added: 4; Unknown replies:4; Searchable replies: 4"</span>
-<span class="co">#&gt; [1] "Iteration: 16"</span>
-<span class="co">#&gt; [1] "New tweets added: 4; Unknown replies:3; Searchable replies: 3"</span>
-<span class="co">#&gt; [1] "Iteration: 17"</span>
-<span class="co">#&gt; [1] "New tweets added: 3; Unknown replies:2; Searchable replies: 2"</span>
-<span class="co">#&gt; [1] "Iteration: 18"</span>
-<span class="co">#&gt; [1] "New tweets added: 2; Unknown replies:2; Searchable replies: 2"</span>
-<span class="co">#&gt; [1] "Iteration: 19"</span>
-<span class="co">#&gt; [1] "New tweets added: 2; Unknown replies:2; Searchable replies: 2"</span>
-<span class="co">#&gt; [1] "Iteration: 20"</span>
-<span class="co">#&gt; [1] "New tweets added: 2; Unknown replies:1; Searchable replies: 1"</span>
-<span class="co">#&gt; [1] "Iteration: 21"</span>
-<span class="co">#&gt; [1] "New tweets added: 1; Unknown replies:1; Searchable replies: 1"</span>
-<span class="co">#&gt; [1] "Iteration: 22"</span>
-<span class="co">#&gt; [1] "New tweets added: 1; Unknown replies:1; Searchable replies: 1"</span>
-<span class="co">#&gt; [1] "Iteration: 23"</span>
-<span class="co">#&gt; [1] "New tweets added: 1; Unknown replies:0; Searchable replies: 0"</span>
-<span class="kw"><a href="https://rdrr.io/r/base/dim.html">dim</a></span>(sample1000); <span class="kw"><a href="https://rdrr.io/r/base/dim.html">dim</a></span>(sample_with_upstream)
-<span class="co">#&gt; [1] 929  90</span>
-<span class="co">#&gt; [1] 1142  100</span></code></pre></div>
-</div>
-<div id="get_replies-get_retweets-get_quotes-get_mentions" class="section level3">
-<h3 class="hasAnchor">
-<a href="#get_replies-get_retweets-get_quotes-get_mentions" class="anchor"></a>get_replies(), get_retweets(), get_quotes(), get_mentions()</h3>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw"><a href="https://rdrr.io/r/base/nrow.html">nrow</a></span>(<span class="kw"><a href="reference/get_replies.html">get_replies</a></span>(example_after_rtweet)); <span class="kw"><a href="https://rdrr.io/r/base/nrow.html">nrow</a></span>(<span class="kw"><a href="reference/get_retweets.html">get_retweets</a></span>(example_after_rtweet)); <span class="kw"><a href="https://rdrr.io/r/base/nrow.html">nrow</a></span>(<span class="kw"><a href="reference/get_quotes.html">get_quotes</a></span>(example_after_rtweet)); <span class="kw"><a href="https://rdrr.io/r/base/nrow.html">nrow</a></span>(<span class="kw"><a href="reference/get_mentions.html">get_mentions</a></span>(example_after_rtweet))
-<span class="co">#&gt; [1] 5</span>
-<span class="co">#&gt; [1] 72</span>
-<span class="co">#&gt; [1] 6</span>
-<span class="co">#&gt; [1] 131</span></code></pre></div>
-</div>
-<div id="create_edgelist" class="section level3">
-<h3 class="hasAnchor">
-<a href="#create_edgelist" class="anchor"></a>create_edgelist()</h3>
-<p>Create an edgelist from the TAGS data using the <code><a href="reference/create_edgelist.html">tidytags::create_edgelist()</a></code> function:</p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">example_edgelist &lt;-<span class="st"> </span><span class="kw"><a href="reference/create_edgelist.html">create_edgelist</a></span>(example_after_rtweet)
-<span class="kw"><a href="https://rdrr.io/r/utils/head.html">head</a></span>(example_edgelist, <span class="dv">20</span>)
-<span class="co">#&gt; # A tibble: 20 x 3</span>
-<span class="co">#&gt;    sender          receiver        edge_type</span>
-<span class="co">#&gt;    &lt;chr&gt;           &lt;chr&gt;           &lt;chr&gt;    </span>
-<span class="co">#&gt;  1 lizjmeyer       lizjmeyer       reply    </span>
-<span class="co">#&gt;  2 lizjmeyer       lizjmeyer       reply    </span>
-<span class="co">#&gt;  3 lizjmeyer       lizjmeyer       reply    </span>
-<span class="co">#&gt;  4 lizjmeyer       DrKatieLewis    reply    </span>
-<span class="co">#&gt;  5 AERADivisionK   AERADivisionK   reply    </span>
-<span class="co">#&gt;  6 ZingerLearns    AERADivisionK   retweet  </span>
-<span class="co">#&gt;  7 ashegrads       AERADivJGradNet retweet  </span>
-<span class="co">#&gt;  8 profm_de_r      AERADivisionK   retweet  </span>
-<span class="co">#&gt;  9 DrKYSR          AERADivisionK   retweet  </span>
-<span class="co">#&gt; 10 EmmaRenold      lizjmeyer       retweet  </span>
-<span class="co">#&gt; 11 EmmaRenold      lizjmeyer       retweet  </span>
-<span class="co">#&gt; 12 EmmaRenold      lizjmeyer       retweet  </span>
-<span class="co">#&gt; 13 pereira_rasoHTS DrJaimeMalic    retweet  </span>
-<span class="co">#&gt; 14 SnackinMadkins  AERADivisionK   retweet  </span>
-<span class="co">#&gt; 15 blkwknd         afroacademic    retweet  </span>
-<span class="co">#&gt; 16 DrCamikaRoyal   AERADivisionK   retweet  </span>
-<span class="co">#&gt; 17 danacotto       AKoenka         retweet  </span>
-<span class="co">#&gt; 18 ebovee09        AERA_MotSIG     retweet  </span>
-<span class="co">#&gt; 19 DoItGurl        AERADivisionK   retweet  </span>
-<span class="co">#&gt; 20 CarrieNKlein    AERADivJGradNet retweet</span>
-dplyr<span class="op">::</span><span class="kw"><a href="https://dplyr.tidyverse.org/reference/tally.html">count</a></span>(example_edgelist, edge_type)
-<span class="co">#&gt; # A tibble: 4 x 2</span>
-<span class="co">#&gt;   edge_type       n</span>
-<span class="co">#&gt;   &lt;chr&gt;       &lt;int&gt;</span>
-<span class="co">#&gt; 1 mention       131</span>
-<span class="co">#&gt; 2 quote-tweet     6</span>
-<span class="co">#&gt; 3 reply           5</span>
-<span class="co">#&gt; 4 retweet        72</span></code></pre></div>
-</div>
-<div id="add_users_data" class="section level3">
-<h3 class="hasAnchor">
-<a href="#add_users_data" class="anchor"></a>add_users_data()</h3>
-<p><strong>tidytags</strong> also has functionality to add user-level data to an edgelist through the function <code><a href="reference/add_users_data.html">tidytags::add_users_data()</a></code>.</p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">example_users_data &lt;-<span class="st"> </span>rtweet<span class="op">::</span><span class="kw"><a href="https://rdrr.io/pkg/rtweet/man/users_data.html">users_data</a></span>(example_after_rtweet)
-example_senders_receivers_data &lt;-<span class="st"> </span><span class="kw"><a href="reference/add_users_data.html">add_users_data</a></span>(example_edgelist, example_users_data)
-dplyr<span class="op">::</span><span class="kw"><a href="https://dplyr.tidyverse.org/reference/reexports.html">glimpse</a></span>(example_senders_receivers_data)
-<span class="co">#&gt; Observations: 214</span>
-<span class="co">#&gt; Variables: 41</span>
-<span class="co">#&gt; $ sender                          &lt;chr&gt; "lizjmeyer", "lizjmeyer", "lizjmeyer"…</span>
-<span class="co">#&gt; $ receiver                        &lt;chr&gt; "lizjmeyer", "lizjmeyer", "lizjmeyer"…</span>
-<span class="co">#&gt; $ edge_type                       &lt;chr&gt; "reply", "reply", "reply", "reply", "…</span>
-<span class="co">#&gt; $ user_id_sender                  &lt;chr&gt; "33107559", "33107559", "33107559", "…</span>
-<span class="co">#&gt; $ name_sender                     &lt;chr&gt; "Elizabeth J. Meyer", "Elizabeth J. M…</span>
-<span class="co">#&gt; $ location_sender                 &lt;chr&gt; "Boulder, CO", "Boulder, CO", "Boulde…</span>
-<span class="co">#&gt; $ description_sender              &lt;chr&gt; "Assoc. Dean of Students @cueducation…</span>
-<span class="co">#&gt; $ url_sender                      &lt;chr&gt; "https://t.co/XlATn4P6VT", "https://t…</span>
-<span class="co">#&gt; $ protected_sender                &lt;lgl&gt; FALSE, FALSE, FALSE, FALSE, FALSE, FA…</span>
-<span class="co">#&gt; $ followers_count_sender          &lt;int&gt; 2380, 2380, 2380, 2380, 957, 548, 418…</span>
-<span class="co">#&gt; $ friends_count_sender            &lt;int&gt; 1592, 1592, 1592, 1592, 322, 556, 295…</span>
-<span class="co">#&gt; $ listed_count_sender             &lt;int&gt; 154, 154, 154, 154, 10, 4, 69, 11, 53…</span>
-<span class="co">#&gt; $ statuses_count_sender           &lt;int&gt; 14369, 14369, 14369, 14369, 397, 1133…</span>
-<span class="co">#&gt; $ favourites_count_sender         &lt;int&gt; 6335, 6335, 6335, 6335, 226, 28508, 2…</span>
-<span class="co">#&gt; $ account_created_at_sender       &lt;dttm&gt; 2009-04-19 02:58:52, 2009-04-19 02:5…</span>
-<span class="co">#&gt; $ verified_sender                 &lt;lgl&gt; FALSE, FALSE, FALSE, FALSE, FALSE, FA…</span>
-<span class="co">#&gt; $ profile_url_sender              &lt;chr&gt; "https://t.co/XlATn4P6VT", "https://t…</span>
-<span class="co">#&gt; $ profile_expanded_url_sender     &lt;chr&gt; "http://elizabethjmeyer.com", "http:/…</span>
-<span class="co">#&gt; $ account_lang_sender             &lt;lgl&gt; NA, NA, NA, NA, NA, NA, NA, NA, NA, N…</span>
-<span class="co">#&gt; $ profile_banner_url_sender       &lt;chr&gt; "https://pbs.twimg.com/profile_banner…</span>
-<span class="co">#&gt; $ profile_background_url_sender   &lt;chr&gt; "http://abs.twimg.com/images/themes/t…</span>
-<span class="co">#&gt; $ profile_image_url_sender        &lt;chr&gt; "http://pbs.twimg.com/profile_images/…</span>
-<span class="co">#&gt; $ user_id_receiver                &lt;chr&gt; "33107559", "33107559", "33107559", "…</span>
-<span class="co">#&gt; $ name_receiver                   &lt;chr&gt; "Elizabeth J. Meyer", "Elizabeth J. M…</span>
-<span class="co">#&gt; $ location_receiver               &lt;chr&gt; "Boulder, CO", "Boulder, CO", "Boulde…</span>
-<span class="co">#&gt; $ description_receiver            &lt;chr&gt; "Assoc. Dean of Students @cueducation…</span>
-<span class="co">#&gt; $ url_receiver                    &lt;chr&gt; "https://t.co/XlATn4P6VT", "https://t…</span>
-<span class="co">#&gt; $ protected_receiver              &lt;lgl&gt; FALSE, FALSE, FALSE, FALSE, FALSE, FA…</span>
-<span class="co">#&gt; $ followers_count_receiver        &lt;int&gt; 2380, 2380, 2380, 183, 957, 957, 2367…</span>
-<span class="co">#&gt; $ friends_count_receiver          &lt;int&gt; 1592, 1592, 1592, 385, 322, 322, 2325…</span>
-<span class="co">#&gt; $ listed_count_receiver           &lt;int&gt; 154, 154, 154, 5, 10, 10, 27, 10, 10,…</span>
-<span class="co">#&gt; $ statuses_count_receiver         &lt;int&gt; 14369, 14369, 14369, 750, 397, 397, 4…</span>
-<span class="co">#&gt; $ favourites_count_receiver       &lt;int&gt; 6335, 6335, 6335, 5123, 226, 226, 224…</span>
-<span class="co">#&gt; $ account_created_at_receiver     &lt;dttm&gt; 2009-04-19 02:58:52, 2009-04-19 02:5…</span>
-<span class="co">#&gt; $ verified_receiver               &lt;lgl&gt; FALSE, FALSE, FALSE, FALSE, FALSE, FA…</span>
-<span class="co">#&gt; $ profile_url_receiver            &lt;chr&gt; "https://t.co/XlATn4P6VT", "https://t…</span>
-<span class="co">#&gt; $ profile_expanded_url_receiver   &lt;chr&gt; "http://elizabethjmeyer.com", "http:/…</span>
-<span class="co">#&gt; $ account_lang_receiver           &lt;lgl&gt; NA, NA, NA, NA, NA, NA, NA, NA, NA, N…</span>
-<span class="co">#&gt; $ profile_banner_url_receiver     &lt;chr&gt; "https://pbs.twimg.com/profile_banner…</span>
-<span class="co">#&gt; $ profile_background_url_receiver &lt;chr&gt; "http://abs.twimg.com/images/themes/t…</span>
-<span class="co">#&gt; $ profile_image_url_receiver      &lt;chr&gt; "http://pbs.twimg.com/profile_images/…</span></code></pre></div>
-</div>
-<div id="code_gender" class="section level3">
-<h3 class="hasAnchor">
-<a href="#code_gender" class="anchor"></a>code_gender()</h3>
-<p>We are still working to add gender coding (see <code>R/code-gender.R</code> for an example).</p>
-</div>
+<div id="getting-help" class="section level2">
+<h2 class="hasAnchor">
+<a href="#getting-help" class="anchor"></a>Getting help</h2>
 </div>
 <div id="future-collaborations" class="section level2">
 <h2 class="hasAnchor">
@@ -529,7 +125,7 @@ dplyr<span class="op">::</span><span class="kw"><a href="https://dplyr.tidyverse
 <h2 class="hasAnchor">
 <a href="#license" class="anchor"></a>License</h2>
 <p>The <strong>tidytags</strong> package is licensed under a GNU General Public License v3.0, or <a href="https://choosealicense.com/licenses/lgpl-3.0/">GPL-3</a>. For background on why we chose this license, read Hadley’s take at <a href="http://r-pkgs.had.co.nz/description.html#license" class="uri">http://r-pkgs.had.co.nz/description.html#license</a>.</p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">devtools<span class="op">::</span><span class="kw"><a href="https://devtools.r-lib.org//reference/reexports.html">session_info</a></span>()
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">devtools<span class="op">::</span><span class="kw"><a href="https://rdrr.io/pkg/devtools/man/reexports.html">session_info</a></span>()
 <span class="co">#&gt; ─ Session info ───────────────────────────────────────────────────────────────</span>
 <span class="co">#&gt;  setting  value                       </span>
 <span class="co">#&gt;  version  R version 3.6.2 (2019-12-12)</span>
@@ -543,103 +139,44 @@ dplyr<span class="op">::</span><span class="kw"><a href="https://dplyr.tidyverse
 <span class="co">#&gt;  date     2020-02-21                  </span>
 <span class="co">#&gt; </span>
 <span class="co">#&gt; ─ Packages ───────────────────────────────────────────────────────────────────</span>
-<span class="co">#&gt;  package           * version date       lib source                          </span>
-<span class="co">#&gt;  askpass             1.1     2019-01-13 [1] CRAN (R 3.6.0)                  </span>
-<span class="co">#&gt;  assertthat          0.2.1   2019-03-21 [1] CRAN (R 3.6.0)                  </span>
-<span class="co">#&gt;  backports           1.1.5   2019-10-02 [1] CRAN (R 3.6.0)                  </span>
-<span class="co">#&gt;  base64enc           0.1-3   2015-07-28 [1] CRAN (R 3.6.0)                  </span>
-<span class="co">#&gt;  bitops              1.0-6   2013-08-17 [1] CRAN (R 3.6.0)                  </span>
-<span class="co">#&gt;  callr               3.4.2   2020-02-12 [1] CRAN (R 3.6.0)                  </span>
-<span class="co">#&gt;  cellranger          1.1.0   2016-07-27 [1] CRAN (R 3.6.0)                  </span>
-<span class="co">#&gt;  class               7.3-15  2019-01-01 [1] CRAN (R 3.6.2)                  </span>
-<span class="co">#&gt;  classInt            0.4-2   2019-10-17 [1] CRAN (R 3.6.0)                  </span>
-<span class="co">#&gt;  cli                 2.0.1   2020-01-08 [1] CRAN (R 3.6.0)                  </span>
-<span class="co">#&gt;  codetools           0.2-16  2018-12-24 [1] CRAN (R 3.6.2)                  </span>
-<span class="co">#&gt;  colorspace          1.4-1   2019-03-18 [1] CRAN (R 3.6.0)                  </span>
-<span class="co">#&gt;  crayon              1.3.4   2017-09-16 [1] CRAN (R 3.6.0)                  </span>
-<span class="co">#&gt;  crosstalk           1.0.0   2016-12-21 [1] CRAN (R 3.6.0)                  </span>
-<span class="co">#&gt;  curl                4.3     2019-12-02 [1] CRAN (R 3.6.0)                  </span>
-<span class="co">#&gt;  DBI                 1.1.0   2019-12-15 [1] CRAN (R 3.6.0)                  </span>
-<span class="co">#&gt;  desc                1.2.0   2018-05-01 [1] CRAN (R 3.6.0)                  </span>
-<span class="co">#&gt;  devtools            2.2.2   2020-02-17 [1] CRAN (R 3.6.0)                  </span>
-<span class="co">#&gt;  digest              0.6.24  2020-02-12 [1] CRAN (R 3.6.0)                  </span>
-<span class="co">#&gt;  dplyr               0.8.4   2020-01-31 [1] CRAN (R 3.6.0)                  </span>
-<span class="co">#&gt;  e1071               1.7-3   2019-11-26 [1] CRAN (R 3.6.0)                  </span>
-<span class="co">#&gt;  ellipsis            0.3.0   2019-09-20 [1] CRAN (R 3.6.0)                  </span>
-<span class="co">#&gt;  evaluate            0.14    2019-05-28 [1] CRAN (R 3.6.0)                  </span>
-<span class="co">#&gt;  fansi               0.4.1   2020-01-08 [1] CRAN (R 3.6.0)                  </span>
-<span class="co">#&gt;  fastmap             1.0.1   2019-10-08 [1] CRAN (R 3.6.0)                  </span>
-<span class="co">#&gt;  fs                  1.3.1   2019-05-06 [1] CRAN (R 3.6.0)                  </span>
-<span class="co">#&gt;  glue                1.3.1   2019-03-12 [1] CRAN (R 3.6.0)                  </span>
-<span class="co">#&gt;  googlesheets        0.3.0   2018-06-29 [1] CRAN (R 3.6.0)                  </span>
-<span class="co">#&gt;  hms                 0.5.3   2020-01-08 [1] CRAN (R 3.6.0)                  </span>
-<span class="co">#&gt;  htmltools           0.4.0   2019-10-04 [1] CRAN (R 3.6.0)                  </span>
-<span class="co">#&gt;  htmlwidgets         1.5.1   2019-10-08 [1] CRAN (R 3.6.0)                  </span>
-<span class="co">#&gt;  httpuv              1.5.2   2019-09-11 [1] CRAN (R 3.6.0)                  </span>
-<span class="co">#&gt;  httr                1.4.1   2019-08-05 [1] CRAN (R 3.6.0)                  </span>
-<span class="co">#&gt;  jsonlite            1.6.1   2020-02-02 [1] CRAN (R 3.6.0)                  </span>
-<span class="co">#&gt;  KernSmooth          2.23-16 2019-10-15 [1] CRAN (R 3.6.2)                  </span>
-<span class="co">#&gt;  knitr               1.28    2020-02-06 [1] CRAN (R 3.6.0)                  </span>
-<span class="co">#&gt;  later               1.0.0   2019-10-04 [1] CRAN (R 3.6.0)                  </span>
-<span class="co">#&gt;  lattice             0.20-38 2018-11-04 [1] CRAN (R 3.6.0)                  </span>
-<span class="co">#&gt;  leafem              0.0.1   2019-04-30 [1] CRAN (R 3.6.0)                  </span>
-<span class="co">#&gt;  leaflet             2.0.3   2019-11-16 [1] CRAN (R 3.6.0)                  </span>
-<span class="co">#&gt;  leaflet.providers   1.9.0   2019-11-09 [1] CRAN (R 3.6.0)                  </span>
-<span class="co">#&gt;  lifecycle           0.1.0   2019-08-01 [1] CRAN (R 3.6.0)                  </span>
-<span class="co">#&gt;  longurl             0.3.0   2016-12-18 [1] CRAN (R 3.6.0)                  </span>
-<span class="co">#&gt;  magrittr            1.5     2014-11-22 [1] CRAN (R 3.6.0)                  </span>
-<span class="co">#&gt;  mapsapi             0.4.2   2019-09-07 [1] CRAN (R 3.6.0)                  </span>
-<span class="co">#&gt;  mapview             2.7.0   2019-05-13 [1] CRAN (R 3.6.0)                  </span>
-<span class="co">#&gt;  memoise             1.1.0   2017-04-21 [1] CRAN (R 3.6.0)                  </span>
-<span class="co">#&gt;  mime                0.9     2020-02-04 [1] CRAN (R 3.6.2)                  </span>
-<span class="co">#&gt;  munsell             0.5.0   2018-06-12 [1] CRAN (R 3.6.0)                  </span>
-<span class="co">#&gt;  openssl             1.4.1   2019-07-18 [1] CRAN (R 3.6.0)                  </span>
-<span class="co">#&gt;  pillar              1.4.3   2019-12-20 [1] CRAN (R 3.6.0)                  </span>
-<span class="co">#&gt;  pkgbuild            1.0.6   2019-10-09 [1] CRAN (R 3.6.0)                  </span>
-<span class="co">#&gt;  pkgconfig           2.0.3   2019-09-22 [1] CRAN (R 3.6.0)                  </span>
-<span class="co">#&gt;  pkgload             1.0.2   2018-10-29 [1] CRAN (R 3.6.0)                  </span>
-<span class="co">#&gt;  png                 0.1-7   2013-12-03 [1] CRAN (R 3.6.0)                  </span>
-<span class="co">#&gt;  prettyunits         1.1.1   2020-01-24 [1] CRAN (R 3.6.0)                  </span>
-<span class="co">#&gt;  processx            3.4.2   2020-02-09 [1] CRAN (R 3.6.0)                  </span>
-<span class="co">#&gt;  progress            1.2.2   2019-05-16 [1] CRAN (R 3.6.0)                  </span>
-<span class="co">#&gt;  promises            1.1.0   2019-10-04 [1] CRAN (R 3.6.0)                  </span>
-<span class="co">#&gt;  ps                  1.3.2   2020-02-13 [1] CRAN (R 3.6.0)                  </span>
-<span class="co">#&gt;  purrr               0.3.3   2019-10-18 [1] CRAN (R 3.6.0)                  </span>
-<span class="co">#&gt;  R6                  2.4.1   2019-11-12 [1] CRAN (R 3.6.0)                  </span>
-<span class="co">#&gt;  raster              3.0-12  2020-01-30 [1] CRAN (R 3.6.0)                  </span>
-<span class="co">#&gt;  Rcpp                1.0.3   2019-11-08 [1] CRAN (R 3.6.0)                  </span>
-<span class="co">#&gt;  readr               1.3.1   2018-12-21 [1] CRAN (R 3.6.0)                  </span>
-<span class="co">#&gt;  remotes             2.1.1   2020-02-15 [1] CRAN (R 3.6.0)                  </span>
-<span class="co">#&gt;  rlang               0.4.4   2020-01-28 [1] CRAN (R 3.6.0)                  </span>
-<span class="co">#&gt;  rmarkdown           2.1     2020-01-20 [1] CRAN (R 3.6.0)                  </span>
-<span class="co">#&gt;  rprojroot           1.3-2   2018-01-03 [1] CRAN (R 3.6.0)                  </span>
-<span class="co">#&gt;  rtweet              0.7.0   2020-01-08 [1] CRAN (R 3.6.0)                  </span>
-<span class="co">#&gt;  satellite           1.0.2   2019-12-09 [1] CRAN (R 3.6.0)                  </span>
-<span class="co">#&gt;  scales              1.1.0   2019-11-18 [1] CRAN (R 3.6.0)                  </span>
-<span class="co">#&gt;  sessioninfo         1.1.1   2018-11-05 [1] CRAN (R 3.6.0)                  </span>
-<span class="co">#&gt;  sf                  0.8-1   2020-01-28 [1] CRAN (R 3.6.0)                  </span>
-<span class="co">#&gt;  shiny               1.4.0   2019-10-10 [1] CRAN (R 3.6.0)                  </span>
-<span class="co">#&gt;  sp                  1.3-2   2019-11-07 [1] CRAN (R 3.6.0)                  </span>
-<span class="co">#&gt;  stringi             1.4.6   2020-02-17 [1] CRAN (R 3.6.0)                  </span>
-<span class="co">#&gt;  stringr             1.4.0   2019-02-10 [1] CRAN (R 3.6.0)                  </span>
-<span class="co">#&gt;  testthat            2.3.1   2019-12-01 [1] CRAN (R 3.6.0)                  </span>
-<span class="co">#&gt;  tibble              2.1.3   2019-06-06 [1] CRAN (R 3.6.0)                  </span>
-<span class="co">#&gt;  tidyr               1.0.2   2020-01-24 [1] CRAN (R 3.6.0)                  </span>
-<span class="co">#&gt;  tidyselect          1.0.0   2020-01-27 [1] CRAN (R 3.6.0)                  </span>
-<span class="co">#&gt;  tidytags          * 0.1.0   2020-02-11 [1] Github (bretsw/tidytags@12e50ab)</span>
-<span class="co">#&gt;  triebeard           0.3.0   2016-08-04 [1] CRAN (R 3.6.0)                  </span>
-<span class="co">#&gt;  units               0.6-5   2019-10-08 [1] CRAN (R 3.6.0)                  </span>
-<span class="co">#&gt;  urltools            1.7.3   2019-04-14 [1] CRAN (R 3.6.0)                  </span>
-<span class="co">#&gt;  usethis             1.5.1   2019-07-04 [1] CRAN (R 3.6.0)                  </span>
-<span class="co">#&gt;  utf8                1.1.4   2018-05-24 [1] CRAN (R 3.6.0)                  </span>
-<span class="co">#&gt;  vctrs               0.2.2   2020-01-24 [1] CRAN (R 3.6.0)                  </span>
-<span class="co">#&gt;  viridisLite         0.3.0   2018-02-01 [1] CRAN (R 3.6.0)                  </span>
-<span class="co">#&gt;  webshot             0.5.2   2019-11-22 [1] CRAN (R 3.6.0)                  </span>
-<span class="co">#&gt;  withr               2.1.2   2018-03-15 [1] CRAN (R 3.6.0)                  </span>
-<span class="co">#&gt;  xfun                0.12    2020-01-13 [1] CRAN (R 3.6.0)                  </span>
-<span class="co">#&gt;  xml2                1.2.2   2019-08-09 [1] CRAN (R 3.6.0)                  </span>
-<span class="co">#&gt;  xtable              1.8-4   2019-04-21 [1] CRAN (R 3.6.0)                  </span>
-<span class="co">#&gt;  yaml                2.2.1   2020-02-01 [1] CRAN (R 3.6.0)                  </span>
+<span class="co">#&gt;  package     * version date       lib source                          </span>
+<span class="co">#&gt;  assertthat    0.2.1   2019-03-21 [1] CRAN (R 3.6.0)                  </span>
+<span class="co">#&gt;  backports     1.1.5   2019-10-02 [1] CRAN (R 3.6.0)                  </span>
+<span class="co">#&gt;  callr         3.4.2   2020-02-12 [1] CRAN (R 3.6.0)                  </span>
+<span class="co">#&gt;  cli           2.0.1   2020-01-08 [1] CRAN (R 3.6.0)                  </span>
+<span class="co">#&gt;  crayon        1.3.4   2017-09-16 [1] CRAN (R 3.6.0)                  </span>
+<span class="co">#&gt;  desc          1.2.0   2018-05-01 [1] CRAN (R 3.6.0)                  </span>
+<span class="co">#&gt;  devtools      2.2.2   2020-02-17 [1] CRAN (R 3.6.0)                  </span>
+<span class="co">#&gt;  digest        0.6.24  2020-02-12 [1] CRAN (R 3.6.0)                  </span>
+<span class="co">#&gt;  ellipsis      0.3.0   2019-09-20 [1] CRAN (R 3.6.0)                  </span>
+<span class="co">#&gt;  evaluate      0.14    2019-05-28 [1] CRAN (R 3.6.0)                  </span>
+<span class="co">#&gt;  fansi         0.4.1   2020-01-08 [1] CRAN (R 3.6.0)                  </span>
+<span class="co">#&gt;  fs            1.3.1   2019-05-06 [1] CRAN (R 3.6.0)                  </span>
+<span class="co">#&gt;  glue          1.3.1   2019-03-12 [1] CRAN (R 3.6.0)                  </span>
+<span class="co">#&gt;  htmltools     0.4.0   2019-10-04 [1] CRAN (R 3.6.0)                  </span>
+<span class="co">#&gt;  knitr         1.28    2020-02-06 [1] CRAN (R 3.6.0)                  </span>
+<span class="co">#&gt;  magrittr      1.5     2014-11-22 [1] CRAN (R 3.6.0)                  </span>
+<span class="co">#&gt;  memoise       1.1.0   2017-04-21 [1] CRAN (R 3.6.0)                  </span>
+<span class="co">#&gt;  pkgbuild      1.0.6   2019-10-09 [1] CRAN (R 3.6.0)                  </span>
+<span class="co">#&gt;  pkgload       1.0.2   2018-10-29 [1] CRAN (R 3.6.0)                  </span>
+<span class="co">#&gt;  prettyunits   1.1.1   2020-01-24 [1] CRAN (R 3.6.0)                  </span>
+<span class="co">#&gt;  processx      3.4.2   2020-02-09 [1] CRAN (R 3.6.0)                  </span>
+<span class="co">#&gt;  ps            1.3.2   2020-02-13 [1] CRAN (R 3.6.0)                  </span>
+<span class="co">#&gt;  R6            2.4.1   2019-11-12 [1] CRAN (R 3.6.0)                  </span>
+<span class="co">#&gt;  Rcpp          1.0.3   2019-11-08 [1] CRAN (R 3.6.0)                  </span>
+<span class="co">#&gt;  remotes       2.1.1   2020-02-15 [1] CRAN (R 3.6.0)                  </span>
+<span class="co">#&gt;  rlang         0.4.4   2020-01-28 [1] CRAN (R 3.6.0)                  </span>
+<span class="co">#&gt;  rmarkdown     2.1     2020-01-20 [1] CRAN (R 3.6.0)                  </span>
+<span class="co">#&gt;  rprojroot     1.3-2   2018-01-03 [1] CRAN (R 3.6.0)                  </span>
+<span class="co">#&gt;  sessioninfo   1.1.1   2018-11-05 [1] CRAN (R 3.6.0)                  </span>
+<span class="co">#&gt;  stringi       1.4.6   2020-02-17 [1] CRAN (R 3.6.0)                  </span>
+<span class="co">#&gt;  stringr       1.4.0   2019-02-10 [1] CRAN (R 3.6.0)                  </span>
+<span class="co">#&gt;  testthat      2.3.1   2019-12-01 [1] CRAN (R 3.6.0)                  </span>
+<span class="co">#&gt;  tidytags    * 0.1.0   2020-02-11 [1] Github (bretsw/tidytags@12e50ab)</span>
+<span class="co">#&gt;  usethis       1.5.1   2019-07-04 [1] CRAN (R 3.6.0)                  </span>
+<span class="co">#&gt;  withr         2.1.2   2018-03-15 [1] CRAN (R 3.6.0)                  </span>
+<span class="co">#&gt;  xfun          0.12    2020-01-13 [1] CRAN (R 3.6.0)                  </span>
+<span class="co">#&gt;  yaml          2.2.1   2020-02-01 [1] CRAN (R 3.6.0)                  </span>
 <span class="co">#&gt; </span>
 <span class="co">#&gt; [1] /Library/Frameworks/R.framework/Versions/3.6/Resources/library</span></code></pre></div>
 </div>
