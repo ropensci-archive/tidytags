@@ -1,5 +1,5 @@
 Package: tidytags
-Title: Easy Collection and Powerful Analysis of Twitter Data
+Title: Simple Collection and Powerful Analysis of Twitter Data
 Version: 0.1.0
 Authors@R: c(
     person("Staudt Willet", "K. Bret", email = "bret@bretsw.com", role = c("aut", "cre")),

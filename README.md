@@ -1,12 +1,10 @@
 
-*Note: This file ('README.Rmd') generates the file README.md file. Edit here to make changes to that output file.*
-
 tidytags
 ========
 
-An R package for easy collection and powerful analysis of Twitter data.
+Simple Collection and Powerful Analysis of Twitter Data
 
-The goal of **tidytags** is to sync together (a) the ease of collecting tweets over time with a **Twitter Archiving Google Sheet** [TAGS](https://tags.hawksey.info/), (b) the utility of the **rtweet** [package](https://rtweet.info/) for processing and preparing additional Twitter metadata, and (c) a collection of different analytic functions we have developed during our own social media research.
+The goal of **tidytags** is to sync together (a) the simplicity of collecting tweets over time with a **Twitter Archiving Google Sheet** [TAGS](https://tags.hawksey.info/), (b) the utility of the **rtweet** [package](https://rtweet.info/) for processing and preparing additional Twitter metadata, and (c) a collection of different analytic functions we have developed during our own social media research.
 
 Installation
 ------------
@@ -40,7 +38,7 @@ example_url <- "https://docs.google.com/spreadsheets/d/1WM2xWG9B0Wqn3YG5uakfy_NS
 
 example_df_all <- read_tags(example_url)
 dim(example_df_all)
-#> [1] 35415    18
+#> [1] 35416    18
 ```
 
 ### pull\_tweet\_data()
@@ -105,9 +103,9 @@ dplyr::glimpse(example_after_rtweet)
 #> $ quoted_user_id          <chr> NA, NA, NA, "3158586588", NA, NA, NA, NA, NA,…
 #> $ quoted_screen_name      <chr> NA, NA, NA, "AERADivisionK", NA, NA, NA, NA, …
 #> $ quoted_name             <chr> NA, NA, NA, "DivisionK", NA, NA, NA, NA, NA, …
-#> $ quoted_followers_count  <int> NA, NA, NA, 950, NA, NA, NA, NA, NA, NA, NA, …
+#> $ quoted_followers_count  <int> NA, NA, NA, 957, NA, NA, NA, NA, NA, NA, NA, …
 #> $ quoted_friends_count    <int> NA, NA, NA, 322, NA, NA, NA, NA, NA, NA, NA, …
-#> $ quoted_statuses_count   <int> NA, NA, NA, 395, NA, NA, NA, NA, NA, NA, NA, …
+#> $ quoted_statuses_count   <int> NA, NA, NA, 397, NA, NA, NA, NA, NA, NA, NA, …
 #> $ quoted_location         <chr> NA, NA, NA, "", NA, NA, NA, NA, NA, NA, NA, N…
 #> $ quoted_description      <chr> NA, NA, NA, "The Official AERA Division K Twi…
 #> $ quoted_verified         <lgl> NA, NA, NA, FALSE, NA, NA, NA, NA, NA, NA, NA…
@@ -120,9 +118,9 @@ dplyr::glimpse(example_after_rtweet)
 #> $ retweet_user_id         <chr> NA, NA, NA, NA, NA, NA, "3158586588", "143203…
 #> $ retweet_screen_name     <chr> NA, NA, NA, NA, NA, NA, "AERADivisionK", "AER…
 #> $ retweet_name            <chr> NA, NA, NA, NA, NA, NA, "DivisionK", "Div J G…
-#> $ retweet_followers_count <int> NA, NA, NA, NA, NA, NA, 950, 2363, NA, 950, 9…
-#> $ retweet_friends_count   <int> NA, NA, NA, NA, NA, NA, 322, 2320, NA, 322, 3…
-#> $ retweet_statuses_count  <int> NA, NA, NA, NA, NA, NA, 395, 4600, NA, 395, 3…
+#> $ retweet_followers_count <int> NA, NA, NA, NA, NA, NA, 957, 2367, NA, 957, 9…
+#> $ retweet_friends_count   <int> NA, NA, NA, NA, NA, NA, 322, 2325, NA, 322, 3…
+#> $ retweet_statuses_count  <int> NA, NA, NA, NA, NA, NA, 397, 4603, NA, 397, 3…
 #> $ retweet_location        <chr> NA, NA, NA, NA, NA, NA, "", "", NA, "", "", "…
 #> $ retweet_description     <chr> NA, NA, NA, NA, NA, NA, "The Official AERA Di…
 #> $ retweet_verified        <lgl> NA, NA, NA, NA, NA, NA, FALSE, FALSE, NA, FAL…
@@ -141,11 +139,11 @@ dplyr::glimpse(example_after_rtweet)
 #> $ description             <chr> "PhD candidate (higher ed org theory), Resear…
 #> $ url                     <chr> NA, "https://t.co/XlATn4P6VT", "https://t.co/…
 #> $ protected               <lgl> FALSE, FALSE, FALSE, FALSE, FALSE, FALSE, FAL…
-#> $ followers_count         <int> 101, 2376, 2376, 2376, 2376, 2376, 536, 4173,…
-#> $ friends_count           <int> 321, 1591, 1591, 1591, 1591, 1591, 543, 2950,…
+#> $ followers_count         <int> 102, 2380, 2380, 2380, 2380, 2380, 548, 4180,…
+#> $ friends_count           <int> 321, 1592, 1592, 1592, 1592, 1592, 556, 2950,…
 #> $ listed_count            <int> 2, 154, 154, 154, 154, 154, 4, 69, 1, 11, 53,…
-#> $ statuses_count          <int> 210, 14364, 14364, 14364, 14364, 14364, 11207…
-#> $ favourites_count        <int> 296, 6322, 6322, 6322, 6322, 6322, 28279, 250…
+#> $ statuses_count          <int> 211, 14369, 14369, 14369, 14369, 14369, 11337…
+#> $ favourites_count        <int> 298, 6335, 6335, 6335, 6335, 6335, 28508, 250…
 #> $ account_created_at      <dttm> 2015-01-23 22:29:03, 2009-04-19 02:58:52, 20…
 #> $ verified                <lgl> FALSE, FALSE, FALSE, FALSE, FALSE, FALSE, FAL…
 #> $ profile_url             <chr> NA, "https://t.co/XlATn4P6VT", "https://t.co/…
@@ -161,14 +159,14 @@ At this point, the purpose of the **tidytags** R package should be restated. **T
 ``` r
 rtweet_today <- rtweet::search_tweets("#AERA19 OR #AERA2019", n=18000)
 paste("Number of tweets returned by an rtweet search today:", nrow(rtweet_today))
-#> [1] "Number of tweets returned by an rtweet search today: 1"
+#> [1] "Number of tweets returned by an rtweet search today: 2"
 ```
 
 While **TAGS** is great at easily collecting tweets over time (breadth), it lacks depth in terms of metadata is returned related to the gathered tweets. Specifically, **TAGS** returns information on at most 18 variables; in contrast, **rtweet** returns information on up to 90 variables. Thus our package **tidytags** is needed to combine the breadth of TAGS with the depth of rtweet. This is succinctly demonstrated by comparing the dimensions of the full TAGS dataset `example_df_all` with the snippet expanded with rtweet, `example_full`.
 
 ``` r
 dim(example_df_all); dim(example_after_rtweet)
-#> [1] 35415    18
+#> [1] 35416    18
 #> [1] 95 90
 ```
 
@@ -331,7 +329,7 @@ mapview::mapshot(example_map, file="example-map.png")
 example_map
 ```
 
-<img src="main/figures/README-unnamed-chunk-10-1.png" width="100%" />
+<img src="man/figures/README-unnamed-chunk-10-1.png" width="100%" />
 
 ### get\_upstream\_replies()
 
@@ -339,74 +337,54 @@ example_map
 sample1000 <- pull_tweet_data(get_char_tweet_ids(dplyr::sample_n(example_df_all, 1000)))
 sample_with_upstream <- get_upstream_replies(sample1000)
 #> [1] "Iteration: 1"
-#> [1] "New tweets added: 53; Unknown replies:37; Searchable replies: 37"
+#> [1] "New tweets added: 36; Unknown replies:22; Searchable replies: 22"
 #> [1] "Iteration: 2"
-#> [1] "New tweets added: 37; Unknown replies:31; Searchable replies: 31"
+#> [1] "New tweets added: 22; Unknown replies:15; Searchable replies: 15"
 #> [1] "Iteration: 3"
-#> [1] "New tweets added: 31; Unknown replies:27; Searchable replies: 26"
+#> [1] "New tweets added: 15; Unknown replies:14; Searchable replies: 14"
 #> [1] "Iteration: 4"
-#> [1] "New tweets added: 26; Unknown replies:21; Searchable replies: 20"
+#> [1] "New tweets added: 14; Unknown replies:13; Searchable replies: 13"
 #> [1] "Iteration: 5"
-#> [1] "New tweets added: 20; Unknown replies:17; Searchable replies: 16"
+#> [1] "New tweets added: 13; Unknown replies:13; Searchable replies: 13"
 #> [1] "Iteration: 6"
-#> [1] "New tweets added: 16; Unknown replies:16; Searchable replies: 15"
+#> [1] "New tweets added: 13; Unknown replies:12; Searchable replies: 12"
 #> [1] "Iteration: 7"
-#> [1] "New tweets added: 15; Unknown replies:15; Searchable replies: 14"
+#> [1] "New tweets added: 12; Unknown replies:12; Searchable replies: 12"
 #> [1] "Iteration: 8"
-#> [1] "New tweets added: 14; Unknown replies:13; Searchable replies: 12"
+#> [1] "New tweets added: 12; Unknown replies:12; Searchable replies: 12"
 #> [1] "Iteration: 9"
-#> [1] "New tweets added: 12; Unknown replies:12; Searchable replies: 11"
+#> [1] "New tweets added: 12; Unknown replies:11; Searchable replies: 11"
 #> [1] "Iteration: 10"
-#> [1] "New tweets added: 11; Unknown replies:11; Searchable replies: 10"
+#> [1] "New tweets added: 11; Unknown replies:10; Searchable replies: 10"
 #> [1] "Iteration: 11"
-#> [1] "New tweets added: 10; Unknown replies:11; Searchable replies: 10"
+#> [1] "New tweets added: 10; Unknown replies:9; Searchable replies: 9"
 #> [1] "Iteration: 12"
-#> [1] "New tweets added: 10; Unknown replies:10; Searchable replies: 9"
+#> [1] "New tweets added: 9; Unknown replies:8; Searchable replies: 8"
 #> [1] "Iteration: 13"
-#> [1] "New tweets added: 9; Unknown replies:9; Searchable replies: 8"
+#> [1] "New tweets added: 8; Unknown replies:6; Searchable replies: 6"
 #> [1] "Iteration: 14"
-#> [1] "New tweets added: 8; Unknown replies:9; Searchable replies: 8"
+#> [1] "New tweets added: 6; Unknown replies:4; Searchable replies: 4"
 #> [1] "Iteration: 15"
-#> [1] "New tweets added: 8; Unknown replies:8; Searchable replies: 7"
+#> [1] "New tweets added: 4; Unknown replies:4; Searchable replies: 4"
 #> [1] "Iteration: 16"
-#> [1] "New tweets added: 7; Unknown replies:8; Searchable replies: 7"
+#> [1] "New tweets added: 4; Unknown replies:3; Searchable replies: 3"
 #> [1] "Iteration: 17"
-#> [1] "New tweets added: 7; Unknown replies:7; Searchable replies: 6"
+#> [1] "New tweets added: 3; Unknown replies:2; Searchable replies: 2"
 #> [1] "Iteration: 18"
-#> [1] "New tweets added: 6; Unknown replies:7; Searchable replies: 6"
+#> [1] "New tweets added: 2; Unknown replies:2; Searchable replies: 2"
 #> [1] "Iteration: 19"
-#> [1] "New tweets added: 6; Unknown replies:7; Searchable replies: 6"
+#> [1] "New tweets added: 2; Unknown replies:2; Searchable replies: 2"
 #> [1] "Iteration: 20"
-#> [1] "New tweets added: 6; Unknown replies:5; Searchable replies: 4"
+#> [1] "New tweets added: 2; Unknown replies:1; Searchable replies: 1"
 #> [1] "Iteration: 21"
-#> [1] "New tweets added: 4; Unknown replies:4; Searchable replies: 3"
+#> [1] "New tweets added: 1; Unknown replies:1; Searchable replies: 1"
 #> [1] "Iteration: 22"
-#> [1] "New tweets added: 3; Unknown replies:3; Searchable replies: 2"
+#> [1] "New tweets added: 1; Unknown replies:1; Searchable replies: 1"
 #> [1] "Iteration: 23"
-#> [1] "New tweets added: 2; Unknown replies:3; Searchable replies: 2"
-#> [1] "Iteration: 24"
-#> [1] "New tweets added: 2; Unknown replies:3; Searchable replies: 2"
-#> [1] "Iteration: 25"
-#> [1] "New tweets added: 2; Unknown replies:3; Searchable replies: 2"
-#> [1] "Iteration: 26"
-#> [1] "New tweets added: 2; Unknown replies:2; Searchable replies: 1"
-#> [1] "Iteration: 27"
-#> [1] "New tweets added: 1; Unknown replies:2; Searchable replies: 1"
-#> [1] "Iteration: 28"
-#> [1] "New tweets added: 1; Unknown replies:2; Searchable replies: 1"
-#> [1] "Iteration: 29"
-#> [1] "New tweets added: 1; Unknown replies:2; Searchable replies: 1"
-#> [1] "Iteration: 30"
-#> [1] "New tweets added: 1; Unknown replies:2; Searchable replies: 1"
-#> [1] "Iteration: 31"
-#> [1] "New tweets added: 1; Unknown replies:2; Searchable replies: 1"
-#> [1] "Iteration: 32"
-#> [1] "New tweets added: 1; Unknown replies:2; Searchable replies: 1"
-#> [1] "Iteration: 33"
-#> [1] "New tweets added: 1; Unknown replies:1; Searchable replies: 0"
+#> [1] "New tweets added: 1; Unknown replies:0; Searchable replies: 0"
 dim(sample1000); dim(sample_with_upstream)
-#> [1] 950  90
-#> [1] 1284  100
+#> [1] 929  90
+#> [1] 1142  100
 ```
 
 ### get\_replies(), get\_retweets(), get\_quotes(), get\_mentions()
@@ -478,11 +456,11 @@ dplyr::glimpse(example_senders_receivers_data)
 #> $ description_sender              <chr> "Assoc. Dean of Students @cueducation…
 #> $ url_sender                      <chr> "https://t.co/XlATn4P6VT", "https://t…
 #> $ protected_sender                <lgl> FALSE, FALSE, FALSE, FALSE, FALSE, FA…
-#> $ followers_count_sender          <int> 2376, 2376, 2376, 2376, 950, 536, 417…
-#> $ friends_count_sender            <int> 1591, 1591, 1591, 1591, 322, 543, 295…
+#> $ followers_count_sender          <int> 2380, 2380, 2380, 2380, 957, 548, 418…
+#> $ friends_count_sender            <int> 1592, 1592, 1592, 1592, 322, 556, 295…
 #> $ listed_count_sender             <int> 154, 154, 154, 154, 10, 4, 69, 11, 53…
-#> $ statuses_count_sender           <int> 14364, 14364, 14364, 14364, 395, 1120…
-#> $ favourites_count_sender         <int> 6322, 6322, 6322, 6322, 215, 28279, 2…
+#> $ statuses_count_sender           <int> 14369, 14369, 14369, 14369, 397, 1133…
+#> $ favourites_count_sender         <int> 6335, 6335, 6335, 6335, 226, 28508, 2…
 #> $ account_created_at_sender       <dttm> 2009-04-19 02:58:52, 2009-04-19 02:5…
 #> $ verified_sender                 <lgl> FALSE, FALSE, FALSE, FALSE, FALSE, FA…
 #> $ profile_url_sender              <chr> "https://t.co/XlATn4P6VT", "https://t…
@@ -497,11 +475,11 @@ dplyr::glimpse(example_senders_receivers_data)
 #> $ description_receiver            <chr> "Assoc. Dean of Students @cueducation…
 #> $ url_receiver                    <chr> "https://t.co/XlATn4P6VT", "https://t…
 #> $ protected_receiver              <lgl> FALSE, FALSE, FALSE, FALSE, FALSE, FA…
-#> $ followers_count_receiver        <int> 2376, 2376, 2376, 182, 950, 950, 2363…
-#> $ friends_count_receiver          <int> 1591, 1591, 1591, 387, 322, 322, 2320…
+#> $ followers_count_receiver        <int> 2380, 2380, 2380, 183, 957, 957, 2367…
+#> $ friends_count_receiver          <int> 1592, 1592, 1592, 385, 322, 322, 2325…
 #> $ listed_count_receiver           <int> 154, 154, 154, 5, 10, 10, 27, 10, 10,…
-#> $ statuses_count_receiver         <int> 14364, 14364, 14364, 733, 395, 395, 4…
-#> $ favourites_count_receiver       <int> 6322, 6322, 6322, 5038, 215, 215, 224…
+#> $ statuses_count_receiver         <int> 14369, 14369, 14369, 750, 397, 397, 4…
+#> $ favourites_count_receiver       <int> 6335, 6335, 6335, 5123, 226, 226, 224…
 #> $ account_created_at_receiver     <dttm> 2009-04-19 02:58:52, 2009-04-19 02:5…
 #> $ verified_receiver               <lgl> FALSE, FALSE, FALSE, FALSE, FALSE, FA…
 #> $ profile_url_receiver            <chr> "https://t.co/XlATn4P6VT", "https://t…
@@ -538,7 +516,7 @@ devtools::session_info()
 #>  collate  en_US.UTF-8                 
 #>  ctype    en_US.UTF-8                 
 #>  tz       America/New_York            
-#>  date     2020-02-11                  
+#>  date     2020-02-21                  
 #> 
 #> ─ Packages ───────────────────────────────────────────────────────────────────
 #>  package           * version date       lib source                          
@@ -547,7 +525,7 @@ devtools::session_info()
 #>  backports           1.1.5   2019-10-02 [1] CRAN (R 3.6.0)                  
 #>  base64enc           0.1-3   2015-07-28 [1] CRAN (R 3.6.0)                  
 #>  bitops              1.0-6   2013-08-17 [1] CRAN (R 3.6.0)                  
-#>  callr               3.4.1   2020-01-24 [1] CRAN (R 3.6.0)                  
+#>  callr               3.4.2   2020-02-12 [1] CRAN (R 3.6.0)                  
 #>  cellranger          1.1.0   2016-07-27 [1] CRAN (R 3.6.0)                  
 #>  class               7.3-15  2019-01-01 [1] CRAN (R 3.6.2)                  
 #>  classInt            0.4-2   2019-10-17 [1] CRAN (R 3.6.0)                  
@@ -559,8 +537,8 @@ devtools::session_info()
 #>  curl                4.3     2019-12-02 [1] CRAN (R 3.6.0)                  
 #>  DBI                 1.1.0   2019-12-15 [1] CRAN (R 3.6.0)                  
 #>  desc                1.2.0   2018-05-01 [1] CRAN (R 3.6.0)                  
-#>  devtools            2.2.1   2019-09-24 [1] CRAN (R 3.6.0)                  
-#>  digest              0.6.23  2019-11-23 [1] CRAN (R 3.6.0)                  
+#>  devtools            2.2.2   2020-02-17 [1] CRAN (R 3.6.0)                  
+#>  digest              0.6.24  2020-02-12 [1] CRAN (R 3.6.0)                  
 #>  dplyr               0.8.4   2020-01-31 [1] CRAN (R 3.6.0)                  
 #>  e1071               1.7-3   2019-11-26 [1] CRAN (R 3.6.0)                  
 #>  ellipsis            0.3.0   2019-09-20 [1] CRAN (R 3.6.0)                  
@@ -577,9 +555,9 @@ devtools::session_info()
 #>  httr                1.4.1   2019-08-05 [1] CRAN (R 3.6.0)                  
 #>  jsonlite            1.6.1   2020-02-02 [1] CRAN (R 3.6.0)                  
 #>  KernSmooth          2.23-16 2019-10-15 [1] CRAN (R 3.6.2)                  
-#>  knitr               1.27    2020-01-16 [1] CRAN (R 3.6.0)                  
+#>  knitr               1.28    2020-02-06 [1] CRAN (R 3.6.0)                  
 #>  later               1.0.0   2019-10-04 [1] CRAN (R 3.6.0)                  
-#>  lattice             0.20-38 2018-11-04 [1] CRAN (R 3.6.2)                  
+#>  lattice             0.20-38 2018-11-04 [1] CRAN (R 3.6.0)                  
 #>  leafem              0.0.1   2019-04-30 [1] CRAN (R 3.6.0)                  
 #>  leaflet             2.0.3   2019-11-16 [1] CRAN (R 3.6.0)                  
 #>  leaflet.providers   1.9.0   2019-11-09 [1] CRAN (R 3.6.0)                  
@@ -598,16 +576,16 @@ devtools::session_info()
 #>  pkgload             1.0.2   2018-10-29 [1] CRAN (R 3.6.0)                  
 #>  png                 0.1-7   2013-12-03 [1] CRAN (R 3.6.0)                  
 #>  prettyunits         1.1.1   2020-01-24 [1] CRAN (R 3.6.0)                  
-#>  processx            3.4.1   2019-07-18 [1] CRAN (R 3.6.0)                  
+#>  processx            3.4.2   2020-02-09 [1] CRAN (R 3.6.0)                  
 #>  progress            1.2.2   2019-05-16 [1] CRAN (R 3.6.0)                  
 #>  promises            1.1.0   2019-10-04 [1] CRAN (R 3.6.0)                  
-#>  ps                  1.3.0   2018-12-21 [1] CRAN (R 3.6.0)                  
+#>  ps                  1.3.2   2020-02-13 [1] CRAN (R 3.6.0)                  
 #>  purrr               0.3.3   2019-10-18 [1] CRAN (R 3.6.0)                  
 #>  R6                  2.4.1   2019-11-12 [1] CRAN (R 3.6.0)                  
 #>  raster              3.0-12  2020-01-30 [1] CRAN (R 3.6.0)                  
 #>  Rcpp                1.0.3   2019-11-08 [1] CRAN (R 3.6.0)                  
 #>  readr               1.3.1   2018-12-21 [1] CRAN (R 3.6.0)                  
-#>  remotes             2.1.0   2019-06-24 [1] CRAN (R 3.6.0)                  
+#>  remotes             2.1.1   2020-02-15 [1] CRAN (R 3.6.0)                  
 #>  rlang               0.4.4   2020-01-28 [1] CRAN (R 3.6.0)                  
 #>  rmarkdown           2.1     2020-01-20 [1] CRAN (R 3.6.0)                  
 #>  rprojroot           1.3-2   2018-01-03 [1] CRAN (R 3.6.0)                  
@@ -618,7 +596,7 @@ devtools::session_info()
 #>  sf                  0.8-1   2020-01-28 [1] CRAN (R 3.6.0)                  
 #>  shiny               1.4.0   2019-10-10 [1] CRAN (R 3.6.0)                  
 #>  sp                  1.3-2   2019-11-07 [1] CRAN (R 3.6.0)                  
-#>  stringi             1.4.5   2020-01-11 [1] CRAN (R 3.6.0)                  
+#>  stringi             1.4.6   2020-02-17 [1] CRAN (R 3.6.0)                  
 #>  stringr             1.4.0   2019-02-10 [1] CRAN (R 3.6.0)                  
 #>  testthat            2.3.1   2019-12-01 [1] CRAN (R 3.6.0)                  
 #>  tibble              2.1.3   2019-06-06 [1] CRAN (R 3.6.0)                  

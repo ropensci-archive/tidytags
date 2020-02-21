@@ -2,13 +2,11 @@
 output: github_document
 ---
 
-*Note: This file ('README.Rmd') generates the file README.md file. Edit here to make changes to that output file.*
-
 ```{r setup, include=FALSE}
 knitr::opts_chunk$set(
   collapse = TRUE,
   comment = "#>",
-  fig.path = "main/figures/README-",
+  fig.path = "man/figures/README-",
   out.width = "100%",
   message = FALSE
 )
@@ -16,9 +14,9 @@ knitr::opts_chunk$set(
 
 # tidytags
 
-An R package for easy collection and powerful analysis of Twitter data.
+Simple Collection and Powerful Analysis of Twitter Data
 
-The goal of **tidytags** is to sync together (a) the ease of collecting tweets over time with a **Twitter Archiving Google Sheet** [TAGS](https://tags.hawksey.info/), (b) the utility of the **rtweet** [package](https://rtweet.info/) for processing and preparing additional Twitter metadata, and (c) a collection of different analytic functions we have developed during our own social media research. 
+The goal of **tidytags** is to sync together (a) the simplicity of collecting tweets over time with a [Twitter Archiving Google Sheet](https://tags.hawksey.info/) (TAGS), (b) the utility of the [rtweet package](https://rtweet.info/) for processing and preparing additional Twitter metadata, and (c) a collection of different analytic functions we have developed during our own social media research. 
 
 ## Installation
 
@@ -78,7 +76,7 @@ rtweet_today <- rtweet::search_tweets("#AERA19 OR #AERA2019", n=18000)
 paste("Number of tweets returned by an rtweet search today:", nrow(rtweet_today))
 ```
 
-While **TAGS** is great at easily collecting tweets over time (breadth), it lacks depth in terms of metadata is returned related to the gathered tweets. Specifically, **TAGS** returns information on at most 18 variables; in contrast, **rtweet** returns information on up to 90 variables. Thus our package **tidytags** is needed to combine the breadth of TAGS with the depth of rtweet. This is succinctly demonstrated by comparing the dimensions of the full TAGS dataset `example_df_all` with the snippet expanded with rtweet, `example_full`.
+Although **TAGS** is great at easily collecting tweets over time (breadth), it lacks depth in terms of metadata is returned related to the gathered tweets. Specifically, **TAGS** returns information on at most 18 variables; in contrast, **rtweet** returns information on up to 90 variables. Thus our package **tidytags** is needed to combine the breadth of TAGS with the depth of rtweet. This is succinctly demonstrated by comparing the dimensions of the full TAGS dataset `example_df_all` with the snippet expanded with rtweet, `example_full`.
 
 ```{r}
 dim(example_df_all); dim(example_after_rtweet)
