@@ -2,7 +2,7 @@ Package: tidytags
 Version: 0.1.0
 Title: Simple Collection and Powerful Analysis of Twitter Data
 Authors@R: c(
-    person("K. Bret", "Staudt Willet", , 
+    person("Staudt Willet", "K. Bret", , 
       email = "bret@bretsw.com", role = c("aut", "cre"),
       comment = c(ORCID = "0000-0002-6984-416X")
     ),
