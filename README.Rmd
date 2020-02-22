@@ -47,7 +47,7 @@ At this point you can view or read your TAGS archive into R using `read_tags()`.
 
 ### pull_tweet_data()
 
-With TAGS imported into R, **tidytags** allows you to gather quite a bit more information related to the collected tweets with the `pull_tweet_data()`. This function uses the [rtweet package](https://rtweet.info/) to query the Twitter API. Using **rtweet** requires a Twitter developer account; see the rtweet vignette [Obtaining and using access tokens](https://rtweet.info/articles/auth.html) as guide to get started. 
+With a TAGS archive imported into R, **tidytags** allows you to gather quite a bit more information related to the collected tweets with the `pull_tweet_data()`. This function uses the [rtweet package](https://rtweet.info/) (via `rtweet::lookup_statuses()`) to query the Twitter API. Using **rtweet** requires a Twitter developer account; see the rtweet vignette [Obtaining and using access tokens](https://rtweet.info/articles/auth.html) as a guide to get started. 
 
 (b) the utility of the [rtweet package](https://rtweet.info/) for processing and preparing additional Twitter metadata, and (c) a collection of different analytic functions we have developed during our own social media research. 
 

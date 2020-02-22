@@ -43,7 +43,7 @@ get_char_tweet_ids <- function(df) {
 #' With TAGS imported into R, `pull_tweet_data()` uses the **rtweet** package
 #'   to query the Twitter API. Using rtweet requires a Twitter developer account;
 #'   see the rtweet vignette \href{https://rtweet.info/articles/auth.html}{Obtaining and using access tokens}
-#'   as guide to get started.
+#'   as a guide to get started.
 #' @param x A list or vector of tweet ID numbers
 #' @param n The number of tweets to look up, by default the total number of tweet
 #'   ID numbers available, but capped at 90,000 due to Twitter API limitations.
@@ -137,11 +137,11 @@ process_tweets_flattened <- function(df) {
   dplyr::mutate(df,
                 word_count = stringr::str_count(text, "\\s+") + 1,
                 character_count = stringr::str_length(text),
-                mentions_count = length_with_na(str_split(mentions_screen_name, " ")),
-                hashtags_count_api = length_with_na(str_split(hashtags, " ")),
+                mentions_count = length_with_na(stringr::str_split(mentions_screen_name, " ")),
+                hashtags_count_api = length_with_na(stringr::str_split(hashtags, " ")),
                 hashtags_count_regex = stringr::str_count(text, hashtag_regex),  # more accurate than API
                 has_hashtags = dplyr::if_else(hashtags_count_regex != 0, TRUE, FALSE),
-                urls_count_api = length_with_na(str_split(urls_url, " ")),
+                urls_count_api = length_with_na(stringr::str_split(urls_url, " ")),
                 urls_count_regex = stringr::str_count(text, url_regex),  # counts links to quoted tweets and media
                 is_reply = dplyr::if_else(!is.na(reply_to_status_id), TRUE, FALSE),
                 is_self_reply = dplyr::if_else(is_reply,
