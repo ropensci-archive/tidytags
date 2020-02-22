@@ -151,17 +151,17 @@ Once you've saved this file, quit your R session and restart. The function `tidy
 
 You can pair `geocode_tags()` with the **mapview** package to allow for quick, inteactive viewing of the geocoded data; read more about mapview [here](https://r-spatial.github.io/mapview/). There are many additional R packages that can plot coordinates on a map; which you choose is largely a matter of personal preference.
 
-```{r map, message = FALSE, warning = FALSE}
+```{r make-map, message = FALSE, warning = FALSE}
 example_unique_places <- dplyr::distinct(example_processed, location, .keep_all = TRUE)
 example_geo_coords <- geocode_tags(example_unique_places)
 example_map <- mapview::mapview(example_geo_coords$pnt) 
-example_map
 ```
 
-Finally, if you want to save a screenshot of the map, you can use the function `mapview::mapshot()`.
+At this point, you can view an interactive map in your R environment by simply calling `example_map`. Or, if you want to save a screenshot of the map, you can use the function `mapview::mapshot()`.
 
-```{r mapshot, eval = FALSE}
-mapview::mapshot(example_map, file="example-map.png") # Saves a screenshot of the map
+```{r show-map}
+mapview::mapshot(example_map, file="example-map.png")
+knitr::include_graphics("example-map.png")
 ```
 
 ## get_replies(), get_retweets(), get_quotes(), get_mentions()
