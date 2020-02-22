@@ -117,22 +117,20 @@ paste0("The mean number of hashtags per tweet is ", mean_hash,
 
 ## get_url_domain()
 
-It may also be of interest to examine what websites get linked to most often in your dataset. The **tidytags** function `get_url_domain()` combines the `expand_urls()` function from the **longurl** package and the `domain()` function from the **urltools** package to easily return the domain names of any hyperlinks including in tweets. Note that `longurl::expand_urls()` is necessary because Twitter automatically shortens any hyperlinks included in tweets. As an example:
+The **tidytags** function `get_url_domain()` combines the `expand_urls()` function from the **longurl** package and the `domain()` function from the **urltools** package to easily return the domain names of any hyperlinks including in tweets. Note that using `longurl::expand_urls()` is a necessary step because Twitter automatically shortens any hyperlinks included in tweets. As an example:
 
 ```{r url-example}
 short_url <- "http://bit.ly/2SfWO3K"
 get_url_domain(short_url)
 ```
 
-`get_url_domain()` can then be combined with a function like `dplyr::count()` to
+It may also be of interest to examine what websites get linked to most often in your dataset. `get_url_domain()` can be combined with a function like `table()` to calculate frequency counts for domains present in the dataset. This process is useful to get a picture of to where else on the Internet tweeters are directing their readers' attention.
 
-Output a count table of domains present in the dataset
-
-Keep in mind, this process is a bit slow.
+Keep in mind, however, that this process is a bit slow.
 
 ```{r domain-table, message = FALSE, warning = FALSE}
 example_urls <- purrr::flatten_chr(example_processed$urls_url)
-example_urls <- example_urls[!is.na(example_urls)] # remove NA values
+example_urls <- example_urls[!is.na(example_urls)] # Remove NA values
 example_domains <- get_url_domain(example_urls)
 domain_table <- as.data.frame(table(example_domains))
 table_sorted <- dplyr::arrange(domain_table, desc(Freq))
@@ -141,7 +139,7 @@ head(table_sorted, 20)
 
 ## geocode_tags()
 
-Another area to explore is where tweeters in the dataset are from (or, at least, where they self-identify in their Twitter profiles). **tidytags** makes this straightforward with the `geocode_tags()` function. Note that `geocode_tags()` should be used after additional metadata has been retrieved with `tidytags::pull_tweet_data()`.
+Another area to explore is where tweeters in the dataset are from (or, at least, the location they self-identify in their Twitter profiles). **tidytags** makes this straightforward with the `geocode_tags()` function. Note that `geocode_tags()` should be used after additional metadata has been retrieved with `tidytags::pull_tweet_data()`.
 
 `geocode_tags()` pulls from the Google Geocoding API, which requires a Google Geocoding API Key. You can easily secure a key through Google Cloud Platform; [read more here](https://developers.google.com/maps/documentation/geocoding/get-api-key). Next, we recommend saving your Google Geocoding API Key in the .Renviron file as **'Google_API_key'**. You can quickly access this file using the R code `usethis::edit_r_environ(scope='user')`.
 
@@ -151,45 +149,76 @@ usethis::edit_r_environ(scope='user')
 
 Once you've saved this file, quit your R session and restart. The function `tidytags::geocode_tags()` will work for you from now on. 
 
-We've paired `tidytags::geocode_tags()` with the **mapview** package to allow for quick, inteactive viewing of the geocoded data. Read more about mapview [here](https://r-spatial.github.io/mapview/).
+You can pair `geocode_tags()` with the **mapview** package to allow for quick, inteactive viewing of the geocoded data; read more about mapview [here](https://r-spatial.github.io/mapview/). There are many additional R packages that can plot coordinates on a map; which you choose is largely a matter of personal preference.
 
-```{r, message=FALSE}
-example_geo_coords <- geocode_tags(example_after_rtweet)
+```{r map, message = FALSE, warning = FALSE}
+example_unique_places <- dplyr::distinct(example_processed, location, .keep_all = TRUE)
+example_geo_coords <- geocode_tags(example_unique_places)
 example_map <- mapview::mapview(example_geo_coords$pnt) 
-mapview::mapshot(example_map, file="example-map.png")
 example_map
 ```
 
-## get_upstream_replies()
+Finally, if you want to save a screenshot of the map, you can use the function `mapview::mapshot()`.
 
-```{r}
-sample1000 <- pull_tweet_data(get_char_tweet_ids(dplyr::sample_n(example_df_all, 1000)))
-sample_with_upstream <- get_upstream_replies(sample1000)
-dim(sample1000); dim(sample_with_upstream)
+```{r mapshot, eval = FALSE}
+mapview::mapshot(example_map, file="example-map.png") # Saves a screenshot of the map
 ```
 
 ## get_replies(), get_retweets(), get_quotes(), get_mentions()
 
-```{r}
-nrow(get_replies(example_after_rtweet)); nrow(get_retweets(example_after_rtweet)); nrow(get_quotes(example_after_rtweet)); nrow(get_mentions(example_after_rtweet))
+These functions quickly subset the data, returning just the tweets of the type indicated by the function name (e.g., `get_replies()` returns only reply tweets). The `get_` family of functions can be used to look at home many tweets of each type are present in the dataset.
+
+```{r tweet-types}
+paste0("In the dataset of ", nrow(example_processed), " tweets, there are ", 
+       nrow(get_replies(example_processed)), " replies, ",
+       nrow(get_retweets(example_processed)), " retweets, ",
+       nrow(get_quotes(example_processed)), " quote tweets, and ",
+       nrow(get_mentions(example_processed)), " mentions."
+       )
 ```
+
+## get_upstream_replies()
+
+If your research questions conceptualizing your tweet dataset as a conversation or affinity space, it may be useful to retrieve and add additional tweets. Specifically, TAGS collects tweets that contain one or more keywords or text strings. For example, the TAGS tracker we have been working with in this vignette collected tweets containing the keywords: `#aect19` OR `#aect2019` OR `#aect19inspired`. This is a reasonable approach, from a researchers' point of view. However, participants who have been following or contributing to these hashtags would also see additional tweets in these "conversations" because Twitter connects together tweets that reply to other tweets into potentially lengthy *reply threads*. Tweets in a reply thread are all displayed to a user viewing tweets on Twitter's platform, but because some tweets in a thread may not contain the hashtag of interest, not all tweets in the users' experience of a conversation would be collected by TAGS. Additionally, tweets contained in a reply thread but composed before the TAGS tracker was initiated would also be left out of the dataset.
+
+There is a solution to this problem. Because the Twitter API offers a `reply_to_status_id` column, it is possible to iteratively reconstruct reply threads in an *upstream* direction, that is, retrieving tweets composed earlier than replies in the dataset. We include the `get_upstream_replies` in **tidytags** to streamline this process. We also print output at each iteration to demonstrate how the process is progressing.
+
+```{r upstream-replies}
+example_with_upstream <- get_upstream_replies(example_processed)
+paste0("The dataset contained ", nrow(example_processed), " tweets at the start. ", 
+       "Runnning 'get_upstream_replies()' added ", nrow(example_with_upstream) - nrow(example_processed),
+       " new tweets.")
+```
+
+Unfortunately, it is not practical to retrieve *downstream* replies, or those tweets in a reply thread that follow a tweet in the dataset but neglect to include the hashtag or keyword.
 
 ## create_edgelist()
 
-Create an edgelist from the TAGS data using the `tidytags::create_edgelist()` function:
+Another usefuyl approach to social media resarch is *social network analysis*. Getting started with social network analysis is as simple as producing an *edgelist*, a two-column dataframe listing *senders* and *receivers*. An edgelist gives a complete accounting of whom is interacting with whom. In Twitter, this is complicated somewhat by the number of ways a user is able to interact with someone else: namely, through replying, retweeting, quote tweeting, mentioning, and liking tweets. The **tidytags** function `create_edgelist()` uses `get_replies()`, `get_retweets()`, `get_quotes()`, and `get_mentions()` to create an edgelist that takes into account these four different types of interaction. `create_edgelist()` returns a dataframe with three columns: two for the sender and receiver Twitter handles, and a third column listing the edge type (i.e., the form of interaction).
 
-```{r}
-example_edgelist <- create_edgelist(example_after_rtweet)
+```{r edgelist}
+example_edgelist <- create_edgelist(example_processed)
 head(example_edgelist, 20)
-dplyr::count(example_edgelist, edge_type)
 ```
+
+Running `create_edgelist()` also provides a simple way to re-look at home many tweets of each type are present in the dataset, using the `count()` function from **dplyr**.
+
+```{r edge-table}
+dplyr::count(example_edgelist, edge_type, sort = TRUE)
+```
+
+Note that we do not yet have a function `get_likes()` because this process is much more difficult given the information provided by the Twitter API.
 
 ## add_users_data()
 
-**tidytags** also has functionality to add user-level data to an edgelist through the function `tidytags::add_users_data()`.
+Finally, **tidytags** also has functionality to add user-level data to an edgelist through the function `tidytags::add_users_data()`. These additional features are very useful when taking an inferential approach to social network analysis, such as building *influence* or *selection* models.
 
-```{r}
-example_users_data <- rtweet::users_data(example_after_rtweet)
+```{r user-data}
+example_users_data <- rtweet::users_data(example_processed)
 example_senders_receivers_data <- add_users_data(example_edgelist, example_users_data)
 dplyr::glimpse(example_senders_receivers_data)
+```
+
+```{r session}
+devtools::session_info()
 ```
