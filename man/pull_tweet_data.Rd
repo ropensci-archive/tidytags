@@ -16,7 +16,10 @@ ID numbers available, but capped at 90,000 due to Twitter API limitations.}
 A dataframe of tweets and full metadata from the Twitter API
 }
 \description{
-Retrieve the fullest extent of tweet metadata available from the Twitter API
+With TAGS imported into R, `pull_tweet_data()` uses the **rtweet** package
+  to query the Twitter API. Using rtweet requires a Twitter developer account;
+  see the rtweet vignette \href{https://rtweet.info/articles/auth.html}{Obtaining and using access tokens}
+  as a guide to get started.
 }
 \seealso{
 Read more about \code{library(rtweet)} \href{https://rtweet.info/}{here}.

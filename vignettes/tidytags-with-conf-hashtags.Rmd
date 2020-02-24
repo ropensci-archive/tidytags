@@ -9,8 +9,7 @@ vignette: >
 ---
 
 ```{r setup, include = FALSE}
-knitr::opts_chunk$set(collapse = TRUE, comment = "#>", fig.show = "hide")
-library(tidytags)
+knitr::opts_chunk$set(echo = TRUE, eval = FALSE, comment = "#>", collapse = TRUE)
 ```
 
 This vignette introduces how to use many **tidytags** functions through the example of analyzing tweets associated with the 2019 annual convention of the [Association for Educational Communications & Technology](https://aect.org/) (AECT): `#aect19`, `#aect2019`, or `#aect19inspired`.
@@ -19,12 +18,13 @@ Most of the information in this vignette is available scattered throughout the R
 
 ## read_tags()
 
-To simply view a TAGS archive, you can use `read_tags()`. Here, we've openly shared a TAGS tracker that has been collecting tweets associated with the AECT 2019 since September 30, 2019. This tracker is active through today.
+To simply view a TAGS archive, you can use `read_tags()`. Here, we've openly shared a TAGS tracker that has been collecting tweets associated with the AECT 2019 since September 30, 2019. As of February 24, 2020, this tracker had collected **2,561 tweets**. This tracker is active through today.
 
 Keep in mind that `read_tags()` uses the **googlesheets** package, and one requirement is that your TAGS has been published to the web. To do this, with the TAGS page open in a browser, go to `File` >> `Publish to the web`. The `Link` field should be 'Entire document' and the `Embed` field should be 'Web page.' If everything looks right, then click the `Publish` button. Next, click the `Share` button in the top right corner of the Google Sheets window, select `Get shareable link`, and set the permissions to 'Anyone with the link can view.' Now you should be ready to go.
 
-
 ```{r initial-tags, message = FALSE, warning = FALSE}
+library(tidytags)
+
 example_url <- "https://docs.google.com/spreadsheets/d/18clYlQeJOc6W5QRuSlJ6_v3snqKJImFhU42bRkM_OX8/edit#gid=8743918"
 
 example_df_all <- read_tags(example_url)
@@ -56,6 +56,8 @@ paste0("The TAGS tracker alone collected ", length(names(example_df_all)),
        )
 ```
 
+As of February 24, 2020, the TAGS tracker alone had collected 18 variables associated with 2561 tweets. The first **rtweet** method searching with 'id_str' collected 90 variables associated with 1473 tweets. The second **rtweet** method using 'tidytags::get_char_tweet_ids()' collected 90 variables associated with 2269 tweets.
+
 Notice how many more variables are in the dataset after using `pull_tweet_data()`, and how many more tweets are in the dataset when using the second method. Therfore, we strongly recommend the second method, which is why we have included the `get_char_tweet_ids()` in the **tidytags** package. 
 
 Now take a quick look at the best result, viewed with the `glimpse()` function from the **dplyr** package:
@@ -65,7 +67,7 @@ example_after_rtweet <- example_after_rtweet_B
 dplyr::glimpse(example_after_rtweet)
 ```
 
-At this point, the purpose of the **tidytags** R package should be restated. **TAGS** tweet trackers are easily set up and maintained, and does an excellent job passively collecting tweets over time. For instance, the example TAGS tracker we demo here has collected thousands of tweets related to the AECT 2019 annual convention since September 30, 2019. In contrast, running this query now using `rtweet::search_tweets()` is limited by Twitter's API, meaning that an **rtweet** search can only go back in time 6-9 days, and is limited to returning at most 18,000 tweets per query. So, if you are interested in tweets about AECT 2019, today you could get almost no meaningful data using **rtweet** alone. 
+At this point, the purpose of the **tidytags** R package should be restated. **TAGS** tweet trackers are easily set up and maintained, and does an excellent job passively collecting tweets over time. For instance, the example TAGS tracker we demo here has collected thousands of tweets related to the AECT 2019 annual convention since September 30, 2019. In contrast, running this query now using `rtweet::search_tweets()` is limited by Twitter's API, meaning that an **rtweet** search can only go back in time 6-9 days, and is limited to returning at most 18,000 tweets per query. So, if you are interested in tweets about AECT 2019, today you could get almost no meaningful data using **rtweet** alone. For instance, this rtweet search run on February 24, 2020 returned only three tweets.
 
 ```{r rtweet-today, message = FALSE}
 rtweet_today <- rtweet::search_tweets("#AERA19 OR #AERA2019 OR #aect19inspired", n = 18000)
@@ -82,11 +84,11 @@ Because our AECT 2019 examples includes fewer than 90,000 tweets (and because `l
 
 ## process_tweets(), process_tweets_flattened()
 
-After `pull_tweet_data()` is used to collect additional information from TAGS tweet IDS (in this case, the `example_after_rtweet` dataframe), **tidytags** functions `process_tweets()` or `process_tweets_flattened()` can be used to calculate additional attributes and add these to the dataframe as new columns. Specifically, 10 new variables are added: word_count, character_count, mentions_count, hashtags_count_api, hashtags_count_regex, has_hashtags, urls_count_api, urls_count_regex, is_reply, and is_self_reply. 
+After `pull_tweet_data()` is used to collect additional information from TAGS tweet IDS (in this case, the `example_after_rtweet` dataframe), **tidytags** functions `process_tweets()` or `process_tweets_flattened()` can be used to calculate additional attributes and add these to the dataframe as new columns. Specifically, 10 new variables are added: word_count, character_count, mentions_count, hashtags_count_api, hashtags_count_regex, has_hashtags, urls_count_api, urls_count_regex, is_reply, and is_self_reply. This means you now have 100 variables associated with the collected tweets.
 
 ```{r process-tweets, warning = FALSE}
 example_processed <- process_tweets(example_after_rtweet)
-paste0("We now have ", length(names(example_processed)), " variables associated with ", 
+paste0("You now have ", length(names(example_processed)), " variables associated with ", 
        nrow(example_processed), " tweets.")
 ```
 
@@ -100,6 +102,8 @@ paste0("The mean number of characters per tweet is ", mean_char,
        " (SD = ", sd_char, ")."
        )
 ```
+
+On February 24, 2020, there were 2,269 tweets in the dataset, and the mean number of characters per tweet was 182.57 (SD = 75.51).
 
 Or, perhaps, the mean, median, and max number of hashtags per tweet:
 
@@ -115,9 +119,13 @@ paste0("The mean number of hashtags per tweet is ", mean_hash,
        )
 ```
 
+On February 24, 2020, the mean number of hashtags per tweet was 2.17 (SD = 1.48). The median was 2 and the maximum number of hashtags in a tweet was 12.
+
 ## get_url_domain()
 
-The **tidytags** function `get_url_domain()` combines the `expand_urls()` function from the **longurl** package and the `domain()` function from the **urltools** package to easily return the domain names of any hyperlinks including in tweets. Note that using `longurl::expand_urls()` is a necessary step because Twitter automatically shortens any hyperlinks included in tweets. As an example:
+The **tidytags** function `get_url_domain()` combines the `expand_urls()` function from the **longurl** package and the `domain()` function from the **urltools** package to easily return the domain names of any hyperlinks including in tweets. Note that using `longurl::expand_urls()` is a necessary step because Twitter automatically shortens any hyperlinks included in tweets. 
+
+As an example, `get_url_domain()` finds that the domain in the shortened URL "http://bit.ly/2SfWO3K" is "aect.org".
 
 ```{r url-example}
 short_url <- "http://bit.ly/2SfWO3K"
@@ -137,13 +145,15 @@ table_sorted <- dplyr::arrange(domain_table, desc(Freq))
 head(table_sorted, 20)
 ```
 
+Unsurprisingly, in this dataset, by far the most common domain (as of February 24, 2020) was "twitter.com", meaning that AECT 2019 tweeters were linking most often to other Twitter content. Other common domains included "convention2.allacademic.com" (i.e., the host of the conference website, including the schedule and session information) as well as "instagram.com" and "youtube.com", where tweeters likely shared conference-related content.
+
 ## geocode_tags()
 
 Another area to explore is where tweeters in the dataset are from (or, at least, the location they self-identify in their Twitter profiles). **tidytags** makes this straightforward with the `geocode_tags()` function. Note that `geocode_tags()` should be used after additional metadata has been retrieved with `tidytags::pull_tweet_data()`.
 
 `geocode_tags()` pulls from the Google Geocoding API, which requires a Google Geocoding API Key. You can easily secure a key through Google Cloud Platform; [read more here](https://developers.google.com/maps/documentation/geocoding/get-api-key). Next, we recommend saving your Google Geocoding API Key in the .Renviron file as **'Google_API_key'**. You can quickly access this file using the R code `usethis::edit_r_environ(scope='user')`.
 
-```{r edit-r-environ, eval=FALSE}
+```{r edit-r-environ}
 usethis::edit_r_environ(scope='user')
 ```
 
@@ -157,12 +167,21 @@ example_geo_coords <- geocode_tags(example_unique_places)
 example_map <- mapview::mapview(example_geo_coords$pnt) 
 ```
 
-At this point, you can view an interactive map in your R environment by simply calling `example_map`. Or, if you want to save a screenshot of the map, you can use the function `mapview::mapshot()`.
+At this point, you can view an interactive map in your R environment by simply calling `example_map`. 
 
-```{r show-map}
-mapview::mapshot(example_map, file="example-map.png")
-knitr::include_graphics("example-map.png")
+```{r interactive-map}
+example_map
 ```
+
+Alternatively, if you want to save a screenshot of the map, you can use the function `mapview::mapshot()`.
+
+```{r mapshot}
+mapview::mapshot(example_map, file="example-map.png")
+```
+
+Finally, here is a screenshot of the map of AECT 2019 tweeters as of February 24, 2020:
+
+<p align="center"><img src="files/example-map.png" alt="example-map" width="480"></p>
 
 ## get_replies(), get_retweets(), get_quotes(), get_mentions()
 
@@ -177,6 +196,8 @@ paste0("In the dataset of ", nrow(example_processed), " tweets, there are ",
        )
 ```
 
+As of February 24, 2020, in the dataset of 2269 tweets, there are 77 replies, 1227 retweets, 108 quote tweets, and 3328 mentions.
+
 ## get_upstream_replies()
 
 If your research questions conceptualizing your tweet dataset as a conversation or affinity space, it may be useful to retrieve and add additional tweets. Specifically, TAGS collects tweets that contain one or more keywords or text strings. For example, the TAGS tracker we have been working with in this vignette collected tweets containing the keywords: `#aect19` OR `#aect2019` OR `#aect19inspired`. This is a reasonable approach, from a researchers' point of view. However, participants who have been following or contributing to these hashtags would also see additional tweets in these "conversations" because Twitter connects together tweets that reply to other tweets into potentially lengthy *reply threads*. Tweets in a reply thread are all displayed to a user viewing tweets on Twitter's platform, but because some tweets in a thread may not contain the hashtag of interest, not all tweets in the users' experience of a conversation would be collected by TAGS. Additionally, tweets contained in a reply thread but composed before the TAGS tracker was initiated would also be left out of the dataset.
@@ -190,14 +211,18 @@ paste0("The dataset contained ", nrow(example_processed), " tweets at the start.
        " new tweets.")
 ```
 
-Unfortunately, it is not practical to retrieve *downstream* replies, or those tweets in a reply thread that follow a tweet in the dataset but neglect to include the hashtag or keyword.
+On February 24, 2020, running `get_upstream_replies()` took five iterations to collect and add 36 new tweets to the dataset. 
+
+Unfortunately, due to limitations in what information is given by the Twitter API, it is not practical to retrieve *downstream* replies, or those tweets in a reply thread that follow a tweet in the dataset but neglect to include the hashtag or keyword.
 
 ## create_edgelist()
 
-Another usefuyl approach to social media resarch is *social network analysis*. Getting started with social network analysis is as simple as producing an *edgelist*, a two-column dataframe listing *senders* and *receivers*. An edgelist gives a complete accounting of whom is interacting with whom. In Twitter, this is complicated somewhat by the number of ways a user is able to interact with someone else: namely, through replying, retweeting, quote tweeting, mentioning, and liking tweets. The **tidytags** function `create_edgelist()` uses `get_replies()`, `get_retweets()`, `get_quotes()`, and `get_mentions()` to create an edgelist that takes into account these four different types of interaction. `create_edgelist()` returns a dataframe with three columns: two for the sender and receiver Twitter handles, and a third column listing the edge type (i.e., the form of interaction).
+Another usefuyl approach to social media resarch is *social network analysis*. Getting started with social network analysis is as simple as producing an *edgelist*, a two-column dataframe listing *senders* and *receivers*. An edgelist gives a complete accounting of whom is interacting with whom. In Twitter, this is complicated somewhat by the number of ways a user is able to interact with someone else: namely, through replying, retweeting, quote tweeting, mentioning, and liking tweets. The **tidytags** function `create_edgelist()` uses `get_replies()`, `get_retweets()`, `get_quotes()`, and `get_mentions()` to create an edgelist that takes into account these four different types of interaction. `create_edgelist()` returns a dataframe with three columns: two for the sender and receiver Twitter handles, and a third column listing the edge type (i.e., the form of interaction). 
+
+Run `create_edgelist()` after completing `get_upstream_replies()` for a complete picture of the interactions.
 
 ```{r edgelist}
-example_edgelist <- create_edgelist(example_processed)
+example_edgelist <- create_edgelist(example_with_upstream)
 head(example_edgelist, 20)
 ```
 
@@ -206,6 +231,8 @@ Running `create_edgelist()` also provides a simple way to re-look at home many t
 ```{r edge-table}
 dplyr::count(example_edgelist, edge_type, sort = TRUE)
 ```
+
+Running this code on February 24, 2020 showed that the 2,305 tweets in the dataset (including upstream replies) contained 3,328 mentions, 1,227 retweets, 108 quote tweets, and 77 replies.
 
 Note that we do not yet have a function `get_likes()` because this process is much more difficult given the information provided by the Twitter API.
 
@@ -219,6 +246,6 @@ example_senders_receivers_data <- add_users_data(example_edgelist, example_users
 dplyr::glimpse(example_senders_receivers_data)
 ```
 
-```{r session}
+```{r session, include = FALSE}
 devtools::session_info()
 ```

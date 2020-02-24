@@ -13,7 +13,15 @@ read_tags(url)
 A dataframe of the TAGS archive of tweets
 }
 \description{
-Retrieve a TAGS archive of tweets and bring into R
+Keep in mind that `read_tags()` uses the **googlesheets** package,
+  and one requirement is that your TAGS has been published to the web.
+  To do this, with the TAGS page open in a browser, go to
+  `File` >> `Publish to the web`. The `Link` field should be 'Entire document'
+  and the `Embed` field should be 'Web page.' If everything looks right,
+  then click the `Publish` button. Next, click the `Share` button in the
+  top right corner of the Google Sheets window, select `Get shareable link`,
+  and set the permissions to 'Anyone with the link can view.' Now you should
+  be ready to go.
 }
 \seealso{
 Read more about \code{library(googlesheets)} \href{https://github.com/jennybc/googlesheets}{here}.
