@@ -45,7 +45,7 @@ Suggests:
     knitr,
     mapview,
     rmarkdown,
-    testthat,
+    testthat (>= 2.1.0),
     tidyverse
 Encoding: UTF-8
 VignetteBuilder: knitr
