@@ -1,4 +1,4 @@
 library(testthat)
-library(rTAGS)
+library(tidytags)
 
-test_check("rTAGS")
+test_check("tidytags")
