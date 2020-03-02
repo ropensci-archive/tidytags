@@ -4,4 +4,4 @@
 .Ruserdata
 .httr-oauth
 *.rds
-profiles-gender.csv
+data/profiles-gender.csv
