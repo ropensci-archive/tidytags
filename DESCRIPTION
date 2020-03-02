@@ -33,6 +33,7 @@ Imports:
     longurl (>= 0.3),
     mapsapi (>= 0.4),
     purrr (>= 0.3),
+    rlang(>= 0.4),
     rtweet (>= 0.7),
     stringr (>= 1.4),
     tidyr (>= 1.0),
