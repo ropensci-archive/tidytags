@@ -30,12 +30,14 @@ read_tags <- function(url) {
 #' @param df A dataframe of containing the column name 'status_url'
 #'   (i.e., the hyperlink to specific tweets)
 #' @return A list or vector of tweet IDs as character strings
+#' @importFrom rlang .data
 #' @export
 get_char_tweet_ids <- function(df) {
   df <- dplyr::mutate(df,
-                status_id_char = stringr::str_split_fixed(status_url, "/", n=6)[ ,6]
+                status_id_char = stringr::str_split_fixed(.data$status_url, "/", n=6)[ ,6]
                 )
-  dplyr::pull(df, status_id_char)
+  dplyr::pull(df,
+              .data$status_id_char)
 }
 
 #' Retrieve the fullest extent of tweet metadata available from the Twitter API
@@ -101,22 +103,23 @@ length_with_na <- function(x) {
 #' @return A dataframe with several additional columns: word_count, character_count,
 #'   mentions_count, hashtags_count_api, hashtags_count_regex, has_hashtags,
 #'   urls_count_api, urls_count_regex, is_reply, is_self_reply
+#' @importFrom rlang .data
 #' @export
 process_tweets <- function(df) {
   url_regex <- "http[s]?://(?:[a-zA-Z]|[0-9]|[$-_@.&+]|[!*\\(\\),]|(?:%[0-9a-fA-F][0-9a-fA-F]))+"
   hashtag_regex <- "#([0-9]|[a-zA-Z])+"
   dplyr::mutate(df,
-                word_count = stringr::str_count(text, "\\s+") + 1,
-                character_count = stringr::str_length(text),
-                mentions_count = length_with_na(mentions_screen_name),
-                hashtags_count_api = length_with_na(hashtags),
-                hashtags_count_regex = stringr::str_count(text, hashtag_regex),  # more accurate than API
-                has_hashtags = dplyr::if_else(hashtags_count_regex != 0, TRUE, FALSE),
-                urls_count_api = length_with_na(urls_url),
-                urls_count_regex = stringr::str_count(text, url_regex),  # counts links to quoted tweets and media
-                is_reply = dplyr::if_else(!is.na(reply_to_status_id), TRUE, FALSE),
-                is_self_reply = dplyr::if_else(is_reply,
-                                              dplyr::if_else(user_id==reply_to_user_id,
+                word_count = stringr::str_count(.data$text, "\\s+") + 1,
+                character_count = stringr::str_length(.data$text),
+                mentions_count = length_with_na(.data$mentions_screen_name),
+                hashtags_count_api = length_with_na(.data$hashtags),
+                hashtags_count_regex = stringr::str_count(.data$text, hashtag_regex),  # more accurate than API
+                has_hashtags = dplyr::if_else(.data$hashtags_count_regex != 0, TRUE, FALSE),
+                urls_count_api = length_with_na(.data$urls_url),
+                urls_count_regex = stringr::str_count(.data$text, url_regex),  # counts links to quoted tweets and media
+                is_reply = dplyr::if_else(!is.na(.data$reply_to_status_id), TRUE, FALSE),
+                is_self_reply = dplyr::if_else(.data$is_reply,
+                                              dplyr::if_else(.data$user_id==.data$reply_to_user_id,
                                                             TRUE,
                                                             FALSE),
                                               FALSE
@@ -130,22 +133,23 @@ process_tweets <- function(df) {
 #' @return A dataframe with several additional columns: word_count, character_count,
 #'   mentions_count, hashtags_count_api, hashtags_count_regex, has_hashtags,
 #'   urls_count_api, urls_count_regex, is_reply, is_self_reply
+#' @importFrom rlang .data
 #' @export
 process_tweets_flattened <- function(df) {
   url_regex <- "http[s]?://(?:[a-zA-Z]|[0-9]|[$-_@.&+]|[!*\\(\\),]|(?:%[0-9a-fA-F][0-9a-fA-F]))+"
   hashtag_regex <- "#([0-9]|[a-zA-Z])+"
   dplyr::mutate(df,
-                word_count = stringr::str_count(text, "\\s+") + 1,
-                character_count = stringr::str_length(text),
-                mentions_count = length_with_na(stringr::str_split(mentions_screen_name, " ")),
-                hashtags_count_api = length_with_na(stringr::str_split(hashtags, " ")),
-                hashtags_count_regex = stringr::str_count(text, hashtag_regex),  # more accurate than API
-                has_hashtags = dplyr::if_else(hashtags_count_regex != 0, TRUE, FALSE),
-                urls_count_api = length_with_na(stringr::str_split(urls_url, " ")),
-                urls_count_regex = stringr::str_count(text, url_regex),  # counts links to quoted tweets and media
-                is_reply = dplyr::if_else(!is.na(reply_to_status_id), TRUE, FALSE),
-                is_self_reply = dplyr::if_else(is_reply,
-                                              dplyr::if_else(user_id==reply_to_user_id,
+                word_count = stringr::str_count(.data$text, "\\s+") + 1,
+                character_count = stringr::str_length(.data$text),
+                mentions_count = length_with_na(stringr::str_split(.data$mentions_screen_name, " ")),
+                hashtags_count_api = length_with_na(stringr::str_split(.data$hashtags, " ")),
+                hashtags_count_regex = stringr::str_count(.data$text, hashtag_regex),  # more accurate than API
+                has_hashtags = dplyr::if_else(.data$hashtags_count_regex != 0, TRUE, FALSE),
+                urls_count_api = length_with_na(stringr::str_split(.data$urls_url, " ")),
+                urls_count_regex = stringr::str_count(.data$text, url_regex),  # counts links to quoted tweets and media
+                is_reply = dplyr::if_else(!is.na(.data$reply_to_status_id), TRUE, FALSE),
+                is_self_reply = dplyr::if_else(.data$is_reply,
+                                              dplyr::if_else(.data$user_id==.data$reply_to_user_id,
                                                             TRUE,
                                                             FALSE),
                                               FALSE

@@ -9,13 +9,15 @@
 #'   \code{edge_type}, which in this case the edge type is "reply"
 #' @seealso Compare to other \code{tidtags} functions such as \code{get_retweets()},
 #'   \code{get_quotes()}, \code{get_mentions()}, and \code{create_edgelist()}.
+#' @importFrom rlang .data
 #' @export
 get_replies <- function(df) {
   processed_df <- process_tweets(df)
-  replies <- dplyr::filter(processed_df, is_reply)
+  replies <- dplyr::filter(processed_df,
+                           .data$is_reply)
   replies <- dplyr::select(replies,
-                           sender = screen_name,
-                           receiver = reply_to_screen_name)
+                           sender = .data$screen_name,
+                           receiver = .data$reply_to_screen_name)
   replies <- dplyr::mutate(replies,
                            edge_type = "reply")
   replies
@@ -32,13 +34,15 @@ get_replies <- function(df) {
 #'   \code{edge_type}, which in this case the edge type is "retweet"
 #' @seealso Compare to other \code{tidtags} functions such as \code{get_replies()},
 #'   \code{get_quotes()}, \code{get_mentions()}, and \code{create_edgelist()}.
+#' @importFrom rlang .data
 #' @export
 get_retweets <- function(df) {
   processed_df <- process_tweets(df)
-  RTs <- dplyr::filter(processed_df, is_retweet)
+  RTs <- dplyr::filter(processed_df,
+                       .data$is_retweet)
   RTs <- dplyr::select(RTs,
-                       sender = screen_name,
-                       receiver = retweet_screen_name)
+                       sender = .data$screen_name,
+                       receiver = .data$retweet_screen_name)
   RTs <- dplyr::mutate(RTs,
                        edge_type = "retweet")
   RTs
@@ -55,13 +59,15 @@ get_retweets <- function(df) {
 #'   \code{edge_type}, which in this case the edge type is "quote-tweet"
 #' @seealso Compare to other \code{tidtags} functions such as \code{get_replies()},
 #'   \code{get_retweets()}, \code{get_mentions()}, and \code{create_edgelist()}.
+#' @importFrom rlang .data
 #' @export
 get_quotes <- function(df) {
   processed_df <- process_tweets(df)
-  quotes <- dplyr::filter(processed_df, is_quote)
+  quotes <- dplyr::filter(processed_df,
+                          .data$is_quote)
   quotes <- dplyr::select(quotes,
-                          sender = screen_name,
-                          receiver = quoted_screen_name)
+                          sender = .data$screen_name,
+                          receiver = .data$quoted_screen_name)
   quotes <- dplyr::mutate(quotes,
                           edge_type = "quote-tweet")
   quotes
@@ -78,15 +84,19 @@ get_quotes <- function(df) {
 #'   \code{edge_type}, which in this case the edge type is "mention"
 #' @seealso Compare to other \code{tidtags} functions such as \code{get_replies()},
 #'   \code{get_retweets()}, \code{get_quotes()}, and \code{create_edgelist()}.
+#' @importFrom rlang .data
 #' @export
 get_mentions <- function(df) {
   processed_df <- process_tweets(df)
   mentions <- dplyr::select(processed_df,
-                            sender = screen_name,
-                            receiver = mentions_screen_name)
-  mentions <- tidyr::unnest(mentions, cols = receiver)
-  mentions <- dplyr::filter(mentions, !is.na(receiver))
-  mentions <- dplyr::mutate(mentions, edge_type = "mention")
+                            sender = .data$screen_name,
+                            receiver = .data$mentions_screen_name)
+  mentions <- tidyr::unnest(mentions,
+                            cols = .data$receiver)
+  mentions <- dplyr::filter(mentions,
+                            !is.na(.data$receiver))
+  mentions <- dplyr::mutate(mentions,
+                            edge_type = "mention")
   mentions
 }
 
@@ -102,12 +112,14 @@ get_mentions <- function(df) {
 #'   "quote", or "mention"
 #' @seealso Compare to other \code{tidtags} functions such as \code{get_replies()},
 #'   \code{get_retweets()}, \code{get_quotes()}, and \code{get_mentions()}.
+#' @importFrom rlang .data
 #' @export
 create_edgelist <- function(df) {
   processed_df <- process_tweets(df)
 
   if (!is.list(processed_df$mentions_screen_name)) {
-    processed_df$mentions_screen_name <- str_split(processed_df$mentions_screen_name, " ")
+    processed_df$mentions_screen_name <-
+      stringr::str_split(processed_df$mentions_screen_name, " ")
   }
 
   reply_edges <- get_replies(processed_df)
