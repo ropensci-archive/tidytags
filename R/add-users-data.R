@@ -64,4 +64,5 @@ add_users_data <- function(edgelist, users_data_from_rtweet){
                                                    by = 'screen_name')
   edgelist_with_all_users_data <- dplyr::select(edgelist_with_all_users_data,
                                                 -.data$screen_name)
+  edgelist_with_all_users_data
 }

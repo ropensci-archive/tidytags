@@ -46,8 +46,16 @@ One solution to these Twitter data collection issues is to use a Twitter Archivi
 The ``tidytags`` workflow for exploring Twitter data over time using R includes:
 
 1. Setting up a Twitter Archiving Google Sheet [TAGS](https://tags.hawksey.info/) tweet collector
-1. Viewing tweets collected by TAGS in [RStudio](https://rstudio.com/)
-1. Pulling additional tweet metadata with [rtweet](https://rtweet.info/)
+
+1. Viewing tweets collected by TAGS in [RStudio](https://rstudio.com/) using the function ______.
+
+
+Here's an examples of steps X-Y together:
+```{r}
+
+```
+
+1. Pulling additional tweet metadata with [rtweet](https://rtweet.info/) using 
 1. Analyzing URLs and web domains in tweets
 1. Geocoding tweeter locations and creating map visualizations 
 1. Analyzing social networks of tweeters
@@ -60,11 +68,9 @@ This workflow for Twitter research has been formalized in ``tidytags``. The purp
 
 # References
 
-(Gao et al., 2012)
 
-(Veletsianos et al., 2019)
 
-(Xing & Gao, 2018)
+
 
 
 
@@ -76,6 +82,14 @@ For a quick reference, the following citation commands can be used:
 - `@author:2001`  ->  "Author et al. (2001)"
 - `[@author:2001]` -> "(Author et al., 2001)"
 - `[@author1:2001; @author2:2001]` -> "(Author1 et al., 2001; Author2 et al., 2002)"
+
+(Gao et al., 2012)
+
+(Veletsianos et al., 2019)
+
+(Xing & Gao, 2018)
+
+
 
 Figures can be included like this: ![Example figure.](figure.png)
 

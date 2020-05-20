@@ -25,29 +25,28 @@ Description: The goal of tidytags is to sync together
 License: GPL-3
 URL: https://bretsw.github.io/tidytags/, https://github.com/bretsw/tidytags
 Depends: 
-    R (>= 3.6.0)
+    R (>= 4.0)
 Imports:
-    beepr (>= 1.3),
     dplyr (>= 0.8),
-    googlesheets (>= 0.3),
-    longurl (>= 0.3),
-    mapsapi (>= 0.4),
+    googlesheets4 (>= 0.2),
     purrr (>= 0.3),
     rlang(>= 0.4),
     rtweet (>= 0.7),
     stringr (>= 1.4),
     tidyr (>= 1.0),
     tidyselect (>= 1.0),
-    tidytext (>= 0.2),
-    urltools (>= 1.7),
     usethis (>= 1.5)
 Suggests:
+    beepr,
     ggplot2,
     knitr,
+    longurl,
+    mapsapi,
     mapview,
     rmarkdown,
-    testthat (>= 2.1.0),
-    tidyverse
+    testthat,
+    tidyverse,
+    urltools
 Encoding: UTF-8
 VignetteBuilder: knitr
 LazyData: TRUE

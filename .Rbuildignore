@@ -5,3 +5,5 @@
 ^_pkgdown\.yml$
 ^docs$
 ^pkgdown$
+paper.md
+tidytags-logo.png
