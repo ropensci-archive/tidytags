@@ -1,6 +1,6 @@
 #' Retrieve a TAGS archive of tweets and bring into R
 #'
-#' Keep in mind that `read_tags()` uses the **googlesheets** package,
+#' Keep in mind that `read_tags()` uses the **googlesheets4** package,
 #'   and one requirement is that your TAGS has been published to the web.
 #'   To do this, with the TAGS page open in a browser, go to
 #'   `File` >> `Publish to the web`. The `Link` field should be 'Entire document'
@@ -11,11 +11,11 @@
 #'   be ready to go.
 #' @param url A valid URL (i.e., hyperlink) to a TAGS tracker
 #' @return A dataframe of the TAGS archive of tweets
-#' @seealso Read more about \code{library(googlesheets)} \href{https://github.com/jennybc/googlesheets}{here}.
+#' @seealso Read more about \code{library(googlesheets4)} \href{https://github.com/tidyverse/googlesheets4}{here}.
 #' @export
 read_tags <- function(url) {
-  full_workbook <- googlesheets::gs_url(url)
-  one_sheet <- googlesheets::gs_read(full_workbook, ws = 2)
+  full_workbook <- googlesheets4::gs_url(url)
+  one_sheet <- googlesheets4::gs_read(full_workbook, ws = 2)
   one_sheet
 }
 

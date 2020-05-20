@@ -20,8 +20,8 @@ Description: The goal of tidytags is to sync together
     **Twitter Archiving Google Sheet** [TAGS](https://tags.hawksey.info/), 
     (b) the utility of the **rtweet** [package](https://rtweet.info/) for 
     processing and preparing additional Twitter metadata, and 
-    (c) a collection of different analytic functions we have developed 
-    during our own social media research.
+    (c) a collection of different analytic functions developed during the course 
+    of extensive social media research in education.
 License: GPL-3
 URL: https://bretsw.github.io/tidytags/, https://github.com/bretsw/tidytags
 Depends: 

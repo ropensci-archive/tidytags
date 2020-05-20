@@ -6,4 +6,5 @@
 ^docs$
 ^pkgdown$
 paper.md
+paper.bib
 tidytags-logo.png

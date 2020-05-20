@@ -29,11 +29,11 @@ bibliography: paper.bib
 
 # Summary
 
-``tidytags`` syncs together (a) the ease of collecting tweets over time with a **Twitter Archiving Google Sheet**, [TAGS](https://tags.hawksey.info/), (b) the utility of the ``rtweet`` [package](https://rtweet.info/) for processing and preparing additional Twitter metadata, and (c) a collection of different analytic functions developed during the course of extensive social media research in education.
+``tidytags`` syncs together (a) the simplicity of collecting tweets over time with a **Twitter Archiving Google Sheet**, [TAGS](https://tags.hawksey.info/), (b) the utility of the ``rtweet`` [package](https://rtweet.info/) for processing and preparing additional Twitter metadata, and (c) a collection of different analytic functions developed during the course of extensive social media research in education.
 
 # Statement of Need
 
-One essential dimension of understanding a culture is to study the artifacts and behaviors of group members over time. Indeed, many questions relevant to the field of learning design and technology have a temporal dimension—or at least they should. Specifically, social media studies are obvious sites for change-over-time research questions due to how quickly online practices and norms can change. Despite this, prominent AECT social media scholars have noted the scarcity of such research (Gao et al., 2012) and argued the need for more studies examining social media and time (Veletsianos et al., 2019; Xing & Gao, 2018).
+One essential dimension of understanding a culture is to study the artifacts and behaviors of group members over time. Indeed, many questions relevant to the field of learning design and technology have a temporal dimension—or at least they should. Specifically, social media studies are obvious sites for change-over-time research questions due to how quickly online practices and norms can change. Despite this, prominent AECT social media scholars have noted the scarcity of such research `[@gao_et_al:2012]` and argued the need for more studies examining social media and time `[@veletsianos_et_al:2019; @xing_gao:2018]`.
 
 Time travel is hard, if not impossible. As a result, collecting historical data from Twitter can be difficult and expensive. First, access to Twitter data is limited by the platform’s API. For instance, a researcher using the Twitter API today to search for information on the 2019 conference of the Association for Educational Communication & Technology, [AECT](https://aect.org/) using using hashtags #AECT19 or #AECTinspired would not be able to computationally access tweets from the time of the convention, back in October 2019. 
 
@@ -48,13 +48,6 @@ The ``tidytags`` workflow for exploring Twitter data over time using R includes:
 1. Setting up a Twitter Archiving Google Sheet [TAGS](https://tags.hawksey.info/) tweet collector
 
 1. Viewing tweets collected by TAGS in [RStudio](https://rstudio.com/) using the function ______.
-
-
-Here's an examples of steps X-Y together:
-```{r}
-
-```
-
 1. Pulling additional tweet metadata with [rtweet](https://rtweet.info/) using 
 1. Analyzing URLs and web domains in tweets
 1. Geocoding tweeter locations and creating map visualizations 
@@ -63,6 +56,15 @@ Here's an examples of steps X-Y together:
 1. Exporting edgelists to create network visualizations using the ggraph R package or the open-source software [Gephi](https://gephi.org/)
 
 This workflow for Twitter research has been formalized in ``tidytags``. The purpose of ``tidytags`` is to sync together the simplicity of collecting tweets over time with TAGS, the utility of the ``rtweet`` package for processing and preparing additional Twitter metadata, and the convenience of curating different analytic functions developed during social media research across the past five years. This workflow is simple enough for beginning programmers to get started, but powerful enough to serve as the analytic foundation of research that has been featured in academic journals such as [Computers & Education](https://www.journals.elsevier.com/computers-and-education), [Journal of Research on Technology in Education](https://www.tandfonline.com/loi/ujrt20), and [TechTrends](https://www.springer.com/journal/11528).
+
+# Example
+
+Here's an examples of steps X-Y together:
+```{r}
+
+```
+
+For more a more extensive walkthrough of ``tidytags`` functionality, visit the [Using tidytags with a conference hashtag](https://bretsw.github.io/tidytags/articles/tidytags-with-conf-hashtags.html) vignette webpage.
 
 # Acknowledgements
 
@@ -82,13 +84,6 @@ For a quick reference, the following citation commands can be used:
 - `@author:2001`  ->  "Author et al. (2001)"
 - `[@author:2001]` -> "(Author et al., 2001)"
 - `[@author1:2001; @author2:2001]` -> "(Author1 et al., 2001; Author2 et al., 2002)"
-
-(Gao et al., 2012)
-
-(Veletsianos et al., 2019)
-
-(Xing & Gao, 2018)
-
 
 
 Figures can be included like this: ![Example figure.](figure.png)

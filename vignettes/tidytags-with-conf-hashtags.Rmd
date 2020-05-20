@@ -20,7 +20,7 @@ Most of the information in this vignette is available scattered throughout the R
 
 To simply view a TAGS archive, you can use `read_tags()`. Here, we've openly shared a TAGS tracker that has been collecting tweets associated with the AECT 2019 since September 30, 2019. As of February 24, 2020, this tracker had collected **2,561 tweets**. This tracker is active through today.
 
-Keep in mind that `read_tags()` uses the **googlesheets** package, and one requirement is that your TAGS has been published to the web. To do this, with the TAGS page open in a browser, go to `File` >> `Publish to the web`. The `Link` field should be 'Entire document' and the `Embed` field should be 'Web page.' If everything looks right, then click the `Publish` button. Next, click the `Share` button in the top right corner of the Google Sheets window, select `Get shareable link`, and set the permissions to 'Anyone with the link can view.' Now you should be ready to go.
+Keep in mind that `read_tags()` uses the **googlesheets4** package, and one requirement is that your TAGS has been published to the web. To do this, with the TAGS page open in a browser, go to `File` >> `Publish to the web`. The `Link` field should be 'Entire document' and the `Embed` field should be 'Web page.' If everything looks right, then click the `Publish` button. Next, click the `Share` button in the top right corner of the Google Sheets window, select `Get shareable link`, and set the permissions to 'Anyone with the link can view.' Now you should be ready to go.
 
 ```{r initial-tags, message = FALSE, warning = FALSE}
 library(tidytags)
