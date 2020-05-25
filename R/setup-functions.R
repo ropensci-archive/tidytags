@@ -1,12 +1,12 @@
 #' Retrieve a TAGS archive of tweets and bring into R
 #'
-#' Keep in mind that `read_tags()` uses the **googlesheets4** package,
+#' Keep in mind that \code{read_tags()} uses the **googlesheets4** package,
 #'   and one requirement is that your TAGS has been published to the web.
 #'   To do this, with the TAGS page open in a browser, go to
-#'   `File` >> `Publish to the web`. The `Link` field should be 'Entire document'
-#'   and the `Embed` field should be 'Web page.' If everything looks right,
-#'   then click the `Publish` button. Next, click the `Share` button in the
-#'   top right corner of the Google Sheets window, select `Get shareable link`,
+#'   \code{File >> Publish to the web}. The \code{Link} field should be 'Entire document'
+#'   and the \code{Embed} field should be 'Web page.' If everything looks right,
+#'   then click the \code{Publish} button. Next, click the \code{Share} button in the
+#'   top right corner of the Google Sheets window, select \code{Get shareable link},
 #'   and set the permissions to 'Anyone with the link can view.' Now you should
 #'   be ready to go.
 #' @param url A valid URL (i.e., hyperlink) to a TAGS tracker
@@ -34,9 +34,9 @@ read_tags <-
 #'   the URL linking to specific tweets.
 #' @param df A dataframe of containing the column name 'status_url'
 #'   (i.e., the hyperlink to specific tweets), such as that returned by
-#'   `read_tags()`
+#'   \code{read_tags()}
 #' @param url_vector A vector of tweet URLs, such as as those contained in
-#'   the 'status_url' column of a dataframe returned by `tidytags::read_tags()`
+#'   the 'status_url' column of a dataframe returned by \code{tidytags::read_tags()}
 #' @return A list or vector of tweet IDs as character strings
 #' @examples
 #'   \dontrun{
@@ -63,17 +63,17 @@ get_char_tweet_ids <-
 
 #' Retrieve the fullest extent of tweet metadata available from the Twitter API
 #'
-#' With TAGS imported into R, `pull_tweet_data()` uses the **rtweet** package
+#' With TAGS imported into R, \code{pull_tweet_data()} uses the **rtweet** package
 #'   to query the Twitter API. Using rtweet requires a Twitter developer account;
 #'   see the rtweet vignette \href{https://rtweet.info/articles/auth.html}{Obtaining and using access tokens}
 #'   as a guide to get started.
 #' @param df A dataframe of containing the column name 'status_url'
 #'   (i.e., the hyperlink to specific tweets), such as that returned by
-#'   `read_tags()`
+#'   \code{read_tags()}
 #' @param url_vector A vector of tweet URLs, such as as those contained in
-#'   the 'status_url' column of a dataframe returned by `tidytags::read_tags()`
+#'   the 'status_url' column of a dataframe returned by \code{tidytags::read_tags()}
 #' @param id_vector A vector of tweet ID numbers, such as as those contained in
-#'   the 'id_str' column of a dataframe returned by `tidytags::read_tags()`
+#'   the 'id_str' column of a dataframe returned by \code{tidytags::read_tags()}
 #' @param n The number of tweets to look up, by default the total number of tweet
 #'   ID numbers available, but capped at 90,000 due to Twitter API limitations.
 #' @return A dataframe of tweets and full metadata from the Twitter API
