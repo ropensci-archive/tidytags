@@ -9,10 +9,10 @@ get_char_tweet_ids(df, url_vector = NULL)
 \arguments{
 \item{df}{A dataframe of containing the column name 'status_url'
 (i.e., the hyperlink to specific tweets), such as that returned by
-`read_tags()`}
+\code{read_tags()}}
 
 \item{url_vector}{A vector of tweet URLs, such as as those contained in
-the 'status_url' column of a dataframe returned by `tidytags::read_tags()`}
+the 'status_url' column of a dataframe returned by \code{tidytags::read_tags()}}
 }
 \value{
 A list or vector of tweet IDs as character strings

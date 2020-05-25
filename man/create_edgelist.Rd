@@ -20,6 +20,13 @@ Starting with a dataframe returned by \code{pull_tweet_data()},
   retweets, quote tweets, and mentions, and then adds a new column
   \code{edge_type}.
 }
+\examples{
+  \dontrun{
+  example_url <- "https://docs.google.com/spreadsheets/d/18clYlQeJOc6W5QRuSlJ6_v3snqKJImFhU42bRkM_OX8/edit#gid=8743918"
+  tmp_df <- pull_tweet_data(read_tags(example_url), n = 10)
+  create_edgelist(tmp_df)
+  }
+}
 \seealso{
 Compare to other \code{tidtags} functions such as \code{get_replies()},
   \code{get_retweets()}, \code{get_quotes()}, and \code{get_mentions()}.

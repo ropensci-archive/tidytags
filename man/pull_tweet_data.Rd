@@ -9,13 +9,13 @@ pull_tweet_data(df, url_vector = NULL, id_vector = NULL, n = NULL)
 \arguments{
 \item{df}{A dataframe of containing the column name 'status_url'
 (i.e., the hyperlink to specific tweets), such as that returned by
-`read_tags()`}
+\code{read_tags()}}
 
 \item{url_vector}{A vector of tweet URLs, such as as those contained in
-the 'status_url' column of a dataframe returned by `tidytags::read_tags()`}
+the 'status_url' column of a dataframe returned by \code{tidytags::read_tags()}}
 
 \item{id_vector}{A vector of tweet ID numbers, such as as those contained in
-the 'id_str' column of a dataframe returned by `tidytags::read_tags()`}
+the 'id_str' column of a dataframe returned by \code{tidytags::read_tags()}}
 
 \item{n}{The number of tweets to look up, by default the total number of tweet
 ID numbers available, but capped at 90,000 due to Twitter API limitations.}
@@ -24,7 +24,7 @@ ID numbers available, but capped at 90,000 due to Twitter API limitations.}
 A dataframe of tweets and full metadata from the Twitter API
 }
 \description{
-With TAGS imported into R, `pull_tweet_data()` uses the **rtweet** package
+With TAGS imported into R, \code{pull_tweet_data()} uses the **rtweet** package
   to query the Twitter API. Using rtweet requires a Twitter developer account;
   see the rtweet vignette \href{https://rtweet.info/articles/auth.html}{Obtaining and using access tokens}
   as a guide to get started.

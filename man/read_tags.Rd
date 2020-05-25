@@ -13,13 +13,13 @@ read_tags(url)
 A dataframe of the TAGS archive of tweets
 }
 \description{
-Keep in mind that `read_tags()` uses the **googlesheets4** package,
+Keep in mind that \code{read_tags()} uses the **googlesheets4** package,
   and one requirement is that your TAGS has been published to the web.
   To do this, with the TAGS page open in a browser, go to
-  `File` >> `Publish to the web`. The `Link` field should be 'Entire document'
-  and the `Embed` field should be 'Web page.' If everything looks right,
-  then click the `Publish` button. Next, click the `Share` button in the
-  top right corner of the Google Sheets window, select `Get shareable link`,
+  \code{File >> Publish to the web}. The \code{Link} field should be 'Entire document'
+  and the \code{Embed} field should be 'Web page.' If everything looks right,
+  then click the \code{Publish} button. Next, click the \code{Share} button in the
+  top right corner of the Google Sheets window, select \code{Get shareable link},
   and set the permissions to 'Anyone with the link can view.' Now you should
   be ready to go.
 }
