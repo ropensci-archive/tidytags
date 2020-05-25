@@ -11,8 +11,14 @@
 #' @return A list or vector of Web domain names
 #' @seealso Read the documentation for \code{longurl::expand_urls()} and
 #'   \code{urltools::domain()}.
+#' @examples
+#'   \dontrun{
+#'   short_url <- "http://bit.ly/2SfWO3K"
+#'   get_url_domain(short_url)
+#'   }
 #' @export
-get_url_domain <- function(x, wait = 10) {
+get_url_domain <-
+  function(x, wait = 10) {
   new_urls <- longurl::expand_urls(x, seconds = wait)
   domains <- urltools::domain(new_urls$expanded_url)
   domains <- gsub("www[0-9]?.", "", domains)

@@ -22,6 +22,12 @@ A list or vector of Web domain names
 \code{get_url_domain()} retrieves geographic coordinates (i.e., latitude and
   longitude) based on the locations listed in Twitter user profiles
 }
+\examples{
+  \dontrun{
+  short_url <- "http://bit.ly/2SfWO3K"
+  get_url_domain(short_url)
+  }
+}
 \seealso{
 Read the documentation for \code{longurl::expand_urls()} and
   \code{urltools::domain()}.
