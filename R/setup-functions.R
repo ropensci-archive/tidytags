@@ -14,9 +14,8 @@
 #' @seealso Read more about \code{library(googlesheets4)} \href{https://github.com/tidyverse/googlesheets4}{here}.
 #' @export
 read_tags <- function(url) {
-  full_workbook <- googlesheets4::gs_url(url)
-  one_sheet <- googlesheets4::gs_read(full_workbook, ws = 2)
-  one_sheet
+  tweet_sheet <- googlesheets4::read_sheet(url, sheet = 2)
+  tweet_sheet
 }
 
 #' Get tweet ID numbers as character strings
@@ -32,13 +31,14 @@ read_tags <- function(url) {
 #' @return A list or vector of tweet IDs as character strings
 #' @importFrom rlang .data
 #' @export
-get_char_tweet_ids <- function(df) {
-  df <- dplyr::mutate(df,
-                status_id_char = stringr::str_split_fixed(.data$status_url, "/", n=6)[ ,6]
-                )
-  dplyr::pull(df,
-              .data$status_id_char)
-}
+get_char_tweet_ids <-
+  function(df) {
+    df <- dplyr::mutate(df,
+                        status_id_char = stringr::str_split_fixed(.data$status_url, "/", n=6)[ ,6]
+    )
+    dplyr::pull(df,
+                .data$status_id_char)
+  }
 
 #' Retrieve the fullest extent of tweet metadata available from the Twitter API
 #'
@@ -52,17 +52,18 @@ get_char_tweet_ids <- function(df) {
 #' @return A dataframe of tweets and full metadata from the Twitter API
 #' @seealso Read more about \code{library(rtweet)} \href{https://rtweet.info/}{here}.
 #' @export
-pull_tweet_data <- function(x, n = NULL) {
-  if(is.null(n)) {n <- length(x)}
-  if (length(x) > 90000) {
-    warning("Twitter API only allows lookup of 90,000 tweets at a time;",
-            "collecting data for first 90,000 tweet IDs.",
-            "To process more, use `lookup_many_tweets()`.")
-    x <- x[1:90000]
+pull_tweet_data <-
+  function(x, n = NULL) {
+    if(is.null(n)) {n <- length(x)}
+    if (length(x) > 90000) {
+      warning("Twitter API only allows lookup of 90,000 tweets at a time;",
+              "collecting data for first 90,000 tweet IDs.",
+              "To process more, use `lookup_many_tweets()`.")
+      x <- x[1:90000]
+    }
+    new_df <- rtweet::lookup_statuses(x[1:n])
+    new_df
   }
-  new_df <- rtweet::lookup_statuses(x[1:n])
-  new_df
-}
 
 #' Retrieve the fullest extent of tweet metadata for more than 90,000 tweets
 #'
@@ -73,29 +74,31 @@ pull_tweet_data <- function(x, n = NULL) {
 #'   completed
 #' @return A dataframe of tweets and full metadata from the Twitter API
 #' @export
-lookup_many_tweets <- function(x, alarm = FALSE) {
-  n_batches <- ceiling(length(x) / 90000)
-  new_df <- data.frame()
-  for(i in 1:n_batches) {
-    min_id <- 90000*i - 89999
-    max_id <- dplyr::if_else(90000*i < length(x), 90000*i, length(x))
-    tmp_df <- pull_tweet_data(x[min_id:max_id])
-    new_df <- rbind(new_df, tmp_df)
-    if(alarm == TRUE) {beepr::beep(2)}
-    if(n_batches > 1) {message("Processed batch: ", i)}
-    if (i != n_batches) {message("Now sleeping..."); Sys.sleep(901); message("Awake!")}
+lookup_many_tweets <-
+  function(x, alarm = FALSE) {
+    n_batches <- ceiling(length(x) / 90000)
+    new_df <- data.frame()
+    for(i in 1:n_batches) {
+      min_id <- 90000*i - 89999
+      max_id <- dplyr::if_else(90000*i < length(x), 90000*i, length(x))
+      tmp_df <- pull_tweet_data(x[min_id:max_id])
+      new_df <- rbind(new_df, tmp_df)
+      if(alarm == TRUE) {beepr::beep(2)}
+      if(n_batches > 1) {message("Processed batch: ", i)}
+      if (i != n_batches) {message("Now sleeping..."); Sys.sleep(901); message("Awake!")}
+    }
+    new_df
   }
-  new_df
-}
 
 #' Count the number of items in a list, with an NA entry returning 0
 #'
 #' @param x A list
 #' @return The number of items in the list
 #' @export
-length_with_na <- function(x) {
-  ifelse(is.na(x), 0, purrr::map_int(x, length))
-}
+length_with_na <-
+  function(x) {
+    ifelse(is.na(x), 0, purrr::map_int(x, length))
+  }
 
 #' Calculate additional information using tweet metadata
 #'
@@ -105,24 +108,25 @@ length_with_na <- function(x) {
 #'   urls_count_api, urls_count_regex, is_reply, is_self_reply
 #' @importFrom rlang .data
 #' @export
-process_tweets <- function(df) {
-  url_regex <- "http[s]?://(?:[a-zA-Z]|[0-9]|[$-_@.&+]|[!*\\(\\),]|(?:%[0-9a-fA-F][0-9a-fA-F]))+"
-  hashtag_regex <- "#([0-9]|[a-zA-Z])+"
-  dplyr::mutate(df,
-                word_count = stringr::str_count(.data$text, "\\s+") + 1,
-                character_count = stringr::str_length(.data$text),
-                mentions_count = length_with_na(.data$mentions_screen_name),
-                hashtags_count_api = length_with_na(.data$hashtags),
-                hashtags_count_regex = stringr::str_count(.data$text, hashtag_regex),  # more accurate than API
-                has_hashtags = dplyr::if_else(.data$hashtags_count_regex != 0, TRUE, FALSE),
-                urls_count_api = length_with_na(.data$urls_url),
-                urls_count_regex = stringr::str_count(.data$text, url_regex),  # counts links to quoted tweets and media
-                is_reply = dplyr::if_else(!is.na(.data$reply_to_status_id), TRUE, FALSE),
-                is_self_reply = dplyr::if_else(.data$is_reply,
-                                              dplyr::if_else(.data$user_id==.data$reply_to_user_id,
-                                                            TRUE,
-                                                            FALSE),
-                                              FALSE
-                                              )
-                )
-}
+process_tweets <-
+  function(df) {
+    url_regex <- "http[s]?://(?:[a-zA-Z]|[0-9]|[$-_@.&+]|[!*\\(\\),]|(?:%[0-9a-fA-F][0-9a-fA-F]))+"
+    hashtag_regex <- "#([0-9]|[a-zA-Z])+"
+    dplyr::mutate(df,
+                  word_count = stringr::str_count(.data$text, "\\s+") + 1,
+                  character_count = stringr::str_length(.data$text),
+                  mentions_count = length_with_na(.data$mentions_screen_name),
+                  hashtags_count_api = length_with_na(.data$hashtags),
+                  hashtags_count_regex = stringr::str_count(.data$text, hashtag_regex),  # more accurate than API
+                  has_hashtags = dplyr::if_else(.data$hashtags_count_regex != 0, TRUE, FALSE),
+                  urls_count_api = length_with_na(.data$urls_url),
+                  urls_count_regex = stringr::str_count(.data$text, url_regex),  # counts links to quoted tweets and media
+                  is_reply = dplyr::if_else(!is.na(.data$reply_to_status_id), TRUE, FALSE),
+                  is_self_reply = dplyr::if_else(.data$is_reply,
+                                                 dplyr::if_else(.data$user_id==.data$reply_to_user_id,
+                                                                TRUE,
+                                                                FALSE),
+                                                 FALSE
+                  )
+    )
+  }
