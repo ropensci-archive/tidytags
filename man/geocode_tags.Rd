@@ -20,6 +20,16 @@ Geographic coordinates (i.e., latitude and longitude) which may then be
 \code{geocode_tags()} retrieves geographic coordinates (i.e., latitude and
   longitude) based on the locations listed in Twitter user profiles.
 }
+\examples{
+  \dontrun{
+  example_url <- "https://docs.google.com/spreadsheets/d/18clYlQeJOc6W5QRuSlJ6_v3snqKJImFhU42bRkM_OX8/edit#gid=8743918"
+  tmp_df <- pull_tweet_data(read_tags(example_url), n = 10)
+  tmp_processed <- process_tweets(tmp_df)
+  tmp_geo_coords <- geocode_tags(tmp_processed)
+  tmp_geo_coords
+  mapview::mapview(tmp_geo_coords$pnt)
+  }
+}
 \seealso{
 A key starting place is Google's
   \href{https://developers.google.com/maps/documentation/geocoding/intro}{
