@@ -169,10 +169,18 @@ length_with_na <-
 
 #' Calculate additional information using tweet metadata
 #'
-#' @param df A dataframe of tweets and full metadata from the Twitter API
+#' @param df A dataframe of tweets and full metadata from the Twitter API as returned
+#'   by \code{pull_tweet_data()}
 #' @return A dataframe with several additional columns: word_count, character_count,
 #'   mentions_count, hashtags_count_api, hashtags_count_regex, has_hashtags,
 #'   urls_count_api, urls_count_regex, is_reply, is_self_reply
+#' @examples
+#'   \dontrun{
+#'   example_url <- "https://docs.google.com/spreadsheets/d/18clYlQeJOc6W5QRuSlJ6_v3snqKJImFhU42bRkM_OX8/edit#gid=8743918"
+#'   tmp_df <- pull_tweet_data(read_tags(example_url), n = 10)
+#'   tmp_processed <- process_tweets(tmp_df)
+#'   tmp_processed
+#'   }
 #' @importFrom rlang .data
 #' @export
 process_tweets <-

@@ -7,12 +7,21 @@
 get_upstream_replies(df)
 }
 \arguments{
-\item{df}{A dataframe or tibble}
+\item{df}{A dataframe of tweets and full metadata from the Twitter API as returned
+by \code{pull_tweet_data()}}
 }
 \value{
-A new dataframe which includes any retrievable upstream replies
+A new, expanded dataframe which includes any retrievable upstream replies
 }
 \description{
 \code{get_upstream_replies()} collects upstream replies not previously found
   in the dataset.
+}
+\examples{
+  \dontrun{
+  example_url <- "https://docs.google.com/spreadsheets/d/18clYlQeJOc6W5QRuSlJ6_v3snqKJImFhU42bRkM_OX8/edit#gid=8743918"
+  tmp_df <- pull_tweet_data(read_tags(example_url), n = 10)
+  new_df <-  get_upstream_replies(tmp_df)
+  new_df
+  }
 }
