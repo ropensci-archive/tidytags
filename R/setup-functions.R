@@ -12,8 +12,14 @@
 #' @param url A valid URL (i.e., hyperlink) to a TAGS tracker
 #' @return A dataframe of the TAGS archive of tweets
 #' @seealso Read more about \code{library(googlesheets4)} \href{https://github.com/tidyverse/googlesheets4}{here}.
+#' @examples
+#'   \dontrun{
+#'   example_url <- "https://docs.google.com/spreadsheets/d/18clYlQeJOc6W5QRuSlJ6_v3snqKJImFhU42bRkM_OX8/edit#gid=8743918"
+#'   read_tags(example_url)
+#'   }
 #' @export
-read_tags <- function(url) {
+read_tags <-
+  function(url) {
   tweet_sheet <- googlesheets4::read_sheet(url, sheet = 2)
   tweet_sheet
 }
@@ -27,17 +33,32 @@ read_tags <- function(url) {
 #'   using this function, \code{get_char_tweet_ids()}, to pull the ID numbers from
 #'   the URL linking to specific tweets.
 #' @param df A dataframe of containing the column name 'status_url'
-#'   (i.e., the hyperlink to specific tweets)
+#'   (i.e., the hyperlink to specific tweets), such as that returned by
+#'   `read_tags()`
+#' @param url_vector A vector of tweet URLs, such as as those contained in
+#'   the 'status_url' column of a dataframe returned by `tidytags::read_tags()`
 #' @return A list or vector of tweet IDs as character strings
+#' @examples
+#'   \dontrun{
+#'   example_url <- "https://docs.google.com/spreadsheets/d/18clYlQeJOc6W5QRuSlJ6_v3snqKJImFhU42bRkM_OX8/edit#gid=8743918"
+#'   get_char_tweet_ids(read_tags(example_url)[1:10, ])
+#'   get_char_tweet_ids(url_vector = read_tags(example_url)$status_url[1:10])
+#'   get_char_tweet_ids(url_vector =  "https://twitter.com/tweet__example/status/1176592704647716864")
+#'   }
 #' @importFrom rlang .data
 #' @export
 get_char_tweet_ids <-
-  function(df) {
-    df <- dplyr::mutate(df,
-                        status_id_char = stringr::str_split_fixed(.data$status_url, "/", n=6)[ ,6]
+  function(df, url_vector = NULL) {
+    ifelse(!is.null(url_vector),
+           new_ids <- stringr::str_split_fixed(url_vector, "/", n = 6)[ ,6],
+           {df <- dplyr::mutate(df,
+                                status_id_char = stringr::str_split_fixed(.data$status_url,
+                                                                          "/", n = 6)[ ,6]
+           )
+           new_ids <- dplyr::pull(df, .data$status_id_char)
+           }
     )
-    dplyr::pull(df,
-                .data$status_id_char)
+    new_ids
   }
 
 #' Retrieve the fullest extent of tweet metadata available from the Twitter API
@@ -46,22 +67,68 @@ get_char_tweet_ids <-
 #'   to query the Twitter API. Using rtweet requires a Twitter developer account;
 #'   see the rtweet vignette \href{https://rtweet.info/articles/auth.html}{Obtaining and using access tokens}
 #'   as a guide to get started.
-#' @param x A list or vector of tweet ID numbers
+#' @param df A dataframe of containing the column name 'status_url'
+#'   (i.e., the hyperlink to specific tweets), such as that returned by
+#'   `read_tags()`
+#' @param url_vector A vector of tweet URLs, such as as those contained in
+#'   the 'status_url' column of a dataframe returned by `tidytags::read_tags()`
+#' @param id_vector A vector of tweet ID numbers, such as as those contained in
+#'   the 'id_str' column of a dataframe returned by `tidytags::read_tags()`
 #' @param n The number of tweets to look up, by default the total number of tweet
 #'   ID numbers available, but capped at 90,000 due to Twitter API limitations.
 #' @return A dataframe of tweets and full metadata from the Twitter API
 #' @seealso Read more about \code{library(rtweet)} \href{https://rtweet.info/}{here}.
+#' @examples
+#'   \dontrun{
+#'   example_url <- "https://docs.google.com/spreadsheets/d/18clYlQeJOc6W5QRuSlJ6_v3snqKJImFhU42bRkM_OX8/edit#gid=8743918"
+#'   pull_tweet_data(read_tags(example_url)[1:10, ])
+#'   pull_tweet_data(read_tags(example_url), n = 10)
+#'   pull_tweet_data(url_vector = read_tags(example_url)$status_url[1:10])
+#'   pull_tweet_data(url_vector = read_tags(example_url)$status_url, n =10)
+#'   pull_tweet_data(id_vector = read_tags(example_url)$id_str[1:10])
+#'   pull_tweet_data(id_vector = read_tags(example_url)$id_str, n =10)
+#'   pull_tweet_data(url_vector =  "https://twitter.com/tweet__example/status/1176592704647716864")
+#'   pull_tweet_data(id_vector =  "1176592704647716864")
+#'   }
 #' @export
 pull_tweet_data <-
-  function(x, n = NULL) {
-    if(is.null(n)) {n <- length(x)}
-    if (length(x) > 90000) {
-      warning("Twitter API only allows lookup of 90,000 tweets at a time;",
-              "collecting data for first 90,000 tweet IDs.",
-              "To process more, use `lookup_many_tweets()`.")
-      x <- x[1:90000]
-    }
-    new_df <- rtweet::lookup_statuses(x[1:n])
+  function(df, url_vector = NULL, id_vector = NULL, n = NULL) {
+    ifelse(!is.null(url_vector),
+           {if(is.null(n)) {n <- length(url_vector)}
+             if (n > 90000) {
+               warning("Twitter API only allows lookup of 90,000 tweets at a time;",
+                       "collecting data for first 90,000 tweet IDs.",
+                       "To process more, use `lookup_many_tweets()`.")
+               url_vector <- url_vector[1:90000]
+               n <- length(url_vector)
+             }
+             new_df <- rtweet::lookup_statuses(get_char_tweet_ids(url_vector[1:n],
+                                                                  url_vector = url_vector)
+             )
+           },
+           ifelse(!is.null(id_vector),
+                  {if(is.null(n)) {n <- length(id_vector)}
+                    if (n > 90000) {
+                      warning("Twitter API only allows lookup of 90,000 tweets at a time;",
+                              "collecting data for first 90,000 tweet IDs.",
+                              "To process more, use `lookup_many_tweets()`.")
+                      id_vector <- id_vector[1:90000]
+                      n <- length(id_vector)
+                    }
+                    new_df <- rtweet::lookup_statuses(id_vector[1:n])
+                  },
+                  {if(is.null(n)) {n <- nrow(df)}
+                    if (n > 90000) {
+                      warning("Twitter API only allows lookup of 90,000 tweets at a time;",
+                              "collecting data for first 90,000 tweet IDs.",
+                              "To process more, use `lookup_many_tweets()`.")
+                      df <- df[1:90000, ]
+                      n <- nrow(df)
+                    }
+                    new_df <- rtweet::lookup_statuses(get_char_tweet_ids(df[1:n, ]))
+                  }
+           )
+    )
     new_df
   }
 

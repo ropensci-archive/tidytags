@@ -4,10 +4,18 @@
 \alias{pull_tweet_data}
 \title{Retrieve the fullest extent of tweet metadata available from the Twitter API}
 \usage{
-pull_tweet_data(x, n = NULL)
+pull_tweet_data(df, url_vector = NULL, id_vector = NULL, n = NULL)
 }
 \arguments{
-\item{x}{A list or vector of tweet ID numbers}
+\item{df}{A dataframe of containing the column name 'status_url'
+(i.e., the hyperlink to specific tweets), such as that returned by
+`read_tags()`}
+
+\item{url_vector}{A vector of tweet URLs, such as as those contained in
+the 'status_url' column of a dataframe returned by `tidytags::read_tags()`}
+
+\item{id_vector}{A vector of tweet ID numbers, such as as those contained in
+the 'id_str' column of a dataframe returned by `tidytags::read_tags()`}
 
 \item{n}{The number of tweets to look up, by default the total number of tweet
 ID numbers available, but capped at 90,000 due to Twitter API limitations.}
@@ -20,6 +28,19 @@ With TAGS imported into R, `pull_tweet_data()` uses the **rtweet** package
   to query the Twitter API. Using rtweet requires a Twitter developer account;
   see the rtweet vignette \href{https://rtweet.info/articles/auth.html}{Obtaining and using access tokens}
   as a guide to get started.
+}
+\examples{
+  \dontrun{
+  example_url <- "https://docs.google.com/spreadsheets/d/18clYlQeJOc6W5QRuSlJ6_v3snqKJImFhU42bRkM_OX8/edit#gid=8743918"
+  pull_tweet_data(read_tags(example_url)[1:10, ])
+  pull_tweet_data(read_tags(example_url), n = 10)
+  pull_tweet_data(url_vector = read_tags(example_url)$status_url[1:10])
+  pull_tweet_data(url_vector = read_tags(example_url)$status_url, n =10)
+  pull_tweet_data(id_vector = read_tags(example_url)$id_str[1:10])
+  pull_tweet_data(id_vector = read_tags(example_url)$id_str, n =10)
+  pull_tweet_data(url_vector =  "https://twitter.com/tweet__example/status/1176592704647716864")
+  pull_tweet_data(id_vector =  "1176592704647716864")
+  }
 }
 \seealso{
 Read more about \code{library(rtweet)} \href{https://rtweet.info/}{here}.

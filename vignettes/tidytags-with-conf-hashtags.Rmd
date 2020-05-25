@@ -40,8 +40,8 @@ Note that your dataset will often contain fewer rows after running `pull_tweet_d
 Here, we demonstrate two different ways of using `pull_tweet_data()`. The first method is to query the Twitter API with the tweet ID numbers from the `id_str` column returned by **rtweet**. However, a limitation of **TAGS** is that the numbers in this column are often corrupted because Google Sheets considers them very large numbers (instead of character strings) and rounds them by putting them into exponential form. The results of this first method are stored in the variable `example_after_rtweet_A` below. The second method pulls the tweet ID numbers from the tweet URLs. For example, the tweet with the URL `https://twitter.com/tweet__example/status/1176592704647716864` has a tweet ID of `1176592704647716864`. The results of this second method are stored in the variable `example_after_rtweet_B` below.
 
 ```{r method-comparison}
-example_after_rtweet_A <- pull_tweet_data(example_df_all$id_str)
-example_after_rtweet_B <- pull_tweet_data(get_char_tweet_ids(example_df_all))
+example_after_rtweet_A <- pull_tweet_data(id_vector = example_df_all$id_str)
+example_after_rtweet_B <- pull_tweet_data(url_vector = example_df_all$status_url)
 ```
 
 ```{r method-comparison-output, echo = FALSE}
@@ -56,14 +56,14 @@ paste0("The TAGS tracker alone collected ", length(names(example_df_all)),
        )
 ```
 
-As of February 24, 2020, the TAGS tracker alone had collected 18 variables associated with 2561 tweets. The first **rtweet** method searching with 'id_str' collected 90 variables associated with 1473 tweets. The second **rtweet** method using 'tidytags::get_char_tweet_ids()' collected 90 variables associated with 2269 tweets.
+As of May 25, 2020, the TAGS tracker alone had collected 18 variables associated with 2,564 tweets. The first  method searching with 'id_str' collected 90 variables associated with 2,268 tweets. The second **rtweet** method using 'tidytags::get_char_tweet_ids()' collected 90 variables associated with 2,268 tweets.
 
-Notice how many more variables are in the dataset after using `pull_tweet_data()`, and how many more tweets are in the dataset when using the second method. Therfore, we strongly recommend the second method, which is why we have included the `get_char_tweet_ids()` in the **tidytags** package. 
+Notice how many more variables are in the dataset after using `pull_tweet_data()`, and how many more tweets are in the dataset when using the second method. Therfore, we strongly recommend the second method, which is why we have included `get_char_tweet_ids()` in the **tidytags** package. 
 
-Now take a quick look at the best result, viewed with the `glimpse()` function from the **dplyr** package:
+The built-in default of `pull_tweet_data()` is to simply enter the dataframe retrieved from  `read_tags()` and implement method B, retieving metadata starting with tweet URLs. That is, `pull_tweet_data(read_tags(example_url))`. Take a quick look at the result, viewed with the `glimpse()` function from the **dplyr** package:
 
 ```{r glimpse}
-example_after_rtweet <- example_after_rtweet_B
+example_after_rtweet <- pull_tweet_data(read_tags(example_url))
 dplyr::glimpse(example_after_rtweet)
 ```
 
@@ -82,9 +82,9 @@ The Twitter API only allows the looking up of 90,000 tweet IDs at a time, a rate
 
 Because our AECT 2019 examples includes fewer than 90,000 tweets (and because `lookup_many_tweets()` involves waiting for 15 minutes between batches), we do not include an example here. However, this function can be used in the same way as `pull_tweet_data()`.
 
-## process_tweets(), process_tweets_flattened()
+## process_tweets()
 
-After `pull_tweet_data()` is used to collect additional information from TAGS tweet IDS (in this case, the `example_after_rtweet` dataframe), **tidytags** functions `process_tweets()` or `process_tweets_flattened()` can be used to calculate additional attributes and add these to the dataframe as new columns. Specifically, 10 new variables are added: word_count, character_count, mentions_count, hashtags_count_api, hashtags_count_regex, has_hashtags, urls_count_api, urls_count_regex, is_reply, and is_self_reply. This means you now have 100 variables associated with the collected tweets.
+After `pull_tweet_data()` is used to collect additional information from TAGS tweet IDS (in this case, the `example_after_rtweet` dataframe), the **tidytags** function `process_tweets()` can be used to calculate additional attributes and add these to the dataframe as new columns. Specifically, 10 new variables are added: word_count, character_count, mentions_count, hashtags_count_api, hashtags_count_regex, has_hashtags, urls_count_api, urls_count_regex, is_reply, and is_self_reply. This results in 100 variables associated with the collected tweets.
 
 ```{r process-tweets, warning = FALSE}
 example_processed <- process_tweets(example_after_rtweet)
