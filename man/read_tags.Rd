@@ -13,7 +13,7 @@ read_tags(url)
 A dataframe of the TAGS archive of tweets
 }
 \description{
-Keep in mind that `read_tags()` uses the **googlesheets** package,
+Keep in mind that `read_tags()` uses the **googlesheets4** package,
   and one requirement is that your TAGS has been published to the web.
   To do this, with the TAGS page open in a browser, go to
   `File` >> `Publish to the web`. The `Link` field should be 'Entire document'
@@ -24,5 +24,5 @@ Keep in mind that `read_tags()` uses the **googlesheets** package,
   be ready to go.
 }
 \seealso{
-Read more about \code{library(googlesheets)} \href{https://github.com/jennybc/googlesheets}{here}.
+Read more about \code{library(googlesheets4)} \href{https://github.com/tidyverse/googlesheets4}{here}.
 }

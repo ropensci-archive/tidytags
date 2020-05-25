@@ -140,7 +140,7 @@ Keep in mind, however, that this process is a bit slow.
 example_urls <- purrr::flatten_chr(example_processed$urls_url)
 example_urls <- example_urls[!is.na(example_urls)] # Remove NA values
 example_domains <- get_url_domain(example_urls)
-domain_table <- as.data.frame(table(example_domains))
+domain_table <- as.tibble(table(example_domains))
 table_sorted <- dplyr::arrange(domain_table, desc(Freq))
 head(table_sorted, 20)
 ```
