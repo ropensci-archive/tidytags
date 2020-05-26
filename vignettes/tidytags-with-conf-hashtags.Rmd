@@ -34,7 +34,7 @@ dim(example_df_all)
 **We note that there are alternate ways to access TAGS files**. One way is to simply download a CSV file from Google Sheets (in Google Sheets, navigate to File -> Download -> Comma-seperated values (CSV) to do so. Be sure to do so from TAGS' Archive page. Once this file is downloaded, you can read it like it like any other CSV using R, e.g.:
 
 ```{r, eval = FALSE}
-example_df_all <- read_csv("my-downloaded-tags-file")
+example_df_all <- read_csv("my-downloaded-tags-file.csv")
 ```
 
 ## pull_tweet_data()
@@ -165,12 +165,24 @@ usethis::edit_r_environ(scope='user')
 
 Once you've saved this file, quit your R session and restart. The function `geocode_tags()` will work for you from now on. 
 
-You can pair `geocode_tags()` with the **mapview** package to allow for quick, inteactive viewing of the geocoded data; read more about mapview [here](https://r-spatial.github.io/mapview/). There are many additional R packages that can plot coordinates on a map; which you choose is largely a matter of personal preference.
+You can pair `geocode_tags()` with the **mapview** package to allow for quick, interactive viewing of the geocoded data; read more about mapview [here](https://r-spatial.github.io/mapview/). There are many additional R packages that can plot coordinates on a map; which you choose is largely a matter of personal preference.
 
-```{r make-map, message = FALSE, warning = FALSE}
-example_unique_places <- dplyr::distinct(example_processed, location, .keep_all = TRUE)
+First, we identify the unique individuals in the dataset:
+
+```{r process-data-for-amp, message = FALSE, warning = FALSE}
+example_unique_places <- dplyr::distinct(example_processed, screen_name, .keep_all = TRUE)
+```
+
+Then, we geocode the locations with the `geocode_tags()` function, which takes a tibble:
+
+```{r, geocode-data}
 example_geo_coords <- geocode_tags(example_unique_places)
-example_map <- mapview::mapview(example_geo_coords$pnt) 
+```
+
+Finally, it's easy to visualize the data using the `mapview()` function from the {mapview} package"
+
+```{r, mapview}
+example_map <- mapview::mapview(example_geo_coords$pnt)
 ```
 
 At this point, you can view an interactive map in your R environment by simply calling `example_map`. 
