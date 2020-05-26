@@ -10,23 +10,28 @@
 #' @seealso Compare to other \code{tidtags} functions such as \code{get_retweets()},
 #'   \code{get_quotes()}, \code{get_mentions()}, and \code{create_edgelist()}.
 #' @examples
-#'   \dontrun{
-#'   example_url <- "https://docs.google.com/spreadsheets/d/18clYlQeJOc6W5QRuSlJ6_v3snqKJImFhU42bRkM_OX8/edit#gid=8743918"
-#'   tmp_df <- pull_tweet_data(read_tags(example_url), n = 10)
-#'   get_replies(tmp_df)
-#'   }
+#'
+#' \dontrun{
+#' example_url <- "https://docs.google.com/spreadsheets/d/18clYlQeJOc6W5QRuSlJ6_v3snqKJImFhU42bRkM_OX8/edit#gid=8743918"
+#' tmp_df <- pull_tweet_data(read_tags(example_url), n = 10)
+#' get_replies(tmp_df)
+#' }
 #' @importFrom rlang .data
 #' @export
 get_replies <-
   function(df) {
     processed_df <- process_tweets(df)
-    replies <- dplyr::filter(processed_df,
-                             .data$is_reply)
+    replies <- dplyr::filter(
+      processed_df,
+      .data$is_reply
+    )
     replies <- dplyr::select(replies,
-                             sender = .data$screen_name,
-                             receiver = .data$reply_to_screen_name)
+      sender = .data$screen_name,
+      receiver = .data$reply_to_screen_name
+    )
     replies <- dplyr::mutate(replies,
-                             edge_type = "reply")
+      edge_type = "reply"
+    )
     replies
   }
 
@@ -42,23 +47,28 @@ get_replies <-
 #' @seealso Compare to other \code{tidtags} functions such as \code{get_replies()},
 #'   \code{get_quotes()}, \code{get_mentions()}, and \code{create_edgelist()}.
 #' @examples
-#'   \dontrun{
-#'   example_url <- "https://docs.google.com/spreadsheets/d/18clYlQeJOc6W5QRuSlJ6_v3snqKJImFhU42bRkM_OX8/edit#gid=8743918"
-#'   tmp_df <- pull_tweet_data(read_tags(example_url), n = 10)
-#'   get_retweets(tmp_df)
-#'   }
+#'
+#' \dontrun{
+#' example_url <- "https://docs.google.com/spreadsheets/d/18clYlQeJOc6W5QRuSlJ6_v3snqKJImFhU42bRkM_OX8/edit#gid=8743918"
+#' tmp_df <- pull_tweet_data(read_tags(example_url), n = 10)
+#' get_retweets(tmp_df)
+#' }
 #' @importFrom rlang .data
 #' @export
 get_retweets <-
   function(df) {
     processed_df <- process_tweets(df)
-    RTs <- dplyr::filter(processed_df,
-                         .data$is_retweet)
+    RTs <- dplyr::filter(
+      processed_df,
+      .data$is_retweet
+    )
     RTs <- dplyr::select(RTs,
-                         sender = .data$screen_name,
-                         receiver = .data$retweet_screen_name)
+      sender = .data$screen_name,
+      receiver = .data$retweet_screen_name
+    )
     RTs <- dplyr::mutate(RTs,
-                         edge_type = "retweet")
+      edge_type = "retweet"
+    )
     RTs
   }
 
@@ -74,23 +84,28 @@ get_retweets <-
 #' @seealso Compare to other \code{tidtags} functions such as \code{get_replies()},
 #'   \code{get_retweets()}, \code{get_mentions()}, and \code{create_edgelist()}.
 #' @examples
-#'   \dontrun{
-#'   example_url <- "https://docs.google.com/spreadsheets/d/18clYlQeJOc6W5QRuSlJ6_v3snqKJImFhU42bRkM_OX8/edit#gid=8743918"
-#'   tmp_df <- pull_tweet_data(read_tags(example_url), n = 10)
-#'   get_quotes(tmp_df)
-#'   }
+#'
+#' \dontrun{
+#' example_url <- "https://docs.google.com/spreadsheets/d/18clYlQeJOc6W5QRuSlJ6_v3snqKJImFhU42bRkM_OX8/edit#gid=8743918"
+#' tmp_df <- pull_tweet_data(read_tags(example_url), n = 10)
+#' get_quotes(tmp_df)
+#' }
 #' @importFrom rlang .data
 #' @export
 get_quotes <-
   function(df) {
     processed_df <- process_tweets(df)
-    quotes <- dplyr::filter(processed_df,
-                            .data$is_quote)
+    quotes <- dplyr::filter(
+      processed_df,
+      .data$is_quote
+    )
     quotes <- dplyr::select(quotes,
-                            sender = .data$screen_name,
-                            receiver = .data$quoted_screen_name)
+      sender = .data$screen_name,
+      receiver = .data$quoted_screen_name
+    )
     quotes <- dplyr::mutate(quotes,
-                            edge_type = "quote-tweet")
+      edge_type = "quote-tweet"
+    )
     quotes
   }
 
@@ -106,25 +121,31 @@ get_quotes <-
 #' @seealso Compare to other \code{tidtags} functions such as \code{get_replies()},
 #'   \code{get_retweets()}, \code{get_quotes()}, and \code{create_edgelist()}.
 #' @examples
-#'   \dontrun{
-#'   example_url <- "https://docs.google.com/spreadsheets/d/18clYlQeJOc6W5QRuSlJ6_v3snqKJImFhU42bRkM_OX8/edit#gid=8743918"
-#'   tmp_df <- pull_tweet_data(read_tags(example_url), n = 10)
-#'   get_mentions(tmp_df)
-#'   }
+#'
+#' \dontrun{
+#' example_url <- "https://docs.google.com/spreadsheets/d/18clYlQeJOc6W5QRuSlJ6_v3snqKJImFhU42bRkM_OX8/edit#gid=8743918"
+#' tmp_df <- pull_tweet_data(read_tags(example_url), n = 10)
+#' get_mentions(tmp_df)
+#' }
 #' @importFrom rlang .data
 #' @export
 get_mentions <-
   function(df) {
     processed_df <- process_tweets(df)
     mentions <- dplyr::select(processed_df,
-                              sender = .data$screen_name,
-                              receiver = .data$mentions_screen_name)
+      sender = .data$screen_name,
+      receiver = .data$mentions_screen_name
+    )
     mentions <- tidyr::unnest(mentions,
-                              cols = .data$receiver)
-    mentions <- dplyr::filter(mentions,
-                              !is.na(.data$receiver))
+      cols = .data$receiver
+    )
+    mentions <- dplyr::filter(
+      mentions,
+      !is.na(.data$receiver)
+    )
     mentions <- dplyr::mutate(mentions,
-                              edge_type = "mention")
+      edge_type = "mention"
+    )
     mentions
   }
 
@@ -141,11 +162,12 @@ get_mentions <-
 #' @seealso Compare to other \code{tidtags} functions such as \code{get_replies()},
 #'   \code{get_retweets()}, \code{get_quotes()}, and \code{get_mentions()}.
 #' @examples
-#'   \dontrun{
-#'   example_url <- "https://docs.google.com/spreadsheets/d/18clYlQeJOc6W5QRuSlJ6_v3snqKJImFhU42bRkM_OX8/edit#gid=8743918"
-#'   tmp_df <- pull_tweet_data(read_tags(example_url), n = 10)
-#'   create_edgelist(tmp_df)
-#'   }
+#'
+#' \dontrun{
+#' example_url <- "https://docs.google.com/spreadsheets/d/18clYlQeJOc6W5QRuSlJ6_v3snqKJImFhU42bRkM_OX8/edit#gid=8743918"
+#' tmp_df <- pull_tweet_data(read_tags(example_url), n = 10)
+#' create_edgelist(tmp_df)
+#' }
 #' @importFrom rlang .data
 #' @export
 create_edgelist <-
@@ -162,9 +184,11 @@ create_edgelist <-
     quote_edges <- get_quotes(processed_df)
     mention_edges <- get_mentions(processed_df)
 
-    full_edgelist <- dplyr::bind_rows(reply_edges,
-                                      retweet_edges,
-                                      quote_edges,
-                                      mention_edges)
+    full_edgelist <- dplyr::bind_rows(
+      reply_edges,
+      retweet_edges,
+      quote_edges,
+      mention_edges
+    )
     full_edgelist
   }

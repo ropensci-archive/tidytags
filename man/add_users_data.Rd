@@ -25,11 +25,12 @@ A dataframe in the form of an edgelist (i.e., with senders and receivers)
   "_receiver" to the column names
 }
 \examples{
-  \dontrun{
-  example_url <- "https://docs.google.com/spreadsheets/d/18clYlQeJOc6W5QRuSlJ6_v3snqKJImFhU42bRkM_OX8/edit#gid=8743918"
-  tmp_df <- pull_tweet_data(read_tags(example_url), n = 10)
-  add_users_data(create_edgelist(tmp_df), rtweet::users_data(tmp_df))
-  }
+
+\dontrun{
+example_url <- "https://docs.google.com/spreadsheets/d/18clYlQeJOc6W5QRuSlJ6_v3snqKJImFhU42bRkM_OX8/edit#gid=8743918"
+tmp_df <- pull_tweet_data(read_tags(example_url), n = 10)
+add_users_data(create_edgelist(tmp_df), rtweet::users_data(tmp_df))
+}
 }
 \seealso{
 Review documentation for \code{rtweet::users_data()} for a full list

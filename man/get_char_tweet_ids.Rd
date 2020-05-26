@@ -26,10 +26,11 @@ This function is useful because Google Sheets (and hence TAGS)
   the URL linking to specific tweets.
 }
 \examples{
-  \dontrun{
-  example_url <- "https://docs.google.com/spreadsheets/d/18clYlQeJOc6W5QRuSlJ6_v3snqKJImFhU42bRkM_OX8/edit#gid=8743918"
-  get_char_tweet_ids(read_tags(example_url)[1:10, ])
-  get_char_tweet_ids(url_vector = read_tags(example_url)$status_url[1:10])
-  get_char_tweet_ids(url_vector =  "https://twitter.com/tweet__example/status/1176592704647716864")
-  }
+
+\dontrun{
+example_url <- "https://docs.google.com/spreadsheets/d/18clYlQeJOc6W5QRuSlJ6_v3snqKJImFhU42bRkM_OX8/edit#gid=8743918"
+get_char_tweet_ids(read_tags(example_url)[1:10, ])
+get_char_tweet_ids(url_vector = read_tags(example_url)$status_url[1:10])
+get_char_tweet_ids(url_vector = "https://twitter.com/tweet__example/status/1176592704647716864")
+}
 }

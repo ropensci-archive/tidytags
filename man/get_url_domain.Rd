@@ -23,10 +23,11 @@ A list or vector of Web domain names
   longitude) based on the locations listed in Twitter user profiles
 }
 \examples{
-  \dontrun{
-  short_url <- "http://bit.ly/2SfWO3K"
-  get_url_domain(short_url)
-  }
+
+\dontrun{
+short_url <- "http://bit.ly/2SfWO3K"
+get_url_domain(short_url)
+}
 }
 \seealso{
 Read the documentation for \code{longurl::expand_urls()} and

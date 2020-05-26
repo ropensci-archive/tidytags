@@ -18,10 +18,11 @@ A new, expanded dataframe which includes any retrievable upstream replies
   in the dataset.
 }
 \examples{
-  \dontrun{
-  example_url <- "https://docs.google.com/spreadsheets/d/18clYlQeJOc6W5QRuSlJ6_v3snqKJImFhU42bRkM_OX8/edit#gid=8743918"
-  tmp_df <- pull_tweet_data(read_tags(example_url), n = 10)
-  new_df <-  get_upstream_replies(tmp_df)
-  new_df
-  }
+
+\dontrun{
+example_url <- "https://docs.google.com/spreadsheets/d/18clYlQeJOc6W5QRuSlJ6_v3snqKJImFhU42bRkM_OX8/edit#gid=8743918"
+tmp_df <- pull_tweet_data(read_tags(example_url), n = 10)
+new_df <- get_upstream_replies(tmp_df)
+new_df
+}
 }

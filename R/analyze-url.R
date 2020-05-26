@@ -12,10 +12,11 @@
 #' @seealso Read the documentation for \code{longurl::expand_urls()} and
 #'   \code{urltools::domain()}.
 #' @examples
-#'   \dontrun{
-#'   short_url <- "http://bit.ly/2SfWO3K"
-#'   get_url_domain(short_url)
-#'   }
+#'
+#' \dontrun{
+#' short_url <- "http://bit.ly/2SfWO3K"
+#' get_url_domain(short_url)
+#' }
 #' @export
 get_url_domain <-
   function(x, wait = 10) {

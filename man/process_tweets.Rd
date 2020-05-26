@@ -19,10 +19,11 @@ A dataframe with several additional columns: word_count, character_count,
 Calculate additional information using tweet metadata
 }
 \examples{
-  \dontrun{
-  example_url <- "https://docs.google.com/spreadsheets/d/18clYlQeJOc6W5QRuSlJ6_v3snqKJImFhU42bRkM_OX8/edit#gid=8743918"
-  tmp_df <- pull_tweet_data(read_tags(example_url), n = 10)
-  tmp_processed <- process_tweets(tmp_df)
-  tmp_processed
-  }
+
+\dontrun{
+example_url <- "https://docs.google.com/spreadsheets/d/18clYlQeJOc6W5QRuSlJ6_v3snqKJImFhU42bRkM_OX8/edit#gid=8743918"
+tmp_df <- pull_tweet_data(read_tags(example_url), n = 10)
+tmp_processed <- process_tweets(tmp_df)
+tmp_processed
+}
 }

@@ -25,10 +25,11 @@ Keep in mind that \code{read_tags()} uses the **googlesheets4** package,
   Be sure to put quotations marks around the URL when entering it into \code{read_tags()}.
 }
 \examples{
-  \dontrun{
-  example_url <- "https://docs.google.com/spreadsheets/d/18clYlQeJOc6W5QRuSlJ6_v3snqKJImFhU42bRkM_OX8/edit#gid=8743918"
-  read_tags(example_url)
-  }
+
+\dontrun{
+example_url <- "https://docs.google.com/spreadsheets/d/18clYlQeJOc6W5QRuSlJ6_v3snqKJImFhU42bRkM_OX8/edit#gid=8743918"
+read_tags(example_url)
+}
 }
 \seealso{
 Read more about \code{library(googlesheets4)} \href{https://github.com/tidyverse/googlesheets4}{here}.

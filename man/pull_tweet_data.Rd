@@ -35,17 +35,18 @@ With a TAGS archive imported into R, \code{pull_tweet_data()} uses the **rtweet*
   this file directly using the \code{usethis::edit_r_environ(scope='user')} function.
 }
 \examples{
-  \dontrun{
-  example_url <- "https://docs.google.com/spreadsheets/d/18clYlQeJOc6W5QRuSlJ6_v3snqKJImFhU42bRkM_OX8/edit#gid=8743918"
-  pull_tweet_data(read_tags(example_url)[1:10, ])
-  pull_tweet_data(read_tags(example_url), n = 10)
-  pull_tweet_data(url_vector = read_tags(example_url)$status_url[1:10])
-  pull_tweet_data(url_vector = read_tags(example_url)$status_url, n =10)
-  pull_tweet_data(id_vector = read_tags(example_url)$id_str[1:10])
-  pull_tweet_data(id_vector = read_tags(example_url)$id_str, n =10)
-  pull_tweet_data(url_vector =  "https://twitter.com/tweet__example/status/1176592704647716864")
-  pull_tweet_data(id_vector =  "1176592704647716864")
-  }
+
+\dontrun{
+example_url <- "https://docs.google.com/spreadsheets/d/18clYlQeJOc6W5QRuSlJ6_v3snqKJImFhU42bRkM_OX8/edit#gid=8743918"
+pull_tweet_data(read_tags(example_url)[1:10, ])
+pull_tweet_data(read_tags(example_url), n = 10)
+pull_tweet_data(url_vector = read_tags(example_url)$status_url[1:10])
+pull_tweet_data(url_vector = read_tags(example_url)$status_url, n = 10)
+pull_tweet_data(id_vector = read_tags(example_url)$id_str[1:10])
+pull_tweet_data(id_vector = read_tags(example_url)$id_str, n = 10)
+pull_tweet_data(url_vector = "https://twitter.com/tweet__example/status/1176592704647716864")
+pull_tweet_data(id_vector = "1176592704647716864")
+}
 }
 \seealso{
 Read more about \code{library(rtweet)} \href{https://rtweet.info/}{here}.
