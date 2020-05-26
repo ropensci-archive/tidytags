@@ -1,20 +1,27 @@
 #' Retrieve geographic coordinates
 #'
 #' \code{geocode_tags()} retrieves geographic coordinates (i.e., latitude and
-#'   longitude) based on the locations listed in Twitter user profiles.
+#'   longitude) based on the locations listed in Twitter user profiles. \code{geocode_tags()}
+#'   pulls from the Google Geocoding API, which requires a Google Geocoding API Key.
+#'   You can easily secure a key through Google Cloud Platform;
+#'   \href{https://developers.google.com/maps/documentation/geocoding/get-api-key}{read more here}.
+#'   We recommend saving your Google Geocoding API Key in the \code{.Renviron} file as
+#'   **Google_API_key**. You can quickly access this file using the R code
+#'   \code{usethis::edit_r_environ(scope='user')}. Add a line to this file that reads:
+#'   \code{Google_API_key="PasteYourGoogleKeyInsideTheseQuotes"}. To read your key into R,
+#'   use the code \code{Sys.getenv('Google_API_key')}. Note that the \code{geocode_tags()}
+#'   function retrieves your saved API key automatically and securely. Once you've
+#'   saved the \code{.Renviron} file, quit your R session and restart. The function
+#'   \code{geocode_tags()} will work for you from now on.
 #' @param df A dataframe or tibble
 #' @param google_key A Google Developers API key which will need to be obtained
 #'   by the user
 #' @return Geographic coordinates (i.e., latitude and longitude) which may then be
 #'   used to plot locations on a map
-#' @seealso A key starting place is Google's
-#'   \href{https://developers.google.com/maps/documentation/geocoding/intro}{
-#'   geocoding documentation} for developers. This webpage describes the process
-#'   of obtaining a Google Developers API key. Blog posts from
-#'   \href{https://www.jessesadler.com/post/geocoding-with-r/}{Jesse Sadler}
-#'   and \href{https://www.littlemissdata.com/blog/maps}{Laura Ellis}
-#'   may also provide additional inspiration for geocoding. Finally, the
-#'   \code{ggmap} package can provide additional functionality for visualizing
+#' @seealso Blog posts from \href{https://www.jessesadler.com/post/geocoding-with-r/}{Jesse Sadler} and
+#'   \href{https://www.littlemissdata.com/blog/maps}{Laura Ellis} may also provide additional inspiration for geocoding.
+#'
+#'   The **ggmap** package can provide additional functionality for visualizing
 #'   geographic data.
 #' @examples
 #'   \dontrun{

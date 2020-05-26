@@ -20,7 +20,7 @@ Most of the information in this vignette is available scattered throughout the R
 
 To simply view a TAGS archive, you can use `read_tags()`. Here, we've openly shared a TAGS tracker that has been collecting tweets associated with the AECT 2019 since September 30, 2019. As of February 24, 2020, this tracker had collected **2,561 tweets**. This tracker is active through today.
 
-Keep in mind that `read_tags()` uses the **googlesheets4** package, and one requirement is that your TAGS has been published to the web. To do this, with the TAGS page open in a browser, go to `File` >> `Publish to the web`. The `Link` field should be 'Entire document' and the `Embed` field should be 'Web page.' If everything looks right, then click the `Publish` button. Next, click the `Share` button in the top right corner of the Google Sheets window, select `Get shareable link`, and set the permissions to 'Anyone with the link can view.' Now you should be ready to go.
+Keep in mind that **tidytags** allows you to work with a [Twitter Archiving Google Sheet](https://tags.hawksey.info/) (TAGS) in R. This is done with the [googlesheets4 package](https://CRAN.R-project.org/package=googlesheets4). One requirement for using the **googlesheets4** package is that your TAGS tracker has been "published to the web." To do this, with the TAGS page open in a web browser, go to `File >> Publish to the web`. The `Link` field should be 'Entire document' and the `Embed` field should be 'Web page.' If everything looks right, then click the `Publish` button. Next, click the `Share` button in the top right corner of the Google Sheets window, select `Get shareable link`, and set the permissions to 'Anyone with the link can view.' The URL needed for R is simply the URL at the top of the web browser, just copy and paste at this point. Be sure to put quotations marks around the URL when entering it into the `read_tags()` function.
 
 ```{r initial-tags, message = FALSE, warning = FALSE}
 library(tidytags)
@@ -33,7 +33,7 @@ dim(example_df_all)
 
 ## pull_tweet_data()
 
-With TAGS imported into R, **tidytags** allows you to gather quite a bit more information related to the collected tweets with the `pull_tweet_data()` function. This function uses the [rtweet package](https://rtweet.info/) (via `rtweet::lookup_statuses()`) to query the Twitter API. Using **rtweet** requires a Twitter developer account; see the rtweet vignette [Obtaining and using access tokens](https://rtweet.info/articles/auth.html) as a guide to get started. 
+With a TAGS archive imported into R, **tidytags** allows you to gather quite a bit more information related to the collected tweets with the `pull_tweet_data()` function. This function uses the [rtweet package](https://rtweet.info/) (via `rtweet::lookup_statuses()`) to query the Twitter API. Using **rtweet** requires Twitter API keys associated with an approved developer account. Fortunately, the rtweet vignette, [Obtaining and using access tokens](https://rtweet.info/articles/auth.html), provides a very thorough guide to obtaining Twitter API keys. We recommend the second suggested method listed in the rtweet vignette, "2. Access token/secret method." Following these directions, you will run the `rtweet::create_token()` function, which saves your Twitter API keys to the `.Renviron` file. You can also edit this file directly using the `usethis::edit_r_environ(scope='user')` function.
 
 Note that your dataset will often contain fewer rows after running `pull_tweet_data()`. This is because `rtweet::lookup_statuses()` is searching for tweet IDs that are currently available. Any tweets that have been deleted or made "protected" (i.e., private) since TAGS first collected them are dropped from the dataset. Rather than view this as a limitation, we see th asset to help ensure our data better reflects the intentions of the accounts whose tweets we have collected (see Fiesler & Proferes, 2018).
 
@@ -151,13 +151,13 @@ Unsurprisingly, in this dataset, by far the most common domain (as of February 2
 
 Another area to explore is where tweeters in the dataset are from (or, at least, the location they self-identify in their Twitter profiles). **tidytags** makes this straightforward with the `geocode_tags()` function. Note that `geocode_tags()` should be used after additional metadata has been retrieved with `tidytags::pull_tweet_data()`.
 
-`geocode_tags()` pulls from the Google Geocoding API, which requires a Google Geocoding API Key. You can easily secure a key through Google Cloud Platform; [read more here](https://developers.google.com/maps/documentation/geocoding/get-api-key). Next, we recommend saving your Google Geocoding API Key in the .Renviron file as **'Google_API_key'**. You can quickly access this file using the R code `usethis::edit_r_environ(scope='user')`.
+`geocode_tags()` pulls from the Google Geocoding API, which requires a Google Geocoding API Key. You can easily secure a key through Google Cloud Platform; [read more here](https://developers.google.com/maps/documentation/geocoding/get-api-key). We recommend saving your Google Geocoding API Key in the `.Renviron` file as **Google_API_key**. You can quickly access this file using the R code `usethis::edit_r_environ(scope='user')`. Add a line to this file that reads: `Google_API_key="PasteYourGoogleKeyInsideTheseQuotes"`. To read your key into R, use the code `Sys.getenv('Google_API_key')`. Note that the `geocode_tags()` function retrieves your saved API key automatically and securely.
 
 ```{r edit-r-environ}
 usethis::edit_r_environ(scope='user')
 ```
 
-Once you've saved this file, quit your R session and restart. The function `tidytags::geocode_tags()` will work for you from now on. 
+Once you've saved this file, quit your R session and restart. The function `geocode_tags()` will work for you from now on. 
 
 You can pair `geocode_tags()` with the **mapview** package to allow for quick, inteactive viewing of the geocoded data; read more about mapview [here](https://r-spatial.github.io/mapview/). There are many additional R packages that can plot coordinates on a map; which you choose is largely a matter of personal preference.
 

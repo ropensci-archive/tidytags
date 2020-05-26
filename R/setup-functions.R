@@ -1,14 +1,15 @@
 #' Retrieve a TAGS archive of tweets and bring into R
 #'
 #' Keep in mind that \code{read_tags()} uses the **googlesheets4** package,
-#'   and one requirement is that your TAGS has been published to the web.
-#'   To do this, with the TAGS page open in a browser, go to
+#'   and one requirement is that your TAGS tracker has been "published to the web."
+#'   To do this, with the TAGS page open in a web browser, navigate to
 #'   \code{File >> Publish to the web}. The \code{Link} field should be 'Entire document'
 #'   and the \code{Embed} field should be 'Web page.' If everything looks right,
 #'   then click the \code{Publish} button. Next, click the \code{Share} button in the
-#'   top right corner of the Google Sheets window, select \code{Get shareable link},
-#'   and set the permissions to 'Anyone with the link can view.' Now you should
-#'   be ready to go.
+#'   top right corner of the Google Sheets browser window, select \code{Get shareable link},
+#'   and set the permissions to 'Anyone with the link can view.' The URL needed for R
+#'   is simply the URL at the top of the web browser, just copy and paste at this point.
+#'   Be sure to put quotations marks around the URL when entering it into \code{read_tags()}.
 #' @param url A valid URL (i.e., hyperlink) to a TAGS tracker
 #' @return A dataframe of the TAGS archive of tweets
 #' @seealso Read more about \code{library(googlesheets4)} \href{https://github.com/tidyverse/googlesheets4}{here}.
@@ -63,10 +64,15 @@ get_char_tweet_ids <-
 
 #' Retrieve the fullest extent of tweet metadata available from the Twitter API
 #'
-#' With TAGS imported into R, \code{pull_tweet_data()} uses the **rtweet** package
-#'   to query the Twitter API. Using rtweet requires a Twitter developer account;
-#'   see the rtweet vignette \href{https://rtweet.info/articles/auth.html}{Obtaining and using access tokens}
-#'   as a guide to get started.
+#' With a TAGS archive imported into R, \code{pull_tweet_data()} uses the **rtweet**
+#'   package to query the Twitter API. Using rtweet requires Twitter API keys
+#'   associated with an approved developer account. Fortunately, the rtweet vignette,
+#'   \href{https://rtweet.info/articles/auth.html}{Obtaining and using access tokens}, provides a very thorough guide
+#'   to obtaining Twitter API keys. We recommend the second suggested method listed
+#'   in the rtweet vignette, "2. Access token/secret method." Following these
+#'   directions, you will run the \code{rtweet::create_token()} function, which
+#'   saves your Twitter API keys to the \code{.Renviron} file. You can also edit
+#'   this file directly using the \code{usethis::edit_r_environ(scope='user')} function.
 #' @param df A dataframe of containing the column name 'status_url'
 #'   (i.e., the hyperlink to specific tweets), such as that returned by
 #'   \code{read_tags()}

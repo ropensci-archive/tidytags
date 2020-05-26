@@ -24,10 +24,15 @@ ID numbers available, but capped at 90,000 due to Twitter API limitations.}
 A dataframe of tweets and full metadata from the Twitter API
 }
 \description{
-With TAGS imported into R, \code{pull_tweet_data()} uses the **rtweet** package
-  to query the Twitter API. Using rtweet requires a Twitter developer account;
-  see the rtweet vignette \href{https://rtweet.info/articles/auth.html}{Obtaining and using access tokens}
-  as a guide to get started.
+With a TAGS archive imported into R, \code{pull_tweet_data()} uses the **rtweet**
+  package to query the Twitter API. Using rtweet requires Twitter API keys
+  associated with an approved developer account. Fortunately, the rtweet vignette,
+  \href{https://rtweet.info/articles/auth.html}{Obtaining and using access tokens}, provides a very thorough guide
+  to obtaining Twitter API keys. We recommend the second suggested method listed
+  in the rtweet vignette, "2. Access token/secret method." Following these
+  directions, you will run the \code{rtweet::create_token()} function, which
+  saves your Twitter API keys to the \code{.Renviron} file. You can also edit
+  this file directly using the \code{usethis::edit_r_environ(scope='user')} function.
 }
 \examples{
   \dontrun{

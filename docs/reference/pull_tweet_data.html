@@ -10,23 +10,27 @@
 
 
 <!-- jquery -->
-<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js" integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo=" crossorigin="anonymous"></script>
 <!-- Bootstrap -->
 
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha256-916EbMg70RQy9LHiGkXzG8hSg9EdNy97GazNG/aiY1w=" crossorigin="anonymous" />
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.4.1/css/bootstrap.min.css" integrity="sha256-bZLfwXAP04zRMK2BjiO8iu9pf4FbLqX6zitd+tIvLhE=" crossorigin="anonymous" />
 
-<script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha256-U5ZEeKfGNOja007MMD3YBI0A3OSZOQbeG6z2f2Y0hu8=" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.4.1/js/bootstrap.min.js" integrity="sha256-nuL8/2cJ5NDSSwnKD8VqreErSWHtnEP9E7AySL+1ev4=" crossorigin="anonymous"></script>
+
+<!-- bootstrap-toc -->
+<link rel="stylesheet" href="../bootstrap-toc.css">
+<script src="../bootstrap-toc.js"></script>
 
 <!-- Font Awesome icons -->
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.7.1/css/all.min.css" integrity="sha256-nAmazAk6vS34Xqo0BSrTb+abbtFlgsFK7NKSi6o7Y78=" crossorigin="anonymous" />
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.7.1/css/v4-shims.min.css" integrity="sha256-6qHlizsOWFskGlwVOKuns+D1nB6ssZrHQrNj1wGplHc=" crossorigin="anonymous" />
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.12.1/css/all.min.css" integrity="sha256-mmgLkCYLUQbXn0B1SRqzHar6dCnv9oZFPEC1g1cwlkk=" crossorigin="anonymous" />
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.12.1/css/v4-shims.min.css" integrity="sha256-wZjR52fzng1pJHwx4aV2AO3yyTOXrcDW7jBpJtTwVxw=" crossorigin="anonymous" />
 
 <!-- clipboard.js -->
-<script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.4/clipboard.min.js" integrity="sha256-FiZwavyI2V6+EXO1U+xzLG3IKldpiTFf3153ea9zikQ=" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.6/clipboard.min.js" integrity="sha256-inc5kl9MA1hkeYUt+EC3BhlIgyp/2jDIyBLS6k3UxPI=" crossorigin="anonymous"></script>
 
 <!-- headroom.js -->
-<script src="https://cdnjs.cloudflare.com/ajax/libs/headroom/0.9.4/headroom.min.js" integrity="sha256-DJFC1kqIhelURkuza0AvYal5RxMtpzLjFhsnVIeuk+U=" crossorigin="anonymous"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/headroom/0.9.4/jQuery.headroom.min.js" integrity="sha256-ZX/yNShbjqsohH1k95liqY9Gd8uOiE1S4vZc+9KQ1K4=" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/headroom/0.11.0/headroom.min.js" integrity="sha256-AsUX4SJE1+yuDu5+mAVzJbuYNPHj/WroHuZ8Ir/CkE0=" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/headroom/0.11.0/jQuery.headroom.min.js" integrity="sha256-ZX/yNShbjqsohH1k95liqY9Gd8uOiE1S4vZc+9KQ1K4=" crossorigin="anonymous"></script>
 
 <!-- pkgdown -->
 <link href="../pkgdown.css" rel="stylesheet">
@@ -36,11 +40,15 @@
 
 
 <meta property="og:title" content="Retrieve the fullest extent of tweet metadata available from the Twitter API — pull_tweet_data" />
-<meta property="og:description" content="With TAGS imported into R, `pull_tweet_data()` uses the **rtweet** package
-  to query the Twitter API. Using rtweet requires a Twitter developer account;
-  see the rtweet vignette Obtaining and using access tokens
-  as a guide to get started." />
-<meta name="twitter:card" content="summary" />
+<meta property="og:description" content="With a TAGS archive imported into R, pull_tweet_data() uses the **rtweet**
+  package to query the Twitter API. Using rtweet requires Twitter API keys
+  associated with an approved developer account. Fortunately, the rtweet vignette,
+  Obtaining and using access tokens, provides a very thorough guide
+  to obtaining Twitter API keys. We recommend the second suggested method listed
+  in the rtweet vignette, &quot;2. Access token/secret method.&quot; Following these
+  directions, you will run the rtweet::create_token() function, which
+  saves your Twitter API keys to the .Renviron file. You can also edit
+  this file directly using the usethis::edit_r_environ(scope='user') function." />
 
 
 
@@ -58,7 +66,7 @@
 
   </head>
 
-  <body>
+  <body data-spy="scroll" data-target="#toc">
     <div class="container template-reference-topic">
       <header>
       <div class="navbar navbar-default navbar-fixed-top" role="navigation">
@@ -126,20 +134,37 @@
     </div>
 
     <div class="ref-description">
-    <p>With TAGS imported into R, `pull_tweet_data()` uses the **rtweet** package
-  to query the Twitter API. Using rtweet requires a Twitter developer account;
-  see the rtweet vignette <a href='https://rtweet.info/articles/auth.html'>Obtaining and using access tokens</a>
-  as a guide to get started.</p>
+    <p>With a TAGS archive imported into R, <code>pull_tweet_data()</code> uses the **rtweet**
+  package to query the Twitter API. Using rtweet requires Twitter API keys
+  associated with an approved developer account. Fortunately, the rtweet vignette,
+  <a href='https://rtweet.info/articles/auth.html'>Obtaining and using access tokens</a>, provides a very thorough guide
+  to obtaining Twitter API keys. We recommend the second suggested method listed
+  in the rtweet vignette, "2. Access token/secret method." Following these
+  directions, you will run the <code><a href='https://rdrr.io/pkg/rtweet/man/create_token.html'>rtweet::create_token()</a></code> function, which
+  saves your Twitter API keys to the <code>.Renviron</code> file. You can also edit
+  this file directly using the <code><a href='https://usethis.r-lib.org/reference/edit.html'>usethis::edit_r_environ(scope='user')</a></code> function.</p>
     </div>
 
-    <pre class="usage"><span class='fu'>pull_tweet_data</span>(<span class='no'>x</span>, <span class='kw'>n</span> <span class='kw'>=</span> <span class='kw'>NULL</span>)</pre>
+    <pre class="usage"><span class='fu'>pull_tweet_data</span>(<span class='no'>df</span>, <span class='kw'>url_vector</span> <span class='kw'>=</span> <span class='kw'>NULL</span>, <span class='kw'>id_vector</span> <span class='kw'>=</span> <span class='kw'>NULL</span>, <span class='kw'>n</span> <span class='kw'>=</span> <span class='kw'>NULL</span>)</pre>
 
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
     <table class="ref-arguments">
     <colgroup><col class="name" /><col class="desc" /></colgroup>
     <tr>
-      <th>x</th>
-      <td><p>A list or vector of tweet ID numbers</p></td>
+      <th>df</th>
+      <td><p>A dataframe of containing the column name 'status_url'
+(i.e., the hyperlink to specific tweets), such as that returned by
+<code><a href='read_tags.html'>read_tags()</a></code></p></td>
+    </tr>
+    <tr>
+      <th>url_vector</th>
+      <td><p>A vector of tweet URLs, such as as those contained in
+the 'status_url' column of a dataframe returned by <code><a href='read_tags.html'>tidytags::read_tags()</a></code></p></td>
+    </tr>
+    <tr>
+      <th>id_vector</th>
+      <td><p>A vector of tweet ID numbers, such as as those contained in
+the 'id_str' column of a dataframe returned by <code><a href='read_tags.html'>tidytags::read_tags()</a></code></p></td>
     </tr>
     <tr>
       <th>n</th>
@@ -153,17 +178,25 @@ ID numbers available, but capped at 90,000 due to Twitter API limitations.</p></
     <p>A dataframe of tweets and full metadata from the Twitter API</p>
     <h2 class="hasAnchor" id="see-also"><a class="anchor" href="#see-also"></a>See also</h2>
 
-    <div class='dont-index'><p>Read more about <code><a href='https://rdrr.io/r/base/library.html'>library(rtweet)</a></code> <a href='https://rtweet.info/'>here</a>.</p></div>
+    <div class='dont-index'><p>Read more about <code><a href='https://rdrr.io/pkg/rtweet/man'>library(rtweet)</a></code> <a href='https://rtweet.info/'>here</a>.</p></div>
 
+    <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
+    <pre class="examples"><div class='input'>  <span class='kw'>if</span> (<span class='fl'>FALSE</span>) {
+  <span class='no'>example_url</span> <span class='kw'>&lt;-</span> <span class='st'>"https://docs.google.com/spreadsheets/d/18clYlQeJOc6W5QRuSlJ6_v3snqKJImFhU42bRkM_OX8/edit#gid=8743918"</span>
+  <span class='fu'>pull_tweet_data</span>(<span class='fu'><a href='read_tags.html'>read_tags</a></span>(<span class='no'>example_url</span>)[<span class='fl'>1</span>:<span class='fl'>10</span>, ])
+  <span class='fu'>pull_tweet_data</span>(<span class='fu'><a href='read_tags.html'>read_tags</a></span>(<span class='no'>example_url</span>), <span class='kw'>n</span> <span class='kw'>=</span> <span class='fl'>10</span>)
+  <span class='fu'>pull_tweet_data</span>(<span class='kw'>url_vector</span> <span class='kw'>=</span> <span class='fu'><a href='read_tags.html'>read_tags</a></span>(<span class='no'>example_url</span>)$<span class='no'>status_url</span>[<span class='fl'>1</span>:<span class='fl'>10</span>])
+  <span class='fu'>pull_tweet_data</span>(<span class='kw'>url_vector</span> <span class='kw'>=</span> <span class='fu'><a href='read_tags.html'>read_tags</a></span>(<span class='no'>example_url</span>)$<span class='no'>status_url</span>, <span class='kw'>n</span> <span class='kw'>=</span><span class='fl'>10</span>)
+  <span class='fu'>pull_tweet_data</span>(<span class='kw'>id_vector</span> <span class='kw'>=</span> <span class='fu'><a href='read_tags.html'>read_tags</a></span>(<span class='no'>example_url</span>)$<span class='no'>id_str</span>[<span class='fl'>1</span>:<span class='fl'>10</span>])
+  <span class='fu'>pull_tweet_data</span>(<span class='kw'>id_vector</span> <span class='kw'>=</span> <span class='fu'><a href='read_tags.html'>read_tags</a></span>(<span class='no'>example_url</span>)$<span class='no'>id_str</span>, <span class='kw'>n</span> <span class='kw'>=</span><span class='fl'>10</span>)
+  <span class='fu'>pull_tweet_data</span>(<span class='kw'>url_vector</span> <span class='kw'>=</span>  <span class='st'>"https://twitter.com/tweet__example/status/1176592704647716864"</span>)
+  <span class='fu'>pull_tweet_data</span>(<span class='kw'>id_vector</span> <span class='kw'>=</span>  <span class='st'>"1176592704647716864"</span>)
+  }</div></pre>
   </div>
-  <div class="col-md-3 hidden-xs hidden-sm" id="sidebar">
-    <h2>Contents</h2>
-    <ul class="nav nav-pills nav-stacked">
-      <li><a href="#arguments">Arguments</a></li>
-      <li><a href="#value">Value</a></li>
-      <li><a href="#see-also">See also</a></li>
-    </ul>
-
+  <div class="col-md-3 hidden-xs hidden-sm" id="pkgdown-sidebar">
+    <nav id="toc" data-toggle="toc" class="sticky-top">
+      <h2 data-toc-skip>Contents</h2>
+    </nav>
   </div>
 </div>
 
@@ -174,7 +207,7 @@ ID numbers available, but capped at 90,000 due to Twitter API limitations.</p></
 </div>
 
 <div class="pkgdown">
-  <p>Site built with <a href="https://pkgdown.r-lib.org/">pkgdown</a> 1.4.1.</p>
+  <p>Site built with <a href="https://pkgdown.r-lib.org/">pkgdown</a> 1.5.1.</p>
 </div>
 
       </footer>
