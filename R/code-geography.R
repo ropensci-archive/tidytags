@@ -36,7 +36,7 @@
 #' @export
 geocode_tags <-
   function(df, google_key = Sys.getenv("Google_API_key")) {
-    location_index <- which(df$location != "")
+    location_index <- which(df$location != "") | which(str_detect(df$location, "#"))
     locations_minus_blank <- df$location[location_index]
     geo_coordinates <- mapsapi::mp_geocode(locations_minus_blank, key = google_key)
     geo_points <- mapsapi::mp_get_points(geo_coordinates)
