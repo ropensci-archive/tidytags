@@ -46,7 +46,8 @@ Suggests:
     rmarkdown,
     testthat,
     tidyverse,
-    urltools
+    urltools,
+    covr
 Encoding: UTF-8
 VignetteBuilder: knitr
 LazyData: TRUE

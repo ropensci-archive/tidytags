@@ -22,9 +22,11 @@ Starting with a dataframe returned by \code{pull_tweet_data()},
 \examples{
 
 \dontrun{
+
 example_url <- "https://docs.google.com/spreadsheets/d/18clYlQeJOc6W5QRuSlJ6_v3snqKJImFhU42bRkM_OX8/edit#gid=8743918"
 tmp_df <- pull_tweet_data(read_tags(example_url), n = 10)
 get_quotes(tmp_df)
+
 }
 }
 \seealso{

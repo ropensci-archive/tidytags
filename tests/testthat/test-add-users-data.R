@@ -1,5 +1,11 @@
-context("Create edgelist")
+context("Add users' data")
 library(tidytags)
+
+check_api <- function() {
+  if (not_working()) {
+    skip("API not available")
+  }
+}
 
 sample_tweet <-
   readr::read_csv("tests/sample-tweet.csv",
@@ -12,12 +18,15 @@ sample_tweet <-
                   )
   )
 
-sample_edgelist <-
-  tibble::tibble(sender = c("gsa_aect", "gsa_aect"),
-                 receiver = c("AECT", "AECT"),
-                 edge_type = c("retweet", "mention")
-  )
 
-test_that("tweets build into edgelist", {
-  expect_equal(create_edgelist(sample_tweet), sample_edgelist)
+
+#reate_edgelist(sample_tweet)
+#rtweet::users_data(sample_tweet)
+#add_users_data(create_edgelist(sample_tweet), rtweet::users_data(sample_tweet))
+
+
+
+test_that("user data is added properly", {
+  check_api()
+  expect_equal(get_char_tweet_ids(sample_df)[2], "1219758386436165633")
 })

@@ -171,7 +171,7 @@ by the user</p></td>
 
     <h2 class="hasAnchor" id="value"><a class="anchor" href="#value"></a>Value</h2>
 
-    <p>Geographic coordinates (i.e., latitude and longitude) which may then be
+    <p>A vector of geographic coordinates (i.e., latitude and longitude) which may then be
   used to plot locations on a map</p>
     <h2 class="hasAnchor" id="see-also"><a class="anchor" href="#see-also"></a>See also</h2>
 
@@ -181,14 +181,18 @@ by the user</p></td>
   geographic data.</p></div>
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
-    <pre class="examples"><div class='input'>  <span class='kw'>if</span> (<span class='fl'>FALSE</span>) {
-  <span class='no'>example_url</span> <span class='kw'>&lt;-</span> <span class='st'>"https://docs.google.com/spreadsheets/d/18clYlQeJOc6W5QRuSlJ6_v3snqKJImFhU42bRkM_OX8/edit#gid=8743918"</span>
-  <span class='no'>tmp_df</span> <span class='kw'>&lt;-</span> <span class='fu'><a href='pull_tweet_data.html'>pull_tweet_data</a></span>(<span class='fu'><a href='read_tags.html'>read_tags</a></span>(<span class='no'>example_url</span>), <span class='kw'>n</span> <span class='kw'>=</span> <span class='fl'>10</span>)
-  <span class='no'>tmp_processed</span> <span class='kw'>&lt;-</span> <span class='fu'><a href='process_tweets.html'>process_tweets</a></span>(<span class='no'>tmp_df</span>)
-  <span class='no'>tmp_geo_coords</span> <span class='kw'>&lt;-</span> <span class='fu'>geocode_tags</span>(<span class='no'>tmp_processed</span>)
-  <span class='no'>tmp_geo_coords</span>
-  <span class='kw pkg'>mapview</span><span class='kw ns'>::</span><span class='fu'><a href='https://rdrr.io/pkg/mapview/man/mapView.html'>mapview</a></span>(<span class='no'>tmp_geo_coords</span>$<span class='no'>pnt</span>)
-  }</div></pre>
+    <pre class="examples"><div class='input'>
+<span class='kw'>if</span> (<span class='fl'>FALSE</span>) {
+
+<span class='no'>example_url</span> <span class='kw'>&lt;-</span> <span class='st'>"https://docs.google.com/spreadsheets/d/18clYlQeJOc6W5QRuSlJ6_v3snqKJImFhU42bRkM_OX8/edit#gid=8743918"</span>
+<span class='no'>tmp_df</span> <span class='kw'>&lt;-</span> <span class='fu'><a href='pull_tweet_data.html'>pull_tweet_data</a></span>(<span class='fu'><a href='read_tags.html'>read_tags</a></span>(<span class='no'>example_url</span>), <span class='kw'>n</span> <span class='kw'>=</span> <span class='fl'>10</span>)
+<span class='no'>tmp_geo_coords</span> <span class='kw'>&lt;-</span> <span class='fu'>geocode_tags</span>(<span class='no'>tmp_df</span>)
+<span class='no'>tmp_geo_coords</span>
+<span class='no'>tmp_geo_coords</span><span class='kw'>[[</span><span class='fl'>1</span>]]
+<span class='no'>tmp_geo_coords</span><span class='kw'>[[</span><span class='fl'>1</span>]][<span class='fl'>1</span>]; <span class='no'>tmp_geo_coords</span><span class='kw'>[[</span><span class='fl'>1</span>]][<span class='fl'>2</span>]
+<span class='kw pkg'>mapview</span><span class='kw ns'>::</span><span class='fu'><a href='https://rdrr.io/pkg/mapview/man/mapView.html'>mapview</a></span>(<span class='no'>tmp_geo_coords</span>)
+
+}</div></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="pkgdown-sidebar">
     <nav id="toc" data-toggle="toc" class="sticky-top">

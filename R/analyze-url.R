@@ -14,13 +14,16 @@
 #' @examples
 #'
 #' \dontrun{
-#' short_url <- "http://bit.ly/2SfWO3K"
-#' get_url_domain(short_url)
+#'
+#' get_url_domain("https://www.tidyverse.org/packages/")
+#' get_url_domain("https://dplyr.tidyverse.org/")
+#' get_url_domain("http://bit.ly/2SfWO3K")
+#'
 #' }
 #' @export
 get_url_domain <-
   function(x, wait = 10) {
-    new_urls <- longurl::expand_urls(x, seconds = wait)
+    new_urls <- suppressWarnings(longurl::expand_urls(x, seconds = wait))
     domains <- urltools::domain(new_urls$expanded_url)
     domains <- gsub("www[0-9]?.", "", domains)
     domains

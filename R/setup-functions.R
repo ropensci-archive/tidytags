@@ -16,8 +16,10 @@
 #' @examples
 #'
 #' \dontrun{
+#'
 #' example_url <- "https://docs.google.com/spreadsheets/d/18clYlQeJOc6W5QRuSlJ6_v3snqKJImFhU42bRkM_OX8/edit#gid=8743918"
 #' read_tags(example_url)
+#'
 #' }
 #' @export
 read_tags <-
@@ -40,6 +42,7 @@ read_tags <-
 #' @param url_vector A vector of tweet URLs, such as as those contained in
 #'   the 'status_url' column of a dataframe returned by \code{tidytags::read_tags()}
 #' @return A list or vector of tweet IDs as character strings
+#'
 #' @examples
 #'
 #' \dontrun{
@@ -47,9 +50,9 @@ read_tags <-
 #' get_char_tweet_ids(read_tags(example_url)[1:10, ])
 #' get_char_tweet_ids(url_vector = read_tags(example_url)$status_url[1:10])
 #' get_char_tweet_ids(url_vector = "https://twitter.com/tweet__example/status/1176592704647716864")
+#'
 #' }
 #' @importFrom rlang .data
-#' @export
 get_char_tweet_ids <-
   function(df, url_vector = NULL) {
     ifelse(!is.null(url_vector),
@@ -92,6 +95,7 @@ get_char_tweet_ids <-
 #' @examples
 #'
 #' \dontrun{
+#'
 #' example_url <- "https://docs.google.com/spreadsheets/d/18clYlQeJOc6W5QRuSlJ6_v3snqKJImFhU42bRkM_OX8/edit#gid=8743918"
 #' pull_tweet_data(read_tags(example_url)[1:10, ])
 #' pull_tweet_data(read_tags(example_url), n = 10)
@@ -101,6 +105,7 @@ get_char_tweet_ids <-
 #' pull_tweet_data(id_vector = read_tags(example_url)$id_str, n = 10)
 #' pull_tweet_data(url_vector = "https://twitter.com/tweet__example/status/1176592704647716864")
 #' pull_tweet_data(id_vector = "1176592704647716864")
+#'
 #' }
 #' @export
 pull_tweet_data <-
@@ -196,7 +201,6 @@ lookup_many_tweets <-
 #'
 #' @param x A list
 #' @return The number of items in the list
-#' @export
 length_with_na <-
   function(x) {
     ifelse(is.na(x), 0, purrr::map_int(x, length))
@@ -212,10 +216,12 @@ length_with_na <-
 #' @examples
 #'
 #' \dontrun{
+#'
 #' example_url <- "https://docs.google.com/spreadsheets/d/18clYlQeJOc6W5QRuSlJ6_v3snqKJImFhU42bRkM_OX8/edit#gid=8743918"
 #' tmp_df <- pull_tweet_data(read_tags(example_url), n = 10)
 #' tmp_processed <- process_tweets(tmp_df)
 #' tmp_processed
+#'
 #' }
 #' @importFrom rlang .data
 #' @export

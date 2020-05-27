@@ -13,7 +13,7 @@ geocode_tags(df, google_key = Sys.getenv("Google_API_key"))
 by the user}
 }
 \value{
-Geographic coordinates (i.e., latitude and longitude) which may then be
+A vector of geographic coordinates (i.e., latitude and longitude) which may then be
   used to plot locations on a map
 }
 \description{
@@ -34,12 +34,15 @@ Geographic coordinates (i.e., latitude and longitude) which may then be
 \examples{
 
 \dontrun{
+
 example_url <- "https://docs.google.com/spreadsheets/d/18clYlQeJOc6W5QRuSlJ6_v3snqKJImFhU42bRkM_OX8/edit#gid=8743918"
 tmp_df <- pull_tweet_data(read_tags(example_url), n = 10)
-tmp_processed <- process_tweets(tmp_df)
-tmp_geo_coords <- geocode_tags(tmp_processed)
+tmp_geo_coords <- geocode_tags(tmp_df)
 tmp_geo_coords
-mapview::mapview(tmp_geo_coords$pnt)
+tmp_geo_coords[[1]]
+tmp_geo_coords[[1]][1]; tmp_geo_coords[[1]][2]
+mapview::mapview(tmp_geo_coords)
+
 }
 }
 \seealso{

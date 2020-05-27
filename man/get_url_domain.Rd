@@ -25,8 +25,11 @@ A list or vector of Web domain names
 \examples{
 
 \dontrun{
-short_url <- "http://bit.ly/2SfWO3K"
-get_url_domain(short_url)
+
+get_url_domain("https://www.tidyverse.org/packages/")
+get_url_domain("https://dplyr.tidyverse.org/")
+get_url_domain("http://bit.ly/2SfWO3K")
+
 }
 }
 \seealso{

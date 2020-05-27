@@ -31,10 +31,10 @@ example_df_all <- read_tags(example_url)
 dim(example_df_all)
 ```
 
-**We note that there are alternate ways to access TAGS files**. One way is to simply download a CSV file from Google Sheets (in Google Sheets, navigate to File -> Download -> Comma-seperated values (CSV) to do so. Be sure to do so from TAGS' Archive page. Once this file is downloaded, you can read it like it like any other CSV using R, e.g.:
+**Note that there are alternate ways to access TAGS files.** One way is to simply download a CSV file from Google Sheets (in Google Sheets, navigate to `File -> Download -> Comma-seperated values (CSV)` to do so. Be sure to do so from the TAGS Archive page. Once this file is downloaded, you can read it like it like any other CSV using R. For example:
 
 ```{r, eval = FALSE}
-example_df_all <- read_csv("my-downloaded-tags-file.csv")
+example_df_all <- readr::read_csv("my-downloaded-tags-file.csv")
 ```
 
 ## pull_tweet_data()
@@ -173,7 +173,7 @@ First, we identify the unique individuals in the dataset:
 example_unique_places <- dplyr::distinct(example_processed, screen_name, .keep_all = TRUE)
 ```
 
-Then, we geocode the locations with the `geocode_tags()` function, which takes a tibble:
+Then, we geocode the locations with the `geocode_tags()` function, which takes a tibble and outputs a vector of geo-coordinates.
 
 ```{r, geocode-data}
 example_geo_coords <- geocode_tags(example_unique_places)
@@ -182,7 +182,7 @@ example_geo_coords <- geocode_tags(example_unique_places)
 Finally, it's easy to visualize the data using the `mapview()` function from the {mapview} package"
 
 ```{r, mapview}
-example_map <- mapview::mapview(example_geo_coords$pnt)
+example_map <- mapview::mapview(example_geo_coords)
 ```
 
 At this point, you can view an interactive map in your R environment by simply calling `example_map`. 

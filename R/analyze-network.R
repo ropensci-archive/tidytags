@@ -12,12 +12,13 @@
 #' @examples
 #'
 #' \dontrun{
+#'
 #' example_url <- "https://docs.google.com/spreadsheets/d/18clYlQeJOc6W5QRuSlJ6_v3snqKJImFhU42bRkM_OX8/edit#gid=8743918"
 #' tmp_df <- pull_tweet_data(read_tags(example_url), n = 10)
 #' get_replies(tmp_df)
+#'
 #' }
 #' @importFrom rlang .data
-#' @export
 get_replies <-
   function(df) {
     processed_df <- process_tweets(df)
@@ -49,12 +50,13 @@ get_replies <-
 #' @examples
 #'
 #' \dontrun{
+#'
 #' example_url <- "https://docs.google.com/spreadsheets/d/18clYlQeJOc6W5QRuSlJ6_v3snqKJImFhU42bRkM_OX8/edit#gid=8743918"
 #' tmp_df <- pull_tweet_data(read_tags(example_url), n = 10)
 #' get_retweets(tmp_df)
+#'
 #' }
 #' @importFrom rlang .data
-#' @export
 get_retweets <-
   function(df) {
     processed_df <- process_tweets(df)
@@ -86,12 +88,13 @@ get_retweets <-
 #' @examples
 #'
 #' \dontrun{
+#'
 #' example_url <- "https://docs.google.com/spreadsheets/d/18clYlQeJOc6W5QRuSlJ6_v3snqKJImFhU42bRkM_OX8/edit#gid=8743918"
 #' tmp_df <- pull_tweet_data(read_tags(example_url), n = 10)
 #' get_quotes(tmp_df)
+#'
 #' }
 #' @importFrom rlang .data
-#' @export
 get_quotes <-
   function(df) {
     processed_df <- process_tweets(df)
@@ -123,12 +126,13 @@ get_quotes <-
 #' @examples
 #'
 #' \dontrun{
+#'
 #' example_url <- "https://docs.google.com/spreadsheets/d/18clYlQeJOc6W5QRuSlJ6_v3snqKJImFhU42bRkM_OX8/edit#gid=8743918"
 #' tmp_df <- pull_tweet_data(read_tags(example_url), n = 10)
 #' get_mentions(tmp_df)
+#'
 #' }
 #' @importFrom rlang .data
-#' @export
 get_mentions <-
   function(df) {
     processed_df <- process_tweets(df)
@@ -162,14 +166,14 @@ get_mentions <-
 #' @seealso Compare to other \code{tidtags} functions such as \code{get_replies()},
 #'   \code{get_retweets()}, \code{get_quotes()}, and \code{get_mentions()}.
 #' @examples
+#'
+#' \dontrun{
+#'
 #' example_url <- "https://docs.google.com/spreadsheets/d/18clYlQeJOc6W5QRuSlJ6_v3snqKJImFhU42bRkM_OX8/edit#gid=8743918"
 #' tmp_df <- pull_tweet_data(read_tags(example_url), n = 10)
 #' edgelist <- create_edgelist(tmp_df)
 #' edgelist
-#' \dontrun{
-#' example_url <- "https://docs.google.com/spreadsheets/d/18clYlQeJOc6W5QRuSlJ6_v3snqKJImFhU42bRkM_OX8/edit#gid=8743918"
-#' tmp_df <- pull_tweet_data(read_tags(example_url), n = 10)
-#' create_edgelist(tmp_df)
+#'
 #' }
 #' @importFrom rlang .data
 #' @export
