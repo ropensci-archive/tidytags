@@ -124,10 +124,13 @@ pull_tweet_data <-
           url_vector <- url_vector[1:90000]
           n <- length(url_vector)
         }
+
         new_df <- rtweet::lookup_statuses(get_char_tweet_ids(url_vector[1:n],
-          url_vector = url_vector
-        ))
+                                                             url_vector = url_vector[1:n]
+        )
+        )
       },
+
       ifelse(!is.null(id_vector),
         {
           if (is.null(n)) {
@@ -142,12 +145,15 @@ pull_tweet_data <-
             id_vector <- id_vector[1:90000]
             n <- length(id_vector)
           }
+
           new_df <- rtweet::lookup_statuses(id_vector[1:n])
         },
+
         {
           if (is.null(n)) {
             n <- nrow(df)
           }
+
           if (n > 90000) {
             warning(
               "Twitter API only allows lookup of 90,000 tweets at a time;",
@@ -157,17 +163,21 @@ pull_tweet_data <-
             df <- df[1:90000, ]
             n <- nrow(df)
           }
+
           new_df <- rtweet::lookup_statuses(get_char_tweet_ids(df[1:n, ]))
         }
+
       )
     )
+
     new_df
+
   }
 
 #' Retrieve the fullest extent of tweet metadata for more than 90,000 tweets
 #'
-#' This function calls \code{pull_tweet_data()}, but has a built in delay
-#'   of 15 minutes to all the Twitter API to reset after looking up 90,000 tweets.
+#' This function calls \code{pull_tweet_data()}, but has a built-in delay
+#'   of 15 minutes to allow the Twitter API to reset after looking up 90,000 tweets.
 #' @param x A list or vector of tweet ID numbers
 #' @param alarm An audible notification that a batch of 90,000 tweets has been
 #'   completed
@@ -179,8 +189,8 @@ lookup_many_tweets <-
     new_df <- data.frame()
     for (i in 1:n_batches) {
       min_id <- 90000 * i - 89999
-      max_id <- dplyr::if_else(90000 * i < length(x), 90000 * i, length(x))
-      tmp_df <- pull_tweet_data(x[min_id:max_id])
+      max_id <- ifelse(90000 * i < length(x), 90000 * i, length(x))
+      tmp_df <- pull_tweet_data(id_vector = x[min_id:max_id])
       new_df <- rbind(new_df, tmp_df)
       if (alarm == TRUE) {
         beepr::beep(2)

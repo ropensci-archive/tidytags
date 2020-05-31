@@ -41,7 +41,7 @@
 
 <meta property="og:title" content="Retrieve user information for everyone in an edgelist — add_users_data" />
 <meta property="og:description" content="add_users_data() updates an edgelist created with create_edgelist()
-  by appending user data retrieved with rtweet::users_data(). The resulting
+  by appending user data retrieved with rtweet::lookup_users(). The resulting
   dataframe keeps all the columns from rtweet but adds &quot;_sender&quot; or
   &quot;_receiver&quot; to the column names" />
 
@@ -130,12 +130,12 @@
 
     <div class="ref-description">
     <p><code>add_users_data()</code> updates an edgelist created with <code><a href='create_edgelist.html'>create_edgelist()</a></code>
-  by appending user data retrieved with <code><a href='https://rdrr.io/pkg/rtweet/man/users_data.html'>rtweet::users_data()</a></code>. The resulting
+  by appending user data retrieved with <code><a href='https://rdrr.io/pkg/rtweet/man/lookup_users.html'>rtweet::lookup_users()</a></code>. The resulting
   dataframe keeps all the columns from <code>rtweet</code> but adds "_sender" or
   "_receiver" to the column names</p>
     </div>
 
-    <pre class="usage"><span class='fu'>add_users_data</span>(<span class='no'>edgelist</span>, <span class='no'>users_data_from_rtweet</span>)</pre>
+    <pre class="usage"><span class='fu'>add_users_data</span>(<span class='no'>edgelist</span>)</pre>
 
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
     <table class="ref-arguments">
@@ -144,11 +144,6 @@
       <th>edgelist</th>
       <td><p>An edgelist of senders and receivers, such as that returned by
 the function <code><a href='create_edgelist.html'>create_edgelist()</a></code>.</p></td>
-    </tr>
-    <tr>
-      <th>users_data_from_rtweet</th>
-      <td><p>A dataframe with Twitter users data retrieved using
-the function <code><a href='https://rdrr.io/pkg/rtweet/man/users_data.html'>rtweet::users_data()</a></code>.</p></td>
     </tr>
     </table>
 
@@ -159,8 +154,8 @@ the function <code><a href='https://rdrr.io/pkg/rtweet/man/users_data.html'>rtwe
   and receivers.</p>
     <h2 class="hasAnchor" id="see-also"><a class="anchor" href="#see-also"></a>See also</h2>
 
-    <div class='dont-index'><p>Review documentation for <code><a href='https://rdrr.io/pkg/rtweet/man/users_data.html'>rtweet::users_data()</a></code> for a full list
-  of metadat retrieved (i.e., column names) by this function.</p></div>
+    <div class='dont-index'><p>Review documentation for <code><a href='https://rdrr.io/pkg/rtweet/man/lookup_users.html'>rtweet::lookup_users()</a></code> for a full list
+  of metadata retrieved (i.e., column names) by this function.</p></div>
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
     <pre class="examples"><div class='input'>
@@ -168,7 +163,7 @@ the function <code><a href='https://rdrr.io/pkg/rtweet/man/users_data.html'>rtwe
 
 <span class='no'>example_url</span> <span class='kw'>&lt;-</span> <span class='st'>"https://docs.google.com/spreadsheets/d/18clYlQeJOc6W5QRuSlJ6_v3snqKJImFhU42bRkM_OX8/edit#gid=8743918"</span>
 <span class='no'>tmp_df</span> <span class='kw'>&lt;-</span> <span class='fu'><a href='pull_tweet_data.html'>pull_tweet_data</a></span>(<span class='fu'><a href='read_tags.html'>read_tags</a></span>(<span class='no'>example_url</span>), <span class='kw'>n</span> <span class='kw'>=</span> <span class='fl'>10</span>)
-<span class='fu'>add_users_data</span>(<span class='fu'><a href='create_edgelist.html'>create_edgelist</a></span>(<span class='no'>tmp_df</span>), <span class='kw pkg'>rtweet</span><span class='kw ns'>::</span><span class='fu'><a href='https://rdrr.io/pkg/rtweet/man/users_data.html'>users_data</a></span>(<span class='no'>tmp_df</span>))
+<span class='fu'>add_users_data</span>(<span class='fu'><a href='create_edgelist.html'>create_edgelist</a></span>(<span class='no'>tmp_df</span>))
 
 }</div></pre>
   </div>

@@ -275,7 +275,7 @@ Finally, **tidytags** also has functionality to add user-level data to an edgeli
 
 ```{r user-data}
 example_users_data <- rtweet::users_data(example_processed)
-example_senders_receivers_data <- add_users_data(example_edgelist, example_users_data)
+example_senders_receivers_data <- add_users_data(example_edgelist)
 dplyr::glimpse(example_senders_receivers_data)
 ```
 

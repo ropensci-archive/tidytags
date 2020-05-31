@@ -18,7 +18,7 @@ library(tidytags)
 #readr::write_csv(sample_tweet, "tests/sample-tweet.csv")
 
 sample_data <-
-  readr::read_csv("tests/sample-data.csv",
+  readr::read_csv("sample-data.csv",
                   col_names = TRUE,
                   col_types = readr::cols(user_id = readr::col_character(),
                                           status_id = readr::col_character(),
@@ -28,7 +28,7 @@ sample_data <-
                   )
   )
 sample_tweet <-
-  readr::read_csv("tests/sample-tweet.csv",
+  readr::read_csv("sample-tweet.csv",
                   col_names = TRUE,
                   col_types = readr::cols(user_id = readr::col_character(),
                                           status_id = readr::col_character(),

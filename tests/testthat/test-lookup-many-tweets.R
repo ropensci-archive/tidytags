@@ -1,20 +1,25 @@
-context("Create edgelist")
+context("Pull additional tweet data")
 library(tidytags)
 
-test_that("str_length is number of characters", {
-  expect_equal(str_length("a"), 1)
-  expect_equal(str_length("ab"), 2)
-  expect_equal(str_length("abc"), 3)
-})
+test_that("lookup_many_tweets() retrieves additional metadata like pull_tweet_data()", {
+  skip_on_cran()
 
-test_that("str_length of factor is length of level", {
-  expect_equal(str_length(factor("a")), 1)
-  expect_equal(str_length(factor("ab")), 2)
-  expect_equal(str_length(factor("abc")), 3)
-})
+  example_url <- "https://docs.google.com/spreadsheets/d/18clYlQeJOc6W5QRuSlJ6_v3snqKJImFhU42bRkM_OX8/edit#gid=8743918"
+  x <- read_tags(example_url)
+  n_tweets <- 10
 
-test_that("str_length of missing is missing", {
-  expect_equal(str_length(NA), NA_integer_)
-  expect_equal(str_length(c(NA, 1)), c(NA, 1))
-  expect_equal(str_length("NA"), 2)
+  ids <- x$id_str[1:n_tweets]
+  y <- lookup_many_tweets(ids)
+  z <- pull_tweet_data(id_vector = ids)
+
+  expect_equal(is.data.frame(y), TRUE)
+  expect_named(y)
+  expect_true("user_id" %in% names(y))
+  expect_true("status_id" %in% names(y))
+  expect_true("status_url" %in% names(y))
+  expect_true("reply_to_status_id" %in% names(y))
+  expect_gt(ncol(y), ncol(x))
+  expect_gt(n_tweets + 1, nrow(y))
+  expect_equal(y$user_id, z$user_id)
+  expect_equal(y$status_id, z$status_id)
 })

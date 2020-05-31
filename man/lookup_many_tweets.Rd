@@ -16,6 +16,6 @@ completed}
 A dataframe of tweets and full metadata from the Twitter API
 }
 \description{
-This function calls \code{pull_tweet_data()}, but has a built in delay
-  of 15 minutes to all the Twitter API to reset after looking up 90,000 tweets.
+This function calls \code{pull_tweet_data()}, but has a built-in delay
+  of 15 minutes to allow the Twitter API to reset after looking up 90,000 tweets.
 }

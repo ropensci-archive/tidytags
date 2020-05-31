@@ -1,20 +1,50 @@
-context("Create edgelist")
+context("Get upstream replies")
 library(tidytags)
 
-test_that("str_length is number of characters", {
-  expect_equal(str_length("a"), 1)
-  expect_equal(str_length("ab"), 2)
-  expect_equal(str_length("abc"), 3)
+
+test_that("get_upstream_replies() finds additional replies", {
+  skip_on_cran()
+
+  example_url <- "https://docs.google.com/spreadsheets/d/18clYlQeJOc6W5QRuSlJ6_v3snqKJImFhU42bRkM_OX8/edit#gid=8743918"
+  x <- read_tags(example_url)
+  y <- pull_tweet_data(x)
+  replies <- dplyr::filter(y, !is.na(reply_to_status_id))
+  replies_plus <- get_upstream_replies(replies)
+
+  expect_equal(is.data.frame(replies_plus), TRUE)
+  expect_named(replies_plus)
+  expect_true("user_id" %in% names(replies_plus))
+  expect_true("status_id" %in% names(replies_plus))
+  expect_true("status_url" %in% names(replies_plus))
+  expect_true("reply_to_status_id" %in% names(replies_plus))
+  expect_gt(ncol(replies_plus), ncol(x))
+  expect_gte(ncol(replies_plus), ncol(replies))
+  expect_gte(nrow(replies_plus), nrow(replies))
 })
 
-test_that("str_length of factor is length of level", {
-  expect_equal(str_length(factor("a")), 1)
-  expect_equal(str_length(factor("ab")), 2)
-  expect_equal(str_length(factor("abc")), 3)
-})
 
-test_that("str_length of missing is missing", {
-  expect_equal(str_length(NA), NA_integer_)
-  expect_equal(str_length(c(NA, 1)), c(NA, 1))
-  expect_equal(str_length("NA"), 2)
+test_that("get_upstream_replies() works with no new replies found", {
+  skip_on_cran()
+
+  sample_data <-
+    readr::read_csv("sample-data.csv",
+                    col_names = TRUE,
+                    col_types = readr::cols(user_id = readr::col_character(),
+                                            status_id = readr::col_character(),
+                                            retweet_status_id = readr::col_character(),
+                                            quoted_status_id = readr::col_character(),
+                                            reply_to_status_id = readr::col_character()
+                    )
+    )
+  replies_plus <- get_upstream_replies(sample_data)
+
+  expect_equal(is.data.frame(replies_plus), TRUE)
+  expect_named(replies_plus)
+  expect_true("user_id" %in% names(replies_plus))
+  expect_true("status_id" %in% names(replies_plus))
+  expect_true("status_url" %in% names(replies_plus))
+  expect_true("reply_to_status_id" %in% names(replies_plus))
+  expect_gt(ncol(replies_plus), ncol(sample_data))
+  expect_gte(ncol(replies_plus), ncol(sample_data))
+  expect_gte(nrow(replies_plus), nrow(sample_data))
 })

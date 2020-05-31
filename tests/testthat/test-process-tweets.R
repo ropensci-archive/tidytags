@@ -1,24 +1,28 @@
 context("Process tweets")
 library(tidytags)
 
-check_api <-
-  function() {
-    if (not_working()) {
-      skip("API not available")
-    }
-  }
+sample_tweet <-
+  readr::read_csv("sample-tweet.csv",
+                  col_names = TRUE,
+                  col_types = readr::cols(user_id = readr::col_character(),
+                                          status_id = readr::col_character(),
+                                          retweet_status_id = readr::col_character(),
+                                          quoted_status_id = readr::col_character(),
+                                          reply_to_status_id = readr::col_character()
+                  )
+  )
 
-sample_tags <-
-  "https://docs.google.com/spreadsheets/d/18clYlQeJOc6W5QRuSlJ6_v3snqKJImFhU42bRkM_OX8/edit#gid=8743918"
-sample_df <-
-  process_tweets(pull_tweet_data(read_tags(sample_tags), n = 10))
-
-test_that("str_length is number of characters", {
-  expect_equal(process_tweets(), 1)
-})
+x <- process_tweets(sample_tweet)
 
 
-test_that("get_char_tweet_ids() works from TAGS", {
-  check_api()
-  expect_equal(get_char_tweet_ids(sample_df)[2], "1219758386436165633")
+test_that("process_tweets() mutates and adds additional columns", {
+  expect_equal(is.data.frame(x), TRUE)
+  expect_named(x)
+  expect_true("user_id" %in% names(x))
+  expect_true("status_id" %in% names(x))
+  expect_true("word_count" %in% names(x))
+  expect_true("is_reply" %in% names(x))
+  expect_gt(ncol(x), ncol(sample_tweet))
+  expect_equal(nrow(x), nrow(sample_tweet))
+  expect_equal(x$screen_name, sample_tweet$screen_name)
 })

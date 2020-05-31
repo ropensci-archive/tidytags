@@ -4,14 +4,11 @@
 \alias{add_users_data}
 \title{Retrieve user information for everyone in an edgelist}
 \usage{
-add_users_data(edgelist, users_data_from_rtweet)
+add_users_data(edgelist)
 }
 \arguments{
 \item{edgelist}{An edgelist of senders and receivers, such as that returned by
 the function \code{create_edgelist()}.}
-
-\item{users_data_from_rtweet}{A dataframe with Twitter users data retrieved using
-the function \code{rtweet::users_data()}.}
 }
 \value{
 A dataframe in the form of an edgelist (i.e., with senders and receivers)
@@ -20,7 +17,7 @@ A dataframe in the form of an edgelist (i.e., with senders and receivers)
 }
 \description{
 \code{add_users_data()} updates an edgelist created with \code{create_edgelist()}
-  by appending user data retrieved with \code{rtweet::users_data()}. The resulting
+  by appending user data retrieved with \code{rtweet::lookup_users()}. The resulting
   dataframe keeps all the columns from \code{rtweet} but adds "_sender" or
   "_receiver" to the column names
 }
@@ -30,11 +27,11 @@ A dataframe in the form of an edgelist (i.e., with senders and receivers)
 
 example_url <- "https://docs.google.com/spreadsheets/d/18clYlQeJOc6W5QRuSlJ6_v3snqKJImFhU42bRkM_OX8/edit#gid=8743918"
 tmp_df <- pull_tweet_data(read_tags(example_url), n = 10)
-add_users_data(create_edgelist(tmp_df), rtweet::users_data(tmp_df))
+add_users_data(create_edgelist(tmp_df))
 
 }
 }
 \seealso{
-Review documentation for \code{rtweet::users_data()} for a full list
-  of metadat retrieved (i.e., column names) by this function.
+Review documentation for \code{rtweet::lookup_users()} for a full list
+  of metadata retrieved (i.e., column names) by this function.
 }
