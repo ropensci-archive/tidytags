@@ -15,6 +15,7 @@ test_that("geo coordinates are extracted properly", {
   expect_equal(round(geocode_tags(sample_locations)[[2]][2], 3), 39.012)
 })
 
+
 test_that("invalid geo coordinates produce warning", {
   skip_on_cran()
 

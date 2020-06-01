@@ -10,6 +10,7 @@ test_that("NA value is length 0", {
   expect_equal(length_with_na(sample_list0), 0)
 })
 
+
 test_that("list with several vales is expected length", {
   expect_equal(length_with_na(sample_list1), 1)
   expect_equal(length_with_na(sample_list2), 2)

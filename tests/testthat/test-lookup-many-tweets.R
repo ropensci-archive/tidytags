@@ -12,7 +12,7 @@ test_that("lookup_many_tweets() retrieves additional metadata like pull_tweet_da
   y <- lookup_many_tweets(ids)
   z <- pull_tweet_data(id_vector = ids)
 
-  expect_equal(is.data.frame(y), TRUE)
+  expect_true(is.data.frame(y))
   expect_named(y)
   expect_true("user_id" %in% names(y))
   expect_true("status_id" %in% names(y))

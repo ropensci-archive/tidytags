@@ -51,7 +51,7 @@ test_that("pull_tweet_data() is able to retrieve additional metadata starting wi
 
   y_from_urls <- pull_tweet_data(url_vector = x$status_url, n = n_tweets)
 
-  expect_equal(is.data.frame(y_from_urls), TRUE)
+  expect_true(is.data.frame(y_from_urls))
   expect_named(y_from_urls)
   expect_true("user_id" %in% names(y_from_urls))
   expect_true("status_id" %in% names(y_from_urls))

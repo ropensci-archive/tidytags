@@ -16,7 +16,7 @@ x <- process_tweets(sample_tweet)
 
 
 test_that("process_tweets() mutates and adds additional columns", {
-  expect_equal(is.data.frame(x), TRUE)
+  expect_true(is.data.frame(x))
   expect_named(x)
   expect_true("user_id" %in% names(x))
   expect_true("status_id" %in% names(x))

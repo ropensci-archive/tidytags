@@ -11,7 +11,7 @@ test_that("get_upstream_replies() finds additional replies", {
   replies <- dplyr::filter(y, !is.na(reply_to_status_id))
   replies_plus <- get_upstream_replies(replies)
 
-  expect_equal(is.data.frame(replies_plus), TRUE)
+  expect_true(is.data.frame(replies_plus))
   expect_named(replies_plus)
   expect_true("user_id" %in% names(replies_plus))
   expect_true("status_id" %in% names(replies_plus))
