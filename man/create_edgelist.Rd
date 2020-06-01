@@ -28,7 +28,6 @@ example_url <- "https://docs.google.com/spreadsheets/d/18clYlQeJOc6W5QRuSlJ6_v3s
 tmp_df <- pull_tweet_data(read_tags(example_url), n = 10)
 edgelist <- create_edgelist(tmp_df)
 edgelist
-
 }
 }
 \seealso{

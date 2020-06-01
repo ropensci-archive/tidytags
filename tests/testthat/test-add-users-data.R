@@ -6,13 +6,14 @@ test_that("user data is added properly", {
 
   sample_tweet <-
     readr::read_csv("sample-tweet.csv",
-                    col_names = TRUE,
-                    col_types = readr::cols(user_id = readr::col_character(),
-                                            status_id = readr::col_character(),
-                                            retweet_status_id = readr::col_character(),
-                                            quoted_status_id = readr::col_character(),
-                                            reply_to_status_id = readr::col_character()
-                    )
+      col_names = TRUE,
+      col_types = readr::cols(
+        user_id = readr::col_character(),
+        status_id = readr::col_character(),
+        retweet_status_id = readr::col_character(),
+        quoted_status_id = readr::col_character(),
+        reply_to_status_id = readr::col_character()
+      )
     )
 
   el <- create_edgelist(sample_tweet)

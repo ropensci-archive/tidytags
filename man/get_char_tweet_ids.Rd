@@ -32,6 +32,5 @@ example_url <- "https://docs.google.com/spreadsheets/d/18clYlQeJOc6W5QRuSlJ6_v3s
 get_char_tweet_ids(read_tags(example_url)[1:10, ])
 get_char_tweet_ids(url_vector = read_tags(example_url)$status_url[1:10])
 get_char_tweet_ids(url_vector = "https://twitter.com/tweet__example/status/1176592704647716864")
-
 }
 }

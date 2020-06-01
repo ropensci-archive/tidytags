@@ -32,9 +32,9 @@
 #' tmp_geo_coords <- geocode_tags(tmp_df)
 #' tmp_geo_coords
 #' tmp_geo_coords[[1]]
-#' tmp_geo_coords[[1]][1]; tmp_geo_coords[[1]][2]
+#' tmp_geo_coords[[1]][1]
+#' tmp_geo_coords[[1]][2]
 #' mapview::mapview(tmp_geo_coords)
-#'
 #' }
 #' @export
 geocode_tags <-
@@ -43,7 +43,7 @@ geocode_tags <-
       which((df$location != "") & !(stringr::str_detect(df$location, "#")))
     locations_minus_blank <-
       df$location[location_index]
-    if(length(locations_minus_blank) == 0) {
+    if (length(locations_minus_blank) == 0) {
       stop("There are no valid geolocations to report.")
     }
     geo_coordinates <-

@@ -16,7 +16,6 @@
 #' example_url <- "https://docs.google.com/spreadsheets/d/18clYlQeJOc6W5QRuSlJ6_v3snqKJImFhU42bRkM_OX8/"
 #' tmp_df <- pull_tweet_data(read_tags(example_url), n = 10)
 #' get_replies(tmp_df)
-#'
 #' }
 #' @importFrom rlang .data
 get_replies <-
@@ -24,9 +23,8 @@ get_replies <-
     processed_df <- process_tweets(df)
 
     replies <-
-      dplyr::filter(
-        processed_df,
-        .data$is_reply
+      dplyr::filter(processed_df,
+                    .data$is_reply
       )
 
     replies <-
@@ -35,9 +33,17 @@ get_replies <-
                     receiver = .data$reply_to_screen_name
       )
 
+    if(nrow(replies) == 0) {
+      replies <-
+        dplyr::mutate(replies,
+                      sender = as.character(.data),
+                      receiver = as.character(.data)
+      )
+    }
+
     replies <-
       dplyr::mutate(replies,
-                    edge_type = "reply"
+        edge_type = "reply"
       )
 
     replies
@@ -61,7 +67,6 @@ get_replies <-
 #' example_url <- "https://docs.google.com/spreadsheets/d/18clYlQeJOc6W5QRuSlJ6_v3snqKJImFhU42bRkM_OX8/"
 #' tmp_df <- pull_tweet_data(read_tags(example_url), n = 10)
 #' get_retweets(tmp_df)
-#'
 #' }
 #' @importFrom rlang .data
 get_retweets <-
@@ -78,6 +83,13 @@ get_retweets <-
                     sender = .data$screen_name,
                     receiver = .data$retweet_screen_name
       )
+
+    if(nrow(RTs) == 0) {
+      RTs <- dplyr::mutate(RTs,
+                                sender = as.character(.data),
+                                receiver = as.character(.data)
+      )
+    }
 
     RTs <-
       dplyr::mutate(RTs,
@@ -105,7 +117,6 @@ get_retweets <-
 #' example_url <- "https://docs.google.com/spreadsheets/d/18clYlQeJOc6W5QRuSlJ6_v3snqKJImFhU42bRkM_OX8/"
 #' tmp_df <- pull_tweet_data(read_tags(example_url), n = 10)
 #' get_quotes(tmp_df)
-#'
 #' }
 #' @importFrom rlang .data
 get_quotes <-
@@ -113,9 +124,8 @@ get_quotes <-
     processed_df <- process_tweets(df)
 
     quotes <-
-      dplyr::filter(
-        processed_df,
-        .data$is_quote
+      dplyr::filter(processed_df,
+                    .data$is_quote
       )
 
     quotes <-
@@ -123,6 +133,14 @@ get_quotes <-
                     sender = .data$screen_name,
                     receiver = .data$quoted_screen_name
       )
+
+    if(nrow(quotes) == 0) {
+      quotes <-
+        dplyr::mutate(quotes,
+                      sender = as.character(.data),
+                      receiver = as.character(.data)
+      )
+    }
 
     quotes <-
       dplyr::mutate(quotes,
@@ -147,16 +165,15 @@ get_quotes <-
 #'
 #' \dontrun{
 #'
-#' example_url <- "https://docs.google.com/spreadsheets/d/18clYlQeJOc6W5QRuSlJ6_v3snqKJImFhU42bRkM_OX8/edit#gid=8743918"
+#' example_url <- "https://docs.google.com/spreadsheets/d/18clYlQeJOc6W5QRuSlJ6_v3snqKJImFhU42bRkM_OX8/"
 #' tmp_df <- pull_tweet_data(read_tags(example_url), n = 10)
 #' get_mentions(tmp_df)
-#'
 #' }
 #' @importFrom rlang .data
 get_mentions <-
   function(df) {
     processed_df <- process_tweets(df)
-    unnested_df <- tidyr::unnest(sample_df, mentions_screen_name)
+    unnested_df <- tidyr::unnest(processed_df, mentions_screen_name)
 
     mentions <-
       dplyr::select(unnested_df,
@@ -165,14 +182,20 @@ get_mentions <-
       )
 
     mentions <-
-      dplyr::filter(
-        mentions,
-        !is.na(.data$receiver)
+      dplyr::filter(mentions,
+                    !is.na(.data$receiver)
       )
+
+    if(nrow(mentions) == 0) {
+      mentions <- dplyr::mutate(mentions,
+                                sender = as.character(.data),
+                                receiver = as.character(.data)
+      )
+    }
 
     mentions <-
       dplyr::mutate(mentions,
-                    edge_type = "mention"
+        edge_type = "mention"
       )
 
     mentions
@@ -198,7 +221,6 @@ get_mentions <-
 #' tmp_df <- pull_tweet_data(read_tags(example_url), n = 10)
 #' edgelist <- create_edgelist(tmp_df)
 #' edgelist
-#'
 #' }
 #' @importFrom rlang .data
 #' @export

@@ -1,41 +1,43 @@
 context("Get character tweet IDs")
 library(tidytags)
 
-#flatten_list <-
+# flatten_list <-
 #  function(x) {paste(unlist(x), collapse=" ")}
-#sample_tags_sheet <-
+# sample_tags_sheet <-
 #  "https://docs.google.com/spreadsheets/d/18clYlQeJOc6W5QRuSlJ6_v3snqKJImFhU42bRkM_OX8/"
-#sample_df <-
+# sample_df <-
 #  pull_tweet_data(read_tags(sample_tags_sheet), n = 10)
 
-#sample_data <-
+# sample_data <-
 #  tibble::as_tibble(sample_df) %>%
 #  dplyr::mutate_if(is.list, flatten_list)
-#readr::write_csv(sample_data, "tests/sample-data.csv")
-#sample_tweet <-
+# readr::write_csv(sample_data, "tests/sample-data.csv")
+# sample_tweet <-
 #  tibble::as_tibble(sample_df[2, ]) %>%
 #  dplyr::mutate_if(is.list, flatten_list)
-#readr::write_csv(sample_tweet, "tests/sample-tweet.csv")
+# readr::write_csv(sample_tweet, "tests/sample-tweet.csv")
 
 sample_data <-
   readr::read_csv("sample-data.csv",
-                  col_names = TRUE,
-                  col_types = readr::cols(user_id = readr::col_character(),
-                                          status_id = readr::col_character(),
-                                          retweet_status_id = readr::col_character(),
-                                          quoted_status_id = readr::col_character(),
-                                          reply_to_status_id = readr::col_character()
-                  )
+    col_names = TRUE,
+    col_types = readr::cols(
+      user_id = readr::col_character(),
+      status_id = readr::col_character(),
+      retweet_status_id = readr::col_character(),
+      quoted_status_id = readr::col_character(),
+      reply_to_status_id = readr::col_character()
+    )
   )
 sample_tweet <-
   readr::read_csv("sample-tweet.csv",
-                  col_names = TRUE,
-                  col_types = readr::cols(user_id = readr::col_character(),
-                                          status_id = readr::col_character(),
-                                          retweet_status_id = readr::col_character(),
-                                          quoted_status_id = readr::col_character(),
-                                          reply_to_status_id = readr::col_character()
-                  )
+    col_names = TRUE,
+    col_types = readr::cols(
+      user_id = readr::col_character(),
+      status_id = readr::col_character(),
+      retweet_status_id = readr::col_character(),
+      quoted_status_id = readr::col_character(),
+      reply_to_status_id = readr::col_character()
+    )
   )
 
 

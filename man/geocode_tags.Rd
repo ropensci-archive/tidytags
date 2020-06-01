@@ -40,9 +40,9 @@ tmp_df <- pull_tweet_data(read_tags(example_url), n = 10)
 tmp_geo_coords <- geocode_tags(tmp_df)
 tmp_geo_coords
 tmp_geo_coords[[1]]
-tmp_geo_coords[[1]][1]; tmp_geo_coords[[1]][2]
+tmp_geo_coords[[1]][1]
+tmp_geo_coords[[1]][2]
 mapview::mapview(tmp_geo_coords)
-
 }
 }
 \seealso{

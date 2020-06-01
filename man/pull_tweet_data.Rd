@@ -47,7 +47,6 @@ pull_tweet_data(id_vector = read_tags(example_url)$id_str[1:10])
 pull_tweet_data(id_vector = read_tags(example_url)$id_str, n = 10)
 pull_tweet_data(url_vector = "https://twitter.com/tweet__example/status/1176592704647716864")
 pull_tweet_data(id_vector = "1176592704647716864")
-
 }
 }
 \seealso{
