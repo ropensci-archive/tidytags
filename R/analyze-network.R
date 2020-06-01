@@ -22,17 +22,24 @@
 get_replies <-
   function(df) {
     processed_df <- process_tweets(df)
-    replies <- dplyr::filter(
-      processed_df,
-      .data$is_reply
-    )
-    replies <- dplyr::select(replies,
-                             sender = .data$screen_name,
-                             receiver = .data$reply_to_screen_name
-    )
-    replies <- dplyr::mutate(replies,
-                             edge_type = "reply"
-    )
+
+    replies <-
+      dplyr::filter(
+        processed_df,
+        .data$is_reply
+      )
+
+    replies <-
+      dplyr::select(replies,
+                    sender = .data$screen_name,
+                    receiver = .data$reply_to_screen_name
+      )
+
+    replies <-
+      dplyr::mutate(replies,
+                    edge_type = "reply"
+      )
+
     replies
   }
 
@@ -60,18 +67,23 @@ get_replies <-
 get_retweets <-
   function(df) {
     processed_df <- process_tweets(df)
+
     RTs <-
       dplyr::filter(processed_df,
                     .data$is_retweet
       )
+
     RTs <-
       dplyr::select(RTs,
-                         sender = .data$screen_name,
-                         receiver = .data$retweet_screen_name
-    )
-    RTs <- dplyr::mutate(RTs,
-                         edge_type = "retweet"
-    )
+                    sender = .data$screen_name,
+                    receiver = .data$retweet_screen_name
+      )
+
+    RTs <-
+      dplyr::mutate(RTs,
+                    edge_type = "retweet"
+      )
+
     RTs
   }
 
@@ -99,17 +111,24 @@ get_retweets <-
 get_quotes <-
   function(df) {
     processed_df <- process_tweets(df)
-    quotes <- dplyr::filter(
-      processed_df,
-      .data$is_quote
-    )
-    quotes <- dplyr::select(quotes,
-                            sender = .data$screen_name,
-                            receiver = .data$quoted_screen_name
-    )
-    quotes <- dplyr::mutate(quotes,
-                            edge_type = "quote-tweet"
-    )
+
+    quotes <-
+      dplyr::filter(
+        processed_df,
+        .data$is_quote
+      )
+
+    quotes <-
+      dplyr::select(quotes,
+                    sender = .data$screen_name,
+                    receiver = .data$quoted_screen_name
+      )
+
+    quotes <-
+      dplyr::mutate(quotes,
+                    edge_type = "quote-tweet"
+      )
+
     quotes
   }
 
@@ -137,20 +156,25 @@ get_quotes <-
 get_mentions <-
   function(df) {
     processed_df <- process_tweets(df)
-    mentions <- dplyr::select(processed_df,
-                              sender = .data$screen_name,
-                              receiver = .data$mentions_screen_name
-    )
-    mentions <- tidyr::unnest(mentions,
-                              cols = .data$receiver
-    )
-    mentions <- dplyr::filter(
-      mentions,
-      !is.na(.data$receiver)
-    )
-    mentions <- dplyr::mutate(mentions,
-                              edge_type = "mention"
-    )
+    unnested_df <- tidyr::unnest(sample_df, mentions_screen_name)
+
+    mentions <-
+      dplyr::select(unnested_df,
+                    sender = .data$screen_name,
+                    receiver = .data$mentions_screen_name
+      )
+
+    mentions <-
+      dplyr::filter(
+        mentions,
+        !is.na(.data$receiver)
+      )
+
+    mentions <-
+      dplyr::mutate(mentions,
+                    edge_type = "mention"
+      )
+
     mentions
   }
 
@@ -192,18 +216,21 @@ create_edgelist <-
     quote_edges <- get_quotes(processed_df)
     mention_edges <- get_mentions(processed_df)
 
-    full_edgelist <- tibble::tibble(
-      sender = character(),
-      receiver = character(),
-      edge_type = character()
-    )
+    full_edgelist <-
+      tibble::tibble(
+        sender = character(),
+        receiver = character(),
+        edge_type = character()
+      )
 
-    full_edgelist <- dplyr::bind_rows(
-      full_edgelist,
-      reply_edges,
-      retweet_edges,
-      quote_edges,
-      mention_edges
-    )
+    full_edgelist <-
+      dplyr::bind_rows(
+        full_edgelist,
+        reply_edges,
+        retweet_edges,
+        quote_edges,
+        mention_edges
+      )
+
     full_edgelist
   }

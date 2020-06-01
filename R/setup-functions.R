@@ -239,27 +239,32 @@ process_tweets <-
   function(df) {
     url_regex <- "http[s]?://(?:[a-zA-Z]|[0-9]|[$-_@.&+]|[!*\\(\\),]|(?:%[0-9a-fA-F][0-9a-fA-F]))+"
     hashtag_regex <- "#([0-9]|[a-zA-Z])+"
-    dplyr::mutate(df,
-                  word_count = stringr::str_count(.data$text, "\\s+") + 1,
-                  character_count = stringr::str_length(.data$text),
-                  mentions_count = length_with_na(.data$mentions_screen_name),
-                  hashtags_count_api = length_with_na(.data$hashtags),
-                  hashtags_count_regex = stringr::str_count(.data$text, hashtag_regex), # more accurate than API
-                  has_hashtags = dplyr::if_else(.data$hashtags_count_regex != 0, TRUE, FALSE),
-                  urls_count_api = length_with_na(.data$urls_url),
-                  urls_count_regex = stringr::str_count(.data$text, url_regex), # counts links to quoted tweets and media
-                  is_reply = dplyr::if_else(!is.na(.data$reply_to_status_id), TRUE, FALSE),
-                  is_self_reply = dplyr::if_else(
-                    .data$is_reply,
-                    dplyr::if_else(
-                      .data$user_id == .data$reply_to_user_id,
-                      TRUE,
+    df <-
+      dplyr::mutate(df,
+                    word_count = stringr::str_count(.data$text, "\\s+") + 1,
+                    character_count = stringr::str_length(.data$text),
+                    mentions_count = length_with_na(.data$mentions_screen_name),
+                    hashtags_count_api = length_with_na(.data$hashtags),
+                    hashtags_count_regex = stringr::str_count(.data$text, hashtag_regex), # more accurate than API
+                    has_hashtags = dplyr::if_else(.data$hashtags_count_regex != 0, TRUE, FALSE),
+                    urls_count_api = length_with_na(.data$urls_url),
+                    urls_count_regex = stringr::str_count(.data$text, url_regex), # counts links to quoted tweets and media
+                    is_reply = dplyr::if_else(!is.na(.data$reply_to_status_id), TRUE, FALSE),
+                    is_self_reply = dplyr::if_else(
+                      .data$is_reply,
+                      dplyr::if_else(
+                        .data$user_id == .data$reply_to_user_id,
+                        TRUE,
+                        FALSE
+                      ),
                       FALSE
-                    ),
-                    FALSE
-                  )
-    )
-    dplyr::mutate_at(df,
-                     dplyr::vars(dplyr::matches(c("status_id", "user_id", "screen_name"))),
-                     as.character)
+                    )
+      )
+
+    df <-
+      dplyr::mutate_at(df,
+                       dplyr::vars(dplyr::matches(c("status_id", "user_id", "screen_name"))),
+                       as.character)
+
+    df
   }
