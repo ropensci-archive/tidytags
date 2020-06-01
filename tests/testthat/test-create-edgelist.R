@@ -1,18 +1,11 @@
 context("Create edgelist")
 library(tidytags)
 
-sample_tweet <-
-  readr::read_csv("sample-tweet.csv",
-                  col_names = TRUE,
-                  col_types = readr::cols(user_id = readr::col_character(),
-                                          status_id = readr::col_character(),
-                                          retweet_status_id = readr::col_character(),
-                                          quoted_status_id = readr::col_character(),
-                                          reply_to_status_id = readr::col_character()
-                  )
-  )
-
-el <- create_edgelist(sample_tweet)
+sample_tags_sheet <-
+  "https://docs.google.com/spreadsheets/d/18clYlQeJOc6W5QRuSlJ6_v3snqKJImFhU42bRkM_OX8/"
+sample_df <-
+  pull_tweet_data(read_tags(sample_tags_sheet), n = 10)
+el <- create_edgelist(sample_df)
 
 
 sample_edgelist <-

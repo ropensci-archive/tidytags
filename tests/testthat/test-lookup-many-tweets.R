@@ -4,7 +4,7 @@ library(tidytags)
 test_that("lookup_many_tweets() retrieves additional metadata like pull_tweet_data()", {
   skip_on_cran()
 
-  example_url <- "https://docs.google.com/spreadsheets/d/18clYlQeJOc6W5QRuSlJ6_v3snqKJImFhU42bRkM_OX8/edit#gid=8743918"
+  example_url <- "https://docs.google.com/spreadsheets/d/18clYlQeJOc6W5QRuSlJ6_v3snqKJImFhU42bRkM_OX8/"
   x <- read_tags(example_url)
   n_tweets <- 10
 

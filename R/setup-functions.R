@@ -17,7 +17,7 @@
 #'
 #' \dontrun{
 #'
-#' example_url <- "https://docs.google.com/spreadsheets/d/18clYlQeJOc6W5QRuSlJ6_v3snqKJImFhU42bRkM_OX8/edit#gid=8743918"
+#' example_url <- "https://docs.google.com/spreadsheets/d/18clYlQeJOc6W5QRuSlJ6_v3snqKJImFhU42bRkM_OX8/"
 #' read_tags(example_url)
 #'
 #' }
@@ -46,7 +46,7 @@ read_tags <-
 #' @examples
 #'
 #' \dontrun{
-#' example_url <- "https://docs.google.com/spreadsheets/d/18clYlQeJOc6W5QRuSlJ6_v3snqKJImFhU42bRkM_OX8/edit#gid=8743918"
+#' example_url <- "https://docs.google.com/spreadsheets/d/18clYlQeJOc6W5QRuSlJ6_v3snqKJImFhU42bRkM_OX8/"
 #' get_char_tweet_ids(read_tags(example_url)[1:10, ])
 #' get_char_tweet_ids(url_vector = read_tags(example_url)$status_url[1:10])
 #' get_char_tweet_ids(url_vector = "https://twitter.com/tweet__example/status/1176592704647716864")
@@ -56,16 +56,16 @@ read_tags <-
 get_char_tweet_ids <-
   function(df, url_vector = NULL) {
     ifelse(!is.null(url_vector),
-      new_ids <- stringr::str_split_fixed(url_vector, "/", n = 6)[, 6],
-      {
-        df <- dplyr::mutate(df,
-          status_id_char = stringr::str_split_fixed(.data$status_url,
-            "/",
-            n = 6
-          )[, 6]
-        )
-        new_ids <- dplyr::pull(df, .data$status_id_char)
-      }
+           new_ids <- stringr::str_split_fixed(url_vector, "/", n = 6)[, 6],
+           {
+             df <- dplyr::mutate(df,
+                                 status_id_char = stringr::str_split_fixed(.data$status_url,
+                                                                           "/",
+                                                                           n = 6
+                                 )[, 6]
+             )
+             new_ids <- dplyr::pull(df, .data$status_id_char)
+           }
     )
     new_ids
   }
@@ -96,7 +96,7 @@ get_char_tweet_ids <-
 #'
 #' \dontrun{
 #'
-#' example_url <- "https://docs.google.com/spreadsheets/d/18clYlQeJOc6W5QRuSlJ6_v3snqKJImFhU42bRkM_OX8/edit#gid=8743918"
+#' example_url <- "https://docs.google.com/spreadsheets/d/18clYlQeJOc6W5QRuSlJ6_v3snqKJImFhU42bRkM_OX8/"
 #' pull_tweet_data(read_tags(example_url)[1:10, ])
 #' pull_tweet_data(read_tags(example_url), n = 10)
 #' pull_tweet_data(url_vector = read_tags(example_url)$status_url[1:10])
@@ -111,63 +111,63 @@ get_char_tweet_ids <-
 pull_tweet_data <-
   function(df, url_vector = NULL, id_vector = NULL, n = NULL) {
     ifelse(!is.null(url_vector),
-      {
-        if (is.null(n)) {
-          n <- length(url_vector)
-        }
-        if (n > 90000) {
-          warning(
-            "Twitter API only allows lookup of 90,000 tweets at a time;",
-            "collecting data for first 90,000 tweet IDs.",
-            "To process more, use `lookup_many_tweets()`."
-          )
-          url_vector <- url_vector[1:90000]
-          n <- length(url_vector)
-        }
+           {
+             if (is.null(n)) {
+               n <- length(url_vector)
+             }
+             if (n > 90000) {
+               warning(
+                 "Twitter API only allows lookup of 90,000 tweets at a time;",
+                 "collecting data for first 90,000 tweet IDs.",
+                 "To process more, use `lookup_many_tweets()`."
+               )
+               url_vector <- url_vector[1:90000]
+               n <- length(url_vector)
+             }
 
-        new_df <- rtweet::lookup_statuses(get_char_tweet_ids(url_vector[1:n],
-                                                             url_vector = url_vector[1:n]
-        )
-        )
-      },
+             new_df <- rtweet::lookup_statuses(get_char_tweet_ids(url_vector[1:n],
+                                                                  url_vector = url_vector[1:n]
+             )
+             )
+           },
 
-      ifelse(!is.null(id_vector),
-        {
-          if (is.null(n)) {
-            n <- length(id_vector)
-          }
-          if (n > 90000) {
-            warning(
-              "Twitter API only allows lookup of 90,000 tweets at a time;",
-              "collecting data for first 90,000 tweet IDs.",
-              "To process more, use `lookup_many_tweets()`."
-            )
-            id_vector <- id_vector[1:90000]
-            n <- length(id_vector)
-          }
+           ifelse(!is.null(id_vector),
+                  {
+                    if (is.null(n)) {
+                      n <- length(id_vector)
+                    }
+                    if (n > 90000) {
+                      warning(
+                        "Twitter API only allows lookup of 90,000 tweets at a time;",
+                        "collecting data for first 90,000 tweet IDs.",
+                        "To process more, use `lookup_many_tweets()`."
+                      )
+                      id_vector <- id_vector[1:90000]
+                      n <- length(id_vector)
+                    }
 
-          new_df <- rtweet::lookup_statuses(id_vector[1:n])
-        },
+                    new_df <- rtweet::lookup_statuses(id_vector[1:n])
+                  },
 
-        {
-          if (is.null(n)) {
-            n <- nrow(df)
-          }
+                  {
+                    if (is.null(n)) {
+                      n <- nrow(df)
+                    }
 
-          if (n > 90000) {
-            warning(
-              "Twitter API only allows lookup of 90,000 tweets at a time;",
-              "collecting data for first 90,000 tweet IDs.",
-              "To process more, use `lookup_many_tweets()`."
-            )
-            df <- df[1:90000, ]
-            n <- nrow(df)
-          }
+                    if (n > 90000) {
+                      warning(
+                        "Twitter API only allows lookup of 90,000 tweets at a time;",
+                        "collecting data for first 90,000 tweet IDs.",
+                        "To process more, use `lookup_many_tweets()`."
+                      )
+                      df <- df[1:90000, ]
+                      n <- nrow(df)
+                    }
 
-          new_df <- rtweet::lookup_statuses(get_char_tweet_ids(df[1:n, ]))
-        }
+                    new_df <- rtweet::lookup_statuses(get_char_tweet_ids(df[1:n, ]))
+                  }
 
-      )
+           )
     )
 
     new_df
@@ -227,7 +227,7 @@ length_with_na <-
 #'
 #' \dontrun{
 #'
-#' example_url <- "https://docs.google.com/spreadsheets/d/18clYlQeJOc6W5QRuSlJ6_v3snqKJImFhU42bRkM_OX8/edit#gid=8743918"
+#' example_url <- "https://docs.google.com/spreadsheets/d/18clYlQeJOc6W5QRuSlJ6_v3snqKJImFhU42bRkM_OX8/"
 #' tmp_df <- pull_tweet_data(read_tags(example_url), n = 10)
 #' tmp_processed <- process_tweets(tmp_df)
 #' tmp_processed
@@ -240,23 +240,26 @@ process_tweets <-
     url_regex <- "http[s]?://(?:[a-zA-Z]|[0-9]|[$-_@.&+]|[!*\\(\\),]|(?:%[0-9a-fA-F][0-9a-fA-F]))+"
     hashtag_regex <- "#([0-9]|[a-zA-Z])+"
     dplyr::mutate(df,
-      word_count = stringr::str_count(.data$text, "\\s+") + 1,
-      character_count = stringr::str_length(.data$text),
-      mentions_count = length_with_na(.data$mentions_screen_name),
-      hashtags_count_api = length_with_na(.data$hashtags),
-      hashtags_count_regex = stringr::str_count(.data$text, hashtag_regex), # more accurate than API
-      has_hashtags = dplyr::if_else(.data$hashtags_count_regex != 0, TRUE, FALSE),
-      urls_count_api = length_with_na(.data$urls_url),
-      urls_count_regex = stringr::str_count(.data$text, url_regex), # counts links to quoted tweets and media
-      is_reply = dplyr::if_else(!is.na(.data$reply_to_status_id), TRUE, FALSE),
-      is_self_reply = dplyr::if_else(
-        .data$is_reply,
-        dplyr::if_else(
-          .data$user_id == .data$reply_to_user_id,
-          TRUE,
-          FALSE
-        ),
-        FALSE
-      )
+                  word_count = stringr::str_count(.data$text, "\\s+") + 1,
+                  character_count = stringr::str_length(.data$text),
+                  mentions_count = length_with_na(.data$mentions_screen_name),
+                  hashtags_count_api = length_with_na(.data$hashtags),
+                  hashtags_count_regex = stringr::str_count(.data$text, hashtag_regex), # more accurate than API
+                  has_hashtags = dplyr::if_else(.data$hashtags_count_regex != 0, TRUE, FALSE),
+                  urls_count_api = length_with_na(.data$urls_url),
+                  urls_count_regex = stringr::str_count(.data$text, url_regex), # counts links to quoted tweets and media
+                  is_reply = dplyr::if_else(!is.na(.data$reply_to_status_id), TRUE, FALSE),
+                  is_self_reply = dplyr::if_else(
+                    .data$is_reply,
+                    dplyr::if_else(
+                      .data$user_id == .data$reply_to_user_id,
+                      TRUE,
+                      FALSE
+                    ),
+                    FALSE
+                  )
     )
+    dplyr::mutate_at(df,
+                     dplyr::vars(dplyr::matches(c("status_id", "user_id", "screen_name"))),
+                     as.character)
   }

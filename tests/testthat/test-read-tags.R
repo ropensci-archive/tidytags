@@ -4,7 +4,7 @@ library(tidytags)
 test_that("a TAGS tweet tracker is imported properly from Google Sheets", {
   skip_on_cran()
 
-  example_url <- "https://docs.google.com/spreadsheets/d/18clYlQeJOc6W5QRuSlJ6_v3snqKJImFhU42bRkM_OX8/edit#gid=8743918"
+  example_url <- "https://docs.google.com/spreadsheets/d/18clYlQeJOc6W5QRuSlJ6_v3snqKJImFhU42bRkM_OX8/"
   x <- read_tags(example_url)
 
   expect_equal(is.data.frame(x), TRUE)

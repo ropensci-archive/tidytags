@@ -38,7 +38,7 @@ With a TAGS archive imported into R, \code{pull_tweet_data()} uses the **rtweet*
 
 \dontrun{
 
-example_url <- "https://docs.google.com/spreadsheets/d/18clYlQeJOc6W5QRuSlJ6_v3snqKJImFhU42bRkM_OX8/edit#gid=8743918"
+example_url <- "https://docs.google.com/spreadsheets/d/18clYlQeJOc6W5QRuSlJ6_v3snqKJImFhU42bRkM_OX8/"
 pull_tweet_data(read_tags(example_url)[1:10, ])
 pull_tweet_data(read_tags(example_url), n = 10)
 pull_tweet_data(url_vector = read_tags(example_url)$status_url[1:10])

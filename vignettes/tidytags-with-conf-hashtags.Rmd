@@ -25,7 +25,7 @@ Keep in mind that **tidytags** allows you to work with a [Twitter Archiving Goog
 ```{r initial-tags, message = FALSE, warning = FALSE}
 library(tidytags)
 
-example_url <- "https://docs.google.com/spreadsheets/d/18clYlQeJOc6W5QRuSlJ6_v3snqKJImFhU42bRkM_OX8/edit#gid=8743918"
+example_url <- "https://docs.google.com/spreadsheets/d/18clYlQeJOc6W5QRuSlJ6_v3snqKJImFhU42bRkM_OX8/"
 
 example_df_all <- read_tags(example_url)
 dim(example_df_all)

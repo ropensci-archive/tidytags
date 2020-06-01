@@ -4,7 +4,7 @@ library(tidytags)
 #flatten_list <-
 #  function(x) {paste(unlist(x), collapse=" ")}
 #sample_tags_sheet <-
-#  "https://docs.google.com/spreadsheets/d/18clYlQeJOc6W5QRuSlJ6_v3snqKJImFhU42bRkM_OX8/edit#gid=8743918"
+#  "https://docs.google.com/spreadsheets/d/18clYlQeJOc6W5QRuSlJ6_v3snqKJImFhU42bRkM_OX8/"
 #sample_df <-
 #  pull_tweet_data(read_tags(sample_tags_sheet), n = 10)
 
