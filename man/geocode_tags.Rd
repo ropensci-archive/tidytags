@@ -35,7 +35,7 @@ A vector of geographic coordinates (i.e., latitude and longitude) which may then
 
 \dontrun{
 
-example_url <- "https://docs.google.com/spreadsheets/d/18clYlQeJOc6W5QRuSlJ6_v3snqKJImFhU42bRkM_OX8/"
+example_url <- "18clYlQeJOc6W5QRuSlJ6_v3snqKJImFhU42bRkM_OX8"
 tmp_df <- pull_tweet_data(read_tags(example_url), n = 10)
 tmp_geo_coords <- geocode_tags(tmp_df)
 tmp_geo_coords

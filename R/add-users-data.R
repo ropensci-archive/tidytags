@@ -15,7 +15,7 @@
 #'
 #' \dontrun{
 #'
-#' example_url <- "https://docs.google.com/spreadsheets/d/18clYlQeJOc6W5QRuSlJ6_v3snqKJImFhU42bRkM_OX8/"
+#' example_url <- "18clYlQeJOc6W5QRuSlJ6_v3snqKJImFhU42bRkM_OX8"
 #' tmp_df <- pull_tweet_data(read_tags(example_url), n = 10)
 #' add_users_data(create_edgelist(tmp_df))
 #' }

@@ -5,7 +5,7 @@ library(tidytags)
 test_that("get_upstream_replies() finds additional replies", {
   skip_on_cran()
 
-  example_url <- "https://docs.google.com/spreadsheets/d/18clYlQeJOc6W5QRuSlJ6_v3snqKJImFhU42bRkM_OX8/"
+  example_url <- "18clYlQeJOc6W5QRuSlJ6_v3snqKJImFhU42bRkM_OX8"
   x <- read_tags(example_url)
   y <- pull_tweet_data(x)
   replies <- dplyr::filter(y, !is.na(reply_to_status_id))

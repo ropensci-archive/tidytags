@@ -1,10 +1,9 @@
 
 <!-- README.md is generated from README.Rmd. Please edit that file -->
-<!-- badges: start -->
-[![Travis build status](https://travis-ci.com/bretsw/tidytags.svg?branch=master)](https://travis-ci.com/bretsw/tidytags) <!-- badges: end -->
-
 tidytags <img src="man/figures/tidytags-logo.png" align="right" width="120" />
 ==============================================================================
+
+[![Travis build status](https://travis-ci.com/bretsw/tidytags.svg?branch=master)](https://travis-ci.com/bretsw/tidytags) [![Coverage Status](https://codecov.io/gh/bretsw/tidytags/branch/master/graph/badge.svg)](https://codecov.io/gh/bretsw/tidytags/?branch=master) [![Project Status: WIP – Initial development is in progress, but there has not yet been a stable, usable release suitable for the public.](https://www.repostatus.org/badges/latest/wip.svg)](https://www.repostatus.org/#wip)
 
 Simple Collection and Powerful Analysis of Twitter Data
 

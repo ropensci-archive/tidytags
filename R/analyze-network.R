@@ -13,7 +13,7 @@
 #'
 #' \dontrun{
 #'
-#' example_url <- "https://docs.google.com/spreadsheets/d/18clYlQeJOc6W5QRuSlJ6_v3snqKJImFhU42bRkM_OX8/"
+#' example_url <- "18clYlQeJOc6W5QRuSlJ6_v3snqKJImFhU42bRkM_OX8"
 #' tmp_df <- pull_tweet_data(read_tags(example_url), n = 10)
 #' get_replies(tmp_df)
 #' }
@@ -65,7 +65,7 @@ get_replies <-
 #'
 #' \dontrun{
 #'
-#' example_url <- "https://docs.google.com/spreadsheets/d/18clYlQeJOc6W5QRuSlJ6_v3snqKJImFhU42bRkM_OX8/"
+#' example_url <- "18clYlQeJOc6W5QRuSlJ6_v3snqKJImFhU42bRkM_OX8"
 #' tmp_df <- pull_tweet_data(read_tags(example_url), n = 10)
 #' get_retweets(tmp_df)
 #' }
@@ -116,7 +116,7 @@ get_retweets <-
 #'
 #' \dontrun{
 #'
-#' example_url <- "https://docs.google.com/spreadsheets/d/18clYlQeJOc6W5QRuSlJ6_v3snqKJImFhU42bRkM_OX8/"
+#' example_url <- "18clYlQeJOc6W5QRuSlJ6_v3snqKJImFhU42bRkM_OX8"
 #' tmp_df <- pull_tweet_data(read_tags(example_url), n = 10)
 #' get_quotes(tmp_df)
 #' }
@@ -168,7 +168,7 @@ get_quotes <-
 #'
 #' \dontrun{
 #'
-#' example_url <- "https://docs.google.com/spreadsheets/d/18clYlQeJOc6W5QRuSlJ6_v3snqKJImFhU42bRkM_OX8/"
+#' example_url <- "18clYlQeJOc6W5QRuSlJ6_v3snqKJImFhU42bRkM_OX8"
 #' tmp_df <- pull_tweet_data(read_tags(example_url), n = 10)
 #' get_mentions(tmp_df)
 #' }
@@ -178,7 +178,7 @@ get_mentions <-
     processed_df <- process_tweets(df)
     unnested_df <- tidyr::unnest(
       data = processed_df,
-      cols = mentions_screen_name
+      cols = .data$mentions_screen_name
     )
 
     mentions <-
@@ -224,7 +224,7 @@ get_mentions <-
 #'
 #' \dontrun{
 #'
-#' example_url <- "https://docs.google.com/spreadsheets/d/18clYlQeJOc6W5QRuSlJ6_v3snqKJImFhU42bRkM_OX8/"
+#' example_url <- "18clYlQeJOc6W5QRuSlJ6_v3snqKJImFhU42bRkM_OX8"
 #' tmp_df <- pull_tweet_data(read_tags(example_url), n = 10)
 #' edgelist <- create_edgelist(tmp_df)
 #' edgelist

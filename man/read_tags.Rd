@@ -28,7 +28,7 @@ Keep in mind that \code{read_tags()} uses the **googlesheets4** package,
 
 \dontrun{
 
-example_url <- "https://docs.google.com/spreadsheets/d/18clYlQeJOc6W5QRuSlJ6_v3snqKJImFhU42bRkM_OX8/"
+example_url <- "18clYlQeJOc6W5QRuSlJ6_v3snqKJImFhU42bRkM_OX8"
 read_tags(example_url)
 }
 }

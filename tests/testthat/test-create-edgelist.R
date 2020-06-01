@@ -4,8 +4,7 @@ library(tidytags)
 test_that("tweets build into edgelist", {
   skip_on_cran()
 
-  sample_tags_sheet <-
-    "https://docs.google.com/spreadsheets/d/18clYlQeJOc6W5QRuSlJ6_v3snqKJImFhU42bRkM_OX8/"
+  sample_tags_sheet <- "18clYlQeJOc6W5QRuSlJ6_v3snqKJImFhU42bRkM_OX8"
   sample_df <-
     pull_tweet_data(read_tags(sample_tags_sheet), n = 10)
   el <- create_edgelist(sample_df)

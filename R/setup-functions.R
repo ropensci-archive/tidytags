@@ -17,7 +17,7 @@
 #'
 #' \dontrun{
 #'
-#' example_url <- "https://docs.google.com/spreadsheets/d/18clYlQeJOc6W5QRuSlJ6_v3snqKJImFhU42bRkM_OX8/"
+#' example_url <- "18clYlQeJOc6W5QRuSlJ6_v3snqKJImFhU42bRkM_OX8"
 #' read_tags(example_url)
 #' }
 #' @export
@@ -45,7 +45,7 @@ read_tags <-
 #' @examples
 #'
 #' \dontrun{
-#' example_url <- "https://docs.google.com/spreadsheets/d/18clYlQeJOc6W5QRuSlJ6_v3snqKJImFhU42bRkM_OX8/"
+#' example_url <- "18clYlQeJOc6W5QRuSlJ6_v3snqKJImFhU42bRkM_OX8"
 #' get_char_tweet_ids(read_tags(example_url)[1:10, ])
 #' get_char_tweet_ids(url_vector = read_tags(example_url)$status_url[1:10])
 #' get_char_tweet_ids(url_vector = "https://twitter.com/tweet__example/status/1176592704647716864")
@@ -94,7 +94,7 @@ get_char_tweet_ids <-
 #'
 #' \dontrun{
 #'
-#' example_url <- "https://docs.google.com/spreadsheets/d/18clYlQeJOc6W5QRuSlJ6_v3snqKJImFhU42bRkM_OX8/"
+#' example_url <- "18clYlQeJOc6W5QRuSlJ6_v3snqKJImFhU42bRkM_OX8"
 #' pull_tweet_data(read_tags(example_url)[1:10, ])
 #' pull_tweet_data(read_tags(example_url), n = 10)
 #' pull_tweet_data(url_vector = read_tags(example_url)$status_url[1:10])
@@ -219,7 +219,7 @@ length_with_na <-
 #'
 #' \dontrun{
 #'
-#' example_url <- "https://docs.google.com/spreadsheets/d/18clYlQeJOc6W5QRuSlJ6_v3snqKJImFhU42bRkM_OX8/"
+#' example_url <- "18clYlQeJOc6W5QRuSlJ6_v3snqKJImFhU42bRkM_OX8"
 #' tmp_df <- pull_tweet_data(read_tags(example_url), n = 10)
 #' tmp_processed <- process_tweets(tmp_df)
 #' tmp_processed
