@@ -44,7 +44,6 @@ Suggests:
     knitr,
     longurl,
     mapsapi,
-    mapview,
     rmarkdown,
     testthat,
     tidyverse,
