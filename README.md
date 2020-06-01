@@ -1,5 +1,8 @@
 
 <!-- README.md is generated from README.Rmd. Please edit that file -->
+<!-- badges: start -->
+[![Travis build status](https://travis-ci.com/bretsw/tidytags.svg?branch=master)](https://travis-ci.com/bretsw/tidytags) <!-- badges: end -->
+
 tidytags <img src="man/figures/tidytags-logo.png" align="right" width="120" />
 ==============================================================================
 

@@ -16,6 +16,11 @@ knitr::opts_chunk$set(
 
 # tidytags <img src="man/figures/tidytags-logo.png" align="right" width="120" />
 
+<!-- badges: start -->
+  [![Build status](https://travis-ci.com/bretsw/tidytags.svg?branch=master)](https://travis-ci.com/bretsw/tidytags)
+  <!-- badges: end -->
+
+
 Simple Collection and Powerful Analysis of Twitter Data
 
 ## Overview
