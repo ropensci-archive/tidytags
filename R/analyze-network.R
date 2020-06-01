@@ -23,22 +23,23 @@ get_replies <-
     processed_df <- process_tweets(df)
 
     replies <-
-      dplyr::filter(processed_df,
-                    .data$is_reply
+      dplyr::filter(
+        processed_df,
+        .data$is_reply
       )
 
     replies <-
       dplyr::select(replies,
-                    sender = .data$screen_name,
-                    receiver = .data$reply_to_screen_name
+        sender = .data$screen_name,
+        receiver = .data$reply_to_screen_name
       )
 
-    if(nrow(replies) == 0) {
+    if (nrow(replies) == 0) {
       replies <-
         dplyr::mutate(replies,
-                      sender = as.character(.data),
-                      receiver = as.character(.data)
-      )
+          sender = as.character(.data),
+          receiver = as.character(.data)
+        )
     }
 
     replies <-
@@ -74,26 +75,27 @@ get_retweets <-
     processed_df <- process_tweets(df)
 
     RTs <-
-      dplyr::filter(processed_df,
-                    .data$is_retweet
+      dplyr::filter(
+        processed_df,
+        .data$is_retweet
       )
 
     RTs <-
       dplyr::select(RTs,
-                    sender = .data$screen_name,
-                    receiver = .data$retweet_screen_name
+        sender = .data$screen_name,
+        receiver = .data$retweet_screen_name
       )
 
-    if(nrow(RTs) == 0) {
+    if (nrow(RTs) == 0) {
       RTs <- dplyr::mutate(RTs,
-                                sender = as.character(.data),
-                                receiver = as.character(.data)
+        sender = as.character(.data),
+        receiver = as.character(.data)
       )
     }
 
     RTs <-
       dplyr::mutate(RTs,
-                    edge_type = "retweet"
+        edge_type = "retweet"
       )
 
     RTs
@@ -124,27 +126,28 @@ get_quotes <-
     processed_df <- process_tweets(df)
 
     quotes <-
-      dplyr::filter(processed_df,
-                    .data$is_quote
+      dplyr::filter(
+        processed_df,
+        .data$is_quote
       )
 
     quotes <-
       dplyr::select(quotes,
-                    sender = .data$screen_name,
-                    receiver = .data$quoted_screen_name
+        sender = .data$screen_name,
+        receiver = .data$quoted_screen_name
       )
 
-    if(nrow(quotes) == 0) {
+    if (nrow(quotes) == 0) {
       quotes <-
         dplyr::mutate(quotes,
-                      sender = as.character(.data),
-                      receiver = as.character(.data)
-      )
+          sender = as.character(.data),
+          receiver = as.character(.data)
+        )
     }
 
     quotes <-
       dplyr::mutate(quotes,
-                    edge_type = "quote-tweet"
+        edge_type = "quote-tweet"
       )
 
     quotes
@@ -173,23 +176,27 @@ get_quotes <-
 get_mentions <-
   function(df) {
     processed_df <- process_tweets(df)
-    unnested_df <- tidyr::unnest(processed_df, mentions_screen_name)
+    unnested_df <- tidyr::unnest(
+      data = processed_df,
+      cols = mentions_screen_name
+    )
 
     mentions <-
       dplyr::select(unnested_df,
-                    sender = .data$screen_name,
-                    receiver = .data$mentions_screen_name
+        sender = .data$screen_name,
+        receiver = .data$mentions_screen_name
       )
 
     mentions <-
-      dplyr::filter(mentions,
-                    !is.na(.data$receiver)
+      dplyr::filter(
+        mentions,
+        !is.na(.data$receiver)
       )
 
-    if(nrow(mentions) == 0) {
+    if (nrow(mentions) == 0) {
       mentions <- dplyr::mutate(mentions,
-                                sender = as.character(.data),
-                                receiver = as.character(.data)
+        sender = as.character(.data),
+        receiver = as.character(.data)
       )
     }
 
