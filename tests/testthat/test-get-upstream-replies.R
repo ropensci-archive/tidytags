@@ -3,6 +3,7 @@ library(tidytags)
 
 
 test_that("get_upstream_replies() finds additional replies", {
+  skip_on_travis()
   skip_on_cran()
 
   example_url <- "18clYlQeJOc6W5QRuSlJ6_v3snqKJImFhU42bRkM_OX8"

@@ -2,6 +2,7 @@ context("Pull additional tweet data")
 library(tidytags)
 
 test_that("lookup_many_tweets() retrieves additional metadata like pull_tweet_data()", {
+  skip_on_travis()
   skip_on_cran()
 
   example_url <- "18clYlQeJOc6W5QRuSlJ6_v3snqKJImFhU42bRkM_OX8"

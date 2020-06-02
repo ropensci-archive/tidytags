@@ -2,8 +2,6 @@ context("Read TAGS tweet tracker")
 library(tidytags)
 
 test_that("a TAGS tweet tracker is imported properly from Google Sheets", {
-  skip_on_cran()
-
   example_url <- "18clYlQeJOc6W5QRuSlJ6_v3snqKJImFhU42bRkM_OX8"
   x <- read_tags(example_url)
 

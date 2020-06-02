@@ -2,6 +2,7 @@ context("Create edgelist")
 library(tidytags)
 
 test_that("tweets build into edgelist", {
+  skip_on_travis()
   skip_on_cran()
 
   sample_tags_sheet <- "18clYlQeJOc6W5QRuSlJ6_v3snqKJImFhU42bRkM_OX8"

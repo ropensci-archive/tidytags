@@ -2,6 +2,7 @@ context("Add users' data")
 library(tidytags)
 
 test_that("user data is added properly", {
+  skip_on_travis()
   skip_on_cran()
 
   sample_tweet <-
