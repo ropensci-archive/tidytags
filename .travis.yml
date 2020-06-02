@@ -6,4 +6,5 @@ addons:
   apt:
     packages:
       - libudunits2-dev
+      - gdal-config
 warnings_are_errors: false
