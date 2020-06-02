@@ -23,6 +23,7 @@
 #' @export
 read_tags <-
   function(url) {
+    googlesheets4::gs4_deauth()
     tweet_sheet <- googlesheets4::read_sheet(url, sheet = 2)
     tweet_sheet
   }
