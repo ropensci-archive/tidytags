@@ -25,6 +25,7 @@ test_that("get_upstream_replies() finds additional replies", {
 
 
 test_that("get_upstream_replies() works with no new replies found", {
+  skip_on_travis()
   skip_on_cran()
 
   sample_data <-
