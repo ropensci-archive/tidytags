@@ -7,4 +7,5 @@ addons:
     packages:
       - libudunits2-dev
       - libgdal-dev
+      - libgeos-dev
 warnings_are_errors: false
