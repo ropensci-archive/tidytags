@@ -12,13 +12,11 @@
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.12.1/css/v4-shims.min.css" integrity="sha256-wZjR52fzng1pJHwx4aV2AO3yyTOXrcDW7jBpJtTwVxw=" crossorigin="anonymous">
 <!-- clipboard.js --><script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.6/clipboard.min.js" integrity="sha256-inc5kl9MA1hkeYUt+EC3BhlIgyp/2jDIyBLS6k3UxPI=" crossorigin="anonymous"></script><!-- headroom.js --><script src="https://cdnjs.cloudflare.com/ajax/libs/headroom/0.11.0/headroom.min.js" integrity="sha256-AsUX4SJE1+yuDu5+mAVzJbuYNPHj/WroHuZ8Ir/CkE0=" crossorigin="anonymous"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/headroom/0.11.0/jQuery.headroom.min.js" integrity="sha256-ZX/yNShbjqsohH1k95liqY9Gd8uOiE1S4vZc+9KQ1K4=" crossorigin="anonymous"></script><!-- pkgdown --><link href="pkgdown.css" rel="stylesheet">
 <script src="pkgdown.js"></script><meta property="og:title" content="Simple Collection and Powerful Analysis of Twitter Data">
-<meta property="og:description" content="The goal of tidytags is to sync together 
-    (a) the ease of collecting tweets over time with a 
-    **Twitter Archiving Google Sheet** [TAGS](https://tags.hawksey.info/), 
-    (b) the utility of the **rtweet** [package](https://rtweet.info/) for 
-    processing and preparing additional Twitter metadata, and 
-    (c) a collection of different analytic functions developed during the course 
-    of extensive social media research in education.">
+<meta property="og:description" content="{tidytags} coordinates the simplicity of collecting tweets over time 
+    with a [Twitter Archiving Google Sheet](https://tags.hawksey.info/) (TAGS) and the utility of the 
+    [{rtweet} package](https://rtweet.info/) for processing and preparing additional Twitter metadata. 
+    {tidytags} also introduces functions developed to facilitate systematic yet 
+    flexible analyses of data from Twitter.">
 <!-- mathjax --><script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/MathJax.js" integrity="sha256-nvJJv9wWKEm88qvoQl9ekL2J+k/RWIsaSScxxlsrv8k=" crossorigin="anonymous"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/config/TeX-AMS-MML_HTMLorMML.js" integrity="sha256-84DKXVJXs0/F8OTMzX4UR909+jtl4G7SPypPavF+GfA=" crossorigin="anonymous"></script><!--[if lt IE 9]>
 <script src="https://oss.maxcdn.com/html5shiv/3.7.3/html5shiv.min.js"></script>
 <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
@@ -93,59 +91,59 @@
 <div id="overview" class="section level2">
 <h2 class="hasAnchor">
 <a href="#overview" class="anchor"></a>Overview</h2>
-<p><strong>tidytags</strong> coordinates the simplicity of collecting tweets over time with a <a href="https://tags.hawksey.info/">Twitter Archiving Google Sheet</a> (TAGS) and the utility of the <strong>rtweet</strong> <a href="https://rtweet.info/">package</a> for processing and preparing additional Twitter metadata. <strong>tidytags</strong> also introduces functions developed to facilitate systematic yet flexible analyses of data from Twitter.</p>
+<p>{tidytags} coordinates the simplicity of collecting tweets over time with a <a href="https://tags.hawksey.info/">Twitter Archiving Google Sheet</a> (TAGS) and the utility of the <a href="https://rtweet.info/">{rtweet} package</a> for processing and preparing additional Twitter metadata. {tidytags} also introduces functions developed to facilitate systematic yet flexible analyses of data from Twitter.</p>
 </div>
 <div id="installation" class="section level2">
 <h2 class="hasAnchor">
 <a href="#installation" class="anchor"></a>Installation</h2>
-<p>Soon, you will be able to install the released version of <strong>tidytags</strong> from <a href="https://CRAN.R-project.org">CRAN</a> with:</p>
+<p>Soon, you will be able to install the released version of {tidytags} from <a href="https://CRAN.R-project.org">CRAN</a> with:</p>
 <div class="sourceCode" id="cb1"><pre class="r"><span class="fu"><a href="https://rdrr.io/r/utils/install.packages.html">install.packages</a></span>(<span class="st">"tidytags"</span>)</pre></div>
-<p>You can also install the development version of <strong>tidytags</strong> from GitHub with:</p>
+<p>You can also install the development version of {tidytags} from GitHub with:</p>
 <div class="sourceCode" id="cb2"><pre class="r"><span class="fu"><a href="https://rdrr.io/r/utils/install.packages.html">install.packages</a></span>(<span class="st">"devtools"</span>)
 <span class="kw pkg">devtools</span><span class="kw ns">::</span><span class="fu"><a href="https://devtools.r-lib.org//reference/remote-reexports.html">install_github</a></span>(<span class="st">"bretsw/tidytags"</span>)</pre></div>
 </div>
 <div id="usage" class="section level2">
 <h2 class="hasAnchor">
 <a href="#usage" class="anchor"></a>Usage</h2>
-<p><strong>tidytags</strong> should be used in strict accordance with Twitter’s <a href="https://developer.twitter.com/en/developer-terms/more-on-restricted-use-cases">developer terms</a>.</p>
+<p>{tidytags} should be used in strict accordance with Twitter’s <a href="https://developer.twitter.com/en/developer-terms/more-on-restricted-use-cases">developer terms</a>.</p>
 <div id="read_tags" class="section level3">
 <h3 class="hasAnchor">
 <a href="#read_tags" class="anchor"></a>read_tags()</h3>
-<p>At its most basic level, <strong>tidytags</strong> allows you to work with a <a href="https://tags.hawksey.info/">Twitter Archiving Google Sheet</a> (TAGS) in R. This is done with the <strong>googlesheets4</strong> <a href="https://CRAN.R-project.org/package=googlesheets4">package</a>. One requirement for using the <strong>googlesheets4</strong> package is that your TAGS tracker has been “published to the web.” To do this, with the TAGS page open in a web browser, go to <code>File &gt;&gt; Publish to the web</code>. The <code>Link</code> field should be ‘Entire document’ and the <code>Embed</code> field should be ‘Web page.’ If everything looks right, then click the <code>Publish</code> button. Next, click the <code>Share</code> button in the top right corner of the Google Sheets window, select <code>Get shareable link</code>, and set the permissions to ‘Anyone with the link can view.’ The URL needed for R is simply the URL at the top of the web browser, just copy and paste at this point. Be sure to put quotations marks around the URL when entering it into <code><a href="reference/read_tags.html">read_tags()</a></code>.</p>
+<p>At its most basic level, {tidytags} allows you to work with a <a href="https://tags.hawksey.info/">Twitter Archiving Google Sheet</a> (TAGS) in R. This is done with the <a href="https://CRAN.R-project.org/package=googlesheets4">{googlesheets4} package</a>. One requirement for using the {googlesheets4} package is that your TAGS tracker has been “published to the web.” To do this, with the TAGS page open in a web browser, go to <code>File &gt;&gt; Publish to the web</code>. The <code>Link</code> field should be ‘Entire document’ and the <code>Embed</code> field should be ‘Web page.’ If everything looks right, then click the <code>Publish</code> button. Next, click the <code>Share</code> button in the top right corner of the Google Sheets window, select <code>Get shareable link</code>, and set the permissions to ‘Anyone with the link can view.’ The URL needed for R is simply the URL at the top of the web browser, just copy and paste at this point. Be sure to put quotations marks around the URL when entering it into <code><a href="reference/read_tags.html">read_tags()</a></code>.</p>
 <p>At this point, you can view or read your TAGS archive into R using <code><a href="reference/read_tags.html">read_tags()</a></code>.</p>
 </div>
 <div id="pull_tweet_data" class="section level3">
 <h3 class="hasAnchor">
 <a href="#pull_tweet_data" class="anchor"></a>pull_tweet_data()</h3>
-<p>With a TAGS archive imported into R, <strong>tidytags</strong> allows you to gather quite a bit more information related to the collected tweets with the <code><a href="reference/pull_tweet_data.html">pull_tweet_data()</a></code> function. This function uses the <a href="https://rtweet.info/">rtweet package</a> (via <code><a href="https://rdrr.io/pkg/rtweet/man/lookup_statuses.html">rtweet::lookup_statuses()</a></code>) to query the Twitter API. Using <strong>rtweet</strong> requires Twitter API keys associated with an approved developer account. Fortunately, the rtweet vignette, <a href="https://rtweet.info/articles/auth.html">Obtaining and using access tokens</a>, provides a very thorough guide to obtaining Twitter API keys. We recommend the second suggested method listed in the rtweet vignette, “2. Access token/secret method.” Following these directions, you will run the <code><a href="https://rdrr.io/pkg/rtweet/man/create_token.html">rtweet::create_token()</a></code> function, which saves your Twitter API keys to the <code>.Renviron</code> file. You can also edit this file directly using the <code><a href="https://usethis.r-lib.org/reference/edit.html">usethis::edit_r_environ(scope='user')</a></code> function.</p>
+<p>With a TAGS archive imported into R, {tidytags} allows you to gather quite a bit more information related to the collected tweets with the <code><a href="reference/pull_tweet_data.html">pull_tweet_data()</a></code> function. This function uses the <a href="https://rtweet.info/">{rtweet} package</a> (via <code><a href="https://rdrr.io/pkg/rtweet/man/lookup_statuses.html">rtweet::lookup_statuses()</a></code>) to query the Twitter API. Using {rtweet} requires Twitter API keys associated with an approved developer account. Fortunately, the {rtweet} vignette, <a href="https://rtweet.info/articles/auth.html">Obtaining and using access tokens</a>, provides a very thorough guide to obtaining Twitter API keys. We recommend the second suggested method listed in the {rtweet} vignette, “2. Access token/secret method.” Following these directions, you will run the <code><a href="https://rdrr.io/pkg/rtweet/man/create_token.html">rtweet::create_token()</a></code> function, which saves your Twitter API keys to the <code>.Renviron</code> file. You can also edit this file directly using the <code><a href="https://usethis.r-lib.org/reference/edit.html">usethis::edit_r_environ(scope='user')</a></code> function.</p>
 </div>
 <div id="geocode_tags" class="section level3">
 <h3 class="hasAnchor">
 <a href="#geocode_tags" class="anchor"></a>geocode_tags()</h3>
-<p>Another area to explore is where tweeters in the dataset are from (or, at least, the location they self-identify in their Twitter profiles). <strong>tidytags</strong> makes this straightforward with the <code><a href="reference/geocode_tags.html">geocode_tags()</a></code> function. Note that <code><a href="reference/geocode_tags.html">geocode_tags()</a></code> should be used after additional metadata has been retrieved with <code><a href="reference/pull_tweet_data.html">tidytags::pull_tweet_data()</a></code>.</p>
+<p>Another area to explore is where tweeters in the dataset are from (or, at least, the location they self-identify in their Twitter profiles). {tidytags} makes this straightforward with the <code><a href="reference/geocode_tags.html">geocode_tags()</a></code> function. Note that <code><a href="reference/geocode_tags.html">geocode_tags()</a></code> should be used after additional metadata has been retrieved with <code><a href="reference/pull_tweet_data.html">tidytags::pull_tweet_data()</a></code>.</p>
 <p>The <code><a href="reference/geocode_tags.html">geocode_tags()</a></code> function pulls from the Google Geocoding API, which requires a Google Geocoding API Key. You can easily secure a key through Google Cloud Platform; <a href="https://developers.google.com/maps/documentation/geocoding/get-api-key">read more here</a>. We recommend saving your Google Geocoding API Key in the <code>.Renviron</code> file as <strong>Google_API_key</strong>. You can quickly access this file using the R code <code><a href="https://usethis.r-lib.org/reference/edit.html">usethis::edit_r_environ(scope='user')</a></code>. Add a line to this file that reads: <code>Google_API_key="PasteYourGoogleKeyInsideTheseQuotes"</code>. To read your key into R, use the code <code><a href="https://rdrr.io/r/base/Sys.getenv.html">Sys.getenv('Google_API_key')</a></code>. Note that the <code><a href="reference/geocode_tags.html">geocode_tags()</a></code> function retrieves your saved API key automatically and securely. Once you’ve saved the <code>.Renviron</code> file, quit your R session and restart. The function <code><a href="reference/geocode_tags.html">geocode_tags()</a></code> will work for you from now on.</p>
 </div>
 </div>
 <div id="learning-more-about-tidytags" class="section level2">
 <h2 class="hasAnchor">
 <a href="#learning-more-about-tidytags" class="anchor"></a>Learning more about tidytags</h2>
-<p>For a walkthrough of numerous additional <strong>tidytags</strong> functions, visit the <a href="https://bretsw.github.io/tidytags/articles/tidytags-with-conf-hashtags.html">Using tidytags with a conference hashtag</a> vignette webpage.</p>
+<p>For a walkthrough of numerous additional {tidytags} functions, visit the <a href="https://bretsw.github.io/tidytags/articles/tidytags-with-conf-hashtags.html">Using tidytags with a conference hashtag</a> vignette webpage.</p>
 </div>
 <div id="getting-help" class="section level2">
 <h2 class="hasAnchor">
 <a href="#getting-help" class="anchor"></a>Getting help</h2>
-<p><strong>tidytags</strong> is still a work in progress, so we fully expect that there are still some bugs to work out and functions to document better. If you find an issue, have a question, or think of something that you really wish <strong>tidytags</strong> would do for you, don’t hesitate to <a href="mailto:bret@bretsw.com">email Bret</a> or reach out on Twitter: <br><span class="math display">@<em>b</em><em>r</em><em>e</em><em>t</em><em>s</em><em>w</em></span><br>(<a href="https://twitter.com/bretsw" class="uri">https://twitter.com/bretsw</a>), <br><span class="math display">@<em>j</em><em>r</em><em>o</em><em>s</em><em>e</em><em>n</em><em>b</em><em>e</em><em>r</em><em>g</em>6432</span><br>(<a href="https://twitter.com/jrosenberg6432" class="uri">https://twitter.com/jrosenberg6432</a>), and <br><span class="math display">@<em>s</em><em>p</em><em>g</em><em>r</em><em>e</em><em>e</em><em>n</em><em>h</em><em>a</em><em>l</em><em>g</em><em>h</em></span><br>(<a href="https://twitter.com/spgreenhalgh" class="uri">https://twitter.com/spgreenhalgh</a>).</p>
+<p>{tidytags} is still a work in progress, so we fully expect that there are still some bugs to work out and functions to document better. If you find an issue, have a question, or think of something that you really wish {tidytags} would do for you, don’t hesitate to <a href="mailto:bret@bretsw.com">email Bret</a> or reach out on Twitter: <br><span class="math display">@<em>b</em><em>r</em><em>e</em><em>t</em><em>s</em><em>w</em></span><br>(<a href="https://twitter.com/bretsw" class="uri">https://twitter.com/bretsw</a>), <br><span class="math display">@<em>j</em><em>r</em><em>o</em><em>s</em><em>e</em><em>n</em><em>b</em><em>e</em><em>r</em><em>g</em>6432</span><br>(<a href="https://twitter.com/jrosenberg6432" class="uri">https://twitter.com/jrosenberg6432</a>), and <br><span class="math display">@<em>s</em><em>p</em><em>g</em><em>r</em><em>e</em><em>e</em><em>n</em><em>h</em><em>a</em><em>l</em><em>g</em><em>h</em></span><br>(<a href="https://twitter.com/spgreenhalgh" class="uri">https://twitter.com/spgreenhalgh</a>).</p>
 <p>You can also <a href="https://github.com/bretsw/tidytags/issues/">submit an issue on Github</a>.</p>
 </div>
 <div id="future-collaborations" class="section level2">
 <h2 class="hasAnchor">
 <a href="#future-collaborations" class="anchor"></a>Future collaborations</h2>
-<p>This is package is still in development, and we welcome new contributors. Please reach out through the same channels as “Getting help.”</p>
+<p>This package is still in development, and we welcome new contributors. Please reach out through the same channels as “Getting help.”</p>
 </div>
 <div id="license" class="section level2">
 <h2 class="hasAnchor">
 <a href="#license" class="anchor"></a>License</h2>
-<p>The <strong>tidytags</strong> package is licensed under a <em>GNU General Public License v3.0</em>, or <a href="https://choosealicense.com/licenses/lgpl-3.0/">GPL-3</a>. For background on why we chose this license, read Hadley Wickham’s take on <a href="http://r-pkgs.had.co.nz/description.html#license">R package licensing</a>.</p>
+<p>The {tidytags} package is licensed under a <em>GNU General Public License v3.0</em>, or <a href="https://choosealicense.com/licenses/lgpl-3.0/">GPL-3</a>. For background on why we chose this license, read Hadley Wickham’s take on <a href="http://r-pkgs.had.co.nz/description.html#license">R package licensing</a>.</p>
 </div>
 </div>
   </div>
@@ -171,8 +169,6 @@
 <a href="http://bretsw.com/">K. Bret Staudt Willet</a> <br><small class="roles"> Author, maintainer </small> <a href="https://orcid.org/0000-0002-6984-416X" target="orcid.widget" aria-label="ORCID"><span class="fab fa-orcid orcid" aria-hidden="true"></span></a> </li>
 <li>
 <a href="https://joshuamrosenberg.com/">Joshua M. Rosenberg</a> <br><small class="roles"> Author </small> <a href="https://orcid.org/0000-0003-2170-0447" target="orcid.widget" aria-label="ORCID"><span class="fab fa-orcid orcid" aria-hidden="true"></span></a> </li>
-<li>
-<a href="https://spencergreenhalgh.com/">Spencer P. Greenhalgh</a> <br><small class="roles"> Author </small> <a href="https://orcid.org/0000-0002-8894-3198" target="orcid.widget" aria-label="ORCID"><span class="fab fa-orcid orcid" aria-hidden="true"></span></a> </li>
 </ul>
 </div>
 
@@ -191,7 +187,7 @@
 
 
       <footer><div class="copyright">
-  <p>Developed by <a href="http://bretsw.com/">K. Bret Staudt Willet</a>, <a href="https://joshuamrosenberg.com/">Joshua M. Rosenberg</a>, <a href="https://spencergreenhalgh.com/">Spencer P. Greenhalgh</a>.</p>
+  <p>Developed by <a href="http://bretsw.com/">K. Bret Staudt Willet</a>, <a href="https://joshuamrosenberg.com/">Joshua M. Rosenberg</a>.</p>
 </div>
 
 <div class="pkgdown">

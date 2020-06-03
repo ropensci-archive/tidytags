@@ -10,7 +10,9 @@
 #'   and set the permissions to 'Anyone with the link can view.' The URL needed for R
 #'   is simply the URL at the top of the web browser, just copy and paste at this point.
 #'   Be sure to put quotations marks around the URL when entering it into \code{read_tags()}.
-#' @param url A valid URL (i.e., hyperlink) to a TAGS tracker
+#' @param url A valid URL (i.e., hyperlink) to a TAGS tracker, or a Google Sheet
+#'   identifier (i.e., the alphanumeric string following "https://docs.google.com/spreadsheets/d/"
+#'   in the TAGS tracker's URL.)
 #' @return A dataframe of the TAGS archive of tweets
 #' @seealso Read more about \code{library(googlesheets4)} \href{https://github.com/tidyverse/googlesheets4}{here}.
 #' @examples

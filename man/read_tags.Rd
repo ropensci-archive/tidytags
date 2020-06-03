@@ -7,7 +7,9 @@
 read_tags(url)
 }
 \arguments{
-\item{url}{A valid URL (i.e., hyperlink) to a TAGS tracker}
+\item{url}{A valid URL (i.e., hyperlink) to a TAGS tracker, or a Google Sheet
+identifier (i.e., the alphanumeric string following "https://docs.google.com/spreadsheets/d/"
+in the TAGS tracker's URL.)}
 }
 \value{
 A dataframe of the TAGS archive of tweets

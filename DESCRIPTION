@@ -9,19 +9,13 @@ Authors@R: c(
     person("Joshua M.", "Rosenberg", ,
       role = c("aut"),
       comment = c(ORCID = "0000-0003-2170-0447")
-    ),
-    person("Spencer P.", "Greenhalgh", ,
-      role = c("aut"),
-      comment = c(ORCID = "0000-0002-8894-3198")
     )
   )
-Description: The goal of tidytags is to sync together 
-    (a) the ease of collecting tweets over time with a 
-    **Twitter Archiving Google Sheet** [TAGS](https://tags.hawksey.info/), 
-    (b) the utility of the **rtweet** [package](https://rtweet.info/) for 
-    processing and preparing additional Twitter metadata, and 
-    (c) a collection of different analytic functions developed during the course 
-    of extensive social media research in education.
+Description: {tidytags} coordinates the simplicity of collecting tweets over time 
+    with a [Twitter Archiving Google Sheet](https://tags.hawksey.info/) (TAGS) and the utility of the 
+    [{rtweet} package](https://rtweet.info/) for processing and preparing additional Twitter metadata. 
+    {tidytags} also introduces functions developed to facilitate systematic yet 
+    flexible analyses of data from Twitter.
 License: GPL-3
 URL: https://bretsw.github.io/tidytags/, https://github.com/bretsw/tidytags
 Depends: 
