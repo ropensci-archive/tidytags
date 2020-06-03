@@ -6,9 +6,9 @@
 [![Travis build
 status](https://travis-ci.com/bretsw/tidytags.svg?branch=master)](https://travis-ci.com/bretsw/tidytags)
 [![codecov](https://codecov.io/gh/bretsw/tidytags/branch/master/graph/badge.svg)](https://codecov.io/gh/bretsw/tidytags)
-[![Project Status: WIP – Initial development is in progress, but there
-has not yet been a stable, usable release suitable for the
-public.](https://www.repostatus.org/badges/latest/wip.svg)](https://www.repostatus.org/#wip)
+[![Project Status: Active – The project has reached a stable, usable
+state and is being actively
+developed.](https://www.repostatus.org/badges/latest/active.svg)](https://www.repostatus.org/#active)
 [![lifecycle](https://img.shields.io/badge/lifecycle-maturing-blue.svg)](https://www.tidyverse.org/lifecycle/#maturing)
 [![license](https://img.shields.io/badge/license-GPL3-9cf.svg)](https://www.gnu.org/licenses/gpl.html)
 
@@ -16,13 +16,19 @@ Simple Collection and Powerful Analysis of Twitter Data
 
 ## Overview
 
-The goal of **tidytags** is to sync together (a) the simplicity of
-collecting tweets over time with a [Twitter Archiving Google
-Sheet](https://tags.hawksey.info/) (TAGS), (b) the utility of the
-[rtweet package](https://rtweet.info/) for processing and preparing
-additional Twitter metadata, and (c) a collection of different analytic
-functions developed during the course of extensive social media research
-in education.
+**tidytags** coordinates (a) the simplicity of collecting tweets over
+time with a [Twitter Archiving Google Sheet](https://tags.hawksey.info/)
+(TAGS) in R and (b) the utility of the **rtweet**
+[package](https://rtweet.info/) for processing and preparing additional
+Twitter metadata with (c) functions we have developed to facilitate the
+systematic yet flexible analyses of data from Twitter.
+
+**tidytags** coordinates the simplicity of collecting tweets over time
+with a [Twitter Archiving Google Sheet](https://tags.hawksey.info/)
+(TAGS) and the utility of the **rtweet** [package](https://rtweet.info/)
+for processing and preparing additional Twitter metadata. **tidytags**
+also introduces functions developed to facilitate systematic yet
+flexible analyses of data from Twitter.
 
 ## Installation
 
@@ -43,12 +49,16 @@ devtools::install_github("bretsw/tidytags")
 
 ## Usage
 
+**tidytags** should be used in strict accordance with Twitter’s
+[developer
+terms](https://developer.twitter.com/en/developer-terms/more-on-restricted-use-cases).
+
 ### read\_tags()
 
 At its most basic level, **tidytags** allows you to work with a [Twitter
 Archiving Google Sheet](https://tags.hawksey.info/) (TAGS) in R. This is
-done with the [googlesheets4
-package](https://CRAN.R-project.org/package=googlesheets4). One
+done with the **googlesheets4**
+[package](https://CRAN.R-project.org/package=googlesheets4). One
 requirement for using the **googlesheets4** package is that your TAGS
 tracker has been “published to the web.” To do this, with the TAGS page
 open in a web browser, go to `File >> Publish to the web`. The `Link`

@@ -1,94 +1,114 @@
 ---
-title: 'tidytags: Simple Collection and Powerful Analysis of Twitter Data'
+title: "tidytags: Simple Collection and Powerful Analysis of Twitter Data""
+authors:
+  - affiliation: 1
+    name: K. Bret Staudt Willet
+    orcid: 0000-0002-6984-416X
+  - affiliation: 2
+    name: Joshua M. Rosenberg
+    orcid: 0000-0003-2170-0447
+  - affiliation: 3
+    name: Spencer P. Greenhalgh
+    orcid: 0000-0002-8894-3198
+date: 03 June 2020
+bibliography: paper.bib
 tags:
   - R
   - Twitter
+  - social media
   - data science
   - data mining
   - wrapper
-authors:
-  - name: K. Bret Staudt Willet
-    orcid: 0000-0002-6984-416X
-    affiliation: 1
-  - name: Joshua M. Rosenberg
-    orcid: 0000-0003-2170-0447
-    affiliation: 2
-  - name: Spencer P. Greenhalgh
-    orcid: 0000-0002-8894-3198
-    affiliation: 3
 affiliations:
- - name: Michigan State University
-   index: 1
- - name: University of Tennessee, Knoxville
-   index: 2
- - name: University of Kentucky
-   index: 3
-date: 20 May 2020
-bibliography: paper.bib
+  - index: 1
+    name: Michigan State University
+  - index: 2
+    name: University of Tennessee, Knoxville
+  - index: 3
+    name: University of Kentucky
 ---
-
-# Summary
-
-``tidytags`` coordinates (a) the simplicity of collecting tweets over time with a **Twitter Archiving Google Sheet**, [TAGS](https://tags.hawksey.info/) and (b) the utility of the ``rtweet`` [package](https://rtweet.info/) for processing and preparing additional Twitter metadata with (c) functions we have developed to facilitate the systematic yet flexivle analyses of data from Twitter.
 
 # Statement of Need
 
-An essential dimension of understanding behavior across social science fields is to study the artifacts and behaviors of group members over time. Social media platforms such as Twitter are a context for analyses and research on a variety of topics that have a temporal component, such as [EXAMPLES AND CITES IN DIFFERENT SOCIAL SCIENCE FIELDS].
+An essential component of understanding behavior across the social sciences is to study the artifacts and behaviors of group members over time. Social media platforms such as Twitter are a context for analysis and research on a variety of topics that have a temporal component. For instance, online communities often struggle with attrition and lack of commitment, so it would be beneficial to understand why some users continue to sustain participation while others gradually drop out `[@xing_gao2018:2018]`. Also, because `@veletsianos_et_al2019:2019` found that scholars' social media use is interwoven with changes in their personal lives and societal transitions, their social media practices must be studied over time.
 
 Time travel is hard, if not impossible. As a result, collecting historical data from Twitter can be difficult and expensive. First, access to Twitter data is limited by the platform’s API. For instance, a researcher using the Twitter API today to search for information on the 2019 conference of the Association for Educational Communication & Technology, [AECT](https://aect.org/) using using hashtags #AECT19 or #AECTinspired would not be able to readily access tweets from the time of the convention (which occurred in October, 2019). 
 
-Second, accessing historical content from Twitter is not impossible, but likely expensive. There are companies that collect historical Twitter data who make these available to academic researchers for the right price. There are also technical solutions to collect past tweets, but these too come at a cost, such as requiring advanced technical skills and risking the likely violation of Twitter's [Terms of Service](https://twitter.com/en/tos) agreements.
-
-< These two reasons why it is hard to access historical data seem similar! Combine? >
+Still, accessing historical content from Twitter is not impossible, although it is likely expensive. There are companies that collect historical Twitter data who make these available to academic researchers for the right price. There are also technical solutions to collect past tweets, but these too come at a cost, such as requiring advanced technical skills and risking the likely violation of [Twitter's Terms of Service](https://twitter.com/en/tos) agreements.
 
 One solution to these Twitter data collection issues is to use a Twitter Archiving Google Sheet, [TAGS](https://tags.hawksey.info/). Getting started with TAGS is as simple as setting up a new Google Sheet, which will then automatically query (i.e., search) the Twitter API every hour going forward. The tradeoff of using TAGS is that it returns limited metadata compared to what is available from the Twitter API, approximately 20% of all categories of information. That is, a TAGS returns the time, sender, and text of tweets, but not many additional details such as a list of the hashtags or hyperlinks contained in a tweet. As a result, ``tidytags`` first uses TAGS to easily collect tweet ID numbers and then uses the R package ``rtweet`` to re-query the Twitter API to collect additional metadata.
+
+# Summary
+
+``tidytags`` coordinates the simplicity of collecting tweets over time with a [Twitter Archiving Google Sheet](https://tags.hawksey.info/) (TAGS) and the utility of the ``rtweet`` [package](https://rtweet.info/) for processing and preparing additional Twitter metadata. ``tidytags`` also introduces functions developed to facilitate systematic yet flexible analyses of data from Twitter.
 
 # Preconditions for a {tidytags} Analysis
 
 ## First, Publish Data Collected with TAGS to the Web
 
-``tidytags`` allows you to work with a [Twitter Archiving Google Sheet](https://tags.hawksey.info/) (TAGS) in R. This is done with the [googlesheets4 package](https://CRAN.R-project.org/package=googlesheets4). One requirement for using the ``googlesheets4`` package is that your TAGS tracker has been "published to the web." To do this, with the TAGS page open in a web browser, go to `File >> Publish to the web`. The `Link` field should be 'Entire document' and the `Embed` field should be 'Web page.' If everything looks right, then click the `Publish` button. Next, click the `Share` button in the top right corner of the Google Sheets window, select `Get shareable link`, and set the permissions to 'Anyone with the link can view.' The URL needed for R is simply the URL at the top of the web browser, just copy and paste at this point. Be sure to put quotations marks around the URL when entering it into the `read_tags()` function.
+``tidytags`` facilitates working with a [Twitter Archiving Google Sheet](https://tags.hawksey.info/) (TAGS) in R through the ``googlesheets4`` [package](https://CRAN.R-project.org/package=googlesheets4). One requirement for using ``googlesheets4`` is that the TAGS tracker has been "published to the web." To do this, with the TAGS page open in a web browser, go to `File >> Publish to the web`. The `Link` field should show 'Entire document' and the `Embed` field should be 'Web page.' If everything looks right, click the `Publish` button. Next, click the `Share` button in the top right corner of the Google Sheets window, select `Get shareable link`, and set the permissions to 'Anyone with the link can view.' The URL needed for R is simply the URL at the top of the web browser, just copy and paste from there. Be sure to put quotations marks around the URL when entering it into the `tidytags::read_tags()` function.
 
 ## Second, Obtain a Twitter API Key
 
-``tidytags`` also allows you to process tweets and prepare additional Twitter metadata by building upon the  [rtweet package](https://rtweet.info/) (via `rtweet::lookup_statuses()`) to query the Twitter API. However, using ``rtweet`` requires Twitter API keys associated with an approved developer account. Fortunately, the rtweet vignette, [Obtaining and using access tokens](https://rtweet.info/articles/auth.html), provides a very thorough guide to obtaining Twitter API keys. We recommend the second suggested method listed in the rtweet vignette, "2. Access token/secret method." Following these directions, you will run the `rtweet::create_token()` function, which saves your Twitter API keys to the `.Renviron` file. You can also edit this file directly using the `usethis::edit_r_environ(scope='user')` function.
-
-< I think we should cut this next section or shorten this a lot here as it's not core to the functionality >
-
-## Getting a Google API Key
-
-The `geocode_tags()` function pulls from the Google Geocoding API, which requires a Google Geocoding API Key. You can easily secure a key through Google Cloud Platform; [read more here](https://developers.google.com/maps/documentation/geocoding/get-api-key). We recommend saving your Google Geocoding API Key in the `.Renviron` file as **Google_API_key**. You can quickly access this file using the R code `usethis::edit_r_environ(scope='user')`. Add a line to this file that reads: `Google_API_key="PasteYourGoogleKeyInsideTheseQuotes"`. To read your key into R, use the code `Sys.getenv('Google_API_key')`. Note that the `geocode_tags()` function retrieves your saved API key automatically and securely. Once you've saved the `.Renviron` file, quit your R session and restart. The function `geocode_tags()` will work for you from now on. 
+``tidytags`` also allows the processing of tweets and preparation of additional Twitter metadata by building upon the  [rtweet package](https://rtweet.info/) (via `rtweet::lookup_statuses()`) to query the Twitter API. However, using ``rtweet`` requires Twitter API keys associated with an approved developer account. Fortunately, the rtweet vignette, [Obtaining and using access tokens](https://rtweet.info/articles/auth.html), provides a thorough guide to obtaining Twitter API keys. We recommend the second suggested method listed in the rtweet vignette, "2. Access token/secret method." Following these directions, you will run the `rtweet::create_token()` function, which saves your Twitter API keys to the `.Renviron` file. You can also edit this file directly using the `usethis::edit_r_environ(scope='user')` function.
 
 # The {tidytags} Workflow
 
+A workflow for Twitter research has been formalized in ``tidytags``. This workflow is simple enough for beginning programmers to get started, but powerful enough to serve as the analytic foundation of research that has been featured in academic journals such as *Computers & Education* `[greenhalgh_et_al2018:2018]`, *Journal of Research on Technology in Education* `[staudtwillet2019:2019]`, and *TechTrends* `[greenhalgh_et_al2018:2018]`.
+
 The ``tidytags`` workflow for exploring Twitter data over time using R includes:
 
-1. Setting up a Twitter Archiving Google Sheet [TAGS](https://tags.hawksey.info/) tweet collector
+1. Set up a Twitter Archiving Google Sheet [TAGS](https://tags.hawksey.info/) tweet collector.
 
-1. Viewing tweets collected by TAGS in [RStudio](https://rstudio.com/) using the function ______.
-1. Pulling additional tweet metadata with [rtweet](https://rtweet.info/) using 
-1. Analyzing URLs and web domains in tweets
-1. Geocoding tweeter locations and creating map visualizations 
-1. Analyzing social networks of tweeters
-1. Pulling in additional tweeter information to understand “the culture of a group, organization, community, or society in the practice of learning design and research” (AECT 2020 call for proposals)
-1. Exporting edgelists to create network visualizations using the ggraph R package or the open-source software [Gephi](https://gephi.org/)
+2. View tweets collected by TAGS using the function `get_tags()` and either the URL of a TAGS tracker or the Google Sheet identification number.
 
-This workflow for Twitter research has been formalized in ``tidytags``. The purpose of ``tidytags`` is to sync together the simplicity of collecting tweets over time with TAGS, the utility of the ``rtweet`` package for processing and preparing additional Twitter metadata, and the convenience of curating different analytic functions developed during social media research across the past five years. This workflow is simple enough for beginning programmers to get started, but powerful enough to serve as the analytic foundation of research that has been featured in academic journals such as [Computers & Education](https://www.journals.elsevier.com/computers-and-education), [Journal of Research on Technology in Education](https://www.tandfonline.com/loi/ujrt20), and [TechTrends](https://www.springer.com/journal/11528).
-
-# Example
-
-< Wondering if this and the previous section could be combined - describe the functionality and then show the code to carry it out? >
-
-Here's an examples of steps X-Y together:
 ```{r}
-
+aect_tweets_tags <- read_tags("18clYlQeJOc6W5QRuSlJ6_v3snqKJImFhU42bRkM_OX8")
 ```
 
-For more a more extensive walkthrough of ``tidytags`` functionality, visit the [Using tidytags with a conference hashtag](https://bretsw.github.io/tidytags/articles/tidytags-with-conf-hashtags.html) vignette webpage.
+3. Pull additional tweet metadata using the function `pull_tweet_data()`.
 
-< Maybe not necessary here >
+```{r}
+aect_tweets_full <- pull_tweet_data(aect_tweets_tags)
+```
+
+4. Calculate additional tweet attributes using the function `process_tweets()`.
+
+```{r}
+aect_tweets_processed <- process_tweets(aect_tweets_full)
+```
+
+5. Analyze hyperlinks and web domains in tweets using the function `get_url_domain()`.
+
+```{r}
+tweet_urls <- purrr::flatten_chr(aect_tweets_processed$urls_url)
+tweet_urls <- tweet_urls[!is.na(tweet_urls)]  # Remove NA values
+tweet_domains <- get_url_domain(tweet_urls)
+```
+
+6. Geocode tweeter locations and creating map visualizations using the function `geocode_tags()`.
+
+```{r}
+aect_places <- dplyr::distinct(aect_tweets_processed, location, .keep_all = TRUE)
+aect_geo_coords <- geocode_tags(aect_places)
+mapview::mapview(aect_geo_coords)
+```
+
+7. Analyze the social network of tweeters using the function `create_edgelist()`.
+
+```{r}
+aect_edgelist <- create_edgelist(aect_tweets_processed)
+```
+
+8. Append additional tweeter information to the edgelist using the function `add_users_data()`.
+
+```{r}
+aect_senders_receivers_data <- add_users_data(aect_edgelist)
+```
 
 # Acknowledgements
+
+We have been inspired by and are pleased to build upon the functionality offered by Jeff Hawksey's TAGS tweet tracker and Michael Kearney's ``rtweet`` package.
 
 # References
 
