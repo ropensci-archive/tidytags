@@ -106,30 +106,8 @@ aect_edgelist <- create_edgelist(aect_tweets_processed)
 aect_senders_receivers_data <- add_users_data(aect_edgelist)
 ```
 
-# Acknowledgements
+# Conclusion
 
-We have been inspired by and are pleased to build upon the functionality offered by Jeff Hawksey's TAGS tweet tracker and Michael Kearney's ``rtweet`` package.
+{tidytags} is intended to lower barriers to powerful analyses of Twitter data. By combining an easy-to-use tool which can collect a large volume of longitudinal data from Twitter (TAGS), the {rtweet} R package, and functions that facilitate and extend their combined use, {tidytags} has the potential to assist in the collection of Tweets for a range of social science-related analyses and research. 
 
 # References
-
-
-
-
-
-
-
-Citations to entries in paper.bib should be in
-[rMarkdown](http://rmarkdown.rstudio.com/authoring_bibliographies_and_citations.html)
-format.
-
-For a quick reference, the following citation commands can be used:
-- `@author:2001`  ->  "Author et al. (2001)"
-- `[@author:2001]` -> "(Author et al., 2001)"
-- `[@author1:2001; @author2:2001]` -> "(Author1 et al., 2001; Author2 et al., 2002)"
-
-
-Figures can be included like this: ![Example figure.](figure.png)
-
-See https://joss.readthedocs.io/en/latest/submitting.html
-
-Submit at https://joss.theoj.org/papers/new
