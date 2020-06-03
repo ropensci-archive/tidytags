@@ -29,33 +29,37 @@ bibliography: paper.bib
 
 # Summary
 
-``tidytags`` syncs together (a) the simplicity of collecting tweets over time with a **Twitter Archiving Google Sheet**, [TAGS](https://tags.hawksey.info/), (b) the utility of the ``rtweet`` [package](https://rtweet.info/) for processing and preparing additional Twitter metadata, and (c) a collection of different analytic functions developed during the course of extensive social media research in education.
+``tidytags`` coordinates (a) the simplicity of collecting tweets over time with a **Twitter Archiving Google Sheet**, [TAGS](https://tags.hawksey.info/) and (b) the utility of the ``rtweet`` [package](https://rtweet.info/) for processing and preparing additional Twitter metadata with (c) functions we have developed to facilitate the systematic yet flexivle analyses of data from Twitter.
 
 # Statement of Need
 
-One essential dimension of understanding a culture is to study the artifacts and behaviors of group members over time. Indeed, many questions relevant to the field of learning design and technology have a temporal dimension—or at least they should. Specifically, social media studies are obvious sites for change-over-time research questions due to how quickly online practices and norms can change. Despite this, prominent AECT social media scholars have noted the scarcity of such research `[@gao_et_al:2012]` and argued the need for more studies examining social media and time `[@veletsianos_et_al:2019; @xing_gao:2018]`.
+An essential dimension of understanding behavior across social science fields is to study the artifacts and behaviors of group members over time. Social media platforms such as Twitter are a context for analyses and research on a variety of topics that have a temporal component, such as [EXAMPLES AND CITES IN DIFFERENT SOCIAL SCIENCE FIELDS].
 
-Time travel is hard, if not impossible. As a result, collecting historical data from Twitter can be difficult and expensive. First, access to Twitter data is limited by the platform’s API. For instance, a researcher using the Twitter API today to search for information on the 2019 conference of the Association for Educational Communication & Technology, [AECT](https://aect.org/) using using hashtags #AECT19 or #AECTinspired would not be able to computationally access tweets from the time of the convention, back in October 2019. 
+Time travel is hard, if not impossible. As a result, collecting historical data from Twitter can be difficult and expensive. First, access to Twitter data is limited by the platform’s API. For instance, a researcher using the Twitter API today to search for information on the 2019 conference of the Association for Educational Communication & Technology, [AECT](https://aect.org/) using using hashtags #AECT19 or #AECTinspired would not be able to readily access tweets from the time of the convention (which occurred in October, 2019). 
 
-Second, getting old tweets is not impossible, but likely expensive. There are companies that collect all tweets and are willing to make these available to academic researchers for the right price. There are also technical solutions to collect past tweets, but these too come at a cost, such as requiring advanced technical skills and risking the likely violation of Twitter's [Terms of Service](https://twitter.com/en/tos) agreements.
+Second, accessing historical content from Twitter is not impossible, but likely expensive. There are companies that collect historical Twitter data who make these available to academic researchers for the right price. There are also technical solutions to collect past tweets, but these too come at a cost, such as requiring advanced technical skills and risking the likely violation of Twitter's [Terms of Service](https://twitter.com/en/tos) agreements.
+
+< These two reasons why it is hard to access historical data seem similar! Combine? >
 
 One solution to these Twitter data collection issues is to use a Twitter Archiving Google Sheet, [TAGS](https://tags.hawksey.info/). Getting started with TAGS is as simple as setting up a new Google Sheet, which will then automatically query (i.e., search) the Twitter API every hour going forward. The tradeoff of using TAGS is that it returns limited metadata compared to what is available from the Twitter API, approximately 20% of all categories of information. That is, a TAGS returns the time, sender, and text of tweets, but not many additional details such as a list of the hashtags or hyperlinks contained in a tweet. As a result, ``tidytags`` first uses TAGS to easily collect tweet ID numbers and then uses the R package ``rtweet`` to re-query the Twitter API to collect additional metadata.
 
-# Common Frustrations
+# Preconditions for a {tidytags} Analysis
 
-## Publishing TAGS to the Web
+## First, Publish Data Collected with TAGS to the Web
 
 ``tidytags`` allows you to work with a [Twitter Archiving Google Sheet](https://tags.hawksey.info/) (TAGS) in R. This is done with the [googlesheets4 package](https://CRAN.R-project.org/package=googlesheets4). One requirement for using the ``googlesheets4`` package is that your TAGS tracker has been "published to the web." To do this, with the TAGS page open in a web browser, go to `File >> Publish to the web`. The `Link` field should be 'Entire document' and the `Embed` field should be 'Web page.' If everything looks right, then click the `Publish` button. Next, click the `Share` button in the top right corner of the Google Sheets window, select `Get shareable link`, and set the permissions to 'Anyone with the link can view.' The URL needed for R is simply the URL at the top of the web browser, just copy and paste at this point. Be sure to put quotations marks around the URL when entering it into the `read_tags()` function.
 
-## Getting a Twitter API Key
+## Second, Obtain a Twitter API Key
 
 ``tidytags`` also allows you to process tweets and prepare additional Twitter metadata by building upon the  [rtweet package](https://rtweet.info/) (via `rtweet::lookup_statuses()`) to query the Twitter API. However, using ``rtweet`` requires Twitter API keys associated with an approved developer account. Fortunately, the rtweet vignette, [Obtaining and using access tokens](https://rtweet.info/articles/auth.html), provides a very thorough guide to obtaining Twitter API keys. We recommend the second suggested method listed in the rtweet vignette, "2. Access token/secret method." Following these directions, you will run the `rtweet::create_token()` function, which saves your Twitter API keys to the `.Renviron` file. You can also edit this file directly using the `usethis::edit_r_environ(scope='user')` function.
+
+< I think we should cut this next section or shorten this a lot here as it's not core to the functionality >
 
 ## Getting a Google API Key
 
 The `geocode_tags()` function pulls from the Google Geocoding API, which requires a Google Geocoding API Key. You can easily secure a key through Google Cloud Platform; [read more here](https://developers.google.com/maps/documentation/geocoding/get-api-key). We recommend saving your Google Geocoding API Key in the `.Renviron` file as **Google_API_key**. You can quickly access this file using the R code `usethis::edit_r_environ(scope='user')`. Add a line to this file that reads: `Google_API_key="PasteYourGoogleKeyInsideTheseQuotes"`. To read your key into R, use the code `Sys.getenv('Google_API_key')`. Note that the `geocode_tags()` function retrieves your saved API key automatically and securely. Once you've saved the `.Renviron` file, quit your R session and restart. The function `geocode_tags()` will work for you from now on. 
 
-# Applications
+# The {tidytags} Workflow
 
 The ``tidytags`` workflow for exploring Twitter data over time using R includes:
 
@@ -73,12 +77,16 @@ This workflow for Twitter research has been formalized in ``tidytags``. The purp
 
 # Example
 
+< Wondering if this and the previous section could be combined - describe the functionality and then show the code to carry it out? >
+
 Here's an examples of steps X-Y together:
 ```{r}
 
 ```
 
 For more a more extensive walkthrough of ``tidytags`` functionality, visit the [Using tidytags with a conference hashtag](https://bretsw.github.io/tidytags/articles/tidytags-with-conf-hashtags.html) vignette webpage.
+
+< Maybe not necessary here >
 
 # Acknowledgements
 
