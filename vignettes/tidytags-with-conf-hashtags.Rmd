@@ -31,7 +31,7 @@ example_df_all <- read_tags(example_url)
 dim(example_df_all)
 ```
 
-**Note that there are alternate ways to access TAGS files.** One way is to simply download a CSV file from Google Sheets. In Google Sheets, navigate to `File -> Download -> Comma-seperated values (CSV)` to do so. Be sure to do so from the TAGS Archive page. Once this file is downloaded, you can read it like it like any other CSV using R. For example:
+**Note that there are alternate ways to access TAGS files.** One way is to simply download a CSV file from Google Sheets. In Google Sheets, navigate to `File -> Download -> Comma-separated values (CSV)` to do so. Be sure to do so from the TAGS Archive page. Once this file is downloaded, you can read it like it like any other CSV using R. For example:
 
 ```{r, eval = FALSE}
 example_df_all <- readr::read_csv("my-downloaded-tags-file.csv")
