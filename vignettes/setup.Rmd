@@ -1,5 +1,5 @@
 ---
-title: "Getting set up with tidytags"
+title: "Getting started with tidytags"
 output: 
   rmarkdown::html_vignette
 vignette: >
@@ -12,17 +12,15 @@ vignette: >
 knitr::opts_chunk$set(echo = TRUE, eval = FALSE, comment = "#>", collapse = TRUE)
 ```
 
-This vignette introduces the initial setup necessary to use {tidytags}. Specifically, attention is given to three API secret keys needed for {tidytags} functions.
+This vignette introduces the initial setup necessary to use {tidytags}. Specifically, attention is given to three areas of setup where trouble make occur:
 
-Setup checklist:
-
-1. Make sure your TAGS tracker is public and published
-2. Get and store a Twitter API key
+1. Make sure your TAGS tracker can be accessed
+2. Get and store Twitter API keys
 3. Get and store a Google Geocoding API key
 
-## 1. Make sure your TAGS tracker is public and published
+## 1. Make sure your TAGS tracker can be accessed
 
-A core functionality of {tidytags} is collecting tweets continuously with a [Twitter Archiving Google Sheet](https://tags.hawksey.info/) (TAGS). Be sure to read through the information on  the [TAGS landing page](https://tags.hawksey.info/get-tags/) for thorough instructions on getting started with TAGS.
+A core functionality of {tidytags} is collecting tweets continuously with a [Twitter Archiving Google Sheet](https://tags.hawksey.info/) (TAGS). Here we offer a brief overview, but be sure to read through the information on  the [TAGS landing page](https://tags.hawksey.info/get-tags/) for thorough instructions on getting started with TAGS.
 
 We recommend using **TAGS v6.1**. 
 
@@ -32,11 +30,11 @@ You will be prompted to `Make a copy` of TAGS that will then reside in your own 
 
 <p align="center"><img src="files/TAGS-make-copy.png" width="360"></p>
 
-Your TAGS tracker is now ready to use!
+Your TAGS tracker is now ready to use! Just follow the two-steps of instructions on the TAGS tracker:
 
 <p align="center"><img src="files/TAGS-ready.png" alt="tags tracker screenshot" width="360"></p>
 
-{tidytags} accesses a TAGS tracker using the [{googlesheets4} package](https://CRAN.R-project.org/package=googlesheets4). One requirement for using {googlesheets4} is that your TAGS tracker has been "published to the web." To do this, with the TAGS page open in a web browser, go to `File >> Publish to the web`. 
+{tidytags} is set up to access a TAGS tracker by using the [{googlesheets4} package](https://CRAN.R-project.org/package=googlesheets4). One requirement for using {googlesheets4} is that your TAGS tracker has been "published to the web." To do this, with the TAGS page open in a web browser, go to `File >> Publish to the web`. 
 
 <p align="center"><img src="files/publish-to-web-menu.png" alt="publish-to-web-menu" width="360"></p>
 
@@ -60,31 +58,21 @@ Be sure to put quotations marks around the URL or sheet identifier when entering
 
 `read_tags("18clYlQeJOc6W5QRuSlJ6_v3snqKJImFhU42bRkM_OX8")`.
 
-## 2. Get and store a Twitter API key
+## 2. Get and store Twitter API keys
 
-https://developer.twitter.com/en/apply-for-access
+With a TAGS tracker archive imported into R, {tidytags} allows you to gather quite a bit more information related to the TAGS-collected tweets with the `pull_tweet_data()` function. This function builds off the [{rtweet} package](https://rtweet.info/) (via `rtweet::lookup_statuses()`) to query the Twitter API. However, to access the Twitter API, whether through {rtweet} or {tidytags}, you will need to apply for developers' access from Twitter. You do this [through Twitter's developer website](https://developer.twitter.com/en/apply-for-access). 
 
-Keep in mind that {tidytags} allows you to work with a [Twitter Archiving Google Sheet](https://tags.hawksey.info/) (TAGS) in R. 
+Fortunately, {rtweet} documentation already contains a very thorough vignette, [Obtaining and using access tokens](https://rtweet.info/articles/auth.html), to guide you through the process of obtaining Twitter API keys. We recommend the second suggested method listed in the {rtweet} vignette, **2. Access token/secret method.** 
 
-https://docs.ropensci.org/rtweet/articles/auth.html
+Following these directions, you will run the `rtweet::create_token()` function, which saves your Twitter API keys to the `.Renviron` file. You can also edit this file directly using the `usethis::edit_r_environ(scope='user')` function. Once you've added your Twitter keys, {tidytags} functions will retrieve them in the background, securely, as needed.
 
-With a TAGS archive imported into R, {tidytags} allows you to gather quite a bit more information related to the collected tweets with the `pull_tweet_data()` function. This function uses the [{rtweet} package](https://rtweet.info/) (via `rtweet::lookup_statuses()`) to query the Twitter API. Using {rtweet} requires Twitter API keys associated with an approved developer account. Fortunately, the {rtweet} vignette, [Obtaining and using access tokens](https://rtweet.info/articles/auth.html), provides a very thorough guide to obtaining Twitter API keys. We recommend the second suggested method listed in the {rtweet} vignette, **2. Access token/secret method.** 
+## 3. Get and store a Google Geocoding API key
 
-Following these directions, you will run the `rtweet::create_token()` function, which saves your Twitter API keys to the `.Renviron` file. You can also edit this file directly using the `usethis::edit_r_environ(scope='user')` function.
+The {tidytags} function `geocode_tags()` pulls from the Google Geocoding API, which requires a Google Geocoding API key. Getting a Google Geocoding API key is more staightforward and immediate than the Twitter API key process.
 
+You secure a key through Google Cloud Platform; [read more on Google's developer website](https://developers.google.com/maps/documentation/geocoding/get-api-key). We recommend saving your Google Geocoding API key in the `.Renviron` file as **Google_API_key** (similar to what you did with the Twitter keys). You can quickly access this file using the R code `usethis::edit_r_environ(scope='user')`. Then, add a line to this file that reads: `Google_API_key="PasteYourGoogleKeyInsideTheseQuotes"`. 
 
-
-
-## 3. Get and store a Google Geocoding API key (optional)
-
-The {tidytags} function `geocode_tags()` pulls from the Google Geocoding API, which requires a Google Geocoding API Key. You can easily secure a key through Google Cloud Platform; [read more here](https://developers.google.com/maps/documentation/geocoding/get-api-key). We recommend saving your Google Geocoding API Key in the `.Renviron` file as **Google_API_key**. You can quickly access this file using the R code `usethis::edit_r_environ(scope='user')`. Add a line to this file that reads: `Google_API_key="PasteYourGoogleKeyInsideTheseQuotes"`. To read your key into R, use the code `Sys.getenv('Google_API_key')`. Note that the `geocode_tags()` function retrieves your saved API key automatically and securely.
-
-```{r edit-r-environ}
-usethis::edit_r_environ(scope='user')
-```
-
-Once you've saved this file, quit your R session and restart. The function `geocode_tags()` will work for you from now on. 
-
+**Once you've saved the .Renviron file, quit your R session and restart.** The function `geocode_tags()` will work for you from now on. Note that the {tidytags} `geocode_tags()` function retrieves your saved API key automatically and securely, and you won't need to think about this after the initial setup. However, if for some reason you'd like to manually retrieve your Google API key to use in R, use the command `Sys.getenv('Google_API_key')`.
 
 ```{r session, include = FALSE}
 devtools::session_info()

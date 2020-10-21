@@ -47,6 +47,12 @@ devtools::install_github("bretsw/tidytags")
 
 {tidytags} should be used in strict accordance with Twitter's [developer terms](https://developer.twitter.com/en/developer-terms/more-on-restricted-use-cases).
 
+## Setup
+
+For help with initial {tidytags} setup, see the [Getting started with tidytags](https://bretsw.github.io/tidytags/articles/setup.html) vignette.
+
+## {tidytags} core functions
+
 ### read_tags()
 
 At its most basic level, {tidytags} allows you to work with a [Twitter Archiving Google Sheet](https://tags.hawksey.info/) (TAGS) in R. This is done with the [{googlesheets4} package](https://CRAN.R-project.org/package=googlesheets4). One requirement for using the {googlesheets4} package is that your TAGS tracker has been "published to the web." To do this, with the TAGS page open in a web browser, go to `File >> Publish to the web`. The `Link` field should be 'Entire document' and the `Embed` field should be 'Web page.' If everything looks right, then click the `Publish` button. Next, click the `Share` button in the top right corner of the Google Sheets window, select `Get shareable link`, and set the permissions to 'Anyone with the link can view.' The URL needed for R is simply the URL at the top of the web browser, just copy and paste at this point. Be sure to put quotations marks around the URL when entering it into `read_tags()`.
@@ -65,7 +71,7 @@ The `geocode_tags()` function pulls from the Google Geocoding API, which require
 
 ## Learning more about tidytags
 
-For a walkthrough of numerous additional {tidytags} functions, visit the [Using tidytags with a conference hashtag](https://bretsw.github.io/tidytags/articles/tidytags-with-conf-hashtags.html) vignette webpage.
+For a walkthrough of numerous additional {tidytags} functions, see the [Using tidytags with a conference hashtag](https://bretsw.github.io/tidytags/articles/tidytags-with-conf-hashtags.html) vignette.
 
 ## Getting help
 
