@@ -104,6 +104,9 @@
   </a>
   <ul class="dropdown-menu" role="menu">
     <li>
+      <a href="../articles/setup.html">Getting started with tidytags</a>
+    </li>
+    <li>
       <a href="../articles/tidytags-with-conf-hashtags.html">Using tidytags with a conference hashtag</a>
     </li>
   </ul>
@@ -147,7 +150,7 @@
   Be sure to put quotations marks around the URL when entering it into <code>read_tags()</code>.</p>
     </div>
 
-    <pre class="usage"><span class='fu'>read_tags</span>(<span class='no'>url</span>)</pre>
+    <pre class="usage"><span class='fu'>read_tags</span>(<span class='kw'>url</span>)</pre>
 
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
     <table class="ref-arguments">
@@ -165,15 +168,16 @@ in the TAGS tracker's URL.)</p></td>
     <p>A dataframe of the TAGS archive of tweets</p>
     <h2 class="hasAnchor" id="see-also"><a class="anchor" href="#see-also"></a>See also</h2>
 
-    <div class='dont-index'><p>Read more about <code><a href='https://rdrr.io/pkg/googlesheets4/man'>library(googlesheets4)</a></code> <a href='https://github.com/tidyverse/googlesheets4'>here</a>.</p></div>
+    <div class='dont-index'><p>Read more about <code><a href='https://github.com/tidyverse/googlesheets4'>library(googlesheets4)</a></code> <a href='https://github.com/tidyverse/googlesheets4'>here</a>.</p></div>
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
     <pre class="examples"><div class='input'>
-<span class='kw'>if</span> (<span class='fl'>FALSE</span>) {
+<span class='co'>if</span> (<span class='fl'>FALSE</span>) {
 
-<span class='no'>example_url</span> <span class='kw'>&lt;-</span> <span class='st'>"18clYlQeJOc6W5QRuSlJ6_v3snqKJImFhU42bRkM_OX8"</span>
-<span class='fu'>read_tags</span>(<span class='no'>example_url</span>)
-}</div></pre>
+<span class='kw'>example_url</span> <span class='op'>&lt;-</span> <span class='st'>"18clYlQeJOc6W5QRuSlJ6_v3snqKJImFhU42bRkM_OX8"</span>
+<span class='fu'>read_tags</span>(<span class='kw'>example_url</span>)
+}
+</div></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="pkgdown-sidebar">
     <nav id="toc" data-toggle="toc" class="sticky-top">
@@ -189,7 +193,7 @@ in the TAGS tracker's URL.)</p></td>
 </div>
 
 <div class="pkgdown">
-  <p>Site built with <a href="https://pkgdown.r-lib.org/">pkgdown</a> 1.5.1.</p>
+  <p>Site built with <a href="https://pkgdown.r-lib.org/">pkgdown</a> 1.6.1.</p>
 </div>
 
       </footer>

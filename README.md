@@ -45,6 +45,14 @@ devtools::install_github("bretsw/tidytags")
 {tidytags} should be used in strict accordance with Twitter’s [developer
 terms](https://developer.twitter.com/en/developer-terms/more-on-restricted-use-cases).
 
+## Setup
+
+For help with initial {tidytags} setup, see the [Getting started with
+tidytags](https://bretsw.github.io/tidytags/articles/setup.html)
+vignette.
+
+## {tidytags} core functions
+
 ### read\_tags()
 
 At its most basic level, {tidytags} allows you to work with a [Twitter
@@ -106,10 +114,10 @@ you from now on.
 
 ## Learning more about tidytags
 
-For a walkthrough of numerous additional {tidytags} functions, visit the
+For a walkthrough of numerous additional {tidytags} functions, see the
 [Using tidytags with a conference
 hashtag](https://bretsw.github.io/tidytags/articles/tidytags-with-conf-hashtags.html)
-vignette webpage.
+vignette.
 
 ## Getting help
 

@@ -3,7 +3,7 @@ title: "Getting started with tidytags"
 output: 
   rmarkdown::html_vignette
 vignette: >
-  %\VignetteIndexEntry{Getting set up with tidytags}
+  %\VignetteIndexEntry{Getting started with tidytags}
   %\VignetteEngine{knitr::rmarkdown}
   %\VignetteEncoding{UTF-8}
 ---

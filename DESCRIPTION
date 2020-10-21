@@ -47,4 +47,4 @@ Suggests:
 Encoding: UTF-8
 VignetteBuilder: knitr
 LazyData: TRUE
-RoxygenNote: 7.1.0
+RoxygenNote: 7.1.1
