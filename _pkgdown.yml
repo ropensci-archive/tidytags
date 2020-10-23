@@ -9,3 +9,30 @@ navbar:
   right:
   - icon: fa-github fa-lg
     href: https://github.com/bretsw/tidytags
+reference:
+  - title: "Accessing data"
+    desc: >
+      Functions for accessing TAGS data.
+    contents:
+      - read_tags
+      - pull_tweet_data
+      - lookup_many_tweets
+  - title: "Social network analysis"
+    desc: >
+      Functions related to carrying out social network analysis.
+    contents:
+      - create_edgelist
+      - add_users_data
+      - get_mentions
+      - get_quotes
+      - get_replies
+      - get_retweets
+  - title: "Processing data"
+    desc: >
+      Functions related to processing data for subsequent analysis.
+    contents:
+      - process_tweets
+      - get_char_tweet_ids
+      - get_upstream_replies
+      - get_url_domain
+

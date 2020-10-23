@@ -100,6 +100,9 @@
   </a>
   <ul class="dropdown-menu" role="menu">
     <li>
+      <a href="../articles/getting-started.html">getting-started</a>
+    </li>
+    <li>
       <a href="../articles/setup.html">Getting started with tidytags</a>
     </li>
     <li>
@@ -142,7 +145,7 @@
   the URL linking to specific tweets.</p>
     </div>
 
-    <pre class="usage"><span class='fu'>get_char_tweet_ids</span>(<span class='kw'>df</span>, url_vector = <span class='kw'>NULL</span>)</pre>
+    <pre class="usage"><span class='fu'>get_char_tweet_ids</span>(<span class='no'>df</span>, <span class='kw'>url_vector</span> <span class='kw'>=</span> <span class='kw'>NULL</span>)</pre>
 
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
     <table class="ref-arguments">
@@ -166,13 +169,12 @@ the 'status_url' column of a dataframe returned by <code><a href='read_tags.html
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
     <pre class="examples"><div class='input'>
-<span class='co'>if</span> (<span class='fl'>FALSE</span>) {
-<span class='kw'>example_url</span> <span class='op'>&lt;-</span> <span class='st'>"18clYlQeJOc6W5QRuSlJ6_v3snqKJImFhU42bRkM_OX8"</span>
-<span class='fu'>get_char_tweet_ids</span>(<span class='fu'><a href='read_tags.html'>read_tags</a></span>(<span class='kw'>example_url</span>)[<span class='fl'>1</span><span class='op'>:</span><span class='fl'>10</span>, ])
-<span class='fu'>get_char_tweet_ids</span>(url_vector = <span class='fu'><a href='read_tags.html'>read_tags</a></span>(<span class='kw'>example_url</span>)<span class='op'>$</span><span class='kw'>status_url</span>[<span class='fl'>1</span><span class='op'>:</span><span class='fl'>10</span>])
-<span class='fu'>get_char_tweet_ids</span>(url_vector = <span class='st'>"https://twitter.com/tweet__example/status/1176592704647716864"</span>)
-}
-</div></pre>
+<span class='kw'>if</span> (<span class='fl'>FALSE</span>) {
+<span class='no'>example_url</span> <span class='kw'>&lt;-</span> <span class='st'>"18clYlQeJOc6W5QRuSlJ6_v3snqKJImFhU42bRkM_OX8"</span>
+<span class='fu'>get_char_tweet_ids</span>(<span class='fu'><a href='read_tags.html'>read_tags</a></span>(<span class='no'>example_url</span>)[<span class='fl'>1</span>:<span class='fl'>10</span>, ])
+<span class='fu'>get_char_tweet_ids</span>(<span class='kw'>url_vector</span> <span class='kw'>=</span> <span class='fu'><a href='read_tags.html'>read_tags</a></span>(<span class='no'>example_url</span>)$<span class='no'>status_url</span>[<span class='fl'>1</span>:<span class='fl'>10</span>])
+<span class='fu'>get_char_tweet_ids</span>(<span class='kw'>url_vector</span> <span class='kw'>=</span> <span class='st'>"https://twitter.com/tweet__example/status/1176592704647716864"</span>)
+}</div></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="pkgdown-sidebar">
     <nav id="toc" data-toggle="toc" class="sticky-top">
@@ -188,7 +190,7 @@ the 'status_url' column of a dataframe returned by <code><a href='read_tags.html
 </div>
 
 <div class="pkgdown">
-  <p>Site built with <a href="https://pkgdown.r-lib.org/">pkgdown</a> 1.6.1.</p>
+  <p>Site built with <a href="https://pkgdown.r-lib.org/">pkgdown</a> 1.5.1.</p>
 </div>
 
       </footer>

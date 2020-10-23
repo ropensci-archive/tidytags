@@ -94,6 +94,9 @@
   </a>
   <ul class="dropdown-menu" role="menu">
     <li>
+      <a href="../articles/getting-started.html">getting-started</a>
+    </li>
+    <li>
       <a href="../articles/setup.html">Getting started with tidytags</a>
     </li>
     <li>
@@ -136,8 +139,8 @@
     <tbody>
       <tr>
         <th colspan="2">
-          <h2 id="section-all-functions" class="hasAnchor"><a href="#section-all-functions" class="anchor"></a>All functions</h2>
-          <p class="section-desc"></p>
+          <h2 id="section-accessing-data" class="hasAnchor"><a href="#section-accessing-data" class="anchor"></a>Accessing data</h2>
+          <p class="section-desc"><p>Functions for accessing TAGS data.</p></p>
         </th>
       </tr>
       
@@ -148,10 +151,35 @@
       <tr>
         
         <td>
-          <p><code><a href="add_users_data.html">add_users_data()</a></code> </p>
+          <p><code><a href="read_tags.html">read_tags()</a></code> </p>
         </td>
-        <td><p>Retrieve user information for everyone in an edgelist</p></td>
+        <td><p>Retrieve a TAGS archive of tweets and bring into R</p></td>
       </tr><tr>
+        
+        <td>
+          <p><code><a href="pull_tweet_data.html">pull_tweet_data()</a></code> </p>
+        </td>
+        <td><p>Retrieve the fullest extent of tweet metadata available from the Twitter API</p></td>
+      </tr><tr>
+        
+        <td>
+          <p><code><a href="lookup_many_tweets.html">lookup_many_tweets()</a></code> </p>
+        </td>
+        <td><p>Retrieve the fullest extent of tweet metadata for more than 90,000 tweets</p></td>
+      </tr>
+    </tbody><tbody>
+      <tr>
+        <th colspan="2">
+          <h2 id="section-social-network-analysis" class="hasAnchor"><a href="#section-social-network-analysis" class="anchor"></a>Social network analysis</h2>
+          <p class="section-desc"><p>Functions related to carrying out social network analysis.</p></p>
+        </th>
+      </tr>
+      
+      
+    </tbody><tbody>
+      
+      
+      <tr>
         
         <td>
           <p><code><a href="create_edgelist.html">create_edgelist()</a></code> </p>
@@ -160,15 +188,9 @@
       </tr><tr>
         
         <td>
-          <p><code><a href="geocode_tags.html">geocode_tags()</a></code> </p>
+          <p><code><a href="add_users_data.html">add_users_data()</a></code> </p>
         </td>
-        <td><p>Retrieve geographic coordinates</p></td>
-      </tr><tr>
-        
-        <td>
-          <p><code><a href="get_char_tweet_ids.html">get_char_tweet_ids()</a></code> </p>
-        </td>
-        <td><p>Get tweet ID numbers as character strings</p></td>
+        <td><p>Retrieve user information for everyone in an edgelist</p></td>
       </tr><tr>
         
         <td>
@@ -193,6 +215,31 @@
           <p><code><a href="get_retweets.html">get_retweets()</a></code> </p>
         </td>
         <td><p>Create an edgelist where interaction is defined by retweeting</p></td>
+      </tr>
+    </tbody><tbody>
+      <tr>
+        <th colspan="2">
+          <h2 id="section-processing-data" class="hasAnchor"><a href="#section-processing-data" class="anchor"></a>Processing data</h2>
+          <p class="section-desc"><p>Functions related to processing data for subsequent analysis.</p></p>
+        </th>
+      </tr>
+      
+      
+    </tbody><tbody>
+      
+      
+      <tr>
+        
+        <td>
+          <p><code><a href="process_tweets.html">process_tweets()</a></code> </p>
+        </td>
+        <td><p>Calculate additional information using tweet metadata</p></td>
+      </tr><tr>
+        
+        <td>
+          <p><code><a href="get_char_tweet_ids.html">get_char_tweet_ids()</a></code> </p>
+        </td>
+        <td><p>Get tweet ID numbers as character strings</p></td>
       </tr><tr>
         
         <td>
@@ -205,36 +252,6 @@
           <p><code><a href="get_url_domain.html">get_url_domain()</a></code> </p>
         </td>
         <td><p>Find the domain name of URLs, even shortened URLs</p></td>
-      </tr><tr>
-        
-        <td>
-          <p><code><a href="length_with_na.html">length_with_na()</a></code> </p>
-        </td>
-        <td><p>Count the number of items in a list, with an NA entry returning 0</p></td>
-      </tr><tr>
-        
-        <td>
-          <p><code><a href="lookup_many_tweets.html">lookup_many_tweets()</a></code> </p>
-        </td>
-        <td><p>Retrieve the fullest extent of tweet metadata for more than 90,000 tweets</p></td>
-      </tr><tr>
-        
-        <td>
-          <p><code><a href="process_tweets.html">process_tweets()</a></code> </p>
-        </td>
-        <td><p>Calculate additional information using tweet metadata</p></td>
-      </tr><tr>
-        
-        <td>
-          <p><code><a href="pull_tweet_data.html">pull_tweet_data()</a></code> </p>
-        </td>
-        <td><p>Retrieve the fullest extent of tweet metadata available from the Twitter API</p></td>
-      </tr><tr>
-        
-        <td>
-          <p><code><a href="read_tags.html">read_tags()</a></code> </p>
-        </td>
-        <td><p>Retrieve a TAGS archive of tweets and bring into R</p></td>
       </tr>
     </tbody>
     </table>
@@ -254,7 +271,7 @@
 </div>
 
 <div class="pkgdown">
-  <p>Site built with <a href="https://pkgdown.r-lib.org/">pkgdown</a> 1.6.1.</p>
+  <p>Site built with <a href="https://pkgdown.r-lib.org/">pkgdown</a> 1.5.1.</p>
 </div>
 
       </footer>
