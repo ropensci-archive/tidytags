@@ -47,6 +47,12 @@ devtools::install_github("bretsw/tidytags")
 
 {tidytags} should be used in strict accordance with Twitter's [developer terms](https://developer.twitter.com/en/developer-terms/more-on-restricted-use-cases).
 
+To load {tidytags}, start with the `library()` function:
+
+```{r}
+library(tidytags)
+```
+
 ## Setup
 
 For help with initial {tidytags} setup, see the [Getting started with tidytags](https://bretsw.github.io/tidytags/articles/setup.html) vignette.
