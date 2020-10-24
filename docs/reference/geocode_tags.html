@@ -156,7 +156,7 @@
   <code>geocode_tags()</code> will work for you from now on.</p>
     </div>
 
-    <pre class="usage"><span class='fu'>geocode_tags</span>(<span class='no'>df</span>, <span class='kw'>google_key</span> <span class='kw'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/Sys.getenv.html'>Sys.getenv</a></span>(<span class='st'>"Google_API_key"</span>))</pre>
+    <pre class="usage"><span class='fu'>geocode_tags</span>(<span class='kw'>df</span>, google_key = <span class='fu'><a href='https://rdrr.io/r/base/Sys.getenv.html'>Sys.getenv</a></span>(<span class='st'>"Google_API_key"</span>))</pre>
 
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
     <table class="ref-arguments">
@@ -185,17 +185,18 @@ by the user</p></td>
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
     <pre class="examples"><div class='input'>
-<span class='kw'>if</span> (<span class='fl'>FALSE</span>) {
+<span class='co'>if</span> (<span class='fl'>FALSE</span>) {
 
-<span class='no'>example_url</span> <span class='kw'>&lt;-</span> <span class='st'>"18clYlQeJOc6W5QRuSlJ6_v3snqKJImFhU42bRkM_OX8"</span>
-<span class='no'>tmp_df</span> <span class='kw'>&lt;-</span> <span class='fu'><a href='pull_tweet_data.html'>pull_tweet_data</a></span>(<span class='fu'><a href='read_tags.html'>read_tags</a></span>(<span class='no'>example_url</span>), <span class='kw'>n</span> <span class='kw'>=</span> <span class='fl'>10</span>)
-<span class='no'>tmp_geo_coords</span> <span class='kw'>&lt;-</span> <span class='fu'>geocode_tags</span>(<span class='no'>tmp_df</span>)
-<span class='no'>tmp_geo_coords</span>
-<span class='no'>tmp_geo_coords</span><span class='kw'>[[</span><span class='fl'>1</span>]]
-<span class='no'>tmp_geo_coords</span><span class='kw'>[[</span><span class='fl'>1</span>]][<span class='fl'>1</span>]
-<span class='no'>tmp_geo_coords</span><span class='kw'>[[</span><span class='fl'>1</span>]][<span class='fl'>2</span>]
-<span class='kw pkg'>mapview</span><span class='kw ns'>::</span><span class='fu'><a href='https://rdrr.io/pkg/mapview/man/mapView.html'>mapview</a></span>(<span class='no'>tmp_geo_coords</span>)
-}</div></pre>
+<span class='kw'>example_url</span> <span class='op'>&lt;-</span> <span class='st'>"18clYlQeJOc6W5QRuSlJ6_v3snqKJImFhU42bRkM_OX8"</span>
+<span class='kw'>tmp_df</span> <span class='op'>&lt;-</span> <span class='fu'><a href='pull_tweet_data.html'>pull_tweet_data</a></span>(<span class='fu'><a href='read_tags.html'>read_tags</a></span>(<span class='kw'>example_url</span>), n = <span class='fl'>10</span>)
+<span class='kw'>tmp_geo_coords</span> <span class='op'>&lt;-</span> <span class='fu'>geocode_tags</span>(<span class='kw'>tmp_df</span>)
+<span class='kw'>tmp_geo_coords</span>
+<span class='kw'>tmp_geo_coords</span>[[<span class='fl'>1</span>]]
+<span class='kw'>tmp_geo_coords</span>[[<span class='fl'>1</span>]][<span class='fl'>1</span>]
+<span class='kw'>tmp_geo_coords</span>[[<span class='fl'>1</span>]][<span class='fl'>2</span>]
+<span class='kw'>mapview</span>::<span class='fu'><a href='https://rdrr.io/pkg/mapview/man/mapView.html'>mapview</a></span>(<span class='kw'>tmp_geo_coords</span>)
+}
+</div></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="pkgdown-sidebar">
     <nav id="toc" data-toggle="toc" class="sticky-top">
@@ -211,7 +212,7 @@ by the user</p></td>
 </div>
 
 <div class="pkgdown">
-  <p>Site built with <a href="https://pkgdown.r-lib.org/">pkgdown</a> 1.5.1.</p>
+  <p>Site built with <a href="https://pkgdown.r-lib.org/">pkgdown</a> 1.6.1.</p>
 </div>
 
       </footer>

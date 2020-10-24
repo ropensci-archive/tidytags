@@ -25,6 +25,13 @@ flexible analyses of data from Twitter.
 
 ## Installation
 
+You can install the development version of {tidytags} from GitHub:
+
+``` r
+install.packages("devtools")
+devtools::install_github("bretsw/tidytags")
+```
+
 Soon, you will be able to install the released version of {tidytags}
 from [CRAN](https://CRAN.R-project.org) with:
 
@@ -32,46 +39,38 @@ from [CRAN](https://CRAN.R-project.org) with:
 install.packages("tidytags")
 ```
 
-You can also install the development version of {tidytags} from GitHub
-with:
-
-``` r
-install.packages("devtools")
-devtools::install_github("bretsw/tidytags")
-```
-
 ## Usage
 
-{tidytags} should be used in strict accordance with Twitter’s [developer
-terms](https://developer.twitter.com/en/developer-terms/more-on-restricted-use-cases).
+To load {tidytags}, start with the `library()` function:
+
+``` r
+library(tidytags)
+```
 
 ## Setup
 
 For help with initial {tidytags} setup, see the [Getting started with
 tidytags](https://bretsw.github.io/tidytags/articles/setup.html)
-vignette.
+vignette. Specifically, this guide offers help for three pain points:
+
+1.  Making sure your TAGS tracker can be accessed
+2.  Getting and storing Twitter API keys
+3.  Getting and storing a Google Geocoding API key
 
 ## {tidytags} core functions
 
 ### read\_tags()
 
-At its most basic level, {tidytags} allows you to work with a [Twitter
-Archiving Google Sheet](https://tags.hawksey.info/) (TAGS) in R. This is
-done with the [{googlesheets4}
+At its most basic level, {tidytags} allows you to import data from a
+[Twitter Archiving Google Sheet](https://tags.hawksey.info/) (TAGS) into
+R. This is done with the [{googlesheets4}
 package](https://CRAN.R-project.org/package=googlesheets4). One
 requirement for using the {googlesheets4} package is that your TAGS
-tracker has been “published to the web.” To do this, with the TAGS page
-open in a web browser, go to `File >> Publish to the web`. The `Link`
-field should be ‘Entire document’ and the `Embed` field should be ‘Web
-page.’ If everything looks right, then click the `Publish` button. Next,
-click the `Share` button in the top right corner of the Google Sheets
-window, select `Get shareable link`, and set the permissions to ‘Anyone
-with the link can view.’ The URL needed for R is simply the URL at the
-top of the web browser, just copy and paste at this point. Be sure to
-put quotations marks around the URL when entering it into `read_tags()`.
-
-At this point, you can view or read your TAGS archive into R using
-`read_tags()`.
+tracker has been “published to the web.” (See the [Getting started with
+tidytags](https://bretsw.github.io/tidytags/articles/setup.html)
+vignette, Pain Point \#1, if you need help with this.) Once a TAGS
+tracker has been published to the web, you can import the TAGS archive
+into R using `read_tags()`.
 
 ### pull\_tweet\_data()
 
@@ -79,38 +78,10 @@ With a TAGS archive imported into R, {tidytags} allows you to gather
 quite a bit more information related to the collected tweets with the
 `pull_tweet_data()` function. This function uses the [{rtweet}
 package](https://rtweet.info/) (via `rtweet::lookup_statuses()`) to
-query the Twitter API. Using {rtweet} requires Twitter API keys
-associated with an approved developer account. Fortunately, the {rtweet}
-vignette, [Obtaining and using access
-tokens](https://rtweet.info/articles/auth.html), provides a very
-thorough guide to obtaining Twitter API keys. We recommend the second
-suggested method listed in the {rtweet} vignette, “2. Access
-token/secret method.” Following these directions, you will run the
-`rtweet::create_token()` function, which saves your Twitter API keys to
-the `.Renviron` file. You can also edit this file directly using the
-`usethis::edit_r_environ(scope='user')` function.
-
-### geocode\_tags()
-
-Another area to explore is where tweeters in the dataset are from (or,
-at least, the location they self-identify in their Twitter profiles).
-{tidytags} makes this straightforward with the `geocode_tags()`
-function. Note that `geocode_tags()` should be used after additional
-metadata has been retrieved with `tidytags::pull_tweet_data()`.
-
-The `geocode_tags()` function pulls from the Google Geocoding API, which
-requires a Google Geocoding API Key. You can easily secure a key through
-Google Cloud Platform; [read more
-here](https://developers.google.com/maps/documentation/geocoding/get-api-key).
-We recommend saving your Google Geocoding API Key in the `.Renviron`
-file as **Google\_API\_key**. You can quickly access this file using the
-R code `usethis::edit_r_environ(scope='user')`. Add a line to this file
-that reads: `Google_API_key="PasteYourGoogleKeyInsideTheseQuotes"`. To
-read your key into R, use the code `Sys.getenv('Google_API_key')`. Note
-that the `geocode_tags()` function retrieves your saved API key
-automatically and securely. Once you’ve saved the `.Renviron` file, quit
-your R session and restart. The function `geocode_tags()` will work for
-you from now on.
+query the Twitter API. This process requires Twitter API keys associated
+with an approved Twitter developer account. (See the [Getting started
+with tidytags](https://bretsw.github.io/tidytags/articles/setup.html)
+vignette, Pain Point \#2, if you need help with this.)
 
 ## Learning more about tidytags
 
@@ -132,6 +103,36 @@ Bret](mailto:bret@bretsw.com) or reach out on Twitter:
 
 You can also [submit an issue on
 Github](https://github.com/bretsw/tidytags/issues/).
+
+## Considerations Related to Ethics, Data Privacy, and Human Subjects Research
+
+{tidytags} should be used in strict accordance with Twitter’s [developer
+terms](https://developer.twitter.com/en/developer-terms/more-on-restricted-use-cases).
+
+Although most Institutional Review Boards (IRBs) consider the Twitter
+data that {tidytags} analyzes to *not* necessarily be human subjects
+research, there remain ethical considerations pertaining to the use of
+the {tidytags} package that should be discussed.
+
+Even if {tidytags} use is not for research purposes (or if an IRB
+determines that a study is not human subjects research), “the release of
+personally identifiable or sensitive data is potentially harmful,” as
+noted in the [rOpenSci Packages
+guide](https://devguide.ropensci.org/policies.html#ethics-data-privacy-and-human-subjects-research).
+Thus, even though you *can* collect Twitter data (and you can use
+{tidytags} to analyze it), because most (if not all) of the data will be
+related to humans, we urge care and thoughtfulness regarding how you
+analyze the data and communicate the results. In short, please remember
+that the data you collect may be about people—and [those people may not
+like the idea of their data being analyze or included in
+research](https://journals.sagepub.com/doi/full/10.1177/2056305118763366).
+
+We recommend [the Association of Internet Researchers’ (AoIR) resources
+related to conducting analyses in ethical
+ways](https://aoir.org/ethics/) when working with data about people.
+AoIR’s [ethical guidelines](https://aoir.org/reports/ethics3.pdf) may be
+especially helpful for navigating tensions related to collecting,
+analyzing, and sharing social media data.
 
 ## Future collaborations
 

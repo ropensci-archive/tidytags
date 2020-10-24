@@ -99,14 +99,18 @@
 <a href="#read_tags" class="anchor"></a>read_tags()</h2>
 <p>To simply view a TAGS archive, you can use <code><a href="../reference/read_tags.html">read_tags()</a></code>. Here, we’ve openly shared a TAGS tracker that has been collecting tweets associated with the AECT 2019 since September 30, 2019. As of February 24, 2020, this tracker had collected <strong>2,561 tweets</strong>. This tracker is active through today.</p>
 <p>Keep in mind that {tidytags} allows you to work with a <a href="https://tags.hawksey.info/">Twitter Archiving Google Sheet</a> (TAGS) in R. This is done with the <a href="https://CRAN.R-project.org/package=googlesheets4">{googlesheets4} package</a>. One requirement for using {googlesheets4} is that your TAGS tracker has been “published to the web.” To do this, with the TAGS page open in a web browser, go to <code>File &gt;&gt; Publish to the web</code>. The <code>Link</code> field should be ‘Entire document’ and the <code>Embed</code> field should be ‘Web page.’ If everything looks right, then click the <code>Publish</code> button. Next, click the <code>Share</code> button in the top right corner of the Google Sheets window, select <code>Get shareable link</code>, and set the permissions to ‘Anyone with the link can view.’ The input needed for the <code><a href="../reference/read_tags.html">tidytags::read_tags()</a></code> function is either the entire URL from the top of the web browser when opened to a TAGS tracker, or a Google Sheet identifier (i.e., the alphanumeric string following “<a href="https://docs.google.com/spreadsheets/d/" class="uri">https://docs.google.com/spreadsheets/d/</a>” in the TAGS tracker’s URL). Be sure to put quotations marks around the URL or sheet identifier when entering it into <code><a href="../reference/read_tags.html">read_tags()</a></code> function.</p>
-<div class="sourceCode" id="cb1"><html><body><pre class="r"><span class="fu"><a href="https://rdrr.io/r/base/library.html">library</a></span>(<span class="no">tidytags</span>)
+<div class="sourceCode" id="cb1"><pre class="downlit">
+<span class="fu"><a href="https://rdrr.io/r/base/library.html">library</a></span>(<span class="kw"><a href="https://bretsw.github.io/tidytags">tidytags</a></span>)
 
-<span class="no">example_url</span> <span class="kw">&lt;-</span> <span class="st">"18clYlQeJOc6W5QRuSlJ6_v3snqKJImFhU42bRkM_OX8"</span>
+<span class="kw">example_url</span> <span class="op">&lt;-</span> <span class="st">"18clYlQeJOc6W5QRuSlJ6_v3snqKJImFhU42bRkM_OX8"</span>
 
-<span class="no">example_df_all</span> <span class="kw">&lt;-</span> <span class="fu"><a href="../reference/read_tags.html">read_tags</a></span>(<span class="no">example_url</span>)
-<span class="fu"><a href="https://rdrr.io/r/base/dim.html">dim</a></span>(<span class="no">example_df_all</span>)</pre></body></html></div>
+<span class="kw">example_df_all</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/read_tags.html">read_tags</a></span>(<span class="kw">example_url</span>)
+<span class="fu"><a href="https://rdrr.io/r/base/dim.html">dim</a></span>(<span class="kw">example_df_all</span>)
+</pre></div>
 <p><strong>Note that there are alternate ways to access TAGS files.</strong> One way is to simply download a CSV file from Google Sheets. In Google Sheets, navigate to <code>File -&gt; Download -&gt; Comma-separated values (CSV)</code> to do so. Be sure to do so from the TAGS Archive page. Once this file is downloaded, you can read it like it like any other CSV using R. For example:</p>
-<div class="sourceCode" id="cb2"><html><body><pre class="r"><span class="no">example_df_all</span> <span class="kw">&lt;-</span> <span class="kw pkg">readr</span><span class="kw ns">::</span><span class="fu"><a href="https://readr.tidyverse.org/reference/read_delim.html">read_csv</a></span>(<span class="st">"my-downloaded-tags-file.csv"</span>)</pre></body></html></div>
+<div class="sourceCode" id="cb2"><pre class="downlit">
+<span class="kw">example_df_all</span> <span class="op">&lt;-</span> <span class="kw">readr</span>::<span class="fu"><a href="https://readr.tidyverse.org/reference/read_delim.html">read_csv</a></span>(<span class="st">"my-downloaded-tags-file.csv"</span>)
+</pre></div>
 </div>
 <div id="pull_tweet_data" class="section level2">
 <h2 class="hasAnchor">
@@ -114,16 +118,22 @@
 <p>With a TAGS archive imported into R, {tidytags} allows you to gather quite a bit more information related to the collected tweets with the <code><a href="../reference/pull_tweet_data.html">pull_tweet_data()</a></code> function. This function uses the <a href="https://rtweet.info/">{rtweet} package</a> (via <code><a href="https://rdrr.io/pkg/rtweet/man/lookup_statuses.html">rtweet::lookup_statuses()</a></code>) to query the Twitter API. Using {rtweet} requires Twitter API keys associated with an approved developer account. Fortunately, the {rtweet} vignette, <a href="https://rtweet.info/articles/auth.html">Obtaining and using access tokens</a>, provides a very thorough guide to obtaining Twitter API keys. We recommend the second suggested method listed in the {rtweet} vignette, “2. Access token/secret method.” Following these directions, you will run the <code><a href="https://rdrr.io/pkg/rtweet/man/create_token.html">rtweet::create_token()</a></code> function, which saves your Twitter API keys to the <code>.Renviron</code> file. You can also edit this file directly using the <code><a href="https://usethis.r-lib.org/reference/edit.html">usethis::edit_r_environ(scope='user')</a></code> function.</p>
 <p>Note that your dataset will often contain fewer rows after running <code><a href="../reference/pull_tweet_data.html">pull_tweet_data()</a></code>. This is because <code><a href="https://rdrr.io/pkg/rtweet/man/lookup_statuses.html">rtweet::lookup_statuses()</a></code> is searching for tweet IDs that are currently available. Any tweets that have been deleted or made “protected” (i.e., private) since TAGS first collected them are dropped from the dataset. Rather than view this as a limitation, we see this as an asset to help ensure our data better reflects the intentions of the accounts whose tweets we have collected (see Fiesler &amp; Proferes, 2018).</p>
 <p>Here, we demonstrate two different ways of using <code><a href="../reference/pull_tweet_data.html">pull_tweet_data()</a></code>. The first method is to query the Twitter API with the tweet ID numbers from the <code>id_str</code> column returned by {rtweet}. However, a limitation of TAGS is that the numbers in this column are often corrupted because Google Sheets considers them very large numbers (instead of character strings) and rounds them by putting them into exponential form. The results of this first method are stored in the variable <code>example_after_rtweet_A</code> below. The second method pulls the tweet ID numbers from the tweet URLs. For example, the tweet with the URL <code>https://twitter.com/tweet__example/status/1176592704647716864</code> has a tweet ID of <code>1176592704647716864</code>. The results of this second method are stored in the variable <code>example_after_rtweet_B</code> below.</p>
-<div class="sourceCode" id="cb3"><html><body><pre class="r"><span class="no">example_after_rtweet_A</span> <span class="kw">&lt;-</span> <span class="fu"><a href="../reference/pull_tweet_data.html">pull_tweet_data</a></span>(<span class="kw">id_vector</span> <span class="kw">=</span> <span class="no">example_df_all</span>$<span class="no">id_str</span>)
-<span class="no">example_after_rtweet_B</span> <span class="kw">&lt;-</span> <span class="fu"><a href="../reference/pull_tweet_data.html">pull_tweet_data</a></span>(<span class="kw">url_vector</span> <span class="kw">=</span> <span class="no">example_df_all</span>$<span class="no">status_url</span>)</pre></body></html></div>
+<div class="sourceCode" id="cb3"><pre class="downlit">
+<span class="kw">example_after_rtweet_A</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/pull_tweet_data.html">pull_tweet_data</a></span>(id_vector = <span class="kw">example_df_all</span><span class="op">$</span><span class="kw">id_str</span>)
+<span class="kw">example_after_rtweet_B</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/pull_tweet_data.html">pull_tweet_data</a></span>(url_vector = <span class="kw">example_df_all</span><span class="op">$</span><span class="kw">status_url</span>)
+</pre></div>
 <p>As of May 25, 2020, the TAGS tracker alone had collected 18 variables associated with 2,564 tweets. The first method searching with ‘id_str’ collected 90 variables associated with 2,268 tweets. The second {rtweet} method using ‘tidytags::get_char_tweet_ids()’ collected 90 variables associated with 2,268 tweets.</p>
 <p>Notice how many more variables are in the dataset after using <code><a href="../reference/pull_tweet_data.html">pull_tweet_data()</a></code>, and how many more tweets are in the dataset when using the second method. Therfore, we strongly recommend the second method, which is why we have included <code><a href="../reference/get_char_tweet_ids.html">get_char_tweet_ids()</a></code> in the {tidytags} package.</p>
 <p>The built-in default of <code><a href="../reference/pull_tweet_data.html">pull_tweet_data()</a></code> is to simply enter the dataframe retrieved from <code><a href="../reference/read_tags.html">read_tags()</a></code> and implement method B, retieving metadata starting with tweet URLs. That is, <code><a href="../reference/pull_tweet_data.html">pull_tweet_data(read_tags(example_url))</a></code>. Take a quick look at the result, viewed with the <code>glimpse()</code> function from the {dplyr} package:</p>
-<div class="sourceCode" id="cb4"><html><body><pre class="r"><span class="no">example_after_rtweet</span> <span class="kw">&lt;-</span> <span class="fu"><a href="../reference/pull_tweet_data.html">pull_tweet_data</a></span>(<span class="fu"><a href="../reference/read_tags.html">read_tags</a></span>(<span class="no">example_url</span>))
-<span class="kw pkg">dplyr</span><span class="kw ns">::</span><span class="fu"><a href="https://dplyr.tidyverse.org/reference/reexports.html">glimpse</a></span>(<span class="no">example_after_rtweet</span>)</pre></body></html></div>
+<div class="sourceCode" id="cb4"><pre class="downlit">
+<span class="kw">example_after_rtweet</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/pull_tweet_data.html">pull_tweet_data</a></span>(<span class="fu"><a href="../reference/read_tags.html">read_tags</a></span>(<span class="kw">example_url</span>))
+<span class="kw">dplyr</span>::<span class="fu"><a href="https://tibble.tidyverse.org/reference/glimpse.html">glimpse</a></span>(<span class="kw">example_after_rtweet</span>)
+</pre></div>
 <p>At this point, the purpose of {tidytags} should be restated. TAGS tweet trackers are easily set up and maintained, and does an excellent job passively collecting tweets over time. For instance, the example TAGS tracker we demo here has collected thousands of tweets related to the AECT 2019 annual convention since September 30, 2019. In contrast, running this query now using <code><a href="https://rdrr.io/pkg/rtweet/man/search_tweets.html">rtweet::search_tweets()</a></code> is limited by Twitter’s API, meaning that an {rtweet} search can only go back in time 6-9 days, and is limited to returning at most 18,000 tweets per query. So, if you are interested in tweets about AECT 2019, today you could get almost no meaningful data using {rtweet} alone. For instance, this rtweet search run on February 24, 2020 returned only three tweets.</p>
-<div class="sourceCode" id="cb5"><html><body><pre class="r"><span class="no">rtweet_today</span> <span class="kw">&lt;-</span> <span class="kw pkg">rtweet</span><span class="kw ns">::</span><span class="fu"><a href="https://rdrr.io/pkg/rtweet/man/search_tweets.html">search_tweets</a></span>(<span class="st">"#AERA19 OR #AERA2019 OR #aect19inspired"</span>, <span class="kw">n</span> <span class="kw">=</span> <span class="fl">18000</span>)
-<span class="fu"><a href="https://rdrr.io/r/base/paste.html">paste</a></span>(<span class="st">"Number of tweets returned by an rtweet search today:"</span>, <span class="fu"><a href="https://rdrr.io/r/base/nrow.html">nrow</a></span>(<span class="no">rtweet_today</span>))</pre></body></html></div>
+<div class="sourceCode" id="cb5"><pre class="downlit">
+<span class="kw">rtweet_today</span> <span class="op">&lt;-</span> <span class="kw">rtweet</span>::<span class="fu"><a href="https://rdrr.io/pkg/rtweet/man/search_tweets.html">search_tweets</a></span>(<span class="st">"#AERA19 OR #AERA2019 OR #aect19inspired"</span>, n = <span class="fl">18000</span>)
+<span class="fu"><a href="https://rdrr.io/r/base/paste.html">paste</a></span>(<span class="st">"Number of tweets returned by an rtweet search today:"</span>, <span class="fu"><a href="https://rdrr.io/r/base/nrow.html">nrow</a></span>(<span class="kw">rtweet_today</span>))
+</pre></div>
 <p>In sum, although a TAGS tracker is great for easily collecting tweets over time (breadth), it lacks depth in terms of metadata is returned related to the gathered tweets. Specifically, TAGS returns information on at most 18 variables; in contrast, {rtweet} returns information on up to 90 variables. Thus, our package {tidytags} brings together the breadth of TAGS with the depth of {rtweet}.</p>
 </div>
 <div id="lookup_many_tweets" class="section level2">
@@ -136,27 +146,33 @@
 <h2 class="hasAnchor">
 <a href="#process_tweets" class="anchor"></a>process_tweets()</h2>
 <p>After <code><a href="../reference/pull_tweet_data.html">pull_tweet_data()</a></code> is used to collect additional information from TAGS tweet IDs (in this case, the <code>example_after_rtweet</code> dataframe), the {tidytags} function <code><a href="../reference/process_tweets.html">process_tweets()</a></code> can be used to calculate additional attributes and add these to the dataframe as new columns. Specifically, 10 new variables are added: word_count, character_count, mentions_count, hashtags_count_api, hashtags_count_regex, has_hashtags, urls_count_api, urls_count_regex, is_reply, and is_self_reply. This results in 100 variables associated with the collected tweets.</p>
-<div class="sourceCode" id="cb6"><html><body><pre class="r"><span class="no">example_processed</span> <span class="kw">&lt;-</span> <span class="fu"><a href="../reference/process_tweets.html">process_tweets</a></span>(<span class="no">example_after_rtweet</span>)
-<span class="fu"><a href="https://rdrr.io/r/base/paste.html">paste0</a></span>(<span class="st">"You now have "</span>, <span class="fu"><a href="https://rdrr.io/r/base/length.html">length</a></span>(<span class="fu"><a href="https://rdrr.io/r/base/names.html">names</a></span>(<span class="no">example_processed</span>)), <span class="st">" variables associated with "</span>,
-       <span class="fu"><a href="https://rdrr.io/r/base/nrow.html">nrow</a></span>(<span class="no">example_processed</span>), <span class="st">" tweets."</span>)</pre></body></html></div>
+<div class="sourceCode" id="cb6"><pre class="downlit">
+<span class="kw">example_processed</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/process_tweets.html">process_tweets</a></span>(<span class="kw">example_after_rtweet</span>)
+<span class="fu"><a href="https://rdrr.io/r/base/paste.html">paste0</a></span>(<span class="st">"You now have "</span>, <span class="fu"><a href="https://rdrr.io/r/base/length.html">length</a></span>(<span class="fu"><a href="https://rdrr.io/r/base/names.html">names</a></span>(<span class="kw">example_processed</span>)), <span class="st">" variables associated with "</span>, 
+       <span class="fu"><a href="https://rdrr.io/r/base/nrow.html">nrow</a></span>(<span class="kw">example_processed</span>), <span class="st">" tweets."</span>)
+</pre></div>
 <p>At this point, depending on your research questions, you may wish to calculate some descriptive statistics associated with this tweet data. For instance the mean number of characters per tweet:</p>
-<div class="sourceCode" id="cb7"><html><body><pre class="r"><span class="no">mean_char</span> <span class="kw">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/Round.html">round</a></span>(<span class="fu"><a href="https://rdrr.io/r/base/mean.html">mean</a></span>(<span class="no">example_processed</span>$<span class="no">character_count</span>), <span class="fl">2</span>)
-<span class="no">sd_char</span> <span class="kw">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/Round.html">round</a></span>(<span class="fu"><a href="https://rdrr.io/r/stats/sd.html">sd</a></span>(<span class="no">example_processed</span>$<span class="no">character_count</span>), <span class="fl">2</span>)
+<div class="sourceCode" id="cb7"><pre class="downlit">
+<span class="kw">mean_char</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/Round.html">round</a></span>(<span class="fu"><a href="https://rdrr.io/r/base/mean.html">mean</a></span>(<span class="kw">example_processed</span><span class="op">$</span><span class="kw">character_count</span>), <span class="fl">2</span>)
+<span class="kw">sd_char</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/Round.html">round</a></span>(<span class="fu"><a href="https://rdrr.io/r/stats/sd.html">sd</a></span>(<span class="kw">example_processed</span><span class="op">$</span><span class="kw">character_count</span>), <span class="fl">2</span>)
 
-<span class="fu"><a href="https://rdrr.io/r/base/paste.html">paste0</a></span>(<span class="st">"The mean number of characters per tweet is "</span>, <span class="no">mean_char</span>,
-       <span class="st">" (SD = "</span>, <span class="no">sd_char</span>, <span class="st">")."</span>
-       )</pre></body></html></div>
+<span class="fu"><a href="https://rdrr.io/r/base/paste.html">paste0</a></span>(<span class="st">"The mean number of characters per tweet is "</span>, <span class="kw">mean_char</span>, 
+       <span class="st">" (SD = "</span>, <span class="kw">sd_char</span>, <span class="st">")."</span>
+       )
+</pre></div>
 <p>On February 24, 2020, there were 2,269 tweets in the dataset, and the mean number of characters per tweet was 182.57 (SD = 75.51).</p>
 <p>Or, perhaps, the mean, median, and max number of hashtags per tweet:</p>
-<div class="sourceCode" id="cb8"><html><body><pre class="r"><span class="no">mean_hash</span> <span class="kw">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/Round.html">round</a></span>(<span class="fu"><a href="https://rdrr.io/r/base/mean.html">mean</a></span>(<span class="no">example_processed</span>$<span class="no">hashtags_count_regex</span>), <span class="fl">2</span>)
-<span class="no">sd_hash</span> <span class="kw">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/Round.html">round</a></span>(<span class="fu"><a href="https://rdrr.io/r/stats/sd.html">sd</a></span>(<span class="no">example_processed</span>$<span class="no">hashtags_count_regex</span>), <span class="fl">2</span>)
-<span class="no">median_hash</span> <span class="kw">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/stats/median.html">median</a></span>(<span class="no">example_processed</span>$<span class="no">hashtags_count_regex</span>)
-<span class="no">max_hash</span> <span class="kw">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/Extremes.html">max</a></span>(<span class="no">example_processed</span>$<span class="no">hashtags_count_regex</span>)
+<div class="sourceCode" id="cb8"><pre class="downlit">
+<span class="kw">mean_hash</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/Round.html">round</a></span>(<span class="fu"><a href="https://rdrr.io/r/base/mean.html">mean</a></span>(<span class="kw">example_processed</span><span class="op">$</span><span class="kw">hashtags_count_regex</span>), <span class="fl">2</span>)
+<span class="kw">sd_hash</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/Round.html">round</a></span>(<span class="fu"><a href="https://rdrr.io/r/stats/sd.html">sd</a></span>(<span class="kw">example_processed</span><span class="op">$</span><span class="kw">hashtags_count_regex</span>), <span class="fl">2</span>)
+<span class="kw">median_hash</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/stats/median.html">median</a></span>(<span class="kw">example_processed</span><span class="op">$</span><span class="kw">hashtags_count_regex</span>)
+<span class="kw">max_hash</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/Extremes.html">max</a></span>(<span class="kw">example_processed</span><span class="op">$</span><span class="kw">hashtags_count_regex</span>)
 
-<span class="fu"><a href="https://rdrr.io/r/base/paste.html">paste0</a></span>(<span class="st">"The mean number of hashtags per tweet is "</span>, <span class="no">mean_hash</span>,
-       <span class="st">" (SD = "</span>, <span class="no">sd_hash</span>, <span class="st">"). The median is "</span>, <span class="no">median_hash</span>,
-       <span class="st">" and the maximum number of hashtags in a tweet is "</span>, <span class="no">max_hash</span>, <span class="st">"."</span>
-       )</pre></body></html></div>
+<span class="fu"><a href="https://rdrr.io/r/base/paste.html">paste0</a></span>(<span class="st">"The mean number of hashtags per tweet is "</span>, <span class="kw">mean_hash</span>, 
+       <span class="st">" (SD = "</span>, <span class="kw">sd_hash</span>, <span class="st">"). The median is "</span>, <span class="kw">median_hash</span>,
+       <span class="st">" and the maximum number of hashtags in a tweet is "</span>, <span class="kw">max_hash</span>, <span class="st">"."</span>
+       )
+</pre></div>
 <p>On February 24, 2020, the mean number of hashtags per tweet was 2.17 (SD = 1.48). The median was 2 and the maximum number of hashtags in a tweet was 12.</p>
 </div>
 <div id="get_url_domain" class="section level2">
@@ -164,16 +180,20 @@
 <a href="#get_url_domain" class="anchor"></a>get_url_domain()</h2>
 <p>The {tidytags} function <code><a href="../reference/get_url_domain.html">get_url_domain()</a></code> combines the <code>expand_urls()</code> function from the {longurl} package and the <code>domain()</code> function from the {urltools} package to easily return the domain names of any hyperlinks including in tweets. Note that using <code><a href="https://rdrr.io/pkg/longurl/man/expand_urls.html">longurl::expand_urls()</a></code> is a necessary step because Twitter automatically shortens any hyperlinks included in tweets.</p>
 <p>As an example, <code><a href="../reference/get_url_domain.html">get_url_domain()</a></code> finds that the domain in the shortened URL “<a href="http://bit.ly/2SfWO3K" class="uri">http://bit.ly/2SfWO3K</a>” is “aect.org”.</p>
-<div class="sourceCode" id="cb9"><html><body><pre class="r"><span class="no">short_url</span> <span class="kw">&lt;-</span> <span class="st">"http://bit.ly/2SfWO3K"</span>
-<span class="fu"><a href="../reference/get_url_domain.html">get_url_domain</a></span>(<span class="no">short_url</span>)</pre></body></html></div>
+<div class="sourceCode" id="cb9"><pre class="downlit">
+<span class="kw">short_url</span> <span class="op">&lt;-</span> <span class="st">"http://bit.ly/2SfWO3K"</span>
+<span class="fu"><a href="../reference/get_url_domain.html">get_url_domain</a></span>(<span class="kw">short_url</span>)
+</pre></div>
 <p>It may also be of interest to examine which websites get linked to most often in your dataset. <code><a href="../reference/get_url_domain.html">get_url_domain()</a></code> can be combined with a function from base R like <code><a href="https://rdrr.io/r/base/table.html">table()</a></code> to calculate frequency counts for domains present in the dataset. This process is useful to get a picture of to where else on the Internet tweeters are directing their readers’ attention.</p>
 <p>Keep in mind, however, that this process is a bit slow.</p>
-<div class="sourceCode" id="cb10"><html><body><pre class="r"><span class="no">example_urls</span> <span class="kw">&lt;-</span> <span class="kw pkg">purrr</span><span class="kw ns">::</span><span class="fu"><a href="https://purrr.tidyverse.org/reference/flatten.html">flatten_chr</a></span>(<span class="no">example_processed</span>$<span class="no">urls_url</span>)
-<span class="no">example_urls</span> <span class="kw">&lt;-</span> <span class="no">example_urls</span>[!<span class="fu"><a href="https://rdrr.io/r/base/NA.html">is.na</a></span>(<span class="no">example_urls</span>)] <span class="co"># Remove NA values</span>
-<span class="no">example_domains</span> <span class="kw">&lt;-</span> <span class="fu"><a href="../reference/get_url_domain.html">get_url_domain</a></span>(<span class="no">example_urls</span>)
-<span class="no">domain_table</span> <span class="kw">&lt;-</span> <span class="fu">as.tibble</span>(<span class="fu"><a href="https://rdrr.io/r/base/table.html">table</a></span>(<span class="no">example_domains</span>))
-<span class="no">table_sorted</span> <span class="kw">&lt;-</span> <span class="kw pkg">dplyr</span><span class="kw ns">::</span><span class="fu"><a href="https://dplyr.tidyverse.org/reference/arrange.html">arrange</a></span>(<span class="no">domain_table</span>, <span class="fu">desc</span>(<span class="no">Freq</span>))
-<span class="fu"><a href="https://rdrr.io/r/utils/head.html">head</a></span>(<span class="no">table_sorted</span>, <span class="fl">20</span>)</pre></body></html></div>
+<div class="sourceCode" id="cb10"><pre class="downlit">
+<span class="kw">example_urls</span> <span class="op">&lt;-</span> <span class="kw">purrr</span>::<span class="fu"><a href="https://purrr.tidyverse.org/reference/flatten.html">flatten_chr</a></span>(<span class="kw">example_processed</span><span class="op">$</span><span class="kw">urls_url</span>)
+<span class="kw">example_urls</span> <span class="op">&lt;-</span> <span class="kw">example_urls</span>[<span class="op">!</span><span class="fu"><a href="https://rdrr.io/r/base/NA.html">is.na</a></span>(<span class="kw">example_urls</span>)] <span class="co"># Remove NA values</span>
+<span class="kw">example_domains</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/get_url_domain.html">get_url_domain</a></span>(<span class="kw">example_urls</span>)
+<span class="kw">domain_table</span> <span class="op">&lt;-</span> <span class="fu">as.tibble</span>(<span class="fu"><a href="https://rdrr.io/r/base/table.html">table</a></span>(<span class="kw">example_domains</span>))
+<span class="kw">table_sorted</span> <span class="op">&lt;-</span> <span class="kw">dplyr</span>::<span class="fu"><a href="https://dplyr.tidyverse.org/reference/arrange.html">arrange</a></span>(<span class="kw">domain_table</span>, <span class="fu">desc</span>(<span class="kw">Freq</span>))
+<span class="fu"><a href="https://rdrr.io/r/utils/head.html">head</a></span>(<span class="kw">table_sorted</span>, <span class="fl">20</span>)
+</pre></div>
 <p>Unsurprisingly, in this dataset, by far the most common domain (as of February 24, 2020) was “twitter.com”, meaning that AECT 2019 tweeters were linking most often to other Twitter content. Other common domains included “convention2.allacademic.com” (i.e., the host of the conference website, including the schedule and session information) as well as “instagram.com” and “youtube.com”, where tweeters likely shared conference-related content.</p>
 </div>
 <div id="geocode_tags" class="section level2">
@@ -181,19 +201,31 @@
 <a href="#geocode_tags" class="anchor"></a>geocode_tags()</h2>
 <p>Another area to explore is where tweeters in the dataset are from (or, at least, the location they self-identify in their Twitter profiles). {tidytags} makes this straightforward with the <code><a href="../reference/geocode_tags.html">geocode_tags()</a></code> function. Note that <code><a href="../reference/geocode_tags.html">geocode_tags()</a></code> should be used after additional metadata has been retrieved with <code><a href="../reference/pull_tweet_data.html">tidytags::pull_tweet_data()</a></code>.</p>
 <p><code><a href="../reference/geocode_tags.html">geocode_tags()</a></code> pulls from the Google Geocoding API, which requires a Google Geocoding API Key. You can easily secure a key through Google Cloud Platform; <a href="https://developers.google.com/maps/documentation/geocoding/get-api-key">read more here</a>. We recommend saving your Google Geocoding API Key in the <code>.Renviron</code> file as <strong>Google_API_key</strong>. You can quickly access this file using the R code <code><a href="https://usethis.r-lib.org/reference/edit.html">usethis::edit_r_environ(scope='user')</a></code>. Add a line to this file that reads: <code>Google_API_key="PasteYourGoogleKeyInsideTheseQuotes"</code>. To read your key into R, use the code <code><a href="https://rdrr.io/r/base/Sys.getenv.html">Sys.getenv('Google_API_key')</a></code>. Note that the <code><a href="../reference/geocode_tags.html">geocode_tags()</a></code> function retrieves your saved API key automatically and securely.</p>
-<div class="sourceCode" id="cb11"><html><body><pre class="r"><span class="kw pkg">usethis</span><span class="kw ns">::</span><span class="fu"><a href="https://usethis.r-lib.org/reference/edit.html">edit_r_environ</a></span>(<span class="kw">scope</span><span class="kw">=</span><span class="st">'user'</span>)</pre></body></html></div>
+<div class="sourceCode" id="cb11"><pre class="downlit">
+<span class="kw">usethis</span>::<span class="fu"><a href="https://usethis.r-lib.org/reference/edit.html">edit_r_environ</a></span>(scope=<span class="st">'user'</span>)
+</pre></div>
 <p>Once you’ve saved this file, quit your R session and restart. The function <code><a href="../reference/geocode_tags.html">geocode_tags()</a></code> will work for you from now on.</p>
 <p>You can pair <code><a href="../reference/geocode_tags.html">geocode_tags()</a></code> with the {mapview} package to allow for quick, interactive viewing of the geocoded data; read more about mapview <a href="https://r-spatial.github.io/mapview/">here</a>. There are many additional R packages that can plot coordinates on a map; which you choose is largely a matter of personal preference.</p>
 <p>First, we identify the unique individuals in the dataset:</p>
-<div class="sourceCode" id="cb12"><html><body><pre class="r"><span class="no">example_unique_places</span> <span class="kw">&lt;-</span> <span class="kw pkg">dplyr</span><span class="kw ns">::</span><span class="fu"><a href="https://dplyr.tidyverse.org/reference/distinct.html">distinct</a></span>(<span class="no">example_processed</span>, <span class="no">location</span>, <span class="kw">.keep_all</span> <span class="kw">=</span> <span class="fl">TRUE</span>)</pre></body></html></div>
+<div class="sourceCode" id="cb12"><pre class="downlit">
+<span class="kw">example_unique_places</span> <span class="op">&lt;-</span> <span class="kw">dplyr</span>::<span class="fu"><a href="https://dplyr.tidyverse.org/reference/distinct.html">distinct</a></span>(<span class="kw">example_processed</span>, <span class="kw">location</span>, .keep_all = <span class="fl">TRUE</span>)
+</pre></div>
 <p>Then, we geocode the locations with the <code><a href="../reference/geocode_tags.html">geocode_tags()</a></code> function, which takes a tibble and outputs a vector of geo-coordinates.</p>
-<div class="sourceCode" id="cb13"><html><body><pre class="r"><span class="no">example_geo_coords</span> <span class="kw">&lt;-</span> <span class="fu"><a href="../reference/geocode_tags.html">geocode_tags</a></span>(<span class="no">example_unique_places</span>)</pre></body></html></div>
+<div class="sourceCode" id="cb13"><pre class="downlit">
+<span class="kw">example_geo_coords</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/geocode_tags.html">geocode_tags</a></span>(<span class="kw">example_unique_places</span>)
+</pre></div>
 <p>Finally, it’s easy to visualize the data using the <code>mapview()</code> function from the {mapview} package:</p>
-<div class="sourceCode" id="cb14"><html><body><pre class="r"><span class="no">example_map</span> <span class="kw">&lt;-</span> <span class="kw pkg">mapview</span><span class="kw ns">::</span><span class="fu"><a href="https://rdrr.io/pkg/mapview/man/mapView.html">mapview</a></span>(<span class="no">example_geo_coords</span>)</pre></body></html></div>
+<div class="sourceCode" id="cb14"><pre class="downlit">
+<span class="kw">example_map</span> <span class="op">&lt;-</span> <span class="kw">mapview</span>::<span class="fu"><a href="https://rdrr.io/pkg/mapview/man/mapView.html">mapview</a></span>(<span class="kw">example_geo_coords</span>)
+</pre></div>
 <p>At this point, you can view an interactive map in your R environment by simply calling <code>example_map</code>.</p>
-<div class="sourceCode" id="cb15"><html><body><pre class="r"><span class="no">example_map</span></pre></body></html></div>
+<div class="sourceCode" id="cb15"><pre class="downlit">
+<span class="kw">example_map</span>
+</pre></div>
 <p>Alternatively, if you want to save a screenshot of the map, you can use the function <code><a href="https://rdrr.io/pkg/mapview/man/mapshot.html">mapview::mapshot()</a></code>.</p>
-<div class="sourceCode" id="cb16"><html><body><pre class="r"><span class="kw pkg">mapview</span><span class="kw ns">::</span><span class="fu"><a href="https://rdrr.io/pkg/mapview/man/mapshot.html">mapshot</a></span>(<span class="no">example_map</span>, <span class="kw">file</span><span class="kw">=</span><span class="st">"example-map.png"</span>)</pre></body></html></div>
+<div class="sourceCode" id="cb16"><pre class="downlit">
+<span class="kw">mapview</span>::<span class="fu"><a href="https://rdrr.io/pkg/mapview/man/mapshot.html">mapshot</a></span>(<span class="kw">example_map</span>, file=<span class="st">"example-map.png"</span>)
+</pre></div>
 <p>Finally, here is a screenshot of the map of AECT 2019 tweeters as of February 24, 2020:</p>
 <p align="center">
 <img src="files/example-map.png" alt="example-map" width="480"></p>
@@ -202,12 +234,14 @@
 <h2 class="hasAnchor">
 <a href="#get_replies-get_retweets-get_quotes-get_mentions" class="anchor"></a>get_replies(), get_retweets(), get_quotes(), get_mentions()</h2>
 <p>These functions quickly subset the data, returning just the tweets of the type indicated by the function name (e.g., <code><a href="../reference/get_replies.html">get_replies()</a></code> returns only reply tweets). The <code>get_</code> family of functions can be used to look at home many tweets of each type are present in the dataset.</p>
-<div class="sourceCode" id="cb17"><html><body><pre class="r"><span class="fu"><a href="https://rdrr.io/r/base/paste.html">paste0</a></span>(<span class="st">"In the dataset of "</span>, <span class="fu"><a href="https://rdrr.io/r/base/nrow.html">nrow</a></span>(<span class="no">example_processed</span>), <span class="st">" tweets, there are "</span>,
-       <span class="fu"><a href="https://rdrr.io/r/base/nrow.html">nrow</a></span>(<span class="fu"><a href="../reference/get_replies.html">get_replies</a></span>(<span class="no">example_processed</span>)), <span class="st">" replies, "</span>,
-       <span class="fu"><a href="https://rdrr.io/r/base/nrow.html">nrow</a></span>(<span class="fu"><a href="../reference/get_retweets.html">get_retweets</a></span>(<span class="no">example_processed</span>)), <span class="st">" retweets, "</span>,
-       <span class="fu"><a href="https://rdrr.io/r/base/nrow.html">nrow</a></span>(<span class="fu"><a href="../reference/get_quotes.html">get_quotes</a></span>(<span class="no">example_processed</span>)), <span class="st">" quote tweets, and "</span>,
-       <span class="fu"><a href="https://rdrr.io/r/base/nrow.html">nrow</a></span>(<span class="fu"><a href="../reference/get_mentions.html">get_mentions</a></span>(<span class="no">example_processed</span>)), <span class="st">" mentions."</span>
-       )</pre></body></html></div>
+<div class="sourceCode" id="cb17"><pre class="downlit">
+<span class="fu"><a href="https://rdrr.io/r/base/paste.html">paste0</a></span>(<span class="st">"In the dataset of "</span>, <span class="fu"><a href="https://rdrr.io/r/base/nrow.html">nrow</a></span>(<span class="kw">example_processed</span>), <span class="st">" tweets, there are "</span>, 
+       <span class="fu"><a href="https://rdrr.io/r/base/nrow.html">nrow</a></span>(<span class="fu"><a href="../reference/get_replies.html">get_replies</a></span>(<span class="kw">example_processed</span>)), <span class="st">" replies, "</span>,
+       <span class="fu"><a href="https://rdrr.io/r/base/nrow.html">nrow</a></span>(<span class="fu"><a href="../reference/get_retweets.html">get_retweets</a></span>(<span class="kw">example_processed</span>)), <span class="st">" retweets, "</span>,
+       <span class="fu"><a href="https://rdrr.io/r/base/nrow.html">nrow</a></span>(<span class="fu"><a href="../reference/get_quotes.html">get_quotes</a></span>(<span class="kw">example_processed</span>)), <span class="st">" quote tweets, and "</span>,
+       <span class="fu"><a href="https://rdrr.io/r/base/nrow.html">nrow</a></span>(<span class="fu"><a href="../reference/get_mentions.html">get_mentions</a></span>(<span class="kw">example_processed</span>)), <span class="st">" mentions."</span>
+       )
+</pre></div>
 <p>As of February 24, 2020, in the dataset of 2269 tweets, there are 77 replies, 1227 retweets, 108 quote tweets, and 3328 mentions.</p>
 </div>
 <div id="get_upstream_replies" class="section level2">
@@ -215,10 +249,12 @@
 <a href="#get_upstream_replies" class="anchor"></a>get_upstream_replies()</h2>
 <p>If your research questions conceptualizing your tweet dataset as a conversation or affinity space, it may be useful to retrieve and add additional tweets. Specifically, TAGS collects tweets that contain one or more keywords or text strings. For example, the TAGS tracker we have been working with in this vignette collected tweets containing the keywords: <code>#aect19</code> OR <code>#aect2019</code> OR <code>#aect19inspired</code>. This is a reasonable approach, from a researchers’ point of view. However, participants who have been following or contributing to these hashtags would also see additional tweets in these “conversations” because Twitter connects together tweets that reply to other tweets into potentially lengthy <em>reply threads</em>. Tweets in a reply thread are all displayed to a user viewing tweets on Twitter’s platform, but because some tweets in a thread may not contain the hashtag of interest, not all tweets in the users’ experience of a conversation would be collected by TAGS. Additionally, tweets contained in a reply thread but composed before the TAGS tracker was initiated would also be left out of the dataset.</p>
 <p>There is a solution to this problem. Because the Twitter API offers a <code>reply_to_status_id</code> column, it is possible to iteratively reconstruct reply threads in an <em>upstream</em> direction, that is, retrieving tweets composed earlier than replies in the dataset. We include the <code>get_upstream_replies</code> in {tidytags} to streamline this process. We also print output at each iteration to demonstrate how the process is progressing.</p>
-<div class="sourceCode" id="cb18"><html><body><pre class="r"><span class="no">example_with_upstream</span> <span class="kw">&lt;-</span> <span class="fu"><a href="../reference/get_upstream_replies.html">get_upstream_replies</a></span>(<span class="no">example_processed</span>)
-<span class="fu"><a href="https://rdrr.io/r/base/paste.html">paste0</a></span>(<span class="st">"The dataset contained "</span>, <span class="fu"><a href="https://rdrr.io/r/base/nrow.html">nrow</a></span>(<span class="no">example_processed</span>), <span class="st">" tweets at the start. "</span>,
-       <span class="st">"Runnning 'get_upstream_replies()' added "</span>, <span class="fu"><a href="https://rdrr.io/r/base/nrow.html">nrow</a></span>(<span class="no">example_with_upstream</span>) - <span class="fu"><a href="https://rdrr.io/r/base/nrow.html">nrow</a></span>(<span class="no">example_processed</span>),
-       <span class="st">" new tweets."</span>)</pre></body></html></div>
+<div class="sourceCode" id="cb18"><pre class="downlit">
+<span class="kw">example_with_upstream</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/get_upstream_replies.html">get_upstream_replies</a></span>(<span class="kw">example_processed</span>)
+<span class="fu"><a href="https://rdrr.io/r/base/paste.html">paste0</a></span>(<span class="st">"The dataset contained "</span>, <span class="fu"><a href="https://rdrr.io/r/base/nrow.html">nrow</a></span>(<span class="kw">example_processed</span>), <span class="st">" tweets at the start. "</span>, 
+       <span class="st">"Runnning 'get_upstream_replies()' added "</span>, <span class="fu"><a href="https://rdrr.io/r/base/nrow.html">nrow</a></span>(<span class="kw">example_with_upstream</span>) <span class="op">-</span> <span class="fu"><a href="https://rdrr.io/r/base/nrow.html">nrow</a></span>(<span class="kw">example_processed</span>),
+       <span class="st">" new tweets."</span>)
+</pre></div>
 <p>On February 24, 2020, running <code><a href="../reference/get_upstream_replies.html">get_upstream_replies()</a></code> took five iterations to collect and add 36 new tweets to the dataset.</p>
 <p>Unfortunately, due to limitations in what information is given by the Twitter API, it is not practical to retrieve <em>downstream</em> replies, or those tweets in a reply thread that follow a tweet in the dataset but neglect to include the hashtag or keyword.</p>
 </div>
@@ -227,21 +263,27 @@
 <a href="#create_edgelist" class="anchor"></a>create_edgelist()</h2>
 <p>Another usefuyl approach to social media resarch is <em>social network analysis</em>. Getting started with social network analysis is as simple as producing an <em>edgelist</em>, a two-column dataframe listing <em>senders</em> and <em>receivers</em>. An edgelist gives a complete accounting of whom is interacting with whom. In Twitter, this is complicated somewhat by the number of ways a user is able to interact with someone else: namely, through replying, retweeting, quote tweeting, mentioning, and liking tweets. The {tidytags} function <code><a href="../reference/create_edgelist.html">create_edgelist()</a></code> uses <code><a href="../reference/get_replies.html">get_replies()</a></code>, <code><a href="../reference/get_retweets.html">get_retweets()</a></code>, <code><a href="../reference/get_quotes.html">get_quotes()</a></code>, and <code><a href="../reference/get_mentions.html">get_mentions()</a></code> to create an edgelist that takes into account these four different types of interaction. <code><a href="../reference/create_edgelist.html">create_edgelist()</a></code> returns a dataframe with three columns: two for the sender and receiver Twitter handles, and a third column listing the edge type (i.e., the form of interaction).</p>
 <p>Run <code><a href="../reference/create_edgelist.html">create_edgelist()</a></code> after completing <code><a href="../reference/get_upstream_replies.html">get_upstream_replies()</a></code> for a complete picture of the interactions.</p>
-<div class="sourceCode" id="cb19"><html><body><pre class="r"><span class="no">example_edgelist</span> <span class="kw">&lt;-</span> <span class="fu"><a href="../reference/create_edgelist.html">create_edgelist</a></span>(<span class="no">example_with_upstream</span>)
-<span class="fu"><a href="https://rdrr.io/r/utils/head.html">head</a></span>(<span class="no">example_edgelist</span>, <span class="fl">20</span>)</pre></body></html></div>
+<div class="sourceCode" id="cb19"><pre class="downlit">
+<span class="kw">example_edgelist</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/create_edgelist.html">create_edgelist</a></span>(<span class="kw">example_with_upstream</span>)
+<span class="fu"><a href="https://rdrr.io/r/utils/head.html">head</a></span>(<span class="kw">example_edgelist</span>, <span class="fl">20</span>)
+</pre></div>
 <p>We can then easily visualize the edgelist as a sociogram using {tidygraph} and {ggraph}:</p>
-<div class="sourceCode" id="cb20"><html><body><pre class="r"><span class="co"># create graph object using tidygraph</span>
-<span class="no">graph</span> <span class="kw">&lt;-</span> <span class="kw pkg">tidygraph</span><span class="kw ns">::</span><span class="fu"><a href="https://tidygraph.data-imaginist.com/reference/tbl_graph.html">as_tbl_graph</a></span>(<span class="no">example_edgelist</span>) <span class="kw">%&gt;%</span>
-    <span class="kw pkg">dplyr</span><span class="kw ns">::</span><span class="fu"><a href="https://dplyr.tidyverse.org/reference/mutate.html">mutate</a></span>(<span class="kw">Popularity</span> <span class="kw">=</span> <span class="kw pkg">tidygraph</span><span class="kw ns">::</span><span class="fu"><a href="https://tidygraph.data-imaginist.com/reference/centrality.html">centrality_degree</a></span>(<span class="kw">mode</span> <span class="kw">=</span> <span class="st">'in'</span>))
+<div class="sourceCode" id="cb20"><pre class="downlit">
+<span class="co"># create graph object using tidygraph</span>
+<span class="kw">graph</span> <span class="op">&lt;-</span> <span class="kw">tidygraph</span>::<span class="fu"><a href="https://tidygraph.data-imaginist.com/reference/tbl_graph.html">as_tbl_graph</a></span>(<span class="kw">example_edgelist</span>) <span class="op">%&gt;%</span> 
+    <span class="kw">dplyr</span>::<span class="fu"><a href="https://dplyr.tidyverse.org/reference/mutate.html">mutate</a></span>(Popularity = <span class="kw">tidygraph</span>::<span class="fu"><a href="https://tidygraph.data-imaginist.com/reference/centrality.html">centrality_degree</a></span>(mode = <span class="st">'in'</span>))
 
 <span class="co"># plot using ggraph</span>
-<span class="kw pkg">ggraph</span><span class="kw ns">::</span><span class="fu"><a href="https://ggraph.data-imaginist.com/reference/ggraph.html">ggraph</a></span>(<span class="no">graph</span>, <span class="kw">layout</span> <span class="kw">=</span> <span class="st">'kk'</span>) +
-    <span class="kw pkg">ggraph</span><span class="kw ns">::</span><span class="fu"><a href="https://ggraph.data-imaginist.com/reference/geom_edge_fan.html">geom_edge_fan</a></span>(<span class="fu">aes</span>(<span class="kw">alpha</span> <span class="kw">=</span> <span class="fu">stat</span>(<span class="no">index</span>)), <span class="kw">show.legend</span> <span class="kw">=</span> <span class="fl">FALSE</span>) +
-    <span class="kw pkg">ggraph</span><span class="kw ns">::</span><span class="fu"><a href="https://ggraph.data-imaginist.com/reference/geom_node_point.html">geom_node_point</a></span>(<span class="fu">aes</span>(<span class="kw">size</span> <span class="kw">=</span> <span class="no">Popularity</span>)) +
-    <span class="kw pkg">ggraph</span><span class="kw ns">::</span><span class="fu"><a href="https://ggraph.data-imaginist.com/reference/facet_edges.html">facet_edges</a></span>(~<span class="no">year</span>) +
-    <span class="kw pkg">ggraph</span><span class="kw ns">::</span><span class="fu"><a href="https://ggraph.data-imaginist.com/reference/theme_graph.html">theme_graph</a></span>(<span class="kw">foreground</span> <span class="kw">=</span> <span class="st">'steelblue'</span>, <span class="kw">fg_text_colour</span> <span class="kw">=</span> <span class="st">'white'</span>)</pre></body></html></div>
+<span class="kw">ggraph</span>::<span class="fu"><a href="https://ggraph.data-imaginist.com/reference/ggraph.html">ggraph</a></span>(<span class="kw">graph</span>, layout = <span class="st">'kk'</span>) <span class="op">+</span> 
+    <span class="kw">ggraph</span>::<span class="fu"><a href="https://ggraph.data-imaginist.com/reference/geom_edge_fan.html">geom_edge_fan</a></span>(<span class="fu">aes</span>(alpha = <span class="fu">stat</span>(<span class="kw">index</span>)), show.legend = <span class="fl">FALSE</span>) <span class="op">+</span> 
+    <span class="kw">ggraph</span>::<span class="fu"><a href="https://ggraph.data-imaginist.com/reference/geom_node_point.html">geom_node_point</a></span>(<span class="fu">aes</span>(size = <span class="kw">Popularity</span>)) <span class="op">+</span> 
+    <span class="kw">ggraph</span>::<span class="fu"><a href="https://ggraph.data-imaginist.com/reference/facet_edges.html">facet_edges</a></span>(<span class="op">~</span><span class="kw">year</span>) <span class="op">+</span> 
+    <span class="kw">ggraph</span>::<span class="fu"><a href="https://ggraph.data-imaginist.com/reference/theme_graph.html">theme_graph</a></span>(foreground = <span class="st">'steelblue'</span>, fg_text_colour = <span class="st">'white'</span>)
+</pre></div>
 <p>Running <code><a href="../reference/create_edgelist.html">create_edgelist()</a></code> also provides a simple way to re-look at how many tweets of each type are present in the dataset, using the <code>count()</code> function from {dplyr}.</p>
-<div class="sourceCode" id="cb21"><html><body><pre class="r"><span class="kw pkg">dplyr</span><span class="kw ns">::</span><span class="fu"><a href="https://dplyr.tidyverse.org/reference/count.html">count</a></span>(<span class="no">example_edgelist</span>, <span class="no">edge_type</span>, <span class="kw">sort</span> <span class="kw">=</span> <span class="fl">TRUE</span>)</pre></body></html></div>
+<div class="sourceCode" id="cb21"><pre class="downlit">
+<span class="kw">dplyr</span>::<span class="fu"><a href="https://dplyr.tidyverse.org/reference/count.html">count</a></span>(<span class="kw">example_edgelist</span>, <span class="kw">edge_type</span>, sort = <span class="fl">TRUE</span>)
+</pre></div>
 <p>Running this code on February 24, 2020 showed that the 2,305 tweets in the dataset (including upstream replies) contained 3,328 mentions, 1,227 retweets, 108 quote tweets, and 77 replies.</p>
 <p>Note that we do not yet have a function <code>get_likes()</code> because this process is much more difficult given the information provided by the Twitter API.</p>
 </div>
@@ -249,8 +291,10 @@
 <h2 class="hasAnchor">
 <a href="#add_users_data" class="anchor"></a>add_users_data()</h2>
 <p>Finally, {tidytags} also has functionality to add user-level data to an edgelist through the function <code><a href="../reference/add_users_data.html">tidytags::add_users_data()</a></code>. These additional features are very useful when taking an inferential approach to social network analysis, such as building <em>influence</em> or <em>selection</em> models.</p>
-<div class="sourceCode" id="cb22"><html><body><pre class="r"><span class="no">example_senders_receivers_data</span> <span class="kw">&lt;-</span> <span class="fu"><a href="../reference/add_users_data.html">add_users_data</a></span>(<span class="no">example_edgelist</span>)
-<span class="kw pkg">dplyr</span><span class="kw ns">::</span><span class="fu"><a href="https://dplyr.tidyverse.org/reference/reexports.html">glimpse</a></span>(<span class="no">example_senders_receivers_data</span>)</pre></body></html></div>
+<div class="sourceCode" id="cb22"><pre class="downlit">
+<span class="kw">example_senders_receivers_data</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/add_users_data.html">add_users_data</a></span>(<span class="kw">example_edgelist</span>)
+<span class="kw">dplyr</span>::<span class="fu"><a href="https://tibble.tidyverse.org/reference/glimpse.html">glimpse</a></span>(<span class="kw">example_senders_receivers_data</span>)
+</pre></div>
 </div>
   </div>
 
@@ -269,7 +313,7 @@
 </div>
 
 <div class="pkgdown">
-  <p>Site built with <a href="https://pkgdown.r-lib.org/">pkgdown</a> 1.5.1.</p>
+  <p>Site built with <a href="https://pkgdown.r-lib.org/">pkgdown</a> 1.6.1.</p>
 </div>
 
       </footer>

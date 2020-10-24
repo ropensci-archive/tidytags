@@ -16,7 +16,7 @@ Description: {tidytags} coordinates the simplicity of collecting tweets over tim
     [{rtweet} package](https://rtweet.info/) for processing and preparing additional Twitter metadata. 
     {tidytags} also introduces functions developed to facilitate systematic yet 
     flexible analyses of data from Twitter.
-License: GPL-3
+License: GPL-3 + file LICENSE
 URL: https://bretsw.github.io/tidytags/, https://github.com/bretsw/tidytags
 Depends: 
     R (>= 4.0)

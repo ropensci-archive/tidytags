@@ -18,6 +18,7 @@
 #' get_replies(tmp_df)
 #' }
 #' @importFrom rlang .data
+#' @export
 get_replies <-
   function(df) {
     processed_df <- process_tweets(df)
@@ -70,6 +71,7 @@ get_replies <-
 #' get_retweets(tmp_df)
 #' }
 #' @importFrom rlang .data
+#' @export
 get_retweets <-
   function(df) {
     processed_df <- process_tweets(df)
@@ -121,6 +123,7 @@ get_retweets <-
 #' get_quotes(tmp_df)
 #' }
 #' @importFrom rlang .data
+#' @export
 get_quotes <-
   function(df) {
     processed_df <- process_tweets(df)
@@ -173,6 +176,7 @@ get_quotes <-
 #' get_mentions(tmp_df)
 #' }
 #' @importFrom rlang .data
+#' @export
 get_mentions <-
   function(df) {
     processed_df <- process_tweets(df)

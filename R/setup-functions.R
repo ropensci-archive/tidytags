@@ -54,6 +54,7 @@ read_tags <-
 #' get_char_tweet_ids(url_vector = "https://twitter.com/tweet__example/status/1176592704647716864")
 #' }
 #' @importFrom rlang .data
+#' @export
 get_char_tweet_ids <-
   function(df, url_vector = NULL) {
     ifelse(!is.null(url_vector),
@@ -206,6 +207,7 @@ lookup_many_tweets <-
 #'
 #' @param x A list
 #' @return The number of items in the list
+#' @keywords internal
 length_with_na <-
   function(x) {
     ifelse(is.na(x), 0, purrr::map_int(x, length))

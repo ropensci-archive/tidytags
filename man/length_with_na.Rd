@@ -15,3 +15,4 @@ The number of items in the list
 \description{
 Count the number of items in a list, with an NA entry returning 0
 }
+\keyword{internal}

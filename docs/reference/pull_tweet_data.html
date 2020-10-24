@@ -148,7 +148,7 @@
   this file directly using the <code><a href='https://usethis.r-lib.org/reference/edit.html'>usethis::edit_r_environ(scope='user')</a></code> function.</p>
     </div>
 
-    <pre class="usage"><span class='fu'>pull_tweet_data</span>(<span class='no'>df</span>, <span class='kw'>url_vector</span> <span class='kw'>=</span> <span class='kw'>NULL</span>, <span class='kw'>id_vector</span> <span class='kw'>=</span> <span class='kw'>NULL</span>, <span class='kw'>n</span> <span class='kw'>=</span> <span class='kw'>NULL</span>)</pre>
+    <pre class="usage"><span class='fu'>pull_tweet_data</span>(<span class='kw'>df</span>, url_vector = <span class='kw'>NULL</span>, id_vector = <span class='kw'>NULL</span>, n = <span class='kw'>NULL</span>)</pre>
 
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
     <table class="ref-arguments">
@@ -181,22 +181,23 @@ ID numbers available, but capped at 90,000 due to Twitter API limitations.</p></
     <p>A dataframe of tweets and full metadata from the Twitter API</p>
     <h2 class="hasAnchor" id="see-also"><a class="anchor" href="#see-also"></a>See also</h2>
 
-    <div class='dont-index'><p>Read more about <code><a href='https://rdrr.io/pkg/rtweet/man'>library(rtweet)</a></code> <a href='https://rtweet.info/'>here</a>.</p></div>
+    <div class='dont-index'><p>Read more about <code><a href='https://CRAN.R-project.org/package=rtweet'>library(rtweet)</a></code> <a href='https://rtweet.info/'>here</a>.</p></div>
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
     <pre class="examples"><div class='input'>
-<span class='kw'>if</span> (<span class='fl'>FALSE</span>) {
+<span class='co'>if</span> (<span class='fl'>FALSE</span>) {
 
-<span class='no'>example_url</span> <span class='kw'>&lt;-</span> <span class='st'>"18clYlQeJOc6W5QRuSlJ6_v3snqKJImFhU42bRkM_OX8"</span>
-<span class='fu'>pull_tweet_data</span>(<span class='fu'><a href='read_tags.html'>read_tags</a></span>(<span class='no'>example_url</span>)[<span class='fl'>1</span>:<span class='fl'>10</span>, ])
-<span class='fu'>pull_tweet_data</span>(<span class='fu'><a href='read_tags.html'>read_tags</a></span>(<span class='no'>example_url</span>), <span class='kw'>n</span> <span class='kw'>=</span> <span class='fl'>10</span>)
-<span class='fu'>pull_tweet_data</span>(<span class='kw'>url_vector</span> <span class='kw'>=</span> <span class='fu'><a href='read_tags.html'>read_tags</a></span>(<span class='no'>example_url</span>)$<span class='no'>status_url</span>[<span class='fl'>1</span>:<span class='fl'>10</span>])
-<span class='fu'>pull_tweet_data</span>(<span class='kw'>url_vector</span> <span class='kw'>=</span> <span class='fu'><a href='read_tags.html'>read_tags</a></span>(<span class='no'>example_url</span>)$<span class='no'>status_url</span>, <span class='kw'>n</span> <span class='kw'>=</span> <span class='fl'>10</span>)
-<span class='fu'>pull_tweet_data</span>(<span class='kw'>id_vector</span> <span class='kw'>=</span> <span class='fu'><a href='read_tags.html'>read_tags</a></span>(<span class='no'>example_url</span>)$<span class='no'>id_str</span>[<span class='fl'>1</span>:<span class='fl'>10</span>])
-<span class='fu'>pull_tweet_data</span>(<span class='kw'>id_vector</span> <span class='kw'>=</span> <span class='fu'><a href='read_tags.html'>read_tags</a></span>(<span class='no'>example_url</span>)$<span class='no'>id_str</span>, <span class='kw'>n</span> <span class='kw'>=</span> <span class='fl'>10</span>)
-<span class='fu'>pull_tweet_data</span>(<span class='kw'>url_vector</span> <span class='kw'>=</span> <span class='st'>"https://twitter.com/tweet__example/status/1176592704647716864"</span>)
-<span class='fu'>pull_tweet_data</span>(<span class='kw'>id_vector</span> <span class='kw'>=</span> <span class='st'>"1176592704647716864"</span>)
-}</div></pre>
+<span class='kw'>example_url</span> <span class='op'>&lt;-</span> <span class='st'>"18clYlQeJOc6W5QRuSlJ6_v3snqKJImFhU42bRkM_OX8"</span>
+<span class='fu'>pull_tweet_data</span>(<span class='fu'><a href='read_tags.html'>read_tags</a></span>(<span class='kw'>example_url</span>)[<span class='fl'>1</span><span class='op'>:</span><span class='fl'>10</span>, ])
+<span class='fu'>pull_tweet_data</span>(<span class='fu'><a href='read_tags.html'>read_tags</a></span>(<span class='kw'>example_url</span>), n = <span class='fl'>10</span>)
+<span class='fu'>pull_tweet_data</span>(url_vector = <span class='fu'><a href='read_tags.html'>read_tags</a></span>(<span class='kw'>example_url</span>)<span class='op'>$</span><span class='kw'>status_url</span>[<span class='fl'>1</span><span class='op'>:</span><span class='fl'>10</span>])
+<span class='fu'>pull_tweet_data</span>(url_vector = <span class='fu'><a href='read_tags.html'>read_tags</a></span>(<span class='kw'>example_url</span>)<span class='op'>$</span><span class='kw'>status_url</span>, n = <span class='fl'>10</span>)
+<span class='fu'>pull_tweet_data</span>(id_vector = <span class='fu'><a href='read_tags.html'>read_tags</a></span>(<span class='kw'>example_url</span>)<span class='op'>$</span><span class='kw'>id_str</span>[<span class='fl'>1</span><span class='op'>:</span><span class='fl'>10</span>])
+<span class='fu'>pull_tweet_data</span>(id_vector = <span class='fu'><a href='read_tags.html'>read_tags</a></span>(<span class='kw'>example_url</span>)<span class='op'>$</span><span class='kw'>id_str</span>, n = <span class='fl'>10</span>)
+<span class='fu'>pull_tweet_data</span>(url_vector = <span class='st'>"https://twitter.com/tweet__example/status/1176592704647716864"</span>)
+<span class='fu'>pull_tweet_data</span>(id_vector = <span class='st'>"1176592704647716864"</span>)
+}
+</div></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="pkgdown-sidebar">
     <nav id="toc" data-toggle="toc" class="sticky-top">
@@ -212,7 +213,7 @@ ID numbers available, but capped at 90,000 due to Twitter API limitations.</p></
 </div>
 
 <div class="pkgdown">
-  <p>Site built with <a href="https://pkgdown.r-lib.org/">pkgdown</a> 1.5.1.</p>
+  <p>Site built with <a href="https://pkgdown.r-lib.org/">pkgdown</a> 1.6.1.</p>
 </div>
 
       </footer>
