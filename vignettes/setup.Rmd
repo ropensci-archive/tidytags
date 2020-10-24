@@ -74,6 +74,11 @@ You secure a key through Google Cloud Platform; [read more on Google's developer
 
 **Once you've saved the .Renviron file, quit your R session and restart.** The function `geocode_tags()` will work for you from now on. Note that the {tidytags} `geocode_tags()` function retrieves your saved API key automatically and securely, and you won't need to think about this after the initial setup. However, if for some reason you'd like to manually retrieve your Google API key to use in R, use the command `Sys.getenv('Google_API_key')`.
 
+## Getting help
+
+```{r child="../man/fragments/getting-help.Rmd"} 
+```
+
 ```{r session, include = FALSE}
 devtools::session_info()
 ```

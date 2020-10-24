@@ -14,7 +14,14 @@ knitr::opts_chunk$set(echo = TRUE, eval = FALSE, comment = "#>", collapse = TRUE
 
 This vignette introduces how to use many {tidytags} functions through the example of analyzing tweets associated with the 2019 annual convention of the [Association for Educational Communications & Technology](https://aect.org/) (AECT): `#aect19`, `#aect2019`, or `#aect19inspired`.
 
-Most of the information in this vignette is available scattered throughout the R documentation. This appendix brings it all together in one place.
+The information in this vignette is available scattered throughout the R documentation. This appendix brings it all together in one place.
+
+## Considerations Related to Ethics, Data Privacy, and Human Subjects Research 
+
+Before working through this demonstration of the capabilities of {tidytags}, please take a few moments to reflect on ethical considerations related to social media research. 
+
+```{r child="../man/fragments/ethics.Rmd"} 
+```
 
 ## read_tags()
 

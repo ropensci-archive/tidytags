@@ -97,9 +97,8 @@ are still some bugs to work out and functions to document better. If you
 find an issue, have a question, or think of something that you really
 wish {tidytags} would do for you, don’t hesitate to [email
 Bret](mailto:bret@bretsw.com) or reach out on Twitter:
-\[@bretsw\](<https://twitter.com/bretsw>),
-\[@jrosenberg6432\](<https://twitter.com/jrosenberg6432>), and
-\[@spgreenhalgh\](<https://twitter.com/spgreenhalgh>).
+[@bretsw](https://twitter.com/bretsw) and
+[@jrosenberg6432](https://twitter.com/jrosenberg6432).
 
 You can also [submit an issue on
 Github](https://github.com/bretsw/tidytags/issues/).
@@ -119,12 +118,12 @@ determines that a study is not human subjects research), “the release of
 personally identifiable or sensitive data is potentially harmful,” as
 noted in the [rOpenSci Packages
 guide](https://devguide.ropensci.org/policies.html#ethics-data-privacy-and-human-subjects-research).
-Thus, even though you *can* collect Twitter data (and you can use
-{tidytags} to analyze it), because most (if not all) of the data will be
-related to humans, we urge care and thoughtfulness regarding how you
-analyze the data and communicate the results. In short, please remember
-that the data you collect may be about people—and [those people may not
-like the idea of their data being analyze or included in
+Therefore, although you *can* collect Twitter data (and you *can* use
+{tidytags} to analyze it), we urge care and thoughtfulness regarding how
+you analyze the data and communicate the results. In short, please
+remember that most (if not all) of the you collect may be about
+people—and [those people may not like the idea of their data being
+analyzed or included in
 research](https://journals.sagepub.com/doi/full/10.1177/2056305118763366).
 
 We recommend [the Association of Internet Researchers’ (AoIR) resources
@@ -133,6 +132,9 @@ ways](https://aoir.org/ethics/) when working with data about people.
 AoIR’s [ethical guidelines](https://aoir.org/reports/ethics3.pdf) may be
 especially helpful for navigating tensions related to collecting,
 analyzing, and sharing social media data.
+
+{tidytags} should be used in strict accordance with Twitter’s [developer
+terms](https://developer.twitter.com/en/developer-terms/more-on-restricted-use-cases).
 
 ## Future collaborations
 
