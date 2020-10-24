@@ -45,8 +45,6 @@ devtools::install_github("bretsw/tidytags")
 
 ## Usage
 
-{tidytags} should be used in strict accordance with Twitter's [developer terms](https://developer.twitter.com/en/developer-terms/more-on-restricted-use-cases).
-
 To load {tidytags}, start with the `library()` function:
 
 ```{r}
@@ -84,6 +82,16 @@ For a walkthrough of numerous additional {tidytags} functions, see the [Using ti
 {tidytags} is still a work in progress, so we fully expect that there are still some bugs to work out and functions to document better. If you find an issue, have a question, or think of something that you really wish {tidytags} would do for you, don't hesitate to [email Bret](mailto:bret@bretsw.com) or reach out on Twitter: [@bretsw](https://twitter.com/bretsw), [@jrosenberg6432](https://twitter.com/jrosenberg6432), and [@spgreenhalgh](https://twitter.com/spgreenhalgh).
 
 You can also [submit an issue on Github](https://github.com/bretsw/tidytags/issues/).
+
+## Considerations Related to Ethics, Data Privacy, and Human Subjects Research 
+
+{tidytags} should be used in strict accordance with Twitter's [developer terms](https://developer.twitter.com/en/developer-terms/more-on-restricted-use-cases).
+
+While most Institutional Review Boards (IRBs) consider the data from Twitter that you can analyze with {tidytags} to _not_ necessarily be a part of human subjects research, there are some ethical considerations pertaining to the use of this package that we wish to discuss. 
+
+Even if you are not a social media researcher (or if your IRB determines that what you are doing is not human subjects research), as the [rOpenSci Packages guide](https://devguide.ropensci.org/policies.html#ethics-data-privacy-and-human-subjects-research), "the release of personally identifiable or sensitive data is potentially harmful." Thus, even though you _can_ collect data from Twitter (and you can use {tidytags} to analyze it), because most (if not all) of the data will be about humans, we urge care and thoughtfulness regarding how you analyze the data and communicate and share the results. In short, remember that the data you collect may be about people---and [those people may not like the idea of their data being analyze or included in research](https://journals.sagepub.com/doi/full/10.1177/2056305118763366). 
+
+Related to the analysis of data about people, we recommend [the Association of Internet Researchers' resources related to conducting analyses and in ethical ways](https://aoir.org/ethics/). Their [ethical guidelines](https://aoir.org/reports/ethics3.pdf) may be especially helpful for navigating tensions related to collecting, analyzing, and sharing social media data.
 
 ## Future collaborations
 
