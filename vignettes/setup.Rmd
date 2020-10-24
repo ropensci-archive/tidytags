@@ -60,9 +60,9 @@ Be sure to put quotations marks around the URL or sheet identifier when entering
 
 ## Pain Point #2. Getting and storing Twitter API keys
 
-With a TAGS tracker archive imported into R, {tidytags} allows you to gather quite a bit more information related to the TAGS-collected tweets with the `pull_tweet_data()` function. This function builds off the [{rtweet} package](https://rtweet.info/) (via `rtweet::lookup_statuses()`) to query the Twitter API. However, to access the Twitter API, whether through {rtweet} or {tidytags}, you will need to apply for developers' access from Twitter. You do this [through Twitter's developer website](https://developer.twitter.com/en/apply-for-access). 
+With a TAGS tracker archive imported into R, {tidytags} allows you to gather quite a bit more information related to the TAGS-collected tweets with the `pull_tweet_data()` function. This function builds off the [{rtweet} package](https://docs.ropensci.org/rtweet/) (via `rtweet::lookup_statuses()`) to query the Twitter API. However, to access the Twitter API, whether through {rtweet} or {tidytags}, you will need to apply for developers' access from Twitter. You do this [through Twitter's developer website](https://developer.twitter.com/en/apply-for-access). 
 
-Fortunately, {rtweet} documentation already contains a very thorough vignette, [Obtaining and using access tokens](https://rtweet.info/articles/auth.html), to guide you through the process of obtaining Twitter API keys. We recommend the second suggested method listed in the {rtweet} vignette, **2. Access token/secret method.** 
+Fortunately, {rtweet} documentation already contains a very thorough vignette, [Obtaining and using access tokens](https://docs.ropensci.org/rtweet/articles/auth.html), to guide you through the process of obtaining Twitter API keys. We recommend the second suggested method listed in the {rtweet} vignette, **2. Access token/secret method.** 
 
 Following these directions, you will run the `rtweet::create_token()` function, which saves your Twitter API keys to the `.Renviron` file. You can also edit this file directly using the `usethis::edit_r_environ(scope='user')` function. Once you've added your Twitter keys, {tidytags} functions will retrieve them in the background, securely, as needed.
 
