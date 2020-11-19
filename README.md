@@ -103,6 +103,19 @@ Bret](mailto:bret@bretsw.com) or reach out on Twitter:
 You can also [submit an issue on
 Github](https://github.com/bretsw/tidytags/issues/).
 
+You may also wish too try some general troubleshooting strategies:
+
+  - Try to find out what the specific problem is
+      - Identify what is *not* causing the problem
+  - “Unplug and plug it back in” - restart R, close and reopen R
+  - Reach out to others\! Sharing what is causing an issue can often
+    help to clarify the problem.
+      - RStudio Community - <https://community.rstudio.com/> (highly
+        recommended\!)
+      - Twitter hashtag: \#rstats
+  - General strategies on learning more:
+    <https://datascienceineducation.com/c17.html>
+
 ## Considerations Related to Ethics, Data Privacy, and Human Subjects Research
 
 {tidytags} should be used in strict accordance with Twitter’s [developer

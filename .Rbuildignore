@@ -10,3 +10,5 @@ paper.bib
 tidytags-logo.png
 ^codecov\.yml$
 ^\.travis\.yml$
+^doc$
+^Meta$

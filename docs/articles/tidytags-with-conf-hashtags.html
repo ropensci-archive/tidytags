@@ -83,6 +83,7 @@
   <div class="col-md-9 contents">
     <div class="page-header toc-ignore">
       <h1 data-toc-skip>Using tidytags with a conference hashtag</h1>
+                        <h4 class="author">K. Bret Staudt Willet &amp; Joshua M. Rosenberg</h4>
             
       
       <small class="dont-index">Source: <a href="https://github.com/bretsw/tidytags/blob/master/vignettes/tidytags-with-conf-hashtags.Rmd"><code>vignettes/tidytags-with-conf-hashtags.Rmd</code></a></small>
@@ -98,6 +99,10 @@
 <h2 class="hasAnchor">
 <a href="#considerations-related-to-ethics-data-privacy-and-human-subjects-research" class="anchor"></a>Considerations Related to Ethics, Data Privacy, and Human Subjects Research</h2>
 <p>Before working through this demonstration of the capabilities of {tidytags}, please take a few moments to reflect on ethical considerations related to social media research.</p>
+<p>{tidytags} should be used in strict accordance with Twitter’s <a href="https://developer.twitter.com/en/developer-terms/more-on-restricted-use-cases">developer terms</a>.</p>
+<p>Although most Institutional Review Boards (IRBs) consider the Twitter data that {tidytags} analyzes to <em>not</em> necessarily be human subjects research, there remain ethical considerations pertaining to the use of the {tidytags} package that should be discussed.</p>
+<p>Even if {tidytags} use is not for research purposes (or if an IRB determines that a study is not human subjects research), “the release of personally identifiable or sensitive data is potentially harmful,” as noted in the <a href="https://devguide.ropensci.org/policies.html#ethics-data-privacy-and-human-subjects-research">rOpenSci Packages guide</a>. Therefore, although you <em>can</em> collect Twitter data (and you <em>can</em> use {tidytags} to analyze it), we urge care and thoughtfulness regarding how you analyze the data and communicate the results. In short, please remember that most (if not all) of the you collect may be about people—and <a href="https://journals.sagepub.com/doi/full/10.1177/2056305118763366">those people may not like the idea of their data being analyzed or included in research</a>.</p>
+<p>We recommend <a href="https://aoir.org/ethics/">the Association of Internet Researchers’ (AoIR) resources related to conducting analyses in ethical ways</a> when working with data about people. AoIR’s <a href="https://aoir.org/reports/ethics3.pdf">ethical guidelines</a> may be especially helpful for navigating tensions related to collecting, analyzing, and sharing social media data.</p>
 </div>
 <div id="read_tags" class="section level2">
 <h2 class="hasAnchor">
@@ -300,6 +305,29 @@
 <span class="kw">example_senders_receivers_data</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/add_users_data.html">add_users_data</a></span>(<span class="kw">example_edgelist</span>)
 <span class="kw">dplyr</span>::<span class="fu"><a href="https://tibble.tidyverse.org/reference/glimpse.html">glimpse</a></span>(<span class="kw">example_senders_receivers_data</span>)
 </pre></div>
+</div>
+<div id="getting-help" class="section level2">
+<h2 class="hasAnchor">
+<a href="#getting-help" class="anchor"></a>Getting help</h2>
+<p>{tidytags} is still a work in progress, so we fully expect that there are still some bugs to work out and functions to document better. If you find an issue, have a question, or think of something that you really wish {tidytags} would do for you, don’t hesitate to <a href="mailto:bret@bretsw.com">email Bret</a> or reach out on Twitter: <a href="https://twitter.com/bretsw">@bretsw</a> and <a href="https://twitter.com/jrosenberg6432">@jrosenberg6432</a>.</p>
+<p>You can also <a href="https://github.com/bretsw/tidytags/issues/">submit an issue on Github</a>.</p>
+<p>You may also wish too try some general troubleshooting strategies:</p>
+<ul>
+<li>Try to find out what the specific problem is
+<ul>
+<li>Identify what is <em>not</em> causing the problem</li>
+</ul>
+</li>
+<li>“Unplug and plug it back in” - restart R, close and reopen R</li>
+<li>Reach out to others! Sharing what is causing an issue can often help to clarify the problem.
+<ul>
+<li>RStudio Community - <a href="https://community.rstudio.com/" class="uri">https://community.rstudio.com/</a> (highly recommended!)</li>
+<li>Twitter hashtag: #rstats</li>
+</ul>
+</li>
+<li>General strategies on learning more: <a href="https://datascienceineducation.com/c17.html" class="uri">https://datascienceineducation.com/c17.html</a>
+</li>
+</ul>
 </div>
   </div>
 

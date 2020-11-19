@@ -1,5 +1,6 @@
 ---
 title: "Getting started with tidytags"
+author: "K. Bret Staudt Willet & Joshua M. Rosenberg"
 output: 
   rmarkdown::html_vignette
 vignette: >
@@ -8,8 +9,8 @@ vignette: >
   %\VignetteEncoding{UTF-8}
 ---
 
-```{r setup, include = FALSE}
-knitr::opts_chunk$set(echo = TRUE, eval = FALSE, comment = "#>", collapse = TRUE)
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo=TRUE, eval=TRUE, comment = "#>", collapse=TRUE)
 ```
 
 This vignette introduces the initial setup necessary to use {tidytags}. Specifically, this guide offers help for three pain points:
@@ -76,9 +77,9 @@ You secure a key through Google Cloud Platform; [read more on Google's developer
 
 ## Getting help
 
-```{r child="../man/fragments/getting-help.Rmd"} 
+```{r, eval=TRUE, child='../man/fragments/getting-help.Rmd'} 
 ```
 
-```{r session, include = FALSE}
+```{r session, include=FALSE}
 devtools::session_info()
 ```

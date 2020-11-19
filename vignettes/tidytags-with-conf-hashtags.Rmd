@@ -1,5 +1,6 @@
 ---
 title: "Using tidytags with a conference hashtag"
+author: "K. Bret Staudt Willet & Joshua M. Rosenberg"
 output: 
   rmarkdown::html_vignette
 vignette: >
@@ -8,8 +9,8 @@ vignette: >
   %\VignetteEncoding{UTF-8}
 ---
 
-```{r setup, include = FALSE}
-knitr::opts_chunk$set(echo = TRUE, eval = FALSE, comment = "#>", collapse = TRUE)
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo=TRUE, eval=FALSE, comment="#>", collapse=TRUE)
 ```
 
 This vignette introduces how to use many {tidytags} functions through the example of analyzing tweets associated with the 2019 annual convention of the [Association for Educational Communications & Technology](https://aect.org/) (AECT): `#aect19`, `#aect2019`, or `#aect19inspired`.
@@ -20,7 +21,7 @@ The information in this vignette is available scattered throughout the R documen
 
 Before working through this demonstration of the capabilities of {tidytags}, please take a few moments to reflect on ethical considerations related to social media research. 
 
-```{r child="../man/fragments/ethics.Rmd"} 
+```{r, eval=TRUE, child='../man/fragments/ethics.Rmd'} 
 ```
 
 ## read_tags()
@@ -285,6 +286,11 @@ example_senders_receivers_data <- add_users_data(example_edgelist)
 dplyr::glimpse(example_senders_receivers_data)
 ```
 
-```{r session, include = FALSE}
+## Getting help
+
+```{r, eval=TRUE, child='../man/fragments/getting-help.Rmd'} 
+```
+
+```{r session, include=FALSE}
 devtools::session_info()
 ```

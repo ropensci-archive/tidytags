@@ -75,12 +75,12 @@ For a walkthrough of numerous additional {tidytags} functions, see the [Using ti
 
 ## Getting help
 
-```{r child="man/fragments/getting-help.Rmd"} 
+```{r, child='./man/fragments/getting-help.Rmd'} 
 ```
 
 ## Considerations Related to Ethics, Data Privacy, and Human Subjects Research 
 
-```{r child="man/fragments/ethics.Rmd"} 
+```{r, child='./man/fragments/ethics.Rmd'} 
 ```
 
 {tidytags} should be used in strict accordance with Twitter's [developer terms](https://developer.twitter.com/en/developer-terms/more-on-restricted-use-cases).

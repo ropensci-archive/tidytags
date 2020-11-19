@@ -5,3 +5,5 @@
 .httr-oauth
 *.rds
 inst/doc
+doc
+Meta
