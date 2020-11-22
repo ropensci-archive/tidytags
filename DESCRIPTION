@@ -34,13 +34,16 @@ Imports:
 Suggests:
     beepr,
     covr,
+    devtools,
     ggplot2,
+    ggraph,
     knitr,
     longurl,
     mapsapi,
     mapview,
     rmarkdown,
     testthat,
+    tidygraph,
     tidyverse,
     urltools,
     usethis

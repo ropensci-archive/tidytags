@@ -10,7 +10,9 @@ vignette: >
 ---
 
 ```{r setup, include=FALSE}
-knitr::opts_chunk$set(echo=TRUE, eval=TRUE, comment = "#>", collapse=TRUE)
+knitr::opts_chunk$set(
+  collapse = TRUE, comment = "#>", out.width = "100%",
+  message = FALSE, warning = FALSE, error = FALSE)
 ```
 
 This vignette introduces the initial setup necessary to use {tidytags}. Specifically, this guide offers help for three pain points:
@@ -18,6 +20,15 @@ This vignette introduces the initial setup necessary to use {tidytags}. Specific
 1. Making sure your TAGS tracker can be accessed
 2. Getting and storing Twitter API keys
 3. Getting and storing a Google Geocoding API key
+
+## Considerations Related to Ethics, Data Privacy, and Human Subjects Research 
+
+Before reading through these steps for setting up {tidytags}, please take a few moments to reflect on ethical considerations related to social media research. 
+
+```{r, child='../man/fragments/ethics.Rmd'} 
+```
+
+With these things in mind, let's get started working through some of the common pain points.
 
 ## Pain Point #1. Making sure your TAGS tracker can be accessed
 
@@ -77,7 +88,7 @@ You secure a key through Google Cloud Platform; [read more on Google's developer
 
 ## Getting help
 
-```{r, eval=TRUE, child='../man/fragments/getting-help.Rmd'} 
+```{r, child='../man/fragments/getting-help.Rmd'} 
 ```
 
 ```{r session, include=FALSE}
