@@ -192,7 +192,7 @@ At this point, you can view an interactive map in your R environment simply by c
 
 These functions quickly subset the data, returning just the tweets of the type indicated by the function name (e.g., `get_replies()` returns only reply tweets). The `get_` family of {tidytags} functions can be used to look at home many tweets of each type are present in the dataset.
 
-In the dataset of `r nrow(example_processed)` tweets, there are `r nrow(get_replies(example_processed))` replies, `r nrow(get_retweets(example_processed))` retweets, `r nrow(get_quotes(example_processed))` quote tweets, and `nrow(get_mentions(example_processed))`.
+In the dataset of `r nrow(example_processed)` tweets, there are `r nrow(get_replies(example_processed))` replies, `r nrow(get_retweets(example_processed))` retweets, `r nrow(get_quotes(example_processed))` quote tweets, and `r nrow(get_mentions(example_processed))`.
 
 ## get_upstream_replies()
 
