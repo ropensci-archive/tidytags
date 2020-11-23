@@ -78,13 +78,29 @@ Fortunately, {rtweet} documentation already contains a very thorough vignette, [
 
 Following these directions, you will run the `rtweet::create_token()` function, which saves your Twitter API keys to the `.Renviron` file. You can also edit this file directly using the `usethis::edit_r_environ(scope='user')` function. Once you've added your Twitter keys, {tidytags} functions will retrieve them in the background, securely, as needed.
 
+### Authorization in future R sessions
+
+To make sure the **Twitter API token** works, restart your R session and run the following code:
+
+```{r, eval=FALSE}
+rtweet::get_token()
+```
+
 ## Pain Point #3. Getting and storing a Google Geocoding API key
 
 The {tidytags} function `geocode_tags()` pulls from the Google Geocoding API, which requires a Google Geocoding API key. Getting a Google Geocoding API key is more staightforward and immediate than the Twitter API key process.
 
 You secure a key through Google Cloud Platform; [read more on Google's developer website](https://developers.google.com/maps/documentation/geocoding/get-api-key). We recommend saving your Google Geocoding API key in the `.Renviron` file as **Google_API_key** (similar to what you did with the Twitter keys). You can quickly access this file using the R code `usethis::edit_r_environ(scope='user')`. Then, add a line to this file that reads: `Google_API_key="PasteYourGoogleKeyInsideTheseQuotes"`. 
 
-**Once you've saved the .Renviron file, quit your R session and restart.** The function `geocode_tags()` will work for you from now on. Note that the {tidytags} `geocode_tags()` function retrieves your saved API key automatically and securely, and you won't need to think about this after the initial setup. However, if for some reason you'd like to manually retrieve your Google API key to use in R, use the command `Sys.getenv('Google_API_key')`.
+**Once you've saved the .Renviron file, quit your R session and restart.** The function `geocode_tags()` will work for you from now on. Note that the {tidytags} `geocode_tags()` function retrieves your saved API key automatically and securely, and you won't need to think about this after the initial setup. 
+
+### Authorization in future R sessions
+
+To make sure the **Google Maps API token** works, restart your R session and run the following code:
+
+```{r, eval=FALSE}
+Sys.getenv('Google_API_key')
+```
 
 ## Getting help
 

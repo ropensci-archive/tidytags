@@ -5,12 +5,15 @@
 
 <!-- badges: start -->
 
-[![R build
-status](https://github.com/bretsw/tidytags/workflows/R-CMD-check/badge.svg)](https://github.com/bretsw/tidytags/actions)
-[![codecov](https://codecov.io/gh/bretsw/tidytags/branch/master/graph/badge.svg)](https://codecov.io/gh/bretsw/tidytags)
 [![Project Status: Active – The project has reached a stable, usable
 state and is being actively
 developed.](https://www.repostatus.org/badges/latest/active.svg)](https://www.repostatus.org/#active)
+[![Last-changedate](https://img.shields.io/github/last-commit/bretsw/tidytags.svg)](https://github.com/bretsw/tidytags/commits/main)
+[![GitHub
+issues](https://img.shields.io/github/issues/bretsw/tidytags.svg?style=popout)](https://github.com/bretsw/tidytags/issues/)
+[![CI - GitHub
+Actions](https://github.com/bretsw/tidytags/workflows/R-CMD-check/badge.svg)](https://github.com/bretsw/tidytags/actions)
+[![codecov](https://codecov.io/gh/bretsw/tidytags/branch/master/graph/badge.svg)](https://codecov.io/gh/bretsw/tidytags)
 [![lifecycle](https://img.shields.io/badge/lifecycle-maturing-blue.svg)](https://www.tidyverse.org/lifecycle/#maturing)
 [![license](https://img.shields.io/badge/license-GPL3-9cf.svg)](https://www.gnu.org/licenses/gpl.html)
 <!-- badges: end -->
@@ -157,7 +160,7 @@ terms](https://developer.twitter.com/en/developer-terms/more-on-restricted-use-c
 This package is still in development, and we welcome new contributors.
 Please reach out through the same channels as “Getting help.”
 
-## License
+## License [![license](https://img.shields.io/badge/license-GPL3-9cf.svg)](https://www.gnu.org/licenses/gpl.html)
 
 The {tidytags} package is licensed under a *GNU General Public License
 v3.0*, or [GPL-3](https://choosealicense.com/licenses/lgpl-3.0/). For
