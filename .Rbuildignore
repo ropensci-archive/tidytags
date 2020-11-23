@@ -12,3 +12,4 @@ tidytags-logo.png
 ^\.travis\.yml$
 ^doc$
 ^Meta$
+^\.github$

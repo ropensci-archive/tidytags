@@ -16,11 +16,13 @@ knitr::opts_chunk$set(
 
 # tidytags <img src="man/figures/tidytags-logo.png" align="right" width="120" />
 
-  [![Travis build status](https://travis-ci.com/bretsw/tidytags.svg?branch=master)](https://travis-ci.com/bretsw/tidytags)
+<!-- badges: start -->
+  [![R build status](https://github.com/bretsw/tidytags/workflows/R-CMD-check/badge.svg)](https://github.com/bretsw/tidytags/actions)
 [![codecov](https://codecov.io/gh/bretsw/tidytags/branch/master/graph/badge.svg)](https://codecov.io/gh/bretsw/tidytags)
   [![Project Status: Active – The project has reached a stable, usable state and is being actively developed.](https://www.repostatus.org/badges/latest/active.svg)](https://www.repostatus.org/#active)
    [![lifecycle](https://img.shields.io/badge/lifecycle-maturing-blue.svg)](https://www.tidyverse.org/lifecycle/#maturing)
    [![license](https://img.shields.io/badge/license-GPL3-9cf.svg)](https://www.gnu.org/licenses/gpl.html)
+<!-- badges: end -->
 
 Simple Collection and Powerful Analysis of Twitter Data
 
