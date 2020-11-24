@@ -18,6 +18,9 @@ knitr::opts_chunk$set(
   message = FALSE,
   warning = FALSE,
   error = FALSE)
+```
+
+ ```{r}
 library(tidytags)
 ```
 
@@ -179,6 +182,7 @@ Then, we geocode the a random sample of 10% of locations with the `geocode_tags(
 ```{r geocode-data}
 sample_unique_places <- dplyr::sample_n(example_unique_places, 10)
 example_geo_coords <- geocode_tags(sample_unique_places)
+example_geo_coords
 ```
 
 Finally, it's easy to visualize the data, with a number of packages supporting the visualization of geo-coordinates. For instance, you can use the `mapview()` function from the {mapview} package:

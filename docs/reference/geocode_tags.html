@@ -42,14 +42,14 @@
 <meta property="og:title" content="Retrieve geographic coordinates — geocode_tags" />
 <meta property="og:description" content="geocode_tags() retrieves geographic coordinates (i.e., latitude and
   longitude) based on the locations listed in Twitter user profiles. geocode_tags()
-  pulls from the Google Geocoding API, which requires a Google Geocoding API Key.
-  You can easily secure a key through Google Cloud Platform;
+  pulls from the OpenCage Geocoding API, which requires a OpenCage Geocoding API Key.
+  You can easily secure a key through OpenCage;
   read more here.
-  We recommend saving your Google Geocoding API Key in the .Renviron file as
-  **Google_API_key**. You can quickly access this file using the R code
+  We recommend saving your OpenCage Geocoding API Key in the .Renviron file as
+  **OPENCAGE_KEY**. You can quickly access this file using the R code
   usethis::edit_r_environ(scope='user'). Add a line to this file that reads:
-  Google_API_key=&quot;PasteYourGoogleKeyInsideTheseQuotes&quot;. To read your key into R,
-  use the code Sys.getenv('Google_API_key'). Note that the geocode_tags()
+  OPENCAGE_KEY=&quot;PasteYourOpenCageKeyInsideTheseQuotes&quot;. To read your key into R,
+  use the code Sys.getenv('OPENCAGE_KEY'). Note that the geocode_tags()
   function retrieves your saved API key automatically and securely. Once you've
   saved the .Renviron file, quit your R session and restart. The function
   geocode_tags() will work for you from now on." />
@@ -143,20 +143,20 @@
     <div class="ref-description">
     <p><code>geocode_tags()</code> retrieves geographic coordinates (i.e., latitude and
   longitude) based on the locations listed in Twitter user profiles. <code>geocode_tags()</code>
-  pulls from the Google Geocoding API, which requires a Google Geocoding API Key.
-  You can easily secure a key through Google Cloud Platform;
-  <a href='https://developers.google.com/maps/documentation/geocoding/get-api-key'>read more here</a>.
-  We recommend saving your Google Geocoding API Key in the <code>.Renviron</code> file as
-  **Google_API_key**. You can quickly access this file using the R code
+  pulls from the OpenCage Geocoding API, which requires a OpenCage Geocoding API Key.
+  You can easily secure a key through OpenCage;
+  <a href='https://opencagedata.com/api#quickstart'>read more here</a>.
+  We recommend saving your OpenCage Geocoding API Key in the <code>.Renviron</code> file as
+  **OPENCAGE_KEY**. You can quickly access this file using the R code
   <code><a href='https://usethis.r-lib.org/reference/edit.html'>usethis::edit_r_environ(scope='user')</a></code>. Add a line to this file that reads:
-  <code>Google_API_key="PasteYourGoogleKeyInsideTheseQuotes"</code>. To read your key into R,
-  use the code <code><a href='https://rdrr.io/r/base/Sys.getenv.html'>Sys.getenv('Google_API_key')</a></code>. Note that the <code>geocode_tags()</code>
+  <code>OPENCAGE_KEY="PasteYourOpenCageKeyInsideTheseQuotes"</code>. To read your key into R,
+  use the code <code><a href='https://rdrr.io/r/base/Sys.getenv.html'>Sys.getenv('OPENCAGE_KEY')</a></code>. Note that the <code>geocode_tags()</code>
   function retrieves your saved API key automatically and securely. Once you've
   saved the <code>.Renviron</code> file, quit your R session and restart. The function
   <code>geocode_tags()</code> will work for you from now on.</p>
     </div>
 
-    <pre class="usage"><span class='fu'>geocode_tags</span>(<span class='kw'>df</span>, google_key = <span class='fu'><a href='https://rdrr.io/r/base/Sys.getenv.html'>Sys.getenv</a></span>(<span class='st'>"Google_API_key"</span>))</pre>
+    <pre class="usage"><span class='fu'>geocode_tags</span>(<span class='kw'>df</span>, geo_key = <span class='fu'><a href='https://rdrr.io/r/base/Sys.getenv.html'>Sys.getenv</a></span>(<span class='st'>"OPENCAGE_KEY"</span>))</pre>
 
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
     <table class="ref-arguments">
@@ -166,19 +166,20 @@
       <td><p>A dataframe or tibble</p></td>
     </tr>
     <tr>
-      <th>google_key</th>
-      <td><p>A Google Developers API key which will need to be obtained
+      <th>geo_key</th>
+      <td><p>An OpenCage Developers API key that will need to be obtained
 by the user</p></td>
     </tr>
     </table>
 
     <h2 class="hasAnchor" id="value"><a class="anchor" href="#value"></a>Value</h2>
 
-    <p>A vector of geographic coordinates (i.e., latitude and longitude) which may then be
+    <p>A vector of geographic coordinates (i.e., latitude and longitude) that can then be
   used to plot locations on a map</p>
     <h2 class="hasAnchor" id="see-also"><a class="anchor" href="#see-also"></a>See also</h2>
 
-    <div class='dont-index'><p>Blog posts from <a href='https://www.jessesadler.com/post/geocoding-with-r/'>Jesse Sadler</a> and
+    <div class='dont-index'><p><a href='https://opencagedata.com/api'>OpenCage Geocoding API Documentation</a></p>
+<p>Blog posts from <a href='https://www.jessesadler.com/post/geocoding-with-r/'>Jesse Sadler</a> and
   <a href='https://www.littlemissdata.com/blog/maps'>Laura Ellis</a> may also provide additional inspiration for geocoding.</p>
 <p>The **ggmap** package can provide additional functionality for visualizing
   geographic data.</p></div>
@@ -191,10 +192,11 @@ by the user</p></td>
 <span class='kw'>tmp_df</span> <span class='op'>&lt;-</span> <span class='fu'><a href='pull_tweet_data.html'>pull_tweet_data</a></span>(<span class='fu'><a href='read_tags.html'>read_tags</a></span>(<span class='kw'>example_url</span>), n = <span class='fl'>10</span>)
 <span class='kw'>tmp_geo_coords</span> <span class='op'>&lt;-</span> <span class='fu'>geocode_tags</span>(<span class='kw'>tmp_df</span>)
 <span class='kw'>tmp_geo_coords</span>
-<span class='kw'>tmp_geo_coords</span>[[<span class='fl'>1</span>]]
-<span class='kw'>tmp_geo_coords</span>[[<span class='fl'>1</span>]][<span class='fl'>1</span>]
-<span class='kw'>tmp_geo_coords</span>[[<span class='fl'>1</span>]][<span class='fl'>2</span>]
-<span class='kw'>mapview</span>::<span class='fu'><a href='https://rdrr.io/pkg/mapview/man/mapView.html'>mapview</a></span>(<span class='kw'>tmp_geo_coords</span>)
+<span class='kw'>locations</span> <span class='op'>&lt;-</span> <span class='kw'>sf</span>::<span class='fu'><a href='https://rdrr.io/pkg/sf/man/st_as_sf.html'>st_as_sf</a></span>(
+  <span class='kw'>tmp_geo_coords</span>,
+  coords = <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span>(x = <span class='st'>"longitude"</span>, y = <span class='st'>"latitude"</span>),
+  crs = <span class='fl'>4326</span>)
+<span class='kw'>mapview</span>::<span class='fu'><a href='https://rdrr.io/pkg/mapview/man/mapView.html'>mapview</a></span>(<span class='kw'>locations</span>)
 }
 </div></pre>
   </div>
