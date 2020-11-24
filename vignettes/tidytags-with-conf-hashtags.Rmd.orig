@@ -1,7 +1,7 @@
 ---
 title: "Using tidytags with a conference hashtag"
 author: "K. Bret Staudt Willet & Joshua M. Rosenberg"
-output: 
+output:
   rmarkdown::html_vignette
 vignette: >
   %\VignetteIndexEntry{Using tidytags with a conference hashtag}
@@ -11,8 +11,13 @@ vignette: >
 
 ```{r setup, include=FALSE}
 knitr::opts_chunk$set(
-  collapse = TRUE, comment = "#>", out.width = "100%",
-  message = FALSE, warning = FALSE, error = FALSE)
+  collapse = TRUE,
+  comment = "#>",
+  fig.path = "vignette-",
+  out.width = "100%",
+  message = FALSE,
+  warning = FALSE,
+  error = FALSE)
 library(tidytags)
 ```
 
@@ -20,16 +25,16 @@ This vignette introduces how to use many {tidytags} functions through the exampl
 
 The information in this vignette is available scattered throughout the R documentation. This appendix brings it all together in one place.
 
-## Considerations Related to Ethics, Data Privacy, and Human Subjects Research 
+## Considerations Related to Ethics, Data Privacy, and Human Subjects Research
 
-Before working through this demonstration of the capabilities of {tidytags}, please take a few moments to reflect on ethical considerations related to social media research. 
+Before working through this demonstration of the capabilities of {tidytags}, please take a few moments to reflect on ethical considerations related to social media research.
 
-```{r, eval=TRUE, child='../man/fragments/ethics.Rmd'} 
+```{r, eval=TRUE, child='../man/fragments/ethics.Rmd'}
 ```
 
 ## Twitter Archiving Google Sheets
 
-A core functionality of {tidytags} is collecting tweets continuously with a [Twitter Archiving Google Sheet](https://tags.hawksey.info/) (TAGS). 
+A core functionality of {tidytags} is collecting tweets continuously with a [Twitter Archiving Google Sheet](https://tags.hawksey.info/) (TAGS).
 
 For help setting up your own TAGS tracker, see the [Getting started with tidytags](https://bretsw.github.io/tidytags/articles/setup.html) vignette, **Pain Point #1**.
 
@@ -70,7 +75,7 @@ example_after_rtweet_B <- pull_tweet_data(url_vector = example_df_all$status_url
 
 The TAGS tracker alone collected `r length(names(example_df_all))` variables associated with `r nrow(example_df_all)` tweets. The first method searching with `id_str` collected `r length(names(example_after_rtweet_A))` variables associated with `r nrow(example_after_rtweet_A)` tweets. The second method using 'tidytags::get_char_tweet_ids()' collected `r length(names(example_after_rtweet_B))` variables associated with `r nrow(example_after_rtweet_B)` tweets.
 
-Notice how many more variables are in the dataset after using `pull_tweet_data()`, and how many more tweets are in the dataset when using the second method. Therfore, we strongly recommend the second method, which is why we have included `get_char_tweet_ids()` in the {tidytags} package. 
+Notice how many more variables are in the dataset after using `pull_tweet_data()`, and how many more tweets are in the dataset when using the second method. Therfore, we strongly recommend the second method, which is why we have included `get_char_tweet_ids()` in the {tidytags} package.
 
 The built-in default of `pull_tweet_data()` is to simply enter the dataframe retrieved from  `read_tags()` and implement method B, retieving metadata starting with tweet URLs. That is, `pull_tweet_data(read_tags(example_url))`. Take a quick look at the result, viewed with the `glimpse()` function from the {dplyr} package:
 
@@ -82,7 +87,7 @@ dplyr::glimpse(example_after_rtweet)
 At this point, the purpose of {tidytags} should be restated. TAGS tweet trackers are easily set up and maintained, and does an excellent job passively collecting tweets over time. For instance, the example TAGS tracker we demo here has collected thousands of tweets related to the AECT 2019 annual convention since September 30, 2019. In contrast, running this query now using `rtweet::search_tweets()` is limited by Twitter's API, meaning that an {rtweet} search can only go back in time 6-9 days, and is limited to returning at most 18,000 tweets per query. So, if you are interested in tweets about AECT 2019, today you could get almost no meaningful data using {rtweet} alone.
 
 ```{r rtweet-today}
-rtweet_today <- 
+rtweet_today <-
   rtweet::search_tweets("#aect19 OR #aect2019 OR #aect19inspired")
 ```
 
@@ -128,7 +133,7 @@ The mean number of hashtags per tweet is `r mean_hash` (SD = `r sd_hash`). The m
 
 ## get_url_domain()
 
-The {tidytags} function `get_url_domain()` combines the `expand_urls()` function from the {longurl} package and the `domain()` function from the {urltools} package to easily return the domain names of any hyperlinks including in tweets. Note that using `longurl::expand_urls()` is a necessary step because Twitter automatically shortens any hyperlinks included in tweets. 
+The {tidytags} function `get_url_domain()` combines the `expand_urls()` function from the {longurl} package and the `domain()` function from the {urltools} package to easily return the domain names of any hyperlinks including in tweets. Note that using `longurl::expand_urls()` is a necessary step because Twitter automatically shortens any hyperlinks included in tweets.
 
 As an example, `get_url_domain()` finds that the domain in the shortened URL "http://bit.ly/2SfWO3K" is "aect.org":
 
@@ -165,7 +170,7 @@ You can pair `geocode_tags()` with the {mapview} package to allow for quick, int
 First, we identify the unique individuals in the dataset:
 
 ```{r process-data-for-map}
-example_unique_places <- 
+example_unique_places <-
   dplyr::distinct(example_processed, location, .keep_all = TRUE)
 ```
 
@@ -212,7 +217,7 @@ Unfortunately, due to limitations in what information is given by the Twitter AP
 
 ## create_edgelist()
 
-Another useful approach to social media research is *social network analysis*. Getting started with social network analysis is as simple as producing an *edgelist*, a two-column dataframe listing *senders* and *receivers*. An edgelist gives a complete accounting of whom is interacting with whom. In Twitter, this is complicated somewhat by the number of ways a user is able to interact with someone else, namely, through replying, retweeting, quote tweeting, mentioning, and liking tweets. The {tidytags} function `create_edgelist()` uses `get_replies()`, `get_retweets()`, `get_quotes()`, and `get_mentions()` to create an edgelist that takes into account these four different types of interaction. `create_edgelist()` returns a dataframe with three columns: two for the sender and receiver Twitter handles, and a third column listing the edge type (i.e., the form of interaction). 
+Another useful approach to social media research is *social network analysis*. Getting started with social network analysis is as simple as producing an *edgelist*, a two-column dataframe listing *senders* and *receivers*. An edgelist gives a complete accounting of whom is interacting with whom. In Twitter, this is complicated somewhat by the number of ways a user is able to interact with someone else, namely, through replying, retweeting, quote tweeting, mentioning, and liking tweets. The {tidytags} function `create_edgelist()` uses `get_replies()`, `get_retweets()`, `get_quotes()`, and `get_mentions()` to create an edgelist that takes into account these four different types of interaction. `create_edgelist()` returns a dataframe with three columns: two for the sender and receiver Twitter handles, and a third column listing the edge type (i.e., the form of interaction).
 
 Run `create_edgelist()` after completing `get_upstream_replies()` for a complete picture of the interactions.
 
@@ -226,17 +231,17 @@ We can then easily visualize the edgelist as a sociogram using the {tidygraph} a
 First, create graph object using {tidygraph}:
 
 ```{r}
-example_graph <- 
+example_graph <-
   tidygraph::as_tbl_graph(example_edgelist)
-example_graph <-   
+example_graph <-
   dplyr::mutate(example_graph,
                 popularity = tidygraph::centrality_degree(mode = 'in'))
 ```
 
 Then plot using {ggraph}:
 
-```{r}
-ggraph::ggraph(example_graph, layout = 'kk') + 
+```{r network-visualization}
+ggraph::ggraph(example_graph, layout = 'kk') +
   ggraph::geom_edge_arc(alpha = .2, width = .5, strength = .5, edge_colour = 'steelblue') +
   ggraph::geom_node_point(alpha = .4, ggplot2::aes(size = popularity)) +
   ggplot2::scale_size(range = c(1,10))
@@ -261,5 +266,5 @@ dplyr::glimpse(example_senders_receivers_data)
 
 ## Getting help
 
-```{r, eval=TRUE, child='../man/fragments/getting-help.Rmd'} 
+```{r, eval=TRUE, child='../man/fragments/getting-help.Rmd'}
 ```

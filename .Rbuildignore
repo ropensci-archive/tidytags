@@ -5,11 +5,12 @@
 ^_pkgdown\.yml$
 ^docs$
 ^pkgdown$
+CODE_OF_CONDUCT.md
+CONTRIBUTING.md
 paper.md
 paper.bib
 tidytags-logo.png
 ^codecov\.yml$
-^\.travis\.yml$
 ^doc$
 ^Meta$
 ^\.github$

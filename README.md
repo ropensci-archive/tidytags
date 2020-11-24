@@ -165,10 +165,10 @@ all code used (preferably a reproducible example) on Github.
 
 If you would like to become a more involved contributor, please read the
 [Contributing
-Guide](https://github.com/bretsw/tidytags/blob/main/CONTRIBUTING.md).
+Guide](https://github.com/bretsw/tidytags/blob/master/CONTRIBUTING.md).
 All contributors, from those fixing typos to adding new functionality,
 must adhere to the [Code of
-Conduct](https://github.com/bretsw/tidytags/blob/main/CODE_OF_CONDUCT.md).
+Conduct](https://github.com/bretsw/tidytags/blob/master/CODE_OF_CONDUCT.md).
 
 ## License [![license](https://img.shields.io/badge/license-GPL3-9cf.svg)](https://www.gnu.org/licenses/gpl.html)
 

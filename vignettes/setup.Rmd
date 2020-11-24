@@ -11,8 +11,13 @@ vignette: >
 
 ```{r setup, include=FALSE}
 knitr::opts_chunk$set(
-  collapse = TRUE, comment = "#>", out.width = "100%",
-  message = FALSE, warning = FALSE, error = FALSE)
+  collapse = TRUE,
+  comment = "#>",
+  fig.path = ".",
+  out.width = "100%",
+  message = FALSE,
+  warning = FALSE,
+  error = FALSE)
 ```
 
 This vignette introduces the initial setup necessary to use {tidytags}. Specifically, this guide offers help for three pain points:

@@ -14,11 +14,11 @@
 #'   saved the \code{.Renviron} file, quit your R session and restart. The function
 #'   \code{geocode_tags()} will work for you from now on.
 #' @param df A dataframe or tibble
-#' @param google_key An OpenCage Developers API key that will need to be obtained
+#' @param geo_key An OpenCage Developers API key that will need to be obtained
 #'   by the user
 #' @return A vector of geographic coordinates (i.e., latitude and longitude) that can then be
 #'   used to plot locations on a map
-#' @seealso \hrerf{https://opencagedata.com/api}{OpenCage Geocoding API Documentation}
+#' @seealso \href{https://opencagedata.com/api}{OpenCage Geocoding API Documentation}
 #'
 #'   Blog posts from \href{https://www.jessesadler.com/post/geocoding-with-r/}{Jesse Sadler} and
 #'   \href{https://www.littlemissdata.com/blog/maps}{Laura Ellis} may also provide additional inspiration for geocoding.
@@ -43,12 +43,12 @@
 geocode_tags <-
   function(df, geo_key = Sys.getenv("OPENCAGE_KEY")) {
     locations_only <-
-      dplyr::select(df, location)
+      dplyr::select(df, .data$location)
 
     locations_filtered <-
       dplyr::filter(
         locations_only,
-        location != "",
+        .data$location != "",
         !(stringr::str_detect(df$location, "#"))
       )
 
@@ -77,9 +77,9 @@ geocode_tags <-
     location_lat_lon <-
       dplyr::select(
         location_coords,
-        location,
-        geometry.lat,
-        geometry.lng
+        .data$location,
+        .data$geometry.lat,
+        .data$geometry.lng
         )
 
     names(location_lat_lon) <- c("location", "latitude", "longitude")
