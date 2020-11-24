@@ -3,7 +3,7 @@ library(tidytags)
 
 
 test_that("pull_tweet_data() is able to retrieve additional metadata starting with dataframe", {
-  skip_on_travis()
+  skip_on_covr()
   skip_on_cran()
 
   example_url <- "18clYlQeJOc6W5QRuSlJ6_v3snqKJImFhU42bRkM_OX8"
@@ -24,7 +24,7 @@ test_that("pull_tweet_data() is able to retrieve additional metadata starting wi
 
 
 test_that("pull_tweet_data() is able to retrieve additional metadata starting with tweet IDs", {
-  skip_on_travis()
+  skip_on_covr()
   skip_on_cran()
 
   example_url <- "18clYlQeJOc6W5QRuSlJ6_v3snqKJImFhU42bRkM_OX8"
@@ -45,7 +45,7 @@ test_that("pull_tweet_data() is able to retrieve additional metadata starting wi
 
 
 test_that("pull_tweet_data() is able to retrieve additional metadata starting with tweet URLs", {
-  skip_on_travis()
+  skip_on_covr()
   skip_on_cran()
 
   example_url <- "18clYlQeJOc6W5QRuSlJ6_v3snqKJImFhU42bRkM_OX8"

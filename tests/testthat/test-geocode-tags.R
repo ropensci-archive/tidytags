@@ -2,7 +2,7 @@ context("Geocode TAGS data")
 library(tidytags)
 
 test_that("geo coordinates are extracted properly", {
-  skip_on_travis()
+  skip_on_covr()
   skip_on_cran()
 
   sample_locations <-
@@ -11,15 +11,17 @@ test_that("geo coordinates are extracted properly", {
       location = c("New York, NY", "Kansas", "#TheGreatOutdoors", "")
     )
 
-  expect_equal(round(geocode_tags(sample_locations)[[1]][1], 3), -74.006)
-  expect_equal(round(geocode_tags(sample_locations)[[1]][2], 3), 40.713)
-  expect_equal(round(geocode_tags(sample_locations)[[2]][1], 3), -98.484)
-  expect_equal(round(geocode_tags(sample_locations)[[2]][2], 3), 39.012)
+  sample_locations_geocoded <- geocode_tags(sample_locations)
+
+  expect_equal(round(sample_locations_geocoded$latitude[1], 3), 40.713)
+  expect_equal(round(sample_locations_geocoded$latitude[2], 3), 38.273)
+  expect_equal(round(sample_locations_geocoded$longitude[1], 3), -74.006)
+  expect_equal(round(sample_locations_geocoded$longitude[2], 3), -98.582)
 })
 
 
 test_that("invalid geo coordinates produce warning", {
-  skip_on_travis()
+  skip_on_covr()
   skip_on_cran()
 
   sample_locations <-

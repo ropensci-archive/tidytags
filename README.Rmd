@@ -87,11 +87,13 @@ For a walkthrough of numerous additional {tidytags} functions, see the [Using ti
 ```{r, child='./man/fragments/ethics.Rmd'} 
 ```
 
-{tidytags} should be used in strict accordance with Twitter's [developer terms](https://developer.twitter.com/en/developer-terms/more-on-restricted-use-cases).
+**{tidytags} should be used in strict accordance with Twitter's [developer terms](https://developer.twitter.com/en/developer-terms/more-on-restricted-use-cases).**
 
-## Future collaborations
+## Contributing
 
-This package is still in development, and we welcome new contributors. Please reach out through the same channels as "Getting help."
+If you encounter an obvious bug for which there is not already an [active issue](https://github.com/bretsw/tidytags/issues), please [create a new issue](https://github.com/bretsw/tidytags/issues/new) with all code used (preferably a reproducible example) on Github.
+
+If you would like to become a more involved contributor, please read the [Contributing Guide](https://github.com/bretsw/tidytags/blob/main/CONTRIBUTING.md). All contributors, from those fixing typos to adding new functionality, must adhere to the [Code of Conduct](https://github.com/bretsw/tidytags/blob/main/CODE_OF_CONDUCT.md).
 
 ## License [![license](https://img.shields.io/badge/license-GPL3-9cf.svg)](https://www.gnu.org/licenses/gpl.html)
 
