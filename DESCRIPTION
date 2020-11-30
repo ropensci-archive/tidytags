@@ -54,7 +54,8 @@ Suggests:
     tidygraph,
     tidyverse,
     urltools,
-    usethis
+    usethis,
+    vcr
 Encoding: UTF-8
 VignetteBuilder: knitr
 LazyData: TRUE
