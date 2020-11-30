@@ -16,14 +16,39 @@ Feel free to [report issues](https://github.com/bretsw/tidytags/issues):
 
 ## Technical contributions to {tidytags}
 
-### Contribute code
+If you would like to contribute to the {tidytags} code base, follow the process below: 
 
-If you would like to contribute to the code base, follow the process below: 
+* [Prerequisites](#prerequisites)
+* [PR process](#pr-process)
+  * [Fork, clone, branch](#fork-clone-branch)
+  * [Check](#check)
+  * [Style](#style)
+  * [Document](#document)
+  * [Test](#test)
+  * [Re-check](#re-check)
+  * [Commit](#commit)
+  * [Push and pull](#push-and-pull)
+  * [Check the docs](#check-the-docs)
+  * [Review, revise, repeat](#review-revise-repeat)
+* [Resources](#resources)
+* [Code of conduct](#code-of-conduct)
+
+This explains how to propose a change to {tidytags} via a pull request using
+Git and GitHub. 
+
+For more general info about contributing to {tidytags}, see the 
+[Resources](#resources) at the end of this document.
+
+### Prerequisites
+
+To test the {tidytags} package, you can use an openly shared [TAGS tracker](https://docs.google.com/spreadsheets/d/18clYlQeJOc6W5QRuSlJ6_v3snqKJImFhU42bRkM_OX8) that has been collecting tweets associated with the AECT 2019 since September 30, 2019. This is the same TAGS tracker used in the [Using tidytags with a conference hashtag](https://bretsw.github.io/tidytags/articles/tidytags-with-conf-hashtags.html) vignette. 
+
+Note that this TAGS tracker is read-only in the web browser, because the utility of {tidytags} is reading a TAGS tracker archive into R using `read_tags("18clYlQeJOc6W5QRuSlJ6_v3snqKJImFhU42bRkM_OX8")` and then conducting analyses in an R environment.
 
 * Before you do a pull request, you should always file an issue and make sure someone from the tidyverse team agrees that it’s a problem, and is happy with your basic proposal for fixing it. We don’t want you to spend a bunch of time on something that we don’t think is a good idea.
 * Also make sure to read the [{tidyverse} style guide](http://style.tidyverse.org/) which will make sure that your new code and documentation matches the existing style. This makes the review process much smoother.
 
-### Pull request (PR) process
+### PR process
 
 You are welcome to contribute a *pull request* (PR) to {tidytags}. The most important thing to know is that tidyverse packages use {roxygen2}: this means that documentation is found in the R code close to the source of each function.
 
@@ -111,19 +136,19 @@ The latency period between submitting your PR and its review may vary. When a ma
 
 ### Resources
 
-*  [Happy Git and GitHub for the useR](http://happygitwithr.com/) by Jenny Bryan.
-*  [Contribute to the tidyverse](https://www.tidyverse.org/contribute/) covers 
+* [Happy Git and GitHub for the useR](http://happygitwithr.com/) by Jenny Bryan.
+* [Contribute to the tidyverse](https://www.tidyverse.org/contribute/) covers 
    several ways to contribute that _don't_ involve writing code.
-*  [Contributing Code to the Tidyverse](http://www.jimhester.com/2017/08/08/contributing/) by Jim Hester.
-*  [R packages](http://r-pkgs.had.co.nz/) by Hadley Wickham.
-   *  [Git and GitHub](http://r-pkgs.had.co.nz/git.html)
-   *  [Automated checking](http://r-pkgs.had.co.nz/check.html)
-   *  [Object documentation](http://r-pkgs.had.co.nz/man.html)
-   *  [Testing](http://r-pkgs.had.co.nz/tests.html)
-*  [dplyr’s `NEWS.md`](https://github.com/tidyverse/dplyr/blob/master/NEWS.md) 
+* [Contributing Code to the Tidyverse](http://www.jimhester.com/2017/08/08/contributing/) by Jim Hester.
+* [R packages](http://r-pkgs.had.co.nz/) by Hadley Wickham.
+  * [Git and GitHub](http://r-pkgs.had.co.nz/git.html)
+  * [Automated checking](http://r-pkgs.had.co.nz/check.html)
+  * [Object documentation](http://r-pkgs.had.co.nz/man.html)
+  * [Testing](http://r-pkgs.had.co.nz/tests.html)
+* [dplyr’s `NEWS.md`](https://github.com/tidyverse/dplyr/blob/master/NEWS.md) 
    is a good source of examples for both content and styling.
-*  [Closing issues using keywords](https://help.github.com/articles/closing-issues-using-keywords/) 
+* [Closing issues using keywords](https://help.github.com/articles/closing-issues-using-keywords/) 
    on GitHub.
-*  [Autolinked references and URLs](https://help.github.com/articles/autolinked-references-and-urls/) 
+* [Autolinked references and URLs](https://help.github.com/articles/autolinked-references-and-urls/) 
    on GitHub.
-*  [GitHub Guides: Forking Projects](https://guides.github.com/activities/forking/).
+* [GitHub Guides: Forking Projects](https://guides.github.com/activities/forking/).
