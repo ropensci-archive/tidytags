@@ -45,7 +45,7 @@ To test the {tidytags} package, you can use an openly shared [TAGS tracker](http
 
 Note that this TAGS tracker is read-only in the web browser, because the utility of {tidytags} is reading a TAGS tracker archive into R using `read_tags("18clYlQeJOc6W5QRuSlJ6_v3snqKJImFhU42bRkM_OX8")` and then conducting analyses in an R environment.
 
-* Before you do a pull request, you should always file an issue and make sure someone from the tidyverse team agrees that it’s a problem, and is happy with your basic proposal for fixing it. We don’t want you to spend a bunch of time on something that we don’t think is a good idea.
+* Before you do a pull request, you should always file an issue and make sure someone from the {tidytags} team agrees that it’s a problem, and is happy with your basic proposal for fixing it. We don’t want you to spend a bunch of time on something that we don’t think is a good idea.
 * Also make sure to read the [{tidyverse} style guide](http://style.tidyverse.org/) which will make sure that your new code and documentation matches the existing style. This makes the review process much smoother.
 
 ### PR process

@@ -32,6 +32,9 @@ jobs:
       RSPM: ${{ matrix.config.rspm }}
       GITHUB_PAT: ${{ secrets.GITHUB_TOKEN }}
 
+    env:
+      GARGLE_PASSWORD: ${{ secrets.GARGLE_PASSWORD }}
+
     steps:
       - uses: actions/checkout@v2
 
