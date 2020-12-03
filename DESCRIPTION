@@ -13,7 +13,7 @@ Authors@R: c(
   )
 Description: {tidytags} coordinates the simplicity of collecting tweets over time 
     with a [Twitter Archiving Google Sheet](https://tags.hawksey.info/) (TAGS) and the utility of the 
-    [{rtweet} package](https://rtweet.info/) for processing and preparing additional Twitter metadata. 
+    [{rtweet} package](https://docs.ropensci.org/rtweet/index.html) for processing and preparing additional Twitter metadata. 
     {tidytags} also introduces functions developed to facilitate systematic yet 
     flexible analyses of data from Twitter.
 License: GPL-3 + file LICENSE

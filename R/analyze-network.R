@@ -60,7 +60,7 @@ get_replies <-
 #' @param df A dataframe returned by \code{pull_tweet_data()}
 #' @return A dataframe edgelist with column names 'sender', 'receiver', and
 #'   \code{edge_type}, which in this case the edge type is "retweet"
-#' @seealso Compare to other \code{tidtags} functions such as \code{get_replies()},
+#' @seealso Compare to other \code{tidytags} functions such as \code{get_replies()},
 #'   \code{get_quotes()}, \code{get_mentions()}, and \code{create_edgelist()}.
 #' @examples
 #'

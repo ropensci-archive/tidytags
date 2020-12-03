@@ -35,7 +35,7 @@ We introduce the {tidytags} package as an approach that allows for both simple d
 
 # Summary
 
-{tidytags} coordinates the simplicity of collecting tweets over time with a [Twitter Archiving Google Sheet](https://tags.hawksey.info/) (TAGS) and the utility of the [{rtweet} package](https://rtweet.info/) for processing and preparing additional Twitter metadata. {tidytags} also introduces functions developed to facilitate systematic yet flexible analyses of data from Twitter.
+{tidytags} coordinates the simplicity of collecting tweets over time with a [Twitter Archiving Google Sheet](https://tags.hawksey.info/) (TAGS) and the utility of the [{rtweet} package](https://docs.ropensci.org/rtweet/index.html) for processing and preparing additional Twitter metadata. {tidytags} also introduces functions developed to facilitate systematic yet flexible analyses of data from Twitter.
 
 # Preconditions for a {tidytags} Analysis
 
@@ -45,7 +45,7 @@ We introduce the {tidytags} package as an approach that allows for both simple d
 
 ## Second, Obtain a Twitter API Key
 
-{tidytags} also allows the processing of tweets and preparation of additional Twitter metadata by building upon the [{rtweet} package](https://rtweet.info/) (via `rtweet::lookup_statuses()`) to query the Twitter API. However, using {rtweet} requires Twitter API keys associated with an approved developer account. Fortunately, the {rtweet} vignette, [Obtaining and using access tokens](https://rtweet.info/articles/auth.html), provides a thorough guide to obtaining Twitter API keys. We recommend the second suggested method listed in the {rtweet} vignette, "2. Access token/secret method." Following these directions, you will run the `rtweet::create_token()` function, which saves your Twitter API keys to the `.Renviron` file. You can also edit this file directly using the `usethis::edit_r_environ(scope='user')` function.
+{tidytags} also allows the processing of tweets and preparation of additional Twitter metadata by building upon the [{rtweet} package](https://docs.ropensci.org/rtweet/index.html) (via `rtweet::lookup_statuses()`) to query the Twitter API. However, using {rtweet} requires Twitter API keys associated with an approved developer account. Fortunately, the {rtweet} vignette, [Obtaining and using access tokens](https://rtweet.info/articles/auth.html), provides a thorough guide to obtaining Twitter API keys. We recommend the second suggested method listed in the {rtweet} vignette, "2. Access token/secret method." Following these directions, you will run the `rtweet::create_token()` function, which saves your Twitter API keys to the `.Renviron` file. You can also edit this file directly using the `usethis::edit_r_environ(scope='user')` function.
 
 # The {tidytags} Workflow
 
