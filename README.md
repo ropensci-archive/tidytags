@@ -24,10 +24,11 @@ Simple Collection and Powerful Analysis of Twitter Data
 
 {tidytags} coordinates the simplicity of collecting tweets over time
 with a [Twitter Archiving Google Sheet](https://tags.hawksey.info/)
-(TAGS) and the utility of the [{rtweet} package](https://docs.ropensci.org/rtweet/index.html)
-for processing and preparing additional Twitter metadata. {tidytags}
-also introduces functions developed to facilitate systematic yet
-flexible analyses of data from Twitter.
+(TAGS) and the utility of the [{rtweet}
+package](https://docs.ropensci.org/rtweet/index.html) for processing and
+preparing additional Twitter metadata. {tidytags} also introduces
+functions developed to facilitate systematic yet flexible analyses of
+data from Twitter.
 
 ## Installation
 
@@ -83,10 +84,11 @@ into R using `read_tags()`.
 With a TAGS archive imported into R, {tidytags} allows you to gather
 quite a bit more information related to the collected tweets with the
 `pull_tweet_data()` function. This function uses the [{rtweet}
-package](https://docs.ropensci.org/rtweet/index.html) (via `rtweet::lookup_statuses()`) to
-query the Twitter API. This process requires Twitter API keys associated
-with an approved Twitter developer account. (See the [Getting started
-with tidytags](https://bretsw.github.io/tidytags/articles/setup.html)
+package](https://docs.ropensci.org/rtweet/index.html) (via
+`rtweet::lookup_statuses()`) to query the Twitter API. This process
+requires Twitter API keys associated with an approved Twitter developer
+account. (See the [Getting started with
+tidytags](https://bretsw.github.io/tidytags/articles/setup.html)
 vignette, Pain Point \#2, if you need help with this.)
 
 ## Learning more about tidytags

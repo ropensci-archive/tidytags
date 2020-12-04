@@ -149,18 +149,42 @@
 <div id="technical-contributions-to-tidytags" class="section level2">
 <h2 class="hasAnchor">
 <a href="#technical-contributions-to-tidytags" class="anchor"></a>Technical contributions to {tidytags}</h2>
-<div id="contribute-code" class="section level3">
-<h3 class="hasAnchor">
-<a href="#contribute-code" class="anchor"></a>Contribute code</h3>
-<p>If you would like to contribute to the code base, follow the process below:</p>
+<p>If you would like to contribute to the {tidytags} code base, follow the process below:</p>
 <ul>
-<li>Before you do a pull request, you should always file an issue and make sure someone from the tidyverse team agrees that it’s a problem, and is happy with your basic proposal for fixing it. We don’t want you to spend a bunch of time on something that we don’t think is a good idea.</li>
+<li><a href="#prerequisites">Prerequisites</a></li>
+<li>
+<a href="#pr-process">PR process</a>
+<ul>
+<li><a href="#fork-clone-branch">Fork, clone, branch</a></li>
+<li><a href="#check">Check</a></li>
+<li><a href="#style">Style</a></li>
+<li><a href="#document">Document</a></li>
+<li><a href="#test">Test</a></li>
+<li><a href="#re-check">Re-check</a></li>
+<li><a href="#commit">Commit</a></li>
+<li><a href="#push-and-pull">Push and pull</a></li>
+<li><a href="#check-the-docs">Check the docs</a></li>
+<li><a href="#review-revise-repeat">Review, revise, repeat</a></li>
+</ul>
+</li>
+<li><a href="#resources">Resources</a></li>
+<li><a href="#code-of-conduct">Code of conduct</a></li>
+</ul>
+<p>This explains how to propose a change to {tidytags} via a pull request using Git and GitHub.</p>
+<p>For more general info about contributing to {tidytags}, see the <a href="#resources">Resources</a> at the end of this document.</p>
+<div id="prerequisites" class="section level3">
+<h3 class="hasAnchor">
+<a href="#prerequisites" class="anchor"></a>Prerequisites</h3>
+<p>To test the {tidytags} package, you can use an openly shared <a href="https://docs.google.com/spreadsheets/d/18clYlQeJOc6W5QRuSlJ6_v3snqKJImFhU42bRkM_OX8">TAGS tracker</a> that has been collecting tweets associated with the AECT 2019 since September 30, 2019. This is the same TAGS tracker used in the <a href="https://bretsw.github.io/tidytags/articles/tidytags-with-conf-hashtags.html">Using tidytags with a conference hashtag</a> vignette.</p>
+<p>Note that this TAGS tracker is read-only in the web browser, because the utility of {tidytags} is reading a TAGS tracker archive into R using <code><a href="reference/read_tags.html">read_tags("18clYlQeJOc6W5QRuSlJ6_v3snqKJImFhU42bRkM_OX8")</a></code> and then conducting analyses in an R environment.</p>
+<ul>
+<li>Before you do a pull request, you should always file an issue and make sure someone from the {tidytags} team agrees that it’s a problem, and is happy with your basic proposal for fixing it. We don’t want you to spend a bunch of time on something that we don’t think is a good idea.</li>
 <li>Also make sure to read the <a href="http://style.tidyverse.org/">{tidyverse} style guide</a> which will make sure that your new code and documentation matches the existing style. This makes the review process much smoother.</li>
 </ul>
 </div>
-<div id="pull-request-pr-process" class="section level3">
+<div id="pr-process" class="section level3">
 <h3 class="hasAnchor">
-<a href="#pull-request-pr-process" class="anchor"></a>Pull request (PR) process</h3>
+<a href="#pr-process" class="anchor"></a>PR process</h3>
 <p>You are welcome to contribute a <em>pull request</em> (PR) to {tidytags}. The most important thing to know is that tidyverse packages use {roxygen2}: this means that documentation is found in the R code close to the source of each function.</p>
 <div id="fork-clone-branch" class="section level4">
 <h4 class="hasAnchor">
