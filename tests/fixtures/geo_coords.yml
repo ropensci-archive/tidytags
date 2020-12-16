@@ -1,0 +1,77 @@
+http_interactions:
+- request:
+    method: get
+    uri: http://api.opencagedata.com/geocode/v1/json/?q=New%20York%2C%20NY&limit=1&no_annotations=1&no_dedupe=0&no_record=0&abbrv=0&add_request=1&key=<<<my_opencage_api_key>>>
+    body:
+      encoding: ''
+      string: ''
+    headers:
+      Accept: application/json, text/xml, application/xml, */*
+  response:
+    status:
+      status_code: 200
+      category: Success
+      reason: OK
+      message: 'Success: (200) OK'
+    headers:
+      date: Wed, 16 Dec 2020 22:01:51 GMT
+      server: Apache
+      access-control-allow-origin: '*'
+      x-ratelimit-limit: '2500'
+      x-ratelimit-remaining: '2489'
+      x-ratelimit-reset: '1608163200'
+      vary: Accept-Encoding
+      content-encoding: gzip
+      content-length: '691'
+      content-type: application/json; charset=utf-8
+      strict-transport-security: max-age=31536000; includeSubDomains; preload
+    body:
+      encoding: UTF-8
+      file: no
+      string: '{"documentation":"https://opencagedata.com/api","licenses":[{"name":"see
+        attribution guide","url":"https://opencagedata.com/credits"}],"rate":{"limit":2500,"remaining":2489,"reset":1608163200},"request":{"abbrv":0,"add_request":1,"autocomplete":0,"format":"json","key":"<<<my_opencage_api_key>>>","language":"en","limit":1,"min_confidence":0,"no_annotations":1,"no_dedupe":0,"no_record":0,"only_nominatim":0,"pretty":0,"proximity":"","query":"New
+        York, NY","roadinfo":0,"version":"v1"},"results":[{"bounds":{"northeast":{"lat":40.9161785,"lng":-73.7001809},"southwest":{"lat":40.477399,"lng":-74.25909}},"components":{"ISO_3166-1_alpha-2":"US","ISO_3166-1_alpha-3":"USA","_category":"place","_type":"city","city":"New
+        York","continent":"North America","country":"United States of America","country_code":"us","state":"New
+        York","state_code":"NY"},"confidence":2,"formatted":"New York, New York, United
+        States of America","geometry":{"lat":40.7127281,"lng":-74.0060152}}],"status":{"code":200,"message":"OK"},"stay_informed":{"blog":"https://blog.opencagedata.com","twitter":"https://twitter.com/OpenCage"},"thanks":"For
+        using an OpenCage API","timestamp":{"created_http":"Wed, 16 Dec 2020 22:01:51
+        GMT","created_unix":1608156111},"total_results":1}'
+  recorded_at: 2020-12-16 22:01:53 GMT
+  recorded_with: vcr/0.6.0, webmockr/0.7.4
+- request:
+    method: get
+    uri: http://api.opencagedata.com/geocode/v1/json/?q=Kansas&limit=1&no_annotations=1&no_dedupe=0&no_record=0&abbrv=0&add_request=1&key=<<<my_opencage_api_key>>>
+    body:
+      encoding: ''
+      string: ''
+    headers:
+      Accept: application/json, text/xml, application/xml, */*
+  response:
+    status:
+      status_code: 200
+      category: Success
+      reason: OK
+      message: 'Success: (200) OK'
+    headers:
+      date: Wed, 16 Dec 2020 22:01:53 GMT
+      server: Apache
+      access-control-allow-origin: '*'
+      x-ratelimit-limit: '2500'
+      x-ratelimit-remaining: '2488'
+      x-ratelimit-reset: '1608163200'
+      vary: Accept-Encoding
+      content-encoding: gzip
+      content-length: '681'
+      content-type: application/json; charset=utf-8
+      strict-transport-security: max-age=31536000; includeSubDomains; preload
+    body:
+      encoding: UTF-8
+      file: no
+      string: '{"documentation":"https://opencagedata.com/api","licenses":[{"name":"see
+        attribution guide","url":"https://opencagedata.com/credits"}],"rate":{"limit":2500,"remaining":2488,"reset":1608163200},"request":{"abbrv":0,"add_request":1,"autocomplete":0,"format":"json","key":"<<<my_opencage_api_key>>>","language":"en","limit":1,"min_confidence":0,"no_annotations":1,"no_dedupe":0,"no_record":0,"only_nominatim":0,"pretty":0,"proximity":"","query":"Kansas","roadinfo":0,"version":"v1"},"results":[{"bounds":{"northeast":{"lat":40.003095,"lng":-94.5882049},"southwest":{"lat":36.993125,"lng":-102.0517563}},"components":{"ISO_3166-1_alpha-2":"US","ISO_3166-1_alpha-3":"USA","_category":"place","_type":"state","continent":"North
+        America","country":"United States of America","country_code":"us","state":"Kansas","state_code":"KS"},"confidence":1,"formatted":"Kansas,
+        United States of America","geometry":{"lat":38.27312,"lng":-98.5821872}}],"status":{"code":200,"message":"OK"},"stay_informed":{"blog":"https://blog.opencagedata.com","twitter":"https://twitter.com/OpenCage"},"thanks":"For
+        using an OpenCage API","timestamp":{"created_http":"Wed, 16 Dec 2020 22:01:53
+        GMT","created_unix":1608156113},"total_results":1}'
+  recorded_at: 2020-12-16 22:01:53 GMT
+  recorded_with: vcr/0.6.0, webmockr/0.7.4

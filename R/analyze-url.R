@@ -1,7 +1,7 @@
 #' Find the domain name of URLs, even shortened URLs
 #'
-#' \code{get_url_domain()} retrieves geographic coordinates (i.e., latitude and
-#'   longitude) based on the locations listed in Twitter user profiles
+#' \code{get_url_domain()} retrieves the Web domain name from a URL, including
+#'   URLs shortened with services such as bit.ly and t.co
 #' @param x A list or vector of hyperlinks, whether shortened or expanded
 #' @param wait How long (in seconds) to wait on the \code{longurl::expand_urls()}
 #'   function to retrieve the full, expanded URL from a shortened URL (e.g., a bit.ly).

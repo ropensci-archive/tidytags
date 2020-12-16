@@ -66,7 +66,10 @@ geocode_tags <-
         )[[1]]
       }
 
-    coords <- purrr::map_df(locations_filtered$location, get_geo)
+    coords <-
+      suppressWarnings(
+        purrr::map_df(locations_filtered$location, get_geo)
+      )
 
     location_coords <-
       dplyr::bind_cols(

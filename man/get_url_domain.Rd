@@ -19,8 +19,8 @@ but the user can adjust this as they like.}
 A list or vector of Web domain names
 }
 \description{
-\code{get_url_domain()} retrieves geographic coordinates (i.e., latitude and
-  longitude) based on the locations listed in Twitter user profiles
+\code{get_url_domain()} retrieves the Web domain name from a URL, including
+  URLs shortened with services such as bit.ly and t.co
 }
 \examples{
 

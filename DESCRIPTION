@@ -55,7 +55,8 @@ Suggests:
     tidyverse,
     urltools,
     usethis,
-    vcr
+    vcr,
+    webmockr
 Encoding: UTF-8
 VignetteBuilder: knitr
 LazyData: TRUE

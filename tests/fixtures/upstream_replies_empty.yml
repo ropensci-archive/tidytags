@@ -1,0 +1,49 @@
+http_interactions:
+- request:
+    method: get
+    uri: https://api.twitter.com/1.1/statuses/lookup.json?id=NA&tweet_mode=extended
+    body:
+      encoding: ''
+      string: ''
+    headers:
+      Accept: application/json, text/xml, application/xml, */*
+      Authorization: OAuth oauth_consumer_key="Nr8qBAeDqKkqZGDd79Gi7OuF9", oauth_nonce="JkjmlbqlI3",
+        oauth_signature="Rw5P6xDwx1zX5mvO58CjW6pLLwE%3D", oauth_signature_method="HMAC-SHA1",
+        oauth_timestamp="1608154468", oauth_token="53167706-Wboj1Kk3FgQL8v23b50414ShbRhPpPvSQ0LgNrrPq",
+        oauth_version="1.0"
+  response:
+    status:
+      status_code: 200
+      category: Success
+      reason: OK
+      message: 'Success: (200) OK'
+    headers:
+      cache-control: no-cache, no-store, must-revalidate, pre-check=0, post-check=0
+      content-disposition: attachment; filename=json.json
+      content-encoding: gzip
+      content-length: '28'
+      content-type: application/json;charset=utf-8
+      date: Wed, 16 Dec 2020 21:34:28 GMT
+      expires: Tue, 31 Mar 1981 05:00:00 GMT
+      last-modified: Wed, 16 Dec 2020 21:34:28 GMT
+      pragma: no-cache
+      server: tsa_b
+      status: 200 OK
+      strict-transport-security: max-age=631138519
+      x-access-level: read-write-directmessages
+      x-connection-hash: 53fddd42a106ff3bd1893ca20d33e1f7
+      x-content-type-options: nosniff
+      x-frame-options: SAMEORIGIN
+      x-rate-limit-limit: '900'
+      x-rate-limit-remaining: '868'
+      x-rate-limit-reset: '1608155335'
+      x-response-time: '13'
+      x-transaction: 00583b1200d4b3b0
+      x-twitter-response-tags: BouncerCompliant
+      x-xss-protection: '0'
+    body:
+      encoding: UTF-8
+      file: no
+      string: '[]'
+  recorded_at: 2020-12-16 21:34:28 GMT
+  recorded_with: vcr/0.6.0, webmockr/0.7.4

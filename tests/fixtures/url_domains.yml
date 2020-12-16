@@ -1,0 +1,199 @@
+http_interactions:
+- request:
+    method: head
+    uri: https://www.tidyverse.org/
+    body:
+      encoding: ''
+      string: ''
+    headers:
+      Accept: application/json, text/xml, application/xml, */*
+  response:
+    status:
+      status_code: 200
+      category: Success
+      reason: OK
+      message: 'Success: (200) OK'
+    headers:
+      cache-control: public, max-age=0, must-revalidate
+      content-type: text/html; charset=UTF-8
+      date: Wed, 16 Dec 2020 07:10:59 GMT
+      etag: '"553d50e40b803248f1e8e204e2be8c6a-ssl-df"'
+      strict-transport-security: max-age=31536000
+      content-encoding: gzip
+      content-length: '3857'
+      age: '53879'
+      connection: keep-alive
+      server: Netlify
+      vary: Accept-Encoding
+      x-nf-request-id: 7c9bcf8b-26d1-40bf-9fb4-a24214b240e0-14986195
+    body:
+      encoding: UTF-8
+      file: no
+      string: ''
+  recorded_at: 2020-12-16 22:09:07 GMT
+  recorded_with: vcr/0.6.0, webmockr/0.7.4
+- request:
+    method: head
+    uri: https://www.tidyverse.org/packages/
+    body:
+      encoding: ''
+      string: ''
+    headers:
+      Accept: application/json, text/xml, application/xml, */*
+  response:
+    status:
+      status_code: 200
+      category: Success
+      reason: OK
+      message: 'Success: (200) OK'
+    headers:
+      cache-control: public, max-age=0, must-revalidate
+      content-type: text/html; charset=UTF-8
+      date: Wed, 16 Dec 2020 18:19:13 GMT
+      etag: '"8bb7e6c1039ae52539ad9d03ac170a54-ssl-df"'
+      strict-transport-security: max-age=31536000
+      content-encoding: gzip
+      content-length: '6669'
+      age: '13785'
+      connection: keep-alive
+      server: Netlify
+      vary: Accept-Encoding
+      x-nf-request-id: 7c9bcf8b-26d1-40bf-9fb4-a24214b240e0-14986908
+    body:
+      encoding: UTF-8
+      file: no
+      string: ''
+  recorded_at: 2020-12-16 22:09:07 GMT
+  recorded_with: vcr/0.6.0, webmockr/0.7.4
+- request:
+    method: head
+    uri: https://dplyr.tidyverse.org/
+    body:
+      encoding: ''
+      string: ''
+    headers:
+      Accept: application/json, text/xml, application/xml, */*
+  response:
+    status:
+      status_code: 200
+      category: Success
+      reason: OK
+      message: 'Success: (200) OK'
+    headers:
+      connection: keep-alive
+      content-length: '6437'
+      server: GitHub.com
+      content-type: text/html; charset=utf-8
+      last-modified: Wed, 02 Sep 2020 07:41:09 GMT
+      access-control-allow-origin: '*'
+      etag: W/"5f4f4c95-5b96"
+      expires: Wed, 16 Dec 2020 22:19:01 GMT
+      cache-control: max-age=600
+      content-encoding: gzip
+      x-proxy-cache: MISS
+      x-github-request-id: F9BC:03EF:F3978:13BF7E:5FDA857D
+      accept-ranges: bytes
+      date: Wed, 16 Dec 2020 22:09:01 GMT
+      via: 1.1 varnish
+      age: '0'
+      x-served-by: cache-dca17782-DCA
+      x-cache: MISS
+      x-cache-hits: '0'
+      x-timer: S1608156542.967446,VS0,VE8
+      vary: Accept-Encoding
+      x-fastly-request-id: d4224912e972e2eb4b6380d3260a5a95ca02c480
+    body:
+      encoding: UTF-8
+      file: no
+      string: ''
+  recorded_at: 2020-12-16 22:09:07 GMT
+  recorded_with: vcr/0.6.0, webmockr/0.7.4
+- request:
+    method: head
+    uri: http://bit.ly/2SfWO3K
+    body:
+      encoding: ''
+      string: ''
+    headers:
+      Accept: application/json, text/xml, application/xml, */*
+  response:
+    status:
+      status_code: 200
+      category: Success
+      reason: OK
+      message: 'Success: (200) OK'
+    headers:
+      date: Wed, 16 Dec 2020 22:09:04 GMT
+      server: Apache
+      upgrade: h2,h2c
+      connection: Upgrade
+      cache-control: max-age=600
+      expires: Wed, 16 Dec 2020 22:19:04 GMT
+      vary: User-Agent
+      content-type: text/html; charset=UTF-8
+    body:
+      encoding: UTF-8
+      file: no
+      string: ''
+  recorded_at: 2020-12-16 22:09:07 GMT
+  recorded_with: vcr/0.6.0, webmockr/0.7.4
+- request:
+    method: head
+    uri: http://bit.ly/36KWct1
+    body:
+      encoding: ''
+      string: ''
+    headers:
+      Accept: application/json, text/xml, application/xml, */*
+  response:
+    status:
+      status_code: 200
+      category: Success
+      reason: OK
+      message: 'Success: (200) OK'
+    headers:
+      access-control-allow-headers: Content-Type
+      access-control-allow-methods: POST
+      access-control-allow-origin: '*'
+      cache-control: no-cache
+      content-length: '109013'
+      content-type: text/html; charset=utf-8
+      date: Wed, 16 Dec 2020 22:09:06 GMT
+      expires: '-1'
+      pragma: no-cache
+      set-cookie:
+      - dnn_IsMobile=False; path=/; HttpOnly
+      - language=en-US; path=/; HttpOnly
+      - .ASPXANONYMOUS=3IwWkPRvt-l9F4qfcCozXf7Vlbtw0glqxnCON_v1aIoSiC4OG0WA_USAIlbuObwQMX192_cJeIBDYKoUGQp-GHlM67KWOzfYYS7MiMc98RiN-Nc-0;
+        expires=Wed, 24-Feb-2021 08:49:06 GMT; path=/; HttpOnly
+      - Analytics_VisitorId=ef4bd115-e0c6-49dc-af92-41dacad8ddb3; expires=Fri, 15-Jan-2021
+        22:09:06 GMT; path=/; HttpOnly
+      - Analytics=SessionId=5d86435b-7f68-49d6-b95c-23b766c80b3b&TabId=10062&ContentItemId=-1;
+        expires=Wed, 16-Dec-2020 23:09:06 GMT; path=/; HttpOnly
+      - DotNetNukeAnonymous=f3fbe65b-8dd0-484a-bddd-7397e9a425c8; expires=Wed, 16-Dec-2020
+        22:29:06 GMT; path=/; HttpOnly
+      - ASP.NET_SessionId=ukb5a4gecvgtp1imcksazbij; path=/; HttpOnly; SameSite=Lax
+      - dnn_IsMobile=False; path=/; HttpOnly
+      - language=en-US; path=/; HttpOnly
+      - .ASPXANONYMOUS=3IwWkPRvt-l9F4qfcCozXf7Vlbtw0glqxnCON_v1aIoSiC4OG0WA_USAIlbuObwQMX192_cJeIBDYKoUGQp-GHlM67KWOzfYYS7MiMc98RiN-Nc-0;
+        expires=Wed, 24-Feb-2021 08:49:06 GMT; path=/; HttpOnly
+      - Analytics_VisitorId=ef4bd115-e0c6-49dc-af92-41dacad8ddb3; expires=Fri, 15-Jan-2021
+        22:09:06 GMT; path=/; HttpOnly
+      - Analytics=SessionId=5d86435b-7f68-49d6-b95c-23b766c80b3b&TabId=10062&ContentItemId=-1;
+        expires=Wed, 16-Dec-2020 23:09:06 GMT; path=/; HttpOnly
+      - DotNetNukeAnonymous=f3fbe65b-8dd0-484a-bddd-7397e9a425c8; expires=Wed, 16-Dec-2020
+        22:29:06 GMT; path=/; HttpOnly
+      - ASP.NET_SessionId=ukb5a4gecvgtp1imcksazbij; path=/; HttpOnly; SameSite=Lax
+      - __RequestVerificationToken=W9PQZhsjnSmyyOYMgoNuQrieBS0pL0x6GLRhMBM5gzCO-uTy0yOtKHNPhb5HVG0R1NuRvg2;
+        path=/; HttpOnly
+      strict-transport-security: max-age=31536000; includeSubDomains
+      x-aspnet-version: 4.0.30319
+      x-frame-options: SAMEORIGIN
+      x-ua-compatible: IE=edge
+      x-xss-protection: 1; mode=block
+    body:
+      encoding: UTF-8
+      file: no
+      string: ''
+  recorded_at: 2020-12-16 22:09:07 GMT
+  recorded_with: vcr/0.6.0, webmockr/0.7.4

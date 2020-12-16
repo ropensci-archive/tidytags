@@ -31,6 +31,6 @@ edgelist
 }
 }
 \seealso{
-Compare to other \code{tidytags} functions such as \code{get_replies()},
+Compare to other \code{tidtags} functions such as \code{get_replies()},
   \code{get_retweets()}, \code{get_quotes()}, and \code{get_mentions()}.
 }

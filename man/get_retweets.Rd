@@ -29,6 +29,6 @@ get_retweets(tmp_df)
 }
 }
 \seealso{
-Compare to other \code{tidtags} functions such as \code{get_replies()},
+Compare to other \code{tidytags} functions such as \code{get_replies()},
   \code{get_quotes()}, \code{get_mentions()}, and \code{create_edgelist()}.
 }
