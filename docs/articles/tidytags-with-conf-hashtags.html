@@ -142,8 +142,8 @@
 <span class="kw">example_after_rtweet_B</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/pull_tweet_data.html">pull_tweet_data</a></span>(url_vector = <span class="kw">example_df_all</span><span class="op">$</span><span class="kw">status_url</span>)
 </pre></div>
 <p>The TAGS tracker alone collected 18 variables associated with 2564 tweets. The first method searching with <code>id_str</code> collected 90 variables associated with 2215 tweets. The second method using ‘tidytags::get_char_tweet_ids()’ collected 90 variables associated with 2215 tweets.</p>
-<p>Notice how many more variables are in the dataset after using <code><a href="../reference/pull_tweet_data.html">pull_tweet_data()</a></code>, and how many more tweets are in the dataset when using the second method. Therfore, we strongly recommend the second method, which is why we have included <code><a href="../reference/get_char_tweet_ids.html">get_char_tweet_ids()</a></code> in the {tidytags} package.</p>
-<p>The built-in default of <code><a href="../reference/pull_tweet_data.html">pull_tweet_data()</a></code> is to simply enter the dataframe retrieved from <code><a href="../reference/read_tags.html">read_tags()</a></code> and implement method B, retieving metadata starting with tweet URLs. That is, <code><a href="../reference/pull_tweet_data.html">pull_tweet_data(read_tags(example_url))</a></code>. Take a quick look at the result, viewed with the <code>glimpse()</code> function from the {dplyr} package:</p>
+<p>Notice how many more variables are in the dataset after using <code><a href="../reference/pull_tweet_data.html">pull_tweet_data()</a></code>, and how many more tweets are in the dataset when using the second method. Therefore, we strongly recommend the second method, which is why we have included <code><a href="../reference/get_char_tweet_ids.html">get_char_tweet_ids()</a></code> in the {tidytags} package.</p>
+<p>The built-in default of <code><a href="../reference/pull_tweet_data.html">pull_tweet_data()</a></code> is to simply enter the dataframe retrieved from <code><a href="../reference/read_tags.html">read_tags()</a></code> and implement method B, retrieving metadata starting with tweet URLs. That is, <code><a href="../reference/pull_tweet_data.html">pull_tweet_data(read_tags(example_url))</a></code>. Take a quick look at the result, viewed with the <code>glimpse()</code> function from the {dplyr} package:</p>
 <div class="sourceCode" id="cb5"><pre class="downlit">
 <span class="kw">example_after_rtweet</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/pull_tweet_data.html">pull_tweet_data</a></span>(<span class="fu"><a href="../reference/read_tags.html">read_tags</a></span>(<span class="kw">tags_url</span>))
 <span class="kw">dplyr</span>::<span class="fu"><a href="https://tibble.tidyverse.org/reference/glimpse.html">glimpse</a></span>(<span class="kw">example_after_rtweet</span>)
@@ -379,7 +379,7 @@
 <div class="sourceCode" id="cb15"><pre class="downlit">
 <span class="kw">example_with_upstream</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/get_upstream_replies.html">get_upstream_replies</a></span>(<span class="kw">example_processed</span>)
 </pre></div>
-<p>The dataset contained 2215 tweets at the start. Runnning <code><a href="../reference/get_upstream_replies.html">get_upstream_replies()</a></code> added 36 new tweets.</p>
+<p>The dataset contained 2215 tweets at the start. Running <code><a href="../reference/get_upstream_replies.html">get_upstream_replies()</a></code> added 36 new tweets.</p>
 <p>Unfortunately, due to limitations in what information is given by the Twitter API, it is not practical to retrieve <em>downstream</em> replies, or those tweets in a reply thread that follow a tweet in the dataset but neglect to include the hashtag or keyword.</p>
 </div>
 <div id="create_edgelist" class="section level2">

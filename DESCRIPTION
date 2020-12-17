@@ -16,7 +16,7 @@ Description: {tidytags} coordinates the simplicity of collecting tweets over tim
     [{rtweet} package](https://docs.ropensci.org/rtweet/index.html) for processing and preparing additional Twitter metadata. 
     {tidytags} also introduces functions developed to facilitate systematic yet 
     flexible analyses of data from Twitter.
-License: GPL-3 + file LICENSE
+License: GPL-3
 URL: https://bretsw.github.io/tidytags/, https://github.com/bretsw/tidytags
 Depends: 
     R (>= 4.0)
@@ -34,22 +34,15 @@ Imports:
     tidyselect (>= 1.0)
 Suggests:
     beepr,
-    covr,
-    devtools,
     ggplot2,
     ggraph,
-    goodpractice,
     knitr,
     longurl,
     mapview,
     opencage,
-    rcmdcheck,
     rmarkdown,
     roxygen2,
     sf,
-    sodium,
-    spelling,
-    styler,
     testthat,
     tidygraph,
     tidyverse,

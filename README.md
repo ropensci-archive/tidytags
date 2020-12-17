@@ -176,5 +176,5 @@ Conduct](https://github.com/bretsw/tidytags/blob/master/CODE_OF_CONDUCT.md).
 
 The {tidytags} package is licensed under a *GNU General Public License
 v3.0*, or [GPL-3](https://choosealicense.com/licenses/lgpl-3.0/). For
-background on why we chose this license, read Hadley Wickham’s take on
-[R package licensing](http://r-pkgs.had.co.nz/description.html#license).
+background on why we chose this license, read this chapter on [R package
+licensing](https://r-pkgs.org/license.html).

@@ -7,10 +7,7 @@ http_interactions:
       string: ''
     headers:
       Accept: application/json, text/xml, application/xml, */*
-      Authorization: OAuth oauth_consumer_key="Nr8qBAeDqKkqZGDd79Gi7OuF9", oauth_nonce="ontZRCQk77",
-        oauth_signature="VVhx1S7wOLq%2BPEyAu2XXdSn0Pps%3D", oauth_signature_method="HMAC-SHA1",
-        oauth_timestamp="1608154680", oauth_token="53167706-Wboj1Kk3FgQL8v23b50414ShbRhPpPvSQ0LgNrrPq",
-        oauth_version="1.0"
+      Authorization: <<<not-my-bearer-token>>>
   response:
     status:
       status_code: 200
@@ -21,30 +18,30 @@ http_interactions:
       cache-control: no-cache, no-store, must-revalidate, pre-check=0, post-check=0
       content-disposition: attachment; filename=json.json
       content-encoding: gzip
-      content-length: '1677'
+      content-length: '1688'
       content-type: application/json;charset=utf-8
-      date: Wed, 16 Dec 2020 21:38:01 GMT
+      date: Thu, 17 Dec 2020 12:04:51 GMT
       expires: Tue, 31 Mar 1981 05:00:00 GMT
-      last-modified: Wed, 16 Dec 2020 21:38:01 GMT
+      last-modified: Thu, 17 Dec 2020 12:04:51 GMT
       pragma: no-cache
       server: tsa_b
       set-cookie:
-      - personalization_id="v1_JcC3bcKYLcxaFbLnj3sryg=="; Max-Age=63072000; Expires=Fri,
-        16 Dec 2022 21:38:01 GMT; Path=/; Domain=.twitter.com; Secure; SameSite=None
+      - personalization_id="v1_L7gUJD52Z+GienZhvr1A+Q=="; Max-Age=63072000; Expires=Sat,
+        17 Dec 2022 12:04:51 GMT; Path=/; Domain=.twitter.com; Secure; SameSite=None
       - lang=en; Path=/
-      - guest_id=v1%3A160815468113561458; Max-Age=63072000; Expires=Fri, 16 Dec 2022
-        21:38:01 GMT; Path=/; Domain=.twitter.com; Secure; SameSite=None
+      - guest_id=v1%3A160820669173175922; Max-Age=63072000; Expires=Sat, 17 Dec 2022
+        12:04:51 GMT; Path=/; Domain=.twitter.com; Secure; SameSite=None
       status: 200 OK
       strict-transport-security: max-age=631138519
       x-access-level: read-write-directmessages
-      x-connection-hash: be345380514f08c3bf05dcdf535a29dd
+      x-connection-hash: abaabb3480539bbfc5c2b5181e180507
       x-content-type-options: nosniff
       x-frame-options: SAMEORIGIN
       x-rate-limit-limit: '900'
       x-rate-limit-remaining: '899'
-      x-rate-limit-reset: '1608155581'
-      x-response-time: '59'
-      x-transaction: 005caa870078caca
+      x-rate-limit-reset: '1608207591'
+      x-response-time: '50'
+      x-transaction: 006e5c88000c989c
       x-twitter-response-tags: BouncerCompliant
       x-xss-protection: '0'
     body:
@@ -54,14 +51,14 @@ http_interactions:
         GSA","screen_name":"gsa_aect","location":"","description":"The official account
         of the Graduate Student Assembly for the Association of EducationalCommunications
         and Technology","url":null,"entities":{"description":{"urls":[]}},"protected":false,"followers_count":336,"friends_count":44,"listed_count":4,"created_at":"Mon
-        Oct 23 18:52:50 +0000 2017","favourites_count":52,"utc_offset":null,"time_zone":null,"geo_enabled":false,"verified":false,"statuses_count":1547,"lang":null,"status":{"created_at":"Tue
-        Dec 15 16:19:00 +0000 2020","id":1338881251550187521,"id_str":"1338881251550187521","text":"Join
-        us tomorrow for #shelfiewednesday share whatever you are reading - it can
-        be a novel, poem, holiday story, and\u2026 https:\/\/t.co\/PzjqAHXnx8","truncated":true,"entities":{"hashtags":[{"text":"shelfiewednesday","indices":[21,38]}],"symbols":[],"user_mentions":[],"urls":[{"url":"https:\/\/t.co\/PzjqAHXnx8","expanded_url":"https:\/\/twitter.com\/i\/web\/status\/1338881251550187521","display_url":"twitter.com\/i\/web\/status\/1\u2026","indices":[117,140]}]},"source":"\u003ca
+        Oct 23 18:52:50 +0000 2017","favourites_count":52,"utc_offset":null,"time_zone":null,"geo_enabled":false,"verified":false,"statuses_count":1552,"lang":null,"status":{"created_at":"Thu
+        Dec 17 11:22:00 +0000 2020","id":1339531284729778176,"id_str":"1339531284729778176","text":"Sometimes
+        you take a position and its not what you expected.  What do you do?  #aectgsa
+        #careertrackthursday\u2026 https:\/\/t.co\/pcirZnZiYp","truncated":true,"entities":{"hashtags":[{"text":"aectgsa","indices":[79,87]},{"text":"careertrackthursday","indices":[88,108]}],"symbols":[],"user_mentions":[],"urls":[{"url":"https:\/\/t.co\/pcirZnZiYp","expanded_url":"https:\/\/twitter.com\/i\/web\/status\/1339531284729778176","display_url":"twitter.com\/i\/web\/status\/1\u2026","indices":[110,133]}]},"source":"\u003ca
         href=\"https:\/\/about.twitter.com\/products\/tweetdeck\" rel=\"nofollow\"\u003eTweetDeck\u003c\/a\u003e","in_reply_to_status_id":null,"in_reply_to_status_id_str":null,"in_reply_to_user_id":null,"in_reply_to_user_id_str":null,"in_reply_to_screen_name":null,"geo":null,"coordinates":null,"place":null,"contributors":null,"is_quote_status":false,"retweet_count":0,"favorite_count":0,"favorited":false,"retweeted":false,"possibly_sensitive":false,"lang":"en"},"contributors_enabled":false,"is_translator":false,"is_translation_enabled":false,"profile_background_color":"F5F8FA","profile_background_image_url":null,"profile_background_image_url_https":null,"profile_background_tile":false,"profile_image_url":"http:\/\/pbs.twimg.com\/profile_images\/1025847363615641600\/1UylGRlO_normal.jpg","profile_image_url_https":"https:\/\/pbs.twimg.com\/profile_images\/1025847363615641600\/1UylGRlO_normal.jpg","profile_banner_url":"https:\/\/pbs.twimg.com\/profile_banners\/922536306437181440\/1531449088","profile_link_color":"1DA1F2","profile_sidebar_border_color":"C0DEED","profile_sidebar_fill_color":"DDEEF6","profile_text_color":"333333","profile_use_background_image":true,"has_extended_profile":false,"default_profile":true,"default_profile_image":false,"following":true,"follow_request_sent":false,"notifications":false,"translator_type":"none"},{"id":12030342,"id_str":"12030342","name":"\u2735
         AECT \u2735","screen_name":"AECT","location":"Worldwide","description":"[Association
         for Educational Communications & Technology] Supporting #educators & #professionals
-        dedicated to improving #instruction through #technology.","url":"http:\/\/t.co\/lEX6USOXwI","entities":{"url":{"urls":[{"url":"http:\/\/t.co\/lEX6USOXwI","expanded_url":"http:\/\/aect.org","display_url":"aect.org","indices":[0,22]}]},"description":{"urls":[]}},"protected":false,"followers_count":3867,"friends_count":532,"listed_count":122,"created_at":"Wed
+        dedicated to improving #instruction through #technology.","url":"http:\/\/t.co\/lEX6USOXwI","entities":{"url":{"urls":[{"url":"http:\/\/t.co\/lEX6USOXwI","expanded_url":"http:\/\/aect.org","display_url":"aect.org","indices":[0,22]}]},"description":{"urls":[]}},"protected":false,"followers_count":3866,"friends_count":532,"listed_count":0,"created_at":"Wed
         Jan 09 15:38:18 +0000 2008","favourites_count":2917,"utc_offset":null,"time_zone":null,"geo_enabled":true,"verified":false,"statuses_count":2610,"lang":null,"status":{"created_at":"Tue
         Dec 15 15:05:26 +0000 2020","id":1338862740161511427,"id_str":"1338862740161511427","text":"RT
         @AECTTechTrends: This week with TechTrends it is 5 at 5.  Each day Monday
@@ -72,5 +69,5 @@ http_interactions:
         week with TechTrends it is 5 at 5.  Each day Monday - Friday a full-text link
         to a new article will be tweeted\u2026 https:\/\/t.co\/ylkO89IAa3","truncated":true,"entities":{"hashtags":[],"symbols":[],"user_mentions":[],"urls":[{"url":"https:\/\/t.co\/ylkO89IAa3","expanded_url":"https:\/\/twitter.com\/i\/web\/status\/1338533106920411138","display_url":"twitter.com\/i\/web\/status\/1\u2026","indices":[117,140]}]},"source":"\u003ca
         href=\"https:\/\/about.twitter.com\/products\/tweetdeck\" rel=\"nofollow\"\u003eTweetDeck\u003c\/a\u003e","in_reply_to_status_id":null,"in_reply_to_status_id_str":null,"in_reply_to_user_id":null,"in_reply_to_user_id_str":null,"in_reply_to_screen_name":null,"geo":null,"coordinates":null,"place":null,"contributors":null,"is_quote_status":false,"retweet_count":5,"favorite_count":11,"favorited":false,"retweeted":false,"lang":"en"},"is_quote_status":false,"retweet_count":5,"favorite_count":0,"favorited":false,"retweeted":false,"lang":"en"},"contributors_enabled":false,"is_translator":false,"is_translation_enabled":false,"profile_background_color":"C0DEED","profile_background_image_url":"http:\/\/abs.twimg.com\/images\/themes\/theme1\/bg.png","profile_background_image_url_https":"https:\/\/abs.twimg.com\/images\/themes\/theme1\/bg.png","profile_background_tile":false,"profile_image_url":"http:\/\/pbs.twimg.com\/profile_images\/1057649830879748096\/-gzHp1_5_normal.jpg","profile_image_url_https":"https:\/\/pbs.twimg.com\/profile_images\/1057649830879748096\/-gzHp1_5_normal.jpg","profile_banner_url":"https:\/\/pbs.twimg.com\/profile_banners\/12030342\/1592598344","profile_link_color":"1DA1F2","profile_sidebar_border_color":"C0DEED","profile_sidebar_fill_color":"DDEEF6","profile_text_color":"333333","profile_use_background_image":true,"has_extended_profile":false,"default_profile":true,"default_profile_image":false,"following":true,"follow_request_sent":false,"notifications":false,"translator_type":"none"}]'
-  recorded_at: 2020-12-16 21:38:01 GMT
+  recorded_at: 2020-12-17 12:04:51 GMT
   recorded_with: vcr/0.6.0, webmockr/0.7.4
