@@ -26,5 +26,6 @@ invisible(vcr::vcr_configure(
   filter_sensitive_data =
     list("<<<my_opencage_api_key>>>" = Sys.getenv('OPENCAGE_KEY'),
          "<<<my_twitter_api_key>>>" = Sys.getenv('TWITTER_PAT')
-    )
+    ),
+   filter_request_headers = list(Authorization = "<<<not-my-bearer-token>>>")
 ))
