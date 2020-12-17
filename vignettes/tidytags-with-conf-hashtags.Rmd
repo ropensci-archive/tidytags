@@ -80,9 +80,9 @@ example_after_rtweet_B <- pull_tweet_data(url_vector = example_df_all$status_url
 
 The TAGS tracker alone collected 18 variables associated with 2564 tweets. The first method searching with `id_str` collected 90 variables associated with 2215 tweets. The second method using 'tidytags::get_char_tweet_ids()' collected 90 variables associated with 2215 tweets.
 
-Notice how many more variables are in the dataset after using `pull_tweet_data()`, and how many more tweets are in the dataset when using the second method. Therfore, we strongly recommend the second method, which is why we have included `get_char_tweet_ids()` in the {tidytags} package.
+Notice how many more variables are in the dataset after using `pull_tweet_data()`, and how many more tweets are in the dataset when using the second method. Therefore, we strongly recommend the second method, which is why we have included `get_char_tweet_ids()` in the {tidytags} package.
 
-The built-in default of `pull_tweet_data()` is to simply enter the dataframe retrieved from  `read_tags()` and implement method B, retieving metadata starting with tweet URLs. That is, `pull_tweet_data(read_tags(example_url))`. Take a quick look at the result, viewed with the `glimpse()` function from the {dplyr} package:
+The built-in default of `pull_tweet_data()` is to simply enter the dataframe retrieved from  `read_tags()` and implement method B, retrieving metadata starting with tweet URLs. That is, `pull_tweet_data(read_tags(example_url))`. Take a quick look at the result, viewed with the `glimpse()` function from the {dplyr} package:
 
 
 ```r
@@ -357,7 +357,7 @@ There is a solution to this problem. Because the Twitter API offers a `reply_to_
 example_with_upstream <- get_upstream_replies(example_processed)
 ```
 
-The dataset contained 2215 tweets at the start. Runnning `get_upstream_replies()` added 36 new tweets.
+The dataset contained 2215 tweets at the start. Running `get_upstream_replies()` added 36 new tweets.
 
 Unfortunately, due to limitations in what information is given by the Twitter API, it is not practical to retrieve *downstream* replies, or those tweets in a reply thread that follow a tweet in the dataset but neglect to include the hashtag or keyword.
 
