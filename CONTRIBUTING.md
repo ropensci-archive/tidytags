@@ -1,6 +1,6 @@
 # Contributing 
 
-This contributing guide has been derived from the {tidyverse} boilerplate (see their high-level [contributing guide](https://www.tidyverse.org/contribute/)). Where this guide seems over the top, common sense is appreciated, and every contribution is appreciated.
+This contributing guide has been derived from the {tidyverse} boilerplate (see their high-level [contributing guide](https://www.tidyverse.org/contribute/)). If you have any questions about contributing, please don't hesitate to [reach out](https://bretsw.github.io/tidytags/#getting-help). We appreciate every contribution.
 
 ## Code of conduct
 
@@ -61,7 +61,7 @@ then clone it locally. We recommend that you create a branch for each PR.
 #### Check
 
 Before changing anything, make sure the package still passes the below listed
-flavours of `R CMD check` locally for you. 
+flavors of `R CMD check` locally for you. 
 
 ```r
 goodpractice::goodpractice(quiet = FALSE, )
