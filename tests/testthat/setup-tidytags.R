@@ -1,4 +1,5 @@
-library("vcr")
+library(vcr)
+library(rtweet)
 
 vcr_dir <- vcr::vcr_test_path("fixtures")
 
@@ -13,7 +14,14 @@ if (!nzchar(Sys.getenv('OPENCAGE_KEY'))) {
 
 if (!nzchar(Sys.getenv('TWITTER_PAT'))) {
   if (dir.exists(vcr_dir)) {
-    Sys.setenv('TWITTER_PAT' = "fake_key")
+    rtweet::create_token(
+      app = "fake_twitter_app",
+      consumer_key = "fake_consumer_key",
+      consumer_secret = "fake_consumer_secret",
+      access_token = "fake_access_token",
+      access_secret = "fake_access_secret",
+      set_renv = TRUE
+    )
   } else {
     stop("No API key nor cassettes, tests cannot be run.",
          call. = FALSE)
