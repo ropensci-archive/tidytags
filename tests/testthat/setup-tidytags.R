@@ -15,11 +15,11 @@ if (!nzchar(Sys.getenv('OPENCAGE_KEY'))) {
 if (!nzchar(Sys.getenv('TWITTER_PAT'))) {
   if (dir.exists(vcr_dir)) {
     rtweet::create_token(
-      app = "fake_twitter_app",
-      consumer_key = "fake_consumer_key",
-      consumer_secret = "fake_consumer_secret",
-      access_token = "fake_access_token",
-      access_secret = "fake_access_secret",
+      app = "faketwitterappname",
+      consumer_key = "fakeconsumerkey12345",
+      consumer_secret = "fakeconsumersecret12345",
+      access_token = "fakeaccesstoken12345",
+      access_secret = "fakeaccesssecret12345",
       set_renv = TRUE
     )
   } else {
