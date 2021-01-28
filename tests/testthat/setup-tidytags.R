@@ -5,7 +5,7 @@ vcr_dir <- vcr::vcr_test_path("fixtures")
 
 if (!nzchar(Sys.getenv('OPENCAGE_KEY'))) {
   if (dir.exists(vcr_dir)) {
-    Sys.setenv('OPENCAGE_KEY' = "fake_key")
+    Sys.setenv('OPENCAGE_KEY'="fakeopencagekey12345")
   } else {
     stop("No API key nor cassettes, tests cannot be run.",
          call. = FALSE)
