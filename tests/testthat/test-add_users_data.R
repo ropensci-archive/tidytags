@@ -10,14 +10,12 @@ sample_tweet <-
                   )
   )
 
-
-vcr::use_cassette("users_info", {
-  el <- create_edgelist(sample_tweet)
-  el_plus <- add_users_data(el)
-})
-
-
 test_that("user data is added properly", {
+  vcr::use_cassette("users_info", {
+    el <- create_edgelist(sample_tweet)
+    el_plus <- add_users_data(el)
+  })
+
   expect_true(is.data.frame(el_plus))
   expect_named(el_plus)
   expect_true("sender" %in% names(el_plus))
