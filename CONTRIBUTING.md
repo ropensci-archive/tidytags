@@ -97,6 +97,8 @@ devtools::test()
 devtools::test_coverage()
 ```
 
+Note that because {tidytags} queries OpenCage and Twitter APIs, testing can be a bit tricky. Be sure to follow the [Getting started with tidytags](https://bretsw.github.io/tidytags/articles/setup.html) vignette for establishing your own OpenCage API key and Twitter API tokens to conduct local testing. For CI testing, view the [setup-tidytags.R](tests/testthat/setup-tidytags.R) file in the package testing documentation to see how fake OAuth tokens are set up. The [HTTP testing in R](https://books.ropensci.org/http-testing/index.html) book is an invaluable resource.
+
 #### Re-check
 
 Before submitting your changes, make sure that the package either still
