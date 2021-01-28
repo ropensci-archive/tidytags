@@ -11,11 +11,12 @@ Authors@R: c(
       comment = c(ORCID = "0000-0003-2170-0447")
     )
   )
-Description: {tidytags} coordinates the simplicity of collecting tweets over time 
-    with a [Twitter Archiving Google Sheet](https://tags.hawksey.info/) (TAGS) and the utility of the 
-    [{rtweet} package](https://docs.ropensci.org/rtweet/index.html) for processing and preparing additional Twitter metadata. 
-    {tidytags} also introduces functions developed to facilitate systematic yet 
-    flexible analyses of data from Twitter.
+Description: The {tidytags} package coordinates the simplicity of collecting tweets 
+    over time with a Twitter Archiving Google Sheet (TAGS; <https://tags.hawksey.info/>) 
+    and the utility of the {rtweet} package (<https://docs.ropensci.org/rtweet/>) 
+    for processing and preparing additional Twitter metadata. {tidytags} also 
+    introduces functions developed to facilitate systematic yet flexible analyses 
+    of data from Twitter.
 License: GPL-3
 URL: https://bretsw.github.io/tidytags/, https://github.com/bretsw/tidytags
 Depends: 

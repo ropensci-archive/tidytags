@@ -15,29 +15,29 @@ http_interactions:
       reason: OK
       message: 'Success: (200) OK'
     headers:
-      date: Thu, 17 Dec 2020 12:05:25 GMT
+      date: Thu, 28 Jan 2021 12:28:36 GMT
       server: Apache
       access-control-allow-origin: '*'
       x-ratelimit-limit: '2500'
       x-ratelimit-remaining: '2499'
-      x-ratelimit-reset: '1608249600'
+      x-ratelimit-reset: '1611878400'
       vary: Accept-Encoding
       content-encoding: gzip
-      content-length: '692'
+      content-length: '674'
       content-type: application/json; charset=utf-8
       strict-transport-security: max-age=31536000; includeSubDomains; preload
     body:
       encoding: UTF-8
       file: no
       string: '{"documentation":"https://opencagedata.com/api","licenses":[{"name":"see
-        attribution guide","url":"https://opencagedata.com/credits"}],"rate":{"limit":2500,"remaining":2499,"reset":1608249600},"request":{"abbrv":0,"add_request":1,"autocomplete":0,"format":"json","key":"<<<my_opencage_api_key>>>","language":"en","limit":1,"min_confidence":0,"no_annotations":1,"no_dedupe":0,"no_record":0,"only_nominatim":0,"pretty":0,"proximity":"","query":"New
+        attribution guide","url":"https://opencagedata.com/credits"}],"rate":{"limit":2500,"remaining":2499,"reset":1611878400},"request":{"abbrv":0,"add_request":1,"format":"json","key":"<<<my_opencage_api_key>>>","language":"en","limit":1,"min_confidence":0,"no_annotations":1,"no_dedupe":0,"no_record":0,"pretty":0,"proximity":"","query":"New
         York, NY","roadinfo":0,"version":"v1"},"results":[{"bounds":{"northeast":{"lat":40.9161785,"lng":-73.7001809},"southwest":{"lat":40.477399,"lng":-74.25909}},"components":{"ISO_3166-1_alpha-2":"US","ISO_3166-1_alpha-3":"USA","_category":"place","_type":"city","city":"New
-        York","continent":"North America","country":"United States of America","country_code":"us","state":"New
+        York","continent":"North America","country":"United States","country_code":"us","state":"New
         York","state_code":"NY"},"confidence":2,"formatted":"New York, New York, United
         States of America","geometry":{"lat":40.7127281,"lng":-74.0060152}}],"status":{"code":200,"message":"OK"},"stay_informed":{"blog":"https://blog.opencagedata.com","twitter":"https://twitter.com/OpenCage"},"thanks":"For
-        using an OpenCage API","timestamp":{"created_http":"Thu, 17 Dec 2020 12:05:25
-        GMT","created_unix":1608206725},"total_results":1}'
-  recorded_at: 2020-12-17 12:05:26 GMT
+        using an OpenCage API","timestamp":{"created_http":"Thu, 28 Jan 2021 12:28:36
+        GMT","created_unix":1611836916},"total_results":1}'
+  recorded_at: 2021-01-28 12:28:37 GMT
   recorded_with: vcr/0.6.0, webmockr/0.7.4
 - request:
     method: get
@@ -55,25 +55,25 @@ http_interactions:
       reason: OK
       message: 'Success: (200) OK'
     headers:
-      date: Thu, 17 Dec 2020 12:05:26 GMT
+      date: Thu, 28 Jan 2021 12:28:37 GMT
       server: Apache
       access-control-allow-origin: '*'
       x-ratelimit-limit: '2500'
       x-ratelimit-remaining: '2498'
-      x-ratelimit-reset: '1608249600'
+      x-ratelimit-reset: '1611878400'
       vary: Accept-Encoding
       content-encoding: gzip
-      content-length: '680'
+      content-length: '663'
       content-type: application/json; charset=utf-8
       strict-transport-security: max-age=31536000; includeSubDomains; preload
     body:
       encoding: UTF-8
       file: no
       string: '{"documentation":"https://opencagedata.com/api","licenses":[{"name":"see
-        attribution guide","url":"https://opencagedata.com/credits"}],"rate":{"limit":2500,"remaining":2498,"reset":1608249600},"request":{"abbrv":0,"add_request":1,"autocomplete":0,"format":"json","key":"<<<my_opencage_api_key>>>","language":"en","limit":1,"min_confidence":0,"no_annotations":1,"no_dedupe":0,"no_record":0,"only_nominatim":0,"pretty":0,"proximity":"","query":"Kansas","roadinfo":0,"version":"v1"},"results":[{"bounds":{"northeast":{"lat":40.003095,"lng":-94.5882049},"southwest":{"lat":36.993125,"lng":-102.0517563}},"components":{"ISO_3166-1_alpha-2":"US","ISO_3166-1_alpha-3":"USA","_category":"place","_type":"state","continent":"North
-        America","country":"United States of America","country_code":"us","state":"Kansas","state_code":"KS"},"confidence":1,"formatted":"Kansas,
+        attribution guide","url":"https://opencagedata.com/credits"}],"rate":{"limit":2500,"remaining":2498,"reset":1611878400},"request":{"abbrv":0,"add_request":1,"format":"json","key":"<<<my_opencage_api_key>>>","language":"en","limit":1,"min_confidence":0,"no_annotations":1,"no_dedupe":0,"no_record":0,"pretty":0,"proximity":"","query":"Kansas","roadinfo":0,"version":"v1"},"results":[{"bounds":{"northeast":{"lat":40.003095,"lng":-94.5882049},"southwest":{"lat":36.993125,"lng":-102.0517563}},"components":{"ISO_3166-1_alpha-2":"US","ISO_3166-1_alpha-3":"USA","_category":"place","_type":"state","continent":"North
+        America","country":"United States","country_code":"us","state":"Kansas","state_code":"KS"},"confidence":1,"formatted":"Kansas,
         United States of America","geometry":{"lat":38.27312,"lng":-98.5821872}}],"status":{"code":200,"message":"OK"},"stay_informed":{"blog":"https://blog.opencagedata.com","twitter":"https://twitter.com/OpenCage"},"thanks":"For
-        using an OpenCage API","timestamp":{"created_http":"Thu, 17 Dec 2020 12:05:26
-        GMT","created_unix":1608206726},"total_results":1}'
-  recorded_at: 2020-12-17 12:05:26 GMT
+        using an OpenCage API","timestamp":{"created_http":"Thu, 28 Jan 2021 12:28:37
+        GMT","created_unix":1611836917},"total_results":1}'
+  recorded_at: 2021-01-28 12:28:37 GMT
   recorded_with: vcr/0.6.0, webmockr/0.7.4
