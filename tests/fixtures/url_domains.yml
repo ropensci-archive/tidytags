@@ -17,21 +17,21 @@ http_interactions:
     headers:
       cache-control: public, max-age=0, must-revalidate
       content-type: text/html; charset=UTF-8
-      date: Thu, 28 Jan 2021 04:38:35 GMT
+      date: Thu, 28 Jan 2021 07:01:00 GMT
       etag: '"97e39150ffdfbc5a6e8729be02f1e618-ssl-df"'
       strict-transport-security: max-age=31536000
       content-encoding: gzip
       content-length: '3857'
-      age: '28867'
+      age: '21794'
       connection: keep-alive
       server: Netlify
       vary: Accept-Encoding
-      x-nf-request-id: 08bba8b9-1a14-40fe-a3b1-f294d8273cb5-51190717
+      x-nf-request-id: 9c073f4b-c454-46de-95dd-83db9392002e-25623784
     body:
       encoding: UTF-8
       file: no
       string: ''
-  recorded_at: 2021-01-28 12:39:44 GMT
+  recorded_at: 2021-01-28 13:04:15 GMT
   recorded_with: vcr/0.6.0, webmockr/0.7.4
 - request:
     method: head
@@ -51,21 +51,21 @@ http_interactions:
     headers:
       cache-control: public, max-age=0, must-revalidate
       content-type: text/html; charset=UTF-8
-      date: Thu, 28 Jan 2021 09:26:27 GMT
+      date: Thu, 28 Jan 2021 10:56:09 GMT
       etag: '"e50c361572a9847bb0a5194d8f2330b1-ssl-df"'
       strict-transport-security: max-age=31536000
       content-encoding: gzip
       content-length: '6669'
-      age: '11595'
+      age: '7685'
       connection: keep-alive
       server: Netlify
       vary: Accept-Encoding
-      x-nf-request-id: 08bba8b9-1a14-40fe-a3b1-f294d8273cb5-51190749
+      x-nf-request-id: 9c073f4b-c454-46de-95dd-83db9392002e-25623839
     body:
       encoding: UTF-8
       file: no
       string: ''
-  recorded_at: 2021-01-28 12:39:44 GMT
+  recorded_at: 2021-01-28 13:04:15 GMT
   recorded_with: vcr/0.6.0, webmockr/0.7.4
 - request:
     method: head
@@ -90,121 +90,30 @@ http_interactions:
       last-modified: Wed, 02 Sep 2020 07:41:09 GMT
       access-control-allow-origin: '*'
       etag: W/"5f4f4c95-5b96"
-      expires: Thu, 28 Jan 2021 11:29:29 GMT
+      expires: Thu, 28 Jan 2021 13:14:14 GMT
       cache-control: max-age=600
       content-encoding: gzip
       x-proxy-cache: MISS
-      x-github-request-id: 14D4:292E:69A0B0:7C3F8A:60129DC0
+      x-github-request-id: 453A:6615:7E3640:940E66:6012B64E
       accept-ranges: bytes
-      date: Thu, 28 Jan 2021 12:39:42 GMT
+      date: Thu, 28 Jan 2021 13:04:14 GMT
       via: 1.1 varnish
       age: '0'
-      x-served-by: cache-dca17782-DCA
-      x-cache: HIT
-      x-cache-hits: '1'
-      x-timer: S1611837583.529278,VS0,VE6
+      x-served-by: cache-bwi5076-BWI
+      x-cache: MISS
+      x-cache-hits: '0'
+      x-timer: S1611839055.881288,VS0,VE8
       vary: Accept-Encoding
-      x-fastly-request-id: ce1f1e76a912c824ed8c082fd4b76f627d330ba6
+      x-fastly-request-id: 23b15b2777f1c0abb1446f454c321a36e876ebcf
     body:
       encoding: UTF-8
       file: no
       string: ''
-  recorded_at: 2021-01-28 12:39:44 GMT
+  recorded_at: 2021-01-28 13:04:15 GMT
   recorded_with: vcr/0.6.0, webmockr/0.7.4
 - request:
     method: head
-    uri: http://bit.ly/2SfWO3K
-    body:
-      encoding: ''
-      string: ''
-    headers:
-      Accept: application/json, text/xml, application/xml, */*
-      Authorization: <<<not-my-bearer-token>>>
-  response:
-    status:
-      status_code: 200
-      category: Success
-      reason: OK
-      message: 'Success: (200) OK'
-    headers:
-      date: Thu, 28 Jan 2021 12:39:42 GMT
-      server: Apache
-      upgrade: h2,h2c
-      connection: Upgrade
-      cache-control: max-age=600
-      expires: Thu, 28 Jan 2021 12:49:42 GMT
-      vary: User-Agent
-      content-type: text/html; charset=UTF-8
-    body:
-      encoding: UTF-8
-      file: no
-      string: ''
-  recorded_at: 2021-01-28 12:39:44 GMT
-  recorded_with: vcr/0.6.0, webmockr/0.7.4
-- request:
-    method: head
-    uri: http://bit.ly/36KWct1
-    body:
-      encoding: ''
-      string: ''
-    headers:
-      Accept: application/json, text/xml, application/xml, */*
-      Authorization: <<<not-my-bearer-token>>>
-  response:
-    status:
-      status_code: 200
-      category: Success
-      reason: OK
-      message: 'Success: (200) OK'
-    headers:
-      access-control-allow-headers: Content-Type
-      access-control-allow-methods: POST
-      access-control-allow-origin: '*'
-      cache-control: no-cache
-      content-length: '108333'
-      content-type: text/html; charset=utf-8
-      date: Thu, 28 Jan 2021 12:39:43 GMT
-      expires: '-1'
-      pragma: no-cache
-      set-cookie:
-      - dnn_IsMobile=False; path=/; HttpOnly
-      - language=en-US; path=/; HttpOnly
-      - .ASPXANONYMOUS=RcLa04W2VRk-5Mu_UEi3-bd7xChH7uaMhzeRI0961UgmH_sTjVzClT66k24TG1akCiA6MAJLuT2ABFqUJxe-e2fDOdBU8lZYpqnjw3gadnMhCQFH0;
-        expires=Wed, 07-Apr-2021 23:19:43 GMT; path=/; HttpOnly
-      - Analytics_VisitorId=56396964-a342-4b23-ae63-5b59cbeabaea; expires=Sat, 27-Feb-2021
-        12:39:43 GMT; path=/; HttpOnly
-      - Analytics=SessionId=8f9a7676-dce9-468a-9493-82af973d2281&TabId=10062&ContentItemId=-1;
-        expires=Thu, 28-Jan-2021 13:39:43 GMT; path=/; HttpOnly
-      - DotNetNukeAnonymous=837938f4-e3cc-4eef-9280-2299d1d7bdc0; expires=Thu, 28-Jan-2021
-        12:59:43 GMT; path=/; HttpOnly
-      - ASP.NET_SessionId=k3ul3rohnj1utbp22qzqgish; path=/; HttpOnly; SameSite=Lax
-      - dnn_IsMobile=False; path=/; HttpOnly
-      - language=en-US; path=/; HttpOnly
-      - .ASPXANONYMOUS=RcLa04W2VRk-5Mu_UEi3-bd7xChH7uaMhzeRI0961UgmH_sTjVzClT66k24TG1akCiA6MAJLuT2ABFqUJxe-e2fDOdBU8lZYpqnjw3gadnMhCQFH0;
-        expires=Wed, 07-Apr-2021 23:19:43 GMT; path=/; HttpOnly
-      - Analytics_VisitorId=56396964-a342-4b23-ae63-5b59cbeabaea; expires=Sat, 27-Feb-2021
-        12:39:43 GMT; path=/; HttpOnly
-      - Analytics=SessionId=8f9a7676-dce9-468a-9493-82af973d2281&TabId=10062&ContentItemId=-1;
-        expires=Thu, 28-Jan-2021 13:39:43 GMT; path=/; HttpOnly
-      - DotNetNukeAnonymous=837938f4-e3cc-4eef-9280-2299d1d7bdc0; expires=Thu, 28-Jan-2021
-        12:59:43 GMT; path=/; HttpOnly
-      - ASP.NET_SessionId=k3ul3rohnj1utbp22qzqgish; path=/; HttpOnly; SameSite=Lax
-      - __RequestVerificationToken=74amXY6BF1uONo1l0iv0gy5ZxDosfgxxfE6XYYwI9aYAgI7pro79O7Aa9yVfhk7xLZGcYw2;
-        path=/; HttpOnly
-      strict-transport-security: max-age=31536000; includeSubDomains
-      x-aspnet-version: 4.0.30319
-      x-frame-options: SAMEORIGIN
-      x-ua-compatible: IE=edge
-      x-xss-protection: 1; mode=block
-    body:
-      encoding: UTF-8
-      file: no
-      string: ''
-  recorded_at: 2021-01-28 12:39:44 GMT
-  recorded_with: vcr/0.6.0, webmockr/0.7.4
-- request:
-    method: head
-    uri: https://www.npr.org/
+    uri: https://www.npr.org/sections/technology/
     body:
       encoding: ''
       string: ''
@@ -224,19 +133,49 @@ http_interactions:
       access-control-allow-credentials: 'true'
       x-content-type-options: nosniff
       x-xss-protection: 1; mode=block
-      x-served-by: pod-www-render-nginx-6f48c78898-8gck4
+      x-served-by: pod-www-render-nginx-6f48c78898-jrpnv
       referrer-policy: no-referrer-when-downgrade
       strict-transport-security: max-age=15724800; includeSubDomains
       vary: Accept-Encoding
       content-encoding: gzip
       cache-control: no-cache
-      expires: Thu, 28 Jan 2021 12:39:44 GMT
-      date: Thu, 28 Jan 2021 12:39:44 GMT
-      content-length: '29776'
+      expires: Thu, 28 Jan 2021 13:04:15 GMT
+      date: Thu, 28 Jan 2021 13:04:15 GMT
+      content-length: '13'
       connection: keep-alive
     body:
       encoding: UTF-8
       file: no
       string: ''
-  recorded_at: 2021-01-28 12:39:44 GMT
+  recorded_at: 2021-01-28 13:04:15 GMT
+  recorded_with: vcr/0.6.0, webmockr/0.7.4
+- request:
+    method: head
+    uri: http://bit.ly/2SfWO3K
+    body:
+      encoding: ''
+      string: ''
+    headers:
+      Accept: application/json, text/xml, application/xml, */*
+      Authorization: <<<not-my-bearer-token>>>
+  response:
+    status:
+      status_code: 200
+      category: Success
+      reason: OK
+      message: 'Success: (200) OK'
+    headers:
+      date: Thu, 28 Jan 2021 13:04:14 GMT
+      server: Apache
+      upgrade: h2,h2c
+      connection: Upgrade
+      cache-control: max-age=600
+      expires: Thu, 28 Jan 2021 13:14:14 GMT
+      vary: User-Agent
+      content-type: text/html; charset=UTF-8
+    body:
+      encoding: UTF-8
+      file: no
+      string: ''
+  recorded_at: 2021-01-28 13:04:15 GMT
   recorded_with: vcr/0.6.0, webmockr/0.7.4

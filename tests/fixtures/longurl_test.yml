@@ -1,0 +1,29 @@
+http_interactions:
+- request:
+    method: head
+    uri: http://bit.ly/2SfWO3K
+    body:
+      encoding: ''
+      string: ''
+    headers:
+      Accept: application/json, text/xml, application/xml, */*
+      Authorization: <<<not-my-bearer-token>>>
+  response:
+    status:
+      status_code: 200
+      category: Success
+      reason: OK
+      message: 'Success: (200) OK'
+    headers:
+      date: Thu, 28 Jan 2021 13:16:34 GMT
+      server: Apache
+      cache-control: max-age=600
+      expires: Thu, 28 Jan 2021 13:26:34 GMT
+      vary: User-Agent
+      content-type: text/html; charset=UTF-8
+    body:
+      encoding: UTF-8
+      file: no
+      string: ''
+  recorded_at: 2021-01-28 13:16:35 GMT
+  recorded_with: vcr/0.6.0, webmockr/0.7.4

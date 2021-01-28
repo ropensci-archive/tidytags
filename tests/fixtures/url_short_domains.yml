@@ -1,0 +1,92 @@
+http_interactions:
+- request:
+    method: head
+    uri: http://bit.ly/2SfWO3K
+    body:
+      encoding: ''
+      string: ''
+    headers:
+      Accept: application/json, text/xml, application/xml, */*
+      Authorization: <<<not-my-bearer-token>>>
+  response:
+    status:
+      status_code: 200
+      category: Success
+      reason: OK
+      message: 'Success: (200) OK'
+    headers:
+      date: Thu, 28 Jan 2021 13:16:33 GMT
+      server: Apache
+      upgrade: h2,h2c
+      connection: Upgrade
+      cache-control: max-age=600
+      expires: Thu, 28 Jan 2021 13:26:33 GMT
+      vary: User-Agent
+      content-type: text/html; charset=UTF-8
+    body:
+      encoding: UTF-8
+      file: no
+      string: ''
+  recorded_at: 2021-01-28 13:16:35 GMT
+  recorded_with: vcr/0.6.0, webmockr/0.7.4
+- request:
+    method: head
+    uri: http://bit.ly/36KWct1
+    body:
+      encoding: ''
+      string: ''
+    headers:
+      Accept: application/json, text/xml, application/xml, */*
+      Authorization: <<<not-my-bearer-token>>>
+  response:
+    status:
+      status_code: 200
+      category: Success
+      reason: OK
+      message: 'Success: (200) OK'
+    headers:
+      access-control-allow-headers: Content-Type
+      access-control-allow-methods: POST
+      access-control-allow-origin: '*'
+      cache-control: no-cache
+      content-length: '108333'
+      content-type: text/html; charset=utf-8
+      date: Thu, 28 Jan 2021 13:16:34 GMT
+      expires: '-1'
+      pragma: no-cache
+      set-cookie:
+      - dnn_IsMobile=False; path=/; HttpOnly
+      - language=en-US; path=/; HttpOnly
+      - .ASPXANONYMOUS=RZfrGVbLd4UyORkpOHKN3Ztx3donhjGaXghidC_-XswKXrr3l1V_g_KyFxIr1ysmxgQqXG0ZgA4KL-V6-TN38AP2Kj3Nz3IKz7hkgfwFsycbJnwG0;
+        expires=Wed, 07-Apr-2021 23:56:34 GMT; path=/; HttpOnly
+      - Analytics_VisitorId=3e66ece5-c174-49a3-aef8-754195bf8f56; expires=Sat, 27-Feb-2021
+        13:16:34 GMT; path=/; HttpOnly
+      - Analytics=SessionId=59d9a373-2d5a-4169-886e-b67ab24028e6&TabId=10062&ContentItemId=-1;
+        expires=Thu, 28-Jan-2021 14:16:34 GMT; path=/; HttpOnly
+      - DotNetNukeAnonymous=db7f9d63-ed97-4b56-a2a1-fb221380aff9; expires=Thu, 28-Jan-2021
+        13:36:34 GMT; path=/; HttpOnly
+      - ASP.NET_SessionId=hxen3ee5h0frtnfvbui413yg; path=/; HttpOnly; SameSite=Lax
+      - dnn_IsMobile=False; path=/; HttpOnly
+      - language=en-US; path=/; HttpOnly
+      - .ASPXANONYMOUS=RZfrGVbLd4UyORkpOHKN3Ztx3donhjGaXghidC_-XswKXrr3l1V_g_KyFxIr1ysmxgQqXG0ZgA4KL-V6-TN38AP2Kj3Nz3IKz7hkgfwFsycbJnwG0;
+        expires=Wed, 07-Apr-2021 23:56:34 GMT; path=/; HttpOnly
+      - Analytics_VisitorId=3e66ece5-c174-49a3-aef8-754195bf8f56; expires=Sat, 27-Feb-2021
+        13:16:34 GMT; path=/; HttpOnly
+      - Analytics=SessionId=59d9a373-2d5a-4169-886e-b67ab24028e6&TabId=10062&ContentItemId=-1;
+        expires=Thu, 28-Jan-2021 14:16:34 GMT; path=/; HttpOnly
+      - DotNetNukeAnonymous=db7f9d63-ed97-4b56-a2a1-fb221380aff9; expires=Thu, 28-Jan-2021
+        13:36:34 GMT; path=/; HttpOnly
+      - ASP.NET_SessionId=hxen3ee5h0frtnfvbui413yg; path=/; HttpOnly; SameSite=Lax
+      - __RequestVerificationToken=MSHAk51_stBgsq-kVXmuGmiOcKJmtNWrtkqxK36NbSv8ExpwzJ4QCwJHv1ZhYCk7ks803w2;
+        path=/; HttpOnly
+      strict-transport-security: max-age=31536000; includeSubDomains
+      x-aspnet-version: 4.0.30319
+      x-frame-options: SAMEORIGIN
+      x-ua-compatible: IE=edge
+      x-xss-protection: 1; mode=block
+    body:
+      encoding: UTF-8
+      file: no
+      string: ''
+  recorded_at: 2021-01-28 13:16:35 GMT
+  recorded_with: vcr/0.6.0, webmockr/0.7.4
