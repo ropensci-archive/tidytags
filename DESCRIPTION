@@ -49,7 +49,7 @@ Suggests:
     tidyverse,
     urltools,
     usethis,
-    vcr,
+    vcr (>= 0.6.0),
     webmockr
 Encoding: UTF-8
 VignetteBuilder: knitr
