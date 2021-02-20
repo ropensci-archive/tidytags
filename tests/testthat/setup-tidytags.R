@@ -23,7 +23,7 @@ if (!nzchar(Sys.getenv('TWITTER_PAT'))) {
       set_renv = TRUE
     )
     if (tolower(Sys.info()['sysname']) == "windows") {
-      rtweet:::load_tokens("C:\Users\runneradmin\Documents\.rtweet_token.rds")
+      rtweet:::load_tokens(file.path("C:", "Users","runneradmin","Documents", ".rtweet_token.rds"))
     }
 
   } else {
