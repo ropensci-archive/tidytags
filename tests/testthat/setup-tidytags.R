@@ -37,3 +37,5 @@ invisible(vcr::vcr_configure(
     ),
    filter_request_headers = list(Authorization = "<<<not-my-bearer-token>>>")
 ))
+
+print(rtweet::get_token())
