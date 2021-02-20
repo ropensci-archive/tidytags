@@ -22,7 +22,10 @@ if (!nzchar(Sys.getenv('TWITTER_PAT'))) {
       access_secret = "fakeaccesssecret12345",
       set_renv = TRUE
     )
-    rtweet:::load_tokens("C:\Users\runneradmin\Documents\.rtweet_token.rds")
+    if (tolower(Sys.info()['sysname']) == "windows") {
+      rtweet:::load_tokens("C:\Users\runneradmin\Documents\.rtweet_token.rds")
+    }
+
   } else {
     stop("No API key nor cassettes, tests cannot be run.",
          call. = FALSE)
