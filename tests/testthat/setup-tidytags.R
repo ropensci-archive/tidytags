@@ -39,3 +39,4 @@ invisible(vcr::vcr_configure(
 ))
 
 print(rtweet::get_token())
+print(rtweet:::twitter_pat())
