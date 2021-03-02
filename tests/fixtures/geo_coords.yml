@@ -1,83 +1,127 @@
 http_interactions:
 - request:
     method: get
-    uri: http://api.opencagedata.com/geocode/v1/json/?q=New%20York%2C%20NY&limit=1&no_annotations=1&no_dedupe=0&no_record=0&abbrv=0&add_request=1&key=<<<my_opencage_api_key>>>
+    uri: https://api.opencagedata.com/geocode/v1/json?q=New%20York%2C%20NY&limit=1&no_annotations=1&roadinfo=0&no_dedupe=0&no_record=1&abbrv=0&add_request=1&key=<<<my_opencage_api_key>>>
     body:
       encoding: ''
       string: ''
     headers:
+      Accept-Encoding: gzip, deflate
       Accept: application/json, text/xml, application/xml, */*
+      User-Agent: <https://github.com/ropensci/opencage>, version 0.2.2
       Authorization: <<<not-my-bearer-token>>>
   response:
     status:
-      status_code: 200
-      category: Success
-      reason: OK
-      message: 'Success: (200) OK'
+      status_code: '200'
+      message: OK
+      explanation: Request fulfilled, document follows
     headers:
-      date: Thu, 18 Feb 2021 16:14:55 GMT
+      status: HTTP/1.1 200 OK
+      date: Tue, 02 Mar 2021 12:04:33 GMT
       server: Apache
       access-control-allow-origin: '*'
       x-ratelimit-limit: '2500'
-      x-ratelimit-remaining: '2499'
-      x-ratelimit-reset: '1613692800'
+      x-ratelimit-remaining: '2496'
+      x-ratelimit-reset: '1614729600'
       vary: Accept-Encoding
       content-encoding: gzip
       x-frame-options: DENY
       x-xss-protection: 1; mode=block
-      content-length: '674'
+      content-length: '675'
       content-type: application/json; charset=utf-8
       strict-transport-security: max-age=31536000; includeSubDomains; preload
     body:
       encoding: UTF-8
       file: no
       string: '{"documentation":"https://opencagedata.com/api","licenses":[{"name":"see
-        attribution guide","url":"https://opencagedata.com/credits"}],"rate":{"limit":2500,"remaining":2499,"reset":1613692800},"request":{"abbrv":0,"add_request":1,"format":"json","key":"<<<my_opencage_api_key>>>","language":"en","limit":1,"min_confidence":0,"no_annotations":1,"no_dedupe":0,"no_record":0,"pretty":0,"proximity":"","query":"New
+        attribution guide","url":"https://opencagedata.com/credits"}],"rate":{"limit":2500,"remaining":2496,"reset":1614729600},"request":{"abbrv":0,"add_request":1,"format":"json","key":"<<<my_opencage_api_key>>>","language":"en","limit":1,"min_confidence":0,"no_annotations":1,"no_dedupe":0,"no_record":1,"pretty":0,"proximity":"","query":"New
         York, NY","roadinfo":0,"version":"v1"},"results":[{"bounds":{"northeast":{"lat":40.9161785,"lng":-73.7001809},"southwest":{"lat":40.477399,"lng":-74.25909}},"components":{"ISO_3166-1_alpha-2":"US","ISO_3166-1_alpha-3":"USA","_category":"place","_type":"city","city":"New
         York","continent":"North America","country":"United States","country_code":"us","state":"New
         York","state_code":"NY"},"confidence":2,"formatted":"New York, New York, United
         States of America","geometry":{"lat":40.7127281,"lng":-74.0060152}}],"status":{"code":200,"message":"OK"},"stay_informed":{"blog":"https://blog.opencagedata.com","twitter":"https://twitter.com/OpenCage"},"thanks":"For
-        using an OpenCage API","timestamp":{"created_http":"Thu, 18 Feb 2021 16:14:55
-        GMT","created_unix":1613664895},"total_results":1}'
-  recorded_at: 2021-02-18 16:14:55 GMT
+        using an OpenCage API","timestamp":{"created_http":"Tue, 02 Mar 2021 12:04:33
+        GMT","created_unix":1614686673},"total_results":1}'
+  recorded_at: 2021-03-02 12:04:38 GMT
   recorded_with: vcr/0.6.0, webmockr/0.7.4
 - request:
     method: get
-    uri: http://api.opencagedata.com/geocode/v1/json/?q=Kansas&limit=1&no_annotations=1&no_dedupe=0&no_record=0&abbrv=0&add_request=1&key=<<<my_opencage_api_key>>>
+    uri: https://api.opencagedata.com/geocode/v1/json?q=Kansas&limit=1&no_annotations=1&roadinfo=0&no_dedupe=0&no_record=1&abbrv=0&add_request=1&key=<<<my_opencage_api_key>>>
     body:
       encoding: ''
       string: ''
     headers:
+      Accept-Encoding: gzip, deflate
       Accept: application/json, text/xml, application/xml, */*
+      User-Agent: <https://github.com/ropensci/opencage>, version 0.2.2
       Authorization: <<<not-my-bearer-token>>>
   response:
     status:
-      status_code: 200
-      category: Success
-      reason: OK
-      message: 'Success: (200) OK'
+      status_code: '200'
+      message: OK
+      explanation: Request fulfilled, document follows
     headers:
-      date: Thu, 18 Feb 2021 16:14:55 GMT
+      status: HTTP/1.1 200 OK
+      date: Tue, 02 Mar 2021 12:04:35 GMT
       server: Apache
       access-control-allow-origin: '*'
       x-ratelimit-limit: '2500'
-      x-ratelimit-remaining: '2498'
-      x-ratelimit-reset: '1613692800'
+      x-ratelimit-remaining: '2495'
+      x-ratelimit-reset: '1614729600'
       vary: Accept-Encoding
       content-encoding: gzip
       x-frame-options: DENY
       x-xss-protection: 1; mode=block
-      content-length: '663'
+      content-length: '665'
       content-type: application/json; charset=utf-8
       strict-transport-security: max-age=31536000; includeSubDomains; preload
     body:
       encoding: UTF-8
       file: no
       string: '{"documentation":"https://opencagedata.com/api","licenses":[{"name":"see
-        attribution guide","url":"https://opencagedata.com/credits"}],"rate":{"limit":2500,"remaining":2498,"reset":1613692800},"request":{"abbrv":0,"add_request":1,"format":"json","key":"<<<my_opencage_api_key>>>","language":"en","limit":1,"min_confidence":0,"no_annotations":1,"no_dedupe":0,"no_record":0,"pretty":0,"proximity":"","query":"Kansas","roadinfo":0,"version":"v1"},"results":[{"bounds":{"northeast":{"lat":40.003095,"lng":-94.5882049},"southwest":{"lat":36.993125,"lng":-102.0517563}},"components":{"ISO_3166-1_alpha-2":"US","ISO_3166-1_alpha-3":"USA","_category":"place","_type":"state","continent":"North
+        attribution guide","url":"https://opencagedata.com/credits"}],"rate":{"limit":2500,"remaining":2495,"reset":1614729600},"request":{"abbrv":0,"add_request":1,"format":"json","key":"<<<my_opencage_api_key>>>","language":"en","limit":1,"min_confidence":0,"no_annotations":1,"no_dedupe":0,"no_record":1,"pretty":0,"proximity":"","query":"Kansas","roadinfo":0,"version":"v1"},"results":[{"bounds":{"northeast":{"lat":40.003095,"lng":-94.5882049},"southwest":{"lat":36.993125,"lng":-102.0517563}},"components":{"ISO_3166-1_alpha-2":"US","ISO_3166-1_alpha-3":"USA","_category":"place","_type":"state","continent":"North
         America","country":"United States","country_code":"us","state":"Kansas","state_code":"KS"},"confidence":1,"formatted":"Kansas,
         United States of America","geometry":{"lat":38.27312,"lng":-98.5821872}}],"status":{"code":200,"message":"OK"},"stay_informed":{"blog":"https://blog.opencagedata.com","twitter":"https://twitter.com/OpenCage"},"thanks":"For
-        using an OpenCage API","timestamp":{"created_http":"Thu, 18 Feb 2021 16:14:55
-        GMT","created_unix":1613664895},"total_results":1}'
-  recorded_at: 2021-02-18 16:14:55 GMT
+        using an OpenCage API","timestamp":{"created_http":"Tue, 02 Mar 2021 12:04:35
+        GMT","created_unix":1614686675},"total_results":1}'
+  recorded_at: 2021-03-02 12:04:38 GMT
+  recorded_with: vcr/0.6.0, webmockr/0.7.4
+- request:
+    method: get
+    uri: https://api.opencagedata.com/geocode/v1/json?q=%23TheGreatOutdoors&limit=1&no_annotations=1&roadinfo=0&no_dedupe=0&no_record=1&abbrv=0&add_request=1&key=<<<my_opencage_api_key>>>
+    body:
+      encoding: ''
+      string: ''
+    headers:
+      Accept-Encoding: gzip, deflate
+      Accept: application/json, text/xml, application/xml, */*
+      User-Agent: <https://github.com/ropensci/opencage>, version 0.2.2
+      Authorization: <<<not-my-bearer-token>>>
+  response:
+    status:
+      status_code: '200'
+      message: OK
+      explanation: Request fulfilled, document follows
+    headers:
+      status: HTTP/1.1 200 OK
+      date: Tue, 02 Mar 2021 12:04:37 GMT
+      server: Apache
+      access-control-allow-origin: '*'
+      x-ratelimit-limit: '2500'
+      x-ratelimit-remaining: '2494'
+      x-ratelimit-reset: '1614729600'
+      vary: Accept-Encoding
+      content-encoding: gzip
+      x-frame-options: DENY
+      x-xss-protection: 1; mode=block
+      content-length: '468'
+      content-type: application/json; charset=utf-8
+      strict-transport-security: max-age=31536000; includeSubDomains; preload
+    body:
+      encoding: UTF-8
+      file: no
+      string: '{"documentation":"https://opencagedata.com/api","licenses":[{"name":"see
+        attribution guide","url":"https://opencagedata.com/credits"}],"rate":{"limit":2500,"remaining":2494,"reset":1614729600},"request":{"abbrv":0,"add_request":1,"format":"json","key":"<<<my_opencage_api_key>>>","language":"en","limit":1,"min_confidence":0,"no_annotations":1,"no_dedupe":0,"no_record":1,"pretty":0,"proximity":"","query":"#TheGreatOutdoors","roadinfo":0,"version":"v1"},"results":[],"status":{"code":200,"message":"OK"},"stay_informed":{"blog":"https://blog.opencagedata.com","twitter":"https://twitter.com/OpenCage"},"thanks":"For
+        using an OpenCage API","timestamp":{"created_http":"Tue, 02 Mar 2021 12:04:37
+        GMT","created_unix":1614686677},"total_results":0}'
+  recorded_at: 2021-03-02 12:04:38 GMT
   recorded_with: vcr/0.6.0, webmockr/0.7.4

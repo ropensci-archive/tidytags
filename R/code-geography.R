@@ -14,9 +14,7 @@
 #'   saved the \code{.Renviron} file, quit your R session and restart. The function
 #'   \code{geocode_tags()} will work for you from now on.
 #' @param df A dataframe or tibble
-#' @param geo_key An OpenCage Developers API key that will need to be obtained
-#'   by the user
-#' @return A vector of geographic coordinates (i.e., latitude and longitude) that can then be
+#' @return A tibble of geographic coordinates (i.e., latitude and longitude) that can then be
 #'   used to plot locations on a map
 #' @seealso \href{https://opencagedata.com/api}{OpenCage Geocoding API Documentation}
 #'
@@ -41,51 +39,29 @@
 #' }
 #' @export
 geocode_tags <-
-  function(df, geo_key = Sys.getenv("OPENCAGE_KEY")) {
-    locations_only <-
-      dplyr::select(df, .data$location)
+  function(df) {
 
-    locations_filtered <-
+    df_cleaned <-
       dplyr::filter(
-        locations_only,
+        df,
         .data$location != "",
-        !(stringr::str_detect(df$location, "#"))
+        !is.na(.data$location)
       )
 
-    if (nrow(locations_filtered) == 0) {
+    if (nrow(df_cleaned) == 0) {
       stop("There are no valid geolocations to report.")
     }
 
-    get_geo <-
-      function(x) {
-        opencage::opencage_forward(
-          x,
-          key = geo_key,
-          no_annotations = TRUE,
-          limit = 1
-        )[[1]]
-      }
+    df_lat_lon <-
+      suppressMessages(opencage::oc_forward_df(df_cleaned,
+                                               placename = .data$location,
+                                               bind_cols = TRUE))
 
-    coords <-
-      suppressWarnings(
-        purrr::map_df(locations_filtered$location, get_geo)
-      )
+    df_final <-
+      dplyr::rename(df_lat_lon,
+                    latitude = .data$oc_lat,
+                    longitude = .data$oc_lng,
+                    formatted = .data$oc_formatted)
 
-    location_coords <-
-      dplyr::bind_cols(
-        locations_filtered,
-        coords
-        )
-
-    location_lat_lon <-
-      dplyr::select(
-        location_coords,
-        .data$location,
-        .data$geometry.lat,
-        .data$geometry.lng
-        )
-
-    names(location_lat_lon) <- c("location", "latitude", "longitude")
-
-    location_lat_lon
+    df_final
   }

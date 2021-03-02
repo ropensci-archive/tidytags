@@ -4,16 +4,13 @@
 \alias{geocode_tags}
 \title{Retrieve geographic coordinates}
 \usage{
-geocode_tags(df, geo_key = Sys.getenv("OPENCAGE_KEY"))
+geocode_tags(df)
 }
 \arguments{
 \item{df}{A dataframe or tibble}
-
-\item{geo_key}{An OpenCage Developers API key that will need to be obtained
-by the user}
 }
 \value{
-A vector of geographic coordinates (i.e., latitude and longitude) that can then be
+A tibble of geographic coordinates (i.e., latitude and longitude) that can then be
   used to plot locations on a map
 }
 \description{

@@ -1,5 +1,5 @@
 Package: tidytags
-Version: 0.1.1
+Version: 0.1.2
 Title: Simple Collection and Powerful Analysis of Twitter Data
 Authors@R: c(
     person("K. Bret", "Staudt Willet", , 
@@ -40,7 +40,7 @@ Suggests:
     knitr,
     longurl,
     mapview,
-    opencage,
+    opencage (>= 0.2.0),
     rmarkdown,
     roxygen2,
     sf,

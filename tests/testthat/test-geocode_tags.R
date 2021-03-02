@@ -1,8 +1,8 @@
 test_that("geo coordinates are extracted properly", {
   locations_real <-
     tibble::tibble(
-      screen_name = c("aect101", "aect102"),
-      location = c("New York, NY", "Kansas")
+      screen_name = c("aect101", "aect102", "aect103", "aect104", "aect105"),
+      location = c("New York, NY", "Kansas", "#TheGreatOutdoors", "", NA)
     )
 
     vcr::use_cassette("geo_coords", {
@@ -19,8 +19,8 @@ test_that("geo coordinates are extracted properly", {
 test_that("invalid geo coordinates produce warning", {
   locations_fake <-
     tibble::tibble(
-      screen_name = c("aect103", "aect104"),
-      location = c("#TheGreatOutdoors", "")
+      screen_name = c("aect104", "aect105"),
+      location = c("", NA)
     )
 
   vcr::use_cassette("geo_coords_error", {
