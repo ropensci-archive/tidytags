@@ -20,27 +20,27 @@ http_interactions:
       content-encoding: gzip
       content-length: '28'
       content-type: application/json;charset=utf-8
-      date: Thu, 17 Dec 2020 12:42:18 GMT
+      date: Mon, 08 Mar 2021 16:43:00 GMT
       expires: Tue, 31 Mar 1981 05:00:00 GMT
-      last-modified: Thu, 17 Dec 2020 12:42:18 GMT
+      last-modified: Mon, 08 Mar 2021 16:43:00 GMT
       pragma: no-cache
       server: tsa_b
       status: 200 OK
       strict-transport-security: max-age=631138519
-      x-access-level: read-write-directmessages
-      x-connection-hash: 4cc7c0a24f9348097dfbe8fbd14f60c8
+      x-access-level: read
+      x-connection-hash: 5e4949fa37b9b985646145523b5a6a05
       x-content-type-options: nosniff
       x-frame-options: SAMEORIGIN
       x-rate-limit-limit: '900'
-      x-rate-limit-remaining: '863'
-      x-rate-limit-reset: '1608209141'
-      x-response-time: '27'
-      x-transaction: 00ebdb4300dc862c
+      x-rate-limit-remaining: '864'
+      x-rate-limit-reset: '1615222051'
+      x-response-time: '13'
+      x-transaction: 0009cc8700620219
       x-twitter-response-tags: BouncerCompliant
       x-xss-protection: '0'
     body:
       encoding: UTF-8
       file: no
       string: '[]'
-  recorded_at: 2020-12-17 12:42:18 GMT
+  recorded_at: 2021-03-08 16:43:00 GMT
   recorded_with: vcr/0.6.0, webmockr/0.7.4

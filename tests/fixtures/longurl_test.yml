@@ -15,15 +15,15 @@ http_interactions:
       reason: OK
       message: 'Success: (200) OK'
     headers:
-      date: Thu, 28 Jan 2021 13:16:34 GMT
+      date: Mon, 08 Mar 2021 16:47:09 GMT
       server: Apache
       cache-control: max-age=600
-      expires: Thu, 28 Jan 2021 13:26:34 GMT
+      expires: Mon, 08 Mar 2021 16:57:09 GMT
       vary: User-Agent
       content-type: text/html; charset=UTF-8
     body:
       encoding: UTF-8
       file: no
       string: ''
-  recorded_at: 2021-01-28 13:16:35 GMT
+  recorded_at: 2021-03-08 16:47:10 GMT
   recorded_with: vcr/0.6.0, webmockr/0.7.4

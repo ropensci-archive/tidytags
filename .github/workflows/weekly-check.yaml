@@ -14,8 +14,9 @@ on:
       - main
       - master
   schedule:
-    - cron:  '0 * * * * '
-    # Scheduled to run every Sunday at midnight
+    - cron:  '0 * * * *'
+    # Scheduled to run every Sunday at midnight: '0 0 * * Sun'
+    # Scheduled to run every hour: '0 * * * *'
     # Format: <minutes> <hours> <days of month> <months> <days of week>
 
 name: R-CMD-check
@@ -37,13 +38,13 @@ jobs:
       R_REMOTES_NO_ERRORS_FROM_WARNINGS: true
       RSPM: ${{ matrix.config.rspm }}
       GITHUB_PAT: ${{ secrets.GITHUB_TOKEN }}
+      VCR_TURN_OFF: ${{ matrix.config.vcrturnoff }}
       OPENCAGE_KEY: ${{ secrets.OPENCAGE_KEY }}
       TWITTER_APP: ${{ secrets.TWITTER_APP }}
       TWITTER_API_KEY: ${{ secrets.TWITTER_API_KEY }}
       TWITTER_API_SECRET: ${{ secrets.TWITTER_API_SECRET }}
       TWITTER_ACCESS_TOKEN: ${{ secrets.TWITTER_ACCESS_TOKEN }}
       TWITTER_ACCESS_TOKEN_SECRET: ${{ secrets.TWITTER_ACCESS_TOKEN_SECRET }}
-      VCR_TURN_OFF: ${{ matrix.config.vcrturnoff }}
 
     steps:
       - uses: actions/checkout@v2
