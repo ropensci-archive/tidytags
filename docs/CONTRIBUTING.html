@@ -71,7 +71,7 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="index.html">tidytags</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.1.1</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.1.2</span>
       </span>
     </div>
 
@@ -225,6 +225,7 @@
 <span class="kw">devtools</span>::<span class="fu"><a href="https://devtools.r-lib.org//reference/test.html">test</a></span>()
 <span class="kw">devtools</span>::<span class="fu"><a href="https://devtools.r-lib.org//reference/test.html">test_coverage</a></span>()
 </pre></div>
+<p>Note that because {tidytags} queries OpenCage and Twitter APIs, testing can be a bit tricky. Be sure to follow the <a href="https://bretsw.github.io/tidytags/articles/setup.html">Getting started with tidytags</a> vignette for establishing your own OpenCage API key and Twitter API tokens to conduct local testing. For CI testing, view the <a href="tests/testthat/setup-tidytags.R">setup-tidytags.R</a> file in the package testing documentation to see how fake OAuth tokens are set up. The <a href="https://books.ropensci.org/http-testing/index.html">HTTP testing in R</a> book is an invaluable resource.</p>
 </div>
 <div id="re-check" class="section level4">
 <h4 class="hasAnchor">

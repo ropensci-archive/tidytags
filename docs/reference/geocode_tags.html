@@ -84,7 +84,7 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">tidytags</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.1.1</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.1.2</span>
       </span>
     </div>
 
@@ -156,7 +156,7 @@
   <code>geocode_tags()</code> will work for you from now on.</p>
     </div>
 
-    <pre class="usage"><span class='fu'>geocode_tags</span>(<span class='kw'>df</span>, geo_key = <span class='fu'><a href='https://rdrr.io/r/base/Sys.getenv.html'>Sys.getenv</a></span>(<span class='st'>"OPENCAGE_KEY"</span>))</pre>
+    <pre class="usage"><span class='fu'>geocode_tags</span>(<span class='kw'>df</span>)</pre>
 
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
     <table class="ref-arguments">
@@ -165,16 +165,11 @@
       <th>df</th>
       <td><p>A dataframe or tibble</p></td>
     </tr>
-    <tr>
-      <th>geo_key</th>
-      <td><p>An OpenCage Developers API key that will need to be obtained
-by the user</p></td>
-    </tr>
     </table>
 
     <h2 class="hasAnchor" id="value"><a class="anchor" href="#value"></a>Value</h2>
 
-    <p>A vector of geographic coordinates (i.e., latitude and longitude) that can then be
+    <p>A tibble of geographic coordinates (i.e., latitude and longitude) that can then be
   used to plot locations on a map</p>
     <h2 class="hasAnchor" id="see-also"><a class="anchor" href="#see-also"></a>See also</h2>
 

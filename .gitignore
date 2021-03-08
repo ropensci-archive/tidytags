@@ -3,7 +3,7 @@
 .RData
 .Ruserdata
 .httr-oauth
-*.rds
 inst/doc
 doc
 Meta
+*.rds

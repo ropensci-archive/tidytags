@@ -8,12 +8,12 @@
 [![Project Status: Active – The project has reached a stable, usable
 state and is being actively
 developed.](https://www.repostatus.org/badges/latest/active.svg)](https://www.repostatus.org/#active)
-[![Last-changedate](https://img.shields.io/github/last-commit/bretsw/tidytags.svg)](https://github.com/bretsw/tidytags/commits/main)
-[![GitHub
-issues](https://img.shields.io/github/issues/bretsw/tidytags.svg?style=popout)](https://github.com/bretsw/tidytags/issues/)
 [![CI - GitHub
 Actions](https://github.com/bretsw/tidytags/workflows/R-CMD-check/badge.svg)](https://github.com/bretsw/tidytags/actions)
 [![codecov](https://codecov.io/gh/bretsw/tidytags/branch/master/graph/badge.svg)](https://codecov.io/gh/bretsw/tidytags)
+[![Last-changedate](https://img.shields.io/github/last-commit/bretsw/tidytags.svg)](https://github.com/bretsw/tidytags/commits/main)
+[![GitHub
+issues](https://img.shields.io/github/issues/bretsw/tidytags.svg?style=popout)](https://github.com/bretsw/tidytags/issues/)
 [![lifecycle](https://img.shields.io/badge/lifecycle-maturing-blue.svg)](https://www.tidyverse.org/lifecycle/#maturing)
 [![license](https://img.shields.io/badge/license-GPL3-9cf.svg)](https://www.gnu.org/licenses/gpl.html)
 <!-- badges: end -->
@@ -113,15 +113,15 @@ Github](https://github.com/bretsw/tidytags/issues/).
 
 You may also wish too try some general troubleshooting strategies:
 
-  - Try to find out what the specific problem is
-      - Identify what is *not* causing the problem
-  - “Unplug and plug it back in” - restart R, close and reopen R
-  - Reach out to others\! Sharing what is causing an issue can often
-    help to clarify the problem.
-      - RStudio Community - <https://community.rstudio.com/> (highly
-        recommended\!)
-      - Twitter hashtag: \#rstats
-  - General strategies on learning more:
+-   Try to find out what the specific problem is
+    -   Identify what is *not* causing the problem
+-   “Unplug and plug it back in” - restart R, close and reopen R
+-   Reach out to others! Sharing what is causing an issue can often help
+    to clarify the problem.
+    -   RStudio Community - <https://community.rstudio.com/> (highly
+        recommended!)
+    -   Twitter hashtag: \#rstats
+-   General strategies on learning more:
     <https://datascienceineducation.com/c17.html>
 
 ## Considerations Related to Ethics, Data Privacy, and Human Subjects Research

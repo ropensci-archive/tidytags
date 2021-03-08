@@ -1,8 +1,8 @@
-pandoc: 2.9.2.1
+pandoc: 2.11.2
 pkgdown: 1.6.1
 pkgdown_sha: ~
 articles:
   setup: setup.html
   tidytags-with-conf-hashtags: tidytags-with-conf-hashtags.html
-last_built: 2021-01-27T12:24Z
+last_built: 2021-03-08T12:23Z
 
