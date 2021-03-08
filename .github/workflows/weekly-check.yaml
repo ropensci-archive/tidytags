@@ -5,16 +5,8 @@
 ################################################################################
 
 on:
-  push:
-    branches:
-      - main
-      - master
-  pull_request:
-    branches:
-      - main
-      - master
   schedule:
-    - cron:  '0 8 * * Mon'
+    - cron:  '0 * * * *'
     # Scheduled to run every Sunday at midnight
     # Format: MM HH DD MM DW
 
