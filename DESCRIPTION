@@ -23,7 +23,6 @@ Depends:
     R (>= 4.0)
 Imports:
     dplyr (>= 0.8),
-    gargle (>= 0.5),
     googlesheets4 (>= 0.2),
     purrr (>= 0.3),
     readr (>= 1.3),
