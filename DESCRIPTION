@@ -35,6 +35,7 @@ Imports:
     tidyselect (>= 1.0)
 Suggests:
     beepr,
+    covr,
     ggplot2,
     ggraph,
     knitr,
