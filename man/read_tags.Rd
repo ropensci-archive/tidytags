@@ -4,15 +4,16 @@
 \alias{read_tags}
 \title{Retrieve a TAGS archive of tweets and bring into R}
 \usage{
-read_tags(url)
+read_tags(tags_id, google_key = Sys.getenv("GOOGLE_API_KEY"))
 }
 \arguments{
-\item{url}{A valid URL (i.e., hyperlink) to a TAGS tracker, or a Google Sheet
-identifier (i.e., the alphanumeric string following "https://docs.google.com/spreadsheets/d/"
-in the TAGS tracker's URL.)}
+\item{tags_id}{A Google Sheet identifier (i.e., the alphanumeric string
+following "https://docs.google.com/spreadsheets/d/" in the TAGS tracker's URL.)}
+
+\item{google_key}{A Google API key for accessing Google Sheets.}
 }
 \value{
-A dataframe of the TAGS archive of tweets
+A tibble of the TAGS archive of tweets
 }
 \description{
 Keep in mind that \code{read_tags()} uses the **googlesheets4** package,
@@ -22,18 +23,18 @@ Keep in mind that \code{read_tags()} uses the **googlesheets4** package,
   and the \code{Embed} field should be 'Web page.' If everything looks right,
   then click the \code{Publish} button. Next, click the \code{Share} button in the
   top right corner of the Google Sheets browser window, select \code{Get shareable link},
-  and set the permissions to 'Anyone with the link can view.' The URL needed for R
-  is simply the URL at the top of the web browser, just copy and paste at this point.
-  Be sure to put quotations marks around the URL when entering it into \code{read_tags()}.
+  and set the permissions to 'Anyone with the link can view.'
 }
 \examples{
 
 \dontrun{
 
-example_url <- "18clYlQeJOc6W5QRuSlJ6_v3snqKJImFhU42bRkM_OX8"
-read_tags(example_url)
+example_tags <- "18clYlQeJOc6W5QRuSlJ6_v3snqKJImFhU42bRkM_OX8"
+read_tags(example_tags)
 }
 }
 \seealso{
 Read more about \code{library(googlesheets4)} \href{https://github.com/tidyverse/googlesheets4}{here}.
+   If you need help obtaining and setting up a Google API key, read Pain Point #2
+   in the \href{https://bretsw.github.io/tidytags/articles/setup.html}{Getting started with tidytags} vignette.
 }

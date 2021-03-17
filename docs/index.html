@@ -122,11 +122,12 @@
 <div id="setup" class="section level2">
 <h2 class="hasAnchor">
 <a href="#setup" class="anchor"></a>Setup</h2>
-<p>For help with initial {tidytags} setup, see the <a href="https://bretsw.github.io/tidytags/articles/setup.html">Getting started with tidytags</a> vignette. Specifically, this guide offers help for three pain points:</p>
+<p>For help with initial {tidytags} setup, see the <a href="https://bretsw.github.io/tidytags/articles/setup.html">Getting started with tidytags</a> vignette. Specifically, this guide offers help for four pain points:</p>
 <ol>
 <li>Making sure your TAGS tracker can be accessed</li>
-<li>Getting and storing Twitter API keys</li>
-<li>Getting and storing a Google Geocoding API key</li>
+<li>Getting and storing a Google API key</li>
+<li>Getting and storing Twitter API tokens</li>
+<li>Getting and storing an OpenCage Geocoding API key</li>
 </ol>
 </div>
 <div id="tidytags-core-functions" class="section level2">
@@ -135,12 +136,13 @@
 <div id="read_tags" class="section level3">
 <h3 class="hasAnchor">
 <a href="#read_tags" class="anchor"></a>read_tags()</h3>
-<p>At its most basic level, {tidytags} allows you to import data from a <a href="https://tags.hawksey.info/">Twitter Archiving Google Sheet</a> (TAGS) into R. This is done with the <a href="https://CRAN.R-project.org/package=googlesheets4">{googlesheets4} package</a>. One requirement for using the {googlesheets4} package is that your TAGS tracker has been “published to the web.” (See the <a href="https://bretsw.github.io/tidytags/articles/setup.html">Getting started with tidytags</a> vignette, Pain Point #1, if you need help with this.) Once a TAGS tracker has been published to the web, you can import the TAGS archive into R using <code><a href="reference/read_tags.html">read_tags()</a></code>.</p>
+<p>At its most basic level, {tidytags} allows you to import data from a <a href="https://tags.hawksey.info/">Twitter Archiving Google Sheet</a> (TAGS) into R. This is done with the <a href="https://CRAN.R-project.org/package=googlesheets4">{googlesheets4} package</a>. One requirement for using the {googlesheets4} package is that your TAGS tracker has been “published to the web.” See the <a href="https://bretsw.github.io/tidytags/articles/setup.html">Getting started with tidytags</a> vignette, Pain Point #1, if you need help with this.</p>
+<p>Once a TAGS tracker has been published to the web, you can import the TAGS archive into R using <code><a href="reference/read_tags.html">read_tags()</a></code>. See the <a href="https://bretsw.github.io/tidytags/articles/setup.html">Getting started with tidytags</a> vignette, Pain Point #2, to set up API access to Google Sheets like the TAGS tracker.</p>
 </div>
 <div id="pull_tweet_data" class="section level3">
 <h3 class="hasAnchor">
 <a href="#pull_tweet_data" class="anchor"></a>pull_tweet_data()</h3>
-<p>With a TAGS archive imported into R, {tidytags} allows you to gather quite a bit more information related to the collected tweets with the <code><a href="reference/pull_tweet_data.html">pull_tweet_data()</a></code> function. This function uses the <a href="https://docs.ropensci.org/rtweet/index.html">{rtweet} package</a> (via <code><a href="https://rdrr.io/pkg/rtweet/man/lookup_statuses.html">rtweet::lookup_statuses()</a></code>) to query the Twitter API. This process requires Twitter API keys associated with an approved Twitter developer account. (See the <a href="https://bretsw.github.io/tidytags/articles/setup.html">Getting started with tidytags</a> vignette, Pain Point #2, if you need help with this.)</p>
+<p>With a TAGS archive imported into R, {tidytags} allows you to gather quite a bit more information related to the collected tweets with the <code><a href="reference/pull_tweet_data.html">pull_tweet_data()</a></code> function. This function uses the <a href="https://docs.ropensci.org/rtweet/index.html">{rtweet} package</a> (via <code><a href="https://rdrr.io/pkg/rtweet/man/lookup_statuses.html">rtweet::lookup_statuses()</a></code>) to query the Twitter API. This process requires Twitter API keys associated with an approved Twitter developer account. See the <a href="https://bretsw.github.io/tidytags/articles/setup.html">Getting started with tidytags</a> vignette, Pain Point #3, if you need help with this.</p>
 </div>
 </div>
 <div id="learning-more-about-tidytags" class="section level2">

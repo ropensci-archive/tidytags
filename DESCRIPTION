@@ -40,7 +40,7 @@ Suggests:
     knitr,
     longurl,
     mapview,
-    opencage (>= 0.2.0),
+    opencage (>= 0.2),
     rmarkdown,
     roxygen2,
     sf,
@@ -49,7 +49,7 @@ Suggests:
     tidyverse,
     urltools,
     usethis,
-    vcr (>= 0.6.0),
+    vcr (>= 0.6),
     webmockr
 Encoding: UTF-8
 VignetteBuilder: knitr

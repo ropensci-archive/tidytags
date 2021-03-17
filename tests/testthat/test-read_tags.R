@@ -1,6 +1,6 @@
 test_that("a TAGS tweet tracker is imported properly from Google Sheets", {
 
-  vcr::use_cassette("sample_tags", {
+  vcr::use_cassette("sample_tags1", {
     example_url <- "18clYlQeJOc6W5QRuSlJ6_v3snqKJImFhU42bRkM_OX8"
     sample_tags <- head(read_tags(example_url), 10)
   })

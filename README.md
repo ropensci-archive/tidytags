@@ -57,11 +57,12 @@ library(tidytags)
 
 For help with initial {tidytags} setup, see the [Getting started with
 tidytags](https://bretsw.github.io/tidytags/articles/setup.html)
-vignette. Specifically, this guide offers help for three pain points:
+vignette. Specifically, this guide offers help for four pain points:
 
 1.  Making sure your TAGS tracker can be accessed
-2.  Getting and storing Twitter API keys
-3.  Getting and storing a Google Geocoding API key
+2.  Getting and storing a Google API key
+3.  Getting and storing Twitter API tokens
+4.  Getting and storing an OpenCage Geocoding API key
 
 ## {tidytags} core functions
 
@@ -72,11 +73,15 @@ At its most basic level, {tidytags} allows you to import data from a
 R. This is done with the [{googlesheets4}
 package](https://CRAN.R-project.org/package=googlesheets4). One
 requirement for using the {googlesheets4} package is that your TAGS
-tracker has been “published to the web.” (See the [Getting started with
+tracker has been “published to the web.” See the [Getting started with
 tidytags](https://bretsw.github.io/tidytags/articles/setup.html)
-vignette, Pain Point \#1, if you need help with this.) Once a TAGS
-tracker has been published to the web, you can import the TAGS archive
-into R using `read_tags()`.
+vignette, Pain Point \#1, if you need help with this.
+
+Once a TAGS tracker has been published to the web, you can import the
+TAGS archive into R using `read_tags()`. See the [Getting started with
+tidytags](https://bretsw.github.io/tidytags/articles/setup.html)
+vignette, Pain Point \#2, to set up API access to Google Sheets like the
+TAGS tracker.
 
 ### pull\_tweet\_data()
 
@@ -86,9 +91,9 @@ quite a bit more information related to the collected tweets with the
 package](https://docs.ropensci.org/rtweet/index.html) (via
 `rtweet::lookup_statuses()`) to query the Twitter API. This process
 requires Twitter API keys associated with an approved Twitter developer
-account. (See the [Getting started with
+account. See the [Getting started with
 tidytags](https://bretsw.github.io/tidytags/articles/setup.html)
-vignette, Pain Point \#2, if you need help with this.)
+vignette, Pain Point \#3, if you need help with this.
 
 ## Learning more about tidytags
 

@@ -79,7 +79,7 @@
 
       
 
-      </header><script src="tidytags-with-conf-hashtags_files/header-attrs-2.6/header-attrs.js"></script><div class="row">
+      </header><script src="tidytags-with-conf-hashtags_files/header-attrs-2.7/header-attrs.js"></script><div class="row">
   <div class="col-md-9 contents">
     <div class="page-header toc-ignore">
       <h1 data-toc-skip>Using tidytags with a conference hashtag</h1>
@@ -146,7 +146,7 @@
 <p>The built-in default of <code><a href="../reference/pull_tweet_data.html">pull_tweet_data()</a></code> is to simply enter the dataframe retrieved from <code><a href="../reference/read_tags.html">read_tags()</a></code> and implement method B, retrieving metadata starting with tweet URLs. That is, <code><a href="../reference/pull_tweet_data.html">pull_tweet_data(read_tags(example_url))</a></code>. Take a quick look at the result, viewed with the <code>glimpse()</code> function from the {dplyr} package:</p>
 <div class="sourceCode" id="cb5"><pre class="downlit">
 <span class="kw">example_after_rtweet</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/pull_tweet_data.html">pull_tweet_data</a></span>(<span class="fu"><a href="../reference/read_tags.html">read_tags</a></span>(<span class="kw">tags_url</span>))
-<span class="kw">dplyr</span>::<span class="fu"><a href="https://tibble.tidyverse.org/reference/glimpse.html">glimpse</a></span>(<span class="kw">example_after_rtweet</span>)
+<span class="kw">dplyr</span>::<span class="fu"><a href="https://pillar.r-lib.org/reference/glimpse.html">glimpse</a></span>(<span class="kw">example_after_rtweet</span>)
 <span class="co">#&gt; Rows: 2,215</span>
 <span class="co">#&gt; Columns: 90</span>
 <span class="co">#&gt; $ user_id                 &lt;chr&gt; "14215524", "14215524", "14215524", "14215524", "14215524", "14215524",…</span>
@@ -450,7 +450,7 @@
 <p>Finally, {tidytags} also has functionality to add user-level data to an edgelist through the function <code><a href="../reference/add_users_data.html">tidytags::add_users_data()</a></code>. These additional features are very useful when taking an inferential approach to social network analysis, such as building <em>influence</em> or <em>selection</em> models.</p>
 <div class="sourceCode" id="cb20"><pre class="downlit">
 <span class="kw">example_senders_receivers_data</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/add_users_data.html">add_users_data</a></span>(<span class="kw">example_edgelist</span>)
-<span class="kw">dplyr</span>::<span class="fu"><a href="https://tibble.tidyverse.org/reference/glimpse.html">glimpse</a></span>(<span class="kw">example_senders_receivers_data</span>)
+<span class="kw">dplyr</span>::<span class="fu"><a href="https://pillar.r-lib.org/reference/glimpse.html">glimpse</a></span>(<span class="kw">example_senders_receivers_data</span>)
 <span class="co">#&gt; Rows: 4,656</span>
 <span class="co">#&gt; Columns: 181</span>
 <span class="co">#&gt; $ sender                           &lt;chr&gt; "lbukunAA", "bretsw", "bretsw", "bretsw", "bretsw", "bretsw", …</span>

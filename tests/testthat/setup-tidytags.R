@@ -3,11 +3,20 @@ library(rtweet)
 
 vcr_dir <- vcr::vcr_test_path("fixtures")
 
+if (!nzchar(Sys.getenv('GOOGLE_API_KEY'))) {
+  if (dir.exists(vcr_dir)) {
+    Sys.setenv('GOOGLE_API_KEY'="11a1111a111a1a1a1a111111a1aa11a1aaaaaa1")
+  } else {
+    stop("No Google API key nor cassettes, tests cannot be run.",
+         call. = FALSE)
+  }
+}
+
 if (!nzchar(Sys.getenv('OPENCAGE_KEY'))) {
   if (dir.exists(vcr_dir)) {
     Sys.setenv('OPENCAGE_KEY'="11a1111a111a1a1a1a111111a1aa11a1")
   } else {
-    stop("No API key nor cassettes, tests cannot be run.",
+    stop("No OpenCage API key nor cassettes, tests cannot be run.",
          call. = FALSE)
   }
 }
@@ -28,7 +37,7 @@ if (!nzchar(Sys.getenv('TWITTER_PAT'))) {
     }
 
   } else {
-    stop("No API key nor cassettes, tests cannot be run.",
+    stop("No Twitter token nor cassettes, tests cannot be run.",
          call. = FALSE)
   }
 }
@@ -37,8 +46,9 @@ invisible(vcr::vcr_configure(
   turned_off = FALSE,
   dir = vcr_dir,
   filter_sensitive_data =
-    list("<<<my_opencage_api_key>>>" = Sys.getenv('OPENCAGE_KEY'),
-         "<<<my_twitter_api_key>>>" = Sys.getenv('TWITTER_PAT')
+    list("<<<my_google_api_key>>>" = Sys.getenv('GOOGLE_API_KEY'),
+         "<<<my_opencage_api_key>>>" = Sys.getenv('OPENCAGE_KEY'),
+         "<<<my_twitter_api_token>>>" = Sys.getenv('TWITTER_PAT')
     ),
    filter_request_headers = list(Authorization = "<<<not-my-bearer-token>>>")
 ))
