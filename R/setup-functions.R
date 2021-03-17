@@ -25,15 +25,25 @@
 #' @export
 read_tags <-
   function(tags_id, google_key = Sys.getenv("GOOGLE_API_KEY")) {
+
+    #googlesheets4::gs4_deauth()
+    #googlesheets4::gs4_auth_configure(api_key = Sys.getenv("GOOGLE_API_KEY"))
+    #googlesheets4::gs4_api_key()
+    #googlesheets4::gs4_auth_configure(api_key = NULL)
+    #googlesheets4::range_read(googlesheets4::gs4_examples("deaths"))
+
+    #req <- googlesheets4::request_generate(
+    #  endpoint = "sheets.spreadsheets.get",
+    #  params = list(spreadsheetId = tags_id),
+    #  key = google_key,
+    #  token = NULL
+    #)
+
+    #resp <- googlesheets4::request_make(req)
+    #out <- gargle::response_process(resp)
+
     googlesheets4::gs4_deauth()
-
-    req <- googlesheets4::request_generate(
-      endpoint = "sheets.spreadsheets.get",
-      params = list(spreadsheetId = tags_id),
-      key = google_key,
-      token = NULL
-    )
-
+    googlesheets4::gs4_auth_configure(api_key = NULL)
     tweet_sheet <- googlesheets4::range_read(tags_id, sheet = 2)
     tweet_sheet
   }

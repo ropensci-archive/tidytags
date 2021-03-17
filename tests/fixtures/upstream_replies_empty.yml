@@ -1,0 +1,46 @@
+http_interactions:
+- request:
+    method: get
+    uri: https://api.twitter.com/1.1/statuses/lookup.json?id=NA&tweet_mode=extended
+    body:
+      encoding: ''
+      string: ''
+    headers:
+      Accept: application/json, text/xml, application/xml, */*
+      Authorization: <<<not-my-bearer-token>>>
+  response:
+    status:
+      status_code: 200
+      category: Success
+      reason: OK
+      message: 'Success: (200) OK'
+    headers:
+      cache-control: no-cache, no-store, must-revalidate, pre-check=0, post-check=0
+      content-disposition: attachment; filename=json.json
+      content-encoding: gzip
+      content-length: '28'
+      content-type: application/json;charset=utf-8
+      date: Wed, 17 Mar 2021 18:29:54 GMT
+      expires: Tue, 31 Mar 1981 05:00:00 GMT
+      last-modified: Wed, 17 Mar 2021 18:29:54 GMT
+      pragma: no-cache
+      server: tsa_b
+      status: 200 OK
+      strict-transport-security: max-age=631138519
+      x-access-level: read
+      x-connection-hash: 955cc298a0c4ca4d24d6631d156039d8
+      x-content-type-options: nosniff
+      x-frame-options: SAMEORIGIN
+      x-rate-limit-limit: '900'
+      x-rate-limit-remaining: '866'
+      x-rate-limit-reset: '1616006519'
+      x-response-time: '14'
+      x-transaction: 000ecb480071b102
+      x-twitter-response-tags: BouncerCompliant
+      x-xss-protection: '0'
+    body:
+      encoding: UTF-8
+      file: no
+      string: '[]'
+  recorded_at: 2021-03-17 18:29:54 GMT
+  recorded_with: vcr/0.6.0, webmockr/0.8.0
