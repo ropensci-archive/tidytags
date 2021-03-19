@@ -83,7 +83,7 @@ To use `read_tags()`, you will need a **Google API key** for Google Sheets. Foll
 
 2. Create an API key by clicking the `CREATE CREDENTIALS` button on the [API credentials](https://console.developers.google.com/apis/credentials) page. Name this key with a clearly identifiable title, such as "API key for tidytags."
 
-3. Click on the API key to edit it. In particular, add a Website restriction, `*sheets.googleapis.com/*`, so that your new Google API key can only be used to access Google Sheets.
+3. Click on the API key to edit it. Leave the "Application restrictions" settinig as `None`, but under "API restrictions" select `Restrict key` and then check the box next to `Google Sheets API`. This is the only API needed for {tidytags} and will ensure that your new Google API key can only be used to access Google Sheets.
 
 4. Bring the Google API key into R. Specifically, add the key to the `.Renviron` file. Edit this file directly using the `usethis::edit_r_environ(scope='user')` function. The format of the `.Renviron` file should be as follows (inputting your unique credentials after the `=` sign, with no quotation marks):
  

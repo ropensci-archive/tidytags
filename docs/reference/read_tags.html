@@ -47,9 +47,7 @@
   and the Embed field should be 'Web page.' If everything looks right,
   then click the Publish button. Next, click the Share button in the
   top right corner of the Google Sheets browser window, select Get shareable link,
-  and set the permissions to 'Anyone with the link can view.' The URL needed for R
-  is simply the URL at the top of the web browser, just copy and paste at this point.
-  Be sure to put quotations marks around the URL when entering it into read_tags()." />
+  and set the permissions to 'Anyone with the link can view.'" />
 
 
 
@@ -145,37 +143,40 @@
   and the <code>Embed</code> field should be 'Web page.' If everything looks right,
   then click the <code>Publish</code> button. Next, click the <code>Share</code> button in the
   top right corner of the Google Sheets browser window, select <code>Get shareable link</code>,
-  and set the permissions to 'Anyone with the link can view.' The URL needed for R
-  is simply the URL at the top of the web browser, just copy and paste at this point.
-  Be sure to put quotations marks around the URL when entering it into <code>read_tags()</code>.</p>
+  and set the permissions to 'Anyone with the link can view.'</p>
     </div>
 
-    <pre class="usage"><span class='fu'>read_tags</span>(<span class='kw'>tags_url</span>, google_key = <span class='fu'><a href='https://rdrr.io/r/base/Sys.getenv.html'>Sys.getenv</a></span>(<span class='st'>"GOOGLE_API_KEY"</span>))</pre>
+    <pre class="usage"><span class='fu'>read_tags</span>(<span class='kw'>tags_id</span>, google_key = <span class='fu'><a href='https://rdrr.io/r/base/Sys.getenv.html'>Sys.getenv</a></span>(<span class='st'>"GOOGLE_API_KEY"</span>))</pre>
 
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
     <table class="ref-arguments">
     <colgroup><col class="name" /><col class="desc" /></colgroup>
     <tr>
-      <th>url</th>
-      <td><p>A valid URL (i.e., hyperlink) to a TAGS tracker, or a Google Sheet
-identifier (i.e., the alphanumeric string following "https://docs.google.com/spreadsheets/d/"
-in the TAGS tracker's URL.)</p></td>
+      <th>tags_id</th>
+      <td><p>A Google Sheet identifier (i.e., the alphanumeric string
+following "https://docs.google.com/spreadsheets/d/" in the TAGS tracker's URL.)</p></td>
+    </tr>
+    <tr>
+      <th>google_key</th>
+      <td><p>A Google API key for accessing Google Sheets.</p></td>
     </tr>
     </table>
 
     <h2 class="hasAnchor" id="value"><a class="anchor" href="#value"></a>Value</h2>
 
-    <p>A dataframe of the TAGS archive of tweets</p>
+    <p>A tibble of the TAGS archive of tweets</p>
     <h2 class="hasAnchor" id="see-also"><a class="anchor" href="#see-also"></a>See also</h2>
 
-    <div class='dont-index'><p>Read more about <code><a href='https://github.com/tidyverse/googlesheets4'>library(googlesheets4)</a></code> <a href='https://github.com/tidyverse/googlesheets4'>here</a>.</p></div>
+    <div class='dont-index'><p>Read more about <code><a href='https://github.com/tidyverse/googlesheets4'>library(googlesheets4)</a></code> <a href='https://github.com/tidyverse/googlesheets4'>here</a>.
+   If you need help obtaining and setting up a Google API key, read Pain Point #2
+   in the <a href='https://bretsw.github.io/tidytags/articles/setup.html'>Getting started with tidytags</a> vignette.</p></div>
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
     <pre class="examples"><div class='input'>
 <span class='co'>if</span> (<span class='fl'>FALSE</span>) {
 
-<span class='kw'>example_url</span> <span class='op'>&lt;-</span> <span class='st'>"18clYlQeJOc6W5QRuSlJ6_v3snqKJImFhU42bRkM_OX8"</span>
-<span class='fu'>read_tags</span>(<span class='kw'>example_url</span>)
+<span class='kw'>example_tags</span> <span class='op'>&lt;-</span> <span class='st'>"18clYlQeJOc6W5QRuSlJ6_v3snqKJImFhU42bRkM_OX8"</span>
+<span class='fu'>read_tags</span>(<span class='kw'>example_tags</span>)
 }
 </div></pre>
   </div>

@@ -148,7 +148,7 @@
 <ol style="list-style-type: decimal">
 <li><p>Enable the Google Sheets API in the <a href="https://console.developers.google.com/apis/api/sheets.googleapis.com/">Google Developers Console</a>.</p></li>
 <li><p>Create an API key by clicking the <code>CREATE CREDENTIALS</code> button on the <a href="https://console.developers.google.com/apis/credentials">API credentials</a> page. Name this key with a clearly identifiable title, such as “API key for tidytags.”</p></li>
-<li><p>Click on the API key to edit it. In particular, add a Website restriction, <code>*sheets.googleapis.com/*</code>, so that your new Google API key can only be used to access Google Sheets.</p></li>
+<li><p>Click on the API key to edit it. Leave the “Application restrictions” settinig as <code>None</code>, but under “API restrictions” select <code>Restrict key</code> and then check the box next to <code>Google Sheets API</code>. This is the only API needed for {tidytags} and will ensure that your new Google API key can only be used to access Google Sheets.</p></li>
 <li><p>Bring the Google API key into R. Specifically, add the key to the <code>.Renviron</code> file. Edit this file directly using the <code><a href="https://usethis.r-lib.org/reference/edit.html">usethis::edit_r_environ(scope='user')</a></code> function. The format of the <code>.Renviron</code> file should be as follows (inputting your unique credentials after the <code><a href="https://rdrr.io/r/base/assignOps.html">=</a></code> sign, with no quotation marks):</p></li>
 </ol>
 <div class="sourceCode" id="cb1"><pre class="downlit">
