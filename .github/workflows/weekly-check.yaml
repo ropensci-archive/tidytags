@@ -2,27 +2,22 @@
 # For help debugging build failures open an issue on the RStudio community
 # with the 'github-actions' tag.
 # https://community.rstudio.com/new-topic?category=Package%20development&tags=github-actions
+# https://github.com/r-lib/actions
+# https://blog--simonpcouch.netlify.app/blog/r-github-actions-commit/
 ################################################################################
 
 on:
-  push:
-    branches:
-      - main
-      - master
-  pull_request:
-    branches:
-      - main
-      - master
   schedule:
-    - cron:  '0 0 * * Sun'
-    # Scheduled to run every Sunday at midnight: '0 0 * * Sun'
+    - cron:  '0 6 * * Sun'
+    # https://crontab.cronhub.io/
+    # Scheduled to run every Sunday at midnight: '0 0 * * SUN'
     # Scheduled to run every hour: '0 * * * *'
     # Format: <minutes> <hours> <days of month> <months> <days of week>
 
-name: R-CMD-check
+name: weekly-check
 
 jobs:
-  R-CMD-check:
+  weekly-check:
     if: github.event.pull_request.head.repo.full_name == github.repository
     runs-on: ${{ matrix.config.os }}
 
