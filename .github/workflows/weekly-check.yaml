@@ -8,16 +8,16 @@
 
 on:
   schedule:
-    - cron:  '0 6 * * Sun'
+    - cron:  '0 6 * * MON'
     # https://crontab.cronhub.io/
     # Scheduled to run every Sunday at midnight: '0 0 * * SUN'
     # Scheduled to run every hour: '0 * * * *'
     # Format: <minutes> <hours> <days of month> <months> <days of week>
 
-name: weekly-check
+name: R-CMD-check
 
 jobs:
-  weekly-check:
+  R-CMD-check:
     if: github.event.pull_request.head.repo.full_name == github.repository
     runs-on: ${{ matrix.config.os }}
 
