@@ -9,7 +9,7 @@
 
 on:
   schedule:
-    - cron:  '0 * * * *'
+    - cron:  '0 6 * * MON,WED,FRI'
     # https://crontab.cronhub.io/
     # Scheduled to run Mon-Wed-Fri: '0 6 * * MON,WED,FRI'
     # Scheduled to run every Sunday at midnight: '0 0 * * SUN'
