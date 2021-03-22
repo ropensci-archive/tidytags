@@ -20,7 +20,6 @@ name: with-real-requests
 
 jobs:
   with-real-requests:
-    if: github.event.pull_request.head.repo.full_name == github.repository
     runs-on: macOS-latest
 
     env:
