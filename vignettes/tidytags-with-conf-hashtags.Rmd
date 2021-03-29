@@ -196,7 +196,7 @@ In sum, although a TAGS tracker is great for easily collecting tweets over time 
 
 ## lookup_many_tweets()
 
-The Twitter API only allows the looking up of 90,000 tweet IDs at a time, a rate limit which resets after 15 minutes. Hence `rtweet::lookup_statuses()` will only return results for the first 90,000 tweet IDs in your dataset. The function `tidytags::lookup_many_tweets()` will automotically break your dataset into batches of 90,000 tweets, looking up one batch per 15 minutes until finished. Note that `lookup_many_tweets()` also works for datasets with fewer than 90,000 tweets as well.
+The Twitter API only allows the looking up of 90,000 tweet IDs at a time, a rate limit which resets after 15 minutes. Hence `rtweet::lookup_statuses()` will only return results for the first 90,000 tweet IDs in your dataset. The function `tidytags::lookup_many_tweets()` will automatically break your dataset into batches of 90,000 tweets, looking up one batch per 15 minutes until finished. Note that `lookup_many_tweets()` also works for datasets with fewer than 90,000 tweets as well.
 
 Because our AECT 2019 examples includes fewer than 90,000 tweets (and because `lookup_many_tweets()` involves waiting for 15 minutes between batches), we do not include an example here. However, this function can be used in the same way as `pull_tweet_data()`.
 

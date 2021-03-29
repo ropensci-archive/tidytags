@@ -61,6 +61,9 @@
     </li>
   </ul>
 </li>
+<li>
+  <a href="../news/index.html">Changelog</a>
+</li>
       </ul>
 <ul class="nav navbar-nav navbar-right">
 <li>
@@ -148,7 +151,7 @@
 <ol style="list-style-type: decimal">
 <li><p>Enable the Google Sheets API in the <a href="https://console.developers.google.com/apis/api/sheets.googleapis.com/">Google Developers Console</a>.</p></li>
 <li><p>Create an API key by clicking the <code>CREATE CREDENTIALS</code> button on the <a href="https://console.developers.google.com/apis/credentials">API credentials</a> page. Name this key with a clearly identifiable title, such as “API key for tidytags.”</p></li>
-<li><p>Click on the API key to edit it. Leave the “Application restrictions” settinig as <code>None</code>, but under “API restrictions” select <code>Restrict key</code> and then check the box next to <code>Google Sheets API</code>. This is the only API needed for {tidytags} and will ensure that your new Google API key can only be used to access Google Sheets.</p></li>
+<li><p>Click on the API key to edit it. Leave the “Application restrictions” setting as <code>None</code>, but under “API restrictions” select <code>Restrict key</code> and then check the box next to <code>Google Sheets API</code>. This is the only API needed for {tidytags} and will ensure that your new Google API key can only be used to access Google Sheets.</p></li>
 <li><p>Bring the Google API key into R. Specifically, add the key to the <code>.Renviron</code> file. Edit this file directly using the <code><a href="https://usethis.r-lib.org/reference/edit.html">usethis::edit_r_environ(scope='user')</a></code> function. The format of the <code>.Renviron</code> file should be as follows (inputting your unique credentials after the <code><a href="https://rdrr.io/r/base/assignOps.html">=</a></code> sign, with no quotation marks):</p></li>
 </ol>
 <div class="sourceCode" id="cb1"><pre class="downlit">
@@ -196,7 +199,7 @@
 <a href="#pain-point-4--getting-and-storing-a-opencage-geocoding-api-key" class="anchor"></a>Pain Point #4. Getting and storing a OpenCage Geocoding API key</h2>
 <p>The {tidytags} function <code><a href="../reference/geocode_tags.html">geocode_tags()</a></code> pulls from the OpenCage Geocoding API, which requires a OpenCage Geocoding API key. Getting an OpenCage Geocoding API key is more straightforward and immediate than the Twitter API token process.</p>
 <p>We switched to using OpenCage instead of the Google Maps API for several reasons (read more from OpenCage: <a href="https://opencagedata.com/guides/how-to-switch-from-google-maps-geocoding">Migrating from Google Maps</a>). We were primarily motivated by working with open data and then convinced by the difference in price point.</p>
-<p>For comparison, geocoding queries with the Google Maps API (see <a href="https://developers.google.com/maps/documentation/geocoding/usage-and-billing">Google pricing</a>) cost 0.005 USD for each search (5.00 USD per 1,000). Google gives a monthly credit of $200, so you can conduct <strong>40,000</strong> location searches per month for free. In contrast, OpenCage API allows 2,500 searches per day as part of a free trial, so you can conduct up to <strong>75,000</strong> per month for free. Once you need to scale up your searches, OpenCage offers a $50/month tier that allows 10,000 searches per day, or up to <strong>300,000</strong> in a month. In contrast, $50 to Gooogle would only get an additional 10,000 searches beyond the free 40,000, so $50/month would get you up to <strong>50,000</strong> searches in a month through Google. The pricing gap continues to widen as you scale up further.</p>
+<p>For comparison, geocoding queries with the Google Maps API (see <a href="https://developers.google.com/maps/documentation/geocoding/usage-and-billing">Google pricing</a>) cost 0.005 USD for each search (5.00 USD per 1,000). Google gives a monthly credit of $200, so you can conduct <strong>40,000</strong> location searches per month for free. In contrast, OpenCage API allows 2,500 searches per day as part of a free trial, so you can conduct up to <strong>75,000</strong> per month for free. Once you need to scale up your searches, OpenCage offers a $50/month tier that allows 10,000 searches per day, or up to <strong>300,000</strong> in a month. In contrast, $50 to Google would only get an additional 10,000 searches beyond the free 40,000, so $50/month would get you up to <strong>50,000</strong> searches in a month through Google. The pricing gap continues to widen as you scale up further.</p>
 <p>OpenCage does seem to be a bit flexible if the 2,500 queries per day are exceeded. However, if you greatly exceed this limit, they will send a warning and ask you to upgrade to a paid plan.</p>
 <div id="getting-the-access-key" class="section level3">
 <h3 class="hasAnchor">

@@ -61,6 +61,9 @@
     </li>
   </ul>
 </li>
+<li>
+  <a href="../news/index.html">Changelog</a>
+</li>
       </ul>
 <ul class="nav navbar-nav navbar-right">
 <li>
@@ -251,7 +254,7 @@
 <div id="lookup_many_tweets" class="section level2">
 <h2 class="hasAnchor">
 <a href="#lookup_many_tweets" class="anchor"></a>lookup_many_tweets()</h2>
-<p>The Twitter API only allows the looking up of 90,000 tweet IDs at a time, a rate limit which resets after 15 minutes. Hence <code><a href="https://rdrr.io/pkg/rtweet/man/lookup_statuses.html">rtweet::lookup_statuses()</a></code> will only return results for the first 90,000 tweet IDs in your dataset. The function <code><a href="../reference/lookup_many_tweets.html">tidytags::lookup_many_tweets()</a></code> will automotically break your dataset into batches of 90,000 tweets, looking up one batch per 15 minutes until finished. Note that <code><a href="../reference/lookup_many_tweets.html">lookup_many_tweets()</a></code> also works for datasets with fewer than 90,000 tweets as well.</p>
+<p>The Twitter API only allows the looking up of 90,000 tweet IDs at a time, a rate limit which resets after 15 minutes. Hence <code><a href="https://rdrr.io/pkg/rtweet/man/lookup_statuses.html">rtweet::lookup_statuses()</a></code> will only return results for the first 90,000 tweet IDs in your dataset. The function <code><a href="../reference/lookup_many_tweets.html">tidytags::lookup_many_tweets()</a></code> will automatically break your dataset into batches of 90,000 tweets, looking up one batch per 15 minutes until finished. Note that <code><a href="../reference/lookup_many_tweets.html">lookup_many_tweets()</a></code> also works for datasets with fewer than 90,000 tweets as well.</p>
 <p>Because our AECT 2019 examples includes fewer than 90,000 tweets (and because <code><a href="../reference/lookup_many_tweets.html">lookup_many_tweets()</a></code> involves waiting for 15 minutes between batches), we do not include an example here. However, this function can be used in the same way as <code><a href="../reference/pull_tweet_data.html">pull_tweet_data()</a></code>.</p>
 </div>
 <div id="process_tweets" class="section level2">

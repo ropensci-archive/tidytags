@@ -18,6 +18,7 @@ Description: The {tidytags} package coordinates the simplicity of collecting twe
     introduces functions developed to facilitate systematic yet flexible analyses 
     of data from Twitter.
 License: GPL-3
+Language: en-US
 URL: https://bretsw.github.io/tidytags/, https://github.com/bretsw/tidytags
 Depends: 
     R (>= 4.0)
