@@ -19,7 +19,8 @@ issues](https://img.shields.io/github/issues/bretsw/tidytags.svg?style=popout)](
 [![license](https://img.shields.io/badge/license-GPL3-9cf.svg)](https://www.gnu.org/licenses/gpl.html)
 <!-- badges: end -->
 
-Simple Collection and Powerful Analysis of Twitter Data
+Importing and Analyzing Twitter Data Collected with Twitter Archiving
+Google Sheets
 
 ## Overview
 
