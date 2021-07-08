@@ -1,5 +1,5 @@
 ---
-title: "tidytags: Simple Collection and Powerful Analysis of Twitter Data""
+title: "tidytags: Importing and Analyzing Twitter Data Collected with Twitter Archiving Google Sheets"
 authors:
   - affiliation: 1
     name: K. Bret Staudt Willet
@@ -18,7 +18,7 @@ tags:
   - wrapper
 affiliations:
   - index: 1
-    name: Michigan State University
+    name: Florida State University
   - index: 2
     name: University of Tennessee, Knoxville
 ---
