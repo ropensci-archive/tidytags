@@ -624,6 +624,8 @@ dplyr::glimpse(example_senders_receivers_data)
 #> $ profile_image_url_receiver       <chr> "http://pbs.twimg.com/profile_images/1086275206274895874/ABYBQ…
 ```
 
+We note that although use of Google Sheets is unidirectional (We use TAGS to access data and process the data in R but do not plan for users of the package to update the TAGS sheet with the processed data), you could push data to the TAGS sheet (using the [{googlesheets4}](https://github.com/tidyverse/googlesheets4) package) or store the processed data as a CSV (see `write_csv()`), among other options.
+
 ## Getting help
 
 
