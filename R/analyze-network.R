@@ -2,13 +2,14 @@
 #'
 #' Starting with a dataframe returned by \code{pull_tweet_data()},
 #'   \code{get_replies()} pulls out senders and receivers of reply tweets and
-#'   adds a new column \code{edge_type}. \code{get_replies()} is a useful function
-#'   in itself, but is also used in \code{create_edgelist()}.
+#'   adds a new column \code{edge_type}. \code{get_replies()} is a useful
+#'   function in itself, but is also used in \code{create_edgelist()}.
 #' @param df A dataframe returned by \code{pull_tweet_data()}
 #' @return A dataframe edgelist with column names 'sender', 'receiver', and
 #'   \code{edge_type}, which in this case the edge type is "reply"
-#' @seealso Compare to other \code{tidtags} functions such as \code{get_retweets()},
-#'   \code{get_quotes()}, \code{get_mentions()}, and \code{create_edgelist()}.
+#' @seealso Compare to other \code{tidytags} functions such as
+#'   \code{get_retweets()}, \code{get_quotes()}, \code{get_mentions()}, and
+#'   \code{create_edgelist()}.
 #' @examples
 #'
 #' \dontrun{
@@ -60,8 +61,9 @@ get_replies <-
 #' @param df A dataframe returned by \code{pull_tweet_data()}
 #' @return A dataframe edgelist with column names 'sender', 'receiver', and
 #'   \code{edge_type}, which in this case the edge type is "retweet"
-#' @seealso Compare to other \code{tidytags} functions such as \code{get_replies()},
-#'   \code{get_quotes()}, \code{get_mentions()}, and \code{create_edgelist()}.
+#' @seealso Compare to other \code{tidytags} functions such as
+#'   \code{get_replies()}, \code{get_quotes()}, \code{get_mentions()}, and
+#'   \code{create_edgelist()}.
 #' @examples
 #'
 #' \dontrun{
@@ -106,14 +108,15 @@ get_retweets <-
 #' Create an edgelist where interaction is defined by quote-tweeting
 #'
 #' Starting with a dataframe returned by \code{pull_tweet_data()},
-#'   \code{get_quotes()} pulls out senders and receivers of quote tweets and adds
-#'   a new column \code{edge_type}. \code{get_quotes()} is a useful function
-#'   in itself, but is also used in \code{create_edgelist()}.
+#'   \code{get_quotes()} pulls out senders and receivers of quote tweets and
+#'   adds a new column \code{edge_type}. \code{get_quotes()} is a useful
+#'   function in itself, but is also used in \code{create_edgelist()}.
 #' @param df A dataframe returned by \code{pull_tweet_data()}
 #' @return A dataframe edgelist with column names 'sender', 'receiver', and
 #'   \code{edge_type}, which in this case the edge type is "quote-tweet"
-#' @seealso Compare to other \code{tidtags} functions such as \code{get_replies()},
-#'   \code{get_retweets()}, \code{get_mentions()}, and \code{create_edgelist()}.
+#' @seealso Compare to other \code{tidytags} functions such as
+#'   \code{get_replies()}, \code{get_retweets()}, \code{get_mentions()}, and
+#'   \code{create_edgelist()}.
 #' @examples
 #'
 #' \dontrun{
@@ -165,8 +168,9 @@ get_quotes <-
 #' @param df A dataframe returned by \code{pull_tweet_data()}
 #' @return A dataframe edgelist with column names 'sender', 'receiver', and
 #'   \code{edge_type}, which in this case the edge type is "mention"
-#' @seealso Compare to other \code{tidtags} functions such as \code{get_replies()},
-#'   \code{get_retweets()}, \code{get_quotes()}, and \code{create_edgelist()}.
+#' @seealso Compare to other \code{tidytags} functions such as
+#'   \code{get_replies()}, \code{get_retweets()}, \code{get_quotes()}, and
+#'   \code{create_edgelist()}.
 #' @examples
 #'
 #' \dontrun{
@@ -220,10 +224,11 @@ get_mentions <-
 #'   \code{edge_type}.
 #' @param df A dataframe returned by \code{pull_tweet_data()}
 #' @return A dataframe edgelist with column names 'sender', 'receiver', and
-#'   \code{edge_type}, which in this case the edge type may be "reply", "retweet",
-#'   "quote", or "mention"
-#' @seealso Compare to other \code{tidtags} functions such as \code{get_replies()},
-#'   \code{get_retweets()}, \code{get_quotes()}, and \code{get_mentions()}.
+#'   \code{edge_type}, which in this case the edge type may be "reply",
+#'   "retweet", "quote", or "mention"
+#' @seealso Compare to other \code{tidytags} functions such as
+#'   \code{get_replies()}, \code{get_retweets()}, \code{get_quotes()}, and
+#'   \code{get_mentions()}.
 #' @examples
 #'
 #' \dontrun{

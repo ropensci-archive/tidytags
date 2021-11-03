@@ -1,4 +1,5 @@
-test_that("pull_tweet_data() is able to retrieve additional metadata starting with dataframe", {
+test_that("pull_tweet_data() is able to retrieve additional metadata starting
+          with dataframe", {
 
   vcr::use_cassette("sample_tags2", {
     sample_tags <- read_tags("18clYlQeJOc6W5QRuSlJ6_v3snqKJImFhU42bRkM_OX8")
@@ -19,7 +20,8 @@ test_that("pull_tweet_data() is able to retrieve additional metadata starting wi
 
 
 
-test_that("pull_tweet_data() is able to retrieve additional metadata starting with tweet IDs", {
+test_that("pull_tweet_data() is able to retrieve additional metadata starting
+          with tweet IDs", {
 
   vcr::use_cassette("sample_tags2", {
     sample_tags <- read_tags("18clYlQeJOc6W5QRuSlJ6_v3snqKJImFhU42bRkM_OX8")
@@ -40,7 +42,8 @@ test_that("pull_tweet_data() is able to retrieve additional metadata starting wi
 
 
 
-test_that("pull_tweet_data() is able to retrieve additional metadata starting with tweet URLs", {
+test_that("pull_tweet_data() is able to retrieve additional metadata starting
+          with tweet URLs", {
 
   vcr::use_cassette("sample_tags2", {
     sample_tags <- read_tags("18clYlQeJOc6W5QRuSlJ6_v3snqKJImFhU42bRkM_OX8")

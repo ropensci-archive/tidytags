@@ -2,7 +2,7 @@
 
 You can also [submit an issue on Github](https://github.com/bretsw/tidytags/issues/).
 
-You may also wish too try some general troubleshooting strategies:
+You may also wish to try some general troubleshooting strategies:
 
 - Try to find out what the specific problem is
   -  Identify what is *not* causing the problem

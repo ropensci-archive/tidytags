@@ -91,8 +91,6 @@ For a walkthrough of numerous additional {tidytags} functions, see the [Using ti
 ```{r, child='./man/fragments/ethics.Rmd'} 
 ```
 
-**{tidytags} should be used in strict accordance with Twitter's [developer terms](https://developer.twitter.com/en/developer-terms/more-on-restricted-use-cases).**
-
 ## Contributing
 
 If you encounter an obvious bug for which there is not already an [active issue](https://github.com/bretsw/tidytags/issues), please [create a new issue](https://github.com/bretsw/tidytags/issues/new) with all code used (preferably a reproducible example) on Github.
