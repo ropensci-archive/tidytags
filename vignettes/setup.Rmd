@@ -20,11 +20,12 @@ knitr::opts_chunk$set(
   error = FALSE)
 ```
 
-This vignette introduces the initial setup necessary to use {tidytags}. Specifically, this guide offers help for three pain points:
+This vignette introduces the initial setup necessary to use {tidytags}. Specifically, this guide offers help for four key tasks.
 
 1. Making sure your TAGS tracker can be accessed
-2. Getting and storing Twitter API tokens
-3. Getting and storing an OpenCage Geocoding API key
+2. Getting and storing a Google API key
+3. Getting and storing Twitter API tokens
+4. Getting and storing a OpenCage Geocoding API key (optional; required only for geocoding)
 
 ## Considerations Related to Ethics, Data Privacy, and Human Subjects Research 
 
@@ -35,7 +36,7 @@ Before reading through these steps for setting up {tidytags}, please take a few 
 
 With these things in mind, let's get started working through some of the common pain points.
 
-## Pain Point #1. Making sure your TAGS tracker can be accessed
+## Key Task #1. Making sure your TAGS tracker can be accessed
 
 A core functionality of {tidytags} is collecting tweets continuously with a [Twitter Archiving Google Sheet](https://tags.hawksey.info/) (TAGS). Here we offer a brief overview, but be sure to read through the information on  the [TAGS landing page](https://tags.hawksey.info/get-tags/) for thorough instructions on getting started with TAGS.
 
@@ -75,7 +76,7 @@ Be sure to put quotations marks around the URL or sheet identifier when entering
 
 `read_tags("18clYlQeJOc6W5QRuSlJ6_v3snqKJImFhU42bRkM_OX8")`.
 
-## Pain Point #2. Getting and storing a Google API key
+## Key Task #2. Getting and storing a Google API key
 
 To use `read_tags()`, you will need a **Google API key** for Google Sheets. Follow the {gargle} package vignette [How to get your own API credentials](https://gargle.r-lib.org/articles/get-api-credentials.html) for a thorough guide through this process. The general steps are as follows:
 
@@ -93,7 +94,7 @@ GOOGLE_API_KEY = YourGoogleKey
 
 You can read more about the Google Sheets API [here](https://console.developers.google.com/apis/library/sheets.googleapis.com), and get help with the API [here](https://developers.google.com/sheets/api/support).
 
-## Pain Point #3. Getting and storing Twitter API token
+## Key Task #3. Getting and storing Twitter API token
 
 With a TAGS tracker archive imported into R, {tidytags} allows you to gather quite a bit more information related to the TAGS-collected tweets with the `pull_tweet_data()` function. This function builds off the [{rtweet} package](https://docs.ropensci.org/rtweet/) (via `rtweet::lookup_statuses()`) to query the Twitter API. However, to access the Twitter API, whether through {rtweet} or {tidytags}, you will need to apply for developers' access from Twitter. You do this [through Twitter's developer website](https://developer.twitter.com/en/apply-for-access).
 
@@ -132,9 +133,9 @@ This compiles together all the pieces from your Twitter API credentials into one
 
 To make sure the **Twitter API token** works, restart your R session and run the code `rtweet::get_token()`.
 
-## Pain Point #4. Getting and storing a OpenCage Geocoding API key
+## Key Task #4. Getting and storing a OpenCage Geocoding API key
 
-The {tidytags} function `geocode_tags()` pulls from the OpenCage Geocoding API, which requires a OpenCage Geocoding API key. Getting an OpenCage Geocoding API key is more straightforward and immediate than the Twitter API token process.
+The {tidytags} function `geocode_tags()` pulls from the OpenCage Geocoding API, which requires a OpenCage Geocoding API key. *Note that this key task is only required for geocoding and not other functionality provided by {tidytags}*. Getting an OpenCage Geocoding API key is more straightforward and immediate than the Twitter API token process.
 
 We switched to using OpenCage instead of the Google Maps API for several reasons (read more from OpenCage: [Migrating from Google Maps](https://opencagedata.com/guides/how-to-switch-from-google-maps-geocoding)). We were primarily motivated by working with open data and then convinced by the difference in price point. 
 
