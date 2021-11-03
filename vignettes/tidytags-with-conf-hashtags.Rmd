@@ -9,12 +9,9 @@ vignette: >
   %\VignetteEncoding{UTF-8}
 ---
 
-
-
- 
- ```r
+```{r}
  library(tidytags)
- ```
+```
 
 This vignette introduces how to use many {tidytags} functions through the example of analyzing tweets associated with the 2019 annual convention of the [Association for Educational Communications & Technology](https://aect.org/) (AECT): `#aect19`, `#aect2019`, or `#aect19inspired`.
 
@@ -48,7 +45,7 @@ To simply view a TAGS archive, you can use `read_tags()`. Here, we've openly sha
 If you're having trouble setting up or publishing the TAGS tracker, see the [Getting started with tidytags](https://bretsw.github.io/tidytags/articles/setup.html) vignette, **Pain Point #1**.
 
 
-```r
+```{r}
 tags_url <- "18clYlQeJOc6W5QRuSlJ6_v3snqKJImFhU42bRkM_OX8"
 example_df_all <- read_tags(tags_url)
 dim(example_df_all)
@@ -60,7 +57,7 @@ dim(example_df_all)
 This next code chunk does not run because it is just an example (notice that `eval = FALSE`).
 
 
-```r
+```{r}
 example_df_all <- readr::read_csv("my-downloaded-tags-file.csv")
 ```
 
@@ -73,7 +70,7 @@ Note that your dataset will often contain fewer rows after running `pull_tweet_d
 Here, we demonstrate two different ways of using `pull_tweet_data()`. The first method is to query the Twitter API with the tweet ID numbers from the `id_str` column returned by {rtweet}. However, a limitation of TAGS is that the numbers in this column are often corrupted because Google Sheets considers them very large numbers (instead of character strings) and rounds them by putting them into exponential form. The results of this first method are stored in the variable `example_after_rtweet_A` below. The second method pulls the tweet ID numbers from the tweet URLs. For example, the tweet with the URL `https://twitter.com/tweet__example/status/1176592704647716864` has a tweet ID of `1176592704647716864`. The results of this second method are stored in the variable `example_after_rtweet_B` below.
 
 
-```r
+```{r}
 example_after_rtweet_A <- pull_tweet_data(id_vector = example_df_all$id_str)
 example_after_rtweet_B <- pull_tweet_data(url_vector = example_df_all$status_url)
 ```
@@ -85,7 +82,7 @@ Notice how many more variables are in the dataset after using `pull_tweet_data()
 The built-in default of `pull_tweet_data()` is to simply enter the dataframe retrieved from  `read_tags()` and implement method B, retrieving metadata starting with tweet URLs. That is, `pull_tweet_data(read_tags(example_url))`. Take a quick look at the result, viewed with the `glimpse()` function from the {dplyr} package:
 
 
-```r
+```{r}
 example_after_rtweet <- pull_tweet_data(read_tags(tags_url))
 dplyr::glimpse(example_after_rtweet)
 #> Rows: 2,215
@@ -185,7 +182,7 @@ dplyr::glimpse(example_after_rtweet)
 At this point, the purpose of {tidytags} should be restated. TAGS tweet trackers are easily set up and maintained, and does an excellent job passively collecting tweets over time. For instance, the example TAGS tracker we demo here has collected thousands of tweets related to the AECT 2019 annual convention since September 30, 2019. In contrast, running this query now using `rtweet::search_tweets()` is limited by Twitter's API, meaning that an {rtweet} search can only go back in time 6-9 days, and is limited to returning at most 18,000 tweets per query. So, if you are interested in tweets about AECT 2019, today you could get almost no meaningful data using {rtweet} alone.
 
 
-```r
+```{r}
 rtweet_today <-
   rtweet::search_tweets("#aect19 OR #aect2019 OR #aect19inspired")
 ```
@@ -205,7 +202,7 @@ Because our AECT 2019 examples includes fewer than 90,000 tweets (and because `l
 After `pull_tweet_data()` is used to collect additional information from TAGS tweet IDs (in this case, the `example_after_rtweet` dataframe), the {tidytags} function `process_tweets()` can be used to calculate additional attributes and add these to the dataframe as new columns. Specifically, 10 new variables are added: word_count, character_count, mentions_count, hashtags_count_api, hashtags_count_regex, has_hashtags, urls_count_api, urls_count_regex, is_reply, and is_self_reply. This results in 100 variables associated with the collected tweets.
 
 
-```r
+```{r}
 example_processed <- process_tweets(example_after_rtweet)
 ```
 
@@ -214,7 +211,7 @@ Notice that you now have 100 variables associated 2215 tweets.
 At this point, depending on your research questions, you may wish to calculate some descriptive statistics associated with this tweet data. For instance the mean number of characters per tweet:
 
 
-```r
+```{r}
 mean_char <- round(mean(example_processed$character_count), 2)
 sd_char <- round(sd(example_processed$character_count), 2)
 ```
@@ -224,7 +221,7 @@ This shows that the mean number of characters per tweet is 182.81 (SD = 75.69).
 Or, perhaps, the mean, median, and max number of *hashtags per tweet* would be useful to know:
 
 
-```r
+```{r}
 mean_hash <- round(mean(example_processed$hashtags_count_regex), 2)
 sd_hash <- round(sd(example_processed$hashtags_count_regex), 2)
 median_hash <- median(example_processed$hashtags_count_regex)
@@ -240,7 +237,7 @@ The {tidytags} function `get_url_domain()` combines the `expand_urls()` function
 As an example, `get_url_domain()` finds that the domain in the shortened URL "http://bit.ly/2SfWO3K" is "aect.org":
 
 
-```r
+```{r}
 short_url <- "http://bit.ly/2SfWO3K"
 get_url_domain(short_url)
 #> [1] "aect.org"
@@ -250,8 +247,7 @@ It may also be of interest to examine which websites get linked to most often in
 
 Keep in mind, however, that this process is a bit slow.
 
-
-```r
+```{r}
 example_urls <- purrr::flatten_chr(example_processed$urls_url)
 example_urls <- example_urls[!is.na(example_urls)] # Remove NA values
 example_domains <- get_url_domain(example_urls)
@@ -297,16 +293,14 @@ You can pair `geocode_tags()` with the {mapview} package to allow for quick, int
 
 First, we identify the unique individuals in the dataset:
 
-
-```r
+```{r}
 example_unique_places <-
   dplyr::distinct(example_processed, location, .keep_all = TRUE)
 ```
 
 Then, we geocode the a random sample of 10% of locations with the `geocode_tags()` function, which takes a tibble and outputs a vector of geo-coordinates.
 
-
-```r
+```{r}
 sample_unique_places <- dplyr::sample_n(example_unique_places, 10)
 example_geo_coords <- geocode_tags(sample_unique_places)
 example_geo_coords
@@ -328,7 +322,7 @@ example_geo_coords
 Finally, it's easy to visualize the data, with a number of packages supporting the visualization of geo-coordinates. For instance, you can use the `mapview()` function from the {mapview} package:
 
 
-```r
+```{r}
 locations <-
   sf::st_as_sf(
     example_geo_coords,
@@ -353,7 +347,7 @@ If your research questions conceptualize your tweet dataset as a conversation or
 There is a solution to this problem. Because the Twitter API offers a `reply_to_status_id` column, it is possible to iteratively reconstruct reply threads in an *upstream* direction, that is, retrieving tweets composed earlier than replies in the dataset. We include the `get_upstream_replies` in {tidytags} to streamline this process. We also print output at each iteration to demonstrate how the process is progressing.
 
 
-```r
+```{r}
 example_with_upstream <- get_upstream_replies(example_processed)
 ```
 
@@ -368,7 +362,7 @@ Another useful approach to social media research is *social network analysis*. G
 Run `create_edgelist()` after completing `get_upstream_replies()` for a complete picture of the interactions.
 
 
-```r
+```{r}
 example_edgelist <- create_edgelist(example_with_upstream)
 head(example_edgelist, 20)
 #> # A tibble: 20 x 3
@@ -401,7 +395,7 @@ We can then easily visualize the edgelist as a sociogram using the {tidygraph} a
 First, create graph object using {tidygraph}:
 
 
-```r
+```{r}
 example_graph <-
   tidygraph::as_tbl_graph(example_edgelist)
 example_graph <-
@@ -412,7 +406,7 @@ example_graph <-
 Then plot using {ggraph}:
 
 
-```r
+```{r}
 ggraph::ggraph(example_graph, layout = 'kk') +
   ggraph::geom_edge_arc(alpha = .2, width = .5, strength = .5, edge_colour = 'steelblue') +
   ggraph::geom_node_point(alpha = .4, ggplot2::aes(size = popularity)) +
@@ -424,7 +418,7 @@ ggraph::ggraph(example_graph, layout = 'kk') +
 Running `create_edgelist()` also provides a simple way to re-look at how many tweets of each type are present in the dataset, using the `count()` function from {dplyr}.
 
 
-```r
+```{r}
 dplyr::count(example_edgelist, edge_type, sort = TRUE)
 #> # A tibble: 4 x 2
 #>   edge_type       n
@@ -442,7 +436,7 @@ Note that {tidytags} does not yet have a function `get_likes()` because this pro
 Finally, {tidytags} also has functionality to add user-level data to an edgelist through the function `tidytags::add_users_data()`. These additional features are very useful when taking an inferential approach to social network analysis, such as building *influence* or *selection* models.
 
 
-```r
+```{r}
 example_senders_receivers_data <- add_users_data(example_edgelist)
 dplyr::glimpse(example_senders_receivers_data)
 #> Rows: 4,656
