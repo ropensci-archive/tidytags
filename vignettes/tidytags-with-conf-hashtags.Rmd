@@ -628,7 +628,6 @@ We note that although use of Google Sheets is unidirectional (We use TAGS to acc
 
 ## Getting help
 
-
 {tidytags} is still a work in progress, so we fully expect that there are still some bugs to work out and functions to document better. If you find an issue, have a question, or think of something that you really wish {tidytags} would do for you, don't hesitate to [email Bret](mailto:bret@bretsw.com) or reach out on Twitter: [\@bretsw](https://twitter.com/bretsw) and [\@jrosenberg6432](https://twitter.com/jrosenberg6432).
 
 You can also [submit an issue on Github](https://github.com/bretsw/tidytags/issues/).
