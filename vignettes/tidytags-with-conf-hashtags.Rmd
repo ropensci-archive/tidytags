@@ -75,7 +75,7 @@ example_after_rtweet_A <- pull_tweet_data(id_vector = example_df_all$id_str)
 example_after_rtweet_B <- pull_tweet_data(url_vector = example_df_all$status_url)
 ```
 
-The TAGS tracker alone collected 18 variables associated with 2564 tweets. The first method searching with `id_str` collected 90 variables associated with 2215 tweets. The second method using 'tidytags::get_char_tweet_ids()' collected 90 variables associated with 2215 tweets.
+The TAGS tracker alone collected 18 variables associated with 2564 tweets. The first method searching with `id_str` collected 90 variables associated with 2215 tweets. The second method using 'tidytags::get_char_tweet_ids()' also collected 90 variables associated with 2215 tweets.
 
 Notice how many more variables are in the dataset after using `pull_tweet_data()`, and how many more tweets are in the dataset when using the second method. Therefore, we strongly recommend the second method, which is why we have included `get_char_tweet_ids()` in the {tidytags} package.
 
@@ -189,7 +189,7 @@ rtweet_today <-
 
 You can see that an {rtweet} search for #AECT19 tweets run today returns 0tweets.
 
-In sum, although a TAGS tracker is great for easily collecting tweets over time (breadth), it lacks depth in terms of metadata is returned related to the gathered tweets. Specifically, TAGS returns information on at most 18 variables; in contrast, {rtweet} returns information on up to 90 variables. Thus, our package {tidytags} brings together the breadth of TAGS with the depth of {rtweet}.
+In sum, although a TAGS tracker is great for easily collecting tweets over time (breadth), it lacks depth in terms of metadata related to the gathered tweets. Specifically, TAGS returns information on at most 18 variables; in contrast, {rtweet} returns information on up to 90 variables. Thus, our package {tidytags} brings together the breadth of TAGS with the depth of {rtweet}.
 
 ## lookup_many_tweets()
 

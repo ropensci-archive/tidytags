@@ -55,8 +55,9 @@ read_tags <-
 #'
 #' \dontrun{
 #' example_url <- "18clYlQeJOc6W5QRuSlJ6_v3snqKJImFhU42bRkM_OX8"
-#' get_char_tweet_ids(read_tags(example_url)[1:10, ])
-#' get_char_tweet_ids(url_vector = read_tags(example_url)$status_url[1:10])
+#' tags_content <- read_tags(example_url)
+#' get_char_tweet_ids(tags_content[1:10, ])
+#' get_char_tweet_ids(url_vector = tags_content$status_url[1:10])
 #' get_char_tweet_ids(url_vector =
 #'   "https://twitter.com/tweet__example/status/1176592704647716864")
 #' }
@@ -111,12 +112,13 @@ get_char_tweet_ids <-
 #' \dontrun{
 #'
 #' example_url <- "18clYlQeJOc6W5QRuSlJ6_v3snqKJImFhU42bRkM_OX8"
-#' pull_tweet_data(read_tags(example_url)[1:10, ])
-#' pull_tweet_data(read_tags(example_url), n = 10)
-#' pull_tweet_data(url_vector = read_tags(example_url)$status_url[1:10])
-#' pull_tweet_data(url_vector = read_tags(example_url)$status_url, n = 10)
-#' pull_tweet_data(id_vector = read_tags(example_url)$id_str[1:10])
-#' pull_tweet_data(id_vector = read_tags(example_url)$id_str, n = 10)
+#' tags_content <- read_tags(example_url)
+#' pull_tweet_data(tags_content[1:10, ])
+#' pull_tweet_data(tags_content, n = 10)
+#' pull_tweet_data(url_vector = tags_content$status_url[1:10])
+#' pull_tweet_data(url_vector = tags_content$status_url, n = 10)
+#' pull_tweet_data(id_vector = tags_content$id_str[1:10])
+#' pull_tweet_data(id_vector = tags_content$id_str, n = 10)
 #' pull_tweet_data(url_vector =
 #'   "https://twitter.com/tweet__example/status/1176592704647716864")
 #' pull_tweet_data(id_vector = "1176592704647716864")
@@ -222,6 +224,7 @@ lookup_many_tweets <-
 #' @param x A list
 #' @return The number of items in the list
 #' @keywords internal
+#' @nord
 length_with_na <-
   function(x) {
     ifelse(is.na(x), 0, purrr::map_int(x, length))
@@ -266,15 +269,11 @@ process_tweets <-
         is_reply = dplyr::if_else(!is.na(.data$reply_to_status_id),
                                   TRUE,
                                   FALSE),
-        is_self_reply = dplyr::if_else(
-          .data$is_reply,
-          dplyr::if_else(
-            .data$user_id == .data$reply_to_user_id,
-            TRUE,
-            FALSE
-          ),
-          FALSE
-        )
+        is_self_reply =
+          ifelse(
+            .data$is_reply & .data$user_id == .data$reply_to_user_id,
+            TRUE, FALSE
+          )
       )
 
     df
