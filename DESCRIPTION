@@ -52,16 +52,12 @@ Suggests:
     opencage (>= 0.2),
     readr,
     rmarkdown,
-    roxygen2,
     sf,
     testthat,
     tidygraph,
-    tidyverse,
     urltools,
-    usethis,
-    vcr (>= 0.6),
-    webmockr
+    vcr (>= 0.6)
 Encoding: UTF-8
 VignetteBuilder: knitr
 LazyData: TRUE
-RoxygenNote: 7.1.1
+RoxygenNote: 7.1.2

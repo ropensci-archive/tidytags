@@ -31,7 +31,7 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">tidytags</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.1.2</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.1.3</span>
       </span>
     </div>
 
@@ -68,7 +68,7 @@
 <ul class="nav navbar-nav navbar-right">
 <li>
   <a href="https://github.com/bretsw/tidytags">
-    <span class="fas fa-github fa-lg"></span>
+    <span class="fa fa-github fa-lg"></span>
      
   </a>
 </li>
@@ -82,7 +82,7 @@
 
       
 
-      </header><script src="setup_files/header-attrs-2.7/header-attrs.js"></script><div class="row">
+      </header><script src="setup_files/header-attrs-2.11/header-attrs.js"></script><div class="row">
   <div class="col-md-9 contents">
     <div class="page-header toc-ignore">
       <h1 data-toc-skip>Getting started with tidytags</h1>
@@ -96,25 +96,26 @@
 
     
     
-<p>This vignette introduces the initial setup necessary to use {tidytags}. Specifically, this guide offers help for three pain points:</p>
+<p>This vignette introduces the initial setup necessary to use {tidytags}. Specifically, this guide offers help for four key tasks.</p>
 <ol style="list-style-type: decimal">
 <li>Making sure your TAGS tracker can be accessed</li>
+<li>Getting and storing a Google API key</li>
 <li>Getting and storing Twitter API tokens</li>
-<li>Getting and storing an OpenCage Geocoding API key</li>
+<li>Getting and storing a OpenCage Geocoding API key (optional; required only for geocoding)</li>
 </ol>
 <div id="considerations-related-to-ethics-data-privacy-and-human-subjects-research" class="section level2">
 <h2 class="hasAnchor">
 <a href="#considerations-related-to-ethics-data-privacy-and-human-subjects-research" class="anchor"></a>Considerations Related to Ethics, Data Privacy, and Human Subjects Research</h2>
 <p>Before reading through these steps for setting up {tidytags}, please take a few moments to reflect on ethical considerations related to social media research.</p>
-<p>{tidytags} should be used in strict accordance with Twitter’s <a href="https://developer.twitter.com/en/developer-terms/more-on-restricted-use-cases">developer terms</a>.</p>
+<p><strong>{tidytags} should be used in strict accordance with Twitter’s <a href="https://developer.twitter.com/en/developer-terms/more-on-restricted-use-cases">developer terms</a>.</strong></p>
 <p>Although most Institutional Review Boards (IRBs) consider the Twitter data that {tidytags} analyzes to <em>not</em> necessarily be human subjects research, there remain ethical considerations pertaining to the use of the {tidytags} package that should be discussed.</p>
-<p>Even if {tidytags} use is not for research purposes (or if an IRB determines that a study is not human subjects research), “the release of personally identifiable or sensitive data is potentially harmful,” as noted in the <a href="https://devguide.ropensci.org/policies.html#ethics-data-privacy-and-human-subjects-research">rOpenSci Packages guide</a>. Therefore, although you <em>can</em> collect Twitter data (and you <em>can</em> use {tidytags} to analyze it), we urge care and thoughtfulness regarding how you analyze the data and communicate the results. In short, please remember that most (if not all) of the you collect may be about people—and <a href="https://journals.sagepub.com/doi/full/10.1177/2056305118763366">those people may not like the idea of their data being analyzed or included in research</a>.</p>
+<p>Even if {tidytags} use is not for research purposes (or if an IRB determines that a study is not human subjects research), “the release of personally identifiable or sensitive data is potentially harmful,” as noted in the <a href="https://devguide.ropensci.org/policies.html#ethics-data-privacy-and-human-subjects-research">rOpenSci Packages guide</a>. Therefore, although you <em>can</em> collect Twitter data (and you <em>can</em> use {tidytags} to analyze it), we urge care and thoughtfulness regarding how you analyze the data and communicate the results. In short, please remember that most (if not all) of the data you collect may be about people—and <a href="https://journals.sagepub.com/doi/full/10.1177/2056305118763366">those people may not like the idea of their data being analyzed or included in research</a>.</p>
 <p>We recommend <a href="https://aoir.org/ethics/">the Association of Internet Researchers’ (AoIR) resources related to conducting analyses in ethical ways</a> when working with data about people. AoIR’s <a href="https://aoir.org/reports/ethics3.pdf">ethical guidelines</a> may be especially helpful for navigating tensions related to collecting, analyzing, and sharing social media data.</p>
 <p>With these things in mind, let’s get started working through some of the common pain points.</p>
 </div>
-<div id="pain-point-1--making-sure-your-tags-tracker-can-be-accessed" class="section level2">
+<div id="key-task-1--making-sure-your-tags-tracker-can-be-accessed" class="section level2">
 <h2 class="hasAnchor">
-<a href="#pain-point-1--making-sure-your-tags-tracker-can-be-accessed" class="anchor"></a>Pain Point #1. Making sure your TAGS tracker can be accessed</h2>
+<a href="#key-task-1--making-sure-your-tags-tracker-can-be-accessed" class="anchor"></a>Key Task #1. Making sure your TAGS tracker can be accessed</h2>
 <p>A core functionality of {tidytags} is collecting tweets continuously with a <a href="https://tags.hawksey.info/">Twitter Archiving Google Sheet</a> (TAGS). Here we offer a brief overview, but be sure to read through the information on the <a href="https://tags.hawksey.info/get-tags/">TAGS landing page</a> for thorough instructions on getting started with TAGS.</p>
 <p>We recommend using <strong>TAGS v6.1</strong>.</p>
 <p align="center">
@@ -142,50 +143,47 @@
 <p align="center">
 <img src="files/TAGS-identifier-highlighted.png" alt="TAGS-identifier-highlighted" width="480"></p>
 <p>Be sure to put quotations marks around the URL or sheet identifier when entering it into <code><a href="../reference/read_tags.html">read_tags()</a></code> function. For example:</p>
-<p><code><a href="../reference/read_tags.html">read_tags("18clYlQeJOc6W5QRuSlJ6_v3snqKJImFhU42bRkM_OX8")</a></code>.</p>
+<p><code>read_tags("18clYlQeJOc6W5QRuSlJ6_v3snqKJImFhU42bRkM_OX8")</code>.</p>
 </div>
-<div id="pain-point-2--getting-and-storing-a-google-api-key" class="section level2">
+<div id="key-task-2--getting-and-storing-a-google-api-key" class="section level2">
 <h2 class="hasAnchor">
-<a href="#pain-point-2--getting-and-storing-a-google-api-key" class="anchor"></a>Pain Point #2. Getting and storing a Google API key</h2>
+<a href="#key-task-2--getting-and-storing-a-google-api-key" class="anchor"></a>Key Task #2. Getting and storing a Google API key</h2>
 <p>To use <code><a href="../reference/read_tags.html">read_tags()</a></code>, you will need a <strong>Google API key</strong> for Google Sheets. Follow the {gargle} package vignette <a href="https://gargle.r-lib.org/articles/get-api-credentials.html">How to get your own API credentials</a> for a thorough guide through this process. The general steps are as follows:</p>
 <ol style="list-style-type: decimal">
 <li><p>Enable the Google Sheets API in the <a href="https://console.developers.google.com/apis/api/sheets.googleapis.com/">Google Developers Console</a>.</p></li>
 <li><p>Create an API key by clicking the <code>CREATE CREDENTIALS</code> button on the <a href="https://console.developers.google.com/apis/credentials">API credentials</a> page. Name this key with a clearly identifiable title, such as “API key for tidytags.”</p></li>
 <li><p>Click on the API key to edit it. Leave the “Application restrictions” setting as <code>None</code>, but under “API restrictions” select <code>Restrict key</code> and then check the box next to <code>Google Sheets API</code>. This is the only API needed for {tidytags} and will ensure that your new Google API key can only be used to access Google Sheets.</p></li>
-<li><p>Bring the Google API key into R. Specifically, add the key to the <code>.Renviron</code> file. Edit this file directly using the <code><a href="https://usethis.r-lib.org/reference/edit.html">usethis::edit_r_environ(scope='user')</a></code> function. The format of the <code>.Renviron</code> file should be as follows (inputting your unique credentials after the <code><a href="https://rdrr.io/r/base/assignOps.html">=</a></code> sign, with no quotation marks):</p></li>
+<li><p>Bring the Google API key into R. Specifically, add the key to the <code>.Renviron</code> file. Edit this file directly using the <code>usethis::edit_r_environ(scope='user')</code> function. The format of the <code>.Renviron</code> file should be as follows (inputting your unique credentials after the <code>=</code> sign, with no quotation marks):</p></li>
 </ol>
-<div class="sourceCode" id="cb1"><pre class="downlit">
-<span class="kw">GOOGLE_API_KEY</span> <span class="op">=</span> <span class="kw">YourGoogleKey</span>
-</pre></div>
+<div class="sourceCode" id="cb1"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="va">GOOGLE_API_KEY</span> <span class="op">=</span> <span class="va">YourGoogleKey</span></code></pre></div>
 <p>You can read more about the Google Sheets API <a href="https://console.developers.google.com/apis/library/sheets.googleapis.com">here</a>, and get help with the API <a href="https://developers.google.com/sheets/api/support">here</a>.</p>
 </div>
-<div id="pain-point-3--getting-and-storing-twitter-api-token" class="section level2">
+<div id="key-task-3--getting-and-storing-twitter-api-token" class="section level2">
 <h2 class="hasAnchor">
-<a href="#pain-point-3--getting-and-storing-twitter-api-token" class="anchor"></a>Pain Point #3. Getting and storing Twitter API token</h2>
+<a href="#key-task-3--getting-and-storing-twitter-api-token" class="anchor"></a>Key Task #3. Getting and storing Twitter API token</h2>
 <p>With a TAGS tracker archive imported into R, {tidytags} allows you to gather quite a bit more information related to the TAGS-collected tweets with the <code><a href="../reference/pull_tweet_data.html">pull_tweet_data()</a></code> function. This function builds off the <a href="https://docs.ropensci.org/rtweet/">{rtweet} package</a> (via <code><a href="https://rdrr.io/pkg/rtweet/man/lookup_statuses.html">rtweet::lookup_statuses()</a></code>) to query the Twitter API. However, to access the Twitter API, whether through {rtweet} or {tidytags}, you will need to apply for developers’ access from Twitter. You do this <a href="https://developer.twitter.com/en/apply-for-access">through Twitter’s developer website</a>.</p>
 <div id="getting-access-token" class="section level3">
 <h3 class="hasAnchor">
 <a href="#getting-access-token" class="anchor"></a>Getting access token</h3>
 <p>Fortunately, {rtweet} documentation already contains a very thorough vignette, <a href="https://docs.ropensci.org/rtweet/articles/auth.html">Obtaining and using access tokens</a>, to guide you through the process of obtaining a Twitter API token. We recommend the second suggested method listed in the {rtweet} vignette, <a href="https://docs.ropensci.org/rtweet/articles/auth.html#access-tokensecret-method">2. Access token/secret method</a>.</p>
 <p>Following these directions, you will run the <code><a href="https://rdrr.io/pkg/rtweet/man/create_token.html">rtweet::create_token()</a></code> function to save your Twitter token.</p>
-<p>which saves your Twitter API key and token to the <code>.Renviron</code> file directly using the <code><a href="https://usethis.r-lib.org/reference/edit.html">usethis::edit_r_environ(scope='user')</a></code> function. The format of the <code>.Renviron</code> file should be as follows (inputting your unique credentials after the <code><a href="https://rdrr.io/r/base/assignOps.html">=</a></code> sign, with no quotation marks):</p>
-<div class="sourceCode" id="cb2"><pre class="downlit">
-<span class="kw">TWITTER_APP</span> <span class="op">=</span> <span class="kw">NameOfYourTwitterApp</span>
-<span class="kw">TWITTER_API_KEY</span> <span class="op">=</span> <span class="kw">YourConsumerKey</span>
-<span class="kw">TWITTER_API_SECRET</span> <span class="op">=</span> <span class="kw">YourConsumerSecretKey</span>
-<span class="kw">TWITTER_ACCESS_TOKEN</span> <span class="op">=</span> <span class="kw">YourAccessToken</span>
-<span class="kw">TWITTER_ACCESS_TOKEN_SECRET</span> <span class="op">=</span> <span class="kw">YourAccessTokenSecret</span>
-</pre></div>
+<p>which saves your Twitter API key and token to the <code>.Renviron</code> file directly using the <code>usethis::edit_r_environ(scope='user')</code> function. The format of the <code>.Renviron</code> file should be as follows (inputting your unique credentials after the <code>=</code> sign, with no quotation marks):</p>
+<div class="sourceCode" id="cb2"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="va">TWITTER_APP</span> <span class="op">=</span> <span class="va">NameOfYourTwitterApp</span>
+<span class="va">TWITTER_API_KEY</span> <span class="op">=</span> <span class="va">YourConsumerKey</span>
+<span class="va">TWITTER_API_SECRET</span> <span class="op">=</span> <span class="va">YourConsumerSecretKey</span>
+<span class="va">TWITTER_ACCESS_TOKEN</span> <span class="op">=</span> <span class="va">YourAccessToken</span>
+<span class="va">TWITTER_ACCESS_TOKEN_SECRET</span> <span class="op">=</span> <span class="va">YourAccessTokenSecret</span></code></pre></div>
 <p>Note that there are two separate <strong>secrets</strong>: <code>TWITTER_API_SECRET</code> (used to authenticate at the application level, which is most relevant when using {tidytags}) and <code>TWITTER_ACCESS_TOKEN_SECRET</code>(used to authenticate at the end-user level, which can allow access to one’s own private user data).</p>
 <p>Once you’ve added these Twitter API pieces to <code>.Renviron</code>, run <code><a href="https://rdrr.io/pkg/rtweet/man/create_token.html">rtweet::create_token()</a></code> with the following parameters:</p>
-<div class="sourceCode" id="cb3"><pre class="downlit">
-<span class="kw">token</span> <span class="op">&lt;-</span> <span class="kw">rtweet</span>::<span class="fu"><a href="https://rdrr.io/pkg/rtweet/man/create_token.html">create_token</a></span>(
-    app = <span class="fu"><a href="https://rdrr.io/r/base/Sys.getenv.html">Sys.getenv</a></span>(<span class="st">'TWITTER_APP'</span>),
-    consumer_key = <span class="fu"><a href="https://rdrr.io/r/base/Sys.getenv.html">Sys.getenv</a></span>(<span class="st">'TWITTER_API_KEY'</span>),
-    consumer_secret = <span class="fu"><a href="https://rdrr.io/r/base/Sys.getenv.html">Sys.getenv</a></span>(<span class="st">'TWITTER_API_SECRET'</span>),
-    access_token = <span class="fu"><a href="https://rdrr.io/r/base/Sys.getenv.html">Sys.getenv</a></span>(<span class="st">'TWITTER_ACCESS_TOKEN'</span>),
-    access_secret = <span class="fu"><a href="https://rdrr.io/r/base/Sys.getenv.html">Sys.getenv</a></span>(<span class="st">'TWITTER_ACCESS_TOKEN_SECRET'</span>))
-</pre></div>
+<div class="sourceCode" id="cb3"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="va">token</span> <span class="op">&lt;-</span> <span class="fu">rtweet</span><span class="fu">::</span><span class="fu"><a href="https://rdrr.io/pkg/rtweet/man/create_token.html">create_token</a></span><span class="op">(</span>
+    app <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/Sys.getenv.html">Sys.getenv</a></span><span class="op">(</span><span class="st">'TWITTER_APP'</span><span class="op">)</span>,
+    consumer_key <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/Sys.getenv.html">Sys.getenv</a></span><span class="op">(</span><span class="st">'TWITTER_API_KEY'</span><span class="op">)</span>,
+    consumer_secret <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/Sys.getenv.html">Sys.getenv</a></span><span class="op">(</span><span class="st">'TWITTER_API_SECRET'</span><span class="op">)</span>,
+    access_token <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/Sys.getenv.html">Sys.getenv</a></span><span class="op">(</span><span class="st">'TWITTER_ACCESS_TOKEN'</span><span class="op">)</span>,
+    access_secret <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/Sys.getenv.html">Sys.getenv</a></span><span class="op">(</span><span class="st">'TWITTER_ACCESS_TOKEN_SECRET'</span><span class="op">)</span><span class="op">)</span></code></pre></div>
 <p>This compiles together all the pieces from your Twitter API credentials into one token (an .rds file) that is stored securely on your local machine. {tidytags} functions will now retrieve this token in the background, as needed. You only ever have to set this up once (until you start working on a different computer or need to change your Twitter API token).</p>
 </div>
 <div id="authorization-in-future-r-sessions" class="section level3">
@@ -194,10 +192,10 @@
 <p>To make sure the <strong>Twitter API token</strong> works, restart your R session and run the code <code><a href="https://rdrr.io/pkg/rtweet/man/get_tokens.html">rtweet::get_token()</a></code>.</p>
 </div>
 </div>
-<div id="pain-point-4--getting-and-storing-a-opencage-geocoding-api-key" class="section level2">
+<div id="key-task-4--getting-and-storing-a-opencage-geocoding-api-key" class="section level2">
 <h2 class="hasAnchor">
-<a href="#pain-point-4--getting-and-storing-a-opencage-geocoding-api-key" class="anchor"></a>Pain Point #4. Getting and storing a OpenCage Geocoding API key</h2>
-<p>The {tidytags} function <code><a href="../reference/geocode_tags.html">geocode_tags()</a></code> pulls from the OpenCage Geocoding API, which requires a OpenCage Geocoding API key. Getting an OpenCage Geocoding API key is more straightforward and immediate than the Twitter API token process.</p>
+<a href="#key-task-4--getting-and-storing-a-opencage-geocoding-api-key" class="anchor"></a>Key Task #4. Getting and storing a OpenCage Geocoding API key</h2>
+<p>The {tidytags} function <code><a href="../reference/geocode_tags.html">geocode_tags()</a></code> pulls from the OpenCage Geocoding API, which requires a OpenCage Geocoding API key. <em>Note that this key task is only required for geocoding and not other functionality provided by {tidytags}</em>. Getting an OpenCage Geocoding API key is more straightforward and immediate than the Twitter API token process.</p>
 <p>We switched to using OpenCage instead of the Google Maps API for several reasons (read more from OpenCage: <a href="https://opencagedata.com/guides/how-to-switch-from-google-maps-geocoding">Migrating from Google Maps</a>). We were primarily motivated by working with open data and then convinced by the difference in price point.</p>
 <p>For comparison, geocoding queries with the Google Maps API (see <a href="https://developers.google.com/maps/documentation/geocoding/usage-and-billing">Google pricing</a>) cost 0.005 USD for each search (5.00 USD per 1,000). Google gives a monthly credit of $200, so you can conduct <strong>40,000</strong> location searches per month for free. In contrast, OpenCage API allows 2,500 searches per day as part of a free trial, so you can conduct up to <strong>75,000</strong> per month for free. Once you need to scale up your searches, OpenCage offers a $50/month tier that allows 10,000 searches per day, or up to <strong>300,000</strong> in a month. In contrast, $50 to Google would only get an additional 10,000 searches beyond the free 40,000, so $50/month would get you up to <strong>50,000</strong> searches in a month through Google. The pricing gap continues to widen as you scale up further.</p>
 <p>OpenCage does seem to be a bit flexible if the 2,500 queries per day are exceeded. However, if you greatly exceed this limit, they will send a warning and ask you to upgrade to a paid plan.</p>
@@ -206,9 +204,8 @@
 <a href="#getting-the-access-key" class="anchor"></a>Getting the access key</h3>
 <p>You can secure an API access key through OpenCage directly; their Quick Start guide offers helpful guidance (<a href="https://docs.ropensci.org/opencage/#quickstart">read more here</a>). Once you have the key, the <a href="https://opencagedata.com/api">OpenCage Geocoding API Documentation</a> offers many more additional helps.</p>
 <p>We recommend saving your OpenCage Geocoding API key in the <code>.Renviron</code> file as <strong>OPENCAGE_KEY</strong> (similar to what you did with the Twitter tokens). You can quickly access this file using the R code:</p>
-<div class="sourceCode" id="cb4"><pre class="downlit">
-<span class="kw">usethis</span>::<span class="fu"><a href="https://usethis.r-lib.org/reference/edit.html">edit_r_environ</a></span>(scope=<span class="st">'user'</span>)
-</pre></div>
+<div class="sourceCode" id="cb4"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="fu">usethis</span><span class="fu">::</span><span class="fu"><a href="https://usethis.r-lib.org/reference/edit.html">edit_r_environ</a></span><span class="op">(</span>scope<span class="op">=</span><span class="st">'user'</span><span class="op">)</span></code></pre></div>
 <p>Then, add a line to this file that reads: <code>OPENCAGE_KEY="PasteYourOpenCageKeyInsideDoubleQuotes"</code>.</p>
 <p><strong>Once you’ve saved the .Renviron file, quit your R session and restart.</strong> The function <code><a href="../reference/geocode_tags.html">geocode_tags()</a></code> will work for you from now on. Note that the {tidytags} <code><a href="../reference/geocode_tags.html">geocode_tags()</a></code> function retrieves your saved API key automatically and securely, and you won’t need to think about this after the initial setup.</p>
 </div>
@@ -216,9 +213,8 @@
 <h3 class="hasAnchor">
 <a href="#authorization-in-future-r-sessions-1" class="anchor"></a>Authorization in future R sessions</h3>
 <p>To make sure the <strong>OpenCage Geocoding API key</strong> works, restart your R session and run the following code:</p>
-<div class="sourceCode" id="cb5"><pre class="downlit">
-<span class="fu"><a href="https://rdrr.io/r/base/Sys.getenv.html">Sys.getenv</a></span>(<span class="st">'OPENCAGE_KEY'</span>)
-</pre></div>
+<div class="sourceCode" id="cb5"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="fu"><a href="https://rdrr.io/r/base/Sys.getenv.html">Sys.getenv</a></span><span class="op">(</span><span class="st">'OPENCAGE_KEY'</span><span class="op">)</span></code></pre></div>
 </div>
 </div>
 <div id="getting-help" class="section level2">
@@ -226,7 +222,7 @@
 <a href="#getting-help" class="anchor"></a>Getting help</h2>
 <p>{tidytags} is still a work in progress, so we fully expect that there are still some bugs to work out and functions to document better. If you find an issue, have a question, or think of something that you really wish {tidytags} would do for you, don’t hesitate to <a href="mailto:bret@bretsw.com">email Bret</a> or reach out on Twitter: <a href="https://twitter.com/bretsw">@bretsw</a> and <a href="https://twitter.com/jrosenberg6432">@jrosenberg6432</a>.</p>
 <p>You can also <a href="https://github.com/bretsw/tidytags/issues/">submit an issue on Github</a>.</p>
-<p>You may also wish too try some general troubleshooting strategies:</p>
+<p>You may also wish to try some general troubleshooting strategies:</p>
 <ul>
 <li>Try to find out what the specific problem is
 <ul>

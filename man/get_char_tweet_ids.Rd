@@ -12,7 +12,8 @@ get_char_tweet_ids(df, url_vector = NULL)
 \code{read_tags()}}
 
 \item{url_vector}{A vector of tweet URLs, such as as those contained in
-the 'status_url' column of a dataframe returned by \code{tidytags::read_tags()}}
+the 'status_url' column of a dataframe returned by
+\code{tidytags::read_tags()}}
 }
 \value{
 A list or vector of tweet IDs as character strings
@@ -22,15 +23,17 @@ This function is useful because Google Sheets (and hence TAGS)
   typically round very large numbers into an exponential form. Thus,
   because tweet ID numbers are very large, they often get corrupted in this
   rounding process. The most reliable way to get full tweet ID numbers is by
-  using this function, \code{get_char_tweet_ids()}, to pull the ID numbers from
-  the URL linking to specific tweets.
+  using this function, \code{get_char_tweet_ids()}, to pull the ID numbers
+  from the URL linking to specific tweets.
 }
 \examples{
 
 \dontrun{
 example_url <- "18clYlQeJOc6W5QRuSlJ6_v3snqKJImFhU42bRkM_OX8"
-get_char_tweet_ids(read_tags(example_url)[1:10, ])
-get_char_tweet_ids(url_vector = read_tags(example_url)$status_url[1:10])
-get_char_tweet_ids(url_vector = "https://twitter.com/tweet__example/status/1176592704647716864")
+tags_content <- read_tags(example_url)
+get_char_tweet_ids(tags_content[1:10, ])
+get_char_tweet_ids(url_vector = tags_content$status_url[1:10])
+get_char_tweet_ids(url_vector =
+  "https://twitter.com/tweet__example/status/1176592704647716864")
 }
 }

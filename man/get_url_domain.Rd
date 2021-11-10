@@ -9,11 +9,12 @@ get_url_domain(x, wait = 10)
 \arguments{
 \item{x}{A list or vector of hyperlinks, whether shortened or expanded}
 
-\item{wait}{How long (in seconds) to wait on the \code{longurl::expand_urls()}
-function to retrieve the full, expanded URL from a shortened URL (e.g., a bit.ly).
-The \code{longurl} default is 2 seconds, but we have found that this misses
-a number of valid URLs. Here, we have made the default \code{wait = 10} seconds,
-but the user can adjust this as they like.}
+\item{wait}{How long (in seconds) to wait on the
+\code{longurl::expand_urls()} function to retrieve the full, expanded URL
+from a shortened URL (e.g., a bit.ly). The \code{longurl} default is 2
+seconds, but we have found that this misses a number of valid URLs. Here,
+we have made the default \code{wait = 10} seconds, but the user can adjust
+this as they like.}
 }
 \value{
 A list or vector of Web domain names

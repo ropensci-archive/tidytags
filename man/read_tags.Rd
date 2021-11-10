@@ -8,7 +8,8 @@ read_tags(tags_id, google_key = Sys.getenv("GOOGLE_API_KEY"))
 }
 \arguments{
 \item{tags_id}{A Google Sheet identifier (i.e., the alphanumeric string
-following "https://docs.google.com/spreadsheets/d/" in the TAGS tracker's URL.)}
+following "https://docs.google.com/spreadsheets/d/" in the TAGS tracker's
+URL.)}
 
 \item{google_key}{A Google API key for accessing Google Sheets.}
 }
@@ -17,13 +18,14 @@ A tibble of the TAGS archive of tweets
 }
 \description{
 Keep in mind that \code{read_tags()} uses the **googlesheets4** package,
-  and one requirement is that your TAGS tracker has been "published to the web."
-  To do this, with the TAGS page open in a web browser, navigate to
-  \code{File >> Publish to the web}. The \code{Link} field should be 'Entire document'
-  and the \code{Embed} field should be 'Web page.' If everything looks right,
-  then click the \code{Publish} button. Next, click the \code{Share} button in the
-  top right corner of the Google Sheets browser window, select \code{Get shareable link},
-  and set the permissions to 'Anyone with the link can view.'
+  and one requirement is that your TAGS tracker has been "published to the
+  web." To do this, with the TAGS page open in a web browser, navigate to
+  \code{File >> Publish to the web}. The \code{Link} field should be
+  'Entire document' and the \code{Embed} field should be 'Web page.' If
+  everything looks right, then click the \code{Publish} button. Next, click
+  the \code{Share} button in the top right corner of the Google Sheets
+  browser window, select \code{Get shareable link}, and set the permissions
+  to 'Anyone with the link can view.'
 }
 \examples{
 
@@ -34,7 +36,9 @@ read_tags(example_tags)
 }
 }
 \seealso{
-Read more about \code{library(googlesheets4)} \href{https://github.com/tidyverse/googlesheets4}{here}.
-   If you need help obtaining and setting up a Google API key, read Pain Point #2
-   in the \href{https://bretsw.github.io/tidytags/articles/setup.html}{Getting started with tidytags} vignette.
+Read more about \code{library(googlesheets4)}
+  \href{https://github.com/tidyverse/googlesheets4}{here}.If you need help
+  obtaining and setting up a Google API key, read Pain Point #2 in the
+  \href{https://bretsw.github.io/tidytags/articles/setup.html}{Getting
+  started with tidytags} vignette.
 }

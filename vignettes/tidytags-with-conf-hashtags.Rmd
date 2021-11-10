@@ -57,7 +57,7 @@ dim(example_df_all)
 This next code chunk does not run because it is just an example (notice that `eval = FALSE`).
 
 
-```{r}
+```{r, eval=FALSE}
 example_df_all <- readr::read_csv("my-downloaded-tags-file.csv")
 ```
 
