@@ -234,6 +234,18 @@ The mean number of hashtags per tweet is 2.19 (SD = 1.49). The median is 2, and 
 
 The {tidytags} function `get_url_domain()` combines the `expand_urls()` function from the {longurl} package and the `domain()` function from the {urltools} package to easily return the domain names of any hyperlinks including in tweets. Please note that these two packages are required to use this function (but they are not installed automatically when {tidytags} is installed. Note that using `longurl::expand_urls()` is a necessary step because Twitter automatically shortens any hyperlinks included in tweets.
 
+To check whether {longurl} is installed, run the following code chunk:
+
+```{r}
+rlang::is_installed("longurl")
+```
+
+If this returns `TRUE`, then you're good to go and can run `get_url_domain()`. If this returns `FALSE`, then you can install {longurl} with the following code:
+
+```{r, eval = FALSE}
+install.packages("longurl")
+```
+
 As an example, `get_url_domain()` finds that the domain in the shortened URL "http://bit.ly/2SfWO3K" is "aect.org":
 
 
