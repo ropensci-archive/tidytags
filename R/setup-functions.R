@@ -179,6 +179,7 @@ pull_tweet_data <-
 #' @param alarm An audible notification that a batch of 90,000 tweets has been
 #'   completed
 #' @return A dataframe of tweets and full metadata from the Twitter API
+#' @details This function requires authentication; please see \code{vignette("setup", package = "tidytags")}
 #' @export
 lookup_many_tweets <-
   function(x, alarm = FALSE) {
