@@ -5,7 +5,8 @@ test_that("get_url_domain() works on a variety of domains", {
     domain2 <- get_url_domain("https://www.tidyverse.org/packages/")
     domain3 <- get_url_domain("https://dplyr.tidyverse.org/")
     domain4 <- get_url_domain("https://www.npr.org/sections/technology/")
-    url1 <- longurl::expand_urls("http://bit.ly/2SfWO3K", seconds=10)$expanded_url
+    url1 <- longurl::expand_urls("http://bit.ly/2SfWO3K",
+                                 seconds=10)$expanded_url
   })
 
     expect_equal(domain1, "tidyverse.org")
@@ -30,7 +31,8 @@ test_that("get_url_domain() works on shortened URLs", {
 test_that("longurl::expand_urls() works for vcr", {
 
   vcr::use_cassette("longurl_test", {
-    url1 <- longurl::expand_urls("http://bit.ly/2SfWO3K", seconds=10)$expanded_url
+    url1 <- longurl::expand_urls("http://bit.ly/2SfWO3K",
+                                 seconds=10)$expanded_url
   })
 
   skip(message = "Skipping longurltest for now.")

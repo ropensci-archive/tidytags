@@ -1,4 +1,4 @@
-test_that("lookup_many_tweets() retrieves additional metadata like pull_tweet_data()", {
+test_that("lookup_many_tweets() works like pull_tweet_data()", {
 
   vcr::use_cassette("lookup_many", {
     sample_tags <- read_tags("18clYlQeJOc6W5QRuSlJ6_v3snqKJImFhU42bRkM_OX8")

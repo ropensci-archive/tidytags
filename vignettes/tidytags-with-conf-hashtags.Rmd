@@ -187,7 +187,7 @@ rtweet_today <-
 
 You can see that an {rtweet} search for #AECT19 tweets run today returns 0tweets.
 
-In sum, although a TAGS tracker is great for easily collecting tweets over time (breadth), it lacks depth in terms of metadata is returned related to the gathered tweets. Specifically, TAGS returns information on at most 18 variables; in contrast, {rtweet} returns information on up to 90 variables. Thus, our package {tidytags} brings together the breadth of TAGS with the depth of {rtweet}.
+In sum, although a TAGS tracker is great for easily collecting tweets over time (breadth), it lacks depth in terms of metadata related to the gathered tweets. Specifically, TAGS returns information on at most 18 variables; in contrast, {rtweet} returns information on up to 90 variables. Thus, our package {tidytags} brings together the breadth of TAGS with the depth of {rtweet}.
 
 ## lookup_many_tweets()
 

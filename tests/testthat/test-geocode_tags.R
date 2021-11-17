@@ -24,7 +24,8 @@ test_that("invalid geo coordinates produce warning", {
     )
 
   vcr::use_cassette("geo_coords_error", {
-    expect_error(geocode_tags(locations_fake), "There are no valid geolocations to report.")
+    expect_error(geocode_tags(locations_fake),
+                 "There are no valid geolocations to report.")
     expect_error(geocode_tags(locations_fake[1, ]))
     expect_error(geocode_tags(locations_fake[2, ]))
   })
