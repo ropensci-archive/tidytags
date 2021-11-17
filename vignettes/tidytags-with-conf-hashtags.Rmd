@@ -10,7 +10,7 @@ vignette: >
 ---
 
 ```{r}
- library(tidytags)
+library(tidytags)
 ```
 
 This vignette introduces how to use many {tidytags} functions through the example of analyzing tweets associated with the 2019 annual convention of the [Association for Educational Communications & Technology](https://aect.org/) (AECT): `#aect19`, `#aect2019`, or `#aect19inspired`.
@@ -44,7 +44,6 @@ To simply view a TAGS archive, you can use `read_tags()`. Here, we've openly sha
 
 If you're having trouble setting up or publishing the TAGS tracker, see the [Getting started with tidytags](https://bretsw.github.io/tidytags/articles/setup.html) vignette, **Pain Point #1**.
 
-
 ```{r}
 tags_url <- "18clYlQeJOc6W5QRuSlJ6_v3snqKJImFhU42bRkM_OX8"
 example_df_all <- read_tags(tags_url)
@@ -56,8 +55,7 @@ dim(example_df_all)
 
 This next code chunk does not run because it is just an example (notice that `eval = FALSE`).
 
-
-```{r}
+```{r, eval = FALSE}
 example_df_all <- readr::read_csv("my-downloaded-tags-file.csv")
 ```
 
