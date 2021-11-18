@@ -33,7 +33,7 @@ Depends:
     R (>= 4.1)
 Imports:
     dplyr (>= 1.0),
-    googlesheets4 (>= 0.3),
+    googlesheets4 (>= 1.0),
     purrr (>= 0.3),
     rlang(>= 0.4),
     rtweet (>= 0.7),
@@ -56,7 +56,7 @@ Suggests:
     testthat,
     tidygraph,
     urltools,
-    vcr (>= 0.6)
+    vcr (>= 1.0)
 Encoding: UTF-8
 VignetteBuilder: knitr
 LazyData: TRUE

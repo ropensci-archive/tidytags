@@ -10,13 +10,14 @@ sample_data <-
                   )
   )
 
-test_that("quote tweets are identified", {
 
-  quotes <- get_quotes(sample_data)
+test_that("mentions are identified", {
 
-  expect_true(is.data.frame(quotes))
-  expect_named(quotes)
-  expect_true("sender" %in% names(quotes))
-  expect_true("receiver" %in% names(quotes))
-  expect_true("edge_type" %in% names(quotes))
+  mentions <- create_mentions_edgelist(sample_data)
+
+  expect_true(is.data.frame(mentions))
+  expect_named(mentions)
+  expect_true("sender" %in% names(mentions))
+  expect_true("receiver" %in% names(mentions))
+  expect_true("edge_type" %in% names(mentions))
 })

@@ -10,14 +10,13 @@ sample_data <-
                   )
   )
 
+test_that("quote tweets are identified", {
 
-test_that("replies are identified", {
+  quotes <- create_quotes_edgelist(sample_data)
 
-  replies <- get_replies(sample_data)
-
-  expect_true(is.data.frame(replies))
-  expect_named(replies)
-  expect_true("sender" %in% names(replies))
-  expect_true("receiver" %in% names(replies))
-  expect_true("edge_type" %in% names(replies))
+  expect_true(is.data.frame(quotes))
+  expect_named(quotes)
+  expect_true("sender" %in% names(quotes))
+  expect_true("receiver" %in% names(quotes))
+  expect_true("edge_type" %in% names(quotes))
 })

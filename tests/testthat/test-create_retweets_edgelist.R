@@ -11,13 +11,13 @@ sample_data <-
   )
 
 
-test_that("mentions are identified", {
+test_that("retweets are identified", {
 
-  mentions <- get_mentions(sample_data)
+  retweets <- create_retweets_edgelist(sample_data)
 
-  expect_true(is.data.frame(mentions))
-  expect_named(mentions)
-  expect_true("sender" %in% names(mentions))
-  expect_true("receiver" %in% names(mentions))
-  expect_true("edge_type" %in% names(mentions))
+  expect_true(is.data.frame(retweets))
+  expect_named(retweets)
+  expect_true("sender" %in% names(retweets))
+  expect_true("receiver" %in% names(retweets))
+  expect_true("edge_type" %in% names(retweets))
 })

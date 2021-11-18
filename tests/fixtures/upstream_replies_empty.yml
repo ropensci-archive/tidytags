@@ -15,32 +15,32 @@ http_interactions:
       reason: OK
       message: 'Success: (200) OK'
     headers:
-      cache-control: no-cache, no-store, must-revalidate, pre-check=0, post-check=0
-      content-disposition: attachment; filename=json.json
-      content-encoding: gzip
-      content-length: '28'
-      content-type: application/json;charset=utf-8
-      date: Fri, 19 Mar 2021 11:25:40 GMT
-      expires: Tue, 31 Mar 1981 05:00:00 GMT
-      last-modified: Fri, 19 Mar 2021 11:25:40 GMT
+      date: Thu, 18 Nov 2021 04:45:39 GMT
       pragma: no-cache
       server: tsa_b
       status: 200 OK
-      strict-transport-security: max-age=631138519
+      expires: Tue, 31 Mar 1981 05:00:00 GMT
+      content-type: application/json;charset=utf-8
+      cache-control: no-cache, no-store, must-revalidate, pre-check=0, post-check=0
+      last-modified: Thu, 18 Nov 2021 04:45:39 GMT
+      x-transaction: 770c2e3d2eae6740
+      content-length: '28'
       x-access-level: read
-      x-connection-hash: ddf422e5a367ed1de590777a06fe09a7
-      x-content-type-options: nosniff
       x-frame-options: SAMEORIGIN
-      x-rate-limit-limit: '900'
-      x-rate-limit-remaining: '868'
-      x-rate-limit-reset: '1616154011'
-      x-response-time: '13'
-      x-transaction: 00ee7cee0055eeb5
-      x-twitter-response-tags: BouncerCompliant
+      content-encoding: gzip
       x-xss-protection: '0'
+      x-rate-limit-limit: '900'
+      x-rate-limit-reset: '1637211617'
+      content-disposition: attachment; filename=json.json
+      x-content-type-options: nosniff
+      x-rate-limit-remaining: '870'
+      x-twitter-response-tags: BouncerCompliant
+      strict-transport-security: max-age=631138519
+      x-response-time: '15'
+      x-connection-hash: e95814538860f374f2f6bf73b08130350f27eca7314fa9ff5c1e38e2d778dd08
     body:
       encoding: UTF-8
       file: no
       string: '[]'
-  recorded_at: 2021-03-19 11:25:40 GMT
-  recorded_with: vcr/0.6.0, webmockr/0.8.0
+  recorded_at: 2021-11-18 04:45:39 GMT
+  recorded_with: vcr/1.0.2, webmockr/0.8.0
