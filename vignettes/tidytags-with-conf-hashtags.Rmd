@@ -10,7 +10,7 @@ vignette: >
 ---
 
 ```{r}
- library(tidytags)
+library(tidytags)
 ```
 
 This vignette introduces how to use many {tidytags} functions through the example of analyzing tweets associated with the 2019 annual convention of the [Association for Educational Communications & Technology](https://aect.org/) (AECT): `#aect19`, `#aect2019`, or `#aect19inspired`.
@@ -44,7 +44,6 @@ To simply view a TAGS archive, you can use `read_tags()`. Here, we've openly sha
 
 If you're having trouble setting up or publishing the TAGS tracker, see the [Getting started with tidytags](https://bretsw.github.io/tidytags/articles/setup.html) vignette, **Pain Point #1**.
 
-
 ```{r}
 tags_url <- "18clYlQeJOc6W5QRuSlJ6_v3snqKJImFhU42bRkM_OX8"
 example_df_all <- read_tags(tags_url)
@@ -56,8 +55,7 @@ dim(example_df_all)
 
 This next code chunk does not run because it is just an example (notice that `eval = FALSE`).
 
-
-```{r, eval=FALSE}
+```{r, eval = FALSE}
 example_df_all <- readr::read_csv("my-downloaded-tags-file.csv")
 ```
 
@@ -75,11 +73,11 @@ example_after_rtweet_A <- pull_tweet_data(id_vector = example_df_all$id_str)
 example_after_rtweet_B <- pull_tweet_data(url_vector = example_df_all$status_url)
 ```
 
-The TAGS tracker alone collected 18 variables associated with 2564 tweets. The first method searching with `id_str` collected 90 variables associated with 2215 tweets. The second method using 'tidytags::get_char_tweet_ids()' also collected 90 variables associated with 2215 tweets.
+The TAGS tracker alone collected 18 variables associated with 2564 tweets. The first method searching with `id_str` collected 90 variables associated with 2215 tweets. Note that this number of rows is at the point at which we collected the data; the number may differ when you carry out this same search. The second method using 'tidytags::get_char_tweet_ids()' collected 90 variables associated with 2215 tweets.
 
 Notice how many more variables are in the dataset after using `pull_tweet_data()`, and how many more tweets are in the dataset when using the second method. Therefore, we strongly recommend the second method, which is why we have included `get_char_tweet_ids()` in the {tidytags} package.
 
-The built-in default of `pull_tweet_data()` is to simply enter the dataframe retrieved from  `read_tags()` and implement method B, retrieving metadata starting with tweet URLs. That is, `pull_tweet_data(read_tags(example_url))`. Take a quick look at the result, viewed with the `glimpse()` function from the {dplyr} package:
+The built-in default of `pull_tweet_data()` is to simply enter the dataframe retrieved from  `read_tags()` and implement method B, retrieving metadata starting with tweet URLs. That is, `pull_tweet_data(read_tags(example_url))`. Take a quick look at the result, viewed with the `glimpse()` function from the {dplyr} package.
 
 
 ```{r}
@@ -232,7 +230,19 @@ The mean number of hashtags per tweet is 2.19 (SD = 1.49). The median is 2, and 
 
 ## get_url_domain()
 
-The {tidytags} function `get_url_domain()` combines the `expand_urls()` function from the {longurl} package and the `domain()` function from the {urltools} package to easily return the domain names of any hyperlinks including in tweets. Note that using `longurl::expand_urls()` is a necessary step because Twitter automatically shortens any hyperlinks included in tweets.
+The {tidytags} function `get_url_domain()` combines the `expand_urls()` function from the {longurl} package and the `domain()` function from the {urltools} package to easily return the domain names of any hyperlinks including in tweets. Please note that these two packages are required to use this function (but they are not installed automatically when {tidytags} is installed. Note that using `longurl::expand_urls()` is a necessary step because Twitter automatically shortens any hyperlinks included in tweets.
+
+To check whether {longurl} is installed, run the following code chunk:
+
+```{r}
+rlang::is_installed("longurl")
+```
+
+If this returns `TRUE`, then you're good to go and can run `get_url_domain()`. If this returns `FALSE`, then you can install {longurl} with the following code:
+
+```{r, eval = FALSE}
+install.packages("longurl")
+```
 
 As an example, `get_url_domain()` finds that the domain in the shortened URL "http://bit.ly/2SfWO3K" is "aect.org":
 
