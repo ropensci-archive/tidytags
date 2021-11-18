@@ -80,6 +80,24 @@ get_char_tweet_ids <-
     new_ids
   }
 
+get_char_tweet_ids2 <-
+  function(df, url_vector = NULL) {
+    ifelse(!is.null(url_vector),
+           new_ids <- stringr::str_split_fixed(url_vector, "/", n = 6)[, 6],
+           {
+             df <- dplyr::mutate(df,
+                                 status_id_char = stringr::str_split_fixed(.data$status_url,
+                                                                           "/",
+                                                                           n = 6
+                                 )[, 6]
+             )
+             new_ids <- dplyr::pull(df, .data$status_id_char)
+           }
+    )
+    new_ids
+  }
+
+
 #' Retrieve the fullest extent of tweet metadata available from the Twitter API
 #'
 #' With a TAGS archive imported into R, \code{pull_tweet_data()} uses the

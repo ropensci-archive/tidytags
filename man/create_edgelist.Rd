@@ -11,8 +11,8 @@ create_edgelist(df)
 }
 \value{
 A dataframe edgelist with column names 'sender', 'receiver', and
-  \code{edge_type}, which in this case the edge type may be "reply", "retweet",
-  "quote", or "mention"
+  \code{edge_type}, which in this case the edge type may be "reply",
+  "retweet", "quote", or "mention"
 }
 \description{
 Starting with a dataframe returned by \code{pull_tweet_data()},
@@ -31,6 +31,7 @@ edgelist
 }
 }
 \seealso{
-Compare to other \code{tidtags} functions such as \code{get_replies()},
-  \code{get_retweets()}, \code{get_quotes()}, and \code{get_mentions()}.
+Compare to other \code{tidytags} functions such as
+  \code{create_replies_edgelist()}, \code{create_retweets_edgelist()},
+  \code{create_quotes_edgelist()}, and \code{create_mentions_edgelist()}.
 }

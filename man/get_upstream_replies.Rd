@@ -7,11 +7,12 @@
 get_upstream_replies(df)
 }
 \arguments{
-\item{df}{A dataframe of tweets and full metadata from the Twitter API as returned
-by \code{pull_tweet_data()}}
+\item{df}{A dataframe of tweets and full metadata from the Twitter API as
+returned by \code{pull_tweet_data()}}
 }
 \value{
-A new, expanded dataframe which includes any retrievable upstream replies
+A new, expanded dataframe which includes any retrievable upstream
+  replies
 }
 \description{
 \code{get_upstream_replies()} collects upstream replies not previously found

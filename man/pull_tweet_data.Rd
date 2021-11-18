@@ -12,43 +12,50 @@ pull_tweet_data(df, url_vector = NULL, id_vector = NULL, n = NULL)
 \code{read_tags()}}
 
 \item{url_vector}{A vector of tweet URLs, such as as those contained in
-the 'status_url' column of a dataframe returned by \code{tidytags::read_tags()}}
+the 'status_url' column of a dataframe returned by
+\code{tidytags::read_tags()}}
 
 \item{id_vector}{A vector of tweet ID numbers, such as as those contained in
 the 'id_str' column of a dataframe returned by \code{tidytags::read_tags()}}
 
-\item{n}{The number of tweets to look up, by default the total number of tweet
-ID numbers available, but capped at 90,000 due to Twitter API limitations.}
+\item{n}{The number of tweets to look up, by default the total number of
+tweet ID numbers available, but capped at 90,000 due to Twitter API
+limitations.}
 }
 \value{
 A dataframe of tweets and full metadata from the Twitter API
 }
 \description{
-With a TAGS archive imported into R, \code{pull_tweet_data()} uses the **rtweet**
-  package to query the Twitter API. Using rtweet requires Twitter API keys
-  associated with an approved developer account. Fortunately, the rtweet vignette,
-  \href{https://docs.ropensci.org/rtweet/articles/auth.html}{Obtaining and using access tokens}, provides a very thorough guide
-  to obtaining Twitter API keys. We recommend the second suggested method listed
+With a TAGS archive imported into R, \code{pull_tweet_data()} uses the
+  **rtweet** package to query the Twitter API. Using rtweet requires Twitter
+  API keys associated with an approved developer account. Fortunately, the
+  rtweet vignette, \href{https://docs.ropensci.org/rtweet/articles/auth.html}
+  {Obtaining and using access tokens}, provides a very thorough guide to
+  obtaining Twitter API keys. We recommend the second suggested method listed
   in the rtweet vignette, "2. Access token/secret method." Following these
   directions, you will run the \code{rtweet::create_token()} function, which
   saves your Twitter API keys to the \code{.Renviron} file. You can also edit
-  this file directly using the \code{usethis::edit_r_environ(scope='user')} function.
+  this file directly using the \code{usethis::edit_r_environ(scope='user')}
+  function.
 }
 \examples{
 
 \dontrun{
 
 example_url <- "18clYlQeJOc6W5QRuSlJ6_v3snqKJImFhU42bRkM_OX8"
-pull_tweet_data(read_tags(example_url)[1:10, ])
-pull_tweet_data(read_tags(example_url), n = 10)
-pull_tweet_data(url_vector = read_tags(example_url)$status_url[1:10])
-pull_tweet_data(url_vector = read_tags(example_url)$status_url, n = 10)
-pull_tweet_data(id_vector = read_tags(example_url)$id_str[1:10])
-pull_tweet_data(id_vector = read_tags(example_url)$id_str, n = 10)
-pull_tweet_data(url_vector = "https://twitter.com/tweet__example/status/1176592704647716864")
+tags_content <- read_tags(example_url)
+pull_tweet_data(tags_content[1:10, ])
+pull_tweet_data(tags_content, n = 10)
+pull_tweet_data(url_vector = tags_content$status_url[1:10])
+pull_tweet_data(url_vector = tags_content$status_url, n = 10)
+pull_tweet_data(id_vector = tags_content$id_str[1:10])
+pull_tweet_data(id_vector = tags_content$id_str, n = 10)
+pull_tweet_data(url_vector =
+  "https://twitter.com/tweet__example/status/1176592704647716864")
 pull_tweet_data(id_vector = "1176592704647716864")
 }
 }
 \seealso{
-Read more about \code{library(rtweet)} \href{https://rtweet.info/}{here}.
+Read more about \code{library(rtweet)}
+  \href{https://rtweet.info/}{here}.
 }

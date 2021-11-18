@@ -18,30 +18,30 @@ http_interactions:
       cache-control: no-cache, no-store, must-revalidate, pre-check=0, post-check=0
       content-disposition: attachment; filename=json.json
       content-encoding: gzip
-      content-length: '1763'
+      content-length: '1550'
       content-type: application/json;charset=utf-8
-      date: Mon, 08 Mar 2021 17:02:00 GMT
+      date: Thu, 18 Nov 2021 04:07:35 GMT
       expires: Tue, 31 Mar 1981 05:00:00 GMT
-      last-modified: Mon, 08 Mar 2021 17:02:00 GMT
+      last-modified: Thu, 18 Nov 2021 04:07:35 GMT
       pragma: no-cache
       server: tsa_b
       set-cookie:
-      - personalization_id="v1_DLCMvllewnFHLM+UN0JCiQ=="; Max-Age=63072000; Expires=Wed,
-        08 Mar 2023 17:02:00 GMT; Path=/; Domain=.twitter.com; Secure; SameSite=None
+      - personalization_id="v1_nW7dUiWAyoNOCyUn7zZaZQ=="; Max-Age=63072000; Expires=Sat,
+        18 Nov 2023 04:07:35 GMT; Path=/; Domain=.twitter.com; Secure; SameSite=None
       - lang=en; Path=/
-      - guest_id=v1%3A161522292077825532; Max-Age=63072000; Expires=Wed, 08 Mar 2023
-        17:02:00 GMT; Path=/; Domain=.twitter.com; Secure; SameSite=None
+      - guest_id=v1%3A163720845536919740; Max-Age=63072000; Expires=Sat, 18 Nov 2023
+        04:07:35 GMT; Path=/; Domain=.twitter.com; Secure; SameSite=None
       status: 200 OK
       strict-transport-security: max-age=631138519
       x-access-level: read
-      x-connection-hash: 30658d1134c634cd01ffa28ccdd1cd9c
+      x-connection-hash: 5644ae4df52518fc99cb0b3c294006989a5708232dc00d98518ce56c8db74239
       x-content-type-options: nosniff
       x-frame-options: SAMEORIGIN
       x-rate-limit-limit: '900'
       x-rate-limit-remaining: '899'
-      x-rate-limit-reset: '1615223820'
+      x-rate-limit-reset: '1637209355'
       x-response-time: '54'
-      x-transaction: 0026eee60012a264
+      x-transaction: 00370532c89e0ee4
       x-twitter-response-tags: BouncerCompliant
       x-xss-protection: '0'
     body:
@@ -50,27 +50,19 @@ http_interactions:
       string: '[{"id":922536306437181440,"id_str":"922536306437181440","name":"AECT
         GSA","screen_name":"gsa_aect","location":"","description":"The official account
         of the Graduate Student Assembly for the Association of EducationalCommunications
-        and Technology","url":null,"entities":{"description":{"urls":[]}},"protected":false,"followers_count":351,"friends_count":44,"listed_count":4,"created_at":"Mon
-        Oct 23 18:52:50 +0000 2017","favourites_count":52,"utc_offset":null,"time_zone":null,"geo_enabled":false,"verified":false,"statuses_count":1698,"lang":null,"status":{"created_at":"Mon
-        Mar 08 16:53:39 +0000 2021","id":1368968165955268608,"id_str":"1368968165955268608","text":"RT
-        @LiuJh_Christie: Fellow @AECT members-Please update your email filter and
-        member profile emails (https:\/\/t.co\/FpzMZoyIfm) to receive wel\u2026","truncated":false,"entities":{"hashtags":[],"symbols":[],"user_mentions":[{"screen_name":"LiuJh_Christie","name":"Dr.
-        Juhong Christie Liu","id":321423678,"id_str":"321423678","indices":[3,18]},{"screen_name":"AECT","name":"\u2735
-        AECT \u2735","id":12030342,"id_str":"12030342","indices":[27,32]}],"urls":[{"url":"https:\/\/t.co\/FpzMZoyIfm","expanded_url":"http:\/\/AECT.org","display_url":"AECT.org","indices":[100,123]}]},"source":"\u003ca
-        href=\"https:\/\/about.twitter.com\/products\/tweetdeck\" rel=\"nofollow\"\u003eTweetDeck\u003c\/a\u003e","in_reply_to_status_id":null,"in_reply_to_status_id_str":null,"in_reply_to_user_id":null,"in_reply_to_user_id_str":null,"in_reply_to_screen_name":null,"geo":null,"coordinates":null,"place":null,"contributors":null,"retweeted_status":{"created_at":"Mon
-        Mar 08 11:51:01 +0000 2021","id":1368892005279993861,"id_str":"1368892005279993861","text":"Fellow
-        @AECT members-Please update your email filter and member profile emails (https:\/\/t.co\/FpzMZoyIfm)
-        to receive\u2026 https:\/\/t.co\/pK3DGjBrfz","truncated":true,"entities":{"hashtags":[],"symbols":[],"user_mentions":[{"screen_name":"AECT","name":"\u2735
-        AECT \u2735","id":12030342,"id_str":"12030342","indices":[7,12]}],"urls":[{"url":"https:\/\/t.co\/FpzMZoyIfm","expanded_url":"http:\/\/AECT.org","display_url":"AECT.org","indices":[80,103]},{"url":"https:\/\/t.co\/pK3DGjBrfz","expanded_url":"https:\/\/twitter.com\/i\/web\/status\/1368892005279993861","display_url":"twitter.com\/i\/web\/status\/1\u2026","indices":[117,140]}]},"source":"\u003ca
-        href=\"http:\/\/twitter.com\/download\/iphone\" rel=\"nofollow\"\u003eTwitter
-        for iPhone\u003c\/a\u003e","in_reply_to_status_id":null,"in_reply_to_status_id_str":null,"in_reply_to_user_id":null,"in_reply_to_user_id_str":null,"in_reply_to_screen_name":null,"geo":null,"coordinates":null,"place":null,"contributors":null,"is_quote_status":true,"quoted_status_id":1368877152200892419,"quoted_status_id_str":"1368877152200892419","retweet_count":1,"favorite_count":0,"favorited":false,"retweeted":false,"possibly_sensitive":true,"lang":"en"},"is_quote_status":true,"quoted_status_id":1368877152200892419,"quoted_status_id_str":"1368877152200892419","retweet_count":1,"favorite_count":0,"favorited":false,"retweeted":false,"possibly_sensitive":false,"lang":"en"},"contributors_enabled":false,"is_translator":false,"is_translation_enabled":false,"profile_background_color":"F5F8FA","profile_background_image_url":null,"profile_background_image_url_https":null,"profile_background_tile":false,"profile_image_url":"http:\/\/pbs.twimg.com\/profile_images\/1025847363615641600\/1UylGRlO_normal.jpg","profile_image_url_https":"https:\/\/pbs.twimg.com\/profile_images\/1025847363615641600\/1UylGRlO_normal.jpg","profile_banner_url":"https:\/\/pbs.twimg.com\/profile_banners\/922536306437181440\/1531449088","profile_link_color":"1DA1F2","profile_sidebar_border_color":"C0DEED","profile_sidebar_fill_color":"DDEEF6","profile_text_color":"333333","profile_use_background_image":true,"has_extended_profile":false,"default_profile":true,"default_profile_image":false,"following":false,"follow_request_sent":false,"notifications":false,"translator_type":"none"},{"id":12030342,"id_str":"12030342","name":"\u2735
+        and Technology","url":null,"entities":{"description":{"urls":[]}},"protected":false,"followers_count":416,"friends_count":45,"listed_count":4,"created_at":"Mon
+        Oct 23 18:52:50 +0000 2017","favourites_count":77,"utc_offset":null,"time_zone":null,"geo_enabled":false,"verified":false,"statuses_count":2106,"lang":null,"status":{"created_at":"Wed
+        Nov 17 13:42:46 +0000 2021","id":1460966645405569026,"id_str":"1460966645405569026","text":"For
+        #CareerTrackThursday, let''s highlight the Instructional Design career - check
+        out \"A Day in the Life of an Inst\u2026 https:\/\/t.co\/XAWWMct9m4","truncated":true,"entities":{"hashtags":[{"text":"CareerTrackThursday","indices":[4,24]}],"symbols":[],"user_mentions":[],"urls":[{"url":"https:\/\/t.co\/XAWWMct9m4","expanded_url":"https:\/\/twitter.com\/i\/web\/status\/1460966645405569026","display_url":"twitter.com\/i\/web\/status\/1\u2026","indices":[117,140]}]},"source":"\u003ca
+        href=\"https:\/\/mobile.twitter.com\" rel=\"nofollow\"\u003eTwitter Web App\u003c\/a\u003e","in_reply_to_status_id":null,"in_reply_to_status_id_str":null,"in_reply_to_user_id":null,"in_reply_to_user_id_str":null,"in_reply_to_screen_name":null,"geo":null,"coordinates":null,"place":null,"contributors":null,"is_quote_status":false,"retweet_count":0,"favorite_count":3,"favorited":false,"retweeted":false,"possibly_sensitive":false,"lang":"en"},"contributors_enabled":false,"is_translator":false,"is_translation_enabled":false,"profile_background_color":"F5F8FA","profile_background_image_url":null,"profile_background_image_url_https":null,"profile_background_tile":false,"profile_image_url":"http:\/\/pbs.twimg.com\/profile_images\/1025847363615641600\/1UylGRlO_normal.jpg","profile_image_url_https":"https:\/\/pbs.twimg.com\/profile_images\/1025847363615641600\/1UylGRlO_normal.jpg","profile_banner_url":"https:\/\/pbs.twimg.com\/profile_banners\/922536306437181440\/1531449088","profile_link_color":"1DA1F2","profile_sidebar_border_color":"C0DEED","profile_sidebar_fill_color":"DDEEF6","profile_text_color":"333333","profile_use_background_image":true,"has_extended_profile":false,"default_profile":true,"default_profile_image":false,"following":false,"follow_request_sent":false,"notifications":false,"translator_type":"none","withheld_in_countries":[]},{"id":12030342,"id_str":"12030342","name":"\u2735
         AECT \u2735","screen_name":"AECT","location":"Worldwide","description":"[Association
         for Educational Communications & Technology] Supporting #educators & #professionals
-        dedicated to improving #instruction through #technology.","url":"http:\/\/t.co\/lEX6USOXwI","entities":{"url":{"urls":[{"url":"http:\/\/t.co\/lEX6USOXwI","expanded_url":"http:\/\/aect.org","display_url":"aect.org","indices":[0,22]}]},"description":{"urls":[]}},"protected":false,"followers_count":3953,"friends_count":533,"listed_count":122,"created_at":"Wed
-        Jan 09 15:38:18 +0000 2008","favourites_count":2966,"utc_offset":null,"time_zone":null,"geo_enabled":true,"verified":false,"statuses_count":2648,"lang":null,"status":{"created_at":"Mon
-        Mar 08 13:27:10 +0000 2021","id":1368916202182094853,"id_str":"1368916202182094853","text":"We''ve
-        extended the deadline to submit proposals for the AECT Summer Research Symposium
-        on inclusive learning design\u2026 https:\/\/t.co\/Y6JzOF1HEm","truncated":true,"entities":{"hashtags":[],"symbols":[],"user_mentions":[],"urls":[{"url":"https:\/\/t.co\/Y6JzOF1HEm","expanded_url":"https:\/\/twitter.com\/i\/web\/status\/1368916202182094853","display_url":"twitter.com\/i\/web\/status\/1\u2026","indices":[117,140]}]},"source":"\u003ca
-        href=\"https:\/\/mobile.twitter.com\" rel=\"nofollow\"\u003eTwitter Web App\u003c\/a\u003e","in_reply_to_status_id":null,"in_reply_to_status_id_str":null,"in_reply_to_user_id":null,"in_reply_to_user_id_str":null,"in_reply_to_screen_name":null,"geo":null,"coordinates":null,"place":null,"contributors":null,"is_quote_status":false,"retweet_count":1,"favorite_count":3,"favorited":false,"retweeted":false,"possibly_sensitive":false,"lang":"en"},"contributors_enabled":false,"is_translator":false,"is_translation_enabled":false,"profile_background_color":"C0DEED","profile_background_image_url":"http:\/\/abs.twimg.com\/images\/themes\/theme1\/bg.png","profile_background_image_url_https":"https:\/\/abs.twimg.com\/images\/themes\/theme1\/bg.png","profile_background_tile":false,"profile_image_url":"http:\/\/pbs.twimg.com\/profile_images\/1057649830879748096\/-gzHp1_5_normal.jpg","profile_image_url_https":"https:\/\/pbs.twimg.com\/profile_images\/1057649830879748096\/-gzHp1_5_normal.jpg","profile_banner_url":"https:\/\/pbs.twimg.com\/profile_banners\/12030342\/1610982215","profile_link_color":"1DA1F2","profile_sidebar_border_color":"C0DEED","profile_sidebar_fill_color":"DDEEF6","profile_text_color":"333333","profile_use_background_image":true,"has_extended_profile":false,"default_profile":true,"default_profile_image":false,"following":false,"follow_request_sent":false,"notifications":false,"translator_type":"none"}]'
-  recorded_at: 2021-03-08 17:02:00 GMT
-  recorded_with: vcr/0.6.0, webmockr/0.7.4
+        dedicated to improving #instruction through #technology.","url":"http:\/\/t.co\/lEX6USOXwI","entities":{"url":{"urls":[{"url":"http:\/\/t.co\/lEX6USOXwI","expanded_url":"http:\/\/aect.org","display_url":"aect.org","indices":[0,22]}]},"description":{"urls":[]}},"protected":false,"followers_count":4391,"friends_count":555,"listed_count":125,"created_at":"Wed
+        Jan 09 15:38:18 +0000 2008","favourites_count":3421,"utc_offset":null,"time_zone":null,"geo_enabled":true,"verified":false,"statuses_count":3074,"lang":null,"status":{"created_at":"Sun
+        Nov 14 20:59:39 +0000 2021","id":1459989428609462281,"id_str":"1459989428609462281","text":"The
+        #AECT21 convention is over, but the inspiration, collaboration, and networking
+        will continue until next time. T\u2026 https:\/\/t.co\/oEq4YuHU3R","truncated":true,"entities":{"hashtags":[{"text":"AECT21","indices":[4,11]}],"symbols":[],"user_mentions":[],"urls":[{"url":"https:\/\/t.co\/oEq4YuHU3R","expanded_url":"https:\/\/twitter.com\/i\/web\/status\/1459989428609462281","display_url":"twitter.com\/i\/web\/status\/1\u2026","indices":[117,140]}]},"source":"\u003ca
+        href=\"https:\/\/mobile.twitter.com\" rel=\"nofollow\"\u003eTwitter Web App\u003c\/a\u003e","in_reply_to_status_id":null,"in_reply_to_status_id_str":null,"in_reply_to_user_id":null,"in_reply_to_user_id_str":null,"in_reply_to_screen_name":null,"geo":null,"coordinates":null,"place":null,"contributors":null,"is_quote_status":false,"retweet_count":3,"favorite_count":10,"favorited":false,"retweeted":false,"possibly_sensitive":false,"lang":"en"},"contributors_enabled":false,"is_translator":false,"is_translation_enabled":false,"profile_background_color":"C0DEED","profile_background_image_url":"http:\/\/abs.twimg.com\/images\/themes\/theme1\/bg.png","profile_background_image_url_https":"https:\/\/abs.twimg.com\/images\/themes\/theme1\/bg.png","profile_background_tile":false,"profile_image_url":"http:\/\/pbs.twimg.com\/profile_images\/1057649830879748096\/-gzHp1_5_normal.jpg","profile_image_url_https":"https:\/\/pbs.twimg.com\/profile_images\/1057649830879748096\/-gzHp1_5_normal.jpg","profile_banner_url":"https:\/\/pbs.twimg.com\/profile_banners\/12030342\/1626706657","profile_link_color":"1DA1F2","profile_sidebar_border_color":"C0DEED","profile_sidebar_fill_color":"DDEEF6","profile_text_color":"333333","profile_use_background_image":true,"has_extended_profile":false,"default_profile":true,"default_profile_image":false,"following":false,"follow_request_sent":false,"notifications":false,"translator_type":"none","withheld_in_countries":[]}]'
+  recorded_at: 2021-11-18 04:07:35 GMT
+  recorded_with: vcr/1.0.2, webmockr/0.8.0

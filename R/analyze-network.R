@@ -1,26 +1,27 @@
 #' Create an edgelist where interaction is defined by replying
 #'
 #' Starting with a dataframe returned by \code{pull_tweet_data()},
-#'   \code{get_replies()} pulls out senders and receivers of reply tweets and
-#'   adds a new column \code{edge_type}. \code{get_replies()} is a useful
-#'   function in itself, but is also used in \code{create_edgelist()}.
+#'   \code{create_replies_edgelist()} pulls out senders and receivers of reply
+#'   tweets and adds a new column \code{edge_type}.
+#'   \code{create_replies_edgelist()} is a useful function in itself, but is
+#'   also used in \code{create_edgelist()}.
 #' @param df A dataframe returned by \code{pull_tweet_data()}
 #' @return A dataframe edgelist with column names 'sender', 'receiver', and
 #'   \code{edge_type}, which in this case the edge type is "reply"
 #' @seealso Compare to other \code{tidytags} functions such as
-#'   \code{get_retweets()}, \code{get_quotes()}, \code{get_mentions()}, and
-#'   \code{create_edgelist()}.
+#'   \code{create_retweets_edgelist()}, \code{create_quotes_edgelist()},
+#'   \code{create_mentions_edgelist()}, and \code{create_edgelist()}.
 #' @examples
 #'
 #' \dontrun{
 #'
 #' example_url <- "18clYlQeJOc6W5QRuSlJ6_v3snqKJImFhU42bRkM_OX8"
 #' tmp_df <- pull_tweet_data(read_tags(example_url), n = 10)
-#' get_replies(tmp_df)
+#' create_replies_edgelist(tmp_df)
 #' }
 #' @importFrom rlang .data
 #' @export
-get_replies <-
+create_replies_edgelist <-
   function(df) {
     processed_df <- process_tweets(df)
 
@@ -55,26 +56,27 @@ get_replies <-
 #' Create an edgelist where interaction is defined by retweeting
 #'
 #' Starting with a dataframe returned by \code{pull_tweet_data()},
-#'   \code{get_retweets()} pulls out senders and receivers of retweets and adds
-#'   a new column \code{edge_type}. \code{get_retweets()} is a useful function
-#'   in itself, but is also used in \code{create_edgelist()}.
+#'   \code{create_retweets_edgelist()} pulls out senders and receivers of
+#'   retweets and adds a new column \code{edge_type}.
+#'   \code{create_retweets_edgelist()} is a useful function in itself, but is
+#'   also used in \code{create_edgelist()}.
 #' @param df A dataframe returned by \code{pull_tweet_data()}
 #' @return A dataframe edgelist with column names 'sender', 'receiver', and
 #'   \code{edge_type}, which in this case the edge type is "retweet"
 #' @seealso Compare to other \code{tidytags} functions such as
-#'   \code{get_replies()}, \code{get_quotes()}, \code{get_mentions()}, and
-#'   \code{create_edgelist()}.
+#'   \code{create_replies_edgelist()}, \code{create_quotes_edgelist()},
+#'   \code{create_mentions_edgelist()}, and \code{create_edgelist()}.
 #' @examples
 #'
 #' \dontrun{
 #'
 #' example_url <- "18clYlQeJOc6W5QRuSlJ6_v3snqKJImFhU42bRkM_OX8"
 #' tmp_df <- pull_tweet_data(read_tags(example_url), n = 10)
-#' get_retweets(tmp_df)
+#' create_retweets_edgelist(tmp_df)
 #' }
 #' @importFrom rlang .data
 #' @export
-get_retweets <-
+create_retweets_edgelist <-
   function(df) {
     processed_df <- process_tweets(df)
 
@@ -108,26 +110,27 @@ get_retweets <-
 #' Create an edgelist where interaction is defined by quote-tweeting
 #'
 #' Starting with a dataframe returned by \code{pull_tweet_data()},
-#'   \code{get_quotes()} pulls out senders and receivers of quote tweets and
-#'   adds a new column \code{edge_type}. \code{get_quotes()} is a useful
-#'   function in itself, but is also used in \code{create_edgelist()}.
+#'   \code{create_quotes_edgelist()} pulls out senders and receivers of quote
+#'   tweets and adds a new column \code{edge_type}.
+#'   \code{create_quotes_edgelist()} is a useful function in itself, but is
+#'   also used in \code{create_edgelist()}.
 #' @param df A dataframe returned by \code{pull_tweet_data()}
 #' @return A dataframe edgelist with column names 'sender', 'receiver', and
 #'   \code{edge_type}, which in this case the edge type is "quote-tweet"
 #' @seealso Compare to other \code{tidytags} functions such as
-#'   \code{get_replies()}, \code{get_retweets()}, \code{get_mentions()}, and
-#'   \code{create_edgelist()}.
+#'   \code{create_replies_edgelist()}, \code{create_retweets_edgelist()},
+#'   \code{create_mentions_edgelist()}, and \code{create_edgelist()}.
 #' @examples
 #'
 #' \dontrun{
 #'
 #' example_url <- "18clYlQeJOc6W5QRuSlJ6_v3snqKJImFhU42bRkM_OX8"
 #' tmp_df <- pull_tweet_data(read_tags(example_url), n = 10)
-#' get_quotes(tmp_df)
+#' create_quotes_edgelist(tmp_df)
 #' }
 #' @importFrom rlang .data
 #' @export
-get_quotes <-
+create_quotes_edgelist <-
   function(df) {
     processed_df <- process_tweets(df)
 
@@ -162,26 +165,27 @@ get_quotes <-
 #' Create an edgelist where interaction is defined by mentioning
 #'
 #' Starting with a dataframe returned by \code{pull_tweet_data()},
-#'   \code{get_mentions()} pulls out senders and receivers of mentions and adds
-#'   a new column \code{edge_type}. \code{get_mentions()} is a useful function
-#'   in itself, but is also used in \code{create_edgelist()}.
+#'   \code{create_mentions_edgelist()} pulls out senders and receivers of
+#'   mentions and adds a new column \code{edge_type}.
+#'   \code{create_mentions_edgelist()} is a useful function in itself, but is
+#'   also used in \code{create_edgelist()}.
 #' @param df A dataframe returned by \code{pull_tweet_data()}
 #' @return A dataframe edgelist with column names 'sender', 'receiver', and
 #'   \code{edge_type}, which in this case the edge type is "mention"
 #' @seealso Compare to other \code{tidytags} functions such as
-#'   \code{get_replies()}, \code{get_retweets()}, \code{get_quotes()}, and
-#'   \code{create_edgelist()}.
+#'   \code{create_replies_edgelist()}, \code{create_retweets_edgelist()},
+#'   \code{create_quotes_edgelist()}, and \code{create_edgelist()}.
 #' @examples
 #'
 #' \dontrun{
 #'
 #' example_url <- "18clYlQeJOc6W5QRuSlJ6_v3snqKJImFhU42bRkM_OX8"
 #' tmp_df <- pull_tweet_data(read_tags(example_url), n = 10)
-#' get_mentions(tmp_df)
+#' create_mentions_edgelist(tmp_df)
 #' }
 #' @importFrom rlang .data
 #' @export
-get_mentions <-
+create_mentions_edgelist <-
   function(df) {
     processed_df <- process_tweets(df)
     unnested_df <- tidyr::unnest(
@@ -227,8 +231,8 @@ get_mentions <-
 #'   \code{edge_type}, which in this case the edge type may be "reply",
 #'   "retweet", "quote", or "mention"
 #' @seealso Compare to other \code{tidytags} functions such as
-#'   \code{get_replies()}, \code{get_retweets()}, \code{get_quotes()}, and
-#'   \code{get_mentions()}.
+#'   \code{create_replies_edgelist()}, \code{create_retweets_edgelist()},
+#'   \code{create_quotes_edgelist()}, and \code{create_mentions_edgelist()}.
 #' @examples
 #'
 #' \dontrun{
@@ -242,17 +246,10 @@ get_mentions <-
 #' @export
 create_edgelist <-
   function(df) {
-    processed_df <- process_tweets(df)
-
-    if (!is.list(processed_df$mentions_screen_name)) {
-      processed_df$mentions_screen_name <-
-        stringr::str_split(processed_df$mentions_screen_name, " ")
-    }
-
-    reply_edges <- get_replies(processed_df)
-    retweet_edges <- get_retweets(processed_df)
-    quote_edges <- get_quotes(processed_df)
-    mention_edges <- get_mentions(processed_df)
+    reply_edges <- create_replies_edgelist(df)
+    retweet_edges <- create_retweets_edgelist(df)
+    quote_edges <- create_quotes_edgelist(df)
+    mention_edges <- create_mentions_edgelist(df)
 
     full_edgelist <-
       tibble::tibble(

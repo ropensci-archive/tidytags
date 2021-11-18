@@ -84,7 +84,7 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">tidytags</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.1.2</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.1.3</span>
       </span>
     </div>
 
@@ -121,7 +121,7 @@
       <ul class="nav navbar-nav navbar-right">
         <li>
   <a href="https://github.com/bretsw/tidytags">
-    <span class="fas fa-github fa-lg"></span>
+    <span class="fa fa-github fa-lg"></span>
      
   </a>
 </li>
@@ -151,15 +151,15 @@
   <a href='https://opencagedata.com/api#quickstart'>read more here</a>.
   We recommend saving your OpenCage Geocoding API Key in the <code>.Renviron</code> file as
   **OPENCAGE_KEY**. You can quickly access this file using the R code
-  <code><a href='https://usethis.r-lib.org/reference/edit.html'>usethis::edit_r_environ(scope='user')</a></code>. Add a line to this file that reads:
+  <code>usethis::edit_r_environ(scope='user')</code>. Add a line to this file that reads:
   <code>OPENCAGE_KEY="PasteYourOpenCageKeyInsideTheseQuotes"</code>. To read your key into R,
-  use the code <code><a href='https://rdrr.io/r/base/Sys.getenv.html'>Sys.getenv('OPENCAGE_KEY')</a></code>. Note that the <code>geocode_tags()</code>
+  use the code <code>Sys.getenv('OPENCAGE_KEY')</code>. Note that the <code>geocode_tags()</code>
   function retrieves your saved API key automatically and securely. Once you've
   saved the <code>.Renviron</code> file, quit your R session and restart. The function
   <code>geocode_tags()</code> will work for you from now on.</p>
     </div>
 
-    <pre class="usage"><span class='fu'>geocode_tags</span>(<span class='kw'>df</span>)</pre>
+    <pre class="usage"><span class='fu'>geocode_tags</span><span class='op'>(</span><span class='va'>df</span><span class='op'>)</span></pre>
 
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
     <table class="ref-arguments">
@@ -183,20 +183,20 @@
   geographic data.</p></div>
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
-    <pre class="examples"><div class='input'>
-<span class='co'>if</span> (<span class='fl'>FALSE</span>) {
-
-<span class='kw'>example_url</span> <span class='op'>&lt;-</span> <span class='st'>"18clYlQeJOc6W5QRuSlJ6_v3snqKJImFhU42bRkM_OX8"</span>
-<span class='kw'>tmp_df</span> <span class='op'>&lt;-</span> <span class='fu'><a href='pull_tweet_data.html'>pull_tweet_data</a></span>(<span class='fu'><a href='read_tags.html'>read_tags</a></span>(<span class='kw'>example_url</span>), n = <span class='fl'>10</span>)
-<span class='kw'>tmp_geo_coords</span> <span class='op'>&lt;-</span> <span class='fu'>geocode_tags</span>(<span class='kw'>tmp_df</span>)
-<span class='kw'>tmp_geo_coords</span>
-<span class='kw'>locations</span> <span class='op'>&lt;-</span> <span class='kw'>sf</span>::<span class='fu'><a href='https://rdrr.io/pkg/sf/man/st_as_sf.html'>st_as_sf</a></span>(
-  <span class='kw'>tmp_geo_coords</span>,
-  coords = <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span>(x = <span class='st'>"longitude"</span>, y = <span class='st'>"latitude"</span>),
-  crs = <span class='fl'>4326</span>)
-<span class='kw'>mapview</span>::<span class='fu'><a href='https://rdrr.io/pkg/mapview/man/mapView.html'>mapview</a></span>(<span class='kw'>locations</span>)
-}
-</div></pre>
+    <pre class="examples"><span class='r-in'></span>
+<span class='r-in'><span class='kw'>if</span> <span class='op'>(</span><span class='cn'>FALSE</span><span class='op'>)</span> <span class='op'>{</span></span>
+<span class='r-in'></span>
+<span class='r-in'><span class='va'>example_url</span> <span class='op'>&lt;-</span> <span class='st'>"18clYlQeJOc6W5QRuSlJ6_v3snqKJImFhU42bRkM_OX8"</span></span>
+<span class='r-in'><span class='va'>tmp_df</span> <span class='op'>&lt;-</span> <span class='fu'><a href='pull_tweet_data.html'>pull_tweet_data</a></span><span class='op'>(</span><span class='fu'><a href='read_tags.html'>read_tags</a></span><span class='op'>(</span><span class='va'>example_url</span><span class='op'>)</span>, n <span class='op'>=</span> <span class='fl'>10</span><span class='op'>)</span></span>
+<span class='r-in'><span class='va'>tmp_geo_coords</span> <span class='op'>&lt;-</span> <span class='fu'>geocode_tags</span><span class='op'>(</span><span class='va'>tmp_df</span><span class='op'>)</span></span>
+<span class='r-in'><span class='va'>tmp_geo_coords</span></span>
+<span class='r-in'><span class='va'>locations</span> <span class='op'>&lt;-</span> <span class='fu'>sf</span><span class='fu'>::</span><span class='fu'><a href='https://r-spatial.github.io/sf/reference/st_as_sf.html'>st_as_sf</a></span><span class='op'>(</span></span>
+<span class='r-in'>  <span class='va'>tmp_geo_coords</span>,</span>
+<span class='r-in'>  coords <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span><span class='op'>(</span>x <span class='op'>=</span> <span class='st'>"longitude"</span>, y <span class='op'>=</span> <span class='st'>"latitude"</span><span class='op'>)</span>,</span>
+<span class='r-in'>  crs <span class='op'>=</span> <span class='fl'>4326</span><span class='op'>)</span></span>
+<span class='r-in'><span class='fu'>mapview</span><span class='fu'>::</span><span class='fu'><a href='https://rdrr.io/pkg/mapview/man/mapView.html'>mapview</a></span><span class='op'>(</span><span class='va'>locations</span><span class='op'>)</span></span>
+<span class='r-in'><span class='op'>}</span></span>
+</pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="pkgdown-sidebar">
     <nav id="toc" data-toggle="toc" class="sticky-top">

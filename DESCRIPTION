@@ -33,7 +33,7 @@ Depends:
     R (>= 4.1)
 Imports:
     dplyr (>= 1.0),
-    googlesheets4 (>= 0.3),
+    googlesheets4 (>= 1.0),
     purrr (>= 0.3),
     rlang(>= 0.4),
     rtweet (>= 0.7),
@@ -52,16 +52,12 @@ Suggests:
     opencage (>= 0.2),
     readr,
     rmarkdown,
-    roxygen2,
     sf,
     testthat,
     tidygraph,
-    tidyverse,
     urltools,
-    usethis,
-    vcr (>= 0.6),
-    webmockr
+    vcr (>= 1.0)
 Encoding: UTF-8
 VignetteBuilder: knitr
 LazyData: TRUE
-RoxygenNote: 7.1.1
+RoxygenNote: 7.1.2
