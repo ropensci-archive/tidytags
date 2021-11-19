@@ -145,28 +145,24 @@
   from the URL linking to specific tweets.</p>
     </div>
 
-    <pre class="usage"><span class='fu'>get_char_tweet_ids</span><span class='op'>(</span><span class='va'>df</span>, url_vector <span class='op'>=</span> <span class='cn'>NULL</span><span class='op'>)</span></pre>
+    <pre class="usage"><span class='fu'>get_char_tweet_ids</span><span class='op'>(</span><span class='va'>x</span><span class='op'>)</span></pre>
 
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
     <table class="ref-arguments">
     <colgroup><col class="name" /><col class="desc" /></colgroup>
     <tr>
-      <th>df</th>
-      <td><p>A dataframe of containing the column name 'status_url'
+      <th>x</th>
+      <td><p>A dataframe containing the column name 'status_url'
 (i.e., the hyperlink to specific tweets), such as that returned by
-<code><a href='read_tags.html'>read_tags()</a></code></p></td>
-    </tr>
-    <tr>
-      <th>url_vector</th>
-      <td><p>A vector of tweet URLs, such as as those contained in
-the 'status_url' column of a dataframe returned by
+<code><a href='read_tags.html'>read_tags()</a></code>, or a vector of tweet URLs, such as as those contained
+in the 'status_url' column of a dataframe returned by
 <code><a href='read_tags.html'>tidytags::read_tags()</a></code></p></td>
     </tr>
     </table>
 
     <h2 class="hasAnchor" id="value"><a class="anchor" href="#value"></a>Value</h2>
 
-    <p>A list or vector of tweet IDs as character strings</p>
+    <p>A vector of tweet IDs as character strings</p>
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
     <pre class="examples"><span class='r-in'></span>
@@ -174,8 +170,8 @@ the 'status_url' column of a dataframe returned by
 <span class='r-in'><span class='va'>example_url</span> <span class='op'>&lt;-</span> <span class='st'>"18clYlQeJOc6W5QRuSlJ6_v3snqKJImFhU42bRkM_OX8"</span></span>
 <span class='r-in'><span class='va'>tags_content</span> <span class='op'>&lt;-</span> <span class='fu'><a href='read_tags.html'>read_tags</a></span><span class='op'>(</span><span class='va'>example_url</span><span class='op'>)</span></span>
 <span class='r-in'><span class='fu'>get_char_tweet_ids</span><span class='op'>(</span><span class='va'>tags_content</span><span class='op'>[</span><span class='fl'>1</span><span class='op'>:</span><span class='fl'>10</span>, <span class='op'>]</span><span class='op'>)</span></span>
-<span class='r-in'><span class='fu'>get_char_tweet_ids</span><span class='op'>(</span>url_vector <span class='op'>=</span> <span class='va'>tags_content</span><span class='op'>$</span><span class='va'>status_url</span><span class='op'>[</span><span class='fl'>1</span><span class='op'>:</span><span class='fl'>10</span><span class='op'>]</span><span class='op'>)</span></span>
-<span class='r-in'><span class='fu'>get_char_tweet_ids</span><span class='op'>(</span>url_vector <span class='op'>=</span></span>
+<span class='r-in'><span class='fu'>get_char_tweet_ids</span><span class='op'>(</span><span class='va'>tags_content</span><span class='op'>$</span><span class='va'>status_url</span><span class='op'>[</span><span class='fl'>1</span><span class='op'>:</span><span class='fl'>10</span><span class='op'>]</span><span class='op'>)</span></span>
+<span class='r-in'><span class='fu'>get_char_tweet_ids</span><span class='op'>(</span></span>
 <span class='r-in'>  <span class='st'>"https://twitter.com/tweet__example/status/1176592704647716864"</span><span class='op'>)</span></span>
 <span class='r-in'><span class='op'>}</span></span>
 </pre>

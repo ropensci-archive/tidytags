@@ -43,13 +43,12 @@ read_tags <-
 #'   rounding process. The most reliable way to get full tweet ID numbers is by
 #'   using this function, \code{get_char_tweet_ids()}, to pull the ID numbers
 #'   from the URL linking to specific tweets.
-#' @param df A dataframe of containing the column name 'status_url'
+#' @param x A dataframe containing the column name 'status_url'
 #'   (i.e., the hyperlink to specific tweets), such as that returned by
-#'   \code{read_tags()}
-#' @param url_vector A vector of tweet URLs, such as as those contained in
-#'   the 'status_url' column of a dataframe returned by
+#'   \code{read_tags()}, or a vector of tweet URLs, such as as those contained
+#'   in the 'status_url' column of a dataframe returned by
 #'   \code{tidytags::read_tags()}
-#' @return A list or vector of tweet IDs as character strings
+#' @return A vector of tweet IDs as character strings
 #'
 #' @examples
 #'
@@ -57,46 +56,22 @@ read_tags <-
 #' example_url <- "18clYlQeJOc6W5QRuSlJ6_v3snqKJImFhU42bRkM_OX8"
 #' tags_content <- read_tags(example_url)
 #' get_char_tweet_ids(tags_content[1:10, ])
-#' get_char_tweet_ids(url_vector = tags_content$status_url[1:10])
-#' get_char_tweet_ids(url_vector =
+#' get_char_tweet_ids(tags_content$status_url[1:10])
+#' get_char_tweet_ids(
 #'   "https://twitter.com/tweet__example/status/1176592704647716864")
 #' }
 #' @importFrom rlang .data
 #' @export
 get_char_tweet_ids <-
-  function(df, url_vector = NULL) {
-    ifelse(!is.null(url_vector),
-      new_ids <- stringr::str_split_fixed(url_vector, "/", n = 6)[, 6],
-      {
-        df <- dplyr::mutate(df,
-          status_id_char = stringr::str_split_fixed(.data$status_url,
-            "/",
-            n = 6
-          )[, 6]
-        )
-        new_ids <- dplyr::pull(df, .data$status_id_char)
-      }
+  function(x) {
+    ifelse(is.data.frame(x),
+           new_ids <-
+             gsub("https?\\://twitter.com\\/.+/status(es)?/", "", x$status_url),
+           new_ids <-
+             gsub("https?\\://twitter.com\\/.+/status(es)?/", "", x)
     )
     new_ids
   }
-
-get_char_tweet_ids2 <-
-  function(df, url_vector = NULL) {
-    ifelse(!is.null(url_vector),
-           new_ids <- stringr::str_split_fixed(url_vector, "/", n = 6)[, 6],
-           {
-             df <- dplyr::mutate(df,
-                                 status_id_char = stringr::str_split_fixed(.data$status_url,
-                                                                           "/",
-                                                                           n = 6
-                                 )[, 6]
-             )
-             new_ids <- dplyr::pull(df, .data$status_id_char)
-           }
-    )
-    new_ids
-  }
-
 
 #' Retrieve the fullest extent of tweet metadata available from the Twitter API
 #'
@@ -160,9 +135,7 @@ pull_tweet_data <-
           n <- length(url_vector)
         }
 
-        new_df <- rtweet::lookup_statuses(get_char_tweet_ids(url_vector[1:n],
-          url_vector = url_vector[1:n]
-        ))
+        new_df <- rtweet::lookup_tweets(get_char_tweet_ids(url_vector[1:n]))
       },
       ifelse(!is.null(id_vector),
         {
@@ -179,7 +152,7 @@ pull_tweet_data <-
             n <- length(id_vector)
           }
 
-          new_df <- rtweet::lookup_statuses(id_vector[1:n])
+          new_df <- rtweet::lookup_tweets(id_vector[1:n])
         },
         {
           if (is.null(n)) {
@@ -196,7 +169,7 @@ pull_tweet_data <-
             n <- nrow(df)
           }
 
-          new_df <- rtweet::lookup_statuses(get_char_tweet_ids(df[1:n, ]))
+          new_df <- rtweet::lookup_tweets(get_char_tweet_ids(df[1:n, ]))
         }
       )
     )
@@ -228,12 +201,12 @@ lookup_many_tweets <-
         beepr::beep(2)
       }
       if (n_batches > 1) {
-        message("Processed batch: ", i)
+        message("I've finished processing batch: ", i, " of ", n_batches)
       }
       if (i != n_batches) {
-        message("Now sleeping...")
+        message("Hold on, I need to nap for about 15 minutes...")
         Sys.sleep(901)
-        message("Awake!")
+        message("I'm awake and back to work!")
       }
     }
     new_df
@@ -244,7 +217,7 @@ lookup_many_tweets <-
 #' @param x A list
 #' @return The number of items in the list
 #' @keywords internal
-#' @nord
+#' @noRd
 length_with_na <-
   function(x) {
     ifelse(is.na(x), 0, purrr::map_int(x, length))
@@ -295,6 +268,5 @@ process_tweets <-
             TRUE, FALSE
           )
       )
-
     df
   }

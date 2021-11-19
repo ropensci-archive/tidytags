@@ -4,19 +4,17 @@
 \alias{get_char_tweet_ids}
 \title{Get tweet ID numbers as character strings}
 \usage{
-get_char_tweet_ids(df, url_vector = NULL)
+get_char_tweet_ids(x)
 }
 \arguments{
-\item{df}{A dataframe of containing the column name 'status_url'
+\item{x}{A dataframe containing the column name 'status_url'
 (i.e., the hyperlink to specific tweets), such as that returned by
-\code{read_tags()}}
-
-\item{url_vector}{A vector of tweet URLs, such as as those contained in
-the 'status_url' column of a dataframe returned by
+\code{read_tags()}, or a vector of tweet URLs, such as as those contained
+in the 'status_url' column of a dataframe returned by
 \code{tidytags::read_tags()}}
 }
 \value{
-A list or vector of tweet IDs as character strings
+A vector of tweet IDs as character strings
 }
 \description{
 This function is useful because Google Sheets (and hence TAGS)
@@ -32,8 +30,8 @@ This function is useful because Google Sheets (and hence TAGS)
 example_url <- "18clYlQeJOc6W5QRuSlJ6_v3snqKJImFhU42bRkM_OX8"
 tags_content <- read_tags(example_url)
 get_char_tweet_ids(tags_content[1:10, ])
-get_char_tweet_ids(url_vector = tags_content$status_url[1:10])
-get_char_tweet_ids(url_vector =
+get_char_tweet_ids(tags_content$status_url[1:10])
+get_char_tweet_ids(
   "https://twitter.com/tweet__example/status/1176592704647716864")
 }
 }

@@ -59,5 +59,4 @@ Suggests:
     vcr (>= 1.0)
 Encoding: UTF-8
 VignetteBuilder: knitr
-LazyData: TRUE
 RoxygenNote: 7.1.2

@@ -16,6 +16,23 @@ tidytags development version
  ### DOCUMENTATION FIXES
 
   * 
+
+tidytags 0.2.0 (2021-11-19)
+=========================
+
+### NEW FEATURES
+
+  * Added a new function lookup_many_users() to automatically iterate through the Twitter API limit of pulling metadata for only 90,000 users at one time
+ 
+ ### BUG FIXES
+ 
+  * Updated several function names so as not to mask newer functions imported from {rtweet}, for example, get_mentions() is now create_mentions_edgelist(), and similar updates have been made for function building edgelists from quotes, replies, and retweets
+  * Updated tests to work with latest version of {vcr}
+  * Made fixes so CI tests would again work with real requests in addition to pre-recorded {vcr} data
+ 
+ ### DOCUMENTATION FIXES
+
+  * Extensively updated the README doc and Setup vignette to help scaffold {tidytags} setup
   
 tidytags 0.1.2 (2021-03-02)
 =========================

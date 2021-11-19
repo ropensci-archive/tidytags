@@ -26,10 +26,10 @@ sample_tweet <-
 test_that("get_char_tweet_ids() extracts correct ID number", {
   expect_equal(get_char_tweet_ids(sample_tweet),
                "1219758386436165633")
-  expect_equal(get_char_tweet_ids(url_vector = sample_tweet$status_url),
+  expect_equal(get_char_tweet_ids(sample_tweet$status_url),
                "1219758386436165633")
   expect_equal(get_char_tweet_ids(sample_data[8, ]),
                "1225137879921385472")
-  expect_equal(get_char_tweet_ids(url_vector = sample_data$status_url[8]),
+  expect_equal(get_char_tweet_ids(sample_data$status_url[8]),
                "1225137879921385472")
 })

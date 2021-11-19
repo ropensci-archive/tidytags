@@ -70,9 +70,9 @@ example_df_all <- readr::read_csv("my-downloaded-tags-file.csv")
 
 ## pull_tweet_data()
 
-With a TAGS archive imported into R, {tidytags} allows you to gather quite a bit more information related to the collected tweets with the `pull_tweet_data()` function. This function uses the [{rtweet} package](https://rtweet.info/) (via `rtweet::lookup_statuses()`) to query the Twitter API. Using {rtweet} requires Twitter API keys associated with an approved developer account. Fortunately, the {rtweet} vignette, [Obtaining and using access tokens](https://rtweet.info/articles/auth.html), provides a very thorough guide to obtaining Twitter API keys. For further help getting your own Twitter API keys, see the [Getting started with tidytags](https://bretsw.github.io/tidytags/articles/setup.html) vignette we've written, specifically **Pain Point #2**.
+With a TAGS archive imported into R, {tidytags} allows you to gather quite a bit more information related to the collected tweets with the `pull_tweet_data()` function. This function uses the [{rtweet} package](https://rtweet.info/) (via `rtweet::lookup_tweets()`) to query the Twitter API. Using {rtweet} requires Twitter API keys associated with an approved developer account. Fortunately, the {rtweet} vignette, [Obtaining and using access tokens](https://rtweet.info/articles/auth.html), provides a very thorough guide to obtaining Twitter API keys. For further help getting your own Twitter API keys, see the [Getting started with tidytags](https://bretsw.github.io/tidytags/articles/setup.html) vignette we've written, specifically **Pain Point #2**.
 
-Note that your dataset will often contain fewer rows after running `pull_tweet_data()`. This is because `rtweet::lookup_statuses()` is searching for tweet IDs that are currently available. Any tweets that have been deleted or made "protected" (i.e., private) since TAGS first collected them are dropped from the dataset. Rather than view this as a limitation, we see this as an asset to help ensure our data better reflects the intentions of the accounts whose tweets we have collected (see [Fiesler & Proferes, 2018](https://journals.sagepub.com/doi/full/10.1177/2056305118763366)).
+Note that your dataset will often contain fewer rows after running `pull_tweet_data()`. This is because `rtweet::lookup_tweets()` is searching for tweet IDs that are currently available. Any tweets that have been deleted or made "protected" (i.e., private) since TAGS first collected them are dropped from the dataset. Rather than view this as a limitation, we see this as an asset to help ensure our data better reflects the intentions of the accounts whose tweets we have collected (see [Fiesler & Proferes, 2018](https://journals.sagepub.com/doi/full/10.1177/2056305118763366)).
 
 Here, we demonstrate two different ways of using `pull_tweet_data()`. The first method is to query the Twitter API with the tweet ID numbers from the `id_str` column returned by {rtweet}. However, a limitation of TAGS is that the numbers in this column are often corrupted because Google Sheets considers them very large numbers (instead of character strings) and rounds them by putting them into exponential form. The results of this first method are stored in the variable `example_after_rtweet_A` below. The second method pulls the tweet ID numbers from the tweet URLs. For example, the tweet with the URL `https://twitter.com/tweet__example/status/1176592704647716864` has a tweet ID of `1176592704647716864`. The results of this second method are stored in the variable `example_after_rtweet_B` below.
 
@@ -105,7 +105,7 @@ In sum, although a TAGS tracker is great for easily collecting tweets over time 
 
 ## lookup_many_tweets()
 
-The Twitter API only allows the looking up of 90,000 tweet IDs at a time, a rate limit which resets after 15 minutes. Hence `rtweet::lookup_statuses()` will only return results for the first 90,000 tweet IDs in your dataset. The function `tidytags::lookup_many_tweets()` will automatically break your dataset into batches of 90,000 tweets, looking up one batch per 15 minutes until finished. Note that `lookup_many_tweets()` also works for datasets with fewer than 90,000 tweets as well.
+The Twitter API only allows the looking up of 90,000 tweet IDs at a time, a rate limit which resets after 15 minutes. Hence `rtweet::lookup_tweets()` will only return results for the first 90,000 tweet IDs in your dataset. The function `tidytags::lookup_many_tweets()` will automatically break your dataset into batches of 90,000 tweets, looking up one batch per 15 minutes until finished. Note that `lookup_many_tweets()` also works for datasets with fewer than 90,000 tweets as well.
 
 Because our AECT 2019 examples includes fewer than 90,000 tweets (and because `lookup_many_tweets()` involves waiting for 15 minutes between batches), we do not include an example here. However, this function can be used in the same way as `pull_tweet_data()`.
 
@@ -204,11 +204,11 @@ example_map <- mapview::mapview(locations)
 
 At this point, you can view an interactive map in your R environment simply by calling `example_map`.
 
-## get_replies(), get_retweets(), get_quotes(), get_mentions()
+## create_replies_edgelist(), create_retweets_edgelist(), create_quotes_edgelist(), create_mentions_edgelist()
 
-These functions quickly subset the data, returning just the tweets of the type indicated by the function name (e.g., `get_replies()` returns only reply tweets). The `get_` family of {tidytags} functions can be used to look at home many tweets of each type are present in the dataset.
+These functions quickly subset the data, returning just the tweets of the type indicated by the function name (e.g., `create_replies_edgelist()` returns only reply tweets). The `create_x_edgelist()` family of {tidytags} functions can be used to look at home many tweets of each type are present in the dataset.
 
-In the dataset of `r nrow(example_processed)` tweets, there are `r nrow(get_replies(example_processed))` replies, `r nrow(get_retweets(example_processed))` retweets, `r nrow(get_quotes(example_processed))` quote tweets, and `r nrow(get_mentions(example_processed))`.
+In the dataset of `r nrow(example_processed)` tweets, there are `r nrow(create_replies_edgelist(example_processed))` replies, `r nrow(create_retweets_edgelist(example_processed))` retweets, `r nrow(create_quotes_edgelist(example_processed))` quote tweets, and `r nrow(create_mentions_edgelist(example_processed))`.
 
 ## get_upstream_replies()
 
@@ -226,7 +226,7 @@ Unfortunately, due to limitations in what information is given by the Twitter AP
 
 ## create_edgelist()
 
-Another useful approach to social media research is *social network analysis*. Getting started with social network analysis is as simple as producing an *edgelist*, a two-column dataframe listing *senders* and *receivers*. An edgelist gives a complete accounting of whom is interacting with whom. In Twitter, this is complicated somewhat by the number of ways a user is able to interact with someone else, namely, through replying, retweeting, quote tweeting, mentioning, and liking tweets. The {tidytags} function `create_edgelist()` uses `get_replies()`, `get_retweets()`, `get_quotes()`, and `get_mentions()` to create an edgelist that takes into account these four different types of interaction. `create_edgelist()` returns a dataframe with three columns: two for the sender and receiver Twitter handles, and a third column listing the edge type (i.e., the form of interaction).
+Another useful approach to social media research is *social network analysis*. Getting started with social network analysis is as simple as producing an *edgelist*, a two-column dataframe listing *senders* and *receivers*. An edgelist gives a complete accounting of whom is interacting with whom. In Twitter, this is complicated somewhat by the number of ways a user is able to interact with someone else, namely, through replying, retweeting, quote tweeting, mentioning, and liking tweets. The {tidytags} function `create_edgelist()` uses `create_replies_edgelist()`, `create_retweets_edgelist()`, `create_quotes_edgelist()`, and `create_mentions_edgelist()` to create an edgelist that takes into account these four different types of interaction. `create_edgelist()` returns a dataframe with three columns: two for the sender and receiver Twitter handles, and a third column listing the edge type (i.e., the form of interaction).
 
 Run `create_edgelist()` after completing `get_upstream_replies()` for a complete picture of the interactions.
 
@@ -262,7 +262,7 @@ Running `create_edgelist()` also provides a simple way to re-look at how many tw
 dplyr::count(example_edgelist, edge_type, sort = TRUE)
 ```
 
-Note that {tidytags} does not yet have a function `get_likes()` because this process is much more difficult given the information provided by the Twitter API.
+Note that {tidytags} does not yet have a function `create_likes_edgelist()` because this process is much more difficult given the information provided by the Twitter API.
 
 ## add_users_data()
 
