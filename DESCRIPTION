@@ -1,6 +1,7 @@
 Package: tidytags
-Version: 0.1.3
 Title: Importing and Analyzing Twitter Data Collected with Twitter Archiving Google Sheets
+Version: 0.2.0
+License: GPL-3
 Authors@R: c(
     person("K. Bret", "Staudt Willet", , 
       email = "bret@bretsw.com", 
@@ -26,7 +27,6 @@ Description: The {tidytags} package coordinates the simplicity of collecting twe
     for processing and preparing additional Twitter metadata. {tidytags} also 
     introduces functions developed to facilitate systematic yet flexible analyses 
     of data from Twitter.
-License: GPL-3
 Language: en-US
 URL: https://bretsw.github.io/tidytags/, https://github.com/bretsw/tidytags
 Depends: 

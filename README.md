@@ -3,24 +3,26 @@
 
 # tidytags <img src="man/figures/tidytags-logo.png" align="right" width="120" />
 
+##### Importing and Analyzing Twitter Data Collected with Twitter Archiving Google Sheets
+
 <!-- badges: start -->
+
+[![R-CMD-check](https://github.com/bretsw/tidytags/workflows/R-CMD-check/badge.svg)](https://github.com/bretsw/tidytags/actions)
+[![codecov](https://codecov.io/gh/bretsw/tidytags/branch/master/graph/badge.svg)](https://codecov.io/gh/bretsw/tidytags)
+[![Last-changedate](https://img.shields.io/github/last-commit/bretsw/tidytags.svg)](https://github.com/bretsw/tidytags/commits/main)
 
 [![Project Status: Active – The project has reached a stable, usable
 state and is being actively
 developed.](https://www.repostatus.org/badges/latest/active.svg)](https://www.repostatus.org/#active)
-[![Status at rOpenSci Software Peer
-Review](https://badges.ropensci.org/382_status.svg)](https://github.com/ropensci/software-review/issues/382)
-[![R-CMD-check](https://github.com/bretsw/tidytags/workflows/R-CMD-check/badge.svg)](https://github.com/bretsw/tidytags/actions)
-[![codecov](https://codecov.io/gh/bretsw/tidytags/branch/master/graph/badge.svg)](https://codecov.io/gh/bretsw/tidytags)
-[![Last-changedate](https://img.shields.io/github/last-commit/bretsw/tidytags.svg)](https://github.com/bretsw/tidytags/commits/main)
+[![lifecycle](https://img.shields.io/badge/lifecycle-maturing-blue.svg)](https://www.tidyverse.org/lifecycle/#maturing)
 [![GitHub
 issues](https://img.shields.io/github/issues/bretsw/tidytags.svg?style=popout)](https://github.com/bretsw/tidytags/issues/)
-[![lifecycle](https://img.shields.io/badge/lifecycle-maturing-blue.svg)](https://www.tidyverse.org/lifecycle/#maturing)
-[![license](https://img.shields.io/badge/license-GPL3-9cf.svg)](https://www.gnu.org/licenses/gpl.html)
-<!-- badges: end -->
 
-Importing and Analyzing Twitter Data Collected with Twitter Archiving
-Google Sheets
+[![license](https://img.shields.io/badge/license-GPL3-9cf.svg)](https://www.gnu.org/licenses/gpl.html)
+[![Status at rOpenSci Software Peer
+Review](https://badges.ropensci.org/382_status.svg)](https://github.com/ropensci/software-review/issues/382)
+
+<!-- badges: end -->
 
 ## Overview
 
@@ -60,7 +62,7 @@ library(tidytags)
 
 For help with initial {tidytags} setup, see the [Getting started with
 tidytags](https://bretsw.github.io/tidytags/articles/setup.html)
-vignette. Specifically, this guide offers help for four pain points:
+vignette. Specifically, this guide offers help for four key tasks:
 
 1.  Making sure your TAGS tracker can be accessed
 2.  Getting and storing a Google API key
@@ -118,7 +120,7 @@ Bret](mailto:bret@bretsw.com) or reach out on Twitter:
 You can also [submit an issue on
 Github](https://github.com/bretsw/tidytags/issues/).
 
-You may also wish too try some general troubleshooting strategies:
+You may also wish to try some general troubleshooting strategies:
 
 -   Try to find out what the specific problem is
     -   Identify what is *not* causing the problem
@@ -133,8 +135,9 @@ You may also wish too try some general troubleshooting strategies:
 
 ## Considerations Related to Ethics, Data Privacy, and Human Subjects Research
 
-{tidytags} should be used in strict accordance with Twitter’s [developer
-terms](https://developer.twitter.com/en/developer-terms/more-on-restricted-use-cases).
+**{tidytags} should be used in strict accordance with Twitter’s
+[developer
+terms](https://developer.twitter.com/en/developer-terms/more-on-restricted-use-cases).**
 
 Although most Institutional Review Boards (IRBs) consider the Twitter
 data that {tidytags} analyzes to *not* necessarily be human subjects
@@ -149,7 +152,7 @@ guide](https://devguide.ropensci.org/policies.html#ethics-data-privacy-and-human
 Therefore, although you *can* collect Twitter data (and you *can* use
 {tidytags} to analyze it), we urge care and thoughtfulness regarding how
 you analyze the data and communicate the results. In short, please
-remember that most (if not all) of the you collect may be about
+remember that most (if not all) of the data you collect may be about
 people—and [those people may not like the idea of their data being
 analyzed or included in
 research](https://journals.sagepub.com/doi/full/10.1177/2056305118763366).
@@ -160,10 +163,6 @@ ways](https://aoir.org/ethics/) when working with data about people.
 AoIR’s [ethical guidelines](https://aoir.org/reports/ethics3.pdf) may be
 especially helpful for navigating tensions related to collecting,
 analyzing, and sharing social media data.
-
-**{tidytags} should be used in strict accordance with Twitter’s
-[developer
-terms](https://developer.twitter.com/en/developer-terms/more-on-restricted-use-cases).**
 
 ## Contributing
 
@@ -178,6 +177,21 @@ Guide](https://github.com/bretsw/tidytags/blob/master/CONTRIBUTING.md).
 All contributors, from those fixing typos to adding new functionality,
 must adhere to the [Code of
 Conduct](https://github.com/bretsw/tidytags/blob/master/CODE_OF_CONDUCT.md).
+
+## How to cite this package in publications
+
+You can cite this package like this: “we collected, processed, and
+analyzed Twitter data using the tidytags R package (Staudt Willet &
+Rosenberg, 2021)”. Here is the full bibliographic reference to include
+in your reference list:
+
+list(title = “tidytags: Importing and Analyzing Twitter Data Collected
+with TwitterGoogle Sheets”, author = list(list(given = “K. Bret”, family
+= “Staudt Willet”, role = c(“aut”, “cre”), email = “<bret@bretsw.com>”,
+comment = c(ORCID = “0000-0002-6984-416X”)), list(given = “Joshua M.”,
+family = “Rosenberg”, role = “aut”, email = NULL, comment = c(ORCID =
+“0000-0003-2170-0447”))), year = “2021”, note =
+“<a href="https://bretsw.github.io/tidytags/,\nhttps://github.com/bretsw/tidytags" class="uri">https://bretsw.github.io/tidytags/,\nhttps://github.com/bretsw/tidytags</a>”)
 
 ## License [![license](https://img.shields.io/badge/license-GPL3-9cf.svg)](https://www.gnu.org/licenses/gpl.html)
 

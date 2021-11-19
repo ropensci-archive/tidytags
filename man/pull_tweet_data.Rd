@@ -29,8 +29,7 @@ A dataframe of tweets and full metadata from the Twitter API
 With a TAGS archive imported into R, \code{pull_tweet_data()} uses the
   **rtweet** package to query the Twitter API. Using rtweet requires Twitter
   API keys associated with an approved developer account. Fortunately, the
-  rtweet vignette, \href{https://docs.ropensci.org/rtweet/articles/auth.html}
-  {Obtaining and using access tokens}, provides a very thorough guide to
+  rtweet vignette, \href{https://docs.ropensci.org/rtweet/articles/auth.html}{Obtaining and using access tokens}, provides a very thorough guide to
   obtaining Twitter API keys. We recommend the second suggested method listed
   in the rtweet vignette, "2. Access token/secret method." Following these
   directions, you will run the \code{rtweet::create_token()} function, which

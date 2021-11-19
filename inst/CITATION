@@ -1,0 +1,23 @@
+citHeader("To cite tidytags in publications, please use:")
+
+citEntry(
+    entry        = "manual",
+    title        = "tidytags: Importing and analyzing Twitter data collected with Twitter Archiving Google Sheets",
+    author       = c(as.person("K. Bret Staudt Willet"), as.person("Joshua M. Rosenberg")),
+    year         = "2021",
+    note         = "R package version 0.2.0",
+    journal      = "",
+    volume       = "",
+    number       = "",
+    pages        = "",
+    doi          = "",
+    url          = "",
+    key          = "tidytags-package",
+    textVersion  = paste(
+        "Staudt Willet, K. B., & Rosenberg, J. M. (2021).",
+        "tidytags: Importing and analyzing Twitter data collected with Twitter",
+        "Archiving Google Sheets.",
+        "https://github.com/bretsw/tidytags",
+        "(R package version 0.2.0)"
+    )
+)

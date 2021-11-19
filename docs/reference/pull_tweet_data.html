@@ -40,15 +40,16 @@
 
 
 <meta property="og:title" content="Retrieve the fullest extent of tweet metadata available from the Twitter API — pull_tweet_data" />
-<meta property="og:description" content="With a TAGS archive imported into R, pull_tweet_data() uses the **rtweet**
-  package to query the Twitter API. Using rtweet requires Twitter API keys
-  associated with an approved developer account. Fortunately, the rtweet vignette,
-  Obtaining and using access tokens, provides a very thorough guide
-  to obtaining Twitter API keys. We recommend the second suggested method listed
+<meta property="og:description" content="With a TAGS archive imported into R, pull_tweet_data() uses the
+  **rtweet** package to query the Twitter API. Using rtweet requires Twitter
+  API keys associated with an approved developer account. Fortunately, the
+  rtweet vignette, Obtaining and using access tokens, provides a very thorough guide to
+  obtaining Twitter API keys. We recommend the second suggested method listed
   in the rtweet vignette, &quot;2. Access token/secret method.&quot; Following these
   directions, you will run the rtweet::create_token() function, which
   saves your Twitter API keys to the .Renviron file. You can also edit
-  this file directly using the usethis::edit_r_environ(scope='user') function." />
+  this file directly using the usethis::edit_r_environ(scope='user')
+  function." />
 
 
 
@@ -80,7 +81,7 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">tidytags</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.1.3</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.2.0</span>
       </span>
     </div>
 
@@ -140,15 +141,16 @@
     </div>
 
     <div class="ref-description">
-    <p>With a TAGS archive imported into R, <code>pull_tweet_data()</code> uses the **rtweet**
-  package to query the Twitter API. Using rtweet requires Twitter API keys
-  associated with an approved developer account. Fortunately, the rtweet vignette,
-  <a href='https://docs.ropensci.org/rtweet/articles/auth.html'>Obtaining and using access tokens</a>, provides a very thorough guide
-  to obtaining Twitter API keys. We recommend the second suggested method listed
+    <p>With a TAGS archive imported into R, <code>pull_tweet_data()</code> uses the
+  **rtweet** package to query the Twitter API. Using rtweet requires Twitter
+  API keys associated with an approved developer account. Fortunately, the
+  rtweet vignette, <a href='https://docs.ropensci.org/rtweet/articles/auth.html'>Obtaining and using access tokens</a>, provides a very thorough guide to
+  obtaining Twitter API keys. We recommend the second suggested method listed
   in the rtweet vignette, "2. Access token/secret method." Following these
   directions, you will run the <code><a href='https://rdrr.io/pkg/rtweet/man/create_token.html'>rtweet::create_token()</a></code> function, which
   saves your Twitter API keys to the <code>.Renviron</code> file. You can also edit
-  this file directly using the <code>usethis::edit_r_environ(scope='user')</code> function.</p>
+  this file directly using the <code>usethis::edit_r_environ(scope='user')</code>
+  function.</p>
     </div>
 
     <pre class="usage"><span class='fu'>pull_tweet_data</span><span class='op'>(</span><span class='va'>df</span>, url_vector <span class='op'>=</span> <span class='cn'>NULL</span>, id_vector <span class='op'>=</span> <span class='cn'>NULL</span>, n <span class='op'>=</span> <span class='cn'>NULL</span><span class='op'>)</span></pre>
@@ -165,7 +167,8 @@
     <tr>
       <th>url_vector</th>
       <td><p>A vector of tweet URLs, such as as those contained in
-the 'status_url' column of a dataframe returned by <code><a href='read_tags.html'>tidytags::read_tags()</a></code></p></td>
+the 'status_url' column of a dataframe returned by
+<code><a href='read_tags.html'>tidytags::read_tags()</a></code></p></td>
     </tr>
     <tr>
       <th>id_vector</th>
@@ -174,8 +177,9 @@ the 'id_str' column of a dataframe returned by <code><a href='read_tags.html'>ti
     </tr>
     <tr>
       <th>n</th>
-      <td><p>The number of tweets to look up, by default the total number of tweet
-ID numbers available, but capped at 90,000 due to Twitter API limitations.</p></td>
+      <td><p>The number of tweets to look up, by default the total number of
+tweet ID numbers available, but capped at 90,000 due to Twitter API
+limitations.</p></td>
     </tr>
     </table>
 
@@ -184,20 +188,23 @@ ID numbers available, but capped at 90,000 due to Twitter API limitations.</p></
     <p>A dataframe of tweets and full metadata from the Twitter API</p>
     <h2 class="hasAnchor" id="see-also"><a class="anchor" href="#see-also"></a>See also</h2>
 
-    <div class='dont-index'><p>Read more about <code><a href='https://CRAN.R-project.org/package=rtweet'>library(rtweet)</a></code> <a href='https://rtweet.info/'>here</a>.</p></div>
+    <div class='dont-index'><p>Read more about <code><a href='https://CRAN.R-project.org/package=rtweet'>library(rtweet)</a></code>
+  <a href='https://rtweet.info/'>here</a>.</p></div>
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
     <pre class="examples"><span class='r-in'></span>
 <span class='r-in'><span class='kw'>if</span> <span class='op'>(</span><span class='cn'>FALSE</span><span class='op'>)</span> <span class='op'>{</span></span>
 <span class='r-in'></span>
 <span class='r-in'><span class='va'>example_url</span> <span class='op'>&lt;-</span> <span class='st'>"18clYlQeJOc6W5QRuSlJ6_v3snqKJImFhU42bRkM_OX8"</span></span>
-<span class='r-in'><span class='fu'>pull_tweet_data</span><span class='op'>(</span><span class='fu'><a href='read_tags.html'>read_tags</a></span><span class='op'>(</span><span class='va'>example_url</span><span class='op'>)</span><span class='op'>[</span><span class='fl'>1</span><span class='op'>:</span><span class='fl'>10</span>, <span class='op'>]</span><span class='op'>)</span></span>
-<span class='r-in'><span class='fu'>pull_tweet_data</span><span class='op'>(</span><span class='fu'><a href='read_tags.html'>read_tags</a></span><span class='op'>(</span><span class='va'>example_url</span><span class='op'>)</span>, n <span class='op'>=</span> <span class='fl'>10</span><span class='op'>)</span></span>
-<span class='r-in'><span class='fu'>pull_tweet_data</span><span class='op'>(</span>url_vector <span class='op'>=</span> <span class='fu'><a href='read_tags.html'>read_tags</a></span><span class='op'>(</span><span class='va'>example_url</span><span class='op'>)</span><span class='op'>$</span><span class='va'>status_url</span><span class='op'>[</span><span class='fl'>1</span><span class='op'>:</span><span class='fl'>10</span><span class='op'>]</span><span class='op'>)</span></span>
-<span class='r-in'><span class='fu'>pull_tweet_data</span><span class='op'>(</span>url_vector <span class='op'>=</span> <span class='fu'><a href='read_tags.html'>read_tags</a></span><span class='op'>(</span><span class='va'>example_url</span><span class='op'>)</span><span class='op'>$</span><span class='va'>status_url</span>, n <span class='op'>=</span> <span class='fl'>10</span><span class='op'>)</span></span>
-<span class='r-in'><span class='fu'>pull_tweet_data</span><span class='op'>(</span>id_vector <span class='op'>=</span> <span class='fu'><a href='read_tags.html'>read_tags</a></span><span class='op'>(</span><span class='va'>example_url</span><span class='op'>)</span><span class='op'>$</span><span class='va'>id_str</span><span class='op'>[</span><span class='fl'>1</span><span class='op'>:</span><span class='fl'>10</span><span class='op'>]</span><span class='op'>)</span></span>
-<span class='r-in'><span class='fu'>pull_tweet_data</span><span class='op'>(</span>id_vector <span class='op'>=</span> <span class='fu'><a href='read_tags.html'>read_tags</a></span><span class='op'>(</span><span class='va'>example_url</span><span class='op'>)</span><span class='op'>$</span><span class='va'>id_str</span>, n <span class='op'>=</span> <span class='fl'>10</span><span class='op'>)</span></span>
-<span class='r-in'><span class='fu'>pull_tweet_data</span><span class='op'>(</span>url_vector <span class='op'>=</span> <span class='st'>"https://twitter.com/tweet__example/status/1176592704647716864"</span><span class='op'>)</span></span>
+<span class='r-in'><span class='va'>tags_content</span> <span class='op'>&lt;-</span> <span class='fu'><a href='read_tags.html'>read_tags</a></span><span class='op'>(</span><span class='va'>example_url</span><span class='op'>)</span></span>
+<span class='r-in'><span class='fu'>pull_tweet_data</span><span class='op'>(</span><span class='va'>tags_content</span><span class='op'>[</span><span class='fl'>1</span><span class='op'>:</span><span class='fl'>10</span>, <span class='op'>]</span><span class='op'>)</span></span>
+<span class='r-in'><span class='fu'>pull_tweet_data</span><span class='op'>(</span><span class='va'>tags_content</span>, n <span class='op'>=</span> <span class='fl'>10</span><span class='op'>)</span></span>
+<span class='r-in'><span class='fu'>pull_tweet_data</span><span class='op'>(</span>url_vector <span class='op'>=</span> <span class='va'>tags_content</span><span class='op'>$</span><span class='va'>status_url</span><span class='op'>[</span><span class='fl'>1</span><span class='op'>:</span><span class='fl'>10</span><span class='op'>]</span><span class='op'>)</span></span>
+<span class='r-in'><span class='fu'>pull_tweet_data</span><span class='op'>(</span>url_vector <span class='op'>=</span> <span class='va'>tags_content</span><span class='op'>$</span><span class='va'>status_url</span>, n <span class='op'>=</span> <span class='fl'>10</span><span class='op'>)</span></span>
+<span class='r-in'><span class='fu'>pull_tweet_data</span><span class='op'>(</span>id_vector <span class='op'>=</span> <span class='va'>tags_content</span><span class='op'>$</span><span class='va'>id_str</span><span class='op'>[</span><span class='fl'>1</span><span class='op'>:</span><span class='fl'>10</span><span class='op'>]</span><span class='op'>)</span></span>
+<span class='r-in'><span class='fu'>pull_tweet_data</span><span class='op'>(</span>id_vector <span class='op'>=</span> <span class='va'>tags_content</span><span class='op'>$</span><span class='va'>id_str</span>, n <span class='op'>=</span> <span class='fl'>10</span><span class='op'>)</span></span>
+<span class='r-in'><span class='fu'>pull_tweet_data</span><span class='op'>(</span>url_vector <span class='op'>=</span></span>
+<span class='r-in'>  <span class='st'>"https://twitter.com/tweet__example/status/1176592704647716864"</span><span class='op'>)</span></span>
 <span class='r-in'><span class='fu'>pull_tweet_data</span><span class='op'>(</span>id_vector <span class='op'>=</span> <span class='st'>"1176592704647716864"</span><span class='op'>)</span></span>
 <span class='r-in'><span class='op'>}</span></span>
 </pre>
