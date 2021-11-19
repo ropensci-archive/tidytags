@@ -92,11 +92,9 @@ To use `read_tags()`, you will need a **Google API key** for Google Sheets. Foll
 
 <p align="center"><img src="files/tidytags-setup-google-api_3.png" width="480"></p>
 
-4. Bring the Google API key into R. Specifically, add the key to the `.Renviron` file. Edit this file directly using the `usethis::edit_r_environ(scope='user')` function. The format of the `.Renviron` file should be as follows (inputting your unique credentials after the `=` sign with quotation marks):
- 
-```{r, eval=FALSE}
-GOOGLE_API_KEY = "YourGoogleAPIKey"
-```
+4. Bring the Google API key into R. Specifically, add the key to the `.Renviron` file. Edit this file directly using the `usethis::edit_r_environ(scope='user')` function. The format of the `.Renviron` file should be as follows (inputting your unique Google API key after the `=` sign, with no quotation marks):
+
+`GOOGLE_API_KEY = YourGoogleAPIKey`
 
 You can read more about the Google Sheets API [here](https://console.developers.google.com/apis/library/sheets.googleapis.com), and get help with the API [here](https://developers.google.com/sheets/api/support).
 
@@ -157,7 +155,9 @@ We recommend saving your OpenCage Geocoding API key in the `.Renviron` file as *
 usethis::edit_r_environ(scope='user')
 ```
 
-Then, add a line to this file that reads: `OPENCAGE_KEY="PasteYourOpenCageKeyInsideDoubleQuotes"`. 
+Then, add a line to this file that reads (inputting your unique OpenCage Key after the `=` sign, with no quotation marks): 
+
+`OPENCAGE_KEY = PasteYourOpenCageKeyHere` 
 
 **Once you've saved the .Renviron file, quit your R session and restart.** The function `geocode_tags()` will work for you from now on. Note that the {tidytags} `geocode_tags()` function retrieves your saved API key automatically and securely, and you won't need to think about this after the initial setup. 
 
