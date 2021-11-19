@@ -100,7 +100,7 @@ With a TAGS archive imported into R, {tidytags} allows you to gather
 quite a bit more information related to the collected tweets with the
 `pull_tweet_data()` function. This function uses the [{rtweet}
 package](https://docs.ropensci.org/rtweet/index.html) (via
-`rtweet::lookup_statuses()`) to query the Twitter API. This process
+`rtweet::lookup_tweets()`) to query the Twitter API. This process
 requires Twitter API keys associated with an approved Twitter developer
 account. See the [Getting started with
 tidytags](https://bretsw.github.io/tidytags/articles/setup.html)

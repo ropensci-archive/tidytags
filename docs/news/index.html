@@ -129,6 +129,27 @@
       <small>Source: <a href='https://github.com/bretsw/tidytags/blob/master/NEWS.md'><code>NEWS.md</code></a></small>
     </div>
 
+    <div id="tidytags-020-2021-11-19" class="section level1">
+<h1 class="page-header" data-toc-text="0.2.0">
+<a href="#tidytags-020-2021-11-19" class="anchor"></a>tidytags 0.2.0 (2021-11-19)</h1>
+<div id="new-features-1" class="section level3">
+<h3 class="hasAnchor">
+<a href="#new-features-1" class="anchor"></a>NEW FEATURES</h3>
+<ul>
+<li>Added a new function lookup_many_users() to automatically iterate through the Twitter API limit of pulling metadata for only 90,000 users at one time</li>
+</ul>
+<p>### BUG FIXES</p>
+<ul>
+<li>Updated several function names so as not to mask newer functions imported from {rtweet}, for example, get_mentions() is now create_mentions_edgelist(), and similar updates have been made for function building edgelists from quotes, replies, and retweets</li>
+<li>Updated tests to work with latest version of {vcr}</li>
+<li>Made fixes so CI tests would again work with real requests in addition to pre-recorded {vcr} data</li>
+</ul>
+<p>### DOCUMENTATION FIXES</p>
+<ul>
+<li>Extensively updated the README doc and Setup vignette to help scaffold {tidytags} setup</li>
+</ul>
+</div>
+</div>
     <div id="tidytags-012-2021-03-02" class="section level1">
 <h1 class="page-header" data-toc-text="0.1.2">
 <a href="#tidytags-012-2021-03-02" class="anchor"></a>tidytags 0.1.2 (2021-03-02)</h1>
@@ -149,9 +170,9 @@
     <div id="tidytags-011-2020-11-24" class="section level1">
 <h1 class="page-header" data-toc-text="0.1.1">
 <a href="#tidytags-011-2020-11-24" class="anchor"></a>tidytags 0.1.1 (2020-11-24)</h1>
-<div id="new-features-1" class="section level3">
+<div id="new-features-2" class="section level3">
 <h3 class="hasAnchor">
-<a href="#new-features-1" class="anchor"></a>NEW FEATURES</h3>
+<a href="#new-features-2" class="anchor"></a>NEW FEATURES</h3>
 <ul>
 <li>Switched to OpenCage for geocoding (previously used Google Maps API)</li>
 <li>Switched to GitHub Actions (from Travis CI) for CI testing</li>

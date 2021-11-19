@@ -53,6 +53,10 @@ test_that("pull_tweet_data() is able to retrieve additional metadata starting
     from_urls <- pull_tweet_data(url_vector = sample_tags$status_url, n = 10)
   })
 
+  vcr::use_cassette("metadata_from_ids", {
+    from_ids <- pull_tweet_data(id_vector = sample_tags$id_str, n = 10)
+  })
+
   expect_true(is.data.frame(from_urls))
   expect_named(from_urls)
   expect_true("user_id" %in% names(from_urls))
