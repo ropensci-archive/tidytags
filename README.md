@@ -50,8 +50,6 @@ from [CRAN](https://CRAN.R-project.org) with:
 install.packages("tidytags")
 ```
 
-## Usage
-
 To load {tidytags}, start with the `library()` function:
 
 ``` r
@@ -68,6 +66,14 @@ vignette. Specifically, this guide offers help for four key tasks:
 2.  Getting and storing a Google API key
 3.  Getting and storing Twitter API tokens
 4.  Getting and storing an OpenCage Geocoding API key
+
+## Usage
+
+To test the {tidytags} package, you can use an openly shared TAGS
+tracker that has been collecting tweets associated with the AECT 2019
+since September 30, 2019. This is the same TAGS tracker used in the
+[Using tidytags with a conference hashtag
+vignette](https://bretsw.github.io/tidytags/articles/tidytags-with-conf-hashtags.html).
 
 ## {tidytags} core functions
 
@@ -185,13 +191,9 @@ analyzed Twitter data using the tidytags R package (Staudt Willet &
 Rosenberg, 2021)”. Here is the full bibliographic reference to include
 in your reference list:
 
-list(title = “tidytags: Importing and Analyzing Twitter Data Collected
-with TwitterGoogle Sheets”, author = list(list(given = “K. Bret”, family
-= “Staudt Willet”, role = c(“aut”, “cre”), email = “<bret@bretsw.com>”,
-comment = c(ORCID = “0000-0002-6984-416X”)), list(given = “Joshua M.”,
-family = “Rosenberg”, role = “aut”, email = NULL, comment = c(ORCID =
-“0000-0003-2170-0447”))), year = “2021”, note =
-“<a href="https://bretsw.github.io/tidytags/,\nhttps://github.com/bretsw/tidytags" class="uri">https://bretsw.github.io/tidytags/,\nhttps://github.com/bretsw/tidytags</a>”)
+> Staudt Willet, K. B., & Rosenberg, J. M. (2021). tidytags: Importing
+> and analyzing Twitter data collected with Twitter Archiving Google
+> Sheets. <https://github.com/bretsw/tidytags> (R package version 0.2.0)
 
 ## License [![license](https://img.shields.io/badge/license-GPL3-9cf.svg)](https://www.gnu.org/licenses/gpl.html)
 

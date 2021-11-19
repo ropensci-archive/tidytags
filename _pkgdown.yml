@@ -21,10 +21,10 @@ reference:
     contents:
       - create_edgelist
       - add_users_data
-      - get_mentions
-      - get_quotes
-      - get_replies
-      - get_retweets
+      - create_mentions_edgelist
+      - create_quotes_edgelist
+      - create_replies_edgelist
+      - create_retweets_edgelist
   - title: "Processing data"
     desc: Functions related to processing data for subsequent analysis.
     contents:
