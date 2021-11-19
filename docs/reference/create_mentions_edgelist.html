@@ -6,7 +6,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>Retrieve the fullest extent of tweet metadata for more than 90,000 tweets — lookup_many_tweets • tidytags</title>
+<title>Create an edgelist where interaction is defined by mentioning — create_mentions_edgelist • tidytags</title>
 
 
 <!-- jquery -->
@@ -39,10 +39,12 @@
 
 
 
-<meta property="og:title" content="Retrieve the fullest extent of tweet metadata for more than 90,000 tweets — lookup_many_tweets" />
-<meta property="og:description" content="This function calls pull_tweet_data(), but has a built-in delay
-  of 15 minutes to allow the Twitter API to reset after looking up 90,000
-  tweets." />
+<meta property="og:title" content="Create an edgelist where interaction is defined by mentioning — create_mentions_edgelist" />
+<meta property="og:description" content="Starting with a dataframe returned by pull_tweet_data(),
+  create_mentions_edgelist() pulls out senders and receivers of
+  mentions and adds a new column edge_type.
+  create_mentions_edgelist() is a useful function in itself, but is
+  also used in create_edgelist()." />
 
 
 
@@ -128,40 +130,49 @@
 <div class="row">
   <div class="col-md-9 contents">
     <div class="page-header">
-    <h1>Retrieve the fullest extent of tweet metadata for more than 90,000 tweets</h1>
-    <small class="dont-index">Source: <a href='https://github.com/bretsw/tidytags/blob/master/R/setup-functions.R'><code>R/setup-functions.R</code></a></small>
-    <div class="hidden name"><code>lookup_many_tweets.Rd</code></div>
+    <h1>Create an edgelist where interaction is defined by mentioning</h1>
+    <small class="dont-index">Source: <a href='https://github.com/bretsw/tidytags/blob/master/R/analyze-network.R'><code>R/analyze-network.R</code></a></small>
+    <div class="hidden name"><code>create_mentions_edgelist.Rd</code></div>
     </div>
 
     <div class="ref-description">
-    <p>This function calls <code><a href='pull_tweet_data.html'>pull_tweet_data()</a></code>, but has a built-in delay
-  of 15 minutes to allow the Twitter API to reset after looking up 90,000
-  tweets.</p>
+    <p>Starting with a dataframe returned by <code><a href='pull_tweet_data.html'>pull_tweet_data()</a></code>,
+  <code>create_mentions_edgelist()</code> pulls out senders and receivers of
+  mentions and adds a new column <code>edge_type</code>.
+  <code>create_mentions_edgelist()</code> is a useful function in itself, but is
+  also used in <code><a href='create_edgelist.html'>create_edgelist()</a></code>.</p>
     </div>
 
-    <pre class="usage"><span class='fu'>lookup_many_tweets</span><span class='op'>(</span><span class='va'>x</span>, alarm <span class='op'>=</span> <span class='cn'>FALSE</span><span class='op'>)</span></pre>
+    <pre class="usage"><span class='fu'>create_mentions_edgelist</span><span class='op'>(</span><span class='va'>df</span><span class='op'>)</span></pre>
 
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
     <table class="ref-arguments">
     <colgroup><col class="name" /><col class="desc" /></colgroup>
     <tr>
-      <th>x</th>
-      <td><p>A list or vector of tweet ID numbers</p></td>
-    </tr>
-    <tr>
-      <th>alarm</th>
-      <td><p>An audible notification that a batch of 90,000 tweets has been
-completed</p></td>
+      <th>df</th>
+      <td><p>A dataframe returned by <code><a href='pull_tweet_data.html'>pull_tweet_data()</a></code></p></td>
     </tr>
     </table>
 
     <h2 class="hasAnchor" id="value"><a class="anchor" href="#value"></a>Value</h2>
 
-    <p>A dataframe of tweets and full metadata from the Twitter API</p>
-    <h2 class="hasAnchor" id="details"><a class="anchor" href="#details"></a>Details</h2>
+    <p>A dataframe edgelist with column names 'sender', 'receiver', and
+  <code>edge_type</code>, which in this case the edge type is "mention"</p>
+    <h2 class="hasAnchor" id="see-also"><a class="anchor" href="#see-also"></a>See also</h2>
 
-    <p>This function requires authentication; please see <code><a href='../articles/setup.html'>vignette("setup", package = "tidytags")</a></code></p>
+    <div class='dont-index'><p>Compare to other <code>tidytags</code> functions such as
+  <code><a href='create_replies_edgelist.html'>create_replies_edgelist()</a></code>, <code><a href='create_retweets_edgelist.html'>create_retweets_edgelist()</a></code>,
+  <code><a href='create_quotes_edgelist.html'>create_quotes_edgelist()</a></code>, and <code><a href='create_edgelist.html'>create_edgelist()</a></code>.</p></div>
 
+    <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
+    <pre class="examples"><span class='r-in'></span>
+<span class='r-in'><span class='kw'>if</span> <span class='op'>(</span><span class='cn'>FALSE</span><span class='op'>)</span> <span class='op'>{</span></span>
+<span class='r-in'></span>
+<span class='r-in'><span class='va'>example_url</span> <span class='op'>&lt;-</span> <span class='st'>"18clYlQeJOc6W5QRuSlJ6_v3snqKJImFhU42bRkM_OX8"</span></span>
+<span class='r-in'><span class='va'>tmp_df</span> <span class='op'>&lt;-</span> <span class='fu'><a href='pull_tweet_data.html'>pull_tweet_data</a></span><span class='op'>(</span><span class='fu'><a href='read_tags.html'>read_tags</a></span><span class='op'>(</span><span class='va'>example_url</span><span class='op'>)</span>, n <span class='op'>=</span> <span class='fl'>10</span><span class='op'>)</span></span>
+<span class='r-in'><span class='fu'>create_mentions_edgelist</span><span class='op'>(</span><span class='va'>tmp_df</span><span class='op'>)</span></span>
+<span class='r-in'><span class='op'>}</span></span>
+</pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="pkgdown-sidebar">
     <nav id="toc" data-toggle="toc" class="sticky-top">

@@ -31,7 +31,7 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">tidytags</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.1.3</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.2.0</span>
       </span>
     </div>
 
@@ -150,13 +150,24 @@
 <a href="#key-task-2--getting-and-storing-a-google-api-key" class="anchor"></a>Key Task #2. Getting and storing a Google API key</h2>
 <p>To use <code><a href="../reference/read_tags.html">read_tags()</a></code>, you will need a <strong>Google API key</strong> for Google Sheets. Follow the {gargle} package vignette <a href="https://gargle.r-lib.org/articles/get-api-credentials.html">How to get your own API credentials</a> for a thorough guide through this process. The general steps are as follows:</p>
 <ol style="list-style-type: decimal">
-<li><p>Enable the Google Sheets API in the <a href="https://console.developers.google.com/apis/api/sheets.googleapis.com/">Google Developers Console</a>.</p></li>
-<li><p>Create an API key by clicking the <code>CREATE CREDENTIALS</code> button on the <a href="https://console.developers.google.com/apis/credentials">API credentials</a> page. Name this key with a clearly identifiable title, such as “API key for tidytags.”</p></li>
-<li><p>Click on the API key to edit it. Leave the “Application restrictions” setting as <code>None</code>, but under “API restrictions” select <code>Restrict key</code> and then check the box next to <code>Google Sheets API</code>. This is the only API needed for {tidytags} and will ensure that your new Google API key can only be used to access Google Sheets.</p></li>
-<li><p>Bring the Google API key into R. Specifically, add the key to the <code>.Renviron</code> file. Edit this file directly using the <code>usethis::edit_r_environ(scope='user')</code> function. The format of the <code>.Renviron</code> file should be as follows (inputting your unique credentials after the <code>=</code> sign, with no quotation marks):</p></li>
+<li>Enable the Google Sheets API in the <a href="https://console.developers.google.com/apis/api/sheets.googleapis.com/">Google Developers Console</a>.</li>
 </ol>
-<div class="sourceCode" id="cb1"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="va">GOOGLE_API_KEY</span> <span class="op">=</span> <span class="va">YourGoogleKey</span></code></pre></div>
+<p align="center">
+<img src="files/tidytags-setup-google-api_1.png" width="480"></p>
+<ol start="2" style="list-style-type: decimal">
+<li>Create an API key by clicking the <code>CREATE CREDENTIALS</code> button on the <a href="https://console.developers.google.com/apis/credentials">API credentials</a> page. Name this key with a clearly identifiable title, such as “API key for tidytags.”</li>
+</ol>
+<p align="center">
+<img src="files/tidytags-setup-google-api_2.png" width="480"></p>
+<ol start="3" style="list-style-type: decimal">
+<li>Click on the API key to edit it. Leave the “Application restrictions” setting as <code>None</code>, but under “API restrictions” select <code>Restrict key</code> and then check the box next to <code>Google Sheets API</code>. This is the only API needed for {tidytags} and will ensure that your new Google API key can only be used to access Google Sheets.</li>
+</ol>
+<p align="center">
+<img src="files/tidytags-setup-google-api_3.png" width="480"></p>
+<ol start="4" style="list-style-type: decimal">
+<li>Bring the Google API key into R. Specifically, add the key to the <code>.Renviron</code> file. Edit this file directly using the <code>usethis::edit_r_environ(scope='user')</code> function. The format of the <code>.Renviron</code> file should be as follows (inputting your unique Google API key after the <code>=</code> sign, with no quotation marks):</li>
+</ol>
+<p><code>GOOGLE_API_KEY = YourGoogleAPIKey</code></p>
 <p>You can read more about the Google Sheets API <a href="https://console.developers.google.com/apis/library/sheets.googleapis.com">here</a>, and get help with the API <a href="https://developers.google.com/sheets/api/support">here</a>.</p>
 </div>
 <div id="key-task-3--getting-and-storing-twitter-api-token" class="section level2">
@@ -166,10 +177,9 @@
 <div id="getting-access-token" class="section level3">
 <h3 class="hasAnchor">
 <a href="#getting-access-token" class="anchor"></a>Getting access token</h3>
-<p>Fortunately, {rtweet} documentation already contains a very thorough vignette, <a href="https://docs.ropensci.org/rtweet/articles/auth.html">Obtaining and using access tokens</a>, to guide you through the process of obtaining a Twitter API token. We recommend the second suggested method listed in the {rtweet} vignette, <a href="https://docs.ropensci.org/rtweet/articles/auth.html#access-tokensecret-method">2. Access token/secret method</a>.</p>
-<p>Following these directions, you will run the <code><a href="https://rdrr.io/pkg/rtweet/man/create_token.html">rtweet::create_token()</a></code> function to save your Twitter token.</p>
-<p>which saves your Twitter API key and token to the <code>.Renviron</code> file directly using the <code>usethis::edit_r_environ(scope='user')</code> function. The format of the <code>.Renviron</code> file should be as follows (inputting your unique credentials after the <code>=</code> sign, with no quotation marks):</p>
-<div class="sourceCode" id="cb2"><pre class="downlit sourceCode r">
+<p>Fortunately, the {rtweet} documentation already contains a very thorough vignette, <a href="https://docs.ropensci.org/rtweet/articles/auth.html">Obtaining and using access tokens</a>, to guide you through the process of obtaining a Twitter API token. We recommend the second suggested method listed in the {rtweet} vignette, <a href="https://docs.ropensci.org/rtweet/articles/auth.html#access-tokensecret-method">2. Access token/secret method</a>.</p>
+<p>Following these directions, you will run the <code><a href="https://rdrr.io/pkg/rtweet/man/create_token.html">rtweet::create_token()</a></code> function to save your Twitter token. saves your Twitter API key and token to the <code>.Renviron</code> file directly using the <code>usethis::edit_r_environ(scope='user')</code> function. The format of the <code>.Renviron</code> file should be as follows (inputting your unique credentials after the <code>=</code> sign, with no quotation marks):</p>
+<div class="sourceCode" id="cb1"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="va">TWITTER_APP</span> <span class="op">=</span> <span class="va">NameOfYourTwitterApp</span>
 <span class="va">TWITTER_API_KEY</span> <span class="op">=</span> <span class="va">YourConsumerKey</span>
 <span class="va">TWITTER_API_SECRET</span> <span class="op">=</span> <span class="va">YourConsumerSecretKey</span>
@@ -177,7 +187,7 @@
 <span class="va">TWITTER_ACCESS_TOKEN_SECRET</span> <span class="op">=</span> <span class="va">YourAccessTokenSecret</span></code></pre></div>
 <p>Note that there are two separate <strong>secrets</strong>: <code>TWITTER_API_SECRET</code> (used to authenticate at the application level, which is most relevant when using {tidytags}) and <code>TWITTER_ACCESS_TOKEN_SECRET</code>(used to authenticate at the end-user level, which can allow access to one’s own private user data).</p>
 <p>Once you’ve added these Twitter API pieces to <code>.Renviron</code>, run <code><a href="https://rdrr.io/pkg/rtweet/man/create_token.html">rtweet::create_token()</a></code> with the following parameters:</p>
-<div class="sourceCode" id="cb3"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb2"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="va">token</span> <span class="op">&lt;-</span> <span class="fu">rtweet</span><span class="fu">::</span><span class="fu"><a href="https://rdrr.io/pkg/rtweet/man/create_token.html">create_token</a></span><span class="op">(</span>
     app <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/Sys.getenv.html">Sys.getenv</a></span><span class="op">(</span><span class="st">'TWITTER_APP'</span><span class="op">)</span>,
     consumer_key <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/Sys.getenv.html">Sys.getenv</a></span><span class="op">(</span><span class="st">'TWITTER_API_KEY'</span><span class="op">)</span>,
@@ -204,16 +214,17 @@
 <a href="#getting-the-access-key" class="anchor"></a>Getting the access key</h3>
 <p>You can secure an API access key through OpenCage directly; their Quick Start guide offers helpful guidance (<a href="https://docs.ropensci.org/opencage/#quickstart">read more here</a>). Once you have the key, the <a href="https://opencagedata.com/api">OpenCage Geocoding API Documentation</a> offers many more additional helps.</p>
 <p>We recommend saving your OpenCage Geocoding API key in the <code>.Renviron</code> file as <strong>OPENCAGE_KEY</strong> (similar to what you did with the Twitter tokens). You can quickly access this file using the R code:</p>
-<div class="sourceCode" id="cb4"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb3"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="fu">usethis</span><span class="fu">::</span><span class="fu"><a href="https://usethis.r-lib.org/reference/edit.html">edit_r_environ</a></span><span class="op">(</span>scope<span class="op">=</span><span class="st">'user'</span><span class="op">)</span></code></pre></div>
-<p>Then, add a line to this file that reads: <code>OPENCAGE_KEY="PasteYourOpenCageKeyInsideDoubleQuotes"</code>.</p>
+<p>Then, add a line to this file that reads (inputting your unique OpenCage Key after the <code>=</code> sign, with no quotation marks):</p>
+<p><code>OPENCAGE_KEY = PasteYourOpenCageKeyHere</code></p>
 <p><strong>Once you’ve saved the .Renviron file, quit your R session and restart.</strong> The function <code><a href="../reference/geocode_tags.html">geocode_tags()</a></code> will work for you from now on. Note that the {tidytags} <code><a href="../reference/geocode_tags.html">geocode_tags()</a></code> function retrieves your saved API key automatically and securely, and you won’t need to think about this after the initial setup.</p>
 </div>
 <div id="authorization-in-future-r-sessions-1" class="section level3">
 <h3 class="hasAnchor">
 <a href="#authorization-in-future-r-sessions-1" class="anchor"></a>Authorization in future R sessions</h3>
 <p>To make sure the <strong>OpenCage Geocoding API key</strong> works, restart your R session and run the following code:</p>
-<div class="sourceCode" id="cb5"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb4"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="fu"><a href="https://rdrr.io/r/base/Sys.getenv.html">Sys.getenv</a></span><span class="op">(</span><span class="st">'OPENCAGE_KEY'</span><span class="op">)</span></code></pre></div>
 </div>
 </div>

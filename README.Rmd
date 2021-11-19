@@ -16,18 +16,22 @@ knitr::opts_chunk$set(
 
 # tidytags <img src="man/figures/tidytags-logo.png" align="right" width="120" />
 
+##### Importing and Analyzing Twitter Data Collected with Twitter Archiving Google Sheets
+
 <!-- badges: start -->
-[![Project Status: Active – The project has reached a stable, usable state and is being actively developed.](https://www.repostatus.org/badges/latest/active.svg)](https://www.repostatus.org/#active)
-[![Status at rOpenSci Software Peer Review](https://badges.ropensci.org/382_status.svg)](https://github.com/ropensci/software-review/issues/382)
+
 [![R-CMD-check](https://github.com/bretsw/tidytags/workflows/R-CMD-check/badge.svg)](https://github.com/bretsw/tidytags/actions)
 [![codecov](https://codecov.io/gh/bretsw/tidytags/branch/master/graph/badge.svg)](https://codecov.io/gh/bretsw/tidytags)
 [![Last-changedate](https://img.shields.io/github/last-commit/bretsw/tidytags.svg)](https://github.com/bretsw/tidytags/commits/main)
-[![GitHub issues](https://img.shields.io/github/issues/bretsw/tidytags.svg?style=popout)](https://github.com/bretsw/tidytags/issues/)
-[![lifecycle](https://img.shields.io/badge/lifecycle-maturing-blue.svg)](https://www.tidyverse.org/lifecycle/#maturing)
-[![license](https://img.shields.io/badge/license-GPL3-9cf.svg)](https://www.gnu.org/licenses/gpl.html)
-<!-- badges: end -->
 
-Importing and Analyzing Twitter Data Collected with Twitter Archiving Google Sheets
+[![Project Status: Active – The project has reached a stable, usable state and is being actively developed.](https://www.repostatus.org/badges/latest/active.svg)](https://www.repostatus.org/#active)
+[![lifecycle](https://img.shields.io/badge/lifecycle-maturing-blue.svg)](https://www.tidyverse.org/lifecycle/#maturing)
+[![GitHub issues](https://img.shields.io/github/issues/bretsw/tidytags.svg?style=popout)](https://github.com/bretsw/tidytags/issues/)
+
+[![license](https://img.shields.io/badge/license-GPL3-9cf.svg)](https://www.gnu.org/licenses/gpl.html)
+[![Status at rOpenSci Software Peer Review](https://badges.ropensci.org/382_status.svg)](https://github.com/ropensci/software-review/issues/382)
+
+<!-- badges: end -->
 
 ## Overview
 
@@ -58,7 +62,7 @@ library(tidytags)
 
 ## Setup
 
-For help with initial {tidytags} setup, see the [Getting started with tidytags](https://bretsw.github.io/tidytags/articles/setup.html) vignette. Specifically, this guide offers help for four pain points:
+For help with initial {tidytags} setup, see the [Getting started with tidytags](https://bretsw.github.io/tidytags/articles/setup.html) vignette. Specifically, this guide offers help for four key tasks:
 
 1. Making sure your TAGS tracker can be accessed
 2. Getting and storing a Google API key
@@ -96,6 +100,12 @@ For a walkthrough of numerous additional {tidytags} functions, see the [Using ti
 If you encounter an obvious bug for which there is not already an [active issue](https://github.com/bretsw/tidytags/issues), please [create a new issue](https://github.com/bretsw/tidytags/issues/new) with all code used (preferably a reproducible example) on Github.
 
 If you would like to become a more involved contributor, please read the [Contributing Guide](https://github.com/bretsw/tidytags/blob/master/CONTRIBUTING.md). All contributors, from those fixing typos to adding new functionality, must adhere to the [Code of Conduct](https://github.com/bretsw/tidytags/blob/master/CODE_OF_CONDUCT.md).
+
+## How to cite this package in publications
+
+You can cite this package like this: "we collected, processed, and analyzed Twitter data  using the tidytags R package (Staudt Willet & Rosenberg, 2021)". Here is the full bibliographic reference to include in your reference list:
+
+`r citation("tidytags")`
 
 ## License [![license](https://img.shields.io/badge/license-GPL3-9cf.svg)](https://www.gnu.org/licenses/gpl.html)
 

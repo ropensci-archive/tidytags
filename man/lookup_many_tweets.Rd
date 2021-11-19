@@ -20,3 +20,6 @@ This function calls \code{pull_tweet_data()}, but has a built-in delay
   of 15 minutes to allow the Twitter API to reset after looking up 90,000
   tweets.
 }
+\details{
+This function requires authentication; please see \code{vignette("setup", package = "tidytags")}
+}
