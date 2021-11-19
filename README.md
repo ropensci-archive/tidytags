@@ -193,8 +193,7 @@ in your reference list:
 
 > Staudt Willet, K. B., & Rosenberg, J. M. (2021). tidytags: Importing
 > and analyzing Twitter data collected with Twitter Archiving Google
-> Sheets. <https://github.com/bretsw/tidytags>" (R package version
-> 0.2.0)
+> Sheets. <https://github.com/bretsw/tidytags> (R package version 0.2.0)
 
 ## License [![license](https://img.shields.io/badge/license-GPL3-9cf.svg)](https://www.gnu.org/licenses/gpl.html)
 

@@ -10,6 +10,11 @@ vignette: >
 ---
 
 ```{r setup, include=FALSE}
+# Use the following command to recompute the vignette as needed.
+# See https://ropensci.org/blog/2019/12/08/precompute-vignettes/ for help.
+# knitr::knit("vignettes/tidytags-with-conf-hashtags.Rmd.orig", output = "vignettes/tidytags-with-conf-hashtags.Rmd")
+
+
 knitr::opts_chunk$set(
   collapse = TRUE,
   comment = "#>",
@@ -18,11 +23,6 @@ knitr::opts_chunk$set(
   message = FALSE,
   warning = FALSE,
   error = FALSE)
-
-# Use the following command to recompute the vignette as needed.
-# See https://ropensci.org/blog/2019/12/08/precompute-vignettes/ for help.
-# knitr::knit("vignettes/tidytags-with-conf-hashtags.Rmd.orig", output = "vignettes/tidytags-with-conf-hashtags.Rmd")
-
 ```
 
 ```{r}
@@ -72,7 +72,7 @@ example_df_all <- readr::read_csv("my-downloaded-tags-file.csv")
 
 With a TAGS archive imported into R, {tidytags} allows you to gather quite a bit more information related to the collected tweets with the `pull_tweet_data()` function. This function uses the [{rtweet} package](https://rtweet.info/) (via `rtweet::lookup_statuses()`) to query the Twitter API. Using {rtweet} requires Twitter API keys associated with an approved developer account. Fortunately, the {rtweet} vignette, [Obtaining and using access tokens](https://rtweet.info/articles/auth.html), provides a very thorough guide to obtaining Twitter API keys. For further help getting your own Twitter API keys, see the [Getting started with tidytags](https://bretsw.github.io/tidytags/articles/setup.html) vignette we've written, specifically **Pain Point #2**.
 
-Note that your dataset will often contain fewer rows after running `pull_tweet_data()`. This is because `rtweet::lookup_statuses()` is searching for tweet IDs that are currently available. Any tweets that have been deleted or made "protected" (i.e., private) since TAGS first collected them are dropped from the dataset. Rather than view this as a limitation, we see this as an asset to help ensure our data better reflects the intentions of the accounts whose tweets we have collected (see Fiesler & Proferes, 2018).
+Note that your dataset will often contain fewer rows after running `pull_tweet_data()`. This is because `rtweet::lookup_statuses()` is searching for tweet IDs that are currently available. Any tweets that have been deleted or made "protected" (i.e., private) since TAGS first collected them are dropped from the dataset. Rather than view this as a limitation, we see this as an asset to help ensure our data better reflects the intentions of the accounts whose tweets we have collected (see [Fiesler & Proferes, 2018](https://journals.sagepub.com/doi/full/10.1177/2056305118763366)).
 
 Here, we demonstrate two different ways of using `pull_tweet_data()`. The first method is to query the Twitter API with the tweet ID numbers from the `id_str` column returned by {rtweet}. However, a limitation of TAGS is that the numbers in this column are often corrupted because Google Sheets considers them very large numbers (instead of character strings) and rounds them by putting them into exponential form. The results of this first method are stored in the variable `example_after_rtweet_A` below. The second method pulls the tweet ID numbers from the tweet URLs. For example, the tweet with the URL `https://twitter.com/tweet__example/status/1176592704647716864` has a tweet ID of `1176592704647716864`. The results of this second method are stored in the variable `example_after_rtweet_B` below.
 
