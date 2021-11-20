@@ -1,28 +1,80 @@
 
 <!-- README.md is generated from README.Rmd. Please edit that file -->
+<!-- badges: start -->
+<!-- For additional badges for CRAN, see https://docs.ropensci.org/drake/ -->
+<table class="table">
+<thead>
+<tr class="header">
+<th align="left">
+Usage
+</th>
+<th align="left">
+Release
+</th>
+<th align="left">
+Development
+</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="left">
+<a href="https://www.gnu.org/licenses/gpl-3.0.en.html"><img src="https://img.shields.io/badge/licence-GPL--3-9cf.svg" alt="Licence"></a>
+</td>
+<td align="left">
+<a href="https://github.com/ropensci/software-review/issues/382"><img src="https://badges.ropensci.org/382_status.svg" alt="rOpenSci Peer Review"></a>
+</td>
+<td align="left">
+<a href="https://github.com/bretsw/tidytags/actions?query=workflow%3Acheck"><img src="https://github.com/bretsw/tidytags/workflows/R-CMD-check/badge.svg" alt="Check"></a>
+</td>
+</tr>
+<tr class="even">
+<td align="left">
+<a href="https://cran.r-project.org/"><img src="https://img.shields.io/badge/R%3E%3D-4.1.0-blue.svg" alt="Minimal R Version"></a>
+</td>
+<td align="left">
+</td>
+<td align="left">
+<a href="https://codecov.io/gh/bretsw/tidytags?branch=main"><img src="https://codecov.io/gh/bretsw/tidytags/coverage.svg?branch=main" alt="Codecov"></a>
+</td>
+</tr>
+<tr class="odd">
+<td align="left">
+</td>
+<td align="left">
+</td>
+<td align="left">
+<a href="https://www.repostatus.org/#active"><img src="https://www.repostatus.org/badges/latest/active.svg" alt="Status"></a>
+</td>
+</tr>
+<tr class="even">
+<td align="left">
+</td>
+<td align="left">
+</td>
+<td align="left">
+<a href="https://github.com/bretsw/tidytags/commits/main"><img src="https://img.shields.io/github/last-commit/bretsw/tidytags.svg" alt="Last Commit"></a>
+</td>
+</tr>
+<tr class="odd">
+<td align="left">
+</td>
+<td align="left">
+</td>
+<td align="left">
+<a href="https://www.tidyverse.org/lifecycle/#maturing"><img src="https://img.shields.io/badge/lifecycle-maturing-blue.svg" alt='Lifecycle'></a>
+</td>
+</tr>
+</tbody>
+</table>
+
+<br>
+
+<!-- badges: end -->
 
 # tidytags <img src="man/figures/tidytags-logo.png" align="right" width="120" />
 
-##### Importing and Analyzing Twitter Data Collected with Twitter Archiving Google Sheets
-
-<!-- badges: start -->
-
-[![R-CMD-check](https://github.com/bretsw/tidytags/workflows/R-CMD-check/badge.svg)](https://github.com/bretsw/tidytags/actions)
-[![codecov](https://codecov.io/gh/bretsw/tidytags/branch/master/graph/badge.svg)](https://codecov.io/gh/bretsw/tidytags)
-[![Last-changedate](https://img.shields.io/github/last-commit/bretsw/tidytags.svg)](https://github.com/bretsw/tidytags/commits/main)
-
-[![Project Status: Active – The project has reached a stable, usable
-state and is being actively
-developed.](https://www.repostatus.org/badges/latest/active.svg)](https://www.repostatus.org/#active)
-[![lifecycle](https://img.shields.io/badge/lifecycle-maturing-blue.svg)](https://www.tidyverse.org/lifecycle/#maturing)
-[![GitHub
-issues](https://img.shields.io/github/issues/bretsw/tidytags.svg?style=popout)](https://github.com/bretsw/tidytags/issues/)
-
-[![license](https://img.shields.io/badge/license-GPL3-9cf.svg)](https://www.gnu.org/licenses/gpl.html)
-[![Status at rOpenSci Software Peer
-Review](https://badges.ropensci.org/382_status.svg)](https://github.com/ropensci/software-review/issues/382)
-
-<!-- badges: end -->
+##### *Importing and Analyzing Twitter Data Collected with Twitter Archiving Google Sheets*
 
 ## Overview
 
@@ -195,7 +247,7 @@ in your reference list:
 > and analyzing Twitter data collected with Twitter Archiving Google
 > Sheets. <https://github.com/bretsw/tidytags> (R package version 0.2.0)
 
-## License [![license](https://img.shields.io/badge/license-GPL3-9cf.svg)](https://www.gnu.org/licenses/gpl.html)
+## License [![license](https://img.shields.io/badge/license-GPL--3-9cf.svg)](https://www.gnu.org/licenses/gpl.html)
 
 The {tidytags} package is licensed under a *GNU General Public License
 v3.0*, or [GPL-3](https://choosealicense.com/licenses/lgpl-3.0/). For
