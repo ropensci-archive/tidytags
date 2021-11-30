@@ -31,5 +31,5 @@ reference:
       - process_tweets
       - geocode_tags
       - get_char_tweet_ids
-      - get_upstream_replies
+      - get_upstream_tweets
       - get_url_domain

@@ -67,9 +67,6 @@ Development
 </tr>
 </tbody>
 </table>
-
-<br>
-
 <!-- badges: end -->
 
 # tidytags <img src="man/figures/tidytags-logo.png" align="right" width="120" />
