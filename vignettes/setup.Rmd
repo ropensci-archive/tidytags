@@ -80,21 +80,23 @@ Be sure to put quotations marks around the URL or sheet identifier when entering
 
 To use `read_tags()`, you will need a **Google API key** for Google Sheets. Follow the {gargle} package vignette [How to get your own API credentials](https://gargle.r-lib.org/articles/get-api-credentials.html) for a thorough guide through this process. The general steps are as follows:
 
-1. Enable the Google Sheets API in the [Google Developers Console](https://console.developers.google.com/apis/api/sheets.googleapis.com/). 
-
-<p align="center"><img src="files/tidytags-setup-google-api_1.png" width="480"></p>
-
-2. Create an API key by clicking the `CREATE CREDENTIALS` button on the [API credentials](https://console.developers.google.com/apis/credentials) page. Name this key with a clearly identifiable title, such as "API key for tidytags."
-
-<p align="center"><img src="files/tidytags-setup-google-api_2.png" width="480"></p>
-
-3. Click on the API key to edit it. Leave the "Application restrictions" setting as `None`, but under "API restrictions" select `Restrict key` and then check the box next to `Google Sheets API`. This is the only API needed for {tidytags} and will ensure that your new Google API key can only be used to access Google Sheets.
+1. Enable the Google Sheets API in the [Google Developers Console](https://console.developers.google.com/apis/api/sheets.googleapis.com/). To do so, from [this link](https://console.developers.google.com/apis/api/sheets.googleapis.com/), click the `CREATE CREDENTIALS` button (see the image below).
 
 <p align="center"><img src="files/tidytags-setup-google-api_3.png" width="480"></p>
 
-4. Bring the Google API key into R. Specifically, add the key to the `.Renviron` file. Edit this file directly using the `usethis::edit_r_environ(scope='user')` function. The format of the `.Renviron` file should be as follows (inputting your unique Google API key after the `=` sign, with no quotation marks):
+2. On the next screen, select Google Sheets API and check the "Application data" radio button to the first prompt, and "No, I'm not using them" button for the second, as in the following:
+
+<p align="center"><img src="files/tidytags-setup-google-api_2.png" width="480"></p>
+
+2. Next, you'll next see a screen like the one below. There, name the key with a clearly identifiable title, such as "API key for tidytags." Leave the “Application restrictions” setting as None, but under “API restrictions” select Restrict key and then check the box next to Google Sheets API. This is the only API needed for {tidytags} and will ensure that your new Google API key can only be used to access Google Sheets.
+
+<p align="center"><img src="files/tidytags-setup-google-api_1.png" width="480"></p>
+
+4. Finally, bring the Google API key into R. Specifically, add the key to the `.Renviron` file. Edit this file directly using the `usethis::edit_r_environ(scope='user')` function. The format of the `.Renviron` file should be as follows (inputting your unique Google API key after the `=` sign, with no quotation marks):
 
 `GOOGLE_API_KEY = YourGoogleAPIKey`
+
+Restart R (by closing and opening R/RStudio) for this key to be available in your next R Session.
 
 You can read more about the Google Sheets API [here](https://console.developers.google.com/apis/library/sheets.googleapis.com), and get help with the API [here](https://developers.google.com/sheets/api/support).
 
