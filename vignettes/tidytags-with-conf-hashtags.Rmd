@@ -20,7 +20,7 @@ This vignette serves as an introduction to how to use many {tidytags} functions 
 
 ## Considerations Related to Ethics, Data Privacy, and Human Subjects Research
 
-Before working through this demonstration of the capabilities of {tidytags}, please take a few moments to reflect on ethical considerations related to social media research.
+Before working through this demonstration of the capabilities of {tidytags}, please take a few moments to reflect on **ethical considerations** related to social media research.
 
 
 **{tidytags} should be used in strict accordance with Twitter's [developer terms](https://developer.twitter.com/en/developer-terms/more-on-restricted-use-cases).**
@@ -41,7 +41,7 @@ Additionally, in order to input data from a TAGS tracker into R, you will need a
 
 ## read_tags()
 
-To simply view a TAGS archive, you can use `read_tags()`. Here, we've openly shared a [TAGS tracker](https://docs.google.com/spreadsheets/d/18clYlQeJOc6W5QRuSlJ6_v3snqKJImFhU42bRkM_OX8) that has been collecting tweets associated with the AECT 2019 since September 30, 2019. Notice that this TAGS tracker is collecting tweets containing three different hashtags: `#aect19`, `#aect2019`, or `#aect19inspired`. As of September 30, 2020, this tracker had collected **2,564 tweets**. This tracker is active through today.
+**To simply view a TAGS archive**, you can use `read_tags()`. Here, we've openly shared a [TAGS tracker](https://docs.google.com/spreadsheets/d/18clYlQeJOc6W5QRuSlJ6_v3snqKJImFhU42bRkM_OX8) that has been collecting tweets associated with the AECT 2019 since September 30, 2019. Notice that this TAGS tracker is collecting tweets containing three different hashtags: `#aect19`, `#aect2019`, or `#aect19inspired`. As of September 30, 2020, this tracker had collected **2,564 tweets**. This tracker is active through today.
 
 {tidytags} allows you to work with tweets collected by a TAGS tracker in R. This is done with the [{googlesheets4} package](https://CRAN.R-project.org/package=googlesheets4). One requirement for using {googlesheets4} is that your TAGS tracker has been "published to the web." To do this, with the TAGS page open in a web browser, go to `File >> Publish to the web`. The `Link` field should be 'Entire document' and the `Embed` field should be 'Web page.' If everything looks right, then click the `Publish` button. Next, click the `Share` button in the top right corner of the Google Sheets window, select `Get shareable link`, and set the permissions to 'Anyone with the link can view.' The input needed for the `tidytags::read_tags()` function is either the entire URL from the top of the web browser when opened to a TAGS tracker, or a Google Sheet identifier (i.e., the alphanumeric string following "https://docs.google.com/spreadsheets/d/" in the TAGS tracker's URL). Be sure to put quotations marks around the URL or sheet identifier when entering it into `read_tags()` function.
 
@@ -65,6 +65,8 @@ example_df_all <- readr::read_csv("my-downloaded-tags-file.csv")
 ```
 
 ## pull_tweet_data()
+
+Next, we discuss **enriching the data you've collected with TAGS with the `pull_tweet_data()` function**. 
 
 With a TAGS archive imported into R, {tidytags} allows you to gather quite a bit more information related to the collected tweets with the `pull_tweet_data()` function. This function uses the [{rtweet} package](https://rtweet.info/) (via `rtweet::lookup_tweets()`) to query the Twitter API. Using {rtweet} requires Twitter API keys associated with an approved developer account. Fortunately, the {rtweet} vignette, [Obtaining and using access tokens](https://rtweet.info/articles/auth.html), provides a very thorough guide to obtaining Twitter API keys. For further help getting your own Twitter API keys, see the [Getting started with tidytags](https://bretsw.github.io/tidytags/articles/setup.html) vignette we've written, specifically **Pain Point #2**.
 
@@ -182,7 +184,7 @@ dplyr::glimpse(example_after_rtweet)
 #> $ profile_image_url       <chr> "http://pbs.twimg.com/profile_images/1458504088186884100/6Nd…
 ```
 
-At this point, the purpose of {tidytags} should be restated. TAGS tweet trackers are easily set up and maintained, and does an excellent job passively collecting tweets over time. For instance, the example TAGS tracker we demo here has collected thousands of tweets related to the AECT 2019 annual convention since September 30, 2019. In contrast, running this query now using `rtweet::search_tweets()` is limited by Twitter's API, meaning that an {rtweet} search can only go back in time 6-9 days, and is limited to returning at most 18,000 tweets per query. So, if you are interested in tweets about AECT 2019, today you could get almost no meaningful data using {rtweet} alone.
+At this point, the purpose of {tidytags} should be restated. **TAGS tweet trackers are easily set up and maintained, and does an excellent job passively collecting tweets over time**. For instance, the example TAGS tracker we demo here has collected thousands of tweets related to the AECT 2019 annual convention since September 30, 2019. In contrast, running this query now using `rtweet::search_tweets()` is limited by Twitter's API, meaning that an {rtweet} search can only go back in time 6-9 days, and is limited to returning at most 18,000 tweets per query. So, if you are interested in tweets about AECT 2019, today you could get almost no meaningful data using {rtweet} alone.
 
 
 ```r
@@ -295,7 +297,7 @@ If you're having trouble setting up the OpenCage Geocoding API Key, see the [Get
 
 You can pair `geocode_tags()` with the {mapview} package to allow for quick, interactive viewing of the geocoded data; read more about mapview [here](https://r-spatial.github.io/mapview/). There are many additional R packages that can plot coordinates on a map; which you choose is largely a matter of personal preference.
 
-First, we identify the unique individuals in the dataset:
+**First**, we identify the unique individuals in the dataset:
 
 
 ```r
@@ -303,7 +305,7 @@ example_unique_places <-
   dplyr::distinct(example_processed, location, .keep_all = TRUE)
 ```
 
-Then, we geocode the a random sample of 10% of locations with the `geocode_tags()` function, which takes a tibble and outputs a vector of geo-coordinates.
+**Then**, we geocode the a random sample of 10% of locations with the `geocode_tags()` function, which takes a tibble and outputs a vector of geo-coordinates.
 
 
 ```r
@@ -355,7 +357,7 @@ In the dataset of 2030 tweets, there are 62 replies, 1065 retweets, 92 quote twe
 
 ## get_upstream_tweets()
 
-If your research questions conceptualize your tweet dataset as a conversation or affinity space, it may be useful to retrieve and add additional tweets. Specifically, TAGS collects tweets that contain one or more keywords or text strings. For example, the TAGS tracker we have been working with in this vignette collected tweets containing the keywords: `#aect19` OR `#aect2019` OR `#aect19inspired`. This is a reasonable approach, from a researchers' point of view. However, participants who have been following or contributing to these hashtags would also see additional tweets in these "conversations" because Twitter connects together tweets that reply to other tweets into potentially lengthy *reply threads*. Tweets in a reply thread are all displayed to a user viewing tweets on Twitter's platform, but because some tweets in a thread may not contain the hashtag of interest, not all tweets in a user's experience of a conversation would be collected by TAGS. Additionally, tweets contained in a reply thread but composed before the TAGS tracker was initiated would also be left out of the dataset.
+If your research questions conceptualize your tweet dataset as a conversation or affinity space, **it may be useful to retrieve and add additional tweets**. Specifically, TAGS collects tweets that contain one or more keywords or text strings. For example, the TAGS tracker we have been working with in this vignette collected tweets containing the keywords: `#aect19` OR `#aect2019` OR `#aect19inspired`. This is a reasonable approach, from a researchers' point of view. However, participants who have been following or contributing to these hashtags would also see additional tweets in these "conversations" because Twitter connects together tweets that reply to other tweets into potentially lengthy *reply threads*. Tweets in a reply thread are all displayed to a user viewing tweets on Twitter's platform, but because some tweets in a thread may not contain the hashtag of interest, not all tweets in a user's experience of a conversation would be collected by TAGS. Additionally, tweets contained in a reply thread but composed before the TAGS tracker was initiated would also be left out of the dataset.
 
 There is a solution to this problem. Because the Twitter API offers a `reply_to_status_id` column, it is possible to iteratively reconstruct reply threads in an *upstream* direction, that is, retrieving tweets composed earlier than replies in the dataset. We include the `get_upstream_tweets` in {tidytags} to streamline this process. We also print output at each iteration to demonstrate how the process is progressing.
 
@@ -370,7 +372,7 @@ Unfortunately, due to limitations in what information is given by the Twitter AP
 
 ## create_edgelist()
 
-Another useful approach to social media research is *social network analysis*. Getting started with social network analysis is as simple as producing an *edgelist*, a two-column dataframe listing *senders* and *receivers*. An edgelist gives a complete accounting of whom is interacting with whom. In Twitter, this is complicated somewhat by the number of ways a user is able to interact with someone else, namely, through replying, retweeting, quote tweeting, mentioning, and liking tweets. The {tidytags} function `create_edgelist()` uses `create_replies_edgelist()`, `create_retweets_edgelist()`, `create_quotes_edgelist()`, and `create_mentions_edgelist()` to create an edgelist that takes into account these four different types of interaction. `create_edgelist()` returns a dataframe with three columns: two for the sender and receiver Twitter handles, and a third column listing the edge type (i.e., the form of interaction).
+Another useful approach to social media research is *social network analysis*. Getting started with social network analysis is as simple as producing an **edgelist**, a two-column dataframe listing *senders* and *receivers*. An edgelist gives a complete accounting of whom is interacting with whom. In Twitter, this is complicated somewhat by the number of ways a user is able to interact with someone else, namely, through replying, retweeting, quote tweeting, mentioning, and liking tweets. The {tidytags} function `create_edgelist()` uses `create_replies_edgelist()`, `create_retweets_edgelist()`, `create_quotes_edgelist()`, and `create_mentions_edgelist()` to create an edgelist that takes into account these four different types of interaction. `create_edgelist()` returns a dataframe with three columns: two for the sender and receiver Twitter handles, and a third column listing the edge type (i.e., the form of interaction).
 
 Run `create_edgelist()` after completing `get_upstream_tweets()` for a complete picture of the interactions.
 
@@ -446,7 +448,7 @@ Note that {tidytags} does not yet have a function `create_likes_edgelist()` beca
 
 ## add_users_data()
 
-Finally, {tidytags} also has functionality to add user-level data to an edgelist through the function `tidytags::add_users_data()`. These additional features are very useful when taking an inferential approach to social network analysis, such as building *influence* or *selection* models.
+Finally, {tidytags} also has **functionality to add user-level data** to an edgelist through the function `tidytags::add_users_data()`. These additional features are very useful when taking an inferential approach to social network analysis, such as building *influence* or *selection* models.
 
 
 ```r
