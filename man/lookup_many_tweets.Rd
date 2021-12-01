@@ -21,5 +21,20 @@ This function calls \code{pull_tweet_data()}, but has a built-in delay
   tweets.
 }
 \details{
-This function requires authentication; please see \code{vignette("setup", package = "tidytags")}
+This function requires authentication; please see
+  \code{vignette("setup", package = "tidytags")}
+}
+\examples{
+\dontrun{
+
+example_url <- "18clYlQeJOc6W5QRuSlJ6_v3snqKJImFhU42bRkM_OX8"
+tags_content <- read_tags(example_url)
+lookup_many_tweets(tags_content$id_str)
+lookup_many_tweets("1176592704647716864")
+lookup_many_tweets("1176592704647716864", alarm = TRUE)
+}
+}
+\seealso{
+Read more about \code{library(rtweet)}
+  \href{https://rtweet.info/}{here}.
 }

@@ -21,6 +21,10 @@ Updates an edgelist created with \code{create_edgelist()} by appending user
   keeps all the columns from \code{rtweet} but adds "_sender" or "_receiver"
   to the column names.
 }
+\details{
+This function requires authentication; please see
+  \code{vignette("setup", package = "tidytags")}
+}
 \examples{
 
 \dontrun{

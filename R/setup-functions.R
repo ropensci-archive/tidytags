@@ -14,6 +14,8 @@
 #'    URL.)
 #' @param google_key A Google API key for accessing Google Sheets.
 #' @return A tibble of the TAGS archive of tweets
+#' @details This function requires authentication; please see
+#'   \code{vignette("setup", package = "tidytags")}
 #' @seealso Read more about \code{library(googlesheets4)}
 #'   \href{https://github.com/tidyverse/googlesheets4}{here}.If you need help
 #'   obtaining and setting up a Google API key, read the
@@ -100,6 +102,8 @@ get_char_tweet_ids <-
 #'   limitations.
 #' @details This function requires authentication; please see \code{vignette("setup", package = "tidytags")}
 #' @return A dataframe of tweets and full metadata from the Twitter API
+#' @details This function requires authentication; please see
+#'   \code{vignette("setup", package = "tidytags")}
 #' @seealso Read more about \code{library(rtweet)}
 #'   \href{https://rtweet.info/}{here}.
 #' @examples
@@ -132,8 +136,7 @@ pull_tweet_data <-
             "collecting data for first 90,000 tweet IDs.",
             "To process more, use `lookup_many_tweets()`."
           )
-          url_vector <- url_vector[1:90000]
-          n <- length(url_vector)
+          n <- 90000
         }
 
         new_df <- rtweet::lookup_tweets(get_char_tweet_ids(url_vector[1:n]))
@@ -149,8 +152,7 @@ pull_tweet_data <-
               "collecting data for first 90,000 tweet IDs.",
               "To process more, use `lookup_many_tweets()`."
             )
-            id_vector <- id_vector[1:90000]
-            n <- length(id_vector)
+            n <- 90000
           }
 
           new_df <- rtweet::lookup_tweets(id_vector[1:n])
@@ -166,8 +168,7 @@ pull_tweet_data <-
               "collecting data for first 90,000 tweet IDs.",
               "To process more, use `lookup_many_tweets()`."
             )
-            df <- df[1:90000, ]
-            n <- nrow(df)
+            n <- 90000
           }
 
           new_df <- rtweet::lookup_tweets(get_char_tweet_ids(df[1:n, ]))
@@ -187,7 +188,19 @@ pull_tweet_data <-
 #' @param alarm An audible notification that a batch of 90,000 tweets has been
 #'   completed
 #' @return A dataframe of tweets and full metadata from the Twitter API
-#' @details This function requires authentication; please see \code{vignette("setup", package = "tidytags")}
+#' @details This function requires authentication; please see
+#'   \code{vignette("setup", package = "tidytags")}
+#' @seealso Read more about \code{library(rtweet)}
+#'   \href{https://rtweet.info/}{here}.
+#' @examples
+#' \dontrun{
+#'
+#' example_url <- "18clYlQeJOc6W5QRuSlJ6_v3snqKJImFhU42bRkM_OX8"
+#' tags_content <- read_tags(example_url)
+#' lookup_many_tweets(tags_content$id_str)
+#' lookup_many_tweets("1176592704647716864")
+#' lookup_many_tweets("1176592704647716864", alarm = TRUE)
+#' }
 #' @export
 lookup_many_tweets <-
   function(x, alarm = FALSE) {

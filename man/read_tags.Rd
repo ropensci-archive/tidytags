@@ -27,6 +27,10 @@ Keep in mind that \code{read_tags()} uses the **googlesheets4** package,
   browser window, select \code{Get shareable link}, and set the permissions
   to 'Anyone with the link can view.'
 }
+\details{
+This function requires authentication; please see
+  \code{vignette("setup", package = "tidytags")}
+}
 \examples{
 
 \dontrun{

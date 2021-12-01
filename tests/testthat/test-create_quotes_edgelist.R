@@ -10,6 +10,7 @@ sample_data <-
                   )
   )
 
+
 test_that("quote tweets are identified", {
 
   quotes <- create_quotes_edgelist(sample_data)

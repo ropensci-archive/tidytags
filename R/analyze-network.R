@@ -16,8 +16,9 @@
 #' \dontrun{
 #'
 #' example_url <- "18clYlQeJOc6W5QRuSlJ6_v3snqKJImFhU42bRkM_OX8"
-#' tmp_df <- pull_tweet_data(read_tags(example_url), n = 10)
-#' create_replies_edgelist(tmp_df)
+#' tmp_df <- pull_tweet_data(read_tags(example_url))
+#' replies_edgelist <- create_replies_edgelist(tmp_df)
+#' replies_edgelist
 #' }
 #' @importFrom rlang .data
 #' @export
@@ -71,8 +72,9 @@ create_replies_edgelist <-
 #' \dontrun{
 #'
 #' example_url <- "18clYlQeJOc6W5QRuSlJ6_v3snqKJImFhU42bRkM_OX8"
-#' tmp_df <- pull_tweet_data(read_tags(example_url), n = 10)
-#' create_retweets_edgelist(tmp_df)
+#' tmp_df <- pull_tweet_data(read_tags(example_url))
+#' retweets_edgelist <- create_retweets_edgelist(tmp_df)
+#' retweets_edgelist
 #' }
 #' @importFrom rlang .data
 #' @export
@@ -125,8 +127,9 @@ create_retweets_edgelist <-
 #' \dontrun{
 #'
 #' example_url <- "18clYlQeJOc6W5QRuSlJ6_v3snqKJImFhU42bRkM_OX8"
-#' tmp_df <- pull_tweet_data(read_tags(example_url), n = 10)
-#' create_quotes_edgelist(tmp_df)
+#' tmp_df <- pull_tweet_data(read_tags(example_url))
+#' quotes_edgelist <- create_quotes_edgelist(tmp_df)
+#' quotes_edgelist
 #' }
 #' @importFrom rlang .data
 #' @export
@@ -180,8 +183,9 @@ create_quotes_edgelist <-
 #' \dontrun{
 #'
 #' example_url <- "18clYlQeJOc6W5QRuSlJ6_v3snqKJImFhU42bRkM_OX8"
-#' tmp_df <- pull_tweet_data(read_tags(example_url), n = 10)
-#' create_mentions_edgelist(tmp_df)
+#' tmp_df <- pull_tweet_data(read_tags(example_url))
+#' mentions_edgelist <- create_mentions_edgelist(tmp_df)
+#' mentions_edgelist
 #' }
 #' @importFrom rlang .data
 #' @export

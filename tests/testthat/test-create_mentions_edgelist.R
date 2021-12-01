@@ -21,3 +21,14 @@ test_that("mentions are identified", {
   expect_true("receiver" %in% names(mentions))
   expect_true("edge_type" %in% names(mentions))
 })
+
+test_that("edgelist gets built even without any mentions", {
+
+  mentions2 <- create_retweets_edgelist(sample_data[2,])
+
+  expect_true(is.data.frame(mentions2))
+  expect_named(mentions2)
+  expect_true("sender" %in% names(mentions2))
+  expect_true("receiver" %in% names(mentions2))
+  expect_true("edge_type" %in% names(mentions2))
+})
