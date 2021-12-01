@@ -24,6 +24,10 @@ Because the Twitter API offers a \code{reply_to_status_id} column, it is
   running \code{get_upstream_tweets()} could take a while and potentially hit
   the Twitter API rate limit of 90,000 tweets in a 15-minute period.
 }
+\details{
+This function requires authentication; please see
+  \code{vignette("setup", package = "tidytags")}
+}
 \examples{
 
 \dontrun{

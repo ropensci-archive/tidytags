@@ -21,3 +21,14 @@ test_that("retweets are identified", {
   expect_true("receiver" %in% names(retweets))
   expect_true("edge_type" %in% names(retweets))
 })
+
+test_that("edgelist gets built even without any retweets", {
+
+  retweets2 <- create_retweets_edgelist(head(sample_data, 1))
+
+  expect_true(is.data.frame(retweets2))
+  expect_named(retweets2)
+  expect_true("sender" %in% names(retweets2))
+  expect_true("receiver" %in% names(retweets2))
+  expect_true("edge_type" %in% names(retweets2))
+})

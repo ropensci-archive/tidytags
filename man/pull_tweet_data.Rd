@@ -39,6 +39,10 @@ With a TAGS archive imported into R, \code{pull_tweet_data()} uses the
   this file directly using the \code{usethis::edit_r_environ(scope='user')}
   function.
 }
+\details{
+This function requires authentication; please see
+  \code{vignette("setup", package = "tidytags")}
+}
 \examples{
 
 \dontrun{

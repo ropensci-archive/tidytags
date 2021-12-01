@@ -35,6 +35,8 @@ flag_unknown_upstream <-
 #'   returned by \code{pull_tweet_data()}
 #' @return A new, expanded dataframe which includes any retrievable upstream
 #'   replies
+#' @details This function requires authentication; please see
+#'   \code{vignette("setup", package = "tidytags")}
 #' @examples
 #'
 #' \dontrun{

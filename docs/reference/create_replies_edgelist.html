@@ -169,8 +169,9 @@
 <span class='r-in'><span class='kw'>if</span> <span class='op'>(</span><span class='cn'>FALSE</span><span class='op'>)</span> <span class='op'>{</span></span>
 <span class='r-in'></span>
 <span class='r-in'><span class='va'>example_url</span> <span class='op'>&lt;-</span> <span class='st'>"18clYlQeJOc6W5QRuSlJ6_v3snqKJImFhU42bRkM_OX8"</span></span>
-<span class='r-in'><span class='va'>tmp_df</span> <span class='op'>&lt;-</span> <span class='fu'><a href='pull_tweet_data.html'>pull_tweet_data</a></span><span class='op'>(</span><span class='fu'><a href='read_tags.html'>read_tags</a></span><span class='op'>(</span><span class='va'>example_url</span><span class='op'>)</span>, n <span class='op'>=</span> <span class='fl'>10</span><span class='op'>)</span></span>
-<span class='r-in'><span class='fu'>create_replies_edgelist</span><span class='op'>(</span><span class='va'>tmp_df</span><span class='op'>)</span></span>
+<span class='r-in'><span class='va'>tmp_df</span> <span class='op'>&lt;-</span> <span class='fu'><a href='pull_tweet_data.html'>pull_tweet_data</a></span><span class='op'>(</span><span class='fu'><a href='read_tags.html'>read_tags</a></span><span class='op'>(</span><span class='va'>example_url</span><span class='op'>)</span><span class='op'>)</span></span>
+<span class='r-in'><span class='va'>replies_edgelist</span> <span class='op'>&lt;-</span> <span class='fu'>create_replies_edgelist</span><span class='op'>(</span><span class='va'>tmp_df</span><span class='op'>)</span></span>
+<span class='r-in'><span class='va'>replies_edgelist</span></span>
 <span class='r-in'><span class='op'>}</span></span>
 </pre>
   </div>

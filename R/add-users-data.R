@@ -9,6 +9,8 @@
 #' @return A dataframe in the form of an edgelist (i.e., with senders and
 #'   receivers) as well as numerous, appropriately named columns of details
 #'   about the senders and receivers.
+#' @details This function requires authentication; please see
+#'   \code{vignette("setup", package = "tidytags")}
 #' @seealso Review documentation for \code{rtweet::lookup_users()} for a full
 #'   list of metadata retrieved (i.e., column names) by this function.
 #' @examples

@@ -25,8 +25,9 @@ Starting with a dataframe returned by \code{pull_tweet_data()},
 \dontrun{
 
 example_url <- "18clYlQeJOc6W5QRuSlJ6_v3snqKJImFhU42bRkM_OX8"
-tmp_df <- pull_tweet_data(read_tags(example_url), n = 10)
-create_retweets_edgelist(tmp_df)
+tmp_df <- pull_tweet_data(read_tags(example_url))
+retweets_edgelist <- create_retweets_edgelist(tmp_df)
+retweets_edgelist
 }
 }
 \seealso{

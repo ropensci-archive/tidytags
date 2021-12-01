@@ -17,6 +17,8 @@
 #' @param df A dataframe or tibble
 #' @return A tibble of geographic coordinates (i.e., latitude and longitude)
 #'   that can then be used to plot locations on a map
+#' @details This function requires authentication; please see
+#'   \code{vignette("setup", package = "tidytags")}
 #' @seealso \href{https://opencagedata.com/api}{OpenCage Geocoding API
 #'   Documentation}
 #'

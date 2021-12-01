@@ -29,6 +29,10 @@ A tibble of geographic coordinates (i.e., latitude and longitude)
   quit your R session and restart. The function \code{geocode_tags()} will
   work for you from now on.
 }
+\details{
+This function requires authentication; please see
+  \code{vignette("setup", package = "tidytags")}
+}
 \examples{
 
 \dontrun{
