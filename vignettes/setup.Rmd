@@ -38,7 +38,9 @@ With these things in mind, let's get started working through some of the common 
 
 ## Key Task #1. Making sure your TAGS tracker can be accessed
 
-A core functionality of {tidytags} is to retrieve tweets data from a Twitter Archiving Google Sheet](https://tags.hawksey.info/) (TAGS). A TAGS tracker continuously collects tweets from Twitter, based on predefined search criteria and collection frequency. Here we offer **a brief overview related to getting setup with TAGS**, but be sure to read through the information on  the [TAGS landing page](https://tags.hawksey.info/get-tags/) for thorough instructions on getting started with TAGS.
+A core functionality of {tidytags} is to retrieve tweets data from a Twitter Archiving Google Sheet](https://tags.hawksey.info/) (TAGS). A TAGS tracker continuously collects tweets from Twitter, based on predefined search criteria and collection frequency. 
+
+Here we offer **a brief overview on how to set up TAGS**, but be sure to read through the information on  the [TAGS landing page](https://tags.hawksey.info/get-tags/) for thorough instructions on getting started with TAGS.
 
 We recommend using **TAGS v6.1**. 
 
