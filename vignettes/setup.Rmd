@@ -29,7 +29,7 @@ This vignette introduces the initial setup necessary to use {tidytags}. Specific
 
 ## Considerations Related to Ethics, Data Privacy, and Human Subjects Research 
 
-Before reading through these steps for setting up {tidytags}, please take a few moments to reflect on ethical considerations related to social media research. 
+Before reading through these steps for setting up {tidytags}, please take a few moments to **reflect on ethical considerations** related to social media research. 
 
 ```{r, child='../man/fragments/ethics.Rmd'} 
 ```
@@ -38,7 +38,7 @@ With these things in mind, let's get started working through some of the common 
 
 ## Key Task #1. Making sure your TAGS tracker can be accessed
 
-A core functionality of {tidytags} is collecting tweets continuously with a [Twitter Archiving Google Sheet](https://tags.hawksey.info/) (TAGS). Here we offer a brief overview, but be sure to read through the information on  the [TAGS landing page](https://tags.hawksey.info/get-tags/) for thorough instructions on getting started with TAGS.
+A core functionality of {tidytags} is collecting tweets continuously with a [Twitter Archiving Google Sheet](https://tags.hawksey.info/) (TAGS). Here we offer **a brief overview related to getting setup with TAGS**, but be sure to read through the information on  the [TAGS landing page](https://tags.hawksey.info/get-tags/) for thorough instructions on getting started with TAGS.
 
 We recommend using **TAGS v6.1**. 
 
@@ -102,7 +102,7 @@ You can read more about the Google Sheets API [here](https://console.developers.
 
 ## Key Task #3. Getting and storing Twitter API token
 
-With a TAGS tracker archive imported into R, {tidytags} allows you to gather quite a bit more information related to the TAGS-collected tweets with the `pull_tweet_data()` function. This function builds off the [{rtweet} package](https://docs.ropensci.org/rtweet/) (via `rtweet::lookup_tweets()`) to query the Twitter API. However, to access the Twitter API, whether through {rtweet} or {tidytags}, you will need to apply for developers' access from Twitter. You do this [through Twitter's developer website](https://developer.twitter.com/en/apply-for-access).
+With a TAGS tracker archive imported into R, {tidytags} allows you to gather quite a bit more information related to the TAGS-collected tweets with the `pull_tweet_data()` function. This function builds off the [{rtweet} package](https://docs.ropensci.org/rtweet/) (via `rtweet::lookup_tweets()`) to query the Twitter API. However, **to access the Twitter API, whether through {rtweet} or {tidytags}, you will need to apply for developers' access from Twitter**. You do this [through Twitter's developer website](https://developer.twitter.com/en/apply-for-access).
 
 ### Getting access token
 
