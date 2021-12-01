@@ -1,6 +1,6 @@
 # Contributing 
 
-This contributing guide has been derived from the {tidyverse} boilerplate (see their high-level [contributing guide](https://www.tidyverse.org/contribute/)). If you have any questions about contributing, please don't hesitate to [reach out](https://bretsw.github.io/tidytags/#getting-help). We appreciate every contribution.
+This contributing guide has been derived from the {tidyverse} boilerplate (see their high-level [contributing guide](https://www.tidyverse.org/contribute/)). If you have any questions about contributing, please don't hesitate to [reach out](https://bretsw.github.io/tidytags/#getting-help). We appreciate every contribution. We suggest first reading the [Getting started with tidytags](https://bretsw.github.io/tidytags/articles/setup.html) vignette.
 
 ## Code of conduct
 
