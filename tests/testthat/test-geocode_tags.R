@@ -24,5 +24,4 @@ test_that("geo coordinates are extracted properly", {
   expect_equal(locations_coords$location[3], "#TheGreatOutdoors")
   expect_true(is.na(locations_coords$location[4]))
   expect_true(is.na(locations_coords$location[5]))
-  expect_message()
 })
