@@ -26,7 +26,6 @@ jobs:
           - {os: windows-latest, r: 'release'}
           - {os: ubuntu-18.04, r: 'release'}
           - {os: ubuntu-20.04, r: 'release'}
-          - {os: ubuntu-latest, r: '4.0'}
           - {os: ubuntu-latest, r: '4.1'}
           - {os: ubuntu-latest, r: 'release'}
           - {os: ubuntu-latest, r: 'devel'}
