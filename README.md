@@ -25,7 +25,7 @@ Development
 <a href="https://github.com/ropensci/software-review/issues/382"><img src="https://badges.ropensci.org/382_status.svg" alt="rOpenSci Peer Review"></a>
 </td>
 <td align="left">
-<a href="https://github.com/bretsw/tidytags/actions?query=workflow%3Acheck"><img src="https://github.com/bretsw/tidytags/workflows/R-CMD-check/badge.svg" alt="Check"></a>
+<a href="https://github.com/bretsw/tidytags/actions"><img src="https://github.com/bretsw/tidytags/workflows/R-CMD-check/badge.svg" alt="Check"></a>
 </td>
 </tr>
 <tr class="even">
