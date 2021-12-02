@@ -17,7 +17,7 @@
 #' @details This function requires authentication; please see
 #'   \code{vignette("setup", package = "tidytags")}
 #' @seealso Read more about \code{library(googlesheets4)}
-#'   \href{https://github.com/tidyverse/googlesheets4}{here}.If you need help
+#'   \href{https://github.com/tidyverse/googlesheets4}{here}. If you need help
 #'   obtaining and setting up a Google API key, read the
 #'   \href{https://bretsw.github.io/tidytags/articles/setup.html}{Getting
 #'   started with tidytags} vignette.
@@ -100,7 +100,8 @@ get_char_tweet_ids <-
 #' @param n The number of tweets to look up, by default the total number of
 #'   tweet ID numbers available, but capped at 90,000 due to Twitter API
 #'   limitations.
-#' @details This function requires authentication; please see \code{vignette("setup", package = "tidytags")}
+#' @details This function requires authentication; please see
+#'   \code{vignette("setup", package = "tidytags")}
 #' @return A dataframe of tweets and full metadata from the Twitter API
 #' @details This function requires authentication; please see
 #'   \code{vignette("setup", package = "tidytags")}
