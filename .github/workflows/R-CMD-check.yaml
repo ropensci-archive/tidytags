@@ -24,9 +24,8 @@ jobs:
         config:
           - {os: macOS-latest, r: 'release', vcrturnoff: 'false'}
           - {os: windows-latest, r: 'release'}
-          - {os: ubuntu-latest, r: 'devel', http-user-agent: 'release'}
-          - {os: ubuntu-latest, r: 'release'}
-          - {os: ubuntu-latest, r: 'oldrel-1'}
+          - {os: ubuntu-20.04, r: 'release', rspm: "https://packagemanager.rstudio.com/cran/__linux__/focal/latest"}
+          - {os: ubuntu-20.04, r: 'devel', rspm: "https://packagemanager.rstudio.com/cran/__linux__/focal/latest"}
 
     env:
       GITHUB_PAT: ${{ secrets.GITHUB_TOKEN }}
@@ -34,6 +33,7 @@ jobs:
       R_REMOTES_NO_ERRORS_FROM_WARNINGS: true
       VCR_VERBOSE_ERRORS: true
       VCR_TURN_OFF: ${{ matrix.config.vcrturnoff }}
+      RSPM: ${{ matrix.config.rspm }}
 
     steps:
       - uses: actions/checkout@v2
@@ -98,3 +98,10 @@ jobs:
         with:
           name: ${{ matrix.config.os }}-r${{ matrix.config.r }}-results
           path: check
+
+      - name: Test coverage
+        if: matrix.config.os == 'macOS-latest'
+        run: |
+          install.packages("covr")
+          covr::codecov(token = "${{secrets.CODECOV_TOKEN}}")
+        shell: Rscript {0}
