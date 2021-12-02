@@ -46,7 +46,7 @@ Development
 </td>
 
 <td align="left">
-<a href="https://github.com/bretsw/tidytags/actions?query=workflow%3Acheck"><img src="https://github.com/bretsw/tidytags/workflows/R-CMD-check/badge.svg" alt="Check"></a>
+<a href="https://github.com/bretsw/tidytags/actions"><img src="https://github.com/bretsw/tidytags/workflows/R-CMD-check/badge.svg" alt="Check"></a>
 </td>
 
 </tr>
