@@ -40,6 +40,8 @@ With a TAGS archive imported into R, \code{pull_tweet_data()} uses the
   function.
 }
 \details{
+This function requires authentication; please see \code{vignette("setup", package = "tidytags")}
+
 This function requires authentication; please see
   \code{vignette("setup", package = "tidytags")}
 }
