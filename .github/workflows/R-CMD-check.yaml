@@ -24,8 +24,12 @@ jobs:
         config:
           - {os: macOS-latest, r: 'release', vcrturnoff: 'false'}
           - {os: windows-latest, r: 'release'}
-          - {os: ubuntu-20.04, r: 'release', rspm: "https://packagemanager.rstudio.com/cran/__linux__/focal/latest"}
-          - {os: ubuntu-20.04, r: 'devel', rspm: "https://packagemanager.rstudio.com/cran/__linux__/focal/latest"}
+          - {os: ubuntu-18.04, r: 'release'}
+          - {os: ubuntu-20.04, r: 'release'}
+          - {os: ubuntu-latest, r: '4.0'}
+          - {os: ubuntu-latest, r: '4.1'}
+          - {os: ubuntu-latest, r: 'release'}
+          - {os: ubuntu-latest, r: 'devel'}
 
     env:
       GITHUB_PAT: ${{ secrets.GITHUB_TOKEN }}
@@ -33,7 +37,6 @@ jobs:
       R_REMOTES_NO_ERRORS_FROM_WARNINGS: true
       VCR_VERBOSE_ERRORS: true
       VCR_TURN_OFF: ${{ matrix.config.vcrturnoff }}
-      RSPM: ${{ matrix.config.rspm }}
 
     steps:
       - uses: actions/checkout@v2
@@ -43,7 +46,6 @@ jobs:
       - uses: r-lib/actions/setup-r@v1
         with:
           r-version: ${{ matrix.config.r }}
-          http-user-agent: ${{ matrix.config.http-user-agent }}
           use-public-rspm: true
 
       - name: Install pak and query dependencies
