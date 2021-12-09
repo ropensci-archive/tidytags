@@ -106,7 +106,7 @@
 <div id="considerations-related-to-ethics-data-privacy-and-human-subjects-research" class="section level2">
 <h2 class="hasAnchor">
 <a href="#considerations-related-to-ethics-data-privacy-and-human-subjects-research" class="anchor"></a>Considerations Related to Ethics, Data Privacy, and Human Subjects Research</h2>
-<p>Before reading through these steps for setting up {tidytags}, please take a few moments to reflect on ethical considerations related to social media research.</p>
+<p>Before reading through these steps for setting up {tidytags}, please take a few moments to <strong>reflect on ethical considerations</strong> related to social media research.</p>
 <p><strong>{tidytags} should be used in strict accordance with Twitter’s <a href="https://developer.twitter.com/en/developer-terms/more-on-restricted-use-cases">developer terms</a>.</strong></p>
 <p>Although most Institutional Review Boards (IRBs) consider the Twitter data that {tidytags} analyzes to <em>not</em> necessarily be human subjects research, there remain ethical considerations pertaining to the use of the {tidytags} package that should be discussed.</p>
 <p>Even if {tidytags} use is not for research purposes (or if an IRB determines that a study is not human subjects research), “the release of personally identifiable or sensitive data is potentially harmful,” as noted in the <a href="https://devguide.ropensci.org/policies.html#ethics-data-privacy-and-human-subjects-research">rOpenSci Packages guide</a>. Therefore, although you <em>can</em> collect Twitter data (and you <em>can</em> use {tidytags} to analyze it), we urge care and thoughtfulness regarding how you analyze the data and communicate the results. In short, please remember that most (if not all) of the data you collect may be about people—and <a href="https://journals.sagepub.com/doi/full/10.1177/2056305118763366">those people may not like the idea of their data being analyzed or included in research</a>.</p>
@@ -116,7 +116,8 @@
 <div id="key-task-1--making-sure-your-tags-tracker-can-be-accessed" class="section level2">
 <h2 class="hasAnchor">
 <a href="#key-task-1--making-sure-your-tags-tracker-can-be-accessed" class="anchor"></a>Key Task #1. Making sure your TAGS tracker can be accessed</h2>
-<p>A core functionality of {tidytags} is collecting tweets continuously with a <a href="https://tags.hawksey.info/">Twitter Archiving Google Sheet</a> (TAGS). Here we offer a brief overview, but be sure to read through the information on the <a href="https://tags.hawksey.info/get-tags/">TAGS landing page</a> for thorough instructions on getting started with TAGS.</p>
+<p>A core functionality of {tidytags} is to retrieve tweets data from a Twitter Archiving Google Sheet](<a href="https://tags.hawksey.info/" class="uri">https://tags.hawksey.info/</a>) (TAGS). A TAGS tracker continuously collects tweets from Twitter, based on predefined search criteria and collection frequency.</p>
+<p>Here we offer <strong>a brief overview on how to set up TAGS</strong>, but be sure to read through the information on the <a href="https://tags.hawksey.info/get-tags/">TAGS landing page</a> for thorough instructions on getting started with TAGS.</p>
 <p>We recommend using <strong>TAGS v6.1</strong>.</p>
 <p align="center">
 <img src="files/choice-TAGS-version.png" width="480"></p>
@@ -150,30 +151,31 @@
 <a href="#key-task-2--getting-and-storing-a-google-api-key" class="anchor"></a>Key Task #2. Getting and storing a Google API key</h2>
 <p>To use <code><a href="../reference/read_tags.html">read_tags()</a></code>, you will need a <strong>Google API key</strong> for Google Sheets. Follow the {gargle} package vignette <a href="https://gargle.r-lib.org/articles/get-api-credentials.html">How to get your own API credentials</a> for a thorough guide through this process. The general steps are as follows:</p>
 <ol style="list-style-type: decimal">
-<li>Enable the Google Sheets API in the <a href="https://console.developers.google.com/apis/api/sheets.googleapis.com/">Google Developers Console</a>.</li>
-</ol>
-<p align="center">
-<img src="files/tidytags-setup-google-api_1.png" width="480"></p>
-<ol start="2" style="list-style-type: decimal">
-<li>Create an API key by clicking the <code>CREATE CREDENTIALS</code> button on the <a href="https://console.developers.google.com/apis/credentials">API credentials</a> page. Name this key with a clearly identifiable title, such as “API key for tidytags.”</li>
-</ol>
-<p align="center">
-<img src="files/tidytags-setup-google-api_2.png" width="480"></p>
-<ol start="3" style="list-style-type: decimal">
-<li>Click on the API key to edit it. Leave the “Application restrictions” setting as <code>None</code>, but under “API restrictions” select <code>Restrict key</code> and then check the box next to <code>Google Sheets API</code>. This is the only API needed for {tidytags} and will ensure that your new Google API key can only be used to access Google Sheets.</li>
+<li>Enable the Google Sheets API in the <a href="https://console.developers.google.com/apis/api/sheets.googleapis.com/">Google Developers Console</a>. To do so, from <a href="https://console.developers.google.com/apis/api/sheets.googleapis.com/">this link</a>, click the <code>CREATE CREDENTIALS</code> button (see the image below).</li>
 </ol>
 <p align="center">
 <img src="files/tidytags-setup-google-api_3.png" width="480"></p>
+<ol start="2" style="list-style-type: decimal">
+<li>On the next screen, select Google Sheets API and check the “Application data” radio button to the first prompt, and “No, I’m not using them” button for the second, as in the following:</li>
+</ol>
+<p align="center">
+<img src="files/tidytags-setup-google-api_2.png" width="480"></p>
+<ol start="2" style="list-style-type: decimal">
+<li>Next, you’ll next see a screen like the one below. There, name the key with a clearly identifiable title, such as “API key for tidytags.” Leave the “Application restrictions” setting as None, but under “API restrictions” select Restrict key and then check the box next to Google Sheets API. This is the only API needed for {tidytags} and will ensure that your new Google API key can only be used to access Google Sheets.</li>
+</ol>
+<p align="center">
+<img src="files/tidytags-setup-google-api_1.png" width="480"></p>
 <ol start="4" style="list-style-type: decimal">
-<li>Bring the Google API key into R. Specifically, add the key to the <code>.Renviron</code> file. Edit this file directly using the <code>usethis::edit_r_environ(scope='user')</code> function. The format of the <code>.Renviron</code> file should be as follows (inputting your unique Google API key after the <code>=</code> sign, with no quotation marks):</li>
+<li>Finally, bring the Google API key into R. Specifically, add the key to the <code>.Renviron</code> file. Edit this file directly using the <code>usethis::edit_r_environ(scope='user')</code> function. The format of the <code>.Renviron</code> file should be as follows (inputting your unique Google API key after the <code>=</code> sign, with no quotation marks):</li>
 </ol>
 <p><code>GOOGLE_API_KEY = YourGoogleAPIKey</code></p>
+<p>Restart R (by closing and opening R/RStudio) for this key to be available in your next R Session.</p>
 <p>You can read more about the Google Sheets API <a href="https://console.developers.google.com/apis/library/sheets.googleapis.com">here</a>, and get help with the API <a href="https://developers.google.com/sheets/api/support">here</a>.</p>
 </div>
 <div id="key-task-3--getting-and-storing-twitter-api-token" class="section level2">
 <h2 class="hasAnchor">
 <a href="#key-task-3--getting-and-storing-twitter-api-token" class="anchor"></a>Key Task #3. Getting and storing Twitter API token</h2>
-<p>With a TAGS tracker archive imported into R, {tidytags} allows you to gather quite a bit more information related to the TAGS-collected tweets with the <code><a href="../reference/pull_tweet_data.html">pull_tweet_data()</a></code> function. This function builds off the <a href="https://docs.ropensci.org/rtweet/">{rtweet} package</a> (via <code><a href="https://rdrr.io/pkg/rtweet/man/lookup_statuses.html">rtweet::lookup_tweets()</a></code>) to query the Twitter API. However, to access the Twitter API, whether through {rtweet} or {tidytags}, you will need to apply for developers’ access from Twitter. You do this <a href="https://developer.twitter.com/en/apply-for-access">through Twitter’s developer website</a>.</p>
+<p>With a TAGS tracker archive imported into R, {tidytags} allows you to gather quite a bit more information related to the TAGS-collected tweets with the <code><a href="../reference/pull_tweet_data.html">pull_tweet_data()</a></code> function. This function builds off the <a href="https://docs.ropensci.org/rtweet/">{rtweet} package</a> (via <code><a href="https://rdrr.io/pkg/rtweet/man/lookup_statuses.html">rtweet::lookup_tweets()</a></code>) to query the Twitter API. However, <strong>to access the Twitter API, whether through {rtweet} or {tidytags}, you will need to apply for developers’ access from Twitter</strong>. You do this <a href="https://developer.twitter.com/en/apply-for-access">through Twitter’s developer website</a>.</p>
 <div id="getting-access-token" class="section level3">
 <h3 class="hasAnchor">
 <a href="#getting-access-token" class="anchor"></a>Getting access token</h3>

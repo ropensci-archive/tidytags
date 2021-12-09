@@ -130,7 +130,7 @@
 
 <div id="contributing" class="section level1">
 
-<p>This contributing guide has been derived from the {tidyverse} boilerplate (see their high-level <a href="https://www.tidyverse.org/contribute/">contributing guide</a>). If you have any questions about contributing, please don’t hesitate to <a href="https://bretsw.github.io/tidytags/#getting-help">reach out</a>. We appreciate every contribution.</p>
+<p>This contributing guide has been derived from the {tidyverse} boilerplate (see their high-level <a href="https://www.tidyverse.org/contribute/">contributing guide</a>). If you have any questions about contributing, please don’t hesitate to <a href="https://bretsw.github.io/tidytags/#getting-help">reach out</a>. We appreciate every contribution. We suggest first reading the <a href="https://bretsw.github.io/tidytags/articles/setup.html">Getting started with tidytags</a> vignette.</p>
 <div id="code-of-conduct" class="section level2">
 <h2 class="hasAnchor">
 <a href="#code-of-conduct" class="anchor"></a>Code of conduct</h2>
@@ -200,7 +200,7 @@
 <p>Before changing anything, make sure the package still passes the below listed flavors of <code>R CMD check</code> locally for you.</p>
 <div class="sourceCode" id="cb1"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="fu">goodpractice</span><span class="fu">::</span><span class="fu"><a href="https://rdrr.io/pkg/goodpractice/man/gp.html">goodpractice</a></span><span class="op">(</span>quiet <span class="op">=</span> <span class="cn">FALSE</span>, <span class="op">)</span>
-<span class="fu">devtools</span><span class="fu">::</span><span class="fu"><a href="https://devtools.r-lib.org//reference/check.html">check</a></span><span class="op">(</span><span class="op">)</span></code></pre></div>
+<span class="fu">devtools</span><span class="fu">::</span><span class="fu"><a href="https://devtools.r-lib.org/reference/check.html">check</a></span><span class="op">(</span><span class="op">)</span></code></pre></div>
 </div>
 <div id="style" class="section level4">
 <h4 class="hasAnchor">
@@ -215,7 +215,7 @@
 <div id="document" class="section level4">
 <h4 class="hasAnchor">
 <a href="#document" class="anchor"></a>Document</h4>
-<p>We use <a href="https://cran.r-project.org/package=roxygen2">{roxygen2}</a>, specifically with the <a href="https://cran.r-project.org/web/packages/roxygen2/vignettes/markdown.html">Markdown syntax</a>, to create <code>NAMESPACE</code> and all <code>.Rd</code> files. All edits to documentation should be done in roxygen comments above the associated function or object. Then, run <code><a href="https://devtools.r-lib.org//reference/document.html">devtools::document()</a></code> to rebuild the <code>NAMESPACE</code> and <code>.Rd</code> files.</p>
+<p>We use <a href="https://cran.r-project.org/package=roxygen2">{roxygen2}</a>, specifically with the <a href="https://cran.r-project.org/web/packages/roxygen2/vignettes/markdown.html">Markdown syntax</a>, to create <code>NAMESPACE</code> and all <code>.Rd</code> files. All edits to documentation should be done in roxygen comments above the associated function or object. Then, run <code><a href="https://devtools.r-lib.org/reference/document.html">devtools::document()</a></code> to rebuild the <code>NAMESPACE</code> and <code>.Rd</code> files.</p>
 <p>See the <code>RoxygenNote</code> in <a href="DESCRIPTION">DESCRIPTION</a> for the version of {roxygen2} being used.</p>
 </div>
 <div id="test" class="section level4">
@@ -223,8 +223,8 @@
 <a href="#test" class="anchor"></a>Test</h4>
 <p>We use <a href="https://cran.r-project.org/package=testthat">{testthat}</a> for testing. Contributions with test cases are easier to review and verify.</p>
 <div class="sourceCode" id="cb3"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="fu">devtools</span><span class="fu">::</span><span class="fu"><a href="https://devtools.r-lib.org//reference/test.html">test</a></span><span class="op">(</span><span class="op">)</span>
-<span class="fu">devtools</span><span class="fu">::</span><span class="fu"><a href="https://devtools.r-lib.org//reference/test.html">test_coverage</a></span><span class="op">(</span><span class="op">)</span></code></pre></div>
+<code class="sourceCode R"><span class="fu">devtools</span><span class="fu">::</span><span class="fu"><a href="https://devtools.r-lib.org/reference/test.html">test</a></span><span class="op">(</span><span class="op">)</span>
+<span class="fu">devtools</span><span class="fu">::</span><span class="fu"><a href="https://devtools.r-lib.org/reference/test.html">test_coverage</a></span><span class="op">(</span><span class="op">)</span></code></pre></div>
 <p>Note that because {tidytags} queries OpenCage and Twitter APIs, testing can be a bit tricky. Be sure to follow the <a href="https://bretsw.github.io/tidytags/articles/setup.html">Getting started with tidytags</a> vignette for establishing your own OpenCage API key and Twitter API tokens to conduct local testing. For CI testing, view the <a href="tests/testthat/setup-tidytags.R">setup-tidytags.R</a> file in the package testing documentation to see how fake OAuth tokens are set up. The <a href="https://books.ropensci.org/http-testing/index.html">HTTP testing in R</a> book is an invaluable resource.</p>
 </div>
 <div id="re-check" class="section level4">
@@ -232,7 +232,7 @@
 <a href="#re-check" class="anchor"></a>Re-check</h4>
 <p>Before submitting your changes, make sure that the package either still passes <code>R CMD check</code>, or that the warnings and/or notes have not <em>changed</em> as a result of your edits.</p>
 <div class="sourceCode" id="cb4"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="fu">devtools</span><span class="fu">::</span><span class="fu"><a href="https://devtools.r-lib.org//reference/check.html">check</a></span><span class="op">(</span><span class="op">)</span>
+<code class="sourceCode R"><span class="fu">devtools</span><span class="fu">::</span><span class="fu"><a href="https://devtools.r-lib.org/reference/check.html">check</a></span><span class="op">(</span><span class="op">)</span>
 <span class="fu">goodpractice</span><span class="fu">::</span><span class="fu"><a href="https://rdrr.io/pkg/goodpractice/man/gp.html">goodpractice</a></span><span class="op">(</span>quiet <span class="op">=</span> <span class="cn">FALSE</span><span class="op">)</span></code></pre></div>
 </div>
 <div id="commit" class="section level4">

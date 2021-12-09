@@ -2,10 +2,7 @@
 
 export(add_users_data)
 export(create_edgelist)
-export(create_mentions_edgelist)
-export(create_quotes_edgelist)
-export(create_replies_edgelist)
-export(create_retweets_edgelist)
+export(filter_by_tweet_type)
 export(geocode_tags)
 export(get_char_tweet_ids)
 export(get_upstream_tweets)

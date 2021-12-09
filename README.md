@@ -14,6 +14,9 @@ Release
 <th align="left">
 Development
 </th>
+<th align="left">
+Checks
+</th>
 </tr>
 </thead>
 <tbody>
@@ -23,6 +26,9 @@ Development
 </td>
 <td align="left">
 <a href="https://github.com/ropensci/software-review/issues/382"><img src="https://badges.ropensci.org/382_status.svg" alt="rOpenSci Peer Review"></a>
+</td>
+<td align="left">
+<a href="https://www.repostatus.org/#active"><img src="https://www.repostatus.org/badges/latest/active.svg" alt="Status"></a>
 </td>
 <td align="left">
 <a href="https://github.com/bretsw/tidytags/actions"><img src="https://github.com/bretsw/tidytags/workflows/R-CMD-check/badge.svg" alt="Check"></a>
@@ -35,6 +41,9 @@ Development
 <td align="left">
 </td>
 <td align="left">
+<a href="https://github.com/bretsw/tidytags/commits/main"><img src="https://img.shields.io/github/last-commit/bretsw/tidytags.svg" alt="Last Commit"></a>
+</td>
+<td align="left">
 <a href="https://codecov.io/gh/bretsw/tidytags?branch=main"><img src="https://codecov.io/gh/bretsw/tidytags/coverage.svg?branch=main" alt="Codecov"></a>
 </td>
 </tr>
@@ -44,25 +53,9 @@ Development
 <td align="left">
 </td>
 <td align="left">
-<a href="https://www.repostatus.org/#active"><img src="https://www.repostatus.org/badges/latest/active.svg" alt="Status"></a>
-</td>
-</tr>
-<tr class="even">
-<td align="left">
-</td>
-<td align="left">
-</td>
-<td align="left">
-<a href="https://github.com/bretsw/tidytags/commits/main"><img src="https://img.shields.io/github/last-commit/bretsw/tidytags.svg" alt="Last Commit"></a>
-</td>
-</tr>
-<tr class="odd">
-<td align="left">
-</td>
-<td align="left">
-</td>
-<td align="left">
 <a href="https://www.tidyverse.org/lifecycle/#maturing"><img src="https://img.shields.io/badge/lifecycle-maturing-blue.svg" alt='Lifecycle'></a>
+</td>
+<td align="left">
 </td>
 </tr>
 </tbody>
