@@ -2,28 +2,29 @@
 % Please edit documentation in R/setup-functions.R
 \name{pull_tweet_data}
 \alias{pull_tweet_data}
-\title{Retrieve the fullest extent of tweet metadata available from the Twitter API}
+\title{Retrieve the fullest extent of status metadata available from the Twitter API}
 \usage{
 pull_tweet_data(df, url_vector = NULL, id_vector = NULL, n = NULL)
 }
 \arguments{
 \item{df}{A dataframe of containing the column name 'status_url'
-(i.e., the hyperlink to specific tweets), such as that returned by
+(i.e., the hyperlink to specific statuses), such as that returned by
 \code{read_tags()}}
 
-\item{url_vector}{A vector of tweet URLs, such as as those contained in
+\item{url_vector}{A vector of status URLs, such as as those contained in
 the 'status_url' column of a dataframe returned by
 \code{tidytags::read_tags()}}
 
-\item{id_vector}{A vector of tweet ID numbers, such as as those contained in
-the 'id_str' column of a dataframe returned by \code{tidytags::read_tags()}}
+\item{id_vector}{A vector of statuses (i.e., ID numbers, such as
+those contained in the 'id_str' column of a dataframe returned by
+\code{tidytags::read_tags()}}
 
-\item{n}{The number of tweets to look up, by default the total number of
-tweet ID numbers available, but capped at 90,000 due to Twitter API
+\item{n}{The number of statuses to look up, by default the total number
+of tweet ID numbers available, but capped at 90,000 due to Twitter API
 limitations.}
 }
 \value{
-A dataframe of tweets and full metadata from the Twitter API
+A dataframe of statuses and full metadata from the Twitter API
 }
 \description{
 With a TAGS archive imported into R, \code{pull_tweet_data()} uses the
@@ -31,9 +32,7 @@ With a TAGS archive imported into R, \code{pull_tweet_data()} uses the
   API keys associated with an approved developer account. Fortunately, the
   rtweet vignette,
   \href{https://docs.ropensci.org/rtweet/articles/auth.html}{Authentication},
-  provides a thorough guide to obtaining Twitter API keys. We recommend
-  the second suggested method listed
-  in the rtweet vignette, "2. Access token/secret method." Following these
+  provides a thorough guide to obtaining Twitter API keys. Following these
   directions, you will run the \code{rtweet::create_token()} function, which
   saves your Twitter API keys to the \code{.Renviron} file. You can also edit
   this file directly using the \code{usethis::edit_r_environ(scope='user')}
@@ -42,22 +41,28 @@ With a TAGS archive imported into R, \code{pull_tweet_data()} uses the
 \details{
 This function requires authentication; please see
   \code{vignette("setup", package = "tidytags")}
-
-This function requires authentication; please see
-  \code{vignette("setup", package = "tidytags")}
 }
 \examples{
 
 \dontrun{
 
-example_url <- "18clYlQeJOc6W5QRuSlJ6_v3snqKJImFhU42bRkM_OX8"
-tags_content <- read_tags(example_url)
-pull_tweet_data(tags_content[1:10, ])
+## Import data from a TAGS tracker:
+example_tags_tracker <- "18clYlQeJOc6W5QRuSlJ6_v3snqKJImFhU42bRkM_OX8"
+tags_content <- read_tags(example_tags_tracker)
+
+## Use any of three input parameters (TAGS dataframe, \code{status_url}
+##   column, or \code{id_str} column)
+pull_tweet_data(tags_content)
+pull_tweet_data(url_vector = tags_content$status_url)
+pull_tweet_data(id_vector = tags_content$id_str)
+
+## Specifying the parameter \code{n} clarifies how many statuses to look up,
+##   but the returned values may be less than \code{n} because some statuses
+##   may have been deleted or made protected since the TAGS tracker
+##   originally recorded them.
 pull_tweet_data(tags_content, n = 10)
-pull_tweet_data(url_vector = tags_content$status_url[1:10])
-pull_tweet_data(url_vector = tags_content$status_url, n = 10)
-pull_tweet_data(id_vector = tags_content$id_str[1:10])
-pull_tweet_data(id_vector = tags_content$id_str, n = 10)
+
+## Note that the following two examples will return the same thing:
 pull_tweet_data(url_vector =
   "https://twitter.com/tweet__example/status/1176592704647716864")
 pull_tweet_data(id_vector = "1176592704647716864")

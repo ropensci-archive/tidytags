@@ -2,27 +2,27 @@
 % Please edit documentation in R/setup-functions.R
 \name{get_char_tweet_ids}
 \alias{get_char_tweet_ids}
-\title{Get tweet ID numbers as character strings}
+\title{Get Twitter status ID numbers as character strings}
 \usage{
 get_char_tweet_ids(x)
 }
 \arguments{
 \item{x}{A dataframe containing the column name 'status_url'
-(i.e., the hyperlink to specific tweets), such as that returned by
-\code{read_tags()}, or a vector of tweet URLs, such as as those contained
+(i.e., the hyperlink to specific statuses), such as that returned by
+\code{read_tags()}, or a vector of status URLs, such as as those contained
 in the 'status_url' column of a dataframe returned by
 \code{tidytags::read_tags()}}
 }
 \value{
-A vector of tweet IDs as character strings
+A vector of Twitter status IDs as character strings
 }
 \description{
 This function is useful because Google Sheets (and hence TAGS)
   typically round very large numbers into an exponential form. Thus,
-  because tweet ID numbers are very large, they often get corrupted in this
-  rounding process. The most reliable way to get full tweet ID numbers is by
+  because status ID numbers are very large, they often get corrupted in this
+  rounding process. The most reliable way to get full status ID numbers is by
   using this function, \code{get_char_tweet_ids()}, to pull the ID numbers
-  from the URL linking to specific tweets.
+  from the URL linking to specific statuses.
 }
 \examples{
 

@@ -2,7 +2,7 @@
 % Please edit documentation in R/setup-functions.R
 \name{read_tags}
 \alias{read_tags}
-\title{Retrieve a TAGS archive of tweets and bring into R}
+\title{Retrieve a TAGS archive of Twitter statuses and bring into R}
 \usage{
 read_tags(tags_id, google_key = Sys.getenv("GOOGLE_API_KEY"))
 }
@@ -14,7 +14,7 @@ URL.)}
 \item{google_key}{A Google API key for accessing Google Sheets.}
 }
 \value{
-A tibble of the TAGS archive of tweets
+A tibble of the TAGS archive of Twitter statuses
 }
 \description{
 Keep in mind that \code{read_tags()} uses the **googlesheets4** package,
