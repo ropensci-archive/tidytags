@@ -19,7 +19,7 @@ Development
 <tbody>
 <tr class="odd">
 <td align="left">
-<a href="https://www.gnu.org/licenses/gpl-3.0.en.html"><img src="https://img.shields.io/badge/licence-GPL--3-9cf.svg" alt="Licence"></a>
+<a href="https://choosealicense.com/licenses/mit/"><img src="https://img.shields.io/badge/licence-MIT-9cf.svg" alt="Licence"></a>
 </td>
 <td align="left">
 <a href="https://github.com/ropensci/software-review/issues/382"><img src="https://badges.ropensci.org/382_status.svg" alt="rOpenSci Peer Review"></a>
@@ -244,9 +244,9 @@ in your reference list:
 > and analyzing Twitter data collected with Twitter Archiving Google
 > Sheets. <https://github.com/bretsw/tidytags> (R package version 0.2.0)
 
-## License [![license](https://img.shields.io/badge/license-GPL--3-9cf.svg)](https://www.gnu.org/licenses/gpl.html)
+## License [![license](https://img.shields.io/badge/licence-MIT-9cf.svg)](https://choosealicense.com/licenses/mit/)
 
-The {tidytags} package is licensed under a *GNU General Public License
-v3.0*, or [GPL-3](https://choosealicense.com/licenses/lgpl-3.0/). For
-background on why we chose this license, read this chapter on [R package
+The {tidytags} package is licensed under the [*MIT
+License*](https://choosealicense.com/licenses/mit/). For background on
+why we chose this license, read this chapter on [R package
 licensing](https://r-pkgs.org/license.html).
