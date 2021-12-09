@@ -2,12 +2,12 @@
 % Please edit documentation in R/setup-functions.R
 \name{process_tweets}
 \alias{process_tweets}
-\title{Calculate additional information using tweet metadata}
+\title{Calculate additional information using status metadata}
 \usage{
 process_tweets(df)
 }
 \arguments{
-\item{df}{A dataframe of tweets and full metadata from the Twitter API as
+\item{df}{A dataframe of statuses and full metadata from the Twitter API as
 returned by \code{pull_tweet_data()}}
 }
 \value{
@@ -16,14 +16,14 @@ A dataframe with several additional columns: word_count,
   has_hashtags, urls_count_api, urls_count_regex, is_reply, is_self_reply
 }
 \description{
-Calculate additional information using tweet metadata
+Calculate additional information using status metadata
 }
 \examples{
 
 \dontrun{
 
 example_url <- "18clYlQeJOc6W5QRuSlJ6_v3snqKJImFhU42bRkM_OX8"
-tmp_df <- pull_tweet_data(read_tags(example_url), n = 10)
+tmp_df <- pull_tweet_data(read_tags(example_url))
 tmp_processed <- process_tweets(tmp_df)
 tmp_processed
 }

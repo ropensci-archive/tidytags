@@ -47,21 +47,21 @@ filter_by_tweet_type <-
 
 
 #' Create an edgelist where senders and receivers are defined by different types
-#'   of tweet interaction
+#'   of Twitter interactions
 #'
 #' Starting with a dataframe returned by \code{pull_tweet_data()},
-#'   \code{create_edgelist()} processes the tweets by calling
+#'   \code{create_edgelist()} processes the statuses by calling
 #'   \code{process_tweets()}, filters the dataset to only keep the specific
-#'   tweet types (e.g., replies, retweets, quote tweets, and mentions) requested
-#'   by calling \code{filter_by_tweet_type()}, pulls out senders and receivers
-#'   of the specified type of tweets, and then adds a new column
+#'   status types (e.g., replies, retweets, quote tweets, and mentions)
+#'   requested by calling \code{filter_by_tweet_type()}, pulls out senders and
+#'   receivers of the specified type of statuses, and then adds a new column.
 #'   \code{edge_type}.
 #' @param df A dataframe returned by \code{pull_tweet_data()}
-#' @param type The specific kind of tweets used to define the interactions
+#' @param type The specific kind of statuses used to define the interactions
 #'   around which the edgelist will be built. Choices include"reply", "retweet",
 #'   "quote", or "mention." Defaults to "all."
 #' @return A dataframe edgelist defined by interactions through the type of
-#'   tweets specified. The dataframe has three columns: \code{sender},
+#'   statuses specified. The dataframe has three columns: \code{sender},
 #'   \code{receiver}, and \code{edge_type}.
 #' @examples
 #'
@@ -69,8 +69,10 @@ filter_by_tweet_type <-
 #'
 #' example_url <- "18clYlQeJOc6W5QRuSlJ6_v3snqKJImFhU42bRkM_OX8"
 #' tmp_df <- pull_tweet_data(read_tags(example_url))
+#'
 #' full_edgelist <- create_edgelist(tmp_df)
 #' full_edgelist
+#'
 #' reply_edgelist <- create_edgelist(tmp_df, type = "reply")
 #' retweet_edgelist <- create_edgelist(tmp_df, type = "retweet")
 #' quote_edgelist <- create_edgelist(tmp_df, type = "quote")

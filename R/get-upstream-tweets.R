@@ -1,14 +1,15 @@
-#' Flag any upstream tweets not already in a dataset
+#' Flag any upstream statuses not already in a dataset
 #'
 #' Because the Twitter API offers a \code{reply_to_status_id} column, it is
 #'   possible to iteratively reconstruct reply threads in an *upstream*
-#'   direction, that is, retrieving tweets composed earlier than replies in the
-#'   dataset. The \code{flag_unknown_upstream()} function identifies which
-#'   tweets are replies to tweets not found in the current dataset.
-#' @param df A dataframe of tweets and full metadata from the Twitter API as
+#'   direction, that is, retrieving statuses composed earlier than replies in
+#'   the dataset. The \code{flag_unknown_upstream()} function identifies which
+#'   statuses are replies to statuses not found in the current dataset.
+#' @param df A dataframe of statuses and full metadata from the Twitter API as
 #'   returned by \code{pull_tweet_data()}
-#' @return A new, filtered dataframe which only includes any reply tweets that
-#'   are not responses to tweets already in the dataset (i.e., upstream replies)
+#' @return A new, filtered dataframe which only includes any reply statuses that
+#'   are not responses to statuses already in the dataset (i.e., upstream
+#'   replies)
 #' @keywords internal
 #' @noRd
 flag_unknown_upstream <-
@@ -21,17 +22,17 @@ flag_unknown_upstream <-
     unknown_upstream
   }
 
-#' Collect upstream tweets and add to dataset
+#' Collect upstream statuses and add to dataset
 #'
 #' Because the Twitter API offers a \code{reply_to_status_id} column, it is
 #'   possible to iteratively reconstruct reply threads in an *upstream*
-#'   direction, that is, retrieving tweets composed earlier than replies in the
+#'   direction, that is, retrieving statuses composed earlier than replies in the
 #'   dataset. The \code{get_upstream_tweets()} function collects upstream
 #'   replies not previously found in the dataset. Keep in mind that there is no
 #'   way to predict how far upstream you can trace back a reply thread, so
 #'   running \code{get_upstream_tweets()} could take a while and potentially hit
-#'   the Twitter API rate limit of 90,000 tweets in a 15-minute period.
-#' @param df A dataframe of tweets and full metadata from the Twitter API as
+#'   the Twitter API rate limit of 90,000 statuses in a 15-minute period.
+#' @param df A dataframe of statuses and full metadata from the Twitter API as
 #'   returned by \code{pull_tweet_data()}
 #' @return A new, expanded dataframe which includes any retrievable upstream
 #'   replies
@@ -76,8 +77,8 @@ get_upstream_tweets <-
                                  unknown_upstream$reply_to_status_id))
 
         message(
-          "New tweets added to the dataset: ", nrow(new_tweets),
-          "; reply tweets that were not able to be retrieved: ", nrow(unknown_upstream),
+          "New statuses added to the dataset: ", nrow(new_tweets),
+          "; reply statuses that were not able to be retrieved: ", nrow(unknown_upstream),
           "; newly added replies where we can still go further upstream: ", searchable_replies
         )
       }

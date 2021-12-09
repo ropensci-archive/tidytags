@@ -186,15 +186,15 @@ pull_tweet_data <-
     new_df
   }
 
-#' Retrieve the fullest extent of tweet metadata for more than 90,000 tweets
+#' Retrieve the fullest extent of metadata for more than 90,000 statuses
 #'
 #' This function calls \code{pull_tweet_data()}, but has a built-in delay
 #'   of 15 minutes to allow the Twitter API to reset after looking up 90,000
-#'   tweets.
-#' @param x A list or vector of tweet ID numbers
-#' @param alarm An audible notification that a batch of 90,000 tweets has been
+#'   statuses
+#' @param x A list or vector of status ID numbers
+#' @param alarm An audible notification that a batch of 90,000 statuses has been
 #'   completed
-#' @return A dataframe of tweets and full metadata from the Twitter API
+#' @return A dataframe of statuses and full metadata from the Twitter API
 #' @details This function requires authentication; please see
 #'   \code{vignette("setup", package = "tidytags")}
 #' @seealso Read more about \code{library(rtweet)}
@@ -244,9 +244,9 @@ length_with_na <-
     ifelse(is.na(x), 0, purrr::map_int(x, length))
   }
 
-#' Calculate additional information using tweet metadata
+#' Calculate additional information using status metadata
 #'
-#' @param df A dataframe of tweets and full metadata from the Twitter API as
+#' @param df A dataframe of statuses and full metadata from the Twitter API as
 #'   returned by \code{pull_tweet_data()}
 #' @return A dataframe with several additional columns: word_count,
 #'   character_count, mentions_count, hashtags_count_api, hashtags_count_regex,
@@ -256,7 +256,7 @@ length_with_na <-
 #' \dontrun{
 #'
 #' example_url <- "18clYlQeJOc6W5QRuSlJ6_v3snqKJImFhU42bRkM_OX8"
-#' tmp_df <- pull_tweet_data(read_tags(example_url), n = 10)
+#' tmp_df <- pull_tweet_data(read_tags(example_url))
 #' tmp_processed <- process_tweets(tmp_df)
 #' tmp_processed
 #' }
