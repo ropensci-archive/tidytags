@@ -6,8 +6,24 @@ authors:
   Joshua M. Rosenberg:
     href: https://joshuamrosenberg.com/
 navbar:
+  type: inverse
+  left:
+  - icon: fa-file-code-o
+    text: "Functions"
+    href: reference/index.html
+  - icon: fa-map-o
+    text: "Guides"
+    menu:
+     - text: Getting started with tidytags
+       href: articles/setup.html
+     - text: Using tidytags with a conference hashtag
+       href: articles/tidytags-with-conf-hashtags.html
+  - icon: fa-newspaper-o
+    text: "News"
+    href: news/index.html
   right:
   - icon: fa-github fa-lg
+    text: "GitHub"
     href: https://github.com/bretsw/tidytags
 reference:
   - title: "Accessing data"

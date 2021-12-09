@@ -1,5 +1,10 @@
 
 <!-- README.md is generated from README.Rmd. Please edit that file -->
+
+# tidytags <img src="man/figures/tidytags-logo.png" align="right" width="120" />
+
+##### *Importing and Analyzing Twitter Data Collected with Twitter Archiving Google Sheets*
+
 <!-- badges: start -->
 <!-- For additional badges for CRAN, see https://docs.ropensci.org/drake/ -->
 <table class="table">
@@ -62,9 +67,7 @@ Checks
 </table>
 <!-- badges: end -->
 
-# tidytags <img src="man/figures/tidytags-logo.png" align="right" width="120" />
-
-##### *Importing and Analyzing Twitter Data Collected with Twitter Archiving Google Sheets*
+------------------------------------------------------------------------
 
 ## Overview
 
@@ -75,6 +78,8 @@ package](https://docs.ropensci.org/rtweet/index.html) for processing and
 preparing additional Twitter metadata. {tidytags} also introduces
 functions developed to facilitate systematic yet flexible analyses of
 data from Twitter.
+
+------------------------------------------------------------------------
 
 ## Installation
 
@@ -98,6 +103,8 @@ To load {tidytags}, start with the `library()` function:
 library(tidytags)
 ```
 
+------------------------------------------------------------------------
+
 ## Setup
 
 For help with initial {tidytags} setup, see the [Getting started with
@@ -109,6 +116,8 @@ vignette. Specifically, this guide offers help for four key tasks:
 3.  Getting and storing Twitter API tokens
 4.  Getting and storing an OpenCage Geocoding API key
 
+------------------------------------------------------------------------
+
 ## Usage
 
 To test the {tidytags} package, you can use an openly shared TAGS
@@ -117,7 +126,9 @@ since September 30, 2019. This is the same TAGS tracker used in the
 [Using tidytags with a conference hashtag
 vignette](https://bretsw.github.io/tidytags/articles/tidytags-with-conf-hashtags.html).
 
-## {tidytags} core functions
+------------------------------------------------------------------------
+
+## Core Functions
 
 ### read\_tags()
 
@@ -148,14 +159,18 @@ account. See the [Getting started with
 tidytags](https://bretsw.github.io/tidytags/articles/setup.html)
 vignette, Pain Point \#3, if you need help with this.
 
-## Learning more about tidytags
+------------------------------------------------------------------------
+
+## Learning More About {tidytags}
 
 For a walkthrough of numerous additional {tidytags} functions, see the
 [Using tidytags with a conference
 hashtag](https://bretsw.github.io/tidytags/articles/tidytags-with-conf-hashtags.html)
 vignette.
 
-## Getting help
+------------------------------------------------------------------------
+
+## Getting Help
 
 {tidytags} is still a work in progress, so we fully expect that there
 are still some bugs to work out and functions to document better. If you
@@ -180,6 +195,8 @@ You may also wish to try some general troubleshooting strategies:
     -   Twitter hashtag: \#rstats
 -   General strategies on learning more:
     <https://datascienceineducation.com/c17.html>
+
+------------------------------------------------------------------------
 
 ## Considerations Related to Ethics, Data Privacy, and Human Subjects Research
 
@@ -212,6 +229,8 @@ AoIR’s [ethical guidelines](https://aoir.org/reports/ethics3.pdf) may be
 especially helpful for navigating tensions related to collecting,
 analyzing, and sharing social media data.
 
+------------------------------------------------------------------------
+
 ## Contributing
 
 If you encounter an obvious bug for which there is not already an
@@ -226,7 +245,9 @@ All contributors, from those fixing typos to adding new functionality,
 must adhere to the [Code of
 Conduct](https://github.com/bretsw/tidytags/blob/master/CODE_OF_CONDUCT.md).
 
-## How to cite this package in publications
+------------------------------------------------------------------------
+
+## How to Cite This Package in Publications
 
 You can cite this package like this: “we collected, processed, and
 analyzed Twitter data using the tidytags R package (Staudt Willet &
@@ -236,6 +257,8 @@ in your reference list:
 > Staudt Willet, K. B., & Rosenberg, J. M. (2021). tidytags: Importing
 > and analyzing Twitter data collected with Twitter Archiving Google
 > Sheets. <https://github.com/bretsw/tidytags> (R package version 0.2.0)
+
+------------------------------------------------------------------------
 
 ## License [![license](https://img.shields.io/badge/licence-MIT-9cf.svg)](https://choosealicense.com/licenses/mit/)
 

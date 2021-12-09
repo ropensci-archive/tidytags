@@ -20,7 +20,7 @@
 </head>
 <body data-spy="scroll" data-target="#toc">
     <div class="container template-article">
-      <header><div class="navbar navbar-default navbar-fixed-top" role="navigation">
+      <header><div class="navbar navbar-inverse navbar-fixed-top" role="navigation">
   <div class="container">
     <div class="navbar-header">
       <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false">
@@ -38,17 +38,17 @@
     <div id="navbar" class="navbar-collapse collapse">
       <ul class="nav navbar-nav">
 <li>
-  <a href="../index.html">
-    <span class="fas fa-home fa-lg"></span>
+  <a href="../reference/index.html">
+    <span class="fa fa-file-code-o"></span>
      
+    Functions
   </a>
-</li>
-<li>
-  <a href="../reference/index.html">Reference</a>
 </li>
 <li class="dropdown">
   <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
-    Articles
+    <span class="fa fa-map-o"></span>
+     
+    Guides
      
     <span class="caret"></span>
   </a>
@@ -62,7 +62,11 @@
   </ul>
 </li>
 <li>
-  <a href="../news/index.html">Changelog</a>
+  <a href="../news/index.html">
+    <span class="fa fa-newspaper-o"></span>
+     
+    News
+  </a>
 </li>
       </ul>
 <ul class="nav navbar-nav navbar-right">
@@ -70,6 +74,7 @@
   <a href="https://github.com/bretsw/tidytags">
     <span class="fa fa-github fa-lg"></span>
      
+    GitHub
   </a>
 </li>
       </ul>
@@ -365,7 +370,7 @@
 <div id="create_replies_edgelist-create_retweets_edgelist-create_quotes_edgelist-create_mentions_edgelist" class="section level2">
 <h2 class="hasAnchor">
 <a href="#create_replies_edgelist-create_retweets_edgelist-create_quotes_edgelist-create_mentions_edgelist" class="anchor"></a>create_replies_edgelist(), create_retweets_edgelist(), create_quotes_edgelist(), create_mentions_edgelist()</h2>
-<p>These functions quickly subset the data, returning just the tweets of the type indicated by the function name (e.g., <code><a href="../reference/create_replies_edgelist.html">create_replies_edgelist()</a></code> returns only reply tweets). The <code>create_x_edgelist()</code> family of {tidytags} functions can be used to look at home many tweets of each type are present in the dataset.</p>
+<p>These functions quickly subset the data, returning just the tweets of the type indicated by the function name (e.g., <code>create_replies_edgelist()</code> returns only reply tweets). The <code>create_x_edgelist()</code> family of {tidytags} functions can be used to look at home many tweets of each type are present in the dataset.</p>
 <p>In the dataset of 2030 tweets, there are 62 replies, 1065 retweets, 92 quote tweets, and 2747.</p>
 </div>
 <div id="get_upstream_tweets" class="section level2">
@@ -381,7 +386,7 @@
 <div id="create_edgelist" class="section level2">
 <h2 class="hasAnchor">
 <a href="#create_edgelist" class="anchor"></a>create_edgelist()</h2>
-<p>Another useful approach to social media research is <em>social network analysis</em>. Getting started with social network analysis is as simple as producing an <strong>edgelist</strong>, a two-column dataframe listing <em>senders</em> and <em>receivers</em>. An edgelist gives a complete accounting of whom is interacting with whom. In Twitter, this is complicated somewhat by the number of ways a user is able to interact with someone else, namely, through replying, retweeting, quote tweeting, mentioning, and liking tweets. The {tidytags} function <code><a href="../reference/create_edgelist.html">create_edgelist()</a></code> uses <code><a href="../reference/create_replies_edgelist.html">create_replies_edgelist()</a></code>, <code><a href="../reference/create_retweets_edgelist.html">create_retweets_edgelist()</a></code>, <code><a href="../reference/create_quotes_edgelist.html">create_quotes_edgelist()</a></code>, and <code><a href="../reference/create_mentions_edgelist.html">create_mentions_edgelist()</a></code> to create an edgelist that takes into account these four different types of interaction. <code><a href="../reference/create_edgelist.html">create_edgelist()</a></code> returns a dataframe with three columns: two for the sender and receiver Twitter handles, and a third column listing the edge type (i.e., the form of interaction).</p>
+<p>Another useful approach to social media research is <em>social network analysis</em>. Getting started with social network analysis is as simple as producing an <strong>edgelist</strong>, a two-column dataframe listing <em>senders</em> and <em>receivers</em>. An edgelist gives a complete accounting of whom is interacting with whom. In Twitter, this is complicated somewhat by the number of ways a user is able to interact with someone else, namely, through replying, retweeting, quote tweeting, mentioning, and liking tweets. The {tidytags} function <code><a href="../reference/create_edgelist.html">create_edgelist()</a></code> uses <code>create_replies_edgelist()</code>, <code>create_retweets_edgelist()</code>, <code>create_quotes_edgelist()</code>, and <code>create_mentions_edgelist()</code> to create an edgelist that takes into account these four different types of interaction. <code><a href="../reference/create_edgelist.html">create_edgelist()</a></code> returns a dataframe with three columns: two for the sender and receiver Twitter handles, and a third column listing the edge type (i.e., the form of interaction).</p>
 <p>Run <code><a href="../reference/create_edgelist.html">create_edgelist()</a></code> after completing <code><a href="../reference/get_upstream_tweets.html">get_upstream_tweets()</a></code> for a complete picture of the interactions.</p>
 <div class="sourceCode" id="cb16"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="va">example_edgelist</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/create_edgelist.html">create_edgelist</a></span><span class="op">(</span><span class="va">example_with_upstream</span><span class="op">)</span>
