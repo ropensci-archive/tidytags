@@ -73,11 +73,15 @@ Checks
 
 {tidytags} coordinates the simplicity of collecting tweets over time
 with a [Twitter Archiving Google Sheet](https://tags.hawksey.info/)
-(TAGS) and the utility of the [{rtweet}
+(TAGS), a Google Sheets-based mechanism for collecting data from
+Twitter, and the utility of the [{rtweet}
 package](https://docs.ropensci.org/rtweet/index.html) for processing and
-preparing additional Twitter metadata. {tidytags} also introduces
-functions developed to facilitate systematic yet flexible analyses of
-data from Twitter.
+preparing additional Twitter metadata to enhance analyses of the data
+collected through TAGS. {tidytags} also introduces functions developed
+to facilitate systematic yet flexible analyses of data from Twitter. It
+also interfaces with several other packages, including the [opencage
+package](https://opencagedata.com/), to geocode the locations of Twitter
+users based on their biographies.
 
 ------------------------------------------------------------------------
 
