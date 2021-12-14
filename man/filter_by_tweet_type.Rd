@@ -2,28 +2,29 @@
 % Please edit documentation in R/analyze-network.R
 \name{filter_by_tweet_type}
 \alias{filter_by_tweet_type}
-\title{Create an edgelist where interaction is defined by replying}
+\title{Filter a Twitter dataset to only include statuses of a particular type}
 \usage{
 filter_by_tweet_type(df, type)
 }
 \arguments{
 \item{df}{A dataframe returned by \code{pull_tweet_data()}}
 
-\item{type}{The specific kind of tweets that will be kept in the dataset
-after filtering the rest. Choices for \code{type}include"reply", "retweet",
-"quote", or "mention." Defaults to "all."}
+\item{type}{The specific kind of statuses that will be kept in the dataset
+after filtering the rest. Choices for \code{type}include "reply",
+"retweet", "quote", or "mention."}
 }
 \value{
-A dataframe of processed tweets and fewer rows. Only the tweets of
-  the specified type will remain.
+A dataframe of processed statuses and fewer rows that the input
+  dataframe. Only the statuses of the specified type will remain.
 }
 \description{
-Starting with a dataframe returned by \code{pull_tweet_data()},
-  \code{create_edgelist()} processes the tweets by calling
-  \code{process_tweets()} and filters the dataset to only keep the specific
-  tweet types (e.g., replies, retweets, quote tweets, and mentions)
-  requested. \code{filter_by_tweet_type()} is a useful function in itself,
-  but it is also used in \code{create_edgelist()}.
+Starting with a dataframe of Twitter data imported to R with
+  \code{read_tags()} and additional metadata retrieved by
+  \code{pull_tweet_data()}, \code{filter_by_tweet_type()} processes the
+  statuses by calling \code{process_tweets()} and then removes any statuses
+  that are not of the requested type (e.g., replies, retweets, quote tweets,
+  and mentions). \code{filter_by_tweet_type()} is a useful function in
+  itself, but it is also used in \code{create_edgelist()}.
 }
 \examples{
 
@@ -31,9 +32,10 @@ Starting with a dataframe returned by \code{pull_tweet_data()},
 
 example_url <- "18clYlQeJOc6W5QRuSlJ6_v3snqKJImFhU42bRkM_OX8"
 tmp_df <- pull_tweet_data(read_tags(example_url))
-tmp_re <- filter_by_tweet_type(tmp_df, "reply")
-tmp_rt <- filter_by_tweet_type(tmp_df, "retweet")
-tmp_qu <- filter_by_tweet_type(tmp_df, "quote")
-tmp_me <- filter_by_tweet_type(tmp_df, "mention")
+
+only_replies <- filter_by_tweet_type(tmp_df, "reply")
+only_retweets <- filter_by_tweet_type(tmp_df, "retweet")
+only_quote_tweets <- filter_by_tweet_type(tmp_df, "quote")
+only_mentions <- filter_by_tweet_type(tmp_df, "mention")
 }
 }

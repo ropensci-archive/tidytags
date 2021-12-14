@@ -6,7 +6,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>Retrieve the fullest extent of tweet metadata available from the Twitter API — pull_tweet_data • tidytags</title>
+<title>Retrieve the fullest extent of status metadata available from the Twitter API — pull_tweet_data • tidytags</title>
 
 
 <!-- jquery -->
@@ -39,15 +39,13 @@
 
 
 
-<meta property="og:title" content="Retrieve the fullest extent of tweet metadata available from the Twitter API — pull_tweet_data" />
+<meta property="og:title" content="Retrieve the fullest extent of status metadata available from the Twitter API — pull_tweet_data" />
 <meta property="og:description" content="With a TAGS archive imported into R, pull_tweet_data() uses the
   **rtweet** package to query the Twitter API. Using rtweet requires Twitter
   API keys associated with an approved developer account. Fortunately, the
   rtweet vignette,
   Authentication,
-  provides a thorough guide to obtaining Twitter API keys. We recommend
-  the second suggested method listed
-  in the rtweet vignette, &quot;2. Access token/secret method.&quot; Following these
+  provides a thorough guide to obtaining Twitter API keys. Following these
   directions, you will run the rtweet::create_token() function, which
   saves your Twitter API keys to the .Renviron file. You can also edit
   this file directly using the usethis::edit_r_environ(scope='user')
@@ -83,7 +81,7 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">tidytags</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.2.0</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.2.1</span>
       </span>
     </div>
 
@@ -142,7 +140,7 @@
 <div class="row">
   <div class="col-md-9 contents">
     <div class="page-header">
-    <h1>Retrieve the fullest extent of tweet metadata available from the Twitter API</h1>
+    <h1>Retrieve the fullest extent of status metadata available from the Twitter API</h1>
     <small class="dont-index">Source: <a href='https://github.com/bretsw/tidytags/blob/master/R/setup-functions.R'><code>R/setup-functions.R</code></a></small>
     <div class="hidden name"><code>pull_tweet_data.Rd</code></div>
     </div>
@@ -153,9 +151,7 @@
   API keys associated with an approved developer account. Fortunately, the
   rtweet vignette,
   <a href='https://docs.ropensci.org/rtweet/articles/auth.html'>Authentication</a>,
-  provides a thorough guide to obtaining Twitter API keys. We recommend
-  the second suggested method listed
-  in the rtweet vignette, "2. Access token/secret method." Following these
+  provides a thorough guide to obtaining Twitter API keys. Following these
   directions, you will run the <code><a href='https://rdrr.io/pkg/rtweet/man/create_token.html'>rtweet::create_token()</a></code> function, which
   saves your Twitter API keys to the <code>.Renviron</code> file. You can also edit
   this file directly using the <code>usethis::edit_r_environ(scope='user')</code>
@@ -170,36 +166,35 @@
     <tr>
       <th>df</th>
       <td><p>A dataframe of containing the column name 'status_url'
-(i.e., the hyperlink to specific tweets), such as that returned by
+(i.e., the hyperlink to specific statuses), such as that returned by
 <code><a href='read_tags.html'>read_tags()</a></code></p></td>
     </tr>
     <tr>
       <th>url_vector</th>
-      <td><p>A vector of tweet URLs, such as as those contained in
+      <td><p>A vector of status URLs, such as as those contained in
 the 'status_url' column of a dataframe returned by
 <code><a href='read_tags.html'>tidytags::read_tags()</a></code></p></td>
     </tr>
     <tr>
       <th>id_vector</th>
-      <td><p>A vector of tweet ID numbers, such as as those contained in
-the 'id_str' column of a dataframe returned by <code><a href='read_tags.html'>tidytags::read_tags()</a></code></p></td>
+      <td><p>A vector of statuses (i.e., ID numbers, such as
+those contained in the 'id_str' column of a dataframe returned by
+<code><a href='read_tags.html'>tidytags::read_tags()</a></code></p></td>
     </tr>
     <tr>
       <th>n</th>
-      <td><p>The number of tweets to look up, by default the total number of
-tweet ID numbers available, but capped at 90,000 due to Twitter API
+      <td><p>The number of statuses to look up, by default the total number
+of tweet ID numbers available, but capped at 90,000 due to Twitter API
 limitations.</p></td>
     </tr>
     </table>
 
     <h2 class="hasAnchor" id="value"><a class="anchor" href="#value"></a>Value</h2>
 
-    <p>A dataframe of tweets and full metadata from the Twitter API</p>
+    <p>A dataframe of statuses and full metadata from the Twitter API</p>
     <h2 class="hasAnchor" id="details"><a class="anchor" href="#details"></a>Details</h2>
 
     <p>This function requires authentication; please see
-  <code><a href='../articles/setup.html'>vignette("setup", package = "tidytags")</a></code></p>
-<p>This function requires authentication; please see
   <code><a href='../articles/setup.html'>vignette("setup", package = "tidytags")</a></code></p>
     <h2 class="hasAnchor" id="see-also"><a class="anchor" href="#see-also"></a>See also</h2>
 
@@ -210,14 +205,23 @@ limitations.</p></td>
     <pre class="examples"><span class='r-in'></span>
 <span class='r-in'><span class='kw'>if</span> <span class='op'>(</span><span class='cn'>FALSE</span><span class='op'>)</span> <span class='op'>{</span></span>
 <span class='r-in'></span>
-<span class='r-in'><span class='va'>example_url</span> <span class='op'>&lt;-</span> <span class='st'>"18clYlQeJOc6W5QRuSlJ6_v3snqKJImFhU42bRkM_OX8"</span></span>
-<span class='r-in'><span class='va'>tags_content</span> <span class='op'>&lt;-</span> <span class='fu'><a href='read_tags.html'>read_tags</a></span><span class='op'>(</span><span class='va'>example_url</span><span class='op'>)</span></span>
-<span class='r-in'><span class='fu'>pull_tweet_data</span><span class='op'>(</span><span class='va'>tags_content</span><span class='op'>[</span><span class='fl'>1</span><span class='op'>:</span><span class='fl'>10</span>, <span class='op'>]</span><span class='op'>)</span></span>
+<span class='r-in'><span class='co'>## Import data from a TAGS tracker:</span></span>
+<span class='r-in'><span class='va'>example_tags_tracker</span> <span class='op'>&lt;-</span> <span class='st'>"18clYlQeJOc6W5QRuSlJ6_v3snqKJImFhU42bRkM_OX8"</span></span>
+<span class='r-in'><span class='va'>tags_content</span> <span class='op'>&lt;-</span> <span class='fu'><a href='read_tags.html'>read_tags</a></span><span class='op'>(</span><span class='va'>example_tags_tracker</span><span class='op'>)</span></span>
+<span class='r-in'></span>
+<span class='r-in'><span class='co'>## Use any of three input parameters (TAGS dataframe, \code{status_url}</span></span>
+<span class='r-in'><span class='co'>##   column, or \code{id_str} column)</span></span>
+<span class='r-in'><span class='fu'>pull_tweet_data</span><span class='op'>(</span><span class='va'>tags_content</span><span class='op'>)</span></span>
+<span class='r-in'><span class='fu'>pull_tweet_data</span><span class='op'>(</span>url_vector <span class='op'>=</span> <span class='va'>tags_content</span><span class='op'>$</span><span class='va'>status_url</span><span class='op'>)</span></span>
+<span class='r-in'><span class='fu'>pull_tweet_data</span><span class='op'>(</span>id_vector <span class='op'>=</span> <span class='va'>tags_content</span><span class='op'>$</span><span class='va'>id_str</span><span class='op'>)</span></span>
+<span class='r-in'></span>
+<span class='r-in'><span class='co'>## Specifying the parameter \code{n} clarifies how many statuses to look up,</span></span>
+<span class='r-in'><span class='co'>##   but the returned values may be less than \code{n} because some statuses</span></span>
+<span class='r-in'><span class='co'>##   may have been deleted or made protected since the TAGS tracker</span></span>
+<span class='r-in'><span class='co'>##   originally recorded them.</span></span>
 <span class='r-in'><span class='fu'>pull_tweet_data</span><span class='op'>(</span><span class='va'>tags_content</span>, n <span class='op'>=</span> <span class='fl'>10</span><span class='op'>)</span></span>
-<span class='r-in'><span class='fu'>pull_tweet_data</span><span class='op'>(</span>url_vector <span class='op'>=</span> <span class='va'>tags_content</span><span class='op'>$</span><span class='va'>status_url</span><span class='op'>[</span><span class='fl'>1</span><span class='op'>:</span><span class='fl'>10</span><span class='op'>]</span><span class='op'>)</span></span>
-<span class='r-in'><span class='fu'>pull_tweet_data</span><span class='op'>(</span>url_vector <span class='op'>=</span> <span class='va'>tags_content</span><span class='op'>$</span><span class='va'>status_url</span>, n <span class='op'>=</span> <span class='fl'>10</span><span class='op'>)</span></span>
-<span class='r-in'><span class='fu'>pull_tweet_data</span><span class='op'>(</span>id_vector <span class='op'>=</span> <span class='va'>tags_content</span><span class='op'>$</span><span class='va'>id_str</span><span class='op'>[</span><span class='fl'>1</span><span class='op'>:</span><span class='fl'>10</span><span class='op'>]</span><span class='op'>)</span></span>
-<span class='r-in'><span class='fu'>pull_tweet_data</span><span class='op'>(</span>id_vector <span class='op'>=</span> <span class='va'>tags_content</span><span class='op'>$</span><span class='va'>id_str</span>, n <span class='op'>=</span> <span class='fl'>10</span><span class='op'>)</span></span>
+<span class='r-in'></span>
+<span class='r-in'><span class='co'>## Note that the following two examples will return the same thing:</span></span>
 <span class='r-in'><span class='fu'>pull_tweet_data</span><span class='op'>(</span>url_vector <span class='op'>=</span></span>
 <span class='r-in'>  <span class='st'>"https://twitter.com/tweet__example/status/1176592704647716864"</span><span class='op'>)</span></span>
 <span class='r-in'><span class='fu'>pull_tweet_data</span><span class='op'>(</span>id_vector <span class='op'>=</span> <span class='st'>"1176592704647716864"</span><span class='op'>)</span></span>

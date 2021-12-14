@@ -17,6 +17,16 @@ tidytags development version
 
   * 
 
+
+tidytags 0.2.1 (2021-12-14)
+=========================
+
+### NEW FEATURES
+
+  * Added a new function filter_by_tweet_type() to filter a Twitter dataset to only include statuses of a particular type (e.g., replies, retweets, quote tweets, mentions)
+  * Updated the function create_edgelist() to take a "type" argument (e.g., "reply", "retweet", "quote", "mention", "all"). This replaces the need for specialized functions like create_mentions_edgelist().
+
+
 tidytags 0.2.0 (2021-11-19)
 =========================
 

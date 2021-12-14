@@ -6,7 +6,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>Calculate additional information using tweet metadata — process_tweets • tidytags</title>
+<title>Calculate additional information using status metadata — process_tweets • tidytags</title>
 
 
 <!-- jquery -->
@@ -39,8 +39,8 @@
 
 
 
-<meta property="og:title" content="Calculate additional information using tweet metadata — process_tweets" />
-<meta property="og:description" content="Calculate additional information using tweet metadata" />
+<meta property="og:title" content="Calculate additional information using status metadata — process_tweets" />
+<meta property="og:description" content="Calculate additional information using status metadata" />
 
 
 
@@ -72,7 +72,7 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">tidytags</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.2.0</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.2.1</span>
       </span>
     </div>
 
@@ -131,13 +131,13 @@
 <div class="row">
   <div class="col-md-9 contents">
     <div class="page-header">
-    <h1>Calculate additional information using tweet metadata</h1>
+    <h1>Calculate additional information using status metadata</h1>
     <small class="dont-index">Source: <a href='https://github.com/bretsw/tidytags/blob/master/R/setup-functions.R'><code>R/setup-functions.R</code></a></small>
     <div class="hidden name"><code>process_tweets.Rd</code></div>
     </div>
 
     <div class="ref-description">
-    <p>Calculate additional information using tweet metadata</p>
+    <p>Calculate additional information using status metadata</p>
     </div>
 
     <pre class="usage"><span class='fu'>process_tweets</span><span class='op'>(</span><span class='va'>df</span><span class='op'>)</span></pre>
@@ -147,7 +147,7 @@
     <colgroup><col class="name" /><col class="desc" /></colgroup>
     <tr>
       <th>df</th>
-      <td><p>A dataframe of tweets and full metadata from the Twitter API as
+      <td><p>A dataframe of statuses and full metadata from the Twitter API as
 returned by <code><a href='pull_tweet_data.html'>pull_tweet_data()</a></code></p></td>
     </tr>
     </table>
@@ -163,7 +163,7 @@ returned by <code><a href='pull_tweet_data.html'>pull_tweet_data()</a></code></p
 <span class='r-in'><span class='kw'>if</span> <span class='op'>(</span><span class='cn'>FALSE</span><span class='op'>)</span> <span class='op'>{</span></span>
 <span class='r-in'></span>
 <span class='r-in'><span class='va'>example_url</span> <span class='op'>&lt;-</span> <span class='st'>"18clYlQeJOc6W5QRuSlJ6_v3snqKJImFhU42bRkM_OX8"</span></span>
-<span class='r-in'><span class='va'>tmp_df</span> <span class='op'>&lt;-</span> <span class='fu'><a href='pull_tweet_data.html'>pull_tweet_data</a></span><span class='op'>(</span><span class='fu'><a href='read_tags.html'>read_tags</a></span><span class='op'>(</span><span class='va'>example_url</span><span class='op'>)</span>, n <span class='op'>=</span> <span class='fl'>10</span><span class='op'>)</span></span>
+<span class='r-in'><span class='va'>tmp_df</span> <span class='op'>&lt;-</span> <span class='fu'><a href='pull_tweet_data.html'>pull_tweet_data</a></span><span class='op'>(</span><span class='fu'><a href='read_tags.html'>read_tags</a></span><span class='op'>(</span><span class='va'>example_url</span><span class='op'>)</span><span class='op'>)</span></span>
 <span class='r-in'><span class='va'>tmp_processed</span> <span class='op'>&lt;-</span> <span class='fu'>process_tweets</span><span class='op'>(</span><span class='va'>tmp_df</span><span class='op'>)</span></span>
 <span class='r-in'><span class='va'>tmp_processed</span></span>
 <span class='r-in'><span class='op'>}</span></span>

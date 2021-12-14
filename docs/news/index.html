@@ -71,7 +71,7 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">tidytags</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.2.0</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.2.1</span>
       </span>
     </div>
 
@@ -134,12 +134,24 @@
       <small>Source: <a href='https://github.com/bretsw/tidytags/blob/master/NEWS.md'><code>NEWS.md</code></a></small>
     </div>
 
-    <div id="tidytags-020-2021-11-19" class="section level1">
-<h1 class="page-header" data-toc-text="0.2.0">
-<a href="#tidytags-020-2021-11-19" class="anchor"></a>tidytags 0.2.0 (2021-11-19)</h1>
+    <div id="tidytags-021-2021-12-14" class="section level1">
+<h1 class="page-header" data-toc-text="0.2.1">
+<a href="#tidytags-021-2021-12-14" class="anchor"></a>tidytags 0.2.1 (2021-12-14)</h1>
 <div id="new-features-1" class="section level3">
 <h3 class="hasAnchor">
 <a href="#new-features-1" class="anchor"></a>NEW FEATURES</h3>
+<ul>
+<li>Added a new function filter_by_tweet_type() to filter a Twitter dataset to only include statuses of a particular type (e.g., replies, retweets, quote tweets, mentions)</li>
+<li>Updated the function create_edgelist() to take a “type” argument (e.g., “reply”, “retweet”, “quote”, “mention”, “all”). This replaces the need for specialized functions like create_mentions_edgelist().</li>
+</ul>
+</div>
+</div>
+    <div id="tidytags-020-2021-11-19" class="section level1">
+<h1 class="page-header" data-toc-text="0.2.0">
+<a href="#tidytags-020-2021-11-19" class="anchor"></a>tidytags 0.2.0 (2021-11-19)</h1>
+<div id="new-features-2" class="section level3">
+<h3 class="hasAnchor">
+<a href="#new-features-2" class="anchor"></a>NEW FEATURES</h3>
 <ul>
 <li>Added a new function lookup_many_users() to automatically iterate through the Twitter API limit of pulling metadata for only 90,000 users at one time</li>
 </ul>
@@ -175,9 +187,9 @@
     <div id="tidytags-011-2020-11-24" class="section level1">
 <h1 class="page-header" data-toc-text="0.1.1">
 <a href="#tidytags-011-2020-11-24" class="anchor"></a>tidytags 0.1.1 (2020-11-24)</h1>
-<div id="new-features-2" class="section level3">
+<div id="new-features-3" class="section level3">
 <h3 class="hasAnchor">
-<a href="#new-features-2" class="anchor"></a>NEW FEATURES</h3>
+<a href="#new-features-3" class="anchor"></a>NEW FEATURES</h3>
 <ul>
 <li>Switched to OpenCage for geocoding (previously used Google Maps API)</li>
 <li>Switched to GitHub Actions (from Travis CI) for CI testing</li>

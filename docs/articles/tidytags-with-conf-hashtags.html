@@ -31,7 +31,7 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">tidytags</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.2.0</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.2.1</span>
       </span>
     </div>
 
@@ -367,11 +367,11 @@
 <span class="va">example_map</span> <span class="op">&lt;-</span> <span class="fu">mapview</span><span class="fu">::</span><span class="fu"><a href="https://rdrr.io/pkg/mapview/man/mapView.html">mapview</a></span><span class="op">(</span><span class="va">locations</span><span class="op">)</span></code></pre></div>
 <p>At this point, you can view an interactive map in your R environment simply by calling <code>example_map</code>.</p>
 </div>
-<div id="create_replies_edgelist-create_retweets_edgelist-create_quotes_edgelist-create_mentions_edgelist" class="section level2">
+<div id="filter_by_tweet_type" class="section level2">
 <h2 class="hasAnchor">
-<a href="#create_replies_edgelist-create_retweets_edgelist-create_quotes_edgelist-create_mentions_edgelist" class="anchor"></a>create_replies_edgelist(), create_retweets_edgelist(), create_quotes_edgelist(), create_mentions_edgelist()</h2>
-<p>These functions quickly subset the data, returning just the tweets of the type indicated by the function name (e.g., <code>create_replies_edgelist()</code> returns only reply tweets). The <code>create_x_edgelist()</code> family of {tidytags} functions can be used to look at home many tweets of each type are present in the dataset.</p>
-<p>In the dataset of 2030 tweets, there are 62 replies, 1065 retweets, 92 quote tweets, and 2747.</p>
+<a href="#filter_by_tweet_type" class="anchor"></a>filter_by_tweet_type()</h2>
+<p>This function quickly subsets the data, returning just the tweets of the type indicated (e.g., <code>filter_by_tweet_type(df, "reply")</code> returns only reply tweets). The <code><a href="../reference/filter_by_tweet_type.html">filter_by_tweet_type()</a></code> function can also be used to look at how many tweets of each type are present in the dataset.</p>
+<p>In the dataset of 2030 tweets, there are 62 replies, 1065 retweets, 92 quote tweets, and 2747 tweets containing mentions.</p>
 </div>
 <div id="get_upstream_tweets" class="section level2">
 <h2 class="hasAnchor">
@@ -386,7 +386,7 @@
 <div id="create_edgelist" class="section level2">
 <h2 class="hasAnchor">
 <a href="#create_edgelist" class="anchor"></a>create_edgelist()</h2>
-<p>Another useful approach to social media research is <em>social network analysis</em>. Getting started with social network analysis is as simple as producing an <strong>edgelist</strong>, a two-column dataframe listing <em>senders</em> and <em>receivers</em>. An edgelist gives a complete accounting of whom is interacting with whom. In Twitter, this is complicated somewhat by the number of ways a user is able to interact with someone else, namely, through replying, retweeting, quote tweeting, mentioning, and liking tweets. The {tidytags} function <code><a href="../reference/create_edgelist.html">create_edgelist()</a></code> uses <code>create_replies_edgelist()</code>, <code>create_retweets_edgelist()</code>, <code>create_quotes_edgelist()</code>, and <code>create_mentions_edgelist()</code> to create an edgelist that takes into account these four different types of interaction. <code><a href="../reference/create_edgelist.html">create_edgelist()</a></code> returns a dataframe with three columns: two for the sender and receiver Twitter handles, and a third column listing the edge type (i.e., the form of interaction).</p>
+<p>Another useful approach to social media research is <em>social network analysis</em>. Getting started with social network analysis is as simple as producing an <em>edgelist</em>, a two-column dataframe listing <em>senders</em> and <em>receivers</em>. An edgelist gives a complete accounting of whom is interacting with whom. In Twitter, this is complicated somewhat by the number of ways a user is able to interact with someone else, namely, through replying, retweeting, quote tweeting, mentioning, and liking tweets. The {tidytags} function <code><a href="../reference/create_edgelist.html">create_edgelist()</a></code> uses <code><a href="../reference/filter_by_tweet_type.html">filter_by_tweet_type()</a></code> to create an edgelist that takes into account four of these types of interaction. <code><a href="../reference/create_edgelist.html">create_edgelist()</a></code> returns a dataframe with three columns: two for the sender and receiver Twitter handles, and a third column listing the edge type (i.e., the form of interaction). The default is for <code><a href="../reference/create_edgelist.html">create_edgelist()</a></code> to create an edgelist of all possibile interactions, but focusing on one type of interaction is easily accomplished as well (e.g., looking at interactions through replies using <code>create_edgelist(df, "reply")</code>).</p>
 <p>Run <code><a href="../reference/create_edgelist.html">create_edgelist()</a></code> after completing <code><a href="../reference/get_upstream_tweets.html">get_upstream_tweets()</a></code> for a complete picture of the interactions.</p>
 <div class="sourceCode" id="cb16"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="va">example_edgelist</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/create_edgelist.html">create_edgelist</a></span><span class="op">(</span><span class="va">example_with_upstream</span><span class="op">)</span>
@@ -439,7 +439,7 @@
 <span class="co">#&gt; 2 retweet      1065</span>
 <span class="co">#&gt; 3 quote-tweet    99</span>
 <span class="co">#&gt; 4 reply          71</span></code></pre></div>
-<p>Note that {tidytags} does not yet have a function <code>create_likes_edgelist()</code> because this process is much more difficult given the information provided by the Twitter API.</p>
+<p>Note that <code><a href="../reference/create_edgelist.html">create_edgelist()</a></code> does not yet accept a <code>type = "like"</code> parameter due to limitations of the information provided by the Twitter API.</p>
 </div>
 <div id="add_users_data" class="section level2">
 <h2 class="hasAnchor">

@@ -6,7 +6,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>Collect upstream tweets and add to dataset — get_upstream_tweets • tidytags</title>
+<title>Collect upstream statuses and add to dataset — get_upstream_tweets • tidytags</title>
 
 
 <!-- jquery -->
@@ -39,15 +39,15 @@
 
 
 
-<meta property="og:title" content="Collect upstream tweets and add to dataset — get_upstream_tweets" />
+<meta property="og:title" content="Collect upstream statuses and add to dataset — get_upstream_tweets" />
 <meta property="og:description" content="Because the Twitter API offers a reply_to_status_id column, it is
   possible to iteratively reconstruct reply threads in an *upstream*
-  direction, that is, retrieving tweets composed earlier than replies in the
+  direction, that is, retrieving statuses composed earlier than replies in the
   dataset. The get_upstream_tweets() function collects upstream
   replies not previously found in the dataset. Keep in mind that there is no
   way to predict how far upstream you can trace back a reply thread, so
   running get_upstream_tweets() could take a while and potentially hit
-  the Twitter API rate limit of 90,000 tweets in a 15-minute period." />
+  the Twitter API rate limit of 90,000 statuses in a 15-minute period." />
 
 
 
@@ -79,7 +79,7 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">tidytags</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.2.0</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.2.1</span>
       </span>
     </div>
 
@@ -138,7 +138,7 @@
 <div class="row">
   <div class="col-md-9 contents">
     <div class="page-header">
-    <h1>Collect upstream tweets and add to dataset</h1>
+    <h1>Collect upstream statuses and add to dataset</h1>
     <small class="dont-index">Source: <a href='https://github.com/bretsw/tidytags/blob/master/R/get-upstream-tweets.R'><code>R/get-upstream-tweets.R</code></a></small>
     <div class="hidden name"><code>get_upstream_tweets.Rd</code></div>
     </div>
@@ -146,12 +146,12 @@
     <div class="ref-description">
     <p>Because the Twitter API offers a <code>reply_to_status_id</code> column, it is
   possible to iteratively reconstruct reply threads in an *upstream*
-  direction, that is, retrieving tweets composed earlier than replies in the
+  direction, that is, retrieving statuses composed earlier than replies in the
   dataset. The <code>get_upstream_tweets()</code> function collects upstream
   replies not previously found in the dataset. Keep in mind that there is no
   way to predict how far upstream you can trace back a reply thread, so
   running <code>get_upstream_tweets()</code> could take a while and potentially hit
-  the Twitter API rate limit of 90,000 tweets in a 15-minute period.</p>
+  the Twitter API rate limit of 90,000 statuses in a 15-minute period.</p>
     </div>
 
     <pre class="usage"><span class='fu'>get_upstream_tweets</span><span class='op'>(</span><span class='va'>df</span><span class='op'>)</span></pre>
@@ -161,7 +161,7 @@
     <colgroup><col class="name" /><col class="desc" /></colgroup>
     <tr>
       <th>df</th>
-      <td><p>A dataframe of tweets and full metadata from the Twitter API as
+      <td><p>A dataframe of statuses and full metadata from the Twitter API as
 returned by <code><a href='pull_tweet_data.html'>pull_tweet_data()</a></code></p></td>
     </tr>
     </table>

@@ -1,27 +1,29 @@
-#' Create an edgelist where interaction is defined by replying
+#' Filter a Twitter dataset to only include statuses of a particular type
 #'
-#' Starting with a dataframe returned by \code{pull_tweet_data()},
-#'   \code{create_edgelist()} processes the tweets by calling
-#'   \code{process_tweets()} and filters the dataset to only keep the specific
-#'   tweet types (e.g., replies, retweets, quote tweets, and mentions)
-#'   requested. \code{filter_by_tweet_type()} is a useful function in itself,
-#'   but it is also used in \code{create_edgelist()}.
+#' Starting with a dataframe of Twitter data imported to R with
+#'   \code{read_tags()} and additional metadata retrieved by
+#'   \code{pull_tweet_data()}, \code{filter_by_tweet_type()} processes the
+#'   statuses by calling \code{process_tweets()} and then removes any statuses
+#'   that are not of the requested type (e.g., replies, retweets, quote tweets,
+#'   and mentions). \code{filter_by_tweet_type()} is a useful function in
+#'   itself, but it is also used in \code{create_edgelist()}.
 #' @param df A dataframe returned by \code{pull_tweet_data()}
-#' @param type The specific kind of tweets that will be kept in the dataset
-#'   after filtering the rest. Choices for \code{type}include"reply", "retweet",
-#'   "quote", or "mention." Defaults to "all."
-#' @return A dataframe of processed tweets and fewer rows. Only the tweets of
-#'   the specified type will remain.
+#' @param type The specific kind of statuses that will be kept in the dataset
+#'   after filtering the rest. Choices for \code{type}include "reply",
+#'   "retweet", "quote", or "mention."
+#' @return A dataframe of processed statuses and fewer rows that the input
+#'   dataframe. Only the statuses of the specified type will remain.
 #' @examples
 #'
 #' \dontrun{
 #'
 #' example_url <- "18clYlQeJOc6W5QRuSlJ6_v3snqKJImFhU42bRkM_OX8"
 #' tmp_df <- pull_tweet_data(read_tags(example_url))
-#' tmp_re <- filter_by_tweet_type(tmp_df, "reply")
-#' tmp_rt <- filter_by_tweet_type(tmp_df, "retweet")
-#' tmp_qu <- filter_by_tweet_type(tmp_df, "quote")
-#' tmp_me <- filter_by_tweet_type(tmp_df, "mention")
+#'
+#' only_replies <- filter_by_tweet_type(tmp_df, "reply")
+#' only_retweets <- filter_by_tweet_type(tmp_df, "retweet")
+#' only_quote_tweets <- filter_by_tweet_type(tmp_df, "quote")
+#' only_mentions <- filter_by_tweet_type(tmp_df, "mention")
 #' }
 #' @importFrom rlang .data
 #' @export
@@ -37,7 +39,7 @@ filter_by_tweet_type <-
            ifelse(type == "mention",
                   filtered_df <-
                     dplyr::filter(processed_df,
-                                  mentions_count > 0),
+                                  .data$mentions_count > 0),
                   filtered_df <- processed_df
            )
     )
@@ -49,17 +51,18 @@ filter_by_tweet_type <-
 #' Create an edgelist where senders and receivers are defined by different types
 #'   of Twitter interactions
 #'
-#' Starting with a dataframe returned by \code{pull_tweet_data()},
-#'   \code{create_edgelist()} processes the statuses by calling
-#'   \code{process_tweets()}, filters the dataset to only keep the specific
-#'   status types (e.g., replies, retweets, quote tweets, and mentions)
-#'   requested by calling \code{filter_by_tweet_type()}, pulls out senders and
-#'   receivers of the specified type of statuses, and then adds a new column.
-#'   \code{edge_type}.
+#' Starting with a dataframe of Twitter data imported to R with
+#'   \code{read_tags()} and additional metadata retrieved by
+#'   \code{pull_tweet_data()}, \code{create_edgelist()} processes the
+#'   statuses by calling \code{process_tweets()} and then removes any statuses
+#'   that are not of the requested type (e.g., replies, retweets, quote tweets,
+#'   and mentions) by calling \code{filter_by_tweet_type()}. Finally,
+#'   \code{create_edgelist()} pulls out senders and receivers of the specified
+#'   type of statuses, and then adds a new column called \code{edge_type}.
 #' @param df A dataframe returned by \code{pull_tweet_data()}
 #' @param type The specific kind of statuses used to define the interactions
-#'   around which the edgelist will be built. Choices include"reply", "retweet",
-#'   "quote", or "mention." Defaults to "all."
+#'   around which the edgelist will be built. Choices include "reply",
+#'   "retweet", "quote", or "mention." Defaults to "all."
 #' @return A dataframe edgelist defined by interactions through the type of
 #'   statuses specified. The dataframe has three columns: \code{sender},
 #'   \code{receiver}, and \code{edge_type}.
