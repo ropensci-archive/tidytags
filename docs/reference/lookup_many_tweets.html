@@ -6,7 +6,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>Retrieve the fullest extent of tweet metadata for more than 90,000 tweets — lookup_many_tweets • tidytags</title>
+<title>Retrieve the fullest extent of metadata for more than 90,000 statuses — lookup_many_tweets • tidytags</title>
 
 
 <!-- jquery -->
@@ -39,10 +39,10 @@
 
 
 
-<meta property="og:title" content="Retrieve the fullest extent of tweet metadata for more than 90,000 tweets — lookup_many_tweets" />
+<meta property="og:title" content="Retrieve the fullest extent of metadata for more than 90,000 statuses — lookup_many_tweets" />
 <meta property="og:description" content="This function calls pull_tweet_data(), but has a built-in delay
   of 15 minutes to allow the Twitter API to reset after looking up 90,000
-  tweets." />
+  statuses" />
 
 
 
@@ -63,7 +63,7 @@
   <body data-spy="scroll" data-target="#toc">
     <div class="container template-reference-topic">
       <header>
-      <div class="navbar navbar-default navbar-fixed-top" role="navigation">
+      <div class="navbar navbar-inverse navbar-fixed-top" role="navigation">
   <div class="container">
     <div class="navbar-header">
       <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false">
@@ -74,24 +74,24 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">tidytags</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.2.0</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.2.1</span>
       </span>
     </div>
 
     <div id="navbar" class="navbar-collapse collapse">
       <ul class="nav navbar-nav">
         <li>
-  <a href="../index.html">
-    <span class="fas fa-home fa-lg"></span>
+  <a href="../reference/index.html">
+    <span class="fa fa-file-code-o"></span>
      
+    Functions
   </a>
-</li>
-<li>
-  <a href="../reference/index.html">Reference</a>
 </li>
 <li class="dropdown">
   <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
-    Articles
+    <span class="fa fa-map-o"></span>
+     
+    Guides
      
     <span class="caret"></span>
   </a>
@@ -105,7 +105,11 @@
   </ul>
 </li>
 <li>
-  <a href="../news/index.html">Changelog</a>
+  <a href="../news/index.html">
+    <span class="fa fa-newspaper-o"></span>
+     
+    News
+  </a>
 </li>
       </ul>
       <ul class="nav navbar-nav navbar-right">
@@ -113,6 +117,7 @@
   <a href="https://github.com/bretsw/tidytags">
     <span class="fa fa-github fa-lg"></span>
      
+    GitHub
   </a>
 </li>
       </ul>
@@ -128,7 +133,7 @@
 <div class="row">
   <div class="col-md-9 contents">
     <div class="page-header">
-    <h1>Retrieve the fullest extent of tweet metadata for more than 90,000 tweets</h1>
+    <h1>Retrieve the fullest extent of metadata for more than 90,000 statuses</h1>
     <small class="dont-index">Source: <a href='https://github.com/bretsw/tidytags/blob/master/R/setup-functions.R'><code>R/setup-functions.R</code></a></small>
     <div class="hidden name"><code>lookup_many_tweets.Rd</code></div>
     </div>
@@ -136,7 +141,7 @@
     <div class="ref-description">
     <p>This function calls <code><a href='pull_tweet_data.html'>pull_tweet_data()</a></code>, but has a built-in delay
   of 15 minutes to allow the Twitter API to reset after looking up 90,000
-  tweets.</p>
+  statuses</p>
     </div>
 
     <pre class="usage"><span class='fu'>lookup_many_tweets</span><span class='op'>(</span><span class='va'>x</span>, alarm <span class='op'>=</span> <span class='cn'>FALSE</span><span class='op'>)</span></pre>
@@ -146,18 +151,18 @@
     <colgroup><col class="name" /><col class="desc" /></colgroup>
     <tr>
       <th>x</th>
-      <td><p>A list or vector of tweet ID numbers</p></td>
+      <td><p>A list or vector of status ID numbers</p></td>
     </tr>
     <tr>
       <th>alarm</th>
-      <td><p>An audible notification that a batch of 90,000 tweets has been
+      <td><p>An audible notification that a batch of 90,000 statuses has been
 completed</p></td>
     </tr>
     </table>
 
     <h2 class="hasAnchor" id="value"><a class="anchor" href="#value"></a>Value</h2>
 
-    <p>A dataframe of tweets and full metadata from the Twitter API</p>
+    <p>A dataframe of statuses and full metadata from the Twitter API</p>
     <h2 class="hasAnchor" id="details"><a class="anchor" href="#details"></a>Details</h2>
 
     <p>This function requires authentication; please see

@@ -2,12 +2,12 @@
 % Please edit documentation in R/get-upstream-tweets.R
 \name{get_upstream_tweets}
 \alias{get_upstream_tweets}
-\title{Collect upstream tweets and add to dataset}
+\title{Collect upstream statuses and add to dataset}
 \usage{
 get_upstream_tweets(df)
 }
 \arguments{
-\item{df}{A dataframe of tweets and full metadata from the Twitter API as
+\item{df}{A dataframe of statuses and full metadata from the Twitter API as
 returned by \code{pull_tweet_data()}}
 }
 \value{
@@ -17,12 +17,12 @@ A new, expanded dataframe which includes any retrievable upstream
 \description{
 Because the Twitter API offers a \code{reply_to_status_id} column, it is
   possible to iteratively reconstruct reply threads in an *upstream*
-  direction, that is, retrieving tweets composed earlier than replies in the
+  direction, that is, retrieving statuses composed earlier than replies in the
   dataset. The \code{get_upstream_tweets()} function collects upstream
   replies not previously found in the dataset. Keep in mind that there is no
   way to predict how far upstream you can trace back a reply thread, so
   running \code{get_upstream_tweets()} could take a while and potentially hit
-  the Twitter API rate limit of 90,000 tweets in a 15-minute period.
+  the Twitter API rate limit of 90,000 statuses in a 15-minute period.
 }
 \details{
 This function requires authentication; please see

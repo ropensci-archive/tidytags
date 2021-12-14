@@ -1,7 +1,7 @@
 Package: tidytags
 Title: Importing and Analyzing Twitter Data Collected with Twitter Archiving Google Sheets
-Version: 0.2.0
-License: GPL-3
+Version: 0.2.1
+License: MIT + file LICENSE
 Authors@R: c(
     person("K. Bret", "Staudt Willet", , 
       email = "bret@bretsw.com", 

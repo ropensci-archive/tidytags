@@ -2,36 +2,46 @@
 % Please edit documentation in R/analyze-network.R
 \name{create_edgelist}
 \alias{create_edgelist}
-\title{Create an edgelist with several types of interaction}
+\title{Create an edgelist where senders and receivers are defined by different types
+  of Twitter interactions}
 \usage{
-create_edgelist(df)
+create_edgelist(df, type = "all")
 }
 \arguments{
 \item{df}{A dataframe returned by \code{pull_tweet_data()}}
+
+\item{type}{The specific kind of statuses used to define the interactions
+around which the edgelist will be built. Choices include "reply",
+"retweet", "quote", or "mention." Defaults to "all."}
 }
 \value{
-A dataframe edgelist with column names 'sender', 'receiver', and
-  \code{edge_type}, which in this case the edge type may be "reply",
-  "retweet", "quote", or "mention"
+A dataframe edgelist defined by interactions through the type of
+  statuses specified. The dataframe has three columns: \code{sender},
+  \code{receiver}, and \code{edge_type}.
 }
 \description{
-Starting with a dataframe returned by \code{pull_tweet_data()},
-  \code{create_edgelist()} pulls out senders and receivers of reply tweets,
-  retweets, quote tweets, and mentions, and then adds a new column
-  \code{edge_type}.
+Starting with a dataframe of Twitter data imported to R with
+  \code{read_tags()} and additional metadata retrieved by
+  \code{pull_tweet_data()}, \code{create_edgelist()} processes the
+  statuses by calling \code{process_tweets()} and then removes any statuses
+  that are not of the requested type (e.g., replies, retweets, quote tweets,
+  and mentions) by calling \code{filter_by_tweet_type()}. Finally,
+  \code{create_edgelist()} pulls out senders and receivers of the specified
+  type of statuses, and then adds a new column called \code{edge_type}.
 }
 \examples{
 
 \dontrun{
 
 example_url <- "18clYlQeJOc6W5QRuSlJ6_v3snqKJImFhU42bRkM_OX8"
-tmp_df <- pull_tweet_data(read_tags(example_url), n = 10)
-edgelist <- create_edgelist(tmp_df)
-edgelist
+tmp_df <- pull_tweet_data(read_tags(example_url))
+
+full_edgelist <- create_edgelist(tmp_df)
+full_edgelist
+
+reply_edgelist <- create_edgelist(tmp_df, type = "reply")
+retweet_edgelist <- create_edgelist(tmp_df, type = "retweet")
+quote_edgelist <- create_edgelist(tmp_df, type = "quote")
+mention_edgelist <- create_edgelist(tmp_df, type = "mention")
 }
-}
-\seealso{
-Compare to other \code{tidytags} functions such as
-  \code{create_replies_edgelist()}, \code{create_retweets_edgelist()},
-  \code{create_quotes_edgelist()}, and \code{create_mentions_edgelist()}.
 }

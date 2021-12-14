@@ -6,7 +6,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>Get tweet ID numbers as character strings — get_char_tweet_ids • tidytags</title>
+<title>Get Twitter status ID numbers as character strings — get_char_tweet_ids • tidytags</title>
 
 
 <!-- jquery -->
@@ -39,13 +39,13 @@
 
 
 
-<meta property="og:title" content="Get tweet ID numbers as character strings — get_char_tweet_ids" />
+<meta property="og:title" content="Get Twitter status ID numbers as character strings — get_char_tweet_ids" />
 <meta property="og:description" content="This function is useful because Google Sheets (and hence TAGS)
   typically round very large numbers into an exponential form. Thus,
-  because tweet ID numbers are very large, they often get corrupted in this
-  rounding process. The most reliable way to get full tweet ID numbers is by
+  because status ID numbers are very large, they often get corrupted in this
+  rounding process. The most reliable way to get full status ID numbers is by
   using this function, get_char_tweet_ids(), to pull the ID numbers
-  from the URL linking to specific tweets." />
+  from the URL linking to specific statuses." />
 
 
 
@@ -66,7 +66,7 @@
   <body data-spy="scroll" data-target="#toc">
     <div class="container template-reference-topic">
       <header>
-      <div class="navbar navbar-default navbar-fixed-top" role="navigation">
+      <div class="navbar navbar-inverse navbar-fixed-top" role="navigation">
   <div class="container">
     <div class="navbar-header">
       <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false">
@@ -77,24 +77,24 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">tidytags</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.2.0</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.2.1</span>
       </span>
     </div>
 
     <div id="navbar" class="navbar-collapse collapse">
       <ul class="nav navbar-nav">
         <li>
-  <a href="../index.html">
-    <span class="fas fa-home fa-lg"></span>
+  <a href="../reference/index.html">
+    <span class="fa fa-file-code-o"></span>
      
+    Functions
   </a>
-</li>
-<li>
-  <a href="../reference/index.html">Reference</a>
 </li>
 <li class="dropdown">
   <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
-    Articles
+    <span class="fa fa-map-o"></span>
+     
+    Guides
      
     <span class="caret"></span>
   </a>
@@ -108,7 +108,11 @@
   </ul>
 </li>
 <li>
-  <a href="../news/index.html">Changelog</a>
+  <a href="../news/index.html">
+    <span class="fa fa-newspaper-o"></span>
+     
+    News
+  </a>
 </li>
       </ul>
       <ul class="nav navbar-nav navbar-right">
@@ -116,6 +120,7 @@
   <a href="https://github.com/bretsw/tidytags">
     <span class="fa fa-github fa-lg"></span>
      
+    GitHub
   </a>
 </li>
       </ul>
@@ -131,7 +136,7 @@
 <div class="row">
   <div class="col-md-9 contents">
     <div class="page-header">
-    <h1>Get tweet ID numbers as character strings</h1>
+    <h1>Get Twitter status ID numbers as character strings</h1>
     <small class="dont-index">Source: <a href='https://github.com/bretsw/tidytags/blob/master/R/setup-functions.R'><code>R/setup-functions.R</code></a></small>
     <div class="hidden name"><code>get_char_tweet_ids.Rd</code></div>
     </div>
@@ -139,10 +144,10 @@
     <div class="ref-description">
     <p>This function is useful because Google Sheets (and hence TAGS)
   typically round very large numbers into an exponential form. Thus,
-  because tweet ID numbers are very large, they often get corrupted in this
-  rounding process. The most reliable way to get full tweet ID numbers is by
+  because status ID numbers are very large, they often get corrupted in this
+  rounding process. The most reliable way to get full status ID numbers is by
   using this function, <code>get_char_tweet_ids()</code>, to pull the ID numbers
-  from the URL linking to specific tweets.</p>
+  from the URL linking to specific statuses.</p>
     </div>
 
     <pre class="usage"><span class='fu'>get_char_tweet_ids</span><span class='op'>(</span><span class='va'>x</span><span class='op'>)</span></pre>
@@ -153,8 +158,8 @@
     <tr>
       <th>x</th>
       <td><p>A dataframe containing the column name 'status_url'
-(i.e., the hyperlink to specific tweets), such as that returned by
-<code><a href='read_tags.html'>read_tags()</a></code>, or a vector of tweet URLs, such as as those contained
+(i.e., the hyperlink to specific statuses), such as that returned by
+<code><a href='read_tags.html'>read_tags()</a></code>, or a vector of status URLs, such as as those contained
 in the 'status_url' column of a dataframe returned by
 <code><a href='read_tags.html'>tidytags::read_tags()</a></code></p></td>
     </tr>
@@ -162,7 +167,7 @@ in the 'status_url' column of a dataframe returned by
 
     <h2 class="hasAnchor" id="value"><a class="anchor" href="#value"></a>Value</h2>
 
-    <p>A vector of tweet IDs as character strings</p>
+    <p>A vector of Twitter status IDs as character strings</p>
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
     <pre class="examples"><span class='r-in'></span>

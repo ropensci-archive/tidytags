@@ -1,4 +1,4 @@
-#' Retrieve a TAGS archive of tweets and bring into R
+#' Retrieve a TAGS archive of Twitter statuses and bring into R
 #'
 #' Keep in mind that \code{read_tags()} uses the **googlesheets4** package,
 #'   and one requirement is that your TAGS tracker has been "published to the
@@ -13,7 +13,7 @@
 #'    following "https://docs.google.com/spreadsheets/d/" in the TAGS tracker's
 #'    URL.)
 #' @param google_key A Google API key for accessing Google Sheets.
-#' @return A tibble of the TAGS archive of tweets
+#' @return A tibble of the TAGS archive of Twitter statuses
 #' @details This function requires authentication; please see
 #'   \code{vignette("setup", package = "tidytags")}
 #' @seealso Read more about \code{library(googlesheets4)}
@@ -37,20 +37,20 @@ read_tags <-
     tweet_sheet
   }
 
-#' Get tweet ID numbers as character strings
+#' Get Twitter status ID numbers as character strings
 #'
 #' This function is useful because Google Sheets (and hence TAGS)
 #'   typically round very large numbers into an exponential form. Thus,
-#'   because tweet ID numbers are very large, they often get corrupted in this
-#'   rounding process. The most reliable way to get full tweet ID numbers is by
+#'   because status ID numbers are very large, they often get corrupted in this
+#'   rounding process. The most reliable way to get full status ID numbers is by
 #'   using this function, \code{get_char_tweet_ids()}, to pull the ID numbers
-#'   from the URL linking to specific tweets.
+#'   from the URL linking to specific statuses.
 #' @param x A dataframe containing the column name 'status_url'
-#'   (i.e., the hyperlink to specific tweets), such as that returned by
-#'   \code{read_tags()}, or a vector of tweet URLs, such as as those contained
+#'   (i.e., the hyperlink to specific statuses), such as that returned by
+#'   \code{read_tags()}, or a vector of status URLs, such as as those contained
 #'   in the 'status_url' column of a dataframe returned by
 #'   \code{tidytags::read_tags()}
-#' @return A vector of tweet IDs as character strings
+#' @return A vector of Twitter status IDs as character strings
 #'
 #' @examples
 #'
@@ -75,34 +75,31 @@ get_char_tweet_ids <-
     new_ids
   }
 
-#' Retrieve the fullest extent of tweet metadata available from the Twitter API
+#' Retrieve the fullest extent of status metadata available from the Twitter API
 #'
 #' With a TAGS archive imported into R, \code{pull_tweet_data()} uses the
 #'   **rtweet** package to query the Twitter API. Using rtweet requires Twitter
 #'   API keys associated with an approved developer account. Fortunately, the
 #'   rtweet vignette,
 #'   \href{https://docs.ropensci.org/rtweet/articles/auth.html}{Authentication},
-#'   provides a thorough guide to obtaining Twitter API keys. We recommend
-#'   the second suggested method listed
-#'   in the rtweet vignette, "2. Access token/secret method." Following these
+#'   provides a thorough guide to obtaining Twitter API keys. Following these
 #'   directions, you will run the \code{rtweet::create_token()} function, which
 #'   saves your Twitter API keys to the \code{.Renviron} file. You can also edit
 #'   this file directly using the \code{usethis::edit_r_environ(scope='user')}
 #'   function.
 #' @param df A dataframe of containing the column name 'status_url'
-#'   (i.e., the hyperlink to specific tweets), such as that returned by
+#'   (i.e., the hyperlink to specific statuses), such as that returned by
 #'   \code{read_tags()}
-#' @param url_vector A vector of tweet URLs, such as as those contained in
+#' @param url_vector A vector of status URLs, such as as those contained in
 #'   the 'status_url' column of a dataframe returned by
 #'   \code{tidytags::read_tags()}
-#' @param id_vector A vector of tweet ID numbers, such as as those contained in
-#'   the 'id_str' column of a dataframe returned by \code{tidytags::read_tags()}
-#' @param n The number of tweets to look up, by default the total number of
-#'   tweet ID numbers available, but capped at 90,000 due to Twitter API
+#' @param id_vector A vector of statuses (i.e., ID numbers, such as
+#'   those contained in the 'id_str' column of a dataframe returned by
+#'   \code{tidytags::read_tags()}
+#' @param n The number of statuses to look up, by default the total number
+#'   of tweet ID numbers available, but capped at 90,000 due to Twitter API
 #'   limitations.
-#' @details This function requires authentication; please see
-#'   \code{vignette("setup", package = "tidytags")}
-#' @return A dataframe of tweets and full metadata from the Twitter API
+#' @return A dataframe of statuses and full metadata from the Twitter API
 #' @details This function requires authentication; please see
 #'   \code{vignette("setup", package = "tidytags")}
 #' @seealso Read more about \code{library(rtweet)}
@@ -111,14 +108,23 @@ get_char_tweet_ids <-
 #'
 #' \dontrun{
 #'
-#' example_url <- "18clYlQeJOc6W5QRuSlJ6_v3snqKJImFhU42bRkM_OX8"
-#' tags_content <- read_tags(example_url)
-#' pull_tweet_data(tags_content[1:10, ])
+#' ## Import data from a TAGS tracker:
+#' example_tags_tracker <- "18clYlQeJOc6W5QRuSlJ6_v3snqKJImFhU42bRkM_OX8"
+#' tags_content <- read_tags(example_tags_tracker)
+#'
+#' ## Use any of three input parameters (TAGS dataframe, \code{status_url}
+#' ##   column, or \code{id_str} column)
+#' pull_tweet_data(tags_content)
+#' pull_tweet_data(url_vector = tags_content$status_url)
+#' pull_tweet_data(id_vector = tags_content$id_str)
+#'
+#' ## Specifying the parameter \code{n} clarifies how many statuses to look up,
+#' ##   but the returned values may be less than \code{n} because some statuses
+#' ##   may have been deleted or made protected since the TAGS tracker
+#' ##   originally recorded them.
 #' pull_tweet_data(tags_content, n = 10)
-#' pull_tweet_data(url_vector = tags_content$status_url[1:10])
-#' pull_tweet_data(url_vector = tags_content$status_url, n = 10)
-#' pull_tweet_data(id_vector = tags_content$id_str[1:10])
-#' pull_tweet_data(id_vector = tags_content$id_str, n = 10)
+#'
+#' ## Note that the following two examples will return the same thing:
 #' pull_tweet_data(url_vector =
 #'   "https://twitter.com/tweet__example/status/1176592704647716864")
 #' pull_tweet_data(id_vector = "1176592704647716864")
@@ -180,15 +186,15 @@ pull_tweet_data <-
     new_df
   }
 
-#' Retrieve the fullest extent of tweet metadata for more than 90,000 tweets
+#' Retrieve the fullest extent of metadata for more than 90,000 statuses
 #'
 #' This function calls \code{pull_tweet_data()}, but has a built-in delay
 #'   of 15 minutes to allow the Twitter API to reset after looking up 90,000
-#'   tweets.
-#' @param x A list or vector of tweet ID numbers
-#' @param alarm An audible notification that a batch of 90,000 tweets has been
+#'   statuses
+#' @param x A list or vector of status ID numbers
+#' @param alarm An audible notification that a batch of 90,000 statuses has been
 #'   completed
-#' @return A dataframe of tweets and full metadata from the Twitter API
+#' @return A dataframe of statuses and full metadata from the Twitter API
 #' @details This function requires authentication; please see
 #'   \code{vignette("setup", package = "tidytags")}
 #' @seealso Read more about \code{library(rtweet)}
@@ -238,9 +244,9 @@ length_with_na <-
     ifelse(is.na(x), 0, purrr::map_int(x, length))
   }
 
-#' Calculate additional information using tweet metadata
+#' Calculate additional information using status metadata
 #'
-#' @param df A dataframe of tweets and full metadata from the Twitter API as
+#' @param df A dataframe of statuses and full metadata from the Twitter API as
 #'   returned by \code{pull_tweet_data()}
 #' @return A dataframe with several additional columns: word_count,
 #'   character_count, mentions_count, hashtags_count_api, hashtags_count_regex,
@@ -250,7 +256,7 @@ length_with_na <-
 #' \dontrun{
 #'
 #' example_url <- "18clYlQeJOc6W5QRuSlJ6_v3snqKJImFhU42bRkM_OX8"
-#' tmp_df <- pull_tweet_data(read_tags(example_url), n = 10)
+#' tmp_df <- pull_tweet_data(read_tags(example_url))
 #' tmp_processed <- process_tweets(tmp_df)
 #' tmp_processed
 #' }

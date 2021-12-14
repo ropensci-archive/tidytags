@@ -204,11 +204,11 @@ example_map <- mapview::mapview(locations)
 
 At this point, you can view an interactive map in your R environment simply by calling `example_map`.
 
-## create_replies_edgelist(), create_retweets_edgelist(), create_quotes_edgelist(), create_mentions_edgelist()
+## filter_by_tweet_type()
 
-These functions quickly subset the data, returning just the tweets of the type indicated by the function name (e.g., `create_replies_edgelist()` returns only reply tweets). The `create_x_edgelist()` family of {tidytags} functions can be used to look at home many tweets of each type are present in the dataset.
+This function quickly subsets the data, returning just the tweets of the type indicated (e.g., `filter_by_tweet_type(df, "reply")` returns only reply tweets). The `filter_by_tweet_type()` function can also be used to look at how many tweets of each type are present in the dataset.
 
-In the dataset of `r nrow(example_processed)` tweets, there are `r nrow(create_replies_edgelist(example_processed))` replies, `r nrow(create_retweets_edgelist(example_processed))` retweets, `r nrow(create_quotes_edgelist(example_processed))` quote tweets, and `r nrow(create_mentions_edgelist(example_processed))`.
+In the dataset of `r nrow(example_processed)` tweets, there are `r nrow(filter_by_tweet_type(example_processed, "reply"))` replies, `r nrow(filter_by_tweet_type(example_processed "retweet"))` retweets, `r nrow(filter_by_tweet_type(example_processed, "quote"))` quote tweets, and `r nrow(filter_by_tweet_type(example_processed, "mention"))` tweets containing mentions.
 
 ## get_upstream_tweets()
 
@@ -226,7 +226,7 @@ Unfortunately, due to limitations in what information is given by the Twitter AP
 
 ## create_edgelist()
 
-Another useful approach to social media research is *social network analysis*. Getting started with social network analysis is as simple as producing an *edgelist*, a two-column dataframe listing *senders* and *receivers*. An edgelist gives a complete accounting of whom is interacting with whom. In Twitter, this is complicated somewhat by the number of ways a user is able to interact with someone else, namely, through replying, retweeting, quote tweeting, mentioning, and liking tweets. The {tidytags} function `create_edgelist()` uses `create_replies_edgelist()`, `create_retweets_edgelist()`, `create_quotes_edgelist()`, and `create_mentions_edgelist()` to create an edgelist that takes into account these four different types of interaction. `create_edgelist()` returns a dataframe with three columns: two for the sender and receiver Twitter handles, and a third column listing the edge type (i.e., the form of interaction).
+Another useful approach to social media research is *social network analysis*. Getting started with social network analysis is as simple as producing an **edgelist**, a two-column dataframe listing *senders* and *receivers*. An edgelist gives a complete accounting of whom is interacting with whom. In Twitter, this is complicated somewhat by the number of ways a user is able to interact with someone else, namely, through replying, retweeting, quote tweeting, mentioning, and liking tweets. The {tidytags} function `create_edgelist()` uses `filter_by_tweet_type()` to create an edgelist that takes into account four of these types of interaction. `create_edgelist()` returns a dataframe with three columns: two for the sender and receiver Twitter handles, and a third column listing the edge type (i.e., the form of interaction). The default is for `create_edgelist()` to create an edgelist of all possibile interactions, but focusing on one type of interaction is easily accomplished as well (e.g., looking at interactions through replies using `create_edgelist(df, "reply")`).
 
 Run `create_edgelist()` after completing `get_upstream_tweets()` for a complete picture of the interactions.
 
@@ -262,7 +262,7 @@ Running `create_edgelist()` also provides a simple way to re-look at how many tw
 dplyr::count(example_edgelist, edge_type, sort = TRUE)
 ```
 
-Note that {tidytags} does not yet have a function `create_likes_edgelist()` because this process is much more difficult given the information provided by the Twitter API.
+Note that `create_edgelist()` does not yet accept a `type = "like"` parameter due to limitations of the information provided by the Twitter API.
 
 ## add_users_data()
 
