@@ -1,9 +1,9 @@
 #' Retrieve user information for everyone in an edgelist
 #'
 #' Updates an edgelist created with \code{create_edgelist()} by appending user
-#'   data retrieved with \code{rtweet::lookup_users()}. The resulting dataframe
-#'   keeps all the columns from \code{rtweet} but adds "_sender" or "_receiver"
-#'   to the column names.
+#'   data retrieved with \code{lookup_many_users()}. The resulting dataframe
+#'   adds many additional columns and appends "_sender" or "_receiver" to the
+#'   column names.
 #' @param edgelist An edgelist of senders and receivers, such as that returned
 #'   by the function \code{create_edgelist()}.
 #' @return A dataframe in the form of an edgelist (i.e., with senders and
@@ -26,13 +26,14 @@
 add_users_data <-
   function(edgelist) {
     all_users <- unique(c(edgelist$sender, edgelist$receiver))
-    users_data_from_rtweet <- rtweet::lookup_users(all_users)
+    users_data <- lookup_many_users(all_users)
 
     users_prepped <-
       dplyr::select(
-        users_data_from_rtweet,
+        users_data,
         .data$screen_name,
-        tidyselect::everything()
+        .data$user_id,
+        .data$name:.data$profile_image_url
       )
 
     senders_prepped <-

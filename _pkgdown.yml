@@ -32,6 +32,7 @@ reference:
       - read_tags
       - pull_tweet_data
       - lookup_many_tweets
+      - lookup_many_users
   - title: "Processing data"
     desc: Functions related to processing data for subsequent analysis.
     contents:

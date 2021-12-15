@@ -151,6 +151,26 @@ tidytags](https://bretsw.github.io/tidytags/articles/setup.html)
 vignette, Pain Point \#2, to set up API access to Google Sheets like the
 TAGS tracker.
 
+``` r
+example_tags <- "18clYlQeJOc6W5QRuSlJ6_v3snqKJImFhU42bRkM_OX8"
+tags_data <- read_tags(example_tags)
+head(tags_data)
+#> # A tibble: 6 × 18
+#>   id_str   from_user  text       created_at  time                geo_coordinates
+#>   <chr>    <chr>      <chr>      <chr>       <dttm>              <chr>          
+#> 1 1251954… Harriet96… "RT @Rout… Sun Apr 19… 2020-04-19 20:22:23 <NA>           
+#> 2 1248064… Patrick81… "RT @dtpt… Thu Apr 09… 2020-04-09 02:44:19 <NA>           
+#> 3 1234206… ELTAugusta "RT @vele… Sun Mar 01… 2020-03-01 20:00:40 <NA>           
+#> 4 1229405… gsa_aect   "RT @tado… Mon Feb 17… 2020-02-17 14:00:50 <NA>           
+#> 5 1227652… fcis_iu    "Give Mad… Wed Feb 12… 2020-02-12 17:54:38 <NA>           
+#> 6 1225505… StaufferE… "RT @tado… Thu Feb 06… 2020-02-06 19:43:00 <NA>           
+#> # … with 12 more variables: user_lang <lgl>, in_reply_to_user_id_str <chr>,
+#> #   in_reply_to_screen_name <chr>, from_user_id_str <chr>,
+#> #   in_reply_to_status_id_str <chr>, source <chr>, profile_image_url <chr>,
+#> #   user_followers_count <dbl>, user_friends_count <dbl>, user_location <chr>,
+#> #   status_url <chr>, entities_str <chr>
+```
+
 ### pull\_tweet\_data()
 
 With a TAGS archive imported into R, {tidytags} allows you to gather
@@ -162,6 +182,28 @@ requires Twitter API keys associated with an approved Twitter developer
 account. See the [Getting started with
 tidytags](https://bretsw.github.io/tidytags/articles/setup.html)
 vignette, Pain Point \#3, if you need help with this.
+
+``` r
+expanded_metadata <- pull_tweet_data(tags_data, n = 10)
+expanded_metadata
+#> # A tibble: 7 × 90
+#>   user_id             status_id  created_at          screen_name  text    source
+#>   <chr>               <chr>      <dttm>              <chr>        <chr>   <chr> 
+#> 1 14215524            122512231… 2020-02-05 18:21:36 tadousay     "Many … Tweet…
+#> 2 922536306437181440  121975838… 2020-01-21 23:07:15 gsa_aect     "The #… Tweet…
+#> 3 922536306437181440  122940535… 2020-02-17 14:00:51 gsa_aect     "Many … Tweet…
+#> 4 1251951804398669825 125195431… 2020-04-19 19:22:23 Harriet9615… "Congr… Twitt…
+#> 5 1088189033266798598 121904357… 2020-01-19 23:46:51 aectddl      "The #… Twitt…
+#> 6 3294167372          123420694… 2020-03-01 20:00:41 ELTAugusta   "Remin… Twitt…
+#> 7 804807943           122513787… 2020-02-05 19:23:27 AECTTechTre… "Many … Twitt…
+#> # … with 84 more variables: display_text_width <dbl>, reply_to_status_id <lgl>,
+#> #   reply_to_user_id <lgl>, reply_to_screen_name <lgl>, is_quote <lgl>,
+#> #   is_retweet <lgl>, favorite_count <int>, retweet_count <int>,
+#> #   quote_count <int>, reply_count <int>, hashtags <list>, symbols <list>,
+#> #   urls_url <list>, urls_t.co <list>, urls_expanded_url <list>,
+#> #   media_url <list>, media_t.co <list>, media_expanded_url <list>,
+#> #   media_type <list>, ext_media_url <list>, ext_media_t.co <list>, …
+```
 
 ------------------------------------------------------------------------
 
@@ -260,7 +302,7 @@ in your reference list:
 
 > Staudt Willet, K. B., & Rosenberg, J. M. (2021). tidytags: Importing
 > and analyzing Twitter data collected with Twitter Archiving Google
-> Sheets. <https://github.com/bretsw/tidytags> (R package version 0.2.0)
+> Sheets. <https://github.com/bretsw/tidytags> (R package version 0.2.1)
 
 ------------------------------------------------------------------------
 

@@ -153,11 +153,49 @@
 <a href="#read_tags" class="anchor"></a>read_tags()</h3>
 <p>At its most basic level, {tidytags} allows you to import data from a <a href="https://tags.hawksey.info/">Twitter Archiving Google Sheet</a> (TAGS) into R. This is done with the <a href="https://CRAN.R-project.org/package=googlesheets4">{googlesheets4} package</a>. One requirement for using the {googlesheets4} package is that your TAGS tracker has been “published to the web.” See the <a href="https://bretsw.github.io/tidytags/articles/setup.html">Getting started with tidytags</a> vignette, Pain Point #1, if you need help with this.</p>
 <p>Once a TAGS tracker has been published to the web, you can import the TAGS archive into R using <code><a href="reference/read_tags.html">read_tags()</a></code>. See the <a href="https://bretsw.github.io/tidytags/articles/setup.html">Getting started with tidytags</a> vignette, Pain Point #2, to set up API access to Google Sheets like the TAGS tracker.</p>
+<div class="sourceCode" id="cb4"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="va">example_tags</span> <span class="op">&lt;-</span> <span class="st">"18clYlQeJOc6W5QRuSlJ6_v3snqKJImFhU42bRkM_OX8"</span>
+<span class="va">tags_data</span> <span class="op">&lt;-</span> <span class="fu"><a href="reference/read_tags.html">read_tags</a></span><span class="op">(</span><span class="va">example_tags</span><span class="op">)</span>
+<span class="fu"><a href="https://rdrr.io/r/utils/head.html">head</a></span><span class="op">(</span><span class="va">tags_data</span><span class="op">)</span>
+<span class="co">#&gt; # A tibble: 6 × 18</span>
+<span class="co">#&gt;   id_str   from_user  text       created_at  time                geo_coordinates</span>
+<span class="co">#&gt;   &lt;chr&gt;    &lt;chr&gt;      &lt;chr&gt;      &lt;chr&gt;       &lt;dttm&gt;              &lt;chr&gt;          </span>
+<span class="co">#&gt; 1 1251954… Harriet96… "RT @Rout… Sun Apr 19… 2020-04-19 20:22:23 &lt;NA&gt;           </span>
+<span class="co">#&gt; 2 1248064… Patrick81… "RT @dtpt… Thu Apr 09… 2020-04-09 02:44:19 &lt;NA&gt;           </span>
+<span class="co">#&gt; 3 1234206… ELTAugusta "RT @vele… Sun Mar 01… 2020-03-01 20:00:40 &lt;NA&gt;           </span>
+<span class="co">#&gt; 4 1229405… gsa_aect   "RT @tado… Mon Feb 17… 2020-02-17 14:00:50 &lt;NA&gt;           </span>
+<span class="co">#&gt; 5 1227652… fcis_iu    "Give Mad… Wed Feb 12… 2020-02-12 17:54:38 &lt;NA&gt;           </span>
+<span class="co">#&gt; 6 1225505… StaufferE… "RT @tado… Thu Feb 06… 2020-02-06 19:43:00 &lt;NA&gt;           </span>
+<span class="co">#&gt; # … with 12 more variables: user_lang &lt;lgl&gt;, in_reply_to_user_id_str &lt;chr&gt;,</span>
+<span class="co">#&gt; #   in_reply_to_screen_name &lt;chr&gt;, from_user_id_str &lt;chr&gt;,</span>
+<span class="co">#&gt; #   in_reply_to_status_id_str &lt;chr&gt;, source &lt;chr&gt;, profile_image_url &lt;chr&gt;,</span>
+<span class="co">#&gt; #   user_followers_count &lt;dbl&gt;, user_friends_count &lt;dbl&gt;, user_location &lt;chr&gt;,</span>
+<span class="co">#&gt; #   status_url &lt;chr&gt;, entities_str &lt;chr&gt;</span></code></pre></div>
 </div>
 <div id="pull_tweet_data" class="section level3">
 <h3 class="hasAnchor">
 <a href="#pull_tweet_data" class="anchor"></a>pull_tweet_data()</h3>
 <p>With a TAGS archive imported into R, {tidytags} allows you to gather quite a bit more information related to the collected tweets with the <code><a href="reference/pull_tweet_data.html">pull_tweet_data()</a></code> function. This function uses the <a href="https://docs.ropensci.org/rtweet/index.html">{rtweet} package</a> (via <code><a href="https://rdrr.io/pkg/rtweet/man/lookup_statuses.html">rtweet::lookup_tweets()</a></code>) to query the Twitter API. This process requires Twitter API keys associated with an approved Twitter developer account. See the <a href="https://bretsw.github.io/tidytags/articles/setup.html">Getting started with tidytags</a> vignette, Pain Point #3, if you need help with this.</p>
+<div class="sourceCode" id="cb5"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="va">expanded_metadata</span> <span class="op">&lt;-</span> <span class="fu"><a href="reference/pull_tweet_data.html">pull_tweet_data</a></span><span class="op">(</span><span class="va">tags_data</span>, n <span class="op">=</span> <span class="fl">10</span><span class="op">)</span>
+<span class="va">expanded_metadata</span>
+<span class="co">#&gt; # A tibble: 7 × 90</span>
+<span class="co">#&gt;   user_id             status_id  created_at          screen_name  text    source</span>
+<span class="co">#&gt;   &lt;chr&gt;               &lt;chr&gt;      &lt;dttm&gt;              &lt;chr&gt;        &lt;chr&gt;   &lt;chr&gt; </span>
+<span class="co">#&gt; 1 14215524            122512231… 2020-02-05 18:21:36 tadousay     "Many … Tweet…</span>
+<span class="co">#&gt; 2 922536306437181440  121975838… 2020-01-21 23:07:15 gsa_aect     "The #… Tweet…</span>
+<span class="co">#&gt; 3 922536306437181440  122940535… 2020-02-17 14:00:51 gsa_aect     "Many … Tweet…</span>
+<span class="co">#&gt; 4 1251951804398669825 125195431… 2020-04-19 19:22:23 Harriet9615… "Congr… Twitt…</span>
+<span class="co">#&gt; 5 1088189033266798598 121904357… 2020-01-19 23:46:51 aectddl      "The #… Twitt…</span>
+<span class="co">#&gt; 6 3294167372          123420694… 2020-03-01 20:00:41 ELTAugusta   "Remin… Twitt…</span>
+<span class="co">#&gt; 7 804807943           122513787… 2020-02-05 19:23:27 AECTTechTre… "Many … Twitt…</span>
+<span class="co">#&gt; # … with 84 more variables: display_text_width &lt;dbl&gt;, reply_to_status_id &lt;lgl&gt;,</span>
+<span class="co">#&gt; #   reply_to_user_id &lt;lgl&gt;, reply_to_screen_name &lt;lgl&gt;, is_quote &lt;lgl&gt;,</span>
+<span class="co">#&gt; #   is_retweet &lt;lgl&gt;, favorite_count &lt;int&gt;, retweet_count &lt;int&gt;,</span>
+<span class="co">#&gt; #   quote_count &lt;int&gt;, reply_count &lt;int&gt;, hashtags &lt;list&gt;, symbols &lt;list&gt;,</span>
+<span class="co">#&gt; #   urls_url &lt;list&gt;, urls_t.co &lt;list&gt;, urls_expanded_url &lt;list&gt;,</span>
+<span class="co">#&gt; #   media_url &lt;list&gt;, media_t.co &lt;list&gt;, media_expanded_url &lt;list&gt;,</span>
+<span class="co">#&gt; #   media_type &lt;list&gt;, ext_media_url &lt;list&gt;, ext_media_t.co &lt;list&gt;, …</span></code></pre></div>
 <hr>
 </div>
 </div>
@@ -212,7 +250,7 @@
 <a href="#how-to-cite-this-package-in-publications" class="anchor"></a>How to Cite This Package in Publications</h2>
 <p>You can cite this package like this: “we collected, processed, and analyzed Twitter data using the tidytags R package (Staudt Willet &amp; Rosenberg, 2021)”. Here is the full bibliographic reference to include in your reference list:</p>
 <blockquote>
-<p>Staudt Willet, K. B., &amp; Rosenberg, J. M. (2021). tidytags: Importing and analyzing Twitter data collected with Twitter Archiving Google Sheets. <a href="https://github.com/bretsw/tidytags" class="uri">https://github.com/bretsw/tidytags</a> (R package version 0.2.0)</p>
+<p>Staudt Willet, K. B., &amp; Rosenberg, J. M. (2021). tidytags: Importing and analyzing Twitter data collected with Twitter Archiving Google Sheets. <a href="https://github.com/bretsw/tidytags" class="uri">https://github.com/bretsw/tidytags</a> (R package version 0.2.1)</p>
 </blockquote>
 <hr>
 </div>
