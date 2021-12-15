@@ -17,9 +17,9 @@ A dataframe in the form of an edgelist (i.e., with senders and
 }
 \description{
 Updates an edgelist created with \code{create_edgelist()} by appending user
-  data retrieved with \code{rtweet::lookup_users()}. The resulting dataframe
-  keeps all the columns from \code{rtweet} but adds "_sender" or "_receiver"
-  to the column names.
+  data retrieved with \code{lookup_many_users()}. The resulting dataframe
+  adds many additional columns and appends "_sender" or "_receiver" to the
+  column names.
 }
 \details{
 This function requires authentication; please see

@@ -7,6 +7,7 @@
 ^pkgdown$
 CODE_OF_CONDUCT.md
 CONTRIBUTING.md
+LICENSE.md
 paper.md
 paper.bib
 tidytags-logo.png

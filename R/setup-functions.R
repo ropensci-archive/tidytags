@@ -291,3 +291,54 @@ process_tweets <-
       )
     df
   }
+
+
+#' Retrieve the fullest extent of tweet metadata for more than 90,000 users
+#'
+#' This function calls \code{rtweet::lookup_users()}, but has a built-in delay
+#'   of 15 minutes to allow the Twitter API to reset after looking up 90,000
+#'   users.
+#' @param x A list or vector of user ID numbers
+#' @param alarm An audible notification that a batch of 90,000 users has been
+#'   completed
+#' @return A dataframe of tweets and full user metadata from the Twitter API
+#' @details This function requires authentication; please see
+#'   \code{vignette("setup", package = "tidytags")}
+#' @seealso Read more about \code{library(rtweet)}
+#'   \href{https://rtweet.info/}{here}.
+#' @examples
+#' \dontrun{
+#'
+#' example_url <- "18clYlQeJOc6W5QRuSlJ6_v3snqKJImFhU42bRkM_OX8"
+#' tmp_df <- pull_tweet_data(read_tags(example_url))
+#' users <- lookup_many_users(tmp_df$screen_name, alarm = TRUE)
+#' users
+#'
+#' lookup_many_users("AECT")
+#' lookup_many_tweets("12030342", alarm = TRUE)
+#' }
+#' @export
+lookup_many_users <-
+  function(x, alarm = FALSE) {
+    x_unique <- unique(x)
+    n_batches <- ceiling(length(x_unique) / 90000)
+    new_df <- data.frame()
+    for (i in 1:n_batches) {
+      min_id <- 90000 * i - 89999
+      max_id <- ifelse(90000 * i < length(x), 90000 * i, length(x_unique))
+      tmp_df <- rtweet::lookup_users(x_unique[min_id:max_id])
+      new_df <- rbind(new_df, tmp_df)
+      if (alarm == TRUE) {
+        beepr::beep(2)
+      }
+      if (n_batches > 1) {
+        message("I've finished processing batch: ", i, " of ", n_batches)
+      }
+      if (i != n_batches) {
+        message("Hold on, I need to nap for about 15 minutes...")
+        Sys.sleep(901)
+        message("I'm awake and back to work!")
+      }
+    }
+    new_df
+  }

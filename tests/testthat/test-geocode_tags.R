@@ -25,4 +25,3 @@ test_that("geo coordinates are extracted properly", {
   expect_true(is.na(locations_coords$location[4]))
   expect_true(is.na(locations_coords$location[5]))
 })
-
