@@ -109,12 +109,20 @@ Checks
 </table>
 
 <!-- badges: end -->
-
 ---
 
 ## Overview
 
-{tidytags} coordinates the simplicity of collecting tweets over time with a [Twitter Archiving Google Sheet](https://tags.hawksey.info/) (TAGS), a Google Sheets-based mechanism for collecting data from Twitter, and the utility of the [{rtweet} package](https://docs.ropensci.org/rtweet/index.html) for processing and preparing additional Twitter metadata to enhance analyses of the data collected through TAGS. {tidytags} also introduces functions developed to facilitate systematic yet flexible analyses of data from Twitter. It also interfaces with several other packages, including the [opencage package](https://opencagedata.com/), to geocode the locations of Twitter users based on their biographies.
+The purpose of {tidytags} is to make the collection of Twitter data more accessible and robust. {tidytags} retrieves tweet data collected by a [Twitter Archiving Google Sheet (TAGS)](https://tags.hawksey.info/), gets additional metadata from Twitter via the [{rtweet}](https://docs.ropensci.org/rtweet/index.html) package, and from OpenCage using the [opencage](https://opencagedata.com/) package, and provides additional functions to facilitate a systematic yet flexible analyses of data from Twitter. TAGS is based on Google spreadsheets. A TAGS tracker continuously collects tweets from Twitter, based on predefined search criteria and collection frequency.
+
+In short, {tidytags} first uses TAGS to easily collect tweet ID numbers and then uses the R package {rtweet} to re-query the Twitter API to collect additional metadata.
+
+{tidytags} also introduces functions developed to facilitate systematic yet flexible analyses of data from Twitter. It also interfaces with several other packages, including the [opencage package](https://opencagedata.com/), to geocode the locations of Twitter users based on their biographies.
+
+Two vignettes illustrate the setup and use of the package:
+
+- [Getting started with tidytags](https://bretsw.github.io/tidytags/articles/setup.html)
+- [Using tidytags with a conference hashtag](https://bretsw.github.io/tidytags/articles/tidytags-with-conf-hashtags.html)
 
 ---
 
