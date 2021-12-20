@@ -74,9 +74,17 @@ The input needed for the `tidytags::read_tags()` function is either the entire U
 
 <p align="center"><img src="files/TAGS-identifier-highlighted.png" alt="TAGS-identifier-highlighted" width="480"></p>
 
-Be sure to put quotations marks around the URL or sheet identifier when entering it into `read_tags()` function. For example:
+Be sure to put quotations marks around the URL or sheet identifier when entering it into `read_tags()` function.
 
-`read_tags("18clYlQeJOc6W5QRuSlJ6_v3snqKJImFhU42bRkM_OX8")`.
+To verify that this step worked for you, run the following code:
+
+`read_tags("18clYlQeJOc6W5QRuSlJ6_v3snqKJImFhU42bRkM_OX8")`
+
+What should return is the following:
+
+<p align="center"><img src="files/pain-point-1-success.png" alt="Pain Point #1 success" width="480"></p>
+
+Then, try to run `read_tags()` with your own URL or sheet identifier. If that does not work, carefully review the steps above.
 
 ## Key Task #2. Getting and storing a Google API key
 
@@ -98,9 +106,15 @@ To use `read_tags()`, you will need a **Google API key** for Google Sheets. Foll
 
 `GOOGLE_API_KEY = YourGoogleAPIKey`
 
-Restart R (by closing and opening R/RStudio) for this key to be available in your next R Session.
+Restart R (by closing and re-opening R/RStudio) for this key to be available in your next R Session.
 
 You can read more about the Google Sheets API [here](https://console.developers.google.com/apis/library/sheets.googleapis.com), and get help with the API [here](https://developers.google.com/sheets/api/support).
+
+Run the following line of code:
+
+`Sys.getenv("GOOGLE_API_KEY")`
+
+Your API key should be printed to the console. If it is not, carefully review the above steps, being sure to *close and re-open R/RStudio). 
 
 ## Key Task #3. Getting and storing Twitter API token
 
@@ -135,8 +149,6 @@ token <- rtweet::create_token(
 
 This compiles together all the pieces from your Twitter API credentials into one token (an .rds file) that is stored securely on your local machine. {tidytags} functions will now retrieve this token in the background, as needed. You only ever have to set this up once (until you start working on a different computer or need to change your Twitter API token).
 
-### Authorization in future R sessions
-
 To make sure the **Twitter API token** works, restart your R session and run the code `rtweet::get_token()`.
 
 ## Key Task #4. Getting and storing a OpenCage Geocoding API key
@@ -165,13 +177,13 @@ Then, add a line to this file that reads (inputting your unique OpenCage Key aft
 
 **Once you've saved the .Renviron file, quit your R session and restart.** The function `geocode_tags()` will work for you from now on. Note that the {tidytags} `geocode_tags()` function retrieves your saved API key automatically and securely, and you won't need to think about this after the initial setup. 
 
-### Authorization in future R sessions
-
 To make sure the **OpenCage Geocoding API key** works, restart your R session and run the following code:
 
 ```{r, eval=FALSE}
 Sys.getenv('OPENCAGE_KEY')
 ```
+
+You're now ready to proceed to using {tidytags}! Head over to the [Using tidytags with a conference hashtag](https://bretsw.github.io/tidytags/articles/tidytags-with-conf-hashtags.html) vignette to learn more about the functionality of the package.
 
 ## Getting help
 
