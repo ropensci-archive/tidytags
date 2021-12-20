@@ -191,6 +191,14 @@ expanded_metadata
 
 ---
 
+## Workflow
+
+The following diagram represents how the functions included in the package may work together. These are presented in the figure below.
+
+<p align="center"><img src="" alt="TAGS workflow" width="480"></p>
+
+---
+
 ## Learning More About {tidytags}
 
 For a walkthrough of numerous additional {tidytags} functions, see the [Using tidytags with a conference hashtag](https://bretsw.github.io/tidytags/articles/tidytags-with-conf-hashtags.html) vignette.
