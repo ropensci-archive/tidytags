@@ -41,9 +41,9 @@
 
 <meta property="og:title" content="Retrieve user information for everyone in an edgelist — add_users_data" />
 <meta property="og:description" content="Updates an edgelist created with create_edgelist() by appending user
-  data retrieved with rtweet::lookup_users(). The resulting dataframe
-  keeps all the columns from rtweet but adds &quot;_sender&quot; or &quot;_receiver&quot;
-  to the column names." />
+  data retrieved with lookup_many_users(). The resulting dataframe
+  adds many additional columns and appends &quot;_sender&quot; or &quot;_receiver&quot; to the
+  column names." />
 
 
 
@@ -141,9 +141,9 @@
 
     <div class="ref-description">
     <p>Updates an edgelist created with <code><a href='create_edgelist.html'>create_edgelist()</a></code> by appending user
-  data retrieved with <code><a href='https://rdrr.io/pkg/rtweet/man/lookup_users.html'>rtweet::lookup_users()</a></code>. The resulting dataframe
-  keeps all the columns from <code>rtweet</code> but adds "_sender" or "_receiver"
-  to the column names.</p>
+  data retrieved with <code><a href='lookup_many_users.html'>lookup_many_users()</a></code>. The resulting dataframe
+  adds many additional columns and appends "_sender" or "_receiver" to the
+  column names.</p>
     </div>
 
     <pre class="usage"><span class='fu'>add_users_data</span><span class='op'>(</span><span class='va'>edgelist</span><span class='op'>)</span></pre>

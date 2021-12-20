@@ -5,7 +5,7 @@ citEntry(
     title        = "tidytags: Importing and analyzing Twitter data collected with Twitter Archiving Google Sheets",
     author       = c(as.person("K. Bret Staudt Willet"), as.person("Joshua M. Rosenberg")),
     year         = "2021",
-    note         = "R package version 0.2.0",
+    note         = "R package version 0.2.1",
     journal      = "",
     volume       = "",
     number       = "",
@@ -18,6 +18,6 @@ citEntry(
         "tidytags: Importing and analyzing Twitter data collected with Twitter",
         "Archiving Google Sheets.",
         "https://github.com/bretsw/tidytags",
-        "(R package version 0.2.0)"
+        "(R package version 0.2.1)"
     )
 )

@@ -266,7 +266,7 @@ Note that `create_edgelist()` does not yet accept a `type = "like"` parameter du
 
 ## add_users_data()
 
-Finally, {tidytags} also has functionality to add user-level data to an edgelist through the function `tidytags::add_users_data()`. These additional features are very useful when taking an inferential approach to social network analysis, such as building *influence* or *selection* models.
+Finally, {tidytags} also has functionality to add user-level data to an edgelist through the function `add_users_data()`. These additional features are very useful when taking an inferential approach to social network analysis, such as building *influence* or *selection* models.
 
 ```{r user-data}
 example_senders_receivers_data <- add_users_data(example_edgelist)

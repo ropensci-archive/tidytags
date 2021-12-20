@@ -12,6 +12,7 @@ test_that("lookup_many_tweets() works like pull_tweet_data()", {
   expect_true("status_id" %in% names(pull_many))
   expect_true("status_url" %in% names(pull_many))
   expect_true("reply_to_status_id" %in% names(pull_many))
+  expect_lte(nrow(pull_many), nrow(sample_tags))
   expect_gt(ncol(pull_many), ncol(sample_tags))
   expect_equal(ncol(pull_many), ncol(pull_regular))
   expect_equal(pull_many$user_id, pull_regular$user_id)
