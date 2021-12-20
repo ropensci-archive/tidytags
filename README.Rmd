@@ -193,9 +193,9 @@ expanded_metadata
 
 ## Workflow
 
-The following diagram represents how the functions included in the package may work together. These are presented in the figure below.
+The following diagram represents how the functions included in the {tidytags} package may work together. These are presented in the figure below.
 
-<p align="center"><img src="" alt="TAGS workflow" width="480"></p>
+<p align="center"><img src="man/figures/tidytags-workflow.jpg" alt="TAGS workflow" width="600"></p>
 
 ---
 
