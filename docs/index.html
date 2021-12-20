@@ -104,12 +104,79 @@
 </h5>
 <!-- badges: start -->
 <!-- For additional badges for CRAN, see https://docs.ropensci.org/drake/ -->
-<!-- badges: end --><hr>
+<table class="table table">
+<thead><tr class="header">
+<th align="left">
+Usage
+</th>
+<th align="left">
+Release
+</th>
+<th align="left">
+Development
+</th>
+<th align="left">
+Checks
+</th>
+</tr></thead>
+<tbody>
+<tr class="odd">
+<td align="left">
+<a href="https://choosealicense.com/licenses/mit/"><img src="https://img.shields.io/badge/licence-MIT-9cf.svg" alt="Licence"></a>
+</td>
+<td align="left">
+<a href="https://github.com/ropensci/software-review/issues/382"><img src="https://badges.ropensci.org/382_status.svg" alt="rOpenSci Peer Review"></a>
+</td>
+<td align="left">
+<a href="https://www.repostatus.org/#active"><img src="https://www.repostatus.org/badges/latest/active.svg" alt="Status"></a>
+</td>
+<td align="left">
+<a href="https://github.com/bretsw/tidytags/actions"><img src="https://github.com/bretsw/tidytags/workflows/R-CMD-check/badge.svg" alt="Check"></a>
+</td>
+</tr>
+<tr class="even">
+<td align="left">
+<a href="https://cran.r-project.org/"><img src="https://img.shields.io/badge/R%3E%3D-4.1.0-blue.svg" alt="Minimal R Version"></a>
+</td>
+<td align="left">
+</td>
+<td align="left">
+<a href="https://github.com/bretsw/tidytags/commits/main"><img src="https://img.shields.io/github/last-commit/bretsw/tidytags.svg" alt="Last Commit"></a>
+</td>
+<td align="left">
+<a href="https://codecov.io/gh/bretsw/tidytags?branch=main"><img src="https://codecov.io/gh/bretsw/tidytags/coverage.svg?branch=main" alt="Codecov"></a>
+</td>
+</tr>
+<tr class="odd">
+<td align="left">
+</td>
+<td align="left">
+</td>
+<td align="left">
+<a href="https://www.tidyverse.org/lifecycle/#maturing"><img src="https://img.shields.io/badge/lifecycle-maturing-blue.svg" alt="Lifecycle"></a>
+</td>
+<td align="left">
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+<div id="section" class="section level2">
+<h2 class="hasAnchor">
+<a href="#section" class="anchor"></a><!-- badges: end -->
+</h2>
 </div>
 <div id="overview" class="section level2">
 <h2 class="hasAnchor">
 <a href="#overview" class="anchor"></a>Overview</h2>
-<p>{tidytags} coordinates the simplicity of collecting tweets over time with a <a href="https://tags.hawksey.info/">Twitter Archiving Google Sheet</a> (TAGS), a Google Sheets-based mechanism for collecting data from Twitter, and the utility of the <a href="https://docs.ropensci.org/rtweet/index.html">{rtweet} package</a> for processing and preparing additional Twitter metadata to enhance analyses of the data collected through TAGS. {tidytags} also introduces functions developed to facilitate systematic yet flexible analyses of data from Twitter. It also interfaces with several other packages, including the <a href="https://opencagedata.com/">opencage package</a>, to geocode the locations of Twitter users based on their biographies.</p>
+<p>The purpose of {tidytags} is to make the collection of Twitter data more accessible and robust. {tidytags} retrieves tweet data collected by a <a href="https://tags.hawksey.info/">Twitter Archiving Google Sheet (TAGS)</a>, gets additional metadata from Twitter via the <a href="https://docs.ropensci.org/rtweet/index.html">{rtweet}</a> package, and from OpenCage using the <a href="https://opencagedata.com/">opencage</a> package, and provides additional functions to facilitate a systematic yet flexible analyses of data from Twitter. TAGS is based on Google spreadsheets. A TAGS tracker continuously collects tweets from Twitter, based on predefined search criteria and collection frequency.</p>
+<p>In short, {tidytags} first uses TAGS to easily collect tweet ID numbers and then uses the R package {rtweet} to re-query the Twitter API to collect additional metadata.</p>
+<p>{tidytags} also introduces functions developed to facilitate systematic yet flexible analyses of data from Twitter. It also interfaces with several other packages, including the <a href="https://opencagedata.com/">opencage package</a>, to geocode the locations of Twitter users based on their biographies.</p>
+<p>Two vignettes illustrate the setup and use of the package:</p>
+<ul>
+<li><a href="https://bretsw.github.io/tidytags/articles/setup.html">Getting started with tidytags</a></li>
+<li><a href="https://bretsw.github.io/tidytags/articles/tidytags-with-conf-hashtags.html">Using tidytags with a conference hashtag</a></li>
+</ul>
 <hr>
 </div>
 <div id="installation" class="section level2">
@@ -198,6 +265,14 @@
 <span class="co">#&gt; #   media_type &lt;list&gt;, ext_media_url &lt;list&gt;, ext_media_t.co &lt;list&gt;, …</span></code></pre></div>
 <hr>
 </div>
+</div>
+<div id="workflow" class="section level2">
+<h2 class="hasAnchor">
+<a href="#workflow" class="anchor"></a>Workflow</h2>
+<p>The following diagram represents how the functions included in the {tidytags} package may work together. These are presented in the figure below.</p>
+<p align="center">
+<img src="reference/figures/tidytags-workflow.jpg" alt="TAGS workflow" width="600"></p>
+<hr>
 </div>
 <div id="learning-more-about-tidytags" class="section level2">
 <h2 class="hasAnchor">
@@ -304,20 +379,7 @@
 </ul>
 </div>
 
-  <div class="dev-status">
-<h2>Dev status</h2>
-<ul class="list-unstyled">
-<li><a href="https://choosealicense.com/licenses/mit/"><img src="https://img.shields.io/badge/licence-MIT-9cf.svg" alt="Licence"></a></li>
-<li><a href="https://github.com/ropensci/software-review/issues/382"><img src="https://badges.ropensci.org/382_status.svg" alt="rOpenSci Peer Review"></a></li>
-<li><a href="https://www.repostatus.org/#active"><img src="https://www.repostatus.org/badges/latest/active.svg" alt="Status"></a></li>
-<li><a href="https://github.com/bretsw/tidytags/actions"><img src="https://github.com/bretsw/tidytags/workflows/R-CMD-check/badge.svg" alt="Check"></a></li>
-<li><a href="https://cran.r-project.org/"><img src="https://img.shields.io/badge/R%3E%3D-4.1.0-blue.svg" alt="Minimal R Version"></a></li>
-<li><a href="https://github.com/bretsw/tidytags/commits/main"><img src="https://img.shields.io/github/last-commit/bretsw/tidytags.svg" alt="Last Commit"></a></li>
-<li><a href="https://codecov.io/gh/bretsw/tidytags?branch=main"><img src="https://codecov.io/gh/bretsw/tidytags/coverage.svg?branch=main" alt="Codecov"></a></li>
-<li><a href="https://www.tidyverse.org/lifecycle/#maturing"><img src="https://img.shields.io/badge/lifecycle-maturing-blue.svg" alt="Lifecycle"></a></li>
-</ul>
-</div>
-</div>
+  </div>
 </div>
 
 
