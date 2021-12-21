@@ -17,8 +17,8 @@ A new, expanded dataframe which includes any retrievable upstream
 \description{
 Because the Twitter API offers a \code{reply_to_status_id} column, it is
   possible to iteratively reconstruct reply threads in an *upstream*
-  direction, that is, retrieving statuses composed earlier than replies in the
-  dataset. The \code{get_upstream_tweets()} function collects upstream
+  direction, that is, retrieving statuses composed earlier than replies in
+  the dataset. The \code{get_upstream_tweets()} function collects upstream
   replies not previously found in the dataset. Keep in mind that there is no
   way to predict how far upstream you can trace back a reply thread, so
   running \code{get_upstream_tweets()} could take a while and potentially hit

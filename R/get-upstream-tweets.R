@@ -26,8 +26,8 @@ flag_unknown_upstream <-
 #'
 #' Because the Twitter API offers a \code{reply_to_status_id} column, it is
 #'   possible to iteratively reconstruct reply threads in an *upstream*
-#'   direction, that is, retrieving statuses composed earlier than replies in the
-#'   dataset. The \code{get_upstream_tweets()} function collects upstream
+#'   direction, that is, retrieving statuses composed earlier than replies in
+#'   the dataset. The \code{get_upstream_tweets()} function collects upstream
 #'   replies not previously found in the dataset. Keep in mind that there is no
 #'   way to predict how far upstream you can trace back a reply thread, so
 #'   running \code{get_upstream_tweets()} could take a while and potentially hit
@@ -77,9 +77,12 @@ get_upstream_tweets <-
                                  unknown_upstream$reply_to_status_id))
 
         message(
-          "New statuses added to the dataset: ", nrow(new_tweets),
-          "; reply statuses that were not able to be retrieved: ", nrow(unknown_upstream),
-          "; newly added replies where we can still go further upstream: ", searchable_replies
+          "New statuses added to the dataset: ",
+          nrow(new_tweets),
+          "; reply statuses that were not able to be retrieved: ",
+          nrow(unknown_upstream),
+          "; newly added replies where we can still go further upstream: ",
+          searchable_replies
         )
       }
 
