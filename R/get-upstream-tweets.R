@@ -52,8 +52,12 @@ get_upstream_tweets <-
   function(df) {
     unknown_upstream <- flag_unknown_upstream(df)
 
-    if (nrow(unknown_upstream) == 0)
-      message("There are no upstream replies to get.")
+    if (nrow(unknown_upstream) == 0) {
+      stop(
+        "There are no upstream replies to get.",
+        call. = FALSE
+      )
+    }
 
     searchable_replies <-
       nrow(pull_tweet_data(id_vector =
