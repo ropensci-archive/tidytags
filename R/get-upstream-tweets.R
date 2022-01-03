@@ -53,47 +53,43 @@ get_upstream_tweets <-
     unknown_upstream <- flag_unknown_upstream(df)
 
     if (nrow(unknown_upstream) == 0) {
-      stop(
-        "There are no upstream replies to get.",
-        call. = FALSE
-      )
-    }
+      message("There are no upstream replies to get.")
+    } else {
+      searchable_replies <-
+        nrow(pull_tweet_data(id_vector =
+                               unknown_upstream$reply_to_status_id))
 
-    searchable_replies <-
-      nrow(pull_tweet_data(id_vector =
-                             unknown_upstream$reply_to_status_id))
+      if (searchable_replies > 0) {
+        i <- 0
+        n <- 0
+        while (searchable_replies > 0) {
+          i <- i + 1
+          message("Iteration: ", i)
+          new_tweets <-
+            pull_tweet_data(id_vector = unknown_upstream$reply_to_status_id)
+          n <- n + nrow(new_tweets)
+          df <- rbind(df, new_tweets)
 
-    if (searchable_replies > 0) {
-      i <- 0
-      n <- 0
-      while (searchable_replies > 0) {
-        i <- i + 1
-        message("Iteration: ", i)
-        new_tweets <-
-          pull_tweet_data(id_vector = unknown_upstream$reply_to_status_id)
-        n <- n + nrow(new_tweets)
-        df <- rbind(df, new_tweets)
+          unknown_upstream <- flag_unknown_upstream(df)
 
-        unknown_upstream <- flag_unknown_upstream(df)
+          searchable_replies <-
+            nrow(pull_tweet_data(id_vector =
+                                   unknown_upstream$reply_to_status_id))
 
-        searchable_replies <-
-          nrow(pull_tweet_data(id_vector =
-                                 unknown_upstream$reply_to_status_id))
+          message(
+            "New statuses added to the dataset: ",
+            nrow(new_tweets),
+            "; reply statuses that were not able to be retrieved: ",
+            nrow(unknown_upstream),
+            "; newly added replies where we can still go further upstream: ",
+            searchable_replies
+          )
+        }
 
-        message(
-          "New statuses added to the dataset: ",
-          nrow(new_tweets),
-          "; reply statuses that were not able to be retrieved: ",
-          nrow(unknown_upstream),
-          "; newly added replies where we can still go further upstream: ",
-          searchable_replies
-        )
+        message("We've gone as far upstream as we're able to go.",
+                " This process resulted in ", n,
+                " new replies being added to the dataset.")
       }
-
-      message("We've gone as far upstream as we're able to go.",
-              " This process resulted in ", n,
-              " new replies being added to the dataset.")
     }
-
     df
   }
