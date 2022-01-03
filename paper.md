@@ -89,7 +89,10 @@ tweet_domains <- get_url_domain(tweet_urls)
 ```{r}
 aect_places <- dplyr::distinct(aect_tweets_processed, location, .keep_all = TRUE)
 aect_geo_coords <- geocode_tags(aect_places)
-mapview::mapview(aect_geo_coords)
+
+if (requireNamespace("mapview", quietly = TRUE)) {
+  mapview::mapview(aect_geo_coords)
+}
 ```
 
 7. Analyze the social network of tweeters using the function `create_edgelist()`.

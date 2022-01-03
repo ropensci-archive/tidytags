@@ -30,7 +30,7 @@ This vignette introduces the initial setup necessary to use {tidytags}. Specific
 
 Before reading through these steps for setting up {tidytags}, please take a few moments to **reflect on ethical considerations** related to social media research. 
 
-```{r, child='../man/fragments/ethics.Rmd'} 
+```{r, child='../man/fragments/ethics.Rmd'}
 ```
 
 With these things in mind, let's get started working through some of the common pain points.
@@ -161,7 +161,9 @@ Getting an OpenCage Geocoding API key is more straightforward and immediate than
 We recommend saving your OpenCage Geocoding API key in the `.Renviron` file as **OPENCAGE_KEY** (similar to what you did with the Twitter tokens). You can quickly access this file using the R code: 
 
 ```{r, eval=FALSE}
-usethis::edit_r_environ(scope='user')
+if (requireNamespace("usethis", quietly = TRUE) {
+  usethis::edit_r_environ(scope='user')
+}
 ```
 
 Then, add a line to this file that reads (inputting your unique OpenCage Key after the `=` sign, with no quotation marks): 

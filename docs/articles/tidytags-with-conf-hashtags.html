@@ -356,13 +356,18 @@
 <span class="co">#&gt; #   ext_media_type &lt;chr&gt;, mentions_user_id &lt;list&gt;, mentions_screen_name &lt;list&gt;, lang &lt;chr&gt;, …</span></code></pre></div>
 <p>Finally, it’s easy to visualize the data, with a number of packages supporting the visualization of geo-coordinates. For instance, you can use the <code>mapview()</code> function from the {mapview} package:</p>
 <div class="sourceCode" id="cb14"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="va">locations</span> <span class="op">&lt;-</span>
-  <span class="fu">sf</span><span class="fu">::</span><span class="fu"><a href="https://r-spatial.github.io/sf/reference/st_as_sf.html">st_as_sf</a></span><span class="op">(</span>
-    <span class="va">example_geo_coords</span>,
-    coords <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span>x <span class="op">=</span> <span class="st">"longitude"</span>, y <span class="op">=</span> <span class="st">"latitude"</span><span class="op">)</span>,
-    crs <span class="op">=</span> <span class="fl">4326</span><span class="op">)</span>
+<code class="sourceCode R"><span class="kw">if</span> <span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/ns-load.html">requireNamespace</a></span><span class="op">(</span><span class="st">"sf"</span>, quietly <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span><span class="op">)</span> <span class="op">{</span>
+  <span class="va">locations</span> <span class="op">&lt;-</span>
+    <span class="fu">sf</span><span class="fu">::</span><span class="fu"><a href="https://r-spatial.github.io/sf/reference/st_as_sf.html">st_as_sf</a></span><span class="op">(</span>
+      <span class="va">example_geo_coords</span>,
+      coords <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span>x <span class="op">=</span> <span class="st">"longitude"</span>, y <span class="op">=</span> <span class="st">"latitude"</span><span class="op">)</span>,
+      crs <span class="op">=</span> <span class="fl">4326</span>
+    <span class="op">)</span>
+<span class="op">}</span>
 
-<span class="va">example_map</span> <span class="op">&lt;-</span> <span class="fu">mapview</span><span class="fu">::</span><span class="fu"><a href="https://rdrr.io/pkg/mapview/man/mapView.html">mapview</a></span><span class="op">(</span><span class="va">locations</span><span class="op">)</span></code></pre></div>
+<span class="kw">if</span> <span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/ns-load.html">requireNamespace</a></span><span class="op">(</span><span class="st">"mapview"</span>, quietly <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span><span class="op">)</span> <span class="op">{</span>
+  <span class="va">example_map</span> <span class="op">&lt;-</span> <span class="fu">mapview</span><span class="fu">::</span><span class="fu"><a href="https://rdrr.io/pkg/mapview/man/mapView.html">mapview</a></span><span class="op">(</span><span class="va">locations</span><span class="op">)</span>
+<span class="op">}</span></code></pre></div>
 <p>At this point, you can view an interactive map in your R environment simply by calling <code>example_map</code>.</p>
 </div>
 <div id="filter_by_tweet_type" class="section level2">
@@ -414,18 +419,27 @@
 <span class="co">#&gt; 20 michaelmgrant  EdTech_UofSC    reply</span></code></pre></div>
 <p>We can then easily visualize the edgelist as a sociogram using the {tidygraph} and {ggraph} packages.</p>
 <p>First, create graph object using {tidygraph}:</p>
-<div class="sourceCode" id="cb17"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="va">example_graph</span> <span class="op">&lt;-</span>
-  <span class="fu">tidygraph</span><span class="fu">::</span><span class="fu"><a href="https://tidygraph.data-imaginist.com/reference/tbl_graph.html">as_tbl_graph</a></span><span class="op">(</span><span class="va">example_edgelist</span><span class="op">)</span>
-<span class="va">example_graph</span> <span class="op">&lt;-</span>
-  <span class="fu">dplyr</span><span class="fu">::</span><span class="fu"><a href="https://dplyr.tidyverse.org/reference/mutate.html">mutate</a></span><span class="op">(</span><span class="va">example_graph</span>,
-                popularity <span class="op">=</span> <span class="fu">tidygraph</span><span class="fu">::</span><span class="fu"><a href="https://tidygraph.data-imaginist.com/reference/centrality.html">centrality_degree</a></span><span class="op">(</span>mode <span class="op">=</span> <span class="st">'in'</span><span class="op">)</span><span class="op">)</span></code></pre></div>
+<div class="sourceCode" id="cb17"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb17-1"><a href="#cb17-1" aria-hidden="true" tabindex="-1"></a><span class="cf">if</span> (<span class="fu">requireNamespace</span>(<span class="st">"tidygraph"</span>, <span class="at">quietly =</span> <span class="cn">TRUE</span>) {</span>
+<span id="cb17-2"><a href="#cb17-2" aria-hidden="true" tabindex="-1"></a>  example_graph <span class="ot">&lt;-</span></span>
+<span id="cb17-3"><a href="#cb17-3" aria-hidden="true" tabindex="-1"></a>    tidygraph<span class="sc">::</span><span class="fu">as_tbl_graph</span>(example_edgelist)</span>
+<span id="cb17-4"><a href="#cb17-4" aria-hidden="true" tabindex="-1"></a>  example_graph <span class="ot">&lt;-</span></span>
+<span id="cb17-5"><a href="#cb17-5" aria-hidden="true" tabindex="-1"></a>    dplyr<span class="sc">::</span><span class="fu">mutate</span>(example_graph,</span>
+<span id="cb17-6"><a href="#cb17-6" aria-hidden="true" tabindex="-1"></a>                  <span class="at">popularity =</span> tidygraph<span class="sc">::</span><span class="fu">centrality_degree</span>(<span class="at">mode =</span> <span class="st">'in'</span>))</span>
+<span id="cb17-7"><a href="#cb17-7" aria-hidden="true" tabindex="-1"></a>}</span></code></pre></div>
 <p>Then plot using {ggraph}:</p>
 <div class="sourceCode" id="cb18"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="fu">ggraph</span><span class="fu">::</span><span class="fu"><a href="https://ggraph.data-imaginist.com/reference/ggraph.html">ggraph</a></span><span class="op">(</span><span class="va">example_graph</span>, layout <span class="op">=</span> <span class="st">'kk'</span><span class="op">)</span> <span class="op">+</span>
-  <span class="fu">ggraph</span><span class="fu">::</span><span class="fu"><a href="https://ggraph.data-imaginist.com/reference/geom_edge_arc.html">geom_edge_arc</a></span><span class="op">(</span>alpha <span class="op">=</span> <span class="fl">.2</span>, width <span class="op">=</span> <span class="fl">.5</span>, strength <span class="op">=</span> <span class="fl">.5</span>, edge_colour <span class="op">=</span> <span class="st">'steelblue'</span><span class="op">)</span> <span class="op">+</span>
-  <span class="fu">ggraph</span><span class="fu">::</span><span class="fu"><a href="https://ggraph.data-imaginist.com/reference/geom_node_point.html">geom_node_point</a></span><span class="op">(</span>alpha <span class="op">=</span> <span class="fl">.4</span>, <span class="fu">ggplot2</span><span class="fu">::</span><span class="fu"><a href="https://ggplot2.tidyverse.org/reference/aes.html">aes</a></span><span class="op">(</span>size <span class="op">=</span> <span class="va">popularity</span><span class="op">)</span><span class="op">)</span> <span class="op">+</span>
-  <span class="fu">ggplot2</span><span class="fu">::</span><span class="fu"><a href="https://ggplot2.tidyverse.org/reference/scale_size.html">scale_size</a></span><span class="op">(</span>range <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="fl">1</span>,<span class="fl">10</span><span class="op">)</span><span class="op">)</span></code></pre></div>
+<code class="sourceCode R"><span class="kw">if</span> <span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/ns-load.html">requireNamespace</a></span><span class="op">(</span><span class="st">"ggraph"</span>, quietly <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span> <span class="op">&amp;</span>
+    <span class="fu"><a href="https://rdrr.io/r/base/ns-load.html">requireNamespace</a></span><span class="op">(</span><span class="st">"ggplot2"</span>, quietly <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span>
+<span class="op">)</span> <span class="op">{</span>
+  <span class="fu">ggraph</span><span class="fu">::</span><span class="fu"><a href="https://ggraph.data-imaginist.com/reference/ggraph.html">ggraph</a></span><span class="op">(</span><span class="va">example_graph</span>, layout <span class="op">=</span> <span class="st">'kk'</span><span class="op">)</span> <span class="op">+</span>
+    <span class="fu">ggraph</span><span class="fu">::</span><span class="fu"><a href="https://ggraph.data-imaginist.com/reference/geom_edge_arc.html">geom_edge_arc</a></span><span class="op">(</span>alpha <span class="op">=</span> <span class="fl">.2</span>, 
+                          width <span class="op">=</span> <span class="fl">.5</span>, 
+                          strength <span class="op">=</span> <span class="fl">.5</span>, 
+                          edge_colour <span class="op">=</span> <span class="st">'steelblue'</span>
+    <span class="op">)</span> <span class="op">+</span>
+    <span class="fu">ggraph</span><span class="fu">::</span><span class="fu"><a href="https://ggraph.data-imaginist.com/reference/geom_node_point.html">geom_node_point</a></span><span class="op">(</span>alpha <span class="op">=</span> <span class="fl">.4</span>, <span class="fu">ggplot2</span><span class="fu">::</span><span class="fu"><a href="https://ggplot2.tidyverse.org/reference/aes.html">aes</a></span><span class="op">(</span>size <span class="op">=</span> <span class="va">popularity</span><span class="op">)</span><span class="op">)</span> <span class="op">+</span>
+    <span class="fu">ggplot2</span><span class="fu">::</span><span class="fu"><a href="https://ggplot2.tidyverse.org/reference/scale_size.html">scale_size</a></span><span class="op">(</span>range <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="fl">1</span>,<span class="fl">10</span><span class="op">)</span><span class="op">)</span>
+<span class="op">}</span></code></pre></div>
 <p><img src="vignette-network-visualization-1.png" title="plot of chunk network-visualization" alt="plot of chunk network-visualization" width="100%"></p>
 <p>Running <code><a href="../reference/create_edgelist.html">create_edgelist()</a></code> also provides a simple way to re-look at how many tweets of each type are present in the dataset, using the <code>count()</code> function from {dplyr}.</p>
 <div class="sourceCode" id="cb19"><pre class="downlit sourceCode r">

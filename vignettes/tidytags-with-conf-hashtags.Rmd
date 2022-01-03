@@ -334,13 +334,18 @@ Finally, it's easy to visualize the data, with a number of packages supporting t
 
 
 ```r
-locations <-
-  sf::st_as_sf(
-    example_geo_coords,
-    coords = c(x = "longitude", y = "latitude"),
-    crs = 4326)
+if (requireNamespace("sf", quietly = TRUE)) {
+  locations <-
+    sf::st_as_sf(
+      example_geo_coords,
+      coords = c(x = "longitude", y = "latitude"),
+      crs = 4326
+    )
+}
 
-example_map <- mapview::mapview(locations)
+if (requireNamespace("mapview", quietly = TRUE)) {
+  example_map <- mapview::mapview(locations)
+}
 ```
 
 At this point, you can view an interactive map in your R environment simply by calling `example_map`.
@@ -407,21 +412,31 @@ First, create graph object using {tidygraph}:
 
 
 ```r
-example_graph <-
-  tidygraph::as_tbl_graph(example_edgelist)
-example_graph <-
-  dplyr::mutate(example_graph,
-                popularity = tidygraph::centrality_degree(mode = 'in'))
+if (requireNamespace("tidygraph", quietly = TRUE) {
+  example_graph <-
+    tidygraph::as_tbl_graph(example_edgelist)
+  example_graph <-
+    dplyr::mutate(example_graph,
+                  popularity = tidygraph::centrality_degree(mode = 'in'))
+}
 ```
 
 Then plot using {ggraph}:
 
 
 ```r
-ggraph::ggraph(example_graph, layout = 'kk') +
-  ggraph::geom_edge_arc(alpha = .2, width = .5, strength = .5, edge_colour = 'steelblue') +
-  ggraph::geom_node_point(alpha = .4, ggplot2::aes(size = popularity)) +
-  ggplot2::scale_size(range = c(1,10))
+if (requireNamespace("ggraph", quietly = TRUE) &
+    requireNamespace("ggplot2", quietly = TRUE)
+) {
+  ggraph::ggraph(example_graph, layout = 'kk') +
+    ggraph::geom_edge_arc(alpha = .2, 
+                          width = .5, 
+                          strength = .5, 
+                          edge_colour = 'steelblue'
+    ) +
+    ggraph::geom_node_point(alpha = .4, ggplot2::aes(size = popularity)) +
+    ggplot2::scale_size(range = c(1,10))
+}
 ```
 
 <img src="vignette-network-visualization-1.png" title="plot of chunk network-visualization" alt="plot of chunk network-visualization" width="100%" />

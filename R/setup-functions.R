@@ -219,6 +219,12 @@ lookup_many_tweets <-
       tmp_df <- pull_tweet_data(id_vector = x[min_id:max_id])
       new_df <- rbind(new_df, tmp_df)
       if (alarm == TRUE) {
+        if (!requireNamespace("beepr", quietly = TRUE)) {
+          stop(
+            "Please install the {beepr} package to use this function",
+            call. = FALSE
+          )
+        }
         beepr::beep(2)
       }
       if (n_batches > 1) {
@@ -329,6 +335,12 @@ lookup_many_users <-
       tmp_df <- rtweet::lookup_users(x_unique[min_id:max_id])
       new_df <- rbind(new_df, tmp_df)
       if (alarm == TRUE) {
+        if (!requireNamespace("beepr", quietly = TRUE)) {
+          stop(
+            "Please install the {beepr} package to use this function",
+            call. = FALSE
+          )
+        }
         beepr::beep(2)
       }
       if (n_batches > 1) {

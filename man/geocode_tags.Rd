@@ -41,11 +41,19 @@ example_url <- "18clYlQeJOc6W5QRuSlJ6_v3snqKJImFhU42bRkM_OX8"
 tmp_df <- pull_tweet_data(read_tags(example_url), n = 10)
 tmp_geo_coords <- geocode_tags(tmp_df)
 tmp_geo_coords
-locations <- sf::st_as_sf(
-  tmp_geo_coords,
-  coords = c(x = "longitude", y = "latitude"),
-  crs = 4326)
-mapview::mapview(locations)
+
+if (requireNamespace("sf", quietly = TRUE)) {
+  locations <- sf::st_as_sf(
+    tmp_geo_coords,
+    coords = c(x = "longitude", y = "latitude"),
+    crs = 4326
+  )
+}
+
+if (requireNamespace("mapview", quietly = TRUE)) {
+  mapview::mapview(locations)
+}
+
 }
 }
 \seealso{

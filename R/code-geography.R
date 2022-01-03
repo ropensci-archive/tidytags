@@ -37,37 +37,51 @@
 #' tmp_df <- pull_tweet_data(read_tags(example_url), n = 10)
 #' tmp_geo_coords <- geocode_tags(tmp_df)
 #' tmp_geo_coords
-#' locations <- sf::st_as_sf(
-#'   tmp_geo_coords,
-#'   coords = c(x = "longitude", y = "latitude"),
-#'   crs = 4326)
-#' mapview::mapview(locations)
+#'
+#' if (requireNamespace("sf", quietly = TRUE)) {
+#'   locations <- sf::st_as_sf(
+#'     tmp_geo_coords,
+#'     coords = c(x = "longitude", y = "latitude"),
+#'     crs = 4326
+#'   )
+#' }
+#'
+#' if (requireNamespace("mapview", quietly = TRUE)) {
+#'   mapview::mapview(locations)
+#' }
+#'
 #' }
 #' @export
 geocode_tags <-
-  function(df) {
+    function(df) {
+      if (!requireNamespace("opencage", quietly = TRUE)) {
+        stop(
+          "Please install the {opencage} package to use this function",
+          call. = FALSE
+        )
+      }
 
-    df_cleaned <-
-      dplyr::filter(
-        df,
-        .data$location != "",
-        !is.na(.data$location)
-      )
+      df_cleaned <-
+        dplyr::filter(
+          df,
+          .data$location != "",
+          !is.na(.data$location)
+        )
 
-    if (nrow(df_cleaned) == 0) {
-      stop("There are no valid geolocations to report.")
+      if (nrow(df_cleaned) == 0) {
+        stop("There are no valid geolocations to report.")
+      }
+
+      df_lat_lon <-
+        suppressMessages(opencage::oc_forward_df(df_cleaned,
+                                                 placename = .data$location,
+                                                 bind_cols = TRUE))
+
+      df_final <-
+        dplyr::rename(df_lat_lon,
+                      latitude = .data$oc_lat,
+                      longitude = .data$oc_lng,
+                      formatted = .data$oc_formatted)
+
+      df_final
     }
-
-    df_lat_lon <-
-      suppressMessages(opencage::oc_forward_df(df_cleaned,
-                                               placename = .data$location,
-                                               bind_cols = TRUE))
-
-    df_final <-
-      dplyr::rename(df_lat_lon,
-                    latitude = .data$oc_lat,
-                    longitude = .data$oc_lng,
-                    formatted = .data$oc_formatted)
-
-    df_final
-  }
