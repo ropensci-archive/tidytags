@@ -130,8 +130,7 @@
 <span class="va">example_df_all</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/read_tags.html">read_tags</a></span><span class="op">(</span><span class="va">tags_url</span><span class="op">)</span>
 <span class="fu"><a href="https://rdrr.io/r/base/dim.html">dim</a></span><span class="op">(</span><span class="va">example_df_all</span><span class="op">)</span>
 <span class="co">#&gt; [1] 2564   18</span></code></pre></div>
-<p><strong>Note that there are alternate ways to access TAGS files.</strong> One way is to simply download a CSV file from Google Sheets. In Google Sheets, navigate to <code>File -&gt; Download -&gt; Comma-separated values (CSV)</code> to do so. Be sure to do so from the TAGS Archive page. Once this file is downloaded, you can read it like it like any other CSV using R.</p>
-<p>This next code chunk does not run because it is just an example (notice that <code>eval = FALSE</code>).</p>
+<p><strong>Note that there are alternative ways to access TAGS files.</strong> One way is to simply download a CSV file from Google Sheets. In Google Sheets, navigate to <code>File -&gt; Download -&gt; Comma-separated values (CSV)</code> to do so. Be sure to do so from the TAGS Archive page. Once this file is downloaded, you can read it like it like any other CSV using R.</p>
 <div class="sourceCode" id="cb3"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="va">example_df_all</span> <span class="op">&lt;-</span> <span class="fu">readr</span><span class="fu">::</span><span class="fu"><a href="https://readr.tidyverse.org/reference/read_delim.html">read_csv</a></span><span class="op">(</span><span class="st">"my-downloaded-tags-file.csv"</span><span class="op">)</span></code></pre></div>
 </div>
