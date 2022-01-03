@@ -1,6 +1,5 @@
 ---
 title: "Getting started with tidytags"
-author: "K. Bret Staudt Willet & Joshua M. Rosenberg"
 output: 
   rmarkdown::html_vignette
 vignette: >
@@ -38,7 +37,7 @@ With these things in mind, let's get started working through some of the common 
 
 ## Key Task #1. Making sure your TAGS tracker can be accessed
 
-A core functionality of {tidytags} is to retrieve tweets data from a Twitter Archiving Google Sheet](https://tags.hawksey.info/) (TAGS). A TAGS tracker continuously collects tweets from Twitter, based on predefined search criteria and collection frequency. 
+A core functionality of {tidytags} is to retrieve tweets data from a [Twitter Archiving Google Sheet](https://tags.hawksey.info/); TAGS). A TAGS tracker continuously collects tweets from Twitter, based on predefined search criteria and collection frequency. 
 
 Here we offer **a brief overview on how to set up TAGS**, but be sure to read through the information on  the [TAGS landing page](https://tags.hawksey.info/get-tags/) for thorough instructions on getting started with TAGS.
 
@@ -88,7 +87,7 @@ Then, try to run `read_tags()` with your own URL or sheet identifier. If that do
 
 ## Key Task #2. Getting and storing a Google API key
 
-To use `read_tags()`, you will need a **Google API key** for Google Sheets. Follow the {gargle} package vignette [How to get your own API credentials](https://gargle.r-lib.org/articles/get-api-credentials.html) for a thorough guide through this process. The general steps are as follows:
+To use `read_tags()`, you will need a **Google API key** for Google Sheets. Follow the {gargle} package vignette "How to get your own API credentials"  (`vignette("get-api-credentials", package = "gargle")`) for a thorough guide through this process. The general steps are as follows:
 
 1. Enable the Google Sheets API in the [Google Developers Console](https://console.developers.google.com/apis/api/sheets.googleapis.com/). To do so, from [this link](https://console.developers.google.com/apis/api/sheets.googleapis.com/), click the `CREATE CREDENTIALS` button (see the image below).
 
@@ -122,7 +121,7 @@ With a TAGS tracker archive imported into R, {tidytags} allows you to gather qui
 
 ### Getting access token
 
-Fortunately, the {rtweet} documentation already contains a very thorough vignette, [Obtaining and using access tokens](https://docs.ropensci.org/rtweet/articles/auth.html), to guide you through the process of obtaining a Twitter API token. We recommend the second suggested method listed in the {rtweet} vignette, [2. Access token/secret method](https://docs.ropensci.org/rtweet/articles/auth.html#access-tokensecret-method). 
+Fortunately, the {rtweet} documentation already contains a very thorough vignette, "Obtaining and using access tokens" (`vignette("auth", package = "rtweet")`), to guide you through the process of obtaining a Twitter API token. We recommend the second suggested method listed in the {rtweet} vignette, **2. Access token/secret method**.
 
 Following these directions, you will run the `rtweet::create_token()` function to save your Twitter token. saves your Twitter API key and token to the `.Renviron` file directly using the `usethis::edit_r_environ(scope='user')` function. The format of the `.Renviron` file should be as follows (inputting your unique credentials after the `=` sign, with no quotation marks):
 
@@ -183,7 +182,7 @@ To make sure the **OpenCage Geocoding API key** works, restart your R session an
 Sys.getenv('OPENCAGE_KEY')
 ```
 
-You're now ready to proceed to using {tidytags}! Head over to the [Using tidytags with a conference hashtag](https://bretsw.github.io/tidytags/articles/tidytags-with-conf-hashtags.html) vignette to learn more about the functionality of the package.
+You're now ready to proceed to using {tidytags}! Now would be a good time to learn about the full functionality of the package by walking through the "Using tidytags with a conference hashtag" guide (`vignette("tidytags-with-conf-hashtags", package = "tidytags")`).
 
 ## Getting help
 

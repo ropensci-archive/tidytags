@@ -1,6 +1,5 @@
 ---
 title: "Using tidytags with a conference hashtag"
-author: "K. Bret Staudt Willet & Joshua M. Rosenberg"
 output:
   rmarkdown::html_vignette
 vignette: >
@@ -42,9 +41,9 @@ Before working through this demonstration of the capabilities of {tidytags}, ple
 
 A core functionality of {tidytags} is collecting tweets continuously with a [Twitter Archiving Google Sheet](https://tags.hawksey.info/) (TAGS).
 
-For help setting up your own TAGS tracker, see the [Getting started with tidytags](https://bretsw.github.io/tidytags/articles/setup.html) vignette, **Key Task #1**.
+For help setting up your own TAGS tracker, see the "Getting started with tidytags" (`vignette("setup", package = "tidytags")`) vignette, **Key Task #1**.
 
-Additionally, in order to input data from a TAGS tracker into R, you will need a Google API key for Google Sheets. To quickly get started on obtaining and using a Google API keu, see the [Getting started with tidytags](https://bretsw.github.io/tidytags/articles/setup.html) vignette, **Key Task #2**. Or, follow the {gargle} package vignette [How to get your own API credentials](https://gargle.r-lib.org/articles/get-api-credentials.html) for a thorough guide through this process.
+Additionally, in order to input data from a TAGS tracker into R, you will need a Google API key for Google Sheets. To quickly get started on obtaining and using a Google API key, see the "Getting started with tidytags" (`vignette("setup", package = "tidytags")`) vignette, **Key Task #2**. Or, follow the {gargle} package vignette "How to get your own API credentials" (`vignette("get-api-credentials", package = "gargle")`) for a thorough guide through this process.
 
 ## read_tags()
 
@@ -52,7 +51,7 @@ To simply view a TAGS archive, you can use `read_tags()`. Here, we've openly sha
 
 {tidytags} allows you to work with tweets collected by a TAGS tracker in R. This is done with the [{googlesheets4} package](https://CRAN.R-project.org/package=googlesheets4). One requirement for using {googlesheets4} is that your TAGS tracker has been "published to the web." To do this, with the TAGS page open in a web browser, go to `File >> Publish to the web`. The `Link` field should be 'Entire document' and the `Embed` field should be 'Web page.' If everything looks right, then click the `Publish` button. Next, click the `Share` button in the top right corner of the Google Sheets window, select `Get shareable link`, and set the permissions to 'Anyone with the link can view.' The input needed for the `tidytags::read_tags()` function is either the entire URL from the top of the web browser when opened to a TAGS tracker, or a Google Sheet identifier (i.e., the alphanumeric string following "https://docs.google.com/spreadsheets/d/" in the TAGS tracker's URL). Be sure to put quotations marks around the URL or sheet identifier when entering it into `read_tags()` function.
 
-Again, if you're having trouble setting up or publishing the TAGS tracker, or obtaining a Google API key, see the [Getting started with tidytags](https://bretsw.github.io/tidytags/articles/setup.html) vignette, **Key Task #1** and **Key Task #2**.
+Again, if you're having trouble setting up or publishing the TAGS tracker, or obtaining a Google API key, see the "Getting started with tidytags" vignette (`vignette("setup", package = "tidytags")`), **Key Task #1** and **Key Task #2**.
 
 ```{r}
 tags_url <- "18clYlQeJOc6W5QRuSlJ6_v3snqKJImFhU42bRkM_OX8"
@@ -70,7 +69,7 @@ example_df_all <- readr::read_csv("my-downloaded-tags-file.csv")
 
 ## pull_tweet_data()
 
-With a TAGS archive imported into R, {tidytags} allows you to gather quite a bit more information related to the collected tweets with the `pull_tweet_data()` function. This function uses the [{rtweet} package](https://rtweet.info/) (via `rtweet::lookup_tweets()`) to query the Twitter API. Using {rtweet} requires Twitter API keys associated with an approved developer account. Fortunately, the {rtweet} vignette, [Obtaining and using access tokens](https://rtweet.info/articles/auth.html), provides a very thorough guide to obtaining Twitter API keys. For further help getting your own Twitter API keys, see the [Getting started with tidytags](https://bretsw.github.io/tidytags/articles/setup.html) vignette we've written, specifically **Pain Point #2**.
+With a TAGS archive imported into R, {tidytags} allows you to gather quite a bit more information related to the collected tweets with the `pull_tweet_data()` function. This function uses the [{rtweet} package](https://rtweet.info/) (via `rtweet::lookup_tweets()`) to query the Twitter API. Using {rtweet} requires Twitter API keys associated with an approved developer account. Fortunately, the {rtweet} vignette, "Obtaining and using access tokens" (`vignette("auth", package = "rtweet")`), provides a very thorough guide to obtaining Twitter API keys. For further help getting your own Twitter API keys, see the "Getting started with tidytags" vignette (`vignette("setup", package = "tidytags")`), specifically **Pain Point #2**.
 
 Note that your dataset will often contain fewer rows after running `pull_tweet_data()`. This is because `rtweet::lookup_tweets()` is searching for tweet IDs that are currently available. Any tweets that have been deleted or made "protected" (i.e., private) since TAGS first collected them are dropped from the dataset. Rather than view this as a limitation, we see this as an asset to help ensure our data better reflects the intentions of the accounts whose tweets we have collected (see [Fiesler & Proferes, 2018](https://journals.sagepub.com/doi/full/10.1177/2056305118763366)).
 
@@ -171,7 +170,7 @@ Another area to explore is where tweeters in the dataset are from (or, at least,
 
 `geocode_tags()` pulls from the OpenCage Geocoding API, which requires a OpenCage Geocoding API Key. You can easily secure a key through OpenCage directly; their Quick Start guide offers helpful guidance ([read more here](https://docs.ropensci.org/opencage/#quickstart)). Once you have the key, the [OpenCage Geocoding API Documentation](https://opencagedata.com/api) offers many more additional helps.
 
-If you're having trouble setting up the OpenCage Geocoding API Key, see the [Getting started with tidytags](https://bretsw.github.io/tidytags/articles/setup.html) vignette we've written, specifically **Key Task #4**.
+If you're having trouble setting up the OpenCage Geocoding API Key, see the "Getting started with tidytags" vignette (`vignette("setup", package = "tidytags")`), specifically **Pain Point #4**.
 
 You can pair `geocode_tags()` with the {mapview} package to allow for quick, interactive viewing of the geocoded data; read more about mapview [here](https://r-spatial.github.io/mapview/). There are many additional R packages that can plot coordinates on a map; which you choose is largely a matter of personal preference.
 
