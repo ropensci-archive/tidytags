@@ -202,7 +202,10 @@ tweet_domains &lt;- get_url_domain(tweet_urls)</code></pre>
 </ol>
 <pre class="{r}"><code>aect_places &lt;- dplyr::distinct(aect_tweets_processed, location, .keep_all = TRUE)
 aect_geo_coords &lt;- geocode_tags(aect_places)
-mapview::mapview(aect_geo_coords)</code></pre>
+
+if (requireNamespace("mapview", quietly = TRUE)) {
+  mapview::mapview(aect_geo_coords)
+}</code></pre>
 <ol>
 <li>Analyze the social network of tweeters using the function <code><a href="reference/create_edgelist.html">create_edgelist()</a></code>.</li>
 </ol>

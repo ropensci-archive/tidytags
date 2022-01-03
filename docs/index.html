@@ -174,8 +174,10 @@ Checks
 <p>{tidytags} also introduces functions developed to facilitate systematic yet flexible analyses of data from Twitter. It also interfaces with several other packages, including the <a href="https://opencagedata.com/">opencage package</a>, to geocode the locations of Twitter users based on their biographies.</p>
 <p>Two vignettes illustrate the setup and use of the package:</p>
 <ul>
-<li><a href="https://bretsw.github.io/tidytags/articles/setup.html">Getting started with tidytags</a></li>
-<li><a href="https://bretsw.github.io/tidytags/articles/tidytags-with-conf-hashtags.html">Using tidytags with a conference hashtag</a></li>
+<li>
+<a href="https://bretsw.github.io/tidytags/articles/setup.html">Getting started with tidytags</a> (<code><a href="articles/setup.html">vignette("setup", package = "tidytags")</a></code>)</li>
+<li>
+<a href="https://bretsw.github.io/tidytags/articles/tidytags-with-conf-hashtags.html">Using tidytags with a conference hashtag</a> (<code><a href="articles/tidytags-with-conf-hashtags.html">vignette("tidytags-with-conf-hashtags", package = "tidytags")</a></code>)</li>
 </ul>
 <hr>
 </div>
@@ -185,7 +187,7 @@ Checks
 <p>You can install the development version of {tidytags} from GitHub:</p>
 <div class="sourceCode" id="cb1"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="fu"><a href="https://rdrr.io/r/utils/install.packages.html">install.packages</a></span><span class="op">(</span><span class="st">"devtools"</span><span class="op">)</span>
-<span class="fu">devtools</span><span class="fu">::</span><span class="fu"><a href="https://devtools.r-lib.org/reference/remote-reexports.html">install_github</a></span><span class="op">(</span><span class="st">"bretsw/tidytags"</span><span class="op">)</span></code></pre></div>
+<span class="fu">devtools</span><span class="fu">::</span><span class="fu"><a href="https://devtools.r-lib.org/reference/remote-reexports.html">install_github</a></span><span class="op">(</span><span class="st">"bretsw/tidytags"</span>, build_vignettes <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span></code></pre></div>
 <p>Soon, you will be able to install the released version of {tidytags} from <a href="https://CRAN.R-project.org">CRAN</a> with:</p>
 <div class="sourceCode" id="cb2"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="fu"><a href="https://rdrr.io/r/utils/install.packages.html">install.packages</a></span><span class="op">(</span><span class="st">"tidytags"</span><span class="op">)</span></code></pre></div>
@@ -197,7 +199,7 @@ Checks
 <div id="setup" class="section level2">
 <h2 class="hasAnchor">
 <a href="#setup" class="anchor"></a>Setup</h2>
-<p>For help with initial {tidytags} setup, see the <a href="https://bretsw.github.io/tidytags/articles/setup.html">Getting started with tidytags</a> vignette. Specifically, this guide offers help for four key tasks:</p>
+<p>For help with initial {tidytags} setup, see the <a href="https://bretsw.github.io/tidytags/articles/setup.html">Getting started with tidytags</a> vignette (<code><a href="articles/setup.html">vignette("setup", package = "tidytags")</a></code>). Specifically, this guide offers help for four key tasks:</p>
 <ol>
 <li>Making sure your TAGS tracker can be accessed</li>
 <li>Getting and storing a Google API key</li>
@@ -209,7 +211,7 @@ Checks
 <div id="usage" class="section level2">
 <h2 class="hasAnchor">
 <a href="#usage" class="anchor"></a>Usage</h2>
-<p>To test the {tidytags} package, you can use an openly shared TAGS tracker that has been collecting tweets associated with the AECT 2019 since September 30, 2019. This is the same TAGS tracker used in the <a href="https://bretsw.github.io/tidytags/articles/tidytags-with-conf-hashtags.html">Using tidytags with a conference hashtag vignette</a>.</p>
+<p>To test the {tidytags} package, you can use an openly shared TAGS tracker that has been collecting tweets associated with the AECT 2019 since September 30, 2019. This is the same TAGS tracker used in the <a href="https://bretsw.github.io/tidytags/articles/tidytags-with-conf-hashtags.html">Using tidytags with a conference hashtag vignette</a> (<code><a href="articles/tidytags-with-conf-hashtags.html">vignette("tidytags-with-conf-hashtags", package = "tidytags")</a></code>).</p>
 <hr>
 </div>
 <div id="core-functions" class="section level2">
@@ -218,8 +220,8 @@ Checks
 <div id="read_tags" class="section level3">
 <h3 class="hasAnchor">
 <a href="#read_tags" class="anchor"></a>read_tags()</h3>
-<p>At its most basic level, {tidytags} allows you to import data from a <a href="https://tags.hawksey.info/">Twitter Archiving Google Sheet</a> (TAGS) into R. This is done with the <a href="https://CRAN.R-project.org/package=googlesheets4">{googlesheets4} package</a>. One requirement for using the {googlesheets4} package is that your TAGS tracker has been “published to the web.” See the <a href="https://bretsw.github.io/tidytags/articles/setup.html">Getting started with tidytags</a> vignette, Pain Point #1, if you need help with this.</p>
-<p>Once a TAGS tracker has been published to the web, you can import the TAGS archive into R using <code><a href="reference/read_tags.html">read_tags()</a></code>. See the <a href="https://bretsw.github.io/tidytags/articles/setup.html">Getting started with tidytags</a> vignette, Pain Point #2, to set up API access to Google Sheets like the TAGS tracker.</p>
+<p>At its most basic level, {tidytags} allows you to import data from a <a href="https://tags.hawksey.info/">Twitter Archiving Google Sheet</a> (TAGS) into R. This is done with the <a href="https://CRAN.R-project.org/package=googlesheets4">{googlesheets4} package</a>. One requirement for using the {googlesheets4} package is that your TAGS tracker has been “published to the web.” See the <a href="https://bretsw.github.io/tidytags/articles/setup.html">Getting started with tidytags</a> vignette (<code><a href="articles/setup.html">vignette("setup", package = "tidytags")</a></code>), <strong>Pain Point #1</strong>, if you need help with this.</p>
+<p>Once a TAGS tracker has been published to the web, you can import the TAGS archive into R using <code><a href="reference/read_tags.html">read_tags()</a></code>. See the <a href="https://bretsw.github.io/tidytags/articles/setup.html">Getting started with tidytags</a> vignette (<code><a href="articles/setup.html">vignette("setup", package = "tidytags")</a></code>), <strong>Pain Point #2</strong>, to set up API access to Google Sheets like the TAGS tracker.</p>
 <div class="sourceCode" id="cb4"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="va">example_tags</span> <span class="op">&lt;-</span> <span class="st">"18clYlQeJOc6W5QRuSlJ6_v3snqKJImFhU42bRkM_OX8"</span>
 <span class="va">tags_data</span> <span class="op">&lt;-</span> <span class="fu"><a href="reference/read_tags.html">read_tags</a></span><span class="op">(</span><span class="va">example_tags</span><span class="op">)</span>
@@ -242,7 +244,7 @@ Checks
 <div id="pull_tweet_data" class="section level3">
 <h3 class="hasAnchor">
 <a href="#pull_tweet_data" class="anchor"></a>pull_tweet_data()</h3>
-<p>With a TAGS archive imported into R, {tidytags} allows you to gather quite a bit more information related to the collected tweets with the <code><a href="reference/pull_tweet_data.html">pull_tweet_data()</a></code> function. This function uses the <a href="https://docs.ropensci.org/rtweet/index.html">{rtweet} package</a> (via <code><a href="https://rdrr.io/pkg/rtweet/man/lookup_statuses.html">rtweet::lookup_tweets()</a></code>) to query the Twitter API. This process requires Twitter API keys associated with an approved Twitter developer account. See the <a href="https://bretsw.github.io/tidytags/articles/setup.html">Getting started with tidytags</a> vignette, Pain Point #3, if you need help with this.</p>
+<p>With a TAGS archive imported into R, {tidytags} allows you to gather quite a bit more information related to the collected tweets with the <code><a href="reference/pull_tweet_data.html">pull_tweet_data()</a></code> function. This function uses the <a href="https://docs.ropensci.org/rtweet/index.html">{rtweet} package</a> (via <code><a href="https://rdrr.io/pkg/rtweet/man/lookup_statuses.html">rtweet::lookup_tweets()</a></code>) to query the Twitter API. This process requires Twitter API keys associated with an approved Twitter developer account. See the <a href="https://bretsw.github.io/tidytags/articles/setup.html">Getting started with tidytags</a> vignette (<code><a href="articles/setup.html">vignette("setup", package = "tidytags")</a></code>), <strong>Pain Point #3</strong>, if you need help with this.</p>
 <div class="sourceCode" id="cb5"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="va">expanded_metadata</span> <span class="op">&lt;-</span> <span class="fu"><a href="reference/pull_tweet_data.html">pull_tweet_data</a></span><span class="op">(</span><span class="va">tags_data</span>, n <span class="op">=</span> <span class="fl">10</span><span class="op">)</span>
 <span class="va">expanded_metadata</span>
@@ -277,7 +279,7 @@ Checks
 <div id="learning-more-about-tidytags" class="section level2">
 <h2 class="hasAnchor">
 <a href="#learning-more-about-tidytags" class="anchor"></a>Learning More About {tidytags}</h2>
-<p>For a walkthrough of numerous additional {tidytags} functions, see the <a href="https://bretsw.github.io/tidytags/articles/tidytags-with-conf-hashtags.html">Using tidytags with a conference hashtag</a> vignette.</p>
+<p>For a walkthrough of numerous additional {tidytags} functions, see the <a href="https://bretsw.github.io/tidytags/articles/tidytags-with-conf-hashtags.html">Using tidytags with a conference hashtag</a> vignette (<code><a href="articles/tidytags-with-conf-hashtags.html">vignette("tidytags-with-conf-hashtags", package = "tidytags")</a></code>).</p>
 <hr>
 </div>
 <div id="getting-help" class="section level2">

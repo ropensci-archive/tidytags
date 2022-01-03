@@ -23,6 +23,20 @@
 #' @export
 get_url_domain <-
   function(x, wait = 10) {
+    if (!requireNamespace("longurl", quietly = TRUE)) {
+      stop(
+        "Please install the {longurl} package to use this function",
+        call. = FALSE
+      )
+    }
+
+    if (!requireNamespace("urltools", quietly = TRUE)) {
+      stop(
+        "Please install the {urltools} package to use this function",
+        call. = FALSE
+      )
+    }
+
     new_urls <- suppressWarnings(longurl::expand_urls(x, seconds = wait))
     domains <- urltools::domain(new_urls$expanded_url)
     domains <- gsub("www[0-9]?.", "", domains)
