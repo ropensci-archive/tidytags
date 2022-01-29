@@ -60,3 +60,4 @@ Encoding: UTF-8
 BugReports: https://github.com/bretsw/tidytags/issues
 VignetteBuilder: knitr
 RoxygenNote: 7.1.2
+Roxygen: list(markdown = TRUE)

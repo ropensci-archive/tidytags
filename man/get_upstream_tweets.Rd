@@ -12,21 +12,21 @@ returned by \code{pull_tweet_data()}}
 }
 \value{
 A new, expanded dataframe which includes any retrievable upstream
-  replies
+replies
 }
 \description{
 Because the Twitter API offers a \code{reply_to_status_id} column, it is
-  possible to iteratively reconstruct reply threads in an *upstream*
-  direction, that is, retrieving statuses composed earlier than replies in
-  the dataset. The \code{get_upstream_tweets()} function collects upstream
-  replies not previously found in the dataset. Keep in mind that there is no
-  way to predict how far upstream you can trace back a reply thread, so
-  running \code{get_upstream_tweets()} could take a while and potentially hit
-  the Twitter API rate limit of 90,000 statuses in a 15-minute period.
+possible to iteratively reconstruct reply threads in an \emph{upstream}
+direction, that is, retrieving statuses composed earlier than replies in
+the dataset. The \code{get_upstream_tweets()} function collects upstream
+replies not previously found in the dataset. Keep in mind that there is no
+way to predict how far upstream you can trace back a reply thread, so
+running \code{get_upstream_tweets()} could take a while and potentially hit
+the Twitter API rate limit of 90,000 statuses in a 15-minute period.
 }
 \details{
 This function requires authentication; please see
-  \code{vignette("setup", package = "tidytags")}
+\code{vignette("setup", package = "tidytags")}
 }
 \examples{
 

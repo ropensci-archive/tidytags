@@ -17,19 +17,19 @@ URL.)}
 A tibble of the TAGS archive of Twitter statuses
 }
 \description{
-Keep in mind that \code{read_tags()} uses the **googlesheets4** package,
-  and one requirement is that your TAGS tracker has been "published to the
-  web." To do this, with the TAGS page open in a web browser, navigate to
-  \code{File >> Publish to the web}. The \code{Link} field should be
-  'Entire document' and the \code{Embed} field should be 'Web page.' If
-  everything looks right, then click the \code{Publish} button. Next, click
-  the \code{Share} button in the top right corner of the Google Sheets
-  browser window, select \code{Get shareable link}, and set the permissions
-  to 'Anyone with the link can view.'
+Keep in mind that \code{read_tags()} uses the \strong{googlesheets4} package,
+and one requirement is that your TAGS tracker has been "published to the
+web." To do this, with the TAGS page open in a web browser, navigate to
+\verb{File >> Publish to the web}. The \code{Link} field should be
+'Entire document' and the \code{Embed} field should be 'Web page.' If
+everything looks right, then click the \code{Publish} button. Next, click
+the \code{Share} button in the top right corner of the Google Sheets
+browser window, select \verb{Get shareable link}, and set the permissions
+to 'Anyone with the link can view.'
 }
 \details{
 This function requires authentication; please see
-  \code{vignette("setup", package = "tidytags")}
+\code{vignette("setup", package = "tidytags")}
 }
 \examples{
 
@@ -41,8 +41,7 @@ read_tags(example_tags)
 }
 \seealso{
 Read more about \code{library(googlesheets4)}
-  \href{https://github.com/tidyverse/googlesheets4}{here}. If you need help
-  obtaining and setting up a Google API key, read the
-  \href{https://bretsw.github.io/tidytags/articles/setup.html}{Getting
-  started with tidytags} vignette.
+\href{https://github.com/tidyverse/googlesheets4}{here}. If you need help
+obtaining and setting up a Google API key, read the
+\href{https://bretsw.github.io/tidytags/articles/setup.html}{Getting started with tidytags} vignette.
 }

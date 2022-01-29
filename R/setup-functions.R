@@ -1,13 +1,13 @@
 #' Retrieve a TAGS archive of Twitter statuses and bring into R
 #'
-#' Keep in mind that \code{read_tags()} uses the **googlesheets4** package,
+#' Keep in mind that `read_tags()` uses the **googlesheets4** package,
 #'   and one requirement is that your TAGS tracker has been "published to the
 #'   web." To do this, with the TAGS page open in a web browser, navigate to
-#'   \code{File >> Publish to the web}. The \code{Link} field should be
-#'   'Entire document' and the \code{Embed} field should be 'Web page.' If
-#'   everything looks right, then click the \code{Publish} button. Next, click
-#'   the \code{Share} button in the top right corner of the Google Sheets
-#'   browser window, select \code{Get shareable link}, and set the permissions
+#'   `File >> Publish to the web`. The `Link` field should be
+#'   'Entire document' and the `Embed` field should be 'Web page.' If
+#'   everything looks right, then click the `Publish` button. Next, click
+#'   the `Share` button in the top right corner of the Google Sheets
+#'   browser window, select `Get shareable link`, and set the permissions
 #'   to 'Anyone with the link can view.'
 #' @param tags_id A Google Sheet identifier (i.e., the alphanumeric string
 #'    following "https://docs.google.com/spreadsheets/d/" in the TAGS tracker's
@@ -15,12 +15,12 @@
 #' @param google_key A Google API key for accessing Google Sheets.
 #' @return A tibble of the TAGS archive of Twitter statuses
 #' @details This function requires authentication; please see
-#'   \code{vignette("setup", package = "tidytags")}
-#' @seealso Read more about \code{library(googlesheets4)}
-#'   \href{https://github.com/tidyverse/googlesheets4}{here}. If you need help
+#'   `vignette("setup", package = "tidytags")`
+#' @seealso Read more about `library(googlesheets4)`
+#'   [here](https://github.com/tidyverse/googlesheets4). If you need help
 #'   obtaining and setting up a Google API key, read the
-#'   \href{https://bretsw.github.io/tidytags/articles/setup.html}{Getting
-#'   started with tidytags} vignette.
+#'   [Getting
+#'   started with tidytags](https://bretsw.github.io/tidytags/articles/setup.html) vignette.
 #' @examples
 #'
 #' \dontrun{
@@ -43,13 +43,13 @@ read_tags <-
 #'   typically round very large numbers into an exponential form. Thus,
 #'   because status ID numbers are very large, they often get corrupted in this
 #'   rounding process. The most reliable way to get full status ID numbers is by
-#'   using this function, \code{get_char_tweet_ids()}, to pull the ID numbers
+#'   using this function, `get_char_tweet_ids()`, to pull the ID numbers
 #'   from the URL linking to specific statuses.
 #' @param x A dataframe containing the column name 'status_url'
 #'   (i.e., the hyperlink to specific statuses), such as that returned by
-#'   \code{read_tags()}, or a vector of status URLs, such as as those contained
+#'   `read_tags()`, or a vector of status URLs, such as as those contained
 #'   in the 'status_url' column of a dataframe returned by
-#'   \code{tidytags::read_tags()}
+#'   `tidytags::read_tags()`
 #' @return A vector of Twitter status IDs as character strings
 #'
 #' @examples
@@ -77,33 +77,33 @@ get_char_tweet_ids <-
 
 #' Retrieve the fullest extent of status metadata available from the Twitter API
 #'
-#' With a TAGS archive imported into R, \code{pull_tweet_data()} uses the
+#' With a TAGS archive imported into R, `pull_tweet_data()` uses the
 #'   **rtweet** package to query the Twitter API. Using rtweet requires Twitter
 #'   API keys associated with an approved developer account. Fortunately, the
 #'   rtweet vignette,
-#'   \href{https://docs.ropensci.org/rtweet/articles/auth.html}{Authentication},
+#'   [Authentication](https://docs.ropensci.org/rtweet/articles/auth.html),
 #'   provides a thorough guide to obtaining Twitter API keys. Following these
-#'   directions, you will run the \code{rtweet::create_token()} function, which
-#'   saves your Twitter API keys to the \code{.Renviron} file. You can also edit
-#'   this file directly using the \code{usethis::edit_r_environ(scope='user')}
+#'   directions, you will run the `rtweet::create_token()` function, which
+#'   saves your Twitter API keys to the `.Renviron` file. You can also edit
+#'   this file directly using the `usethis::edit_r_environ(scope='user')`
 #'   function.
 #' @param df A dataframe of containing the column name 'status_url'
 #'   (i.e., the hyperlink to specific statuses), such as that returned by
-#'   \code{read_tags()}
+#'   `read_tags()`
 #' @param url_vector A vector of status URLs, such as as those contained in
 #'   the 'status_url' column of a dataframe returned by
-#'   \code{tidytags::read_tags()}
+#'   `tidytags::read_tags()`
 #' @param id_vector A vector of statuses (i.e., ID numbers, such as
 #'   those contained in the 'id_str' column of a dataframe returned by
-#'   \code{tidytags::read_tags()}
+#'   `tidytags::read_tags()`
 #' @param n The number of statuses to look up, by default the total number
 #'   of tweet ID numbers available, but capped at 90,000 due to Twitter API
 #'   limitations.
 #' @return A dataframe of statuses and full metadata from the Twitter API
 #' @details This function requires authentication; please see
-#'   \code{vignette("setup", package = "tidytags")}
-#' @seealso Read more about \code{library(rtweet)}
-#'   \href{https://rtweet.info/}{here}.
+#'   `vignette("setup", package = "tidytags")`
+#' @seealso Read more about `library(rtweet)`
+#'   [here](https://rtweet.info/).
 #' @examples
 #'
 #' \dontrun{
@@ -112,14 +112,14 @@ get_char_tweet_ids <-
 #' example_tags_tracker <- "18clYlQeJOc6W5QRuSlJ6_v3snqKJImFhU42bRkM_OX8"
 #' tags_content <- read_tags(example_tags_tracker)
 #'
-#' ## Use any of three input parameters (TAGS dataframe, \code{status_url}
-#' ##   column, or \code{id_str} column)
+#' ## Use any of three input parameters (TAGS dataframe, `status_url`
+#' ##   column, or `id_str` column)
 #' pull_tweet_data(tags_content)
 #' pull_tweet_data(url_vector = tags_content$status_url)
 #' pull_tweet_data(id_vector = tags_content$id_str)
 #'
-#' ## Specifying the parameter \code{n} clarifies how many statuses to look up,
-#' ##   but the returned values may be less than \code{n} because some statuses
+#' ## Specifying the parameter `n` clarifies how many statuses to look up,
+#' ##   but the returned values may be less than `n` because some statuses
 #' ##   may have been deleted or made protected since the TAGS tracker
 #' ##   originally recorded them.
 #' pull_tweet_data(tags_content, n = 10)
@@ -188,7 +188,7 @@ pull_tweet_data <-
 
 #' Retrieve the fullest extent of metadata for more than 90,000 statuses
 #'
-#' This function calls \code{pull_tweet_data()}, but has a built-in delay
+#' This function calls `pull_tweet_data()`, but has a built-in delay
 #'   of 15 minutes to allow the Twitter API to reset after looking up 90,000
 #'   statuses
 #' @param x A list or vector of status ID numbers
@@ -196,9 +196,9 @@ pull_tweet_data <-
 #'   completed
 #' @return A dataframe of statuses and full metadata from the Twitter API
 #' @details This function requires authentication; please see
-#'   \code{vignette("setup", package = "tidytags")}
-#' @seealso Read more about \code{library(rtweet)}
-#'   \href{https://rtweet.info/}{here}.
+#'   `vignette("setup", package = "tidytags")`
+#' @seealso Read more about `library(rtweet)`
+#'   [here](https://rtweet.info/).
 #' @examples
 #' \dontrun{
 #'
@@ -253,7 +253,7 @@ length_with_na <-
 #' Calculate additional information using status metadata
 #'
 #' @param df A dataframe of statuses and full metadata from the Twitter API as
-#'   returned by \code{pull_tweet_data()}
+#'   returned by `pull_tweet_data()`
 #' @return A dataframe with several additional columns: word_count,
 #'   character_count, mentions_count, hashtags_count_api, hashtags_count_regex,
 #'   has_hashtags, urls_count_api, urls_count_regex, is_reply, is_self_reply
@@ -301,7 +301,7 @@ process_tweets <-
 
 #' Retrieve the fullest extent of tweet metadata for more than 90,000 users
 #'
-#' This function calls \code{rtweet::lookup_users()}, but has a built-in delay
+#' This function calls `rtweet::lookup_users()`, but has a built-in delay
 #'   of 15 minutes to allow the Twitter API to reset after looking up 90,000
 #'   users.
 #' @param x A list or vector of user ID numbers
@@ -309,9 +309,9 @@ process_tweets <-
 #'   completed
 #' @return A dataframe of tweets and full user metadata from the Twitter API
 #' @details This function requires authentication; please see
-#'   \code{vignette("setup", package = "tidytags")}
-#' @seealso Read more about \code{library(rtweet)}
-#'   \href{https://rtweet.info/}{here}.
+#'   `vignette("setup", package = "tidytags")`
+#' @seealso Read more about `library(rtweet)`
+#'   [here](https://rtweet.info/).
 #' @examples
 #' \dontrun{
 #'

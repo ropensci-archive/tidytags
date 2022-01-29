@@ -41,15 +41,15 @@
 
 <meta property="og:title" content="Retrieve the fullest extent of status metadata available from the Twitter API — pull_tweet_data" />
 <meta property="og:description" content="With a TAGS archive imported into R, pull_tweet_data() uses the
-  **rtweet** package to query the Twitter API. Using rtweet requires Twitter
-  API keys associated with an approved developer account. Fortunately, the
-  rtweet vignette,
-  Authentication,
-  provides a thorough guide to obtaining Twitter API keys. Following these
-  directions, you will run the rtweet::create_token() function, which
-  saves your Twitter API keys to the .Renviron file. You can also edit
-  this file directly using the usethis::edit_r_environ(scope='user')
-  function." />
+rtweet package to query the Twitter API. Using rtweet requires Twitter
+API keys associated with an approved developer account. Fortunately, the
+rtweet vignette,
+Authentication,
+provides a thorough guide to obtaining Twitter API keys. Following these
+directions, you will run the rtweet::create_token() function, which
+saves your Twitter API keys to the .Renviron file. You can also edit
+this file directly using the usethis::edit_r_environ(scope='user')
+function." />
 
 
 
@@ -147,15 +147,15 @@
 
     <div class="ref-description">
     <p>With a TAGS archive imported into R, <code>pull_tweet_data()</code> uses the
-  **rtweet** package to query the Twitter API. Using rtweet requires Twitter
-  API keys associated with an approved developer account. Fortunately, the
-  rtweet vignette,
-  <a href='https://docs.ropensci.org/rtweet/articles/auth.html'>Authentication</a>,
-  provides a thorough guide to obtaining Twitter API keys. Following these
-  directions, you will run the <code><a href='https://rdrr.io/pkg/rtweet/man/create_token.html'>rtweet::create_token()</a></code> function, which
-  saves your Twitter API keys to the <code>.Renviron</code> file. You can also edit
-  this file directly using the <code>usethis::edit_r_environ(scope='user')</code>
-  function.</p>
+<strong>rtweet</strong> package to query the Twitter API. Using rtweet requires Twitter
+API keys associated with an approved developer account. Fortunately, the
+rtweet vignette,
+<a href='https://docs.ropensci.org/rtweet/articles/auth.html'>Authentication</a>,
+provides a thorough guide to obtaining Twitter API keys. Following these
+directions, you will run the <code><a href='https://rdrr.io/pkg/rtweet/man/create_token.html'>rtweet::create_token()</a></code> function, which
+saves your Twitter API keys to the <code>.Renviron</code> file. You can also edit
+this file directly using the <code>usethis::edit_r_environ(scope='user')</code>
+function.</p>
     </div>
 
     <pre class="usage"><span class='fu'>pull_tweet_data</span><span class='op'>(</span><span class='va'>df</span>, url_vector <span class='op'>=</span> <span class='cn'>NULL</span>, id_vector <span class='op'>=</span> <span class='cn'>NULL</span>, n <span class='op'>=</span> <span class='cn'>NULL</span><span class='op'>)</span></pre>
@@ -195,11 +195,11 @@ limitations.</p></td>
     <h2 class="hasAnchor" id="details"><a class="anchor" href="#details"></a>Details</h2>
 
     <p>This function requires authentication; please see
-  <code><a href='../articles/setup.html'>vignette("setup", package = "tidytags")</a></code></p>
+<code><a href='../articles/setup.html'>vignette("setup", package = "tidytags")</a></code></p>
     <h2 class="hasAnchor" id="see-also"><a class="anchor" href="#see-also"></a>See also</h2>
 
     <div class='dont-index'><p>Read more about <code><a href='https://CRAN.R-project.org/package=rtweet'>library(rtweet)</a></code>
-  <a href='https://rtweet.info/'>here</a>.</p></div>
+<a href='https://rtweet.info/'>here</a>.</p></div>
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
     <pre class="examples"><span class='r-in'></span>
@@ -209,14 +209,14 @@ limitations.</p></td>
 <span class='r-in'><span class='va'>example_tags_tracker</span> <span class='op'>&lt;-</span> <span class='st'>"18clYlQeJOc6W5QRuSlJ6_v3snqKJImFhU42bRkM_OX8"</span></span>
 <span class='r-in'><span class='va'>tags_content</span> <span class='op'>&lt;-</span> <span class='fu'><a href='read_tags.html'>read_tags</a></span><span class='op'>(</span><span class='va'>example_tags_tracker</span><span class='op'>)</span></span>
 <span class='r-in'></span>
-<span class='r-in'><span class='co'>## Use any of three input parameters (TAGS dataframe, \code{status_url}</span></span>
-<span class='r-in'><span class='co'>##   column, or \code{id_str} column)</span></span>
+<span class='r-in'><span class='co'>## Use any of three input parameters (TAGS dataframe, `status_url`</span></span>
+<span class='r-in'><span class='co'>##   column, or `id_str` column)</span></span>
 <span class='r-in'><span class='fu'>pull_tweet_data</span><span class='op'>(</span><span class='va'>tags_content</span><span class='op'>)</span></span>
 <span class='r-in'><span class='fu'>pull_tweet_data</span><span class='op'>(</span>url_vector <span class='op'>=</span> <span class='va'>tags_content</span><span class='op'>$</span><span class='va'>status_url</span><span class='op'>)</span></span>
 <span class='r-in'><span class='fu'>pull_tweet_data</span><span class='op'>(</span>id_vector <span class='op'>=</span> <span class='va'>tags_content</span><span class='op'>$</span><span class='va'>id_str</span><span class='op'>)</span></span>
 <span class='r-in'></span>
-<span class='r-in'><span class='co'>## Specifying the parameter \code{n} clarifies how many statuses to look up,</span></span>
-<span class='r-in'><span class='co'>##   but the returned values may be less than \code{n} because some statuses</span></span>
+<span class='r-in'><span class='co'>## Specifying the parameter `n` clarifies how many statuses to look up,</span></span>
+<span class='r-in'><span class='co'>##   but the returned values may be less than `n` because some statuses</span></span>
 <span class='r-in'><span class='co'>##   may have been deleted or made protected since the TAGS tracker</span></span>
 <span class='r-in'><span class='co'>##   originally recorded them.</span></span>
 <span class='r-in'><span class='fu'>pull_tweet_data</span><span class='op'>(</span><span class='va'>tags_content</span>, n <span class='op'>=</span> <span class='fl'>10</span><span class='op'>)</span></span>

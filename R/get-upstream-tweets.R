@@ -1,12 +1,12 @@
 #' Flag any upstream statuses not already in a dataset
 #'
-#' Because the Twitter API offers a \code{reply_to_status_id} column, it is
+#' Because the Twitter API offers a `reply_to_status_id` column, it is
 #'   possible to iteratively reconstruct reply threads in an *upstream*
 #'   direction, that is, retrieving statuses composed earlier than replies in
-#'   the dataset. The \code{flag_unknown_upstream()} function identifies which
+#'   the dataset. The `flag_unknown_upstream()` function identifies which
 #'   statuses are replies to statuses not found in the current dataset.
 #' @param df A dataframe of statuses and full metadata from the Twitter API as
-#'   returned by \code{pull_tweet_data()}
+#'   returned by `pull_tweet_data()`
 #' @return A new, filtered dataframe which only includes any reply statuses that
 #'   are not responses to statuses already in the dataset (i.e., upstream
 #'   replies)
@@ -24,20 +24,20 @@ flag_unknown_upstream <-
 
 #' Collect upstream statuses and add to dataset
 #'
-#' Because the Twitter API offers a \code{reply_to_status_id} column, it is
+#' Because the Twitter API offers a `reply_to_status_id` column, it is
 #'   possible to iteratively reconstruct reply threads in an *upstream*
 #'   direction, that is, retrieving statuses composed earlier than replies in
-#'   the dataset. The \code{get_upstream_tweets()} function collects upstream
+#'   the dataset. The `get_upstream_tweets()` function collects upstream
 #'   replies not previously found in the dataset. Keep in mind that there is no
 #'   way to predict how far upstream you can trace back a reply thread, so
-#'   running \code{get_upstream_tweets()} could take a while and potentially hit
+#'   running `get_upstream_tweets()` could take a while and potentially hit
 #'   the Twitter API rate limit of 90,000 statuses in a 15-minute period.
 #' @param df A dataframe of statuses and full metadata from the Twitter API as
-#'   returned by \code{pull_tweet_data()}
+#'   returned by `pull_tweet_data()`
 #' @return A new, expanded dataframe which includes any retrievable upstream
 #'   replies
 #' @details This function requires authentication; please see
-#'   \code{vignette("setup", package = "tidytags")}
+#'   `vignette("setup", package = "tidytags")`
 #' @examples
 #'
 #' \dontrun{
