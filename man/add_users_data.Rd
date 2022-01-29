@@ -12,18 +12,18 @@ by the function \code{create_edgelist()}.}
 }
 \value{
 A dataframe in the form of an edgelist (i.e., with senders and
-  receivers) as well as numerous, appropriately named columns of details
-  about the senders and receivers.
+receivers) as well as numerous, appropriately named columns of details
+about the senders and receivers.
 }
 \description{
 Updates an edgelist created with \code{create_edgelist()} by appending user
-  data retrieved with \code{lookup_many_users()}. The resulting dataframe
-  adds many additional columns and appends "_sender" or "_receiver" to the
-  column names.
+data retrieved with \code{lookup_many_users()}. The resulting dataframe
+adds many additional columns and appends "_sender" or "_receiver" to the
+column names.
 }
 \details{
 This function requires authentication; please see
-  \code{vignette("setup", package = "tidytags")}
+\code{vignette("setup", package = "tidytags")}
 }
 \examples{
 
@@ -36,5 +36,5 @@ add_users_data(create_edgelist(tmp_df))
 }
 \seealso{
 Review documentation for \code{rtweet::lookup_users()} for a full
-  list of metadata retrieved (i.e., column names) by this function.
+list of metadata retrieved (i.e., column names) by this function.
 }

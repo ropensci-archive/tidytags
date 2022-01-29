@@ -21,7 +21,7 @@ A list or vector of Web domain names
 }
 \description{
 \code{get_url_domain()} retrieves the Web domain name from a URL, including
-  URLs shortened with services such as bit.ly and t.co
+URLs shortened with services such as bit.ly and t.co
 }
 \examples{
 
@@ -34,5 +34,5 @@ get_url_domain("http://bit.ly/2SfWO3K")
 }
 \seealso{
 Read the documentation for \code{longurl::expand_urls()} and
-  \code{urltools::domain()}.
+\code{urltools::domain()}.
 }

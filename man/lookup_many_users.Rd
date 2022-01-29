@@ -17,12 +17,12 @@ A dataframe of tweets and full user metadata from the Twitter API
 }
 \description{
 This function calls \code{rtweet::lookup_users()}, but has a built-in delay
-  of 15 minutes to allow the Twitter API to reset after looking up 90,000
-  users.
+of 15 minutes to allow the Twitter API to reset after looking up 90,000
+users.
 }
 \details{
 This function requires authentication; please see
-  \code{vignette("setup", package = "tidytags")}
+\code{vignette("setup", package = "tidytags")}
 }
 \examples{
 \dontrun{
@@ -38,5 +38,5 @@ lookup_many_tweets("12030342", alarm = TRUE)
 }
 \seealso{
 Read more about \code{library(rtweet)}
-  \href{https://rtweet.info/}{here}.
+\href{https://rtweet.info/}{here}.
 }

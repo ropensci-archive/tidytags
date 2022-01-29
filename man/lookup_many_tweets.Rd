@@ -17,12 +17,12 @@ A dataframe of statuses and full metadata from the Twitter API
 }
 \description{
 This function calls \code{pull_tweet_data()}, but has a built-in delay
-  of 15 minutes to allow the Twitter API to reset after looking up 90,000
-  statuses
+of 15 minutes to allow the Twitter API to reset after looking up 90,000
+statuses
 }
 \details{
 This function requires authentication; please see
-  \code{vignette("setup", package = "tidytags")}
+\code{vignette("setup", package = "tidytags")}
 }
 \examples{
 \dontrun{
@@ -36,5 +36,5 @@ lookup_many_tweets("1176592704647716864", alarm = TRUE)
 }
 \seealso{
 Read more about \code{library(rtweet)}
-  \href{https://rtweet.info/}{here}.
+\href{https://rtweet.info/}{here}.
 }

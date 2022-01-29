@@ -41,19 +41,19 @@
 
 <meta property="og:title" content="Retrieve geographic coordinates — geocode_tags" />
 <meta property="og:description" content="geocode_tags() retrieves geographic coordinates (i.e., latitude and
-  longitude) based on the locations listed in Twitter user profiles.
-  geocode_tags() pulls from the OpenCage Geocoding API, which requires
-  a OpenCage Geocoding API Key. You can easily secure a key through OpenCage;
-  read more here. We
-  recommend saving your OpenCage Geocoding API Key in the .Renviron
-  file as **OPENCAGE_KEY**. You can quickly access this file using the R code
-  usethis::edit_r_environ(scope='user'). Add a line to this file that
-  reads: OPENCAGE_KEY=&quot;PasteYourOpenCageKeyInsideTheseQuotes&quot;. To read
-  your key into R, use the code Sys.getenv('OPENCAGE_KEY'). Note that
-  the geocode_tags() function retrieves your saved API key
-  automatically and securely. Once you've saved the .Renviron file,
-  quit your R session and restart. The function geocode_tags() will
-  work for you from now on." />
+longitude) based on the locations listed in Twitter user profiles.
+geocode_tags() pulls from the OpenCage Geocoding API, which requires
+a OpenCage Geocoding API Key. You can easily secure a key through OpenCage;
+read more here. We
+recommend saving your OpenCage Geocoding API Key in the .Renviron
+file as OPENCAGE_KEY. You can quickly access this file using the R code
+usethis::edit_r_environ(scope='user'). Add a line to this file that
+reads: OPENCAGE_KEY=&quot;PasteYourOpenCageKeyInsideTheseQuotes&quot;. To read
+your key into R, use the code Sys.getenv('OPENCAGE_KEY'). Note that
+the geocode_tags() function retrieves your saved API key
+automatically and securely. Once you've saved the .Renviron file,
+quit your R session and restart. The function geocode_tags() will
+work for you from now on." />
 
 
 
@@ -151,19 +151,19 @@
 
     <div class="ref-description">
     <p><code>geocode_tags()</code> retrieves geographic coordinates (i.e., latitude and
-  longitude) based on the locations listed in Twitter user profiles.
-  <code>geocode_tags()</code> pulls from the OpenCage Geocoding API, which requires
-  a OpenCage Geocoding API Key. You can easily secure a key through OpenCage;
-  <a href='https://opencagedata.com/api#quickstart'>read more here</a>. We
-  recommend saving your OpenCage Geocoding API Key in the <code>.Renviron</code>
-  file as **OPENCAGE_KEY**. You can quickly access this file using the R code
-  <code>usethis::edit_r_environ(scope='user')</code>. Add a line to this file that
-  reads: <code>OPENCAGE_KEY="PasteYourOpenCageKeyInsideTheseQuotes"</code>. To read
-  your key into R, use the code <code>Sys.getenv('OPENCAGE_KEY')</code>. Note that
-  the <code>geocode_tags()</code> function retrieves your saved API key
-  automatically and securely. Once you've saved the <code>.Renviron</code> file,
-  quit your R session and restart. The function <code>geocode_tags()</code> will
-  work for you from now on.</p>
+longitude) based on the locations listed in Twitter user profiles.
+<code>geocode_tags()</code> pulls from the OpenCage Geocoding API, which requires
+a OpenCage Geocoding API Key. You can easily secure a key through OpenCage;
+<a href='https://opencagedata.com/api#quickstart'>read more here</a>. We
+recommend saving your OpenCage Geocoding API Key in the <code>.Renviron</code>
+file as <strong>OPENCAGE_KEY</strong>. You can quickly access this file using the R code
+<code>usethis::edit_r_environ(scope='user')</code>. Add a line to this file that
+reads: <code>OPENCAGE_KEY="PasteYourOpenCageKeyInsideTheseQuotes"</code>. To read
+your key into R, use the code <code>Sys.getenv('OPENCAGE_KEY')</code>. Note that
+the <code>geocode_tags()</code> function retrieves your saved API key
+automatically and securely. Once you've saved the <code>.Renviron</code> file,
+quit your R session and restart. The function <code>geocode_tags()</code> will
+work for you from now on.</p>
     </div>
 
     <pre class="usage"><span class='fu'>geocode_tags</span><span class='op'>(</span><span class='va'>df</span><span class='op'>)</span></pre>
@@ -180,21 +180,20 @@
     <h2 class="hasAnchor" id="value"><a class="anchor" href="#value"></a>Value</h2>
 
     <p>A tibble of geographic coordinates (i.e., latitude and longitude)
-  that can then be used to plot locations on a map</p>
+that can then be used to plot locations on a map</p>
     <h2 class="hasAnchor" id="details"><a class="anchor" href="#details"></a>Details</h2>
 
     <p>This function requires authentication; please see
-  <code><a href='../articles/setup.html'>vignette("setup", package = "tidytags")</a></code></p>
+<code><a href='../articles/setup.html'>vignette("setup", package = "tidytags")</a></code></p>
     <h2 class="hasAnchor" id="see-also"><a class="anchor" href="#see-also"></a>See also</h2>
 
-    <div class='dont-index'><p><a href='https://opencagedata.com/api'>OpenCage Geocoding API
-  Documentation</a></p>
+    <div class='dont-index'><p><a href='https://opencagedata.com/api'>OpenCage Geocoding API Documentation</a></p>
 <p>Blog posts from
-  <a href='https://www.jessesadler.com/post/geocoding-with-r/'>Jesse Sadler</a> and
-  <a href='https://www.littlemissdata.com/blog/maps'>Laura Ellis</a> may also
-  provide additional inspiration for geocoding.</p>
-<p>The **ggmap** package can provide additional functionality for visualizing
-  geographic data.</p></div>
+<a href='https://www.jessesadler.com/post/geocoding-with-r/'>Jesse Sadler</a> and
+<a href='https://www.littlemissdata.com/blog/maps'>Laura Ellis</a> may also
+provide additional inspiration for geocoding.</p>
+<p>The <strong>ggmap</strong> package can provide additional functionality for visualizing
+geographic data.</p></div>
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
     <pre class="examples"><span class='r-in'></span>

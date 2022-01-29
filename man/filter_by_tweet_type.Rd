@@ -15,16 +15,16 @@ after filtering the rest. Choices for \code{type}include "reply",
 }
 \value{
 A dataframe of processed statuses and fewer rows that the input
-  dataframe. Only the statuses of the specified type will remain.
+dataframe. Only the statuses of the specified type will remain.
 }
 \description{
 Starting with a dataframe of Twitter data imported to R with
-  \code{read_tags()} and additional metadata retrieved by
-  \code{pull_tweet_data()}, \code{filter_by_tweet_type()} processes the
-  statuses by calling \code{process_tweets()} and then removes any statuses
-  that are not of the requested type (e.g., replies, retweets, quote tweets,
-  and mentions). \code{filter_by_tweet_type()} is a useful function in
-  itself, but it is also used in \code{create_edgelist()}.
+\code{read_tags()} and additional metadata retrieved by
+\code{pull_tweet_data()}, \code{filter_by_tweet_type()} processes the
+statuses by calling \code{process_tweets()} and then removes any statuses
+that are not of the requested type (e.g., replies, retweets, quote tweets,
+and mentions). \code{filter_by_tweet_type()} is a useful function in
+itself, but it is also used in \code{create_edgelist()}.
 }
 \examples{
 

@@ -28,19 +28,19 @@ A dataframe of statuses and full metadata from the Twitter API
 }
 \description{
 With a TAGS archive imported into R, \code{pull_tweet_data()} uses the
-  **rtweet** package to query the Twitter API. Using rtweet requires Twitter
-  API keys associated with an approved developer account. Fortunately, the
-  rtweet vignette,
-  \href{https://docs.ropensci.org/rtweet/articles/auth.html}{Authentication},
-  provides a thorough guide to obtaining Twitter API keys. Following these
-  directions, you will run the \code{rtweet::create_token()} function, which
-  saves your Twitter API keys to the \code{.Renviron} file. You can also edit
-  this file directly using the \code{usethis::edit_r_environ(scope='user')}
-  function.
+\strong{rtweet} package to query the Twitter API. Using rtweet requires Twitter
+API keys associated with an approved developer account. Fortunately, the
+rtweet vignette,
+\href{https://docs.ropensci.org/rtweet/articles/auth.html}{Authentication},
+provides a thorough guide to obtaining Twitter API keys. Following these
+directions, you will run the \code{rtweet::create_token()} function, which
+saves your Twitter API keys to the \code{.Renviron} file. You can also edit
+this file directly using the \code{usethis::edit_r_environ(scope='user')}
+function.
 }
 \details{
 This function requires authentication; please see
-  \code{vignette("setup", package = "tidytags")}
+\code{vignette("setup", package = "tidytags")}
 }
 \examples{
 
@@ -50,14 +50,14 @@ This function requires authentication; please see
 example_tags_tracker <- "18clYlQeJOc6W5QRuSlJ6_v3snqKJImFhU42bRkM_OX8"
 tags_content <- read_tags(example_tags_tracker)
 
-## Use any of three input parameters (TAGS dataframe, \code{status_url}
-##   column, or \code{id_str} column)
+## Use any of three input parameters (TAGS dataframe, `status_url`
+##   column, or `id_str` column)
 pull_tweet_data(tags_content)
 pull_tweet_data(url_vector = tags_content$status_url)
 pull_tweet_data(id_vector = tags_content$id_str)
 
-## Specifying the parameter \code{n} clarifies how many statuses to look up,
-##   but the returned values may be less than \code{n} because some statuses
+## Specifying the parameter `n` clarifies how many statuses to look up,
+##   but the returned values may be less than `n` because some statuses
 ##   may have been deleted or made protected since the TAGS tracker
 ##   originally recorded them.
 pull_tweet_data(tags_content, n = 10)
@@ -70,5 +70,5 @@ pull_tweet_data(id_vector = "1176592704647716864")
 }
 \seealso{
 Read more about \code{library(rtweet)}
-  \href{https://rtweet.info/}{here}.
+\href{https://rtweet.info/}{here}.
 }

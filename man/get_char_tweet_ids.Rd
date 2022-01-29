@@ -18,11 +18,11 @@ A vector of Twitter status IDs as character strings
 }
 \description{
 This function is useful because Google Sheets (and hence TAGS)
-  typically round very large numbers into an exponential form. Thus,
-  because status ID numbers are very large, they often get corrupted in this
-  rounding process. The most reliable way to get full status ID numbers is by
-  using this function, \code{get_char_tweet_ids()}, to pull the ID numbers
-  from the URL linking to specific statuses.
+typically round very large numbers into an exponential form. Thus,
+because status ID numbers are very large, they often get corrupted in this
+rounding process. The most reliable way to get full status ID numbers is by
+using this function, \code{get_char_tweet_ids()}, to pull the ID numbers
+from the URL linking to specific statuses.
 }
 \examples{
 
