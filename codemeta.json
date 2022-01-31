@@ -8,7 +8,10 @@
   "description": "The {tidytags} package coordinates the simplicity of collecting tweets \n    over time with a Twitter Archiving Google Sheet (TAGS; <https://tags.hawksey.info/>) \n    and the utility of the {rtweet} package (<https://docs.ropensci.org/rtweet/>) \n    for processing and preparing additional Twitter metadata. {tidytags} also \n    introduces functions developed to facilitate systematic yet flexible analyses \n    of data from Twitter.",
   "name": "tidytags: Importing and Analyzing Twitter Data Collected with Twitter Archiving Google Sheets",
   "codeRepository": "https://github.com/ropensci/tidytags",
-  "relatedLink": ["https://bretsw.github.io/tidytags/", "https://docs.ropensci.org/tidytags/"],
+  "relatedLink": [
+    "https://bretsw.github.io/tidytags/",
+    "https://docs.ropensci.org/tidytags/"
+  ],
   "issueTracker": "https://github.com/ropensci/tidytags/issues",
   "license": "https://spdx.org/licenses/MIT",
   "version": "0.2.1",
@@ -343,7 +346,7 @@
   ],
   "releaseNotes": "https://github.com/ropensci/tidytags/blob/master/NEWS.md",
   "readme": "https://github.com/ropensci/tidytags/blob/main/README.md",
-  "fileSize": "123037.882KB",
+  "fileSize": "123037.756KB",
   "contIntegration": ["https://github.com/ropensci/tidytags/actions", "https://codecov.io/gh/ropensci/tidytags?branch=main"],
   "developmentStatus": ["https://www.repostatus.org/#active", "https://www.tidyverse.org/lifecycle/#maturing"],
   "review": {
