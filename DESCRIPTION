@@ -28,7 +28,7 @@ Description: The {tidytags} package coordinates the simplicity of collecting twe
     introduces functions developed to facilitate systematic yet flexible analyses 
     of data from Twitter.
 Language: en-US
-URL: https://bretsw.github.io/tidytags/, https://github.com/ropensci/tidytags
+URL: https://docs.ropensci.org/tidytags/ (website) https://github.com/ropensci/tidytags
 Depends: 
     R (>= 4.1)
 Imports:

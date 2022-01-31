@@ -1,30 +1,30 @@
-destination: docs
+url: https://docs.ropensci.org/tidytags
 
 authors:
   K. Bret Staudt Willet:
     href: http://bretsw.com/
   Joshua M. Rosenberg:
     href: https://joshuamrosenberg.com/
+
 navbar:
-  type: inverse
+  title: "tidytags"
   left:
-  - icon: fa-file-code-o
-    text: "Functions"
-    href: reference/index.html
-  - icon: fa-map-o
-    text: "Guides"
-    menu:
-     - text: Getting started with tidytags
-       href: articles/setup.html
-     - text: Using tidytags with a conference hashtag
-       href: articles/tidytags-with-conf-hashtags.html
-  - icon: fa-newspaper-o
-    text: "News"
-    href: news/index.html
+    - text: "Get started"
+      href: articles/setup.html
+    - text: "Reference"
+      href: reference/index.html
+    - text: "Articles"
+      menu:
+        - text: Getting started with tidytags
+          href: articles/setup.html
+        - text: "Using tidytags with a conference hashtag"
+          href: articles/tidytags-with-conf-hashtags.html
+    - text: "Changelog"
+      href: news/index.html
   right:
-  - icon: fa-github fa-lg
-    text: "GitHub"
-    href: https://github.com/ropensci/tidytags
+    - icon: fa-github
+      href: https://github.com/ropensci/tidytags
+
 reference:
   - title: "Accessing data"
     desc: Functions for accessing TAGS data.

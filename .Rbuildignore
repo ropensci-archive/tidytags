@@ -5,7 +5,6 @@
 ^_pkgdown\.yml$
 ^docs$
 ^pkgdown$
-CODE_OF_CONDUCT.md
 CONTRIBUTING.md
 LICENSE.md
 paper.md

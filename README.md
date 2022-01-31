@@ -321,9 +321,12 @@ with all code used (preferably a reproducible example) on Github.
 If you would like to become a more involved contributor, please read the
 [Contributing
 Guide](https://github.com/ropensci/tidytags/blob/master/CONTRIBUTING.md).
-All contributors, from those fixing typos to adding new functionality,
-must adhere to the [Code of
-Conduct](https://github.com/ropensci/tidytags/blob/master/CODE_OF_CONDUCT.md).
+
+### Contributor Code of Conduct
+
+Please note that this package is released with a [Contributor Code of
+Conduct](https://ropensci.org/code-of-conduct/). By contributing to this
+project, you agree to abide by its terms.
 
 ------------------------------------------------------------------------
 
