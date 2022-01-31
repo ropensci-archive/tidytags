@@ -18,9 +18,8 @@
 #'   `vignette("setup", package = "tidytags")`
 #' @seealso Read more about `library(googlesheets4)`
 #'   [here](https://github.com/tidyverse/googlesheets4). If you need help
-#'   obtaining and setting up a Google API key, read the
-#'   [Getting
-#'   started with tidytags](https://bretsw.github.io/tidytags/articles/setup.html) vignette.
+#'   obtaining and setting up a Google API key, please see
+#'   `vignette("setup", package = "tidytags")`
 #' @examples
 #'
 #' \dontrun{

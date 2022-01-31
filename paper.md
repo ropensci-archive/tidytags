@@ -41,14 +41,14 @@ We introduce the {tidytags} package as an approach that allows for both simple d
 
 # Getting started with {tidytags}
 
-For help with initial {tidytags} setup, see the [Getting started with tidytags](https://bretsw.github.io/tidytags/articles/setup.html) guide on the {tidytags} website. Specifically, this guide offers help for four key tasks:
+For help with initial {tidytags} setup, see the [Getting started with tidytags](https://docs.ropensci.org/tidytags/articles/setup.html) guide on the {tidytags} website. Specifically, this guide offers help for four key tasks:
 
 1. Making sure your TAGS tracker can be accessed
 2. Getting and storing a Google API key
 3. Getting and storing Twitter API tokens
 4. Getting and storing an OpenCage Geocoding API key
 
-For a walkthrough of numerous additional {tidytags} functions, see the [Using tidytags with a conference hashtag](https://bretsw.github.io/tidytags/articles/tidytags-with-conf-hashtags.html) guide.
+For a walkthrough of numerous additional {tidytags} functions, see the [Using tidytags with a conference hashtag](https://docs.ropensci.org/tidytags/articles/tidytags-with-conf-hashtags.html) guide.
 
 # The {tidytags} Workflow
 

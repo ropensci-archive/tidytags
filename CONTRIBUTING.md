@@ -1,10 +1,10 @@
 # Contributing 
 
-This contributing guide has been derived from the {tidyverse} boilerplate (see their high-level [contributing guide](https://www.tidyverse.org/contribute/)). If you have any questions about contributing, please don't hesitate to [reach out](https://bretsw.github.io/tidytags/#getting-help). We appreciate every contribution. We suggest first reading the [Getting started with tidytags](https://bretsw.github.io/tidytags/articles/setup.html) vignette.
+This contributing guide has been derived from the {tidyverse} boilerplate (see their high-level [contributing guide](https://www.tidyverse.org/contribute/)). If you have any questions about contributing, please don't hesitate to [reach out](https://docs.ropensci.org/tidytags/#getting-help). We appreciate every contribution. We suggest first reading the [Getting started with tidytags](https://docs.ropensci.org/tidytags/articles/setup.html) vignette.
 
-## Code of conduct
+## Contributor Code of Conduct
 
-Please note that this project is released with a [Contributor Code of Conduct](CODE_OF_CONDUCT.md). By participating in this project in any way, you agree to abide by this code of conduct.
+Please note that this package is released with a [Contributor Code of Conduct](https://ropensci.org/code-of-conduct/). By contributing to this project, you agree to abide by its terms.
 
 ## Non-technical contributions to {tidytags}
 
@@ -41,7 +41,7 @@ For more general info about contributing to {tidytags}, see the
 
 ### Prerequisites
 
-To test the {tidytags} package, you can use an openly shared [TAGS tracker](https://docs.google.com/spreadsheets/d/18clYlQeJOc6W5QRuSlJ6_v3snqKJImFhU42bRkM_OX8) that has been collecting tweets associated with the AECT 2019 since September 30, 2019. This is the same TAGS tracker used in the [Using tidytags with a conference hashtag](https://bretsw.github.io/tidytags/articles/tidytags-with-conf-hashtags.html) vignette. 
+To test the {tidytags} package, you can use an openly shared [TAGS tracker](https://docs.google.com/spreadsheets/d/18clYlQeJOc6W5QRuSlJ6_v3snqKJImFhU42bRkM_OX8) that has been collecting tweets associated with the AECT 2019 since September 30, 2019. This is the same TAGS tracker used in the [Using tidytags with a conference hashtag](https://docs.ropensci.org/tidytags/articles/tidytags-with-conf-hashtags.html) vignette. 
 
 Note that this TAGS tracker is read-only in the web browser, because the utility of {tidytags} is reading a TAGS tracker archive into R using `read_tags("18clYlQeJOc6W5QRuSlJ6_v3snqKJImFhU42bRkM_OX8")` and then conducting analyses in an R environment.
 
@@ -97,7 +97,7 @@ devtools::test()
 devtools::test_coverage()
 ```
 
-Note that because {tidytags} queries OpenCage and Twitter APIs, testing can be a bit tricky. Be sure to follow the [Getting started with tidytags](https://bretsw.github.io/tidytags/articles/setup.html) vignette for establishing your own OpenCage API key and Twitter API tokens to conduct local testing. For CI testing, view the [setup-tidytags.R](tests/testthat/setup-tidytags.R) file in the package testing documentation to see how fake OAuth tokens are set up. The [HTTP testing in R](https://books.ropensci.org/http-testing/index.html) book is an invaluable resource.
+Note that because {tidytags} queries OpenCage and Twitter APIs, testing can be a bit tricky. Be sure to follow the [Getting started with tidytags](https://docs.ropensci.org/tidytags/articles/setup.html) vignette for establishing your own OpenCage API key and Twitter API tokens to conduct local testing. For CI testing, view the [setup-tidytags.R](tests/testthat/setup-tidytags.R) file in the package testing documentation to see how fake OAuth tokens are set up. The [HTTP testing in R](https://books.ropensci.org/http-testing/index.html) book is an invaluable resource.
 
 #### Re-check
 

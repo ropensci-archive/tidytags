@@ -42,6 +42,6 @@ read_tags(example_tags)
 \seealso{
 Read more about \code{library(googlesheets4)}
 \href{https://github.com/tidyverse/googlesheets4}{here}. If you need help
-obtaining and setting up a Google API key, read the
-\href{https://bretsw.github.io/tidytags/articles/setup.html}{Getting started with tidytags} vignette.
+obtaining and setting up a Google API key, please see
+\code{vignette("setup", package = "tidytags")}
 }

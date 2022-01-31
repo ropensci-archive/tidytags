@@ -94,21 +94,20 @@ users based on their biographies.
 Two vignettes illustrate the setup and use of the package:
 
 -   [Getting started with
-    tidytags](https://bretsw.github.io/tidytags/articles/setup.html)
+    tidytags](https://docs.ropensci.org/tidytags/articles/setup.html)
     (`vignette("setup", package = "tidytags")`)
 -   [Using tidytags with a conference
-    hashtag](https://bretsw.github.io/tidytags/articles/tidytags-with-conf-hashtags.html)
+    hashtag](https://docs.ropensci.org/tidytags/articles/tidytags-with-conf-hashtags.html)
     (`vignette("tidytags-with-conf-hashtags", package = "tidytags")`)
 
 ------------------------------------------------------------------------
 
 ## Installation
 
-You can install the development version of {tidytags} from GitHub:
+You can install the development version of {tidytags} from R-universe:
 
 ``` r
-install.packages("devtools")
-devtools::install_github("ropensci/tidytags", build_vignettes = TRUE)
+install.packages("tidytags", repos = "https://ropensci.r-universe.dev")
 ```
 
 Soon, you will be able to install the released version of {tidytags}
@@ -129,7 +128,7 @@ library(tidytags)
 ## Setup
 
 For help with initial {tidytags} setup, see the [Getting started with
-tidytags](https://bretsw.github.io/tidytags/articles/setup.html)
+tidytags](https://docs.ropensci.org/tidytags/articles/setup.html)
 vignette (`vignette("setup", package = "tidytags")`). Specifically, this
 guide offers help for four key tasks:
 
@@ -146,7 +145,7 @@ To test the {tidytags} package, you can use an openly shared TAGS
 tracker that has been collecting tweets associated with the AECT 2019
 since September 30, 2019. This is the same TAGS tracker used in the
 [Using tidytags with a conference hashtag
-vignette](https://bretsw.github.io/tidytags/articles/tidytags-with-conf-hashtags.html)
+vignette](https://docs.ropensci.org/tidytags/articles/tidytags-with-conf-hashtags.html)
 (`vignette("tidytags-with-conf-hashtags", package = "tidytags")`).
 
 ------------------------------------------------------------------------
@@ -161,13 +160,13 @@ R. This is done with the [{googlesheets4}
 package](https://CRAN.R-project.org/package=googlesheets4). One
 requirement for using the {googlesheets4} package is that your TAGS
 tracker has been “published to the web.” See the [Getting started with
-tidytags](https://bretsw.github.io/tidytags/articles/setup.html)
+tidytags](https://docs.ropensci.org/tidytags/articles/setup.html)
 vignette (`vignette("setup", package = "tidytags")`), **Pain Point
 \#1**, if you need help with this.
 
 Once a TAGS tracker has been published to the web, you can import the
 TAGS archive into R using `read_tags()`. See the [Getting started with
-tidytags](https://bretsw.github.io/tidytags/articles/setup.html)
+tidytags](https://docs.ropensci.org/tidytags/articles/setup.html)
 vignette (`vignette("setup", package = "tidytags")`), **Pain Point
 \#2**, to set up API access to Google Sheets like the TAGS tracker.
 
@@ -200,7 +199,7 @@ package](https://docs.ropensci.org/rtweet/index.html) (via
 `rtweet::lookup_tweets()`) to query the Twitter API. This process
 requires Twitter API keys associated with an approved Twitter developer
 account. See the [Getting started with
-tidytags](https://bretsw.github.io/tidytags/articles/setup.html)
+tidytags](https://docs.ropensci.org/tidytags/articles/setup.html)
 vignette (`vignette("setup", package = "tidytags")`), **Pain Point
 \#3**, if you need help with this.
 
@@ -244,7 +243,7 @@ below.
 
 For a walkthrough of numerous additional {tidytags} functions, see the
 [Using tidytags with a conference
-hashtag](https://bretsw.github.io/tidytags/articles/tidytags-with-conf-hashtags.html)
+hashtag](https://docs.ropensci.org/tidytags/articles/tidytags-with-conf-hashtags.html)
 vignette
 (`vignette("tidytags-with-conf-hashtags", package = "tidytags")`).
 
