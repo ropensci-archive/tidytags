@@ -1,7 +1,7 @@
 
 <!-- README.md is generated from README.Rmd. Please edit that file -->
 
-# tidytags <img src="man/figures/tidytags-logo.png" align="right" width="120" />
+# tidytags <a href='https://docs.ropensci.org/tidytags'><img src='man/figures/logo.png' align="right" height="138" /></a>
 
 ##### *Importing and Analyzing Twitter Data Collected with Twitter Archiving Google Sheets*
 
