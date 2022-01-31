@@ -8,7 +8,7 @@ Please note that this project is released with a [Contributor Code of Conduct](C
 
 ## Non-technical contributions to {tidytags}
 
-Feel free to [report issues](https://github.com/bretsw/tidytags/issues):
+Feel free to [report issues](https://github.com/ropensci/tidytags/issues):
 
 * **Questions** are for seeking clarification or more information. Both question askers and question answerers are welcome contributors!
 * **Bug reports** are for unplanned malfunctions. If you have found a bug, follow the issue template to create a minimal [reprex](https://www.tidyverse.org/help/#reprex).
@@ -55,7 +55,7 @@ You are welcome to contribute a *pull request* (PR) to {tidytags}. The most impo
 #### Fork, clone, branch
 
 The first thing you'll need to do is to [fork](https://help.github.com/articles/fork-a-repo/) 
-the [{tidytags} GitHub repo](https://github.com/bretsw/tidytags), and 
+the [{tidytags} GitHub repo](https://github.com/ropensci/tidytags), and 
 then clone it locally. We recommend that you create a branch for each PR.
 
 #### Check
@@ -130,7 +130,7 @@ auto-linking syntax (e.g. `#17`).
 
 #### Check the docs
 
-Double check the output of the [GitHub Actions CI](https://github.com/bretsw/tidytags/actions) for any breakages or error messages.
+Double check the output of the [GitHub Actions CI](https://github.com/ropensci/tidytags/actions) for any breakages or error messages.
 
 #### Review, revise, repeat
 
