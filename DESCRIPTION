@@ -28,7 +28,7 @@ Description: The {tidytags} package coordinates the simplicity of collecting twe
     introduces functions developed to facilitate systematic yet flexible analyses 
     of data from Twitter.
 Language: en-US
-URL: https://bretsw.github.io/tidytags/, https://github.com/bretsw/tidytags
+URL: https://bretsw.github.io/tidytags/, https://github.com/ropensci/tidytags
 Depends: 
     R (>= 4.1)
 Imports:
@@ -57,7 +57,7 @@ Suggests:
     urltools,
     vcr (>= 1.0)
 Encoding: UTF-8
-BugReports: https://github.com/bretsw/tidytags/issues
+BugReports: https://github.com/ropensci/tidytags/issues
 VignetteBuilder: knitr
 RoxygenNote: 7.1.2
 Roxygen: list(markdown = TRUE)

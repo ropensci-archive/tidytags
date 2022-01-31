@@ -36,7 +36,7 @@ Checks
 <a href="https://www.repostatus.org/#active"><img src="https://www.repostatus.org/badges/latest/active.svg" alt="Status"></a>
 </td>
 <td align="left">
-<a href="https://github.com/bretsw/tidytags/actions"><img src="https://github.com/bretsw/tidytags/workflows/R-CMD-check/badge.svg" alt="Check"></a>
+<a href="https://github.com/ropensci/tidytags/actions"><img src="https://github.com/ropensci/tidytags/workflows/R-CMD-check/badge.svg" alt="Check"></a>
 </td>
 </tr>
 <tr class="even">
@@ -46,10 +46,10 @@ Checks
 <td align="left">
 </td>
 <td align="left">
-<a href="https://github.com/bretsw/tidytags/commits/main"><img src="https://img.shields.io/github/last-commit/bretsw/tidytags.svg" alt="Last Commit"></a>
+<a href="https://github.com/ropensci/tidytags/commits/main"><img src="https://img.shields.io/github/last-commit/ropensci/tidytags.svg" alt="Last Commit"></a>
 </td>
 <td align="left">
-<a href="https://codecov.io/gh/bretsw/tidytags?branch=main"><img src="https://codecov.io/gh/bretsw/tidytags/coverage.svg?branch=main" alt="Codecov"></a>
+<a href="https://codecov.io/gh/ropensci/tidytags?branch=main"><img src="https://codecov.io/gh/ropensci/tidytags/coverage.svg?branch=main" alt="Codecov"></a>
 </td>
 </tr>
 <tr class="odd">
@@ -108,7 +108,7 @@ You can install the development version of {tidytags} from GitHub:
 
 ``` r
 install.packages("devtools")
-devtools::install_github("bretsw/tidytags", build_vignettes = TRUE)
+devtools::install_github("ropensci/tidytags", build_vignettes = TRUE)
 ```
 
 Soon, you will be able to install the released version of {tidytags}
@@ -261,7 +261,7 @@ Bret](mailto:bret@bretsw.com) or reach out on Twitter:
 [@jrosenberg6432](https://twitter.com/jrosenberg6432).
 
 You can also [submit an issue on
-Github](https://github.com/bretsw/tidytags/issues/).
+Github](https://github.com/ropensci/tidytags/issues/).
 
 You may also wish to try some general troubleshooting strategies:
 
@@ -314,16 +314,16 @@ analyzing, and sharing social media data.
 ## Contributing
 
 If you encounter an obvious bug for which there is not already an
-[active issue](https://github.com/bretsw/tidytags/issues), please
-[create a new issue](https://github.com/bretsw/tidytags/issues/new) with
-all code used (preferably a reproducible example) on Github.
+[active issue](https://github.com/ropensci/tidytags/issues), please
+[create a new issue](https://github.com/ropensci/tidytags/issues/new)
+with all code used (preferably a reproducible example) on Github.
 
 If you would like to become a more involved contributor, please read the
 [Contributing
-Guide](https://github.com/bretsw/tidytags/blob/master/CONTRIBUTING.md).
+Guide](https://github.com/ropensci/tidytags/blob/master/CONTRIBUTING.md).
 All contributors, from those fixing typos to adding new functionality,
 must adhere to the [Code of
-Conduct](https://github.com/bretsw/tidytags/blob/master/CODE_OF_CONDUCT.md).
+Conduct](https://github.com/ropensci/tidytags/blob/master/CODE_OF_CONDUCT.md).
 
 ------------------------------------------------------------------------
 
@@ -336,7 +336,8 @@ in your reference list:
 
 > Staudt Willet, K. B., & Rosenberg, J. M. (2021). tidytags: Importing
 > and analyzing Twitter data collected with Twitter Archiving Google
-> Sheets. <https://github.com/bretsw/tidytags> (R package version 0.2.1)
+> Sheets. <https://github.com/ropensci/tidytags> (R package version
+> 0.2.1)
 
 ------------------------------------------------------------------------
 

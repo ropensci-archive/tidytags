@@ -24,7 +24,7 @@ navbar:
   right:
   - icon: fa-github fa-lg
     text: "GitHub"
-    href: https://github.com/bretsw/tidytags
+    href: https://github.com/ropensci/tidytags
 reference:
   - title: "Accessing data"
     desc: Functions for accessing TAGS data.
