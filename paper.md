@@ -1,5 +1,12 @@
 ---
-title: "tidytags: Importing and Analyzing Twitter Data Collected with Twitter Archiving Google Sheets"
+title: 'tidytags: Importing and Analyzing Twitter Data Collected with Twitter Archiving Google Sheets'
+tags:
+  - R
+  - Twitter
+  - social media
+  - data science
+  - data mining
+  - wrapper
 authors:
   - affiliation: 1
     name: K. Bret Staudt Willet
@@ -9,13 +16,6 @@ authors:
     orcid: 0000-0003-2170-0447
 date: 02 February 2022
 bibliography: paper.bib
-tags:
-  - R
-  - Twitter
-  - social media
-  - data science
-  - data mining
-  - wrapper
 affiliations:
   - index: 1
     name: Florida State University
