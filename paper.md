@@ -1,26 +1,26 @@
 ---
 title: 'tidytags: Importing and Analyzing Twitter Data Collected with Twitter Archiving Google Sheets'
 authors:
-- name: ''K. Bret', Staudt Willet'
-  orcid: 0000-0002-6984-416X
-  affiliation: '1'
-- name: Joshua M. Rosenberg
-  orcid: 0000-0003-2170-0447
-  affiliation: '2'
+  - name: 'K. Bret', 'Staudt Willet'
+    orcid: 0000-0002-6984-416X
+    affiliation: '1'
+  - name: Joshua M. Rosenberg
+    orcid: 0000-0003-2170-0447
+    affiliation: '2'
 affiliations:
-- name: Florida State University
-  index: '1'
-- name: University of Tennessee, Knoxville
-  index: '2'
-date: '02 February 2022'
+  - name: Florida State University
+    index: '1'
+  - name: University of Tennessee, Knoxville
+    index: '2'
+date: 02 February 2022
 bibliography: paper.bib
 tags:
-- R
-- Twitter
-- social media
-- data science
-- data mining
-- wrapper
+  - R
+  - Twitter
+  - social media
+  - data science
+  - data mining
+  - wrapper
 ---
 
 # Summary
