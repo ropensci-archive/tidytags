@@ -9,6 +9,7 @@ CONTRIBUTING.md
 LICENSE.md
 paper.md
 paper.bib
+cran-comments.md
 tidytags-logo.png
 ^codecov\.yml$
 ^doc$

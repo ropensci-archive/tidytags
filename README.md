@@ -107,20 +107,21 @@ Two vignettes illustrate the setup and use of the package:
 
 ## Installation
 
-You can install the development version of {tidytags} from R-universe:
-
-``` r
-install.packages("tidytags", repos = "https://ropensci.r-universe.dev")
-```
-
-Soon, you will be able to install the released version of {tidytags}
-from [CRAN](https://CRAN.R-project.org) with:
+You can install the **released version** of {tidytags} from
+[CRAN](https://CRAN.R-project.org) with:
 
 ``` r
 install.packages("tidytags")
 ```
 
-To load {tidytags}, start with the `library()` function:
+Or you can install the **development version** of {tidytags} from
+R-universe:
+
+``` r
+install.packages("tidytags", repos = "https://ropensci.r-universe.dev")
+```
+
+Once installed, use the `library()` function load {tidytags}:
 
 ``` r
 library(tidytags)
@@ -336,13 +337,12 @@ project, you agree to abide by its terms.
 
 You can cite this package like this: “we collected, processed, and
 analyzed Twitter data using the tidytags R package (Staudt Willet &
-Rosenberg, 2021)”. Here is the full bibliographic reference to include
+Rosenberg, 2022)”. Here is the full bibliographic reference to include
 in your reference list:
 
-> Staudt Willet, K. B., & Rosenberg, J. M. (2021). tidytags: Importing
+> Staudt Willet, K. B., & Rosenberg, J. M. (2022). tidytags: Importing
 > and analyzing Twitter data collected with Twitter Archiving Google
-> Sheets. <https://github.com/ropensci/tidytags> (R package version
-> 0.2.1)
+> Sheets. <https://github.com/ropensci/tidytags>
 
 ------------------------------------------------------------------------
 

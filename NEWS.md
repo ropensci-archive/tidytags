@@ -18,12 +18,28 @@ tidytags development version
   * 
 
 
+tidytags 0.3.0 (2022-02-04)
+=========================
+
+### NEW FEATURES
+
+  * Released tidytags on CRAN for the first time.
+
+ ### BUG FIXES
+
+  * Updated to most recent versions of CI tests for R-CMD-check and test coverage.
+
+ ### DOCUMENTATION FIXES
+ 
+   * Updated paper.md and paper.bib to coincide with submission for peer review at Journal of Open Source Software (JOSS).
+
+
 tidytags 0.2.1 (2021-12-14)
 =========================
 
 ### NEW FEATURES
 
-  * Added a new function filter_by_tweet_type() to filter a Twitter dataset to only include statuses of a particular type (e.g., replies, retweets, quote tweets, mentions)
+  * Added a new function filter_by_tweet_type() to filter a Twitter dataset to only include statuses of a particular type (e.g., replies, retweets, quote tweets, mentions).
   * Updated the function create_edgelist() to take a "type" argument (e.g., "reply", "retweet", "quote", "mention", "all"). This replaces the need for specialized functions like create_mentions_edgelist().
 
 
