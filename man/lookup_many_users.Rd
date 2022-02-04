@@ -37,6 +37,6 @@ lookup_many_tweets("12030342", alarm = TRUE)
 }
 }
 \seealso{
-Read more about \code{library(rtweet)}
-\href{https://rtweet.info/}{here}.
+Read more about rtweet authentication setup at
+\code{vignette("auth", package = "rtweet")}
 }

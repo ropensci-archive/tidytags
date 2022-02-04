@@ -69,6 +69,6 @@ pull_tweet_data(id_vector = "1176592704647716864")
 }
 }
 \seealso{
-Read more about \code{library(rtweet)}
-\href{https://rtweet.info/}{here}.
+Read more about rtweet authentication setup at
+\code{vignette("auth", package = "rtweet")}
 }

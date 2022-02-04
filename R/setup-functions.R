@@ -101,8 +101,8 @@ get_char_tweet_ids <-
 #' @return A dataframe of statuses and full metadata from the Twitter API
 #' @details This function requires authentication; please see
 #'   `vignette("setup", package = "tidytags")`
-#' @seealso Read more about `library(rtweet)`
-#'   [here](https://rtweet.info/).
+#' @seealso Read more about rtweet authentication setup at
+#'   `vignette("auth", package = "rtweet")`
 #' @examples
 #'
 #' \dontrun{
@@ -196,8 +196,8 @@ pull_tweet_data <-
 #' @return A dataframe of statuses and full metadata from the Twitter API
 #' @details This function requires authentication; please see
 #'   `vignette("setup", package = "tidytags")`
-#' @seealso Read more about `library(rtweet)`
-#'   [here](https://rtweet.info/).
+#' @seealso Read more about rtweet authentication setup at
+#'   `vignette("auth", package = "rtweet")`
 #' @examples
 #' \dontrun{
 #'
@@ -309,8 +309,8 @@ process_tweets <-
 #' @return A dataframe of tweets and full user metadata from the Twitter API
 #' @details This function requires authentication; please see
 #'   `vignette("setup", package = "tidytags")`
-#' @seealso Read more about `library(rtweet)`
-#'   [here](https://rtweet.info/).
+#' @seealso Read more about rtweet authentication setup at
+#'   `vignette("auth", package = "rtweet")`
 #' @examples
 #' \dontrun{
 #'
