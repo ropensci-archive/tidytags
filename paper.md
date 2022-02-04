@@ -1,7 +1,7 @@
 ---
 title: 'tidytags: Importing and Analyzing Twitter Data Collected with Twitter Archiving Google Sheets'
 authors:
-  - name: 'K. Bret', 'Staudt Willet'
+  - name: K. Bret Staudt Willet
     orcid: 0000-0002-6984-416X
     affiliation: '1'
   - name: Joshua M. Rosenberg
