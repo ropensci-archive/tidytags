@@ -1,31 +1,31 @@
 ---
 title: 'tidytags: Importing and Analyzing Twitter Data Collected with Twitter Archiving Google Sheets'
-tags:
-  - R
-  - Twitter
-  - social media
-  - data science
-  - data mining
-  - wrapper
 authors:
-  - affiliation: 1
-    name: K. Bret Staudt Willet
-    orcid: 0000-0002-6984-416X
-  - affiliation: 2
-    name: Joshua M. Rosenberg
-    orcid: 0000-0003-2170-0447
-date: 02 February 2022
-bibliography: paper.bib
+- name: ''K. Bret', Staudt Willet'
+  orcid: 0000-0002-6984-416X
+  affiliation: '1'
+- name: Joshua M. Rosenberg
+  orcid: 0000-0003-2170-0447
+  affiliation: '2'
 affiliations:
-  - index: 1
-    name: Florida State University
-  - index: 2
-    name: University of Tennessee, Knoxville
+- name: Florida State University
+  index: '1'
+- name: University of Tennessee, Knoxville
+  index: '2'
+date: '02 February 2022'
+bibliography: paper.bib
+tags:
+- R
+- Twitter
+- social media
+- data science
+- data mining
+- wrapper
 ---
 
 # Summary
 
-{tidytags} coordinates the simplicity of collecting tweets over time with a [Twitter Archiving Google Sheet](https://tags.hawksey.info/) (TAGS) and the utility of the [{rtweet} package](https://docs.ropensci.org/rtweet/index.html) for processing and preparing additional Twitter metadata. {tidytags} also introduces functions to facilitate systematic yet flexible analyses of data from Twitter.
+The **tidytags** R package coordinates the simplicity of collecting tweets over time with a [Twitter Archiving Google Sheet](https://tags.hawksey.info/) (TAGS) and the utility of the [{rtweet} package](https://docs.ropensci.org/rtweet/index.html) for processing and preparing additional Twitter metadata. **tidytags** also introduces functions to facilitate systematic yet flexible analyses of data from Twitter.
 
 # Statement of Need
 
@@ -37,24 +37,24 @@ Accessing historical content from Twitter can be difficult and expensive; it is 
 
 Even when not navigating the challenges of retrieving historical Twitter data, the task of collecting in-the-moment social media data often requires an extent of technical skill that may dissuade social scientists from even getting started. However, for those interested in Twitter data, a relatively straightforward and beginner-level solution is to use a [Twitter Archiving Google Sheet](https://tags.hawksey.info/) (TAGS). Getting started with TAGS is as simple as setting up a new Google Sheet, which will then automatically query the Twitter API with a keyword search every hour going forward. However, although TAGS provides several advantages for **data collection**, it has important limitations related to **data analysis**. First, Google Sheets are not an environment conducive to statistical analysis beyond a few basic calculations, Additionally, TAGS returns limited metadata compared to what is available from the Twitter API: approximately 20% of all categories of information. Specifically, a TAGS tracker returns the time, sender, and text of tweets, but not many additional details such as a list of the hashtags or hyperlinks contained in a tweet. 
 
-We introduce the {tidytags} package as an approach that allows for both simple data collection through TAGS and rigorous data analysis in the R statistical computing environment. In short, {tidytags} first uses TAGS to easily and automatically collect tweet ID numbers and then provides a wrapper to the {rtweet} R package to re-query the Twitter API to collect additional metadata. {tidytags} then offers several functions to clean the data and perform additional calculations such as geolocation and social network analysis.
+We introduce the **tidytags** package as an approach that allows for both simple data collection through TAGS and rigorous data analysis in the R statistical computing environment. In short, **tidytags** first uses TAGS to easily and automatically collect tweet ID numbers and then provides a wrapper to the {rtweet} R package to re-query the Twitter API to collect additional metadata. **tidytags** then offers several functions to clean the data and perform additional calculations such as geolocation and social network analysis.
 
-# Getting started with {tidytags}
+# Getting started with **tidytags**
 
-For help with initial {tidytags} setup, see the [Getting started with tidytags](https://docs.ropensci.org/tidytags/articles/setup.html) guide on the {tidytags} website. Specifically, this guide offers help for four key tasks:
+For help with initial **tidytags** setup, see the [Getting started with tidytags](https://docs.ropensci.org/tidytags/articles/setup.html) guide on the **tidytags** website. Specifically, this guide offers help for four key tasks:
 
 1. Making sure your TAGS tracker can be accessed
 2. Getting and storing a Google API key
 3. Getting and storing Twitter API tokens
 4. Getting and storing an OpenCage Geocoding API key (optional; required only for geocoding)
 
-For a walkthrough of numerous additional {tidytags} functions, see the [Using tidytags with a conference hashtag](https://docs.ropensci.org/tidytags/articles/tidytags-with-conf-hashtags.html) guide.
+For a walkthrough of numerous additional **tidytags** functions, see the [Using tidytags with a conference hashtag](https://docs.ropensci.org/tidytags/articles/tidytags-with-conf-hashtags.html) guide.
 
-# The {tidytags} Workflow
+# The **tidytags** Workflow
 
-A workflow for Twitter research has been formalized in {tidytags}. This workflow is simple enough for beginning programmers to get started but powerful enough to serve as the analytic foundation of research that has been featured in academic journals such as *Computers & Education* `[@greenhalgh_et_al2020:2020]`, *Journal of Research on Technology in Education* `[@staudtwillet2019:2019]`, and *TechTrends* `[@greenhalgh_et_al2018:2018]`.
+A workflow for Twitter research has been formalized in **tidytags**. This workflow is simple enough for beginning programmers to get started but powerful enough to serve as the analytic foundation of research that has been featured in academic journals such as *Computers & Education* `[@greenhalgh_et_al2020:2020]`, *Journal of Research on Technology in Education* `[@staudtwillet2019:2019]`, and *TechTrends* `[@greenhalgh_et_al2018:2018]`.
 
-The {tidytags} workflow for exploring Twitter data over time using R includes:
+The **tidytags** workflow for exploring Twitter data over time using R includes:
 
 1. Set up a Twitter Archiving Google Sheet [TAGS](https://tags.hawksey.info/) tweet collector.
 
@@ -111,6 +111,7 @@ From here, the data are shaped for straightforward use of the [{igraph} package]
 
 # Conclusion
 
-{tidytags} is intended to lower barriers to powerful analyses of Twitter data. By combining an easy-to-use tool which can collect a large volume of longitudinal data from Twitter ([TAGS](https://tags.hawksey.info/)), analysis from the [{rtweet} R package](https://docs.ropensci.org/rtweet/index.html), and functions that facilitate and extend their combined use, {tidytags} has the potential to assist in the collection of Tweets for a range of social-science-related analyses and research. 
+**tidytags** is intended to lower barriers to powerful analyses of Twitter data. By combining an easy-to-use tool which can collect a large volume of longitudinal data from Twitter ([TAGS](https://tags.hawksey.info/)), analysis from the [{rtweet} R package](https://docs.ropensci.org/rtweet/index.html), and functions that facilitate and extend their combined use, **tidytags** has the potential to assist in the collection of Tweets for a range of social-science-related analyses and research. 
 
 # References
+

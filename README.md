@@ -30,7 +30,7 @@ Checks
 <a href="https://choosealicense.com/licenses/mit/"><img src="https://img.shields.io/badge/licence-MIT-9cf.svg" alt="Licence"></a>
 </td>
 <td align="left">
-<a href="https://github.com/ropensci/software-review/issues/382"><img src="https://badges.ropensci.org/382_status.svg" alt="rOpenSci Peer Review"></a>
+<a href="https://cran.r-project.org/package=tidytags"><img src="https://www.r-pkg.org/badges/version/tidytags" alt="CRAN"></a>
 </td>
 <td align="left">
 <a href="https://www.repostatus.org/#active"><img src="https://www.repostatus.org/badges/latest/active.svg" alt="Status"></a>
@@ -44,6 +44,7 @@ Checks
 <a href="https://cran.r-project.org/"><img src="https://img.shields.io/badge/R%3E%3D-4.1.0-blue.svg" alt="Minimal R Version"></a>
 </td>
 <td align="left">
+<a href="https://github.com/ropensci/software-review/issues/382"><img src="https://badges.ropensci.org/382_status.svg" alt="rOpenSci Peer Review"></a>
 </td>
 <td align="left">
 <a href="https://github.com/ropensci/tidytags/commits/main"><img src="https://img.shields.io/github/last-commit/ropensci/tidytags.svg" alt="Last Commit"></a>
@@ -54,8 +55,10 @@ Checks
 </tr>
 <tr class="odd">
 <td align="left">
+<a href="https://CRAN.R-project.org/package=tidytags"><img src="https://cranlogs.r-pkg.org/badges/tidytags" alt="downloads"></a>
 </td>
 <td align="left">
+<a href="https://joss.theoj.org/papers/fc4f003ad3891b8ba8e3fc8f8ae2c6e0"><img src="https://joss.theoj.org/papers/fc4f003ad3891b8ba8e3fc8f8ae2c6e0/status.svg" alt="JOSS"></a>
 </td>
 <td align="left">
 <a href="https://www.tidyverse.org/lifecycle/#maturing"><img src="https://img.shields.io/badge/lifecycle-maturing-blue.svg" alt='Lifecycle'></a>
@@ -175,14 +178,14 @@ example_tags <- "18clYlQeJOc6W5QRuSlJ6_v3snqKJImFhU42bRkM_OX8"
 tags_data <- read_tags(example_tags)
 head(tags_data)
 #> # A tibble: 6 × 18
-#>   id_str   from_user  text       created_at  time                geo_coordinates
-#>   <chr>    <chr>      <chr>      <chr>       <dttm>              <chr>          
-#> 1 1251954… Harriet96… "RT @Rout… Sun Apr 19… 2020-04-19 20:22:23 <NA>           
-#> 2 1248064… Patrick81… "RT @dtpt… Thu Apr 09… 2020-04-09 02:44:19 <NA>           
-#> 3 1234206… ELTAugusta "RT @vele… Sun Mar 01… 2020-03-01 20:00:40 <NA>           
-#> 4 1229405… gsa_aect   "RT @tado… Mon Feb 17… 2020-02-17 14:00:50 <NA>           
-#> 5 1227652… fcis_iu    "Give Mad… Wed Feb 12… 2020-02-12 17:54:38 <NA>           
-#> 6 1225505… StaufferE… "RT @tado… Thu Feb 06… 2020-02-06 19:43:00 <NA>           
+#>   id_str          from_user text  created_at time                geo_coordinates
+#>   <chr>           <chr>     <chr> <chr>      <dttm>              <chr>          
+#> 1 12519543127728… Harriet9… "RT … Sun Apr 1… 2020-04-19 20:22:23 <NA>           
+#> 2 12480641632110… Patrick8… "RT … Thu Apr 0… 2020-04-09 02:44:19 <NA>           
+#> 3 12342069467328… ELTAugus… "RT … Sun Mar 0… 2020-03-01 20:00:40 <NA>           
+#> 4 12294053501781… gsa_aect  "RT … Mon Feb 1… 2020-02-17 14:00:50 <NA>           
+#> 5 12276522438700… fcis_iu   "Giv… Wed Feb 1… 2020-02-12 17:54:38 <NA>           
+#> 6 12255051874539… Stauffer… "RT … Thu Feb 0… 2020-02-06 19:43:00 <NA>           
 #> # … with 12 more variables: user_lang <lgl>, in_reply_to_user_id_str <chr>,
 #> #   in_reply_to_screen_name <chr>, from_user_id_str <chr>,
 #> #   in_reply_to_status_id_str <chr>, source <chr>, profile_image_url <chr>,
@@ -207,15 +210,15 @@ vignette (`vignette("setup", package = "tidytags")`), **Pain Point
 expanded_metadata <- pull_tweet_data(tags_data, n = 10)
 expanded_metadata
 #> # A tibble: 7 × 90
-#>   user_id             status_id  created_at          screen_name  text    source
-#>   <chr>               <chr>      <dttm>              <chr>        <chr>   <chr> 
-#> 1 14215524            122512231… 2020-02-05 18:21:36 tadousay     "Many … Tweet…
-#> 2 922536306437181440  121975838… 2020-01-21 23:07:15 gsa_aect     "The #… Tweet…
-#> 3 922536306437181440  122940535… 2020-02-17 14:00:51 gsa_aect     "Many … Tweet…
-#> 4 1251951804398669825 125195431… 2020-04-19 19:22:23 Harriet9615… "Congr… Twitt…
-#> 5 1088189033266798598 121904357… 2020-01-19 23:46:51 aectddl      "The #… Twitt…
-#> 6 3294167372          123420694… 2020-03-01 20:00:41 ELTAugusta   "Remin… Twitt…
-#> 7 804807943           122513787… 2020-02-05 19:23:27 AECTTechTre… "Many … Twitt…
+#>   user_id             status_id     created_at          screen_name text  source
+#>   <chr>               <chr>         <dttm>              <chr>       <chr> <chr> 
+#> 1 14215524            122512231784… 2020-02-05 18:21:36 tadousay    "Man… Tweet…
+#> 2 922536306437181440  121975838643… 2020-01-21 23:07:15 gsa_aect    "The… Tweet…
+#> 3 922536306437181440  122940535017… 2020-02-17 14:00:51 gsa_aect    "Man… Tweet…
+#> 4 1251951804398669825 125195431277… 2020-04-19 19:22:23 Harriet961… "Con… Twitt…
+#> 5 1088189033266798598 121904357455… 2020-01-19 23:46:51 aectddl     "The… Twitt…
+#> 6 3294167372          123420694673… 2020-03-01 20:00:41 ELTAugusta  "Rem… Twitt…
+#> 7 804807943           122513787992… 2020-02-05 19:23:27 AECTTechTr… "Man… Twitt…
 #> # … with 84 more variables: display_text_width <dbl>, reply_to_status_id <lgl>,
 #> #   reply_to_user_id <lgl>, reply_to_screen_name <lgl>, is_quote <lgl>,
 #> #   is_retweet <lgl>, favorite_count <int>, retweet_count <int>,

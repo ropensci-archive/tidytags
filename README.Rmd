@@ -55,7 +55,7 @@ Checks
 </td>
 
 <td align="left">
-<a href="https://github.com/ropensci/software-review/issues/382"><img src="https://badges.ropensci.org/382_status.svg" alt="rOpenSci Peer Review"></a>
+<a href="https://cran.r-project.org/package=tidytags"><img src="https://www.r-pkg.org/badges/version/tidytags" alt="CRAN"></a>
 </td>
 
 <td align="left">
@@ -75,6 +75,7 @@ Checks
 </td>
 
 <td align="left">
+<a href="https://github.com/ropensci/software-review/issues/382"><img src="https://badges.ropensci.org/382_status.svg" alt="rOpenSci Peer Review"></a>
 </td>
 
 <td align="left">
@@ -90,9 +91,11 @@ Checks
 <tr class="odd">
 
 <td align="left">
+<a href="https://CRAN.R-project.org/package=tidytags"><img src="https://cranlogs.r-pkg.org/badges/tidytags" alt="downloads"></a>
 </td>
 
 <td align="left">
+<a href="https://joss.theoj.org/papers/fc4f003ad3891b8ba8e3fc8f8ae2c6e0"><img src="https://joss.theoj.org/papers/fc4f003ad3891b8ba8e3fc8f8ae2c6e0/status.svg" alt="JOSS"></a>
 </td>
 
 <td align="left">
