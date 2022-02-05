@@ -31,7 +31,7 @@ test_that("get_upstream_tweets() works with no new replies found", {
                     )
     )
 
-  vcr::use_cassette("upstream_replies_empty", {
+  vcr::use_cassette("upstream_tweets_empty", {
     replies_plus <- get_upstream_tweets(sample_data)
   })
 

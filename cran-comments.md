@@ -7,7 +7,7 @@
 - GitHub actions, ubuntu-latest, R devel
 - GitHub actions, ubuntu-latest, R release
 - GitHub actions, ubuntu-latest, R 4.1
-- rhub package builder,  
+- rhub package builder... 
 
 ## R CMD check results
 
