@@ -319,7 +319,7 @@ analyzing, and sharing social media data.
 If you encounter an obvious bug for which there is not already an
 [active issue](https://github.com/ropensci/tidytags/issues), please
 [create a new issue](https://github.com/ropensci/tidytags/issues/new)
-with all code used (preferably a reproducible example) on Github.
+with all code used (preferably a reproducible example) on GitHub.
 
 If you would like to become a more involved contributor, please read the
 [Contributing

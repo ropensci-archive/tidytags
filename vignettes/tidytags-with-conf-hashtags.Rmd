@@ -78,9 +78,9 @@ example_after_rtweet_B <- pull_tweet_data(url_vector = example_df_all$status_url
 
 When this vignette was run on Nov 19 21, the TAGS tracker had collected 18 variables associated with 2564 tweets. The first method searching with `id_str` collected 90 variables associated with 2030 tweets. The second method using 'tidytags::get_char_tweet_ids()' collected 90 variables associated with 2030 tweets.
 
-Notice how many more variables are in the dataset after using `pull_tweet_data()`, and how many more tweets are in the dataset when using the second method. We have found that in the process of storing and retrieving tweet IDs, the long string of numbers can sometimes be interpreted as an object of type double (i.e., numeric) and subsequently converted into scientific notation form. This loses the specific indentifying use of the string of numerical digits. Therfore, we strongly recommend the second method, obtaining tweet IDs from the tweet URL, which is why we have included `get_char_tweet_ids()` as an internal function in the {tidytags} package.
+Notice how many more variables are in the dataset after using `pull_tweet_data()`, and how many more tweets are in the dataset when using the second method. We have found that in the process of storing and retrieving tweet IDs, the long string of numbers can sometimes be interpreted as an object of type double (i.e., numeric) and subsequently converted into scientific notation form. This loses the specific identifying use of the string of numerical digits. Therefore, we strongly recommend the second method, obtaining tweet IDs from the tweet URL, which is why we have included `get_char_tweet_ids()` as an internal function in the {tidytags} package.
 
-The built-in default of `pull_tweet_data()` is to simply enter the dataframe retrieved from  `read_tags()` and implement the second method, retieving metadata starting with tweet URLs. That is, `pull_tweet_data(read_tags(example_url))`. Take a quick look at the result, viewed with the `glimpse()` function from the {dplyr} package:
+The built-in default of `pull_tweet_data()` is to simply enter the dataframe retrieved from  `read_tags()` and implement the second method, retrieving metadata starting with tweet URLs. That is, `pull_tweet_data(read_tags(example_url))`. Take a quick look at the result, viewed with the `glimpse()` function from the {dplyr} package:
 
 
 ```r
@@ -367,13 +367,13 @@ There is a solution to this problem. Because the Twitter API offers a `reply_to_
 example_with_upstream <- get_upstream_tweets(example_processed)
 ```
 
-The dataset contained 2030 tweets at the start. Runnning `get_upstream_tweets()` added 28 new tweets.
+The dataset contained 2030 tweets at the start. Running `get_upstream_tweets()` added 28 new tweets.
 
 Unfortunately, due to limitations in what information is given by the Twitter API, it is not practical to retrieve *downstream* replies, or those tweets in a reply thread that follow a tweet in the dataset but neglect to include the hashtag or keyword.
 
 ## create_edgelist()
 
-Another useful approach to social media research is *social network analysis*. Getting started with social network analysis is as simple as producing an *edgelist*, a two-column dataframe listing *senders* and *receivers*. An edgelist gives a complete accounting of whom is interacting with whom. In Twitter, this is complicated somewhat by the number of ways a user is able to interact with someone else, namely, through replying, retweeting, quote tweeting, mentioning, and liking tweets. The {tidytags} function `create_edgelist()` uses `filter_by_tweet_type()` to create an edgelist that takes into account four of these types of interaction. `create_edgelist()` returns a dataframe with three columns: two for the sender and receiver Twitter handles, and a third column listing the edge type (i.e., the form of interaction). The default is for `create_edgelist()` to create an edgelist of all possibile interactions, but focusing on one type of interaction is easily accomplished as well (e.g., looking at interactions through replies using `create_edgelist(df, "reply")`).
+Another useful approach to social media research is *social network analysis*. Getting started with social network analysis is as simple as producing an *edgelist*, a two-column dataframe listing *senders* and *receivers*. An edgelist gives a complete accounting of whom is interacting with whom. In Twitter, this is complicated somewhat by the number of ways a user is able to interact with someone else, namely, through replying, retweeting, quote tweeting, mentioning, and liking tweets. The {tidytags} function `create_edgelist()` uses `filter_by_tweet_type()` to create an edgelist that takes into account four of these types of interaction. `create_edgelist()` returns a dataframe with three columns: two for the sender and receiver Twitter handles, and a third column listing the edge type (i.e., the form of interaction). The default is for `create_edgelist()` to create an edgelist of all possible interactions, but focusing on one type of interaction is easily accomplished as well (e.g., looking at interactions through replies using `create_edgelist(df, "reply")`).
 
 Run `create_edgelist()` after completing `get_upstream_tweets()` for a complete picture of the interactions.
 
