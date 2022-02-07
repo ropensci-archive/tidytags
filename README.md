@@ -1,7 +1,7 @@
 
 <!-- README.md is generated from README.Rmd. Please edit that file -->
 
-# tidytags <a href='https://docs.ropensci.org/tidytags'><img src='man/figures/logo.png' align="right" height="138" /></a>
+# tidytags <a href='https://docs.ropensci.org/tidytags/'><img src='man/figures/logo.png' align="right" height="138" /></a>
 
 ##### *Importing and Analyzing Twitter Data Collected with Twitter Archiving Google Sheets*
 
@@ -33,10 +33,10 @@ Checks
 <a href="https://cran.r-project.org/package=tidytags"><img src="https://www.r-pkg.org/badges/version/tidytags" alt="CRAN"></a>
 </td>
 <td align="left">
-<a href="https://www.repostatus.org/#active"><img src="https://www.repostatus.org/badges/latest/active.svg" alt="Status"></a>
+<a href="https://github.com/ropensci/tidytags/commits/main"><img src="https://img.shields.io/github/last-commit/ropensci/tidytags.svg" alt="Last Commit"></a>
 </td>
 <td align="left">
-<a href="https://github.com/ropensci/tidytags/actions"><img src="https://github.com/ropensci/tidytags/workflows/R-CMD-check/badge.svg" alt="Check"></a>
+<a href="https://github.com/ropensci/tidytags/actions/"><img src="https://github.com/ropensci/tidytags/workflows/R-CMD-check/badge.svg" alt="Check"></a>
 </td>
 </tr>
 <tr class="even">
@@ -47,10 +47,10 @@ Checks
 <a href="https://github.com/ropensci/software-review/issues/382"><img src="https://badges.ropensci.org/382_status.svg" alt="rOpenSci Peer Review"></a>
 </td>
 <td align="left">
-<a href="https://github.com/ropensci/tidytags/commits/main"><img src="https://img.shields.io/github/last-commit/ropensci/tidytags.svg" alt="Last Commit"></a>
+<a href="https://www.repostatus.org/#active/"><img src="https://www.repostatus.org/badges/latest/active.svg" alt="Status"></a>
 </td>
 <td align="left">
-<a href="https://codecov.io/gh/ropensci/tidytags?branch=main"><img src="https://codecov.io/gh/ropensci/tidytags/coverage.svg?branch=main" alt="Codecov"></a>
+<a href="https://app.codecov.io/gh/ropensci/tidytags?branch=main"><img src="https://codecov.io/gh/ropensci/tidytags/coverage.svg?branch=main" alt="Codecov"></a>
 </td>
 </tr>
 <tr class="odd">
@@ -61,7 +61,7 @@ Checks
 <a href="https://joss.theoj.org/papers/fc4f003ad3891b8ba8e3fc8f8ae2c6e0"><img src="https://joss.theoj.org/papers/fc4f003ad3891b8ba8e3fc8f8ae2c6e0/status.svg" alt="JOSS"></a>
 </td>
 <td align="left">
-<a href="https://www.tidyverse.org/lifecycle/#maturing"><img src="https://img.shields.io/badge/lifecycle-maturing-blue.svg" alt='Lifecycle'></a>
+<a href="https://lifecycle.r-lib.org/articles/stages.html#stable"><img src="https://lifecycle.r-lib.org/articles/figures/lifecycle-stable.svg" alt='Lifecycle'></a>
 </td>
 <td align="left">
 </td>
@@ -73,55 +73,56 @@ Checks
 
 ## Overview
 
-The purpose of {tidytags} is to make the collection of Twitter data more
-accessible and robust. {tidytags} retrieves tweet data collected by a
-[Twitter Archiving Google Sheet (TAGS)](https://tags.hawksey.info/),
-gets additional metadata from Twitter via the
-[{rtweet}](https://docs.ropensci.org/rtweet/index.html) package, and
-from OpenCage using the [opencage](https://opencagedata.com/) package,
-and provides additional functions to facilitate a systematic yet
-flexible analyses of data from Twitter. TAGS is based on Google
+The purpose of **tidytags** is to make the collection of Twitter data
+more accessible and robust. **tidytags** retrieves tweet data collected
+by a [Twitter Archiving Google Sheet
+(TAGS)](https://tags.hawksey.info/), gets additional metadata from
+Twitter via the
+**[rtweet](https://docs.ropensci.org/rtweet/index.html/)** R package,
+and from OpenCage using the **[opencage](https://opencagedata.com/)** R
+package, and provides additional functions to facilitate a systematic
+yet flexible analyses of data from Twitter. TAGS is based on Google
 spreadsheets. A TAGS tracker continuously collects tweets from Twitter,
 based on predefined search criteria and collection frequency.
 
-In short, {tidytags} first uses TAGS to easily collect tweet ID numbers
-and then uses the R package {rtweet} to re-query the Twitter API to
-collect additional metadata.
+In short, **tidytags** first uses TAGS to easily collect tweet ID
+numbers and then uses the R package **rtweet** to re-query the Twitter
+API to collect additional metadata.
 
-{tidytags} also introduces functions developed to facilitate systematic
-yet flexible analyses of data from Twitter. It also interfaces with
-several other packages, including the [opencage
+**tidytags** also introduces functions developed to facilitate
+systematic yet flexible analyses of data from Twitter. It also
+interfaces with several other packages, including the [opencage
 package](https://opencagedata.com/), to geocode the locations of Twitter
 users based on their biographies.
 
 Two vignettes illustrate the setup and use of the package:
 
 -   [Getting started with
-    tidytags](https://docs.ropensci.org/tidytags/articles/setup.html)
+    tidytags](https://docs.ropensci.org/tidytags/articles/setup.html/)
     (`vignette("setup", package = "tidytags")`)
 -   [Using tidytags with a conference
-    hashtag](https://docs.ropensci.org/tidytags/articles/tidytags-with-conf-hashtags.html)
+    hashtag](https://docs.ropensci.org/tidytags/articles/tidytags-with-conf-hashtags.html/)
     (`vignette("tidytags-with-conf-hashtags", package = "tidytags")`)
 
 ------------------------------------------------------------------------
 
 ## Installation
 
-You can install the **released version** of {tidytags} from
+You can install the *released version* of **tidytags** from
 [CRAN](https://CRAN.R-project.org) with:
 
 ``` r
 install.packages("tidytags")
 ```
 
-Or you can install the **development version** of {tidytags} from
+Or you can install the *development version* of **tidytags** from
 R-universe:
 
 ``` r
 install.packages("tidytags", repos = "https://ropensci.r-universe.dev")
 ```
 
-Once installed, use the `library()` function load {tidytags}:
+Once installed, use the `library()` function load **tidytags**:
 
 ``` r
 library(tidytags)
@@ -131,8 +132,8 @@ library(tidytags)
 
 ## Setup
 
-For help with initial {tidytags} setup, see the [Getting started with
-tidytags](https://docs.ropensci.org/tidytags/articles/setup.html)
+For help with initial **tidytags** setup, see the [Getting started with
+tidytags](https://docs.ropensci.org/tidytags/articles/setup.html/)
 vignette (`vignette("setup", package = "tidytags")`). Specifically, this
 guide offers help for four key tasks:
 
@@ -145,11 +146,11 @@ guide offers help for four key tasks:
 
 ## Usage
 
-To test the {tidytags} package, you can use an openly shared TAGS
+To test the **tidytags** package, you can use an openly shared TAGS
 tracker that has been collecting tweets associated with the AECT 2019
 since September 30, 2019. This is the same TAGS tracker used in the
 [Using tidytags with a conference hashtag
-vignette](https://docs.ropensci.org/tidytags/articles/tidytags-with-conf-hashtags.html)
+vignette](https://docs.ropensci.org/tidytags/articles/tidytags-with-conf-hashtags.html/)
 (`vignette("tidytags-with-conf-hashtags", package = "tidytags")`).
 
 ------------------------------------------------------------------------
@@ -158,19 +159,19 @@ vignette](https://docs.ropensci.org/tidytags/articles/tidytags-with-conf-hashtag
 
 ### read\_tags()
 
-At its most basic level, {tidytags} allows you to import data from a
+At its most basic level, **tidytags** allows you to import data from a
 [Twitter Archiving Google Sheet](https://tags.hawksey.info/) (TAGS) into
-R. This is done with the [{googlesheets4}
-package](https://CRAN.R-project.org/package=googlesheets4). One
-requirement for using the {googlesheets4} package is that your TAGS
-tracker has been “published to the web.” See the [Getting started with
-tidytags](https://docs.ropensci.org/tidytags/articles/setup.html)
+R. This is done with the
+**[googlesheets4](https://CRAN.R-project.org/package=googlesheets4)** R
+package. One requirement for using the **googlesheets4** package is that
+your TAGS tracker has been “published to the web.” See the [Getting
+started with
+tidytags](https://docs.ropensci.org/tidytags/articles/setup.html/)
 vignette (`vignette("setup", package = "tidytags")`), **Pain Point
-\#1**, if you need help with this.
-
-Once a TAGS tracker has been published to the web, you can import the
-TAGS archive into R using `read_tags()`. See the [Getting started with
-tidytags](https://docs.ropensci.org/tidytags/articles/setup.html)
+\#1**, if you need help with this. Once a TAGS tracker has been
+published to the web, you can import the TAGS archive into R using
+`read_tags()`. See the [Getting started with
+tidytags](https://docs.ropensci.org/tidytags/articles/setup.html/)
 vignette (`vignette("setup", package = "tidytags")`), **Pain Point
 \#2**, to set up API access to Google Sheets like the TAGS tracker.
 
@@ -196,14 +197,14 @@ head(tags_data)
 
 ### pull\_tweet\_data()
 
-With a TAGS archive imported into R, {tidytags} allows you to gather
+With a TAGS archive imported into R, **tidytags** allows you to gather
 quite a bit more information related to the collected tweets with the
-`pull_tweet_data()` function. This function uses the [{rtweet}
-package](https://docs.ropensci.org/rtweet/index.html) (via
+`pull_tweet_data()` function. This function uses the **[rtweet
+package](https://docs.ropensci.org/rtweet/index.html/)** (via
 `rtweet::lookup_tweets()`) to query the Twitter API. This process
 requires Twitter API keys associated with an approved Twitter developer
 account. See the [Getting started with
-tidytags](https://docs.ropensci.org/tidytags/articles/setup.html)
+tidytags](https://docs.ropensci.org/tidytags/articles/setup.html/)
 vignette (`vignette("setup", package = "tidytags")`), **Pain Point
 \#3**, if you need help with this.
 
@@ -234,8 +235,8 @@ expanded_metadata
 ## Workflow
 
 The following diagram represents how the functions included in the
-{tidytags} package may work together. These are presented in the figure
-below.
+**tidytags** package may work together. These are presented in the
+figure below.
 
 <p align="center">
 <img src="man/figures/tidytags-workflow.jpg" alt="TAGS workflow" width="600">
@@ -243,11 +244,11 @@ below.
 
 ------------------------------------------------------------------------
 
-## Learning More About {tidytags}
+## Learning More About **tidytags**
 
-For a walkthrough of numerous additional {tidytags} functions, see the
+For a walkthrough of numerous additional **tidytags** functions, see the
 [Using tidytags with a conference
-hashtag](https://docs.ropensci.org/tidytags/articles/tidytags-with-conf-hashtags.html)
+hashtag](https://docs.ropensci.org/tidytags/articles/tidytags-with-conf-hashtags.html/)
 vignette
 (`vignette("tidytags-with-conf-hashtags", package = "tidytags")`).
 
@@ -317,13 +318,13 @@ analyzing, and sharing social media data.
 ## Contributing
 
 If you encounter an obvious bug for which there is not already an
-[active issue](https://github.com/ropensci/tidytags/issues), please
-[create a new issue](https://github.com/ropensci/tidytags/issues/new)
+[active issue](https://github.com/ropensci/tidytags/issues/), please
+[create a new issue](https://github.com/ropensci/tidytags/issues/new/)
 with all code used (preferably a reproducible example) on GitHub.
 
 If you would like to become a more involved contributor, please read the
 [Contributing
-Guide](https://github.com/ropensci/tidytags/blob/master/CONTRIBUTING.md).
+Guide](https://github.com/ropensci/tidytags/blob/master/CONTRIBUTING.md/).
 
 ### Contributor Code of Conduct
 
@@ -348,7 +349,7 @@ in your reference list:
 
 ## License [![license](https://img.shields.io/badge/licence-MIT-9cf.svg)](https://choosealicense.com/licenses/mit/)
 
-The {tidytags} package is licensed under the [*MIT
+The **tidytags** package is licensed under the [*MIT
 License*](https://choosealicense.com/licenses/mit/). For background on
 why we chose this license, read this chapter on [R package
 licensing](https://r-pkgs.org/license.html).
