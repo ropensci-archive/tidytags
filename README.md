@@ -30,10 +30,10 @@ Checks
 <a href="https://choosealicense.com/licenses/mit/"><img src="https://img.shields.io/badge/licence-MIT-9cf.svg" alt="Licence"></a>
 </td>
 <td align="left">
-<a href="https://cran.r-project.org/package=tidytags"><img src="https://www.r-pkg.org/badges/version/tidytags" alt="CRAN"></a>
+<a href="https://github.com/ropensci/software-review/issues/382"><img src="https://badges.ropensci.org/382_status.svg" alt="rOpenSci Peer Review"></a>
 </td>
 <td align="left">
-<a href="https://github.com/ropensci/tidytags/commits/main"><img src="https://img.shields.io/github/last-commit/ropensci/tidytags.svg" alt="Last Commit"></a>
+<a href="https://www.repostatus.org/#active/"><img src="https://www.repostatus.org/badges/latest/active.svg" alt="Status"></a>
 </td>
 <td align="left">
 <a href="https://github.com/ropensci/tidytags/actions/"><img src="https://github.com/ropensci/tidytags/workflows/R-CMD-check/badge.svg" alt="Check"></a>
@@ -44,10 +44,10 @@ Checks
 <a href="https://cran.r-project.org/"><img src="https://img.shields.io/badge/R%3E%3D-4.1.0-blue.svg" alt="Minimal R Version"></a>
 </td>
 <td align="left">
-<a href="https://github.com/ropensci/software-review/issues/382"><img src="https://badges.ropensci.org/382_status.svg" alt="rOpenSci Peer Review"></a>
+<a href="https://github.com/openjournals/joss-reviews/issues/4130"><img src="https://joss.theoj.org/papers/fc4f003ad3891b8ba8e3fc8f8ae2c6e0/status.svg" alt="JOSS"></a>
 </td>
 <td align="left">
-<a href="https://www.repostatus.org/#active/"><img src="https://www.repostatus.org/badges/latest/active.svg" alt="Status"></a>
+<a href="https://lifecycle.r-lib.org/articles/stages.html#stable"><img src="https://lifecycle.r-lib.org/articles/figures/lifecycle-stable.svg" alt='Lifecycle'></a>
 </td>
 <td align="left">
 <a href="https://app.codecov.io/gh/ropensci/tidytags?branch=main"><img src="https://codecov.io/gh/ropensci/tidytags/coverage.svg?branch=main" alt="Codecov"></a>
@@ -55,13 +55,12 @@ Checks
 </tr>
 <tr class="odd">
 <td align="left">
-<a href="https://CRAN.R-project.org/package=tidytags"><img src="https://cranlogs.r-pkg.org/badges/tidytags" alt="downloads"></a>
 </td>
 <td align="left">
-<a href="https://joss.theoj.org/papers/fc4f003ad3891b8ba8e3fc8f8ae2c6e0"><img src="https://joss.theoj.org/papers/fc4f003ad3891b8ba8e3fc8f8ae2c6e0/status.svg" alt="JOSS"></a>
+<a href="https://cran.r-project.org/package=tidytags"><img src="https://www.r-pkg.org/badges/version/tidytags" alt="CRAN"></a>
 </td>
 <td align="left">
-<a href="https://lifecycle.r-lib.org/articles/stages.html#stable"><img src="https://lifecycle.r-lib.org/articles/figures/lifecycle-stable.svg" alt='Lifecycle'></a>
+<a href="https://github.com/ropensci/tidytags/commits/main"><img src="https://img.shields.io/github/last-commit/ropensci/tidytags.svg" alt="Last Commit"></a>
 </td>
 <td align="left">
 </td>
@@ -108,15 +107,7 @@ Two vignettes illustrate the setup and use of the package:
 
 ## Installation
 
-You can install the *released version* of **tidytags** from
-[CRAN](https://CRAN.R-project.org) with:
-
-``` r
-install.packages("tidytags")
-```
-
-Or you can install the *development version* of **tidytags** from
-R-universe:
+You can install **tidytags** through R-universe:
 
 ``` r
 install.packages("tidytags", repos = "https://ropensci.r-universe.dev")

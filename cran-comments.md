@@ -11,4 +11,6 @@
 
 ## R CMD check results
 
-0 errors | 0 warnings | 0 notes
+N  checking CRAN incoming feasibility (23.2s)
+   New submission
+   Maintainer: 'K. Bret Staudt Willet <bret.staudtwillet@fsu.edu>'

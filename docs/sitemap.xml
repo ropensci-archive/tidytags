@@ -1,7 +1,37 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
+    <loc>https://docs.ropensci.org/tidytags/404.html</loc>
+  </url>
+  <url>
+    <loc>https://docs.ropensci.org/tidytags/CONTRIBUTING.html</loc>
+  </url>
+  <url>
+    <loc>https://docs.ropensci.org/tidytags/LICENSE-text.html</loc>
+  </url>
+  <url>
+    <loc>https://docs.ropensci.org/tidytags/LICENSE.html</loc>
+  </url>
+  <url>
+    <loc>https://docs.ropensci.org/tidytags/articles/index.html</loc>
+  </url>
+  <url>
+    <loc>https://docs.ropensci.org/tidytags/articles/setup.html</loc>
+  </url>
+  <url>
+    <loc>https://docs.ropensci.org/tidytags/articles/tidytags-with-conf-hashtags.html</loc>
+  </url>
+  <url>
+    <loc>https://docs.ropensci.org/tidytags/authors.html</loc>
+  </url>
+  <url>
     <loc>https://docs.ropensci.org/tidytags/index.html</loc>
+  </url>
+  <url>
+    <loc>https://docs.ropensci.org/tidytags/news/index.html</loc>
+  </url>
+  <url>
+    <loc>https://docs.ropensci.org/tidytags/paper.html</loc>
   </url>
   <url>
     <loc>https://docs.ropensci.org/tidytags/reference/add_users_data.html</loc>
@@ -25,6 +55,9 @@
     <loc>https://docs.ropensci.org/tidytags/reference/get_url_domain.html</loc>
   </url>
   <url>
+    <loc>https://docs.ropensci.org/tidytags/reference/index.html</loc>
+  </url>
+  <url>
     <loc>https://docs.ropensci.org/tidytags/reference/lookup_many_tweets.html</loc>
   </url>
   <url>
@@ -38,11 +71,5 @@
   </url>
   <url>
     <loc>https://docs.ropensci.org/tidytags/reference/read_tags.html</loc>
-  </url>
-  <url>
-    <loc>https://docs.ropensci.org/tidytags/articles/setup.html</loc>
-  </url>
-  <url>
-    <loc>https://docs.ropensci.org/tidytags/articles/tidytags-with-conf-hashtags.html</loc>
   </url>
 </urlset>
