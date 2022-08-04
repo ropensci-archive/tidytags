@@ -11,8 +11,6 @@
 #'   about the senders and receivers.
 #' @details This function requires authentication; please see
 #'   `vignette("setup", package = "tidytags")`
-#' @seealso Review documentation for `rtweet::lookup_users()` for a full
-#'   list of metadata retrieved (i.e., column names) by this function.
 #' @examples
 #'
 #' \dontrun{

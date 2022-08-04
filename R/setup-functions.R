@@ -297,13 +297,42 @@ get_urls_count <-
     urls_count
   }
 
+#' Determine the tweet type for each status
+#'
+#' @param df A dataframe of statuses and full metadata from the Twitter API as
+#'   returned by `pull_tweet_data()`
+#' @return A vector of tweet types of each status in the dataframe
+#' @keywords internal
+#' @noRd
+get_tweet_type <-
+  function(df) {
+    mentions_vector <- get_mentions_count(df)
+    tweet_type <- character()
+    for(i in 1:nrow(df)) {
+      tweet_type[i] <-
+        ifelse(!is.na(df$retweeted_status[[i]]$id_str),
+               "retweet",
+               ifelse(!is.na(df$quoted_status_id_str[i]),
+                      "quote",
+                      ifelse(!is.na(df$in_reply_to_status_id_str[i]),
+                             "reply",
+                             ifelse(mentions_vector[i] > 0,
+                                    "mention",
+                                    "original"
+                             )
+                      )
+               )
+        )
+    }
+    tweet_type
+  }
+
 #' Calculate additional information using status metadata
 #'
 #' @param df A dataframe of statuses and full metadata from the Twitter API as
 #'   returned by `pull_tweet_data()`
 #' @return A dataframe with several additional columns: mentions_count,
-#'   hashtags_count, has_hashtags, urls_count, has_urls,
-#'   is_reply, is_self_reply
+#'   hashtags_count, urls_count, tweet_type, is_self_reply
 #' @examples
 #'
 #' \dontrun{
@@ -322,28 +351,15 @@ process_tweets <-
       c("user_id", "user_id_str", "user_created_at",
         "user_withheld_in_countries", "user_withheld_scope", "user_entities")
     df$mentions_count <- get_mentions_count(df)
-    df$hashtags_count = get_hashtags_count(df)
-    df$urls_count = get_urls_count(df)
+    df$hashtags_count <-  get_hashtags_count(df)
+    df$urls_count <- get_urls_count(df)
+    df$tweet_type <- get_tweet_type(df)
     df <-
       dplyr::mutate(df,
-        has_hashtags =
-          ifelse(.data$hashtags_count > 0,
-                 TRUE,
-                 FALSE
-        ),
-        has_urls =
-          ifelse(.data$urls_count > 0,
-                 TRUE,
-                 FALSE
-          ),
-        is_reply =
-          ifelse(!is.na(.data$in_reply_to_status_id_str),
-                 TRUE,
-                 FALSE
-          ),
         is_self_reply =
           ifelse(
-            .data$is_reply & .data$user_id_str == .data$in_reply_to_user_id_str,
+            .data$tweet_type == "reply" &
+              .data$user_id_str == .data$in_reply_to_user_id_str,
             TRUE,
             FALSE
           )
