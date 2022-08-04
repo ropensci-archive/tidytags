@@ -1,6 +1,6 @@
 Package: tidytags
 Title: Importing and Analyzing Twitter Data Collected with Twitter Archiving Google Sheets
-Version: 0.4.0
+Version: 1.0.0
 License: MIT + file LICENSE
 Authors@R: c(
     person("K. Bret", "Staudt Willet", , 
@@ -35,11 +35,11 @@ Imports:
     dplyr (>= 1.0),
     googlesheets4 (>= 1.0),
     purrr (>= 0.3),
-    rlang (>= 0.4),
+    rlang (>= 1.0),
     rtweet (>= 1.0),
     stringr (>= 1.4),
     tibble (>= 3.1), 
-    tidyr (>= 1.1)
+    tidyr (>= 1.2)
 Suggests:
     beepr,
     covr,
@@ -47,11 +47,8 @@ Suggests:
     ggraph,
     knitr,
     longurl,
-    mapview,
-    opencage (>= 0.2),
     readr,
     rmarkdown,
-    sf,
     testthat,
     tidygraph,
     urltools,
