@@ -44,7 +44,7 @@ Checks
 <a href="https://cran.r-project.org/"><img src="https://img.shields.io/badge/R%3E%3D-4.1.0-blue.svg" alt="Minimal R Version"></a>
 </td>
 <td align="left">
-<a href="https://github.com/openjournals/joss-reviews/issues/4130"><img src="https://joss.theoj.org/papers/fc4f003ad3891b8ba8e3fc8f8ae2c6e0/status.svg" alt="JOSS"></a>
+<a href="https://cran.r-project.org/package=tidytags"><img src="https://www.r-pkg.org/badges/version/tidytags" alt="CRAN"></a>
 </td>
 <td align="left">
 <a href="https://lifecycle.r-lib.org/articles/stages.html#stable"><img src="https://lifecycle.r-lib.org/articles/figures/lifecycle-stable.svg" alt='Lifecycle'></a>
@@ -57,7 +57,6 @@ Checks
 <td align="left">
 </td>
 <td align="left">
-<a href="https://cran.r-project.org/package=tidytags"><img src="https://www.r-pkg.org/badges/version/tidytags" alt="CRAN"></a>
 </td>
 <td align="left">
 <a href="https://github.com/ropensci/tidytags/commits/main"><img src="https://img.shields.io/github/last-commit/ropensci/tidytags.svg" alt="Last Commit"></a>
@@ -76,9 +75,7 @@ The purpose of **tidytags** is to make the collection of Twitter data
 more accessible and robust. **tidytags** retrieves tweet data collected
 by a [Twitter Archiving Google Sheet
 (TAGS)](https://tags.hawksey.info/), gets additional metadata from
-Twitter via the
-**[rtweet](https://docs.ropensci.org/rtweet/index.html/)** R package,
-and from OpenCage using the **[opencage](https://opencagedata.com/)** R
+Twitter via the **[rtweet](https://docs.ropensci.org/rtweet/)** R
 package, and provides additional functions to facilitate a systematic
 yet flexible analyses of data from Twitter. TAGS is based on Google
 spreadsheets. A TAGS tracker continuously collects tweets from Twitter,
@@ -86,13 +83,9 @@ based on predefined search criteria and collection frequency.
 
 In short, **tidytags** first uses TAGS to easily collect tweet ID
 numbers and then uses the R package **rtweet** to re-query the Twitter
-API to collect additional metadata.
-
-**tidytags** also introduces functions developed to facilitate
-systematic yet flexible analyses of data from Twitter. It also
-interfaces with several other packages, including the [opencage
-package](https://opencagedata.com/), to geocode the locations of Twitter
-users based on their biographies.
+API to collect additional metadata. **tidytags** also introduces
+functions developed to facilitate systematic yet flexible analyses of
+data from Twitter.
 
 Two vignettes illustrate the setup and use of the package:
 
@@ -126,12 +119,10 @@ library(tidytags)
 For help with initial **tidytags** setup, see the [Getting started with
 tidytags](https://docs.ropensci.org/tidytags/articles/setup.html/)
 vignette (`vignette("setup", package = "tidytags")`). Specifically, this
-guide offers help for four key tasks:
+guide offers help for two key tasks:
 
 1.  Making sure your TAGS tracker can be accessed
-2.  Getting and storing a Google API key
-3.  Getting and storing Twitter API tokens
-4.  Getting and storing an OpenCage Geocoding API key
+2.  Getting and storing Twitter API tokens
 
 ------------------------------------------------------------------------
 
@@ -148,7 +139,7 @@ vignette](https://docs.ropensci.org/tidytags/articles/tidytags-with-conf-hashtag
 
 ## Core Functions
 
-### read\_tags()
+### read_tags()
 
 At its most basic level, **tidytags** allows you to import data from a
 [Twitter Archiving Google Sheet](https://tags.hawksey.info/) (TAGS) into
@@ -158,13 +149,11 @@ package. One requirement for using the **googlesheets4** package is that
 your TAGS tracker has been “published to the web.” See the [Getting
 started with
 tidytags](https://docs.ropensci.org/tidytags/articles/setup.html/)
-vignette (`vignette("setup", package = "tidytags")`), **Pain Point
-\#1**, if you need help with this. Once a TAGS tracker has been
-published to the web, you can import the TAGS archive into R using
-`read_tags()`. See the [Getting started with
-tidytags](https://docs.ropensci.org/tidytags/articles/setup.html/)
-vignette (`vignette("setup", package = "tidytags")`), **Pain Point
-\#2**, to set up API access to Google Sheets like the TAGS tracker.
+vignette (`vignette("setup", package = "tidytags")`), **Key Task \#1**,
+if you need help with this.
+
+Once a TAGS tracker has been published to the web, you can import the
+TAGS archive into R using `read_tags()`.
 
 ``` r
 example_tags <- "18clYlQeJOc6W5QRuSlJ6_v3snqKJImFhU42bRkM_OX8"
@@ -186,39 +175,43 @@ head(tags_data)
 #> #   status_url <chr>, entities_str <chr>
 ```
 
-### pull\_tweet\_data()
+### pull_tweet_data()
 
 With a TAGS archive imported into R, **tidytags** allows you to gather
 quite a bit more information related to the collected tweets with the
 `pull_tweet_data()` function. This function uses the **[rtweet
-package](https://docs.ropensci.org/rtweet/index.html/)** (via
-`rtweet::lookup_tweets()`) to query the Twitter API. This process
-requires Twitter API keys associated with an approved Twitter developer
-account. See the [Getting started with
+package](https://docs.ropensci.org/rtweet/)** (via
+`rtweet::lookup_tweets()`) to query the Twitter API.
+
+This process requires Twitter API keys associated with an approved
+Twitter developer account. See the [Getting started with
 tidytags](https://docs.ropensci.org/tidytags/articles/setup.html/)
-vignette (`vignette("setup", package = "tidytags")`), **Pain Point
-\#3**, if you need help with this.
+vignette (`vignette("setup", package = "tidytags")`), **Key Task \#2**,
+if you need help with this.
 
 ``` r
+app <- rtweet::rtweet_app(bearer_token = Sys.getenv("TWITTER_BEARER_TOKEN"))
+rtweet::auth_as(app)
+
 expanded_metadata <- pull_tweet_data(tags_data, n = 10)
 expanded_metadata
-#> # A tibble: 7 × 90
-#>   user_id             status_id     created_at          screen_name text  source
-#>   <chr>               <chr>         <dttm>              <chr>       <chr> <chr> 
-#> 1 14215524            122512231784… 2020-02-05 18:21:36 tadousay    "Man… Tweet…
-#> 2 922536306437181440  121975838643… 2020-01-21 23:07:15 gsa_aect    "The… Tweet…
-#> 3 922536306437181440  122940535017… 2020-02-17 14:00:51 gsa_aect    "Man… Tweet…
-#> 4 1251951804398669825 125195431277… 2020-04-19 19:22:23 Harriet961… "Con… Twitt…
-#> 5 1088189033266798598 121904357455… 2020-01-19 23:46:51 aectddl     "The… Twitt…
-#> 6 3294167372          123420694673… 2020-03-01 20:00:41 ELTAugusta  "Rem… Twitt…
-#> 7 804807943           122513787992… 2020-02-05 19:23:27 AECTTechTr… "Man… Twitt…
-#> # … with 84 more variables: display_text_width <dbl>, reply_to_status_id <lgl>,
-#> #   reply_to_user_id <lgl>, reply_to_screen_name <lgl>, is_quote <lgl>,
-#> #   is_retweet <lgl>, favorite_count <int>, retweet_count <int>,
-#> #   quote_count <int>, reply_count <int>, hashtags <list>, symbols <list>,
-#> #   urls_url <list>, urls_t.co <list>, urls_expanded_url <list>,
-#> #   media_url <list>, media_t.co <list>, media_expanded_url <list>,
-#> #   media_type <list>, ext_media_url <list>, ext_media_t.co <list>, …
+#> # A tibble: 7 × 43
+#>   created_at               id id_str        full_text truncated display_text_ra…
+#>   <dttm>                <dbl> <chr>         <chr>     <lgl>                <dbl>
+#> 1 2020-04-19 15:22:23 1.25e18 125195431277… "RT @Rou… FALSE                  140
+#> 2 2020-03-01 15:00:41 1.23e18 123420694673… "RT @vel… FALSE                  140
+#> 3 2020-02-17 09:00:51 1.23e18 122940535017… "RT @tad… FALSE                  140
+#> 4 2020-02-05 14:23:27 1.23e18 122513787992… "RT @tad… FALSE                  140
+#> 5 2020-02-05 13:21:36 1.23e18 122512231784… "Many th… FALSE                  268
+#> 6 2020-01-21 18:07:15 1.22e18 121975838643… "RT @AEC… FALSE                  140
+#> 7 2020-01-19 18:46:51 1.22e18 121904357455… "RT @AEC… FALSE                  140
+#> # … with 37 more variables: entities <list>, source <chr>,
+#> #   in_reply_to_status_id <lgl>, in_reply_to_status_id_str <lgl>,
+#> #   in_reply_to_user_id <lgl>, in_reply_to_user_id_str <lgl>,
+#> #   in_reply_to_screen_name <lgl>, geo <list>, coordinates <list>,
+#> #   place <list>, contributors <lgl>, is_quote_status <lgl>,
+#> #   retweet_count <int>, favorite_count <int>, favorited <lgl>,
+#> #   retweeted <lgl>, possibly_sensitive <lgl>, lang <chr>, …
 ```
 
 ------------------------------------------------------------------------

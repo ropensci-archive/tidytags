@@ -26,13 +26,7 @@ jobs:
       R_REMOTES_NO_ERRORS_FROM_WARNINGS: true
       GITHUB_PAT: ${{ secrets.GITHUB_TOKEN }}
       VCR_TURN_OFF: true
-      GOOGLE_API_KEY: ${{ secrets.GOOGLE_API_KEY }}
-      OPENCAGE_KEY: ${{ secrets.OPENCAGE_KEY }}
-      TWITTER_APP: ${{ secrets.TWITTER_APP }}
-      TWITTER_API_KEY: ${{ secrets.TWITTER_API_KEY }}
-      TWITTER_API_SECRET: ${{ secrets.TWITTER_API_SECRET }}
-      TWITTER_ACCESS_TOKEN: ${{ secrets.TWITTER_ACCESS_TOKEN }}
-      TWITTER_ACCESS_TOKEN_SECRET: ${{ secrets.TWITTER_ACCESS_TOKEN_SECRET }}
+      TWITTER_BEARER_TOKEN: ${{ secrets.TWITTER_BEARER_TOKEN }}
 
     steps:
       - uses: actions/checkout@v2
@@ -65,12 +59,9 @@ jobs:
 
       - name: Create rtweet token
         run: |
-          token <- rtweet::create_token(
-            app = Sys.getenv('TWITTER_APP'),
-            consumer_key = Sys.getenv('TWITTER_API_KEY'),
-            consumer_secret = Sys.getenv('TWITTER_API_SECRET'),
-            access_token = Sys.getenv('TWITTER_ACCESS_TOKEN'),
-            access_secret = Sys.getenv('TWITTER_ACCESS_TOKEN_SECRET'))
+          app <-
+            rtweet::rtweet_app(bearer_token = Sys.getenv('TWITTER_BEARER_TOKEN'))
+          rtweet::auth_as(app)
         shell: Rscript {0}
 
       - name: Session info

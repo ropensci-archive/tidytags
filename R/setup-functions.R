@@ -75,11 +75,9 @@ get_char_tweet_ids <-
 #'   API keys associated with an approved developer account. Fortunately, the
 #'   rtweet vignette,
 #'   [Authentication](https://docs.ropensci.org/rtweet/articles/auth.html),
-#'   provides a thorough guide to obtaining Twitter API keys. Following these
-#'   directions, you will run the `rtweet::create_token()` function, which
-#'   saves your Twitter API keys to the `.Renviron` file. You can also edit
-#'   this file directly using the `usethis::edit_r_environ(scope='user')`
-#'   function.
+#'   provides a thorough guide to obtaining Twitter API keys and authenticating
+#'   access to the Twitter API. Following the directions for "Apps," you will
+#'   run the `rtweet::rtweet_app()` function.
 #' @param df A dataframe of containing the column name 'status_url'
 #'   (i.e., the hyperlink to specific statuses), such as that returned by
 #'   `read_tags()`

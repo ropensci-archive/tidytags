@@ -1,7 +1,7 @@
 #' Retrieve user information for everyone in an edgelist
 #'
 #' Updates an edgelist created with `create_edgelist()` by appending user
-#'   data retrieved with `lookup_many_users()`. The resulting dataframe
+#'   data retrieved with `rtweet::lookup_users()`. The resulting dataframe
 #'   adds many additional columns and appends "_sender" or "_receiver" to the
 #'   column names.
 #' @param edgelist An edgelist of senders and receivers, such as that returned
@@ -24,47 +24,29 @@
 add_users_data <-
   function(edgelist) {
     all_users <- unique(c(edgelist$sender, edgelist$receiver))
-    users_data <- lookup_many_users(all_users)
+    users_data <- rtweet::lookup_users(all_users)
 
-    users_prepped <-
-      dplyr::select(
-        users_data,
-        .data$screen_name,
-        .data$user_id,
-        .data$name:.data$profile_image_url
-      )
+    senders_data <-
+      dplyr::filter(users_data, .data$screen_name %in% edgelist$sender)
+    names(senders_data) <- stringr::str_c("sender_", names(senders_data))
+    names(senders_data)[4] <- "sender"
 
-    senders_prepped <-
-      dplyr::rename(
-        users_prepped,
-        sender = .data$screen_name
-      )
-
-    names(senders_prepped)[2:length(senders_prepped)] <-
-      stringr::str_c(names(senders_prepped),
-                     "_sender")[2:length(senders_prepped)]
-
-    receivers_prepped <-
-      dplyr::rename(
-        users_prepped,
-        receiver = .data$screen_name
-      )
-
-    names(receivers_prepped)[2:length(receivers_prepped)] <-
-      stringr::str_c(names(receivers_prepped),
-                     "_receiver")[2:length(receivers_prepped)]
+    receivers_data <-
+      dplyr::filter(users_data, .data$screen_name %in% edgelist$receiver)
+    names(receivers_data) <- stringr::str_c("receiver_", names(receivers_data))
+    names(receivers_data)[4] <- "receiver"
 
     edgelist_with_senders_data <-
       dplyr::left_join(
         edgelist,
-        senders_prepped,
+        senders_data,
         by = "sender"
       )
 
     edgelist_with_all_users_data <-
       dplyr::left_join(
         edgelist_with_senders_data,
-        receivers_prepped,
+        receivers_data,
         by = "receiver"
       )
 
