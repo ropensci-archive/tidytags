@@ -15,7 +15,7 @@ A new, expanded dataframe which includes any retrievable upstream
 replies
 }
 \description{
-Because the Twitter API offers a \code{reply_to_status_id} column, it is
+Because the Twitter API offers a \code{in_reply_to_status_id_str} column, it is
 possible to iteratively reconstruct reply threads in an \emph{upstream}
 direction, that is, retrieving statuses composed earlier than replies in
 the dataset. The \code{get_upstream_tweets()} function collects upstream

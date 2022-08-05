@@ -18,7 +18,7 @@ tidytags development version
   * 
 
 
-tidytags 1.0 (2022-08-04)
+tidytags 1.0 (2022-08-05)
 =========================
 
 ### BREAKING CHANGES
@@ -27,16 +27,13 @@ tidytags 1.0 (2022-08-04)
   * Updated the process_tweets() function to align with changes in available metadata and new variable names used in rtweet 1.0.
   * Removed the lookup_many_users() function. With the rtweet 1.0 update, user information can be accessed with the rtweet::users_data() function.
   * Updated flag_unknown_upstream() and get_upstream_tweets() to align with new variable names used in rtweet 1.0.
+  * Updated filter_by_tweet_type(), create_edgelist(), and add_users_data() to align with new variable names used in rtweet 1.0.
   * Removed the geocodetags() function because rtweet 1.0 changed how location data is available and also added a new rtweet::lookup_coords() function. Note that at this time, rtweet::lookup_coords() requires a Google Maps API key rather than the OpenCage API we had recommended in earlier versions of tidytags. We still recommend the sf and mapview R packages for working with locations and geocding.
  
 ### NEW FEATURES
 
   * Updated the read_tags() function so that a Google API key is no longer needed to pull tweet data from publicly shared Google Sheets.
   * The process_tweets() function now also adds user information associated with the creator of each status. process_tweets() also now returns a column for the tweet type of each status.
-
- ### DOCUMENTATION FIXES
-
-  * 
 
 
 tidytags 0.3.0 (2022-02-04)

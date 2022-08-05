@@ -17,7 +17,7 @@ about the senders and receivers.
 }
 \description{
 Updates an edgelist created with \code{create_edgelist()} by appending user
-data retrieved with \code{lookup_many_users()}. The resulting dataframe
+data retrieved with \code{rtweet::lookup_users()}. The resulting dataframe
 adds many additional columns and appends "_sender" or "_receiver" to the
 column names.
 }
@@ -33,8 +33,4 @@ example_url <- "18clYlQeJOc6W5QRuSlJ6_v3snqKJImFhU42bRkM_OX8"
 tmp_df <- pull_tweet_data(read_tags(example_url))
 add_users_data(create_edgelist(tmp_df))
 }
-}
-\seealso{
-Review documentation for \code{rtweet::lookup_users()} for a full
-list of metadata retrieved (i.e., column names) by this function.
 }
