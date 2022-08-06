@@ -45,7 +45,7 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="index.html">tidytags</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="">0.3.0</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="">1.0.0</span>
       </span>
     </div>
 
@@ -58,7 +58,7 @@
   <a href="reference/index.html">Reference</a>
 </li>
 <li class="dropdown">
-  <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
+  <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
     Articles
      
     <span class="caret"></span>
@@ -140,7 +140,7 @@ Checks
 <a href="https://cran.r-project.org/" class="external-link"><img src="https://img.shields.io/badge/R%3E%3D-4.1.0-blue.svg" alt="Minimal R Version"></a>
 </td>
 <td align="left">
-<a href="https://github.com/openjournals/joss-reviews/issues/4130" class="external-link"><img src="https://joss.theoj.org/papers/fc4f003ad3891b8ba8e3fc8f8ae2c6e0/status.svg" alt="JOSS"></a>
+<a href="https://cran.r-project.org/package=tidytags" class="external-link"><img src="https://www.r-pkg.org/badges/version/tidytags" alt="CRAN"></a>
 </td>
 <td align="left">
 <a href="https://lifecycle.r-lib.org/articles/stages.html#stable" class="external-link"><img src="https://lifecycle.r-lib.org/articles/figures/lifecycle-stable.svg" alt="Lifecycle"></a>
@@ -153,7 +153,6 @@ Checks
 <td align="left">
 </td>
 <td align="left">
-<a href="https://cran.r-project.org/package=tidytags" class="external-link"><img src="https://www.r-pkg.org/badges/version/tidytags" alt="CRAN"></a>
 </td>
 <td align="left">
 <a href="https://github.com/ropensci/tidytags/commits/main" class="external-link"><img src="https://img.shields.io/github/last-commit/ropensci/tidytags.svg" alt="Last Commit"></a>
@@ -172,9 +171,8 @@ Checks
 <div class="section level2">
 <h2 id="overview">Overview<a class="anchor" aria-label="anchor" href="#overview"></a>
 </h2>
-<p>The purpose of <strong>tidytags</strong> is to make the collection of Twitter data more accessible and robust. <strong>tidytags</strong> retrieves tweet data collected by a <a href="https://tags.hawksey.info/" class="external-link">Twitter Archiving Google Sheet (TAGS)</a>, gets additional metadata from Twitter via the <strong><a href="https://docs.ropensci.org/rtweet/index.html/" class="external-link">rtweet</a></strong> R package, and from OpenCage using the <strong><a href="https://opencagedata.com/" class="external-link">opencage</a></strong> R package, and provides additional functions to facilitate a systematic yet flexible analyses of data from Twitter. TAGS is based on Google spreadsheets. A TAGS tracker continuously collects tweets from Twitter, based on predefined search criteria and collection frequency.</p>
-<p>In short, <strong>tidytags</strong> first uses TAGS to easily collect tweet ID numbers and then uses the R package <strong>rtweet</strong> to re-query the Twitter API to collect additional metadata.</p>
-<p><strong>tidytags</strong> also introduces functions developed to facilitate systematic yet flexible analyses of data from Twitter. It also interfaces with several other packages, including the <a href="https://opencagedata.com/" class="external-link">opencage package</a>, to geocode the locations of Twitter users based on their biographies.</p>
+<p>The purpose of <strong>tidytags</strong> is to make the collection of Twitter data more accessible and robust. <strong>tidytags</strong> retrieves tweet data collected by a <a href="https://tags.hawksey.info/" class="external-link">Twitter Archiving Google Sheet (TAGS)</a>, gets additional metadata from Twitter via the <strong><a href="https://docs.ropensci.org/rtweet/" class="external-link">rtweet</a></strong> R package, and provides additional functions to facilitate a systematic yet flexible analyses of data from Twitter. TAGS is based on Google spreadsheets. A TAGS tracker continuously collects tweets from Twitter, based on predefined search criteria and collection frequency.</p>
+<p>In short, <strong>tidytags</strong> first uses TAGS to easily collect tweet ID numbers and then uses the R package <strong>rtweet</strong> to re-query the Twitter API to collect additional metadata. <strong>tidytags</strong> also introduces functions developed to facilitate systematic yet flexible analyses of data from Twitter.</p>
 <p>Two vignettes illustrate the setup and use of the package:</p>
 <ul>
 <li>
@@ -189,21 +187,19 @@ Checks
 </h2>
 <p>You can install <strong>tidytags</strong> through R-universe:</p>
 <div class="sourceCode" id="cb1"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="fu"><a href="https://rdrr.io/r/utils/install.packages.html" class="external-link">install.packages</a></span><span class="op">(</span><span class="st">"tidytags"</span>, repos <span class="op">=</span> <span class="st">"https://ropensci.r-universe.dev"</span><span class="op">)</span></code></pre></div>
+<code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/utils/install.packages.html" class="external-link">install.packages</a></span><span class="op">(</span><span class="st">"tidytags"</span>, repos <span class="op">=</span> <span class="st">"https://ropensci.r-universe.dev"</span><span class="op">)</span></span></code></pre></div>
 <p>Once installed, use the <code><a href="https://rdrr.io/r/base/library.html" class="external-link">library()</a></code> function load <strong>tidytags</strong>:</p>
 <div class="sourceCode" id="cb2"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va"><a href="https://docs.ropensci.org/tidytags/">tidytags</a></span><span class="op">)</span></code></pre></div>
+<code class="sourceCode R"><span><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va"><a href="https://docs.ropensci.org/tidytags/">tidytags</a></span><span class="op">)</span></span></code></pre></div>
 <hr>
 </div>
 <div class="section level2">
 <h2 id="setup">Setup<a class="anchor" aria-label="anchor" href="#setup"></a>
 </h2>
-<p>For help with initial <strong>tidytags</strong> setup, see the <a href="https://docs.ropensci.org/tidytags/articles/setup.html/">Getting started with tidytags</a> vignette (<code><a href="articles/setup.html">vignette("setup", package = "tidytags")</a></code>). Specifically, this guide offers help for four key tasks:</p>
+<p>For help with initial <strong>tidytags</strong> setup, see the <a href="https://docs.ropensci.org/tidytags/articles/setup.html/">Getting started with tidytags</a> vignette (<code><a href="articles/setup.html">vignette("setup", package = "tidytags")</a></code>). Specifically, this guide offers help for two key tasks:</p>
 <ol style="list-style-type: decimal">
 <li>Making sure your TAGS tracker can be accessed</li>
-<li>Getting and storing a Google API key</li>
 <li>Getting and storing Twitter API tokens</li>
-<li>Getting and storing an OpenCage Geocoding API key</li>
 </ol>
 <hr>
 </div>
@@ -219,50 +215,55 @@ Checks
 <div class="section level3">
 <h3 id="read_tags">read_tags()<a class="anchor" aria-label="anchor" href="#read_tags"></a>
 </h3>
-<p>At its most basic level, <strong>tidytags</strong> allows you to import data from a <a href="https://tags.hawksey.info/" class="external-link">Twitter Archiving Google Sheet</a> (TAGS) into R. This is done with the <strong><a href="https://CRAN.R-project.org/package=googlesheets4" class="external-link">googlesheets4</a></strong> R package. One requirement for using the <strong>googlesheets4</strong> package is that your TAGS tracker has been “published to the web.” See the <a href="https://docs.ropensci.org/tidytags/articles/setup.html/">Getting started with tidytags</a> vignette (<code><a href="articles/setup.html">vignette("setup", package = "tidytags")</a></code>), <strong>Pain Point #1</strong>, if you need help with this. Once a TAGS tracker has been published to the web, you can import the TAGS archive into R using <code><a href="reference/read_tags.html">read_tags()</a></code>. See the <a href="https://docs.ropensci.org/tidytags/articles/setup.html/">Getting started with tidytags</a> vignette (<code><a href="articles/setup.html">vignette("setup", package = "tidytags")</a></code>), <strong>Pain Point #2</strong>, to set up API access to Google Sheets like the TAGS tracker.</p>
+<p>At its most basic level, <strong>tidytags</strong> allows you to import data from a <a href="https://tags.hawksey.info/" class="external-link">Twitter Archiving Google Sheet</a> (TAGS) into R. This is done with the <strong><a href="https://CRAN.R-project.org/package=googlesheets4" class="external-link">googlesheets4</a></strong> R package. One requirement for using the <strong>googlesheets4</strong> package is that your TAGS tracker has been “published to the web.” See the <a href="https://docs.ropensci.org/tidytags/articles/setup.html/">Getting started with tidytags</a> vignette (<code><a href="articles/setup.html">vignette("setup", package = "tidytags")</a></code>), <strong>Key Task #1</strong>, if you need help with this.</p>
+<p>Once a TAGS tracker has been published to the web, you can import the TAGS archive into R using <code><a href="reference/read_tags.html">read_tags()</a></code>.</p>
 <div class="sourceCode" id="cb3"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="va">example_tags</span> <span class="op">&lt;-</span> <span class="st">"18clYlQeJOc6W5QRuSlJ6_v3snqKJImFhU42bRkM_OX8"</span>
-<span class="va">tags_data</span> <span class="op">&lt;-</span> <span class="fu"><a href="reference/read_tags.html">read_tags</a></span><span class="op">(</span><span class="va">example_tags</span><span class="op">)</span>
-<span class="fu"><a href="https://rdrr.io/r/utils/head.html" class="external-link">head</a></span><span class="op">(</span><span class="va">tags_data</span><span class="op">)</span>
-<span class="co">#&gt; # A tibble: 6 × 18</span>
-<span class="co">#&gt;   id_str          from_user text  created_at time                geo_coordinates</span>
-<span class="co">#&gt;   &lt;chr&gt;           &lt;chr&gt;     &lt;chr&gt; &lt;chr&gt;      &lt;dttm&gt;              &lt;chr&gt;          </span>
-<span class="co">#&gt; 1 12519543127728… Harriet9… "RT … Sun Apr 1… 2020-04-19 20:22:23 &lt;NA&gt;           </span>
-<span class="co">#&gt; 2 12480641632110… Patrick8… "RT … Thu Apr 0… 2020-04-09 02:44:19 &lt;NA&gt;           </span>
-<span class="co">#&gt; 3 12342069467328… ELTAugus… "RT … Sun Mar 0… 2020-03-01 20:00:40 &lt;NA&gt;           </span>
-<span class="co">#&gt; 4 12294053501781… gsa_aect  "RT … Mon Feb 1… 2020-02-17 14:00:50 &lt;NA&gt;           </span>
-<span class="co">#&gt; 5 12276522438700… fcis_iu   "Giv… Wed Feb 1… 2020-02-12 17:54:38 &lt;NA&gt;           </span>
-<span class="co">#&gt; 6 12255051874539… Stauffer… "RT … Thu Feb 0… 2020-02-06 19:43:00 &lt;NA&gt;           </span>
-<span class="co">#&gt; # … with 12 more variables: user_lang &lt;lgl&gt;, in_reply_to_user_id_str &lt;chr&gt;,</span>
-<span class="co">#&gt; #   in_reply_to_screen_name &lt;chr&gt;, from_user_id_str &lt;chr&gt;,</span>
-<span class="co">#&gt; #   in_reply_to_status_id_str &lt;chr&gt;, source &lt;chr&gt;, profile_image_url &lt;chr&gt;,</span>
-<span class="co">#&gt; #   user_followers_count &lt;dbl&gt;, user_friends_count &lt;dbl&gt;, user_location &lt;chr&gt;,</span>
-<span class="co">#&gt; #   status_url &lt;chr&gt;, entities_str &lt;chr&gt;</span></code></pre></div>
+<code class="sourceCode R"><span><span class="va">example_tags</span> <span class="op">&lt;-</span> <span class="st">"18clYlQeJOc6W5QRuSlJ6_v3snqKJImFhU42bRkM_OX8"</span></span>
+<span><span class="va">tags_data</span> <span class="op">&lt;-</span> <span class="fu"><a href="reference/read_tags.html">read_tags</a></span><span class="op">(</span><span class="va">example_tags</span><span class="op">)</span></span>
+<span><span class="fu"><a href="https://rdrr.io/r/utils/head.html" class="external-link">head</a></span><span class="op">(</span><span class="va">tags_data</span><span class="op">)</span></span>
+<span><span class="co">#&gt; # A tibble: 6 × 18</span></span>
+<span><span class="co">#&gt;   id_str          from_user text  created_at time                geo_coordinates</span></span>
+<span><span class="co">#&gt;   &lt;chr&gt;           &lt;chr&gt;     &lt;chr&gt; &lt;chr&gt;      &lt;dttm&gt;              &lt;chr&gt;          </span></span>
+<span><span class="co">#&gt; 1 12519543127728… Harriet9… "RT … Sun Apr 1… 2020-04-19 20:22:23 &lt;NA&gt;           </span></span>
+<span><span class="co">#&gt; 2 12480641632110… Patrick8… "RT … Thu Apr 0… 2020-04-09 02:44:19 &lt;NA&gt;           </span></span>
+<span><span class="co">#&gt; 3 12342069467328… ELTAugus… "RT … Sun Mar 0… 2020-03-01 20:00:40 &lt;NA&gt;           </span></span>
+<span><span class="co">#&gt; 4 12294053501781… gsa_aect  "RT … Mon Feb 1… 2020-02-17 14:00:50 &lt;NA&gt;           </span></span>
+<span><span class="co">#&gt; 5 12276522438700… fcis_iu   "Giv… Wed Feb 1… 2020-02-12 17:54:38 &lt;NA&gt;           </span></span>
+<span><span class="co">#&gt; 6 12255051874539… Stauffer… "RT … Thu Feb 0… 2020-02-06 19:43:00 &lt;NA&gt;           </span></span>
+<span><span class="co">#&gt; # … with 12 more variables: user_lang &lt;lgl&gt;, in_reply_to_user_id_str &lt;chr&gt;,</span></span>
+<span><span class="co">#&gt; #   in_reply_to_screen_name &lt;chr&gt;, from_user_id_str &lt;chr&gt;,</span></span>
+<span><span class="co">#&gt; #   in_reply_to_status_id_str &lt;chr&gt;, source &lt;chr&gt;, profile_image_url &lt;chr&gt;,</span></span>
+<span><span class="co">#&gt; #   user_followers_count &lt;dbl&gt;, user_friends_count &lt;dbl&gt;, user_location &lt;chr&gt;,</span></span>
+<span><span class="co">#&gt; #   status_url &lt;chr&gt;, entities_str &lt;chr&gt;</span></span></code></pre></div>
 </div>
 <div class="section level3">
 <h3 id="pull_tweet_data">pull_tweet_data()<a class="anchor" aria-label="anchor" href="#pull_tweet_data"></a>
 </h3>
-<p>With a TAGS archive imported into R, <strong>tidytags</strong> allows you to gather quite a bit more information related to the collected tweets with the <code><a href="reference/pull_tweet_data.html">pull_tweet_data()</a></code> function. This function uses the <strong><a href="https://docs.ropensci.org/rtweet/index.html/" class="external-link">rtweet package</a></strong> (via <code><a href="https://rdrr.io/pkg/rtweet/man/lookup_statuses.html" class="external-link">rtweet::lookup_tweets()</a></code>) to query the Twitter API. This process requires Twitter API keys associated with an approved Twitter developer account. See the <a href="https://docs.ropensci.org/tidytags/articles/setup.html/">Getting started with tidytags</a> vignette (<code><a href="articles/setup.html">vignette("setup", package = "tidytags")</a></code>), <strong>Pain Point #3</strong>, if you need help with this.</p>
+<p>With a TAGS archive imported into R, <strong>tidytags</strong> allows you to gather quite a bit more information related to the collected tweets with the <code><a href="reference/pull_tweet_data.html">pull_tweet_data()</a></code> function. This function uses the <strong><a href="https://docs.ropensci.org/rtweet/" class="external-link">rtweet package</a></strong> (via <code><a href="https://docs.ropensci.org/rtweet/reference/lookup_tweets.html" class="external-link">rtweet::lookup_tweets()</a></code>) to query the Twitter API.</p>
+<p>This process requires Twitter API keys associated with an approved Twitter developer account. See the <a href="https://docs.ropensci.org/tidytags/articles/setup.html/">Getting started with tidytags</a> vignette (<code><a href="articles/setup.html">vignette("setup", package = "tidytags")</a></code>), <strong>Key Task #2</strong>, if you need help with this.</p>
 <div class="sourceCode" id="cb4"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="va">expanded_metadata</span> <span class="op">&lt;-</span> <span class="fu"><a href="reference/pull_tweet_data.html">pull_tweet_data</a></span><span class="op">(</span><span class="va">tags_data</span>, n <span class="op">=</span> <span class="fl">10</span><span class="op">)</span>
-<span class="va">expanded_metadata</span>
-<span class="co">#&gt; # A tibble: 7 × 90</span>
-<span class="co">#&gt;   user_id             status_id     created_at          screen_name text  source</span>
-<span class="co">#&gt;   &lt;chr&gt;               &lt;chr&gt;         &lt;dttm&gt;              &lt;chr&gt;       &lt;chr&gt; &lt;chr&gt; </span>
-<span class="co">#&gt; 1 14215524            122512231784… 2020-02-05 18:21:36 tadousay    "Man… Tweet…</span>
-<span class="co">#&gt; 2 922536306437181440  121975838643… 2020-01-21 23:07:15 gsa_aect    "The… Tweet…</span>
-<span class="co">#&gt; 3 922536306437181440  122940535017… 2020-02-17 14:00:51 gsa_aect    "Man… Tweet…</span>
-<span class="co">#&gt; 4 1251951804398669825 125195431277… 2020-04-19 19:22:23 Harriet961… "Con… Twitt…</span>
-<span class="co">#&gt; 5 1088189033266798598 121904357455… 2020-01-19 23:46:51 aectddl     "The… Twitt…</span>
-<span class="co">#&gt; 6 3294167372          123420694673… 2020-03-01 20:00:41 ELTAugusta  "Rem… Twitt…</span>
-<span class="co">#&gt; 7 804807943           122513787992… 2020-02-05 19:23:27 AECTTechTr… "Man… Twitt…</span>
-<span class="co">#&gt; # … with 84 more variables: display_text_width &lt;dbl&gt;, reply_to_status_id &lt;lgl&gt;,</span>
-<span class="co">#&gt; #   reply_to_user_id &lt;lgl&gt;, reply_to_screen_name &lt;lgl&gt;, is_quote &lt;lgl&gt;,</span>
-<span class="co">#&gt; #   is_retweet &lt;lgl&gt;, favorite_count &lt;int&gt;, retweet_count &lt;int&gt;,</span>
-<span class="co">#&gt; #   quote_count &lt;int&gt;, reply_count &lt;int&gt;, hashtags &lt;list&gt;, symbols &lt;list&gt;,</span>
-<span class="co">#&gt; #   urls_url &lt;list&gt;, urls_t.co &lt;list&gt;, urls_expanded_url &lt;list&gt;,</span>
-<span class="co">#&gt; #   media_url &lt;list&gt;, media_t.co &lt;list&gt;, media_expanded_url &lt;list&gt;,</span>
-<span class="co">#&gt; #   media_type &lt;list&gt;, ext_media_url &lt;list&gt;, ext_media_t.co &lt;list&gt;, …</span></code></pre></div>
+<code class="sourceCode R"><span><span class="va">app</span> <span class="op">&lt;-</span> <span class="fu">rtweet</span><span class="fu">::</span><span class="fu"><a href="https://docs.ropensci.org/rtweet/reference/rtweet_user.html" class="external-link">rtweet_app</a></span><span class="op">(</span>bearer_token <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/Sys.getenv.html" class="external-link">Sys.getenv</a></span><span class="op">(</span><span class="st">"TWITTER_BEARER_TOKEN"</span><span class="op">)</span><span class="op">)</span></span>
+<span><span class="fu">rtweet</span><span class="fu">::</span><span class="fu"><a href="https://docs.ropensci.org/rtweet/reference/auth_as.html" class="external-link">auth_as</a></span><span class="op">(</span><span class="va">app</span><span class="op">)</span></span>
+<span></span>
+<span><span class="va">expanded_metadata</span> <span class="op">&lt;-</span> <span class="fu"><a href="reference/pull_tweet_data.html">pull_tweet_data</a></span><span class="op">(</span><span class="va">tags_data</span>, n <span class="op">=</span> <span class="fl">10</span><span class="op">)</span></span>
+<span><span class="va">expanded_metadata</span></span>
+<span><span class="co">#&gt; # A tibble: 7 × 43</span></span>
+<span><span class="co">#&gt;   created_at               id id_str        full_text truncated display_text_ra…</span></span>
+<span><span class="co">#&gt;   &lt;dttm&gt;                &lt;dbl&gt; &lt;chr&gt;         &lt;chr&gt;     &lt;lgl&gt;                &lt;dbl&gt;</span></span>
+<span><span class="co">#&gt; 1 2020-04-19 15:22:23 1.25e18 125195431277… "RT @Rou… FALSE                  140</span></span>
+<span><span class="co">#&gt; 2 2020-03-01 15:00:41 1.23e18 123420694673… "RT @vel… FALSE                  140</span></span>
+<span><span class="co">#&gt; 3 2020-02-17 09:00:51 1.23e18 122940535017… "RT @tad… FALSE                  140</span></span>
+<span><span class="co">#&gt; 4 2020-02-05 14:23:27 1.23e18 122513787992… "RT @tad… FALSE                  140</span></span>
+<span><span class="co">#&gt; 5 2020-02-05 13:21:36 1.23e18 122512231784… "Many th… FALSE                  268</span></span>
+<span><span class="co">#&gt; 6 2020-01-21 18:07:15 1.22e18 121975838643… "RT @AEC… FALSE                  140</span></span>
+<span><span class="co">#&gt; 7 2020-01-19 18:46:51 1.22e18 121904357455… "RT @AEC… FALSE                  140</span></span>
+<span><span class="co">#&gt; # … with 37 more variables: entities &lt;list&gt;, source &lt;chr&gt;,</span></span>
+<span><span class="co">#&gt; #   in_reply_to_status_id &lt;lgl&gt;, in_reply_to_status_id_str &lt;lgl&gt;,</span></span>
+<span><span class="co">#&gt; #   in_reply_to_user_id &lt;lgl&gt;, in_reply_to_user_id_str &lt;lgl&gt;,</span></span>
+<span><span class="co">#&gt; #   in_reply_to_screen_name &lt;lgl&gt;, geo &lt;list&gt;, coordinates &lt;list&gt;,</span></span>
+<span><span class="co">#&gt; #   place &lt;list&gt;, contributors &lt;lgl&gt;, is_quote_status &lt;lgl&gt;,</span></span>
+<span><span class="co">#&gt; #   retweet_count &lt;int&gt;, favorite_count &lt;int&gt;, favorited &lt;lgl&gt;,</span></span>
+<span><span class="co">#&gt; #   retweeted &lt;lgl&gt;, possibly_sensitive &lt;lgl&gt;, lang &lt;chr&gt;, …</span></span></code></pre></div>
 <hr>
 </div>
 </div>
@@ -399,7 +400,7 @@ Checks
 
 <div class="pkgdown">
   <p></p>
-<p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.0.2.</p>
+<p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.0.6.</p>
 </div>
 
       </footer>

@@ -40,7 +40,7 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">tidytags</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="">0.3.0</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="">1.0.0</span>
       </span>
     </div>
 
@@ -53,7 +53,7 @@
   <a href="../reference/index.html">Reference</a>
 </li>
 <li class="dropdown">
-  <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
+  <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
     Articles
      
     <span class="caret"></span>
@@ -102,571 +102,283 @@
     
     
 <div class="sourceCode" id="cb1"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va"><a href="https://docs.ropensci.org/tidytags/">tidytags</a></span><span class="op">)</span></code></pre></div>
-<p>This vignette serves as an introduction to how to use many {tidytags} functions through the example of analyzing tweets associated with the 2019 annual convention of the <a href="https://aect.org/" class="external-link">Association for Educational Communications &amp; Technology</a> (AECT): <code>#aect19</code>, <code>#aect2019</code>, or <code>#aect19inspired</code>. The information in this vignette is available scattered throughout the R documentation for the {tidytags} package. This vignette conveniently brings it all together in one place.</p>
+<code class="sourceCode R"><span><span class="co">#library(tidytags)</span></span></code></pre></div>
+<p>This vignette serves as an introduction to how to use many
+<strong>tidytags</strong> functions through the example of analyzing
+tweets associated with the 2019 annual convention of the <a href="https://aect.org/" class="external-link">Association for Educational Communications
+&amp; Technology</a> (AECT): <code>#aect19</code>,
+<code>#aect2019</code>, or <code>#aect19inspired</code>. The information
+in this vignette is available scattered throughout the R documentation
+for the <strong>tidytags</strong> package. This vignette conveniently
+brings it all together in one place.</p>
 <div class="section level2">
-<h2 id="considerations-related-to-ethics-data-privacy-and-human-subjects-research">Considerations Related to Ethics, Data Privacy, and Human Subjects Research<a class="anchor" aria-label="anchor" href="#considerations-related-to-ethics-data-privacy-and-human-subjects-research"></a>
+<h2 id="considerations-related-to-ethics-data-privacy-and-human-subjects-research">Considerations Related to Ethics, Data Privacy, and Human Subjects
+Research<a class="anchor" aria-label="anchor" href="#considerations-related-to-ethics-data-privacy-and-human-subjects-research"></a>
 </h2>
-<p>Before working through this demonstration of the capabilities of {tidytags}, please take a few moments to reflect on <strong>ethical considerations</strong> related to social media research.</p>
-<p><strong>{tidytags} should be used in strict accordance with Twitter’s <a href="https://developer.twitter.com/en/developer-terms/more-on-restricted-use-cases" class="external-link">developer terms</a>.</strong></p>
-<p>Although most Institutional Review Boards (IRBs) consider the Twitter data that {tidytags} analyzes to <em>not</em> necessarily be human subjects research, there remain ethical considerations pertaining to the use of the {tidytags} package that should be discussed.</p>
-<p>Even if {tidytags} use is not for research purposes (or if an IRB determines that a study is not human subjects research), “the release of personally identifiable or sensitive data is potentially harmful,” as noted in the <a href="https://devguide.ropensci.org/policies.html#ethics-data-privacy-and-human-subjects-research" class="external-link">rOpenSci Packages guide</a>. Therefore, although you <em>can</em> collect Twitter data (and you <em>can</em> use {tidytags} to analyze it), we urge care and thoughtfulness regarding how you analyze the data and communicate the results. In short, please remember that most (if not all) of the data you collect may be about people—and <a href="https://journals.sagepub.com/doi/full/10.1177/2056305118763366" class="external-link">those people may not like the idea of their data being analyzed or included in research</a>.</p>
-<p>We recommend <a href="https://aoir.org/ethics/" class="external-link">the Association of Internet Researchers’ (AoIR) resources related to conducting analyses in ethical ways</a> when working with data about people. AoIR’s <a href="https://aoir.org/reports/ethics3.pdf" class="external-link">ethical guidelines</a> may be especially helpful for navigating tensions related to collecting, analyzing, and sharing social media data.</p>
+<p>Before working through this demonstration of the capabilities of
+<strong>tidytags</strong>, please take a few moments to reflect on
+ethical considerations related to social media research.</p>
+<p><strong>{tidytags} should be used in strict accordance with Twitter’s
+<a href="https://developer.twitter.com/en/developer-terms/more-on-restricted-use-cases" class="external-link">developer
+terms</a>.</strong></p>
+<p>Although most Institutional Review Boards (IRBs) consider the Twitter
+data that {tidytags} analyzes to <em>not</em> necessarily be human
+subjects research, there remain ethical considerations pertaining to the
+use of the {tidytags} package that should be discussed.</p>
+<p>Even if {tidytags} use is not for research purposes (or if an IRB
+determines that a study is not human subjects research), “the release of
+personally identifiable or sensitive data is potentially harmful,” as
+noted in the <a href="https://devguide.ropensci.org/policies.html#ethics-data-privacy-and-human-subjects-research" class="external-link">rOpenSci
+Packages guide</a>. Therefore, although you <em>can</em> collect Twitter
+data (and you <em>can</em> use {tidytags} to analyze it), we urge care
+and thoughtfulness regarding how you analyze the data and communicate
+the results. In short, please remember that most (if not all) of the
+data you collect may be about people—and <a href="https://journals.sagepub.com/doi/full/10.1177/2056305118763366" class="external-link">those
+people may not like the idea of their data being analyzed or included in
+research</a>.</p>
+<p>We recommend <a href="https://aoir.org/ethics/" class="external-link">the Association of
+Internet Researchers’ (AoIR) resources related to conducting analyses in
+ethical ways</a> when working with data about people. AoIR’s <a href="https://aoir.org/reports/ethics3.pdf" class="external-link">ethical guidelines</a> may
+be especially helpful for navigating tensions related to collecting,
+analyzing, and sharing social media data.</p>
 </div>
 <div class="section level2">
 <h2 id="twitter-archiving-google-sheets">Twitter Archiving Google Sheets<a class="anchor" aria-label="anchor" href="#twitter-archiving-google-sheets"></a>
 </h2>
-<p>A core functionality of {tidytags} is collecting tweets continuously with a <a href="https://tags.hawksey.info/" class="external-link">Twitter Archiving Google Sheet</a> (TAGS).</p>
-<p>For help setting up your own TAGS tracker, see the “Getting started with tidytags” (<code><a href="../articles/setup.html">vignette("setup", package = "tidytags")</a></code>) vignette, <strong>Key Task #1</strong>.</p>
-<p>Additionally, in order to input data from a TAGS tracker into R, you will need a Google API key for Google Sheets. To quickly get started on obtaining and using a Google API key, see the “Getting started with tidytags” (<code><a href="../articles/setup.html">vignette("setup", package = "tidytags")</a></code>) vignette, <strong>Key Task #2</strong>. Or, follow the {gargle} package vignette “How to get your own API credentials” (<code><a href="https://gargle.r-lib.org/articles/get-api-credentials.html" class="external-link">vignette("get-api-credentials", package = "gargle")</a></code>) for a thorough guide through this process.</p>
+<p>A core functionality of <strong>tidytags</strong> is collecting
+tweets continuously with a <a href="https://tags.hawksey.info/" class="external-link">Twitter
+Archiving Google Sheet</a> (TAGS).</p>
+<p>For help setting up your own TAGS tracker, see the “Getting started
+with tidytags” (<code><a href="../articles/setup.html">vignette("setup", package = "tidytags")</a></code>)
+vignette, <strong>Key Task #1</strong>.</p>
 </div>
 <div class="section level2">
 <h2 id="read_tags">read_tags()<a class="anchor" aria-label="anchor" href="#read_tags"></a>
 </h2>
-<p><strong>To simply view a TAGS archive</strong>, you can use <code><a href="../reference/read_tags.html">read_tags()</a></code>. Here, we’ve openly shared a <a href="https://docs.google.com/spreadsheets/d/18clYlQeJOc6W5QRuSlJ6_v3snqKJImFhU42bRkM_OX8" class="external-link">TAGS tracker</a> that has been collecting tweets associated with the AECT 2019 since September 30, 2019. Notice that this TAGS tracker is collecting tweets containing three different hashtags: <code>#aect19</code>, <code>#aect2019</code>, or <code>#aect19inspired</code>. As of September 30, 2020, this tracker had collected <strong>2,564 tweets</strong>. This tracker is active through today.</p>
-<p>{tidytags} allows you to work with tweets collected by a TAGS tracker in R. This is done with the <a href="https://CRAN.R-project.org/package=googlesheets4" class="external-link">{googlesheets4} package</a>. One requirement for using {googlesheets4} is that your TAGS tracker has been “published to the web.” To do this, with the TAGS page open in a web browser, go to <code>File &gt;&gt; Publish to the web</code>. The <code>Link</code> field should be ‘Entire document’ and the <code>Embed</code> field should be ‘Web page.’ If everything looks right, then click the <code>Publish</code> button. Next, click the <code>Share</code> button in the top right corner of the Google Sheets window, select <code>Get shareable link</code>, and set the permissions to ‘Anyone with the link can view.’ The input needed for the <code><a href="../reference/read_tags.html">tidytags::read_tags()</a></code> function is either the entire URL from the top of the web browser when opened to a TAGS tracker, or a Google Sheet identifier (i.e., the alphanumeric string following “<a href="https://docs.google.com/spreadsheets/d/" class="external-link uri">https://docs.google.com/spreadsheets/d/</a>” in the TAGS tracker’s URL). Be sure to put quotations marks around the URL or sheet identifier when entering it into <code><a href="../reference/read_tags.html">read_tags()</a></code> function.</p>
-<p>Again, if you’re having trouble setting up or publishing the TAGS tracker, or obtaining a Google API key, see the “Getting started with tidytags” vignette (<code><a href="../articles/setup.html">vignette("setup", package = "tidytags")</a></code>), <strong>Key Task #1</strong> and <strong>Key Task #2</strong>.</p>
+<p>To simply view a TAGS archive in R, you can use
+<code><a href="../reference/read_tags.html">read_tags()</a></code>. Here, we’ve openly shared a <a href="https://docs.google.com/spreadsheets/d/18clYlQeJOc6W5QRuSlJ6_v3snqKJImFhU42bRkM_OX8" class="external-link">TAGS
+tracker</a> that has been collecting tweets associated with the AECT
+2019 since September 30, 2019. Notice that this TAGS tracker is
+collecting tweets containing three different hashtags:
+<code>#aect19</code>, <code>#aect2019</code>, or
+<code>#aect19inspired</code>. As of August 5, 2022, this tracker had
+collected <strong>2,564 tweets</strong>. This tracker is active through
+today, although these hashtags seems to be largely inactive in recent
+years.</p>
+<p><strong>tidytags</strong> allows you to work in R with tweets
+collected by a TAGS tracker. This is done with the <a href="https://CRAN.R-project.org/package=googlesheets4" class="external-link"><strong>googlesheets4</strong>
+package</a>.</p>
+<p>One requirement for using {googlesheets4} is that your TAGS tracker
+has been “published to the web.” To do this, with the TAGS page open in
+a web browser, go to
+<code>File &gt;&gt; Share &gt;&gt; Publish to the web</code>. The
+<code>Link</code> field should be ‘Entire document’ and the
+<code>Embed</code> field should be ‘Web page.’ If everything looks
+right, then click the <code>Publish</code> button. Next, click the
+<code>Share</code> button in the top right corner of the Google Sheets
+window, select <code>Get shareable link</code>, and set the permissions
+to ‘Anyone with the link can view.’ The input needed for the
+<code><a href="../reference/read_tags.html">tidytags::read_tags()</a></code> function is either the entire URL
+from the top of the web browser when opened to a TAGS tracker, or a
+Google Sheet identifier (i.e., the alphanumeric string following “<a href="https://docs.google.com/spreadsheets/d/" class="external-link uri">https://docs.google.com/spreadsheets/d/</a>” in the TAGS
+tracker’s URL). Be sure to put quotations marks around the URL or sheet
+identifier when entering it into <code><a href="../reference/read_tags.html">read_tags()</a></code> function.</p>
+<p>Again, if you’re having trouble setting up or publishing the TAGS
+tracker, see the “Getting started with tidytags” vignette
+(<code><a href="../articles/setup.html">vignette("setup", package = "tidytags")</a></code>), <strong>Key Task
+#1</strong>.</p>
 <div class="sourceCode" id="cb2"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="va">tags_url</span> <span class="op">&lt;-</span> <span class="st">"18clYlQeJOc6W5QRuSlJ6_v3snqKJImFhU42bRkM_OX8"</span>
-<span class="va">example_df_all</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/read_tags.html">read_tags</a></span><span class="op">(</span><span class="va">tags_url</span><span class="op">)</span>
-<span class="fu"><a href="https://rdrr.io/r/base/dim.html" class="external-link">dim</a></span><span class="op">(</span><span class="va">example_df_all</span><span class="op">)</span>
-<span class="co">#&gt; [1] 2564   18</span></code></pre></div>
-<p><strong>Note that there are alternative ways to access TAGS files.</strong> One way is to simply download a CSV file from Google Sheets. In Google Sheets, navigate to <code>File -&gt; Download -&gt; Comma-separated values (CSV)</code> to do so. Be sure to do so from the TAGS Archive page. Once this file is downloaded, you can read it like it like any other CSV using R.</p>
+<code class="sourceCode R"><span><span class="va">tags_url</span> <span class="op">&lt;-</span> <span class="st">"18clYlQeJOc6W5QRuSlJ6_v3snqKJImFhU42bRkM_OX8"</span></span>
+<span><span class="va">example_df_all</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/read_tags.html">read_tags</a></span><span class="op">(</span><span class="va">tags_url</span><span class="op">)</span></span>
+<span><span class="fu"><a href="https://rdrr.io/r/base/dim.html" class="external-link">dim</a></span><span class="op">(</span><span class="va">example_df_all</span><span class="op">)</span></span>
+<span><span class="co">#&gt; [1] 2564   18</span></span></code></pre></div>
+<p><strong>Note that there are alternative ways to access TAGS
+files.</strong> One way is to simply download a CSV file from Google
+Sheets. In Google Sheets, navigate to
+<code>File &gt;&gt; Download &gt;&gt; Comma-separated values (CSV)</code>
+to do so. Be sure to do so from the TAGS Archive page. Once this file is
+downloaded, you can read it into R like any other CSV.</p>
 <div class="sourceCode" id="cb3"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="va">example_df_all</span> <span class="op">&lt;-</span> <span class="fu">readr</span><span class="fu">::</span><span class="fu"><a href="https://readr.tidyverse.org/reference/read_delim.html" class="external-link">read_csv</a></span><span class="op">(</span><span class="st">"my-downloaded-tags-file.csv"</span><span class="op">)</span></code></pre></div>
+<code class="sourceCode R"><span><span class="va">example_df_all</span> <span class="op">&lt;-</span> <span class="fu">readr</span><span class="fu">::</span><span class="fu"><a href="https://readr.tidyverse.org/reference/read_delim.html" class="external-link">read_csv</a></span><span class="op">(</span><span class="st">"my-downloaded-tags-file.csv"</span><span class="op">)</span></span></code></pre></div>
 </div>
 <div class="section level2">
 <h2 id="pull_tweet_data">pull_tweet_data()<a class="anchor" aria-label="anchor" href="#pull_tweet_data"></a>
 </h2>
-<p>Next, we discuss <strong>enriching the data you’ve collected with TAGS with the <code><a href="../reference/pull_tweet_data.html">pull_tweet_data()</a></code> function</strong>.</p>
-<p>With a TAGS archive imported into R, {tidytags} allows you to gather quite a bit more information related to the collected tweets with the <code><a href="../reference/pull_tweet_data.html">pull_tweet_data()</a></code> function. This function uses the <a href="https://rtweet.info/" class="external-link">{rtweet} package</a> (via <code><a href="https://rdrr.io/pkg/rtweet/man/lookup_statuses.html" class="external-link">rtweet::lookup_tweets()</a></code>) to query the Twitter API. Using {rtweet} requires Twitter API keys associated with an approved developer account. Fortunately, the {rtweet} vignette, “Obtaining and using access tokens” (<code><a href="https://cran.rstudio.com/web/packages/rtweet/vignettes/auth.html" class="external-link">vignette("auth", package = "rtweet")</a></code>), provides a very thorough guide to obtaining Twitter API keys. For further help getting your own Twitter API keys, see the “Getting started with tidytags” vignette (<code><a href="../articles/setup.html">vignette("setup", package = "tidytags")</a></code>), specifically <strong>Pain Point #2</strong>.</p>
-<p>Note that your dataset will often contain fewer rows after running <code><a href="../reference/pull_tweet_data.html">pull_tweet_data()</a></code>. This is because <code><a href="https://rdrr.io/pkg/rtweet/man/lookup_statuses.html" class="external-link">rtweet::lookup_tweets()</a></code> is searching for tweet IDs that are currently available. Any tweets that have been deleted or made “protected” (i.e., private) since TAGS first collected them are dropped from the dataset. Rather than view this as a limitation, we see this as an asset to help ensure our data better reflects the intentions of the accounts whose tweets we have collected (see <a href="https://journals.sagepub.com/doi/full/10.1177/2056305118763366" class="external-link">Fiesler &amp; Proferes, 2018</a>).</p>
-<p>Here, we demonstrate two different ways of using <code><a href="../reference/pull_tweet_data.html">pull_tweet_data()</a></code>. The first method is to query the Twitter API with the tweet ID numbers from the <code>id_str</code> column returned by {rtweet}. However, a limitation of TAGS is that the numbers in this column are often corrupted because Google Sheets considers them very large numbers (instead of character strings) and rounds them by putting them into exponential form. The results of this first method are stored in the variable <code>example_after_rtweet_A</code> below. The second method pulls the tweet ID numbers from the tweet URLs. For example, the tweet with the URL <code>https://twitter.com/tweet__example/status/1176592704647716864</code> has a tweet ID of <code>1176592704647716864</code>. The results of this second method are stored in the variable <code>example_after_rtweet_B</code> below.</p>
+<p>With a TAGS tracker archive imported into R,
+<strong>tidytags</strong> allows you to gather quite a bit more
+information related to the TAGS-collected tweets with the
+<code><a href="../reference/pull_tweet_data.html">pull_tweet_data()</a></code> function. This function builds off the <a href="https://docs.ropensci.org/rtweet/" class="external-link"><strong>rtweet</strong>
+package</a> (via <code><a href="https://docs.ropensci.org/rtweet/reference/lookup_tweets.html" class="external-link">rtweet::lookup_tweets()</a></code>) to query the
+Twitter API.</p>
+<p>However, <strong>to access the Twitter API, whether through rtweet or
+tidytags, you will need to apply for developers’ access from
+Twitter</strong>. You do this <a href="https://developer.twitter.com/en/apply-for-access" class="external-link">through
+Twitter’s developer website</a>.</p>
+<p>The <strong>rtweet</strong> documentation already contains a very
+thorough vignette, “Authentication with rtweet”
+(<code><a href="https://docs.ropensci.org/rtweet/articles/auth.html" class="external-link">vignette("auth", package = "rtweet")</a></code>), to guide you
+through the process of authenticating access to the Twitter API. We
+recommend the <strong>app-based authentication</strong> method that uses
+<code>auth &lt;- rtweet::rtweet_app()</code>, described in the <a href="https://docs.ropensci.org/rtweet/articles/auth.html#apps" class="external-link">Apps</a>
+section of the vignette.</p>
+<p>For further help getting your own Twitter API keys, see the “Getting
+started with tidytags” vignette
+(<code><a href="../articles/setup.html">vignette("setup", package = "tidytags")</a></code>), specifically
+<strong>Pain Point #2</strong>.</p>
+<p>Note that your dataset will often contain fewer rows after running
+<code><a href="../reference/pull_tweet_data.html">pull_tweet_data()</a></code>. This is because
+<code><a href="https://docs.ropensci.org/rtweet/reference/lookup_tweets.html" class="external-link">rtweet::lookup_tweets()</a></code> is searching for tweet status IDs
+that are currently available. Any tweets that have been deleted or made
+“protected” (i.e., private) since TAGS first collected them are dropped
+from the dataset. Rather than view this as a limitation, we see this as
+an asset to help ensure our data better reflects the intentions of the
+accounts whose tweets we have collected (see <a href="https://journals.sagepub.com/doi/full/10.1177/2056305118763366" class="external-link">Fiesler
+&amp; Proferes, 2018</a>).</p>
+<p>Here, we demonstrate two different ways of using
+<code><a href="../reference/pull_tweet_data.html">pull_tweet_data()</a></code>. The first method is to query the Twitter
+API with the tweet ID numbers from the <code>id_str</code> column
+returned by <strong>rtweet</strong>. However, a limitation of TAGS is
+that the numbers in this column are often corrupted because Google
+Sheets considers them very large numbers (instead of character strings)
+and rounds them by putting them into exponential form. The results of
+this first method are stored in the variable
+<code>example_after_rtweet_A</code> below. The second method pulls the
+tweet ID numbers from the tweet URLs. For example, the tweet with the
+URL
+<code>https://twitter.com/tweet__example/status/1176592704647716864</code>
+has a tweet ID of <code>1176592704647716864</code>. The results of this
+second method are stored in the variable
+<code>example_after_rtweet_B</code> below.</p>
 <div class="sourceCode" id="cb4"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="va">example_after_rtweet_A</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/pull_tweet_data.html">pull_tweet_data</a></span><span class="op">(</span>id_vector <span class="op">=</span> <span class="va">example_df_all</span><span class="op">$</span><span class="va">id_str</span><span class="op">)</span>
-<span class="va">example_after_rtweet_B</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/pull_tweet_data.html">pull_tweet_data</a></span><span class="op">(</span>url_vector <span class="op">=</span> <span class="va">example_df_all</span><span class="op">$</span><span class="va">status_url</span><span class="op">)</span></code></pre></div>
-<p>When this vignette was run on Nov 19 21, the TAGS tracker had collected 18 variables associated with 2564 tweets. The first method searching with <code>id_str</code> collected 90 variables associated with 2030 tweets. The second method using ‘tidytags::get_char_tweet_ids()’ collected 90 variables associated with 2030 tweets.</p>
-<p>Notice how many more variables are in the dataset after using <code><a href="../reference/pull_tweet_data.html">pull_tweet_data()</a></code>, and how many more tweets are in the dataset when using the second method. We have found that in the process of storing and retrieving tweet IDs, the long string of numbers can sometimes be interpreted as an object of type double (i.e., numeric) and subsequently converted into scientific notation form. This loses the specific identifying use of the string of numerical digits. Therefore, we strongly recommend the second method, obtaining tweet IDs from the tweet URL, which is why we have included <code><a href="../reference/get_char_tweet_ids.html">get_char_tweet_ids()</a></code> as an internal function in the {tidytags} package.</p>
-<p>The built-in default of <code><a href="../reference/pull_tweet_data.html">pull_tweet_data()</a></code> is to simply enter the dataframe retrieved from <code><a href="../reference/read_tags.html">read_tags()</a></code> and implement the second method, retrieving metadata starting with tweet URLs. That is, <code>pull_tweet_data(read_tags(example_url))</code>. Take a quick look at the result, viewed with the <code>glimpse()</code> function from the {dplyr} package:</p>
+<code class="sourceCode R"><span><span class="va">app</span> <span class="op">&lt;-</span> <span class="fu">rtweet</span><span class="fu">::</span><span class="fu"><a href="https://docs.ropensci.org/rtweet/reference/rtweet_user.html" class="external-link">rtweet_app</a></span><span class="op">(</span>bearer_token <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/Sys.getenv.html" class="external-link">Sys.getenv</a></span><span class="op">(</span><span class="st">"TWITTER_BEARER_TOKEN"</span><span class="op">)</span><span class="op">)</span></span>
+<span><span class="fu">rtweet</span><span class="fu">::</span><span class="fu"><a href="https://docs.ropensci.org/rtweet/reference/auth_as.html" class="external-link">auth_as</a></span><span class="op">(</span><span class="va">app</span><span class="op">)</span></span>
+<span></span>
+<span><span class="va">example_after_rtweet_A</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/pull_tweet_data.html">pull_tweet_data</a></span><span class="op">(</span>id_vector <span class="op">=</span> <span class="va">example_df_all</span><span class="op">$</span><span class="va">id_str</span><span class="op">)</span></span>
+<span><span class="va">example_after_rtweet_B</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/pull_tweet_data.html">pull_tweet_data</a></span><span class="op">(</span>url_vector <span class="op">=</span> <span class="va">example_df_all</span><span class="op">$</span><span class="va">status_url</span><span class="op">)</span></span></code></pre></div>
+<p>When this vignette was run on Aug 05 22, the TAGS tracker had
+collected 18 variables associated with 2564 tweets. The first method
+searching with <code>id_str</code> collected 43 variables associated
+with 2195 tweets. The second method using
+‘tidytags::get_char_tweet_ids()’ collected 43 variables associated with
+2195 tweets.</p>
+<p>Notice how many more variables are in the dataset after using
+<code><a href="../reference/pull_tweet_data.html">pull_tweet_data()</a></code>, and how many more tweets are in the
+dataset when using the second method. We have found that in the process
+of storing and retrieving tweet IDs, the long string of numbers can
+sometimes be interpreted as an object of type double (i.e., numeric) and
+subsequently converted into scientific notation form. This loses the
+specific identifying use of the string of numerical digits. Therefore,
+we strongly recommend the second method, obtaining tweet IDs from the
+tweet URL, which is why we have included
+<code><a href="../reference/get_char_tweet_ids.html">get_char_tweet_ids()</a></code> as an internal function in the
+<strong>tidytags</strong> package.</p>
+<p>The built-in default of <code><a href="../reference/pull_tweet_data.html">pull_tweet_data()</a></code> is to simply
+enter the dataframe retrieved from <code><a href="../reference/read_tags.html">read_tags()</a></code> and
+implement the second method, retrieving metadata starting with tweet
+URLs. That is, <code>pull_tweet_data(read_tags(example_url))</code>.
+Take a quick look at the result, viewed with the <code>glimpse()</code>
+function from the <strong>dplyr</strong> package:</p>
 <div class="sourceCode" id="cb5"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="va">example_after_rtweet</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/pull_tweet_data.html">pull_tweet_data</a></span><span class="op">(</span><span class="fu"><a href="../reference/read_tags.html">read_tags</a></span><span class="op">(</span><span class="va">tags_url</span><span class="op">)</span><span class="op">)</span>
-<span class="fu">dplyr</span><span class="fu">::</span><span class="fu"><a href="https://pillar.r-lib.org/reference/glimpse.html" class="external-link">glimpse</a></span><span class="op">(</span><span class="va">example_after_rtweet</span><span class="op">)</span>
-<span class="co">#&gt; Rows: 2,030</span>
-<span class="co">#&gt; Columns: 90</span>
-<span class="co">#&gt; $ user_id                 &lt;chr&gt; "14215524", "14215524", "14215524", "14215524", "14215524", …</span>
-<span class="co">#&gt; $ status_id               &lt;chr&gt; "1225122317849657345", "1187817883381796864", "1187960612695…</span>
-<span class="co">#&gt; $ created_at              &lt;dttm&gt; 2020-02-05 18:21:36, 2019-10-25 19:47:06, 2019-10-26 05:14:…</span>
-<span class="co">#&gt; $ screen_name             &lt;chr&gt; "tadousay", "tadousay", "tadousay", "tadousay", "tadousay", …</span>
-<span class="co">#&gt; $ text                    &lt;chr&gt; "Many thanks to @AECTTechTrends for supporting our @gsa_aect…</span>
-<span class="co">#&gt; $ source                  &lt;chr&gt; "TweetDeck", "TweetDeck", "IFTTT", "Twitter for Android", "I…</span>
-<span class="co">#&gt; $ display_text_width      &lt;dbl&gt; 268, 284, 89, 95, 137, 75, 103, 270, 280, 62, 188, 136, 132,…</span>
-<span class="co">#&gt; $ reply_to_status_id      &lt;chr&gt; NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, …</span>
-<span class="co">#&gt; $ reply_to_user_id        &lt;chr&gt; NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, …</span>
-<span class="co">#&gt; $ reply_to_screen_name    &lt;chr&gt; NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, …</span>
-<span class="co">#&gt; $ is_quote                &lt;lgl&gt; FALSE, FALSE, FALSE, FALSE, FALSE, FALSE, FALSE, FALSE, FALS…</span>
-<span class="co">#&gt; $ is_retweet              &lt;lgl&gt; FALSE, FALSE, FALSE, FALSE, FALSE, FALSE, FALSE, FALSE, FALS…</span>
-<span class="co">#&gt; $ favorite_count          &lt;int&gt; 8, 1, 3, 0, 3, 10, 32, 14, 12, 2, 7, 0, 0, 12, 15, 7, 0, 0, …</span>
-<span class="co">#&gt; $ retweet_count           &lt;int&gt; 2, 0, 0, 0, 0, 0, 4, 7, 0, 0, 2, 1, 1, 3, 2, 0, 1, 6, 5, 3, …</span>
-<span class="co">#&gt; $ quote_count             &lt;int&gt; NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, …</span>
-<span class="co">#&gt; $ reply_count             &lt;int&gt; NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, …</span>
-<span class="co">#&gt; $ hashtags                &lt;list&gt; &lt;"uidaho", "UISTEMEdRG", "aect", "aect20", "aect19"&gt;, &lt;"UId…</span>
-<span class="co">#&gt; $ symbols                 &lt;list&gt; NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA,…</span>
-<span class="co">#&gt; $ urls_url                &lt;list&gt; "doi.org/10.1007/s11528…", "docs.google.com/forms/d/e/1FAI……</span>
-<span class="co">#&gt; $ urls_t.co               &lt;list&gt; "https://t.co/8MuP9Mza8f", "https://t.co/2bRw5YYDA9", "http…</span>
-<span class="co">#&gt; $ urls_expanded_url       &lt;list&gt; "https://doi.org/10.1007/s11528-020-00477-5", "https://docs…</span>
-<span class="co">#&gt; $ media_url               &lt;list&gt; NA, NA, "http://pbs.twimg.com/media/EHx74b1W4AY11Kb.jpg", "…</span>
-<span class="co">#&gt; $ media_t.co              &lt;list&gt; NA, NA, "https://t.co/79CGsiSCHD", "https://t.co/aJiDeNQoUp…</span>
-<span class="co">#&gt; $ media_expanded_url      &lt;list&gt; NA, NA, "https://twitter.com/tadousay/status/11879606126950…</span>
-<span class="co">#&gt; $ media_type              &lt;list&gt; NA, NA, "photo", "photo", "photo", "photo", "photo", "photo…</span>
-<span class="co">#&gt; $ ext_media_url           &lt;list&gt; NA, NA, "http://pbs.twimg.com/media/EHx74b1W4AY11Kb.jpg", "…</span>
-<span class="co">#&gt; $ ext_media_t.co          &lt;list&gt; NA, NA, "https://t.co/79CGsiSCHD", "https://t.co/aJiDeNQoUp…</span>
-<span class="co">#&gt; $ ext_media_expanded_url  &lt;list&gt; NA, NA, "https://twitter.com/tadousay/status/11879606126950…</span>
-<span class="co">#&gt; $ ext_media_type          &lt;chr&gt; NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, …</span>
-<span class="co">#&gt; $ mentions_user_id        &lt;list&gt; &lt;"804807943", "922536306437181440"&gt;, "2165058337", NA, NA, …</span>
-<span class="co">#&gt; $ mentions_screen_name    &lt;list&gt; &lt;"AECTTechTrends", "gsa_aect"&gt;, "tedaect", NA, NA, NA, NA, …</span>
-<span class="co">#&gt; $ lang                    &lt;chr&gt; "en", "en", "en", "en", "en", "en", "en", "en", "en", "en", …</span>
-<span class="co">#&gt; $ quoted_status_id        &lt;chr&gt; NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, …</span>
-<span class="co">#&gt; $ quoted_text             &lt;chr&gt; NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, …</span>
-<span class="co">#&gt; $ quoted_created_at       &lt;dttm&gt; NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA,…</span>
-<span class="co">#&gt; $ quoted_source           &lt;chr&gt; NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, …</span>
-<span class="co">#&gt; $ quoted_favorite_count   &lt;int&gt; NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, …</span>
-<span class="co">#&gt; $ quoted_retweet_count    &lt;int&gt; NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, …</span>
-<span class="co">#&gt; $ quoted_user_id          &lt;chr&gt; NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, …</span>
-<span class="co">#&gt; $ quoted_screen_name      &lt;chr&gt; NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, …</span>
-<span class="co">#&gt; $ quoted_name             &lt;chr&gt; NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, …</span>
-<span class="co">#&gt; $ quoted_followers_count  &lt;int&gt; NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, …</span>
-<span class="co">#&gt; $ quoted_friends_count    &lt;int&gt; NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, …</span>
-<span class="co">#&gt; $ quoted_statuses_count   &lt;int&gt; NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, …</span>
-<span class="co">#&gt; $ quoted_location         &lt;chr&gt; NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, …</span>
-<span class="co">#&gt; $ quoted_description      &lt;chr&gt; NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, …</span>
-<span class="co">#&gt; $ quoted_verified         &lt;lgl&gt; NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, …</span>
-<span class="co">#&gt; $ retweet_status_id       &lt;chr&gt; NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, "118777882718075…</span>
-<span class="co">#&gt; $ retweet_text            &lt;chr&gt; NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, "#AECT19 #aect19…</span>
-<span class="co">#&gt; $ retweet_created_at      &lt;dttm&gt; NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, 2019-10-25 17:1…</span>
-<span class="co">#&gt; $ retweet_source          &lt;chr&gt; NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, "TweetDeck", "Tw…</span>
-<span class="co">#&gt; $ retweet_favorite_count  &lt;int&gt; NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, 5, 6, NA, NA, NA…</span>
-<span class="co">#&gt; $ retweet_retweet_count   &lt;int&gt; NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, 1, 1, NA, NA, NA…</span>
-<span class="co">#&gt; $ retweet_user_id         &lt;chr&gt; NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, "11092692", "413…</span>
-<span class="co">#&gt; $ retweet_screen_name     &lt;chr&gt; NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, "gravesle", "Fak…</span>
-<span class="co">#&gt; $ retweet_name            &lt;chr&gt; NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, "Dr. Leigh Grave…</span>
-<span class="co">#&gt; $ retweet_followers_count &lt;int&gt; NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, 5988, 95, NA, NA…</span>
-<span class="co">#&gt; $ retweet_friends_count   &lt;int&gt; NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, 6521, 116, NA, N…</span>
-<span class="co">#&gt; $ retweet_statuses_count  &lt;int&gt; NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, 47343, 251, NA, …</span>
-<span class="co">#&gt; $ retweet_location        &lt;chr&gt; NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, "Michigan/Galway…</span>
-<span class="co">#&gt; $ retweet_description     &lt;chr&gt; NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, "I like to share…</span>
-<span class="co">#&gt; $ retweet_verified        &lt;lgl&gt; NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, FALSE, FALSE, NA…</span>
-<span class="co">#&gt; $ place_url               &lt;chr&gt; NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, …</span>
-<span class="co">#&gt; $ place_name              &lt;chr&gt; NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, …</span>
-<span class="co">#&gt; $ place_full_name         &lt;chr&gt; NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, …</span>
-<span class="co">#&gt; $ place_type              &lt;chr&gt; NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, …</span>
-<span class="co">#&gt; $ country                 &lt;chr&gt; NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, …</span>
-<span class="co">#&gt; $ country_code            &lt;chr&gt; NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, …</span>
-<span class="co">#&gt; $ geo_coords              &lt;list&gt; &lt;NA, NA&gt;, &lt;NA, NA&gt;, &lt;NA, NA&gt;, &lt;NA, NA&gt;, &lt;NA, NA&gt;, &lt;NA, NA&gt;,…</span>
-<span class="co">#&gt; $ coords_coords           &lt;list&gt; &lt;NA, NA&gt;, &lt;NA, NA&gt;, &lt;NA, NA&gt;, &lt;NA, NA&gt;, &lt;NA, NA&gt;, &lt;NA, NA&gt;,…</span>
-<span class="co">#&gt; $ bbox_coords             &lt;list&gt; &lt;NA, NA, NA, NA, NA, NA, NA, NA&gt;, &lt;NA, NA, NA, NA, NA, NA, …</span>
-<span class="co">#&gt; $ status_url              &lt;chr&gt; "https://twitter.com/tadousay/status/1225122317849657345", "…</span>
-<span class="co">#&gt; $ name                    &lt;chr&gt; "Dr. Tonia A. Dousay", "Dr. Tonia A. Dousay", "Dr. Tonia A. …</span>
-<span class="co">#&gt; $ location                &lt;chr&gt; "Moscow, ID", "Moscow, ID", "Moscow, ID", "Moscow, ID", "Mos…</span>
-<span class="co">#&gt; $ description             &lt;chr&gt; "❖ @UIdaho Assoc Prof of #LearningSci ⋄ Assoc Dean of #Accre…</span>
-<span class="co">#&gt; $ url                     &lt;chr&gt; "https://t.co/mNe8apZBwK", "https://t.co/mNe8apZBwK", "https…</span>
-<span class="co">#&gt; $ protected               &lt;lgl&gt; FALSE, FALSE, FALSE, FALSE, FALSE, FALSE, FALSE, FALSE, FALS…</span>
-<span class="co">#&gt; $ followers_count         &lt;int&gt; 2152, 2152, 2152, 2152, 2152, 2152, 2152, 2152, 2152, 2152, …</span>
-<span class="co">#&gt; $ friends_count           &lt;int&gt; 1320, 1320, 1320, 1320, 1320, 1320, 1320, 1320, 1320, 1320, …</span>
-<span class="co">#&gt; $ listed_count            &lt;int&gt; 181, 181, 181, 181, 181, 181, 181, 181, 181, 181, 181, 181, …</span>
-<span class="co">#&gt; $ statuses_count          &lt;int&gt; 11894, 11894, 11894, 11894, 11894, 11894, 11894, 11894, 1189…</span>
-<span class="co">#&gt; $ favourites_count        &lt;int&gt; 4232, 4232, 4232, 4232, 4232, 4232, 4232, 4232, 4232, 4232, …</span>
-<span class="co">#&gt; $ account_created_at      &lt;dttm&gt; 2008-03-25 13:56:07, 2008-03-25 13:56:07, 2008-03-25 13:56:…</span>
-<span class="co">#&gt; $ verified                &lt;lgl&gt; FALSE, FALSE, FALSE, FALSE, FALSE, FALSE, FALSE, FALSE, FALS…</span>
-<span class="co">#&gt; $ profile_url             &lt;chr&gt; "https://t.co/mNe8apZBwK", "https://t.co/mNe8apZBwK", "https…</span>
-<span class="co">#&gt; $ profile_expanded_url    &lt;chr&gt; "http://about.me/tadousay", "http://about.me/tadousay", "htt…</span>
-<span class="co">#&gt; $ account_lang            &lt;lgl&gt; NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, …</span>
-<span class="co">#&gt; $ profile_banner_url      &lt;chr&gt; "https://pbs.twimg.com/profile_banners/14215524/1550516097",…</span>
-<span class="co">#&gt; $ profile_background_url  &lt;chr&gt; "http://abs.twimg.com/images/themes/theme9/bg.gif", "http://…</span>
-<span class="co">#&gt; $ profile_image_url       &lt;chr&gt; "http://pbs.twimg.com/profile_images/1458504088186884100/6Nd…</span></code></pre></div>
-<p>At this point, the purpose of {tidytags} should be restated. <strong>TAGS tweet trackers are easily set up and maintained, and does an excellent job passively collecting tweets over time</strong>. For instance, the example TAGS tracker we demo here has collected thousands of tweets related to the AECT 2019 annual convention since September 30, 2019. In contrast, running this query now using <code><a href="https://rdrr.io/pkg/rtweet/man/search_tweets.html" class="external-link">rtweet::search_tweets()</a></code> is limited by Twitter’s API, meaning that an {rtweet} search can only go back in time 6-9 days, and is limited to returning at most 18,000 tweets per query. So, if you are interested in tweets about AECT 2019, today you could get almost no meaningful data using {rtweet} alone.</p>
+<code class="sourceCode R"><span><span class="va">example_after_rtweet</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/pull_tweet_data.html">pull_tweet_data</a></span><span class="op">(</span><span class="fu"><a href="../reference/read_tags.html">read_tags</a></span><span class="op">(</span><span class="va">tags_url</span><span class="op">)</span><span class="op">)</span></span>
+<span><span class="fu">dplyr</span><span class="fu">::</span><span class="fu"><a href="https://pillar.r-lib.org/reference/glimpse.html" class="external-link">glimpse</a></span><span class="op">(</span><span class="va">example_after_rtweet</span><span class="op">)</span></span>
+<span><span class="co">#&gt; Rows: 2,195</span></span>
+<span><span class="co">#&gt; Columns: 43</span></span>
+<span><span class="co">#&gt; $ created_at                    &lt;dttm&gt; 2020-04-19 15:22:23, 2020-03-01 15:00:41, 2020-02-…</span></span>
+<span><span class="co">#&gt; $ id                            &lt;dbl&gt; 1.251954e+18, 1.234207e+18, 1.229405e+18, 1.225138e…</span></span>
+<span><span class="co">#&gt; $ id_str                        &lt;chr&gt; "1251954312772812801", "1234206946732830720", "1229…</span></span>
+<span><span class="co">#&gt; $ full_text                     &lt;chr&gt; "RT @RoutledgeEd: Congrats to authors Joseph Rene C…</span></span>
+<span><span class="co">#&gt; $ truncated                     &lt;lgl&gt; FALSE, FALSE, FALSE, FALSE, FALSE, FALSE, FALSE, FA…</span></span>
+<span><span class="co">#&gt; $ display_text_range            &lt;dbl&gt; 140, 140, 140, 140, 268, 140, 140, 140, 140, 140, 2…</span></span>
+<span><span class="co">#&gt; $ entities                      &lt;list&gt; [[&lt;data.frame[1 x 2]&gt;], [&lt;data.frame[1 x 2]&gt;], [&lt;d…</span></span>
+<span><span class="co">#&gt; $ source                        &lt;chr&gt; "&lt;a href=\"https://mobile.twitter.com\" rel=\"nofol…</span></span>
+<span><span class="co">#&gt; $ in_reply_to_status_id         &lt;dbl&gt; NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA,…</span></span>
+<span><span class="co">#&gt; $ in_reply_to_status_id_str     &lt;chr&gt; NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA,…</span></span>
+<span><span class="co">#&gt; $ in_reply_to_user_id           &lt;dbl&gt; NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA,…</span></span>
+<span><span class="co">#&gt; $ in_reply_to_user_id_str       &lt;chr&gt; NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA,…</span></span>
+<span><span class="co">#&gt; $ in_reply_to_screen_name       &lt;chr&gt; NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA,…</span></span>
+<span><span class="co">#&gt; $ geo                           &lt;list&gt; NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA…</span></span>
+<span><span class="co">#&gt; $ coordinates                   &lt;list&gt; [&lt;data.frame[1 x 3]&gt;], [&lt;data.frame[1 x 3]&gt;], [&lt;da…</span></span>
+<span><span class="co">#&gt; $ place                         &lt;list&gt; [&lt;data.frame[1 x 3]&gt;], [&lt;data.frame[1 x 3]&gt;], [&lt;da…</span></span>
+<span><span class="co">#&gt; $ contributors                  &lt;lgl&gt; NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA,…</span></span>
+<span><span class="co">#&gt; $ is_quote_status               &lt;lgl&gt; FALSE, FALSE, FALSE, FALSE, FALSE, FALSE, FALSE, FA…</span></span>
+<span><span class="co">#&gt; $ retweet_count                 &lt;int&gt; 4, 28, 2, 2, 2, 9, 9, 9, 9, 9, 1, 9, 9, 9, 9, 9, 9,…</span></span>
+<span><span class="co">#&gt; $ favorite_count                &lt;int&gt; 0, 0, 0, 0, 8, 0, 0, 0, 0, 0, 4, 0, 0, 0, 0, 0, 21,…</span></span>
+<span><span class="co">#&gt; $ favorited                     &lt;lgl&gt; FALSE, FALSE, FALSE, FALSE, FALSE, FALSE, FALSE, FA…</span></span>
+<span><span class="co">#&gt; $ retweeted                     &lt;lgl&gt; FALSE, FALSE, FALSE, FALSE, FALSE, FALSE, FALSE, FA…</span></span>
+<span><span class="co">#&gt; $ possibly_sensitive            &lt;lgl&gt; NA, NA, NA, NA, FALSE, NA, NA, NA, NA, NA, FALSE, N…</span></span>
+<span><span class="co">#&gt; $ lang                          &lt;chr&gt; "en", "en", "en", "en", "en", "en", "en", "en", "en…</span></span>
+<span><span class="co">#&gt; $ retweeted_status              &lt;list&gt; [&lt;data.frame[1 x 30]&gt;], [&lt;data.frame[1 x 30]&gt;], [&lt;…</span></span>
+<span><span class="co">#&gt; $ quoted_status_id              &lt;dbl&gt; NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, 1.218549e+1…</span></span>
+<span><span class="co">#&gt; $ quoted_status_id_str          &lt;chr&gt; NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, "1218548635…</span></span>
+<span><span class="co">#&gt; $ quoted_status_permalink       &lt;list&gt; [&lt;data.frame[1 x 3]&gt;], [&lt;data.frame[1 x 3]&gt;], [&lt;da…</span></span>
+<span><span class="co">#&gt; $ quoted_status                 &lt;list&gt; [&lt;data.frame[1 x 26]&gt;], [&lt;data.frame[1 x 26]&gt;], [&lt;…</span></span>
+<span><span class="co">#&gt; $ text                          &lt;chr&gt; "RT @RoutledgeEd: Congrats to authors Joseph Rene C…</span></span>
+<span><span class="co">#&gt; $ favorited_by                  &lt;lgl&gt; NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA,…</span></span>
+<span><span class="co">#&gt; $ scopes                        &lt;lgl&gt; NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA,…</span></span>
+<span><span class="co">#&gt; $ display_text_width            &lt;lgl&gt; NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA,…</span></span>
+<span><span class="co">#&gt; $ quote_count                   &lt;lgl&gt; NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA,…</span></span>
+<span><span class="co">#&gt; $ timestamp_ms                  &lt;lgl&gt; NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA,…</span></span>
+<span><span class="co">#&gt; $ reply_count                   &lt;lgl&gt; NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA,…</span></span>
+<span><span class="co">#&gt; $ filter_level                  &lt;lgl&gt; NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA,…</span></span>
+<span><span class="co">#&gt; $ metadata                      &lt;lgl&gt; NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA,…</span></span>
+<span><span class="co">#&gt; $ query                         &lt;lgl&gt; NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA,…</span></span>
+<span><span class="co">#&gt; $ withheld_scope                &lt;lgl&gt; NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA,…</span></span>
+<span><span class="co">#&gt; $ withheld_copyright            &lt;lgl&gt; NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA,…</span></span>
+<span><span class="co">#&gt; $ withheld_in_countries         &lt;lgl&gt; NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA,…</span></span>
+<span><span class="co">#&gt; $ possibly_sensitive_appealable &lt;lgl&gt; NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA,…</span></span></code></pre></div>
+<p>At this point, the purpose of <strong>tidytags</strong> should be
+restated. TAGS tweet trackers are easily set up and maintained, and they
+do an excellent job passively collecting tweets over time. For instance,
+the example TAGS tracker we demo here has collected thousands of tweets
+related to the AECT 2019 annual convention since September 30, 2019. In
+contrast, running this query now using
+<code><a href="https://docs.ropensci.org/rtweet/reference/search_tweets.html" class="external-link">rtweet::search_tweets()</a></code> is limited by Twitter’s API,
+meaning that an <strong>rtweet</strong> search can only go back in time
+6-9 days, and is limited to returning at most 18,000 tweets per query.
+So, if you are interested in tweets about AECT 2019, today you could get
+almost no meaningful data using <strong>rtweet</strong> alone.</p>
 <div class="sourceCode" id="cb6"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="va">rtweet_today</span> <span class="op">&lt;-</span>
-  <span class="fu">rtweet</span><span class="fu">::</span><span class="fu"><a href="https://rdrr.io/pkg/rtweet/man/search_tweets.html" class="external-link">search_tweets</a></span><span class="op">(</span><span class="st">"#aect19 OR #aect2019 OR #aect19inspired"</span><span class="op">)</span></code></pre></div>
-<p>You can see that an {rtweet} search for #AECT19 tweets run today returns 0tweets.</p>
-<p>In sum, although a TAGS tracker is great for easily collecting tweets over time (breadth), it lacks depth in terms of metadata related to the gathered tweets. Specifically, TAGS returns information on at most 18 variables; in contrast, {rtweet} returns information on up to 90 variables. Thus, our package {tidytags} brings together the breadth of TAGS with the depth of {rtweet}.</p>
+<code class="sourceCode R"><span><span class="va">rtweet_today</span> <span class="op">&lt;-</span></span>
+<span>  <span class="fu">rtweet</span><span class="fu">::</span><span class="fu"><a href="https://docs.ropensci.org/rtweet/reference/search_tweets.html" class="external-link">search_tweets</a></span><span class="op">(</span><span class="st">"#aect19 OR #aect2019 OR #aect19inspired"</span><span class="op">)</span></span></code></pre></div>
+<p>You can see that an <strong>rtweet</strong> search for #AECT19 tweets
+run today returns 0tweets.</p>
+<p>In sum, although a TAGS tracker is great for easily collecting tweets
+over time (breadth), it lacks depth in terms of metadata related to the
+gathered tweets. Specifically, TAGS returns information on at most 18
+variables; in contrast, <strong>rtweet</strong> returns information on
+43 variables. Thus, <strong>tidytags</strong> brings together the
+breadth of TAGS with the depth of <strong>rtweet</strong>.</p>
 </div>
 <div class="section level2">
 <h2 id="lookup_many_tweets">lookup_many_tweets()<a class="anchor" aria-label="anchor" href="#lookup_many_tweets"></a>
 </h2>
-<p>The Twitter API only allows the looking up of 90,000 tweet IDs at a time, a rate limit which resets after 15 minutes. Hence <code><a href="https://rdrr.io/pkg/rtweet/man/lookup_statuses.html" class="external-link">rtweet::lookup_tweets()</a></code> will only return results for the first 90,000 tweet IDs in your dataset. The function <code><a href="../reference/lookup_many_tweets.html">tidytags::lookup_many_tweets()</a></code> will automatically break your dataset into batches of 90,000 tweets, looking up one batch per 15 minutes until finished. Note that <code><a href="../reference/lookup_many_tweets.html">lookup_many_tweets()</a></code> also works for datasets with fewer than 90,000 tweets as well.</p>
-<p>Because our AECT 2019 examples includes fewer than 90,000 tweets (and because <code><a href="../reference/lookup_many_tweets.html">lookup_many_tweets()</a></code> involves waiting for 15 minutes between batches), we do not include an example here. However, this function can be used in the same way as <code><a href="../reference/pull_tweet_data.html">pull_tweet_data()</a></code>.</p>
+<p>The Twitter API only allows the looking up of 90,000 tweet IDs at a
+time, a rate limit which resets after 15 minutes. Hence
+<code><a href="https://docs.ropensci.org/rtweet/reference/lookup_tweets.html" class="external-link">rtweet::lookup_tweets()</a></code> will only return results for the
+first 90,000 tweet IDs in your dataset. The function
+<code><a href="../reference/lookup_many_tweets.html">tidytags::lookup_many_tweets()</a></code> will automatically divide
+your dataset into batches of 90,000 tweets, looking up one batch per 15
+minutes until finished. Note that <code><a href="../reference/lookup_many_tweets.html">lookup_many_tweets()</a></code> also
+works for datasets with fewer than 90,000 tweets.</p>
+<p>Because our AECT 2019 examples includes fewer than 90,000 tweets (and
+because <code><a href="../reference/lookup_many_tweets.html">lookup_many_tweets()</a></code> involves waiting for 15
+minutes between batches), we do not include an example here. However,
+this function can be used in the same way as
+<code><a href="../reference/pull_tweet_data.html">pull_tweet_data()</a></code>.</p>
 </div>
 <div class="section level2">
 <h2 id="process_tweets">process_tweets()<a class="anchor" aria-label="anchor" href="#process_tweets"></a>
 </h2>
-<p>After <code><a href="../reference/pull_tweet_data.html">pull_tweet_data()</a></code> is used to collect additional information from TAGS tweet IDs (in this case, the <code>example_after_rtweet</code> dataframe), the {tidytags} function <code><a href="../reference/process_tweets.html">process_tweets()</a></code> can be used to calculate additional attributes and add these to the dataframe as new columns. Specifically, 10 new variables are added: word_count, character_count, mentions_count, hashtags_count_api, hashtags_count_regex, has_hashtags, urls_count_api, urls_count_regex, is_reply, and is_self_reply. This results in 100 variables associated with the collected tweets.</p>
-<div class="sourceCode" id="cb7"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="va">example_processed</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/process_tweets.html">process_tweets</a></span><span class="op">(</span><span class="va">example_after_rtweet</span><span class="op">)</span></code></pre></div>
-<p>Notice that you now have 100 variables associated 2030 tweets.</p>
-<p>At this point, depending on your research questions, you may wish to calculate some descriptive statistics associated with this tweet data. For instance the mean number of characters per tweet:</p>
-<div class="sourceCode" id="cb8"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="va">mean_char</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/Round.html" class="external-link">round</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/mean.html" class="external-link">mean</a></span><span class="op">(</span><span class="va">example_processed</span><span class="op">$</span><span class="va">character_count</span><span class="op">)</span>, <span class="fl">2</span><span class="op">)</span>
-<span class="va">sd_char</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/Round.html" class="external-link">round</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/stats/sd.html" class="external-link">sd</a></span><span class="op">(</span><span class="va">example_processed</span><span class="op">$</span><span class="va">character_count</span><span class="op">)</span>, <span class="fl">2</span><span class="op">)</span></code></pre></div>
-<p>This shows that the mean number of characters per tweet is 180.02 (SD = 75.18).</p>
-<p>Or, perhaps, the mean, median, and max number of <em>hashtags per tweet</em> would be useful to know:</p>
-<div class="sourceCode" id="cb9"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="va">mean_hash</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/Round.html" class="external-link">round</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/mean.html" class="external-link">mean</a></span><span class="op">(</span><span class="va">example_processed</span><span class="op">$</span><span class="va">hashtags_count_regex</span><span class="op">)</span>, <span class="fl">2</span><span class="op">)</span>
-<span class="va">sd_hash</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/Round.html" class="external-link">round</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/stats/sd.html" class="external-link">sd</a></span><span class="op">(</span><span class="va">example_processed</span><span class="op">$</span><span class="va">hashtags_count_regex</span><span class="op">)</span>, <span class="fl">2</span><span class="op">)</span>
-<span class="va">median_hash</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/stats/median.html" class="external-link">median</a></span><span class="op">(</span><span class="va">example_processed</span><span class="op">$</span><span class="va">hashtags_count_regex</span><span class="op">)</span>
-<span class="va">max_hash</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/Extremes.html" class="external-link">max</a></span><span class="op">(</span><span class="va">example_processed</span><span class="op">$</span><span class="va">hashtags_count_regex</span><span class="op">)</span></code></pre></div>
-<p>The mean number of hashtags per tweet is 2.16 (SD = 1.52). The median is 2, and the maximum number of hashtags in a tweet is 12.</p>
-</div>
-<div class="section level2">
-<h2 id="get_url_domain">get_url_domain()<a class="anchor" aria-label="anchor" href="#get_url_domain"></a>
-</h2>
-<p>The {tidytags} function <code><a href="../reference/get_url_domain.html">get_url_domain()</a></code> combines the <code>expand_urls()</code> function from the {longurl} package and the <code>domain()</code> function from the {urltools} package to easily return the domain names of any hyperlinks including in tweets. Note that using <code><a href="https://rdrr.io/pkg/longurl/man/expand_urls.html" class="external-link">longurl::expand_urls()</a></code> is a necessary step because Twitter automatically shortens any hyperlinks included in tweets.</p>
-<p>As an example, <code><a href="../reference/get_url_domain.html">get_url_domain()</a></code> finds that the domain in the shortened URL “<a href="http://bit.ly/2SfWO3K" class="external-link uri">http://bit.ly/2SfWO3K</a>” is “aect.org”:</p>
-<div class="sourceCode" id="cb10"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="va">short_url</span> <span class="op">&lt;-</span> <span class="st">"http://bit.ly/2SfWO3K"</span>
-<span class="fu"><a href="../reference/get_url_domain.html">get_url_domain</a></span><span class="op">(</span><span class="va">short_url</span><span class="op">)</span>
-<span class="co">#&gt; [1] "aect.org"</span></code></pre></div>
-<p>It may also be of interest to examine which websites get linked to most often in your dataset. <code><a href="../reference/get_url_domain.html">get_url_domain()</a></code> can be combined with a function from base R like <code><a href="https://rdrr.io/r/base/table.html" class="external-link">table()</a></code> to calculate frequency counts for domains present in the dataset. This process is useful to get a picture of to where else on the Internet tweeters are directing their readers’ attention.</p>
-<p>Keep in mind, however, that this process is a bit slow.</p>
-<div class="sourceCode" id="cb11"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="va">example_urls</span> <span class="op">&lt;-</span> <span class="fu">purrr</span><span class="fu">::</span><span class="fu"><a href="https://purrr.tidyverse.org/reference/flatten.html" class="external-link">flatten_chr</a></span><span class="op">(</span><span class="va">example_processed</span><span class="op">$</span><span class="va">urls_url</span><span class="op">)</span>
-<span class="va">example_urls</span> <span class="op">&lt;-</span> <span class="va">example_urls</span><span class="op">[</span><span class="op">!</span><span class="fu"><a href="https://rdrr.io/r/base/NA.html" class="external-link">is.na</a></span><span class="op">(</span><span class="va">example_urls</span><span class="op">)</span><span class="op">]</span> <span class="co"># Remove NA values</span>
-<span class="va">example_domains</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/get_url_domain.html">get_url_domain</a></span><span class="op">(</span><span class="va">example_urls</span><span class="op">)</span>
-<span class="va">domain_table</span> <span class="op">&lt;-</span> <span class="fu">tibble</span><span class="fu">::</span><span class="fu"><a href="https://tibble.tidyverse.org/reference/as_tibble.html" class="external-link">as_tibble</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/table.html" class="external-link">table</a></span><span class="op">(</span><span class="va">example_domains</span><span class="op">)</span><span class="op">)</span>
-<span class="va">domain_table_sorted</span> <span class="op">&lt;-</span> <span class="fu">dplyr</span><span class="fu">::</span><span class="fu"><a href="https://dplyr.tidyverse.org/reference/arrange.html" class="external-link">arrange</a></span><span class="op">(</span><span class="va">domain_table</span>, <span class="fu">desc</span><span class="op">(</span><span class="va">n</span><span class="op">)</span><span class="op">)</span>
-<span class="fu"><a href="https://rdrr.io/r/utils/head.html" class="external-link">head</a></span><span class="op">(</span><span class="va">domain_table_sorted</span>, <span class="fl">20</span><span class="op">)</span>
-<span class="co">#&gt; # A tibble: 20 × 2</span>
-<span class="co">#&gt;    example_domains                 n</span>
-<span class="co">#&gt;    &lt;chr&gt;                       &lt;int&gt;</span>
-<span class="co">#&gt;  1 convention2.allacademic.com    23</span>
-<span class="co">#&gt;  2 instagram.com                  12</span>
-<span class="co">#&gt;  3 youtube.com                     9</span>
-<span class="co">#&gt;  4 drive.google.com                7</span>
-<span class="co">#&gt;  5 accounts.google.com             6</span>
-<span class="co">#&gt;  6 nodexlgraphgallery.org          6</span>
-<span class="co">#&gt;  7 docs.google.com                 5</span>
-<span class="co">#&gt;  8 flipsnack.com                   5</span>
-<span class="co">#&gt;  9 litnet.co.za                    5</span>
-<span class="co">#&gt; 10 app.core-apps.com               4</span>
-<span class="co">#&gt; 11 apps.apple.com                  4</span>
-<span class="co">#&gt; 12 caranorth.com                   4</span>
-<span class="co">#&gt; 13 linkedin.com                    4</span>
-<span class="co">#&gt; 14 play.google.com                 4</span>
-<span class="co">#&gt; 15 springer.com                    4</span>
-<span class="co">#&gt; 16 bretsw.github.io                3</span>
-<span class="co">#&gt; 17 msu.zoom.us                     3</span>
-<span class="co">#&gt; 18 edtechbooks.org                 2</span>
-<span class="co">#&gt; 19 twitter.com                     2</span>
-<span class="co">#&gt; 20 amazon.com                      1</span></code></pre></div>
-<p>Unsurprisingly, in this dataset, by far the most common domain (as of September 30, 2020) was “twitter.com”, meaning that AECT 2019 tweeters were linking most often to other Twitter content. Other common domains included “convention2.allacademic.com” (i.e., the host of the conference website, including the schedule and session information) as well as “instagram.com” and “youtube.com”, where tweeters likely shared conference-related content.</p>
-</div>
-<div class="section level2">
-<h2 id="geocode_tags">geocode_tags()<a class="anchor" aria-label="anchor" href="#geocode_tags"></a>
-</h2>
-<p>Another area to explore is where tweeters in the dataset are from (or, at least, the location they self-identify in their Twitter profiles). {tidytags} makes this straightforward with the <code><a href="../reference/geocode_tags.html">geocode_tags()</a></code> function. Note that <code><a href="../reference/geocode_tags.html">geocode_tags()</a></code> should be used after additional metadata have been retrieved with <code><a href="../reference/pull_tweet_data.html">tidytags::pull_tweet_data()</a></code>.</p>
-<p><code><a href="../reference/geocode_tags.html">geocode_tags()</a></code> pulls from the OpenCage Geocoding API, which requires a OpenCage Geocoding API Key. You can easily secure a key through OpenCage directly; their Quick Start guide offers helpful guidance (<a href="https://docs.ropensci.org/opencage/#quickstart" class="external-link">read more here</a>). Once you have the key, the <a href="https://opencagedata.com/api" class="external-link">OpenCage Geocoding API Documentation</a> offers many more additional helps.</p>
-<p>If you’re having trouble setting up the OpenCage Geocoding API Key, see the “Getting started with tidytags” vignette (<code><a href="../articles/setup.html">vignette("setup", package = "tidytags")</a></code>), specifically <strong>Pain Point #4</strong>.</p>
-<p>You can pair <code><a href="../reference/geocode_tags.html">geocode_tags()</a></code> with the {mapview} package to allow for quick, interactive viewing of the geocoded data; read more about mapview <a href="https://r-spatial.github.io/mapview/" class="external-link">here</a>. There are many additional R packages that can plot coordinates on a map; which you choose is largely a matter of personal preference.</p>
-<p><strong>First</strong>, we identify the unique individuals in the dataset:</p>
-<div class="sourceCode" id="cb12"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="va">example_unique_places</span> <span class="op">&lt;-</span>
-  <span class="fu">dplyr</span><span class="fu">::</span><span class="fu"><a href="https://dplyr.tidyverse.org/reference/distinct.html" class="external-link">distinct</a></span><span class="op">(</span><span class="va">example_processed</span>, <span class="va">location</span>, .keep_all <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span></code></pre></div>
-<p><strong>Then</strong>, we geocode the a random sample of 10% of locations with the <code><a href="../reference/geocode_tags.html">geocode_tags()</a></code> function, which takes a tibble and outputs a vector of geo-coordinates.</p>
-<div class="sourceCode" id="cb13"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="va">sample_unique_places</span> <span class="op">&lt;-</span> <span class="fu">dplyr</span><span class="fu">::</span><span class="fu"><a href="https://dplyr.tidyverse.org/reference/sample_n.html" class="external-link">sample_n</a></span><span class="op">(</span><span class="va">example_unique_places</span>, <span class="fl">10</span><span class="op">)</span>
-<span class="va">example_geo_coords</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/geocode_tags.html">geocode_tags</a></span><span class="op">(</span><span class="va">sample_unique_places</span><span class="op">)</span>
-<span class="va">example_geo_coords</span>
-<span class="co">#&gt; # A tibble: 10 × 103</span>
-<span class="co">#&gt;    user_id    status_id  created_at          screen_name  text        source  display_text_wi…</span>
-<span class="co">#&gt;    &lt;chr&gt;      &lt;chr&gt;      &lt;dttm&gt;              &lt;chr&gt;        &lt;chr&gt;       &lt;chr&gt;              &lt;dbl&gt;</span>
-<span class="co">#&gt;  1 93868762   118634665… 2019-10-21 18:20:58 jcmadison20… #inspiredm… Twitte…               19</span>
-<span class="co">#&gt;  2 28518944   118529238… 2019-10-18 20:31:41 ekowch       AECT Conve… Twitte…              278</span>
-<span class="co">#&gt;  3 32396916   120149326… 2019-12-02 13:28:11 ifyouaskbet… Kicking of… Twitte…              140</span>
-<span class="co">#&gt;  4 69122603   118659963… 2019-10-22 11:06:13 cmmarqua     For folks … Twitte…              140</span>
-<span class="co">#&gt;  5 17883918   118676857… 2019-10-22 22:17:32 veletsianos  May I sugg… TweetD…               67</span>
-<span class="co">#&gt;  6 14481157   118689002… 2019-10-23 06:20:08 susiegronse… The ID the… Twitte…              227</span>
-<span class="co">#&gt;  7 902231366  118671469… 2019-10-22 18:43:26 EmmaMMercier Wonderful … Twitte…               96</span>
-<span class="co">#&gt;  8 21066932   118211936… 2019-10-10 02:23:13 MTroyMartin  Poster rea… Twitte…              118</span>
-<span class="co">#&gt;  9 214979874  118756036… 2019-10-25 02:43:50 PaulineMulj… Thank you … Twitte…              225</span>
-<span class="co">#&gt; 10 1664133686 118738663… 2019-10-24 15:13:29 ZhongruiYao  Another co… Twitte…              108</span>
-<span class="co">#&gt; # … with 96 more variables: reply_to_status_id &lt;chr&gt;, reply_to_user_id &lt;chr&gt;,</span>
-<span class="co">#&gt; #   reply_to_screen_name &lt;chr&gt;, is_quote &lt;lgl&gt;, is_retweet &lt;lgl&gt;, favorite_count &lt;int&gt;,</span>
-<span class="co">#&gt; #   retweet_count &lt;int&gt;, quote_count &lt;int&gt;, reply_count &lt;int&gt;, hashtags &lt;list&gt;,</span>
-<span class="co">#&gt; #   symbols &lt;list&gt;, urls_url &lt;list&gt;, urls_t.co &lt;list&gt;, urls_expanded_url &lt;list&gt;,</span>
-<span class="co">#&gt; #   media_url &lt;list&gt;, media_t.co &lt;list&gt;, media_expanded_url &lt;list&gt;, media_type &lt;list&gt;,</span>
-<span class="co">#&gt; #   ext_media_url &lt;list&gt;, ext_media_t.co &lt;list&gt;, ext_media_expanded_url &lt;list&gt;,</span>
-<span class="co">#&gt; #   ext_media_type &lt;chr&gt;, mentions_user_id &lt;list&gt;, mentions_screen_name &lt;list&gt;, lang &lt;chr&gt;, …</span></code></pre></div>
-<p>Finally, it’s easy to visualize the data, with a number of packages supporting the visualization of geo-coordinates. For instance, you can use the <code>mapview()</code> function from the {mapview} package:</p>
-<div class="sourceCode" id="cb14"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="kw">if</span> <span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/ns-load.html" class="external-link">requireNamespace</a></span><span class="op">(</span><span class="st">"sf"</span>, quietly <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span><span class="op">)</span> <span class="op">{</span>
-  <span class="va">locations</span> <span class="op">&lt;-</span>
-    <span class="fu">sf</span><span class="fu">::</span><span class="fu"><a href="https://r-spatial.github.io/sf/reference/st_as_sf.html" class="external-link">st_as_sf</a></span><span class="op">(</span>
-      <span class="va">example_geo_coords</span>,
-      coords <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span>x <span class="op">=</span> <span class="st">"longitude"</span>, y <span class="op">=</span> <span class="st">"latitude"</span><span class="op">)</span>,
-      crs <span class="op">=</span> <span class="fl">4326</span>
-    <span class="op">)</span>
-<span class="op">}</span>
-
-<span class="kw">if</span> <span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/ns-load.html" class="external-link">requireNamespace</a></span><span class="op">(</span><span class="st">"mapview"</span>, quietly <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span><span class="op">)</span> <span class="op">{</span>
-  <span class="va">example_map</span> <span class="op">&lt;-</span> <span class="fu">mapview</span><span class="fu">::</span><span class="fu"><a href="https://rdrr.io/pkg/mapview/man/mapView.html" class="external-link">mapview</a></span><span class="op">(</span><span class="va">locations</span><span class="op">)</span>
-<span class="op">}</span></code></pre></div>
-<p>At this point, you can view an interactive map in your R environment simply by calling <code>example_map</code>.</p>
-</div>
-<div class="section level2">
-<h2 id="filter_by_tweet_type">filter_by_tweet_type()<a class="anchor" aria-label="anchor" href="#filter_by_tweet_type"></a>
-</h2>
-<p>This function quickly subsets the data, returning just the tweets of the type indicated (e.g., <code>filter_by_tweet_type(df, "reply")</code> returns only reply tweets). The <code><a href="../reference/filter_by_tweet_type.html">filter_by_tweet_type()</a></code> function can also be used to look at how many tweets of each type are present in the dataset.</p>
-<p>In the dataset of 2030 tweets, there are 62 replies, 1065 retweets, 92 quote tweets, and 2747 tweets containing mentions.</p>
-</div>
-<div class="section level2">
-<h2 id="get_upstream_tweets">get_upstream_tweets()<a class="anchor" aria-label="anchor" href="#get_upstream_tweets"></a>
-</h2>
-<p>If your research questions conceptualize your tweet dataset as a conversation or affinity space, <strong>it may be useful to retrieve and add additional tweets</strong>. Specifically, TAGS collects tweets that contain one or more keywords or text strings. For example, the TAGS tracker we have been working with in this vignette collected tweets containing the keywords: <code>#aect19</code> OR <code>#aect2019</code> OR <code>#aect19inspired</code>. This is a reasonable approach, from a researchers’ point of view. However, participants who have been following or contributing to these hashtags would also see additional tweets in these “conversations” because Twitter connects together tweets that reply to other tweets into potentially lengthy <em>reply threads</em>. Tweets in a reply thread are all displayed to a user viewing tweets on Twitter’s platform, but because some tweets in a thread may not contain the hashtag of interest, not all tweets in a user’s experience of a conversation would be collected by TAGS. Additionally, tweets contained in a reply thread but composed before the TAGS tracker was initiated would also be left out of the dataset.</p>
-<p>There is a solution to this problem. Because the Twitter API offers a <code>reply_to_status_id</code> column, it is possible to iteratively reconstruct reply threads in an <em>upstream</em> direction, that is, retrieving tweets composed earlier than replies in the dataset. We include the <code>get_upstream_tweets</code> in {tidytags} to streamline this process. We also print output at each iteration to demonstrate how the process is progressing.</p>
-<div class="sourceCode" id="cb15"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="va">example_with_upstream</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/get_upstream_tweets.html">get_upstream_tweets</a></span><span class="op">(</span><span class="va">example_processed</span><span class="op">)</span></code></pre></div>
-<p>The dataset contained 2030 tweets at the start. Running <code><a href="../reference/get_upstream_tweets.html">get_upstream_tweets()</a></code> added 28 new tweets.</p>
-<p>Unfortunately, due to limitations in what information is given by the Twitter API, it is not practical to retrieve <em>downstream</em> replies, or those tweets in a reply thread that follow a tweet in the dataset but neglect to include the hashtag or keyword.</p>
-</div>
-<div class="section level2">
-<h2 id="create_edgelist">create_edgelist()<a class="anchor" aria-label="anchor" href="#create_edgelist"></a>
-</h2>
-<p>Another useful approach to social media research is <em>social network analysis</em>. Getting started with social network analysis is as simple as producing an <em>edgelist</em>, a two-column dataframe listing <em>senders</em> and <em>receivers</em>. An edgelist gives a complete accounting of whom is interacting with whom. In Twitter, this is complicated somewhat by the number of ways a user is able to interact with someone else, namely, through replying, retweeting, quote tweeting, mentioning, and liking tweets. The {tidytags} function <code><a href="../reference/create_edgelist.html">create_edgelist()</a></code> uses <code><a href="../reference/filter_by_tweet_type.html">filter_by_tweet_type()</a></code> to create an edgelist that takes into account four of these types of interaction. <code><a href="../reference/create_edgelist.html">create_edgelist()</a></code> returns a dataframe with three columns: two for the sender and receiver Twitter handles, and a third column listing the edge type (i.e., the form of interaction). The default is for <code><a href="../reference/create_edgelist.html">create_edgelist()</a></code> to create an edgelist of all possible interactions, but focusing on one type of interaction is easily accomplished as well (e.g., looking at interactions through replies using <code>create_edgelist(df, "reply")</code>).</p>
-<p>Run <code><a href="../reference/create_edgelist.html">create_edgelist()</a></code> after completing <code><a href="../reference/get_upstream_tweets.html">get_upstream_tweets()</a></code> for a complete picture of the interactions.</p>
-<div class="sourceCode" id="cb16"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="va">example_edgelist</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/create_edgelist.html">create_edgelist</a></span><span class="op">(</span><span class="va">example_with_upstream</span><span class="op">)</span>
-<span class="fu"><a href="https://rdrr.io/r/utils/head.html" class="external-link">head</a></span><span class="op">(</span><span class="va">example_edgelist</span>, <span class="fl">20</span><span class="op">)</span>
-<span class="co">#&gt; # A tibble: 20 × 3</span>
-<span class="co">#&gt;    sender         receiver        edge_type</span>
-<span class="co">#&gt;    &lt;chr&gt;          &lt;chr&gt;           &lt;chr&gt;    </span>
-<span class="co">#&gt;  1 lbukunAA       lbukunAA        reply    </span>
-<span class="co">#&gt;  2 bretsw         bretsw          reply    </span>
-<span class="co">#&gt;  3 bretsw         FakeBobGagne    reply    </span>
-<span class="co">#&gt;  4 bretsw         bretsw          reply    </span>
-<span class="co">#&gt;  5 bretsw         eromerohall     reply    </span>
-<span class="co">#&gt;  6 bretsw         bretsw          reply    </span>
-<span class="co">#&gt;  7 AECT           jmenglund03     reply    </span>
-<span class="co">#&gt;  8 correia65      AnnaRoseLeach   reply    </span>
-<span class="co">#&gt;  9 caranorth11    FredWBaker      reply    </span>
-<span class="co">#&gt; 10 PaulineMuljana AmyLomellini_ID reply    </span>
-<span class="co">#&gt; 11 PaulineMuljana soniastic       reply    </span>
-<span class="co">#&gt; 12 PaulineMuljana robmoore3       reply    </span>
-<span class="co">#&gt; 13 PaulineMuljana WEHSLibrary     reply    </span>
-<span class="co">#&gt; 14 PaulineMuljana tintinluo       reply    </span>
-<span class="co">#&gt; 15 nicolapallitt  eromerohall     reply    </span>
-<span class="co">#&gt; 16 nicolapallitt  aectclt         reply    </span>
-<span class="co">#&gt; 17 michaelmgrant  robmoore3       reply    </span>
-<span class="co">#&gt; 18 michaelmgrant  DKSch           reply    </span>
-<span class="co">#&gt; 19 michaelmgrant  nicolapallitt   reply    </span>
-<span class="co">#&gt; 20 michaelmgrant  EdTech_UofSC    reply</span></code></pre></div>
-<p>We can then easily visualize the edgelist as a sociogram using the {tidygraph} and {ggraph} packages.</p>
-<p>First, create graph object using {tidygraph}:</p>
-<div class="sourceCode" id="cb17"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb17-1"><a href="#cb17-1" aria-hidden="true" tabindex="-1"></a><span class="cf">if</span> (<span class="fu">requireNamespace</span>(<span class="st">"tidygraph"</span>, <span class="at">quietly =</span> <span class="cn">TRUE</span>) {</span>
-<span id="cb17-2"><a href="#cb17-2" aria-hidden="true" tabindex="-1"></a>  example_graph <span class="ot">&lt;-</span></span>
-<span id="cb17-3"><a href="#cb17-3" aria-hidden="true" tabindex="-1"></a>    tidygraph<span class="sc">::</span><span class="fu">as_tbl_graph</span>(example_edgelist)</span>
-<span id="cb17-4"><a href="#cb17-4" aria-hidden="true" tabindex="-1"></a>  example_graph <span class="ot">&lt;-</span></span>
-<span id="cb17-5"><a href="#cb17-5" aria-hidden="true" tabindex="-1"></a>    dplyr<span class="sc">::</span><span class="fu">mutate</span>(example_graph,</span>
-<span id="cb17-6"><a href="#cb17-6" aria-hidden="true" tabindex="-1"></a>                  <span class="at">popularity =</span> tidygraph<span class="sc">::</span><span class="fu">centrality_degree</span>(<span class="at">mode =</span> <span class="st">'in'</span>))</span>
-<span id="cb17-7"><a href="#cb17-7" aria-hidden="true" tabindex="-1"></a>}</span></code></pre></div>
-<p>Then plot using {ggraph}:</p>
-<div class="sourceCode" id="cb18"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="kw">if</span> <span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/ns-load.html" class="external-link">requireNamespace</a></span><span class="op">(</span><span class="st">"ggraph"</span>, quietly <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span> <span class="op">&amp;</span>
-    <span class="fu"><a href="https://rdrr.io/r/base/ns-load.html" class="external-link">requireNamespace</a></span><span class="op">(</span><span class="st">"ggplot2"</span>, quietly <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span>
-<span class="op">)</span> <span class="op">{</span>
-  <span class="fu">ggraph</span><span class="fu">::</span><span class="fu"><a href="https://ggraph.data-imaginist.com/reference/ggraph.html" class="external-link">ggraph</a></span><span class="op">(</span><span class="va">example_graph</span>, layout <span class="op">=</span> <span class="st">'kk'</span><span class="op">)</span> <span class="op">+</span>
-    <span class="fu">ggraph</span><span class="fu">::</span><span class="fu"><a href="https://ggraph.data-imaginist.com/reference/geom_edge_arc.html" class="external-link">geom_edge_arc</a></span><span class="op">(</span>alpha <span class="op">=</span> <span class="fl">.2</span>, 
-                          width <span class="op">=</span> <span class="fl">.5</span>, 
-                          strength <span class="op">=</span> <span class="fl">.5</span>, 
-                          edge_colour <span class="op">=</span> <span class="st">'steelblue'</span>
-    <span class="op">)</span> <span class="op">+</span>
-    <span class="fu">ggraph</span><span class="fu">::</span><span class="fu"><a href="https://ggraph.data-imaginist.com/reference/geom_node_point.html" class="external-link">geom_node_point</a></span><span class="op">(</span>alpha <span class="op">=</span> <span class="fl">.4</span>, <span class="fu">ggplot2</span><span class="fu">::</span><span class="fu"><a href="https://ggplot2.tidyverse.org/reference/aes.html" class="external-link">aes</a></span><span class="op">(</span>size <span class="op">=</span> <span class="va">popularity</span><span class="op">)</span><span class="op">)</span> <span class="op">+</span>
-    <span class="fu">ggplot2</span><span class="fu">::</span><span class="fu"><a href="https://ggplot2.tidyverse.org/reference/scale_size.html" class="external-link">scale_size</a></span><span class="op">(</span>range <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="fl">1</span>,<span class="fl">10</span><span class="op">)</span><span class="op">)</span>
-<span class="op">}</span></code></pre></div>
-<p><img src="vignette-network-visualization-1.png" title="plot of chunk network-visualization" alt="plot of chunk network-visualization" width="100%"></p>
-<p>Running <code><a href="../reference/create_edgelist.html">create_edgelist()</a></code> also provides a simple way to re-look at how many tweets of each type are present in the dataset, using the <code>count()</code> function from {dplyr}.</p>
-<div class="sourceCode" id="cb19"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="fu">dplyr</span><span class="fu">::</span><span class="fu"><a href="https://dplyr.tidyverse.org/reference/count.html" class="external-link">count</a></span><span class="op">(</span><span class="va">example_edgelist</span>, <span class="va">edge_type</span>, sort <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span>
-<span class="co">#&gt; # A tibble: 4 × 2</span>
-<span class="co">#&gt;   edge_type       n</span>
-<span class="co">#&gt;   &lt;chr&gt;       &lt;int&gt;</span>
-<span class="co">#&gt; 1 mention      2785</span>
-<span class="co">#&gt; 2 retweet      1065</span>
-<span class="co">#&gt; 3 quote-tweet    99</span>
-<span class="co">#&gt; 4 reply          71</span></code></pre></div>
-<p>Note that <code><a href="../reference/create_edgelist.html">create_edgelist()</a></code> does not yet accept a <code>type = "like"</code> parameter due to limitations of the information provided by the Twitter API.</p>
-</div>
-<div class="section level2">
-<h2 id="add_users_data">add_users_data()<a class="anchor" aria-label="anchor" href="#add_users_data"></a>
-</h2>
-<p>Finally, {tidytags} also has <strong>functionality to add user-level data</strong> to an edgelist through the function <code><a href="../reference/add_users_data.html">add_users_data()</a></code>. These additional features are very useful when taking an inferential approach to social network analysis, such as building <em>influence</em> or <em>selection</em> models.</p>
-<div class="sourceCode" id="cb20"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="va">example_senders_receivers_data</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/add_users_data.html">add_users_data</a></span><span class="op">(</span><span class="va">example_edgelist</span><span class="op">)</span>
-<span class="fu">dplyr</span><span class="fu">::</span><span class="fu"><a href="https://pillar.r-lib.org/reference/glimpse.html" class="external-link">glimpse</a></span><span class="op">(</span><span class="va">example_senders_receivers_data</span><span class="op">)</span>
-<span class="co">#&gt; Rows: 4,020</span>
-<span class="co">#&gt; Columns: 181</span>
-<span class="co">#&gt; $ sender                           &lt;chr&gt; "lbukunAA", "bretsw", "bretsw", "bretsw", "bretsw",…</span>
-<span class="co">#&gt; $ receiver                         &lt;chr&gt; "lbukunAA", "bretsw", "FakeBobGagne", "bretsw", "er…</span>
-<span class="co">#&gt; $ edge_type                        &lt;chr&gt; "reply", "reply", "reply", "reply", "reply", "reply…</span>
-<span class="co">#&gt; $ user_id_sender                   &lt;chr&gt; "2950104673", "53167706", "53167706", "53167706", "…</span>
-<span class="co">#&gt; $ status_id_sender                 &lt;chr&gt; "1453003605691314182", "1461476051587063811", "1461…</span>
-<span class="co">#&gt; $ created_at_sender                &lt;dttm&gt; 2021-10-26 14:20:29, 2021-11-18 23:26:58, 2021-11-…</span>
-<span class="co">#&gt; $ text_sender                      &lt;chr&gt; "Join us for the ETC Research Lab's 2021 Speakers S…</span>
-<span class="co">#&gt; $ source_sender                    &lt;chr&gt; "Twitter for Android", "Twitter for iPhone", "Twitt…</span>
-<span class="co">#&gt; $ display_text_width_sender        &lt;int&gt; NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA,…</span>
-<span class="co">#&gt; $ reply_to_status_id_sender        &lt;chr&gt; NA, NA, NA, NA, NA, NA, NA, "1460640595257573376", …</span>
-<span class="co">#&gt; $ reply_to_user_id_sender          &lt;chr&gt; NA, NA, NA, NA, NA, NA, NA, "32417534", NA, "335462…</span>
-<span class="co">#&gt; $ reply_to_screen_name_sender      &lt;chr&gt; NA, NA, NA, NA, NA, NA, NA, "lucysantosgreen", NA, …</span>
-<span class="co">#&gt; $ is_quote_sender                  &lt;lgl&gt; FALSE, FALSE, FALSE, FALSE, FALSE, FALSE, FALSE, FA…</span>
-<span class="co">#&gt; $ is_retweet_sender                &lt;lgl&gt; TRUE, TRUE, TRUE, TRUE, TRUE, TRUE, TRUE, FALSE, FA…</span>
-<span class="co">#&gt; $ favorite_count_sender            &lt;int&gt; 0, 0, 0, 0, 0, 0, 0, 0, 33, 1, 1, 1, 1, 1, 0, 0, 0,…</span>
-<span class="co">#&gt; $ retweet_count_sender             &lt;int&gt; 6, 4, 4, 4, 4, 4, 2, 0, 1, 0, 0, 0, 0, 0, 11, 11, 3…</span>
-<span class="co">#&gt; $ quote_count_sender               &lt;int&gt; NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA,…</span>
-<span class="co">#&gt; $ reply_count_sender               &lt;int&gt; NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA,…</span>
-<span class="co">#&gt; $ hashtags_sender                  &lt;list&gt; NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA…</span>
-<span class="co">#&gt; $ symbols_sender                   &lt;list&gt; NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA…</span>
-<span class="co">#&gt; $ urls_url_sender                  &lt;list&gt; NA, NA, NA, NA, NA, NA, NA, NA, "twitter.com/i/web…</span>
-<span class="co">#&gt; $ urls_t.co_sender                 &lt;list&gt; NA, NA, NA, NA, NA, NA, NA, NA, "https://t.co/G5Ji…</span>
-<span class="co">#&gt; $ urls_expanded_url_sender         &lt;list&gt; NA, NA, NA, NA, NA, NA, NA, NA, "https://twitter.c…</span>
-<span class="co">#&gt; $ media_url_sender                 &lt;list&gt; NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA…</span>
-<span class="co">#&gt; $ media_t.co_sender                &lt;list&gt; NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA…</span>
-<span class="co">#&gt; $ media_expanded_url_sender        &lt;list&gt; NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA…</span>
-<span class="co">#&gt; $ media_type_sender                &lt;list&gt; NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA…</span>
-<span class="co">#&gt; $ ext_media_url_sender             &lt;list&gt; NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA…</span>
-<span class="co">#&gt; $ ext_media_t.co_sender            &lt;list&gt; NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA…</span>
-<span class="co">#&gt; $ ext_media_expanded_url_sender    &lt;list&gt; NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA…</span>
-<span class="co">#&gt; $ ext_media_type_sender            &lt;chr&gt; NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA,…</span>
-<span class="co">#&gt; $ mentions_user_id_sender          &lt;list&gt; "1613204671", &lt;"17659421", "1156290361951756288"&gt;,…</span>
-<span class="co">#&gt; $ mentions_screen_name_sender      &lt;list&gt; "okstate_etc", &lt;"fsueducation", "2020FLTOY"&gt;, &lt;"fs…</span>
-<span class="co">#&gt; $ lang_sender                      &lt;chr&gt; "en", "en", "en", "en", "en", "en", "en", "en", "en…</span>
-<span class="co">#&gt; $ quoted_status_id_sender          &lt;chr&gt; NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA,…</span>
-<span class="co">#&gt; $ quoted_text_sender               &lt;chr&gt; NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA,…</span>
-<span class="co">#&gt; $ quoted_created_at_sender         &lt;dttm&gt; NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA…</span>
-<span class="co">#&gt; $ quoted_source_sender             &lt;chr&gt; NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA,…</span>
-<span class="co">#&gt; $ quoted_favorite_count_sender     &lt;int&gt; NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA,…</span>
-<span class="co">#&gt; $ quoted_retweet_count_sender      &lt;int&gt; NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA,…</span>
-<span class="co">#&gt; $ quoted_user_id_sender            &lt;chr&gt; NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA,…</span>
-<span class="co">#&gt; $ quoted_screen_name_sender        &lt;chr&gt; NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA,…</span>
-<span class="co">#&gt; $ quoted_name_sender               &lt;chr&gt; NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA,…</span>
-<span class="co">#&gt; $ quoted_followers_count_sender    &lt;int&gt; NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA,…</span>
-<span class="co">#&gt; $ quoted_friends_count_sender      &lt;int&gt; NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA,…</span>
-<span class="co">#&gt; $ quoted_statuses_count_sender     &lt;int&gt; NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA,…</span>
-<span class="co">#&gt; $ quoted_location_sender           &lt;chr&gt; NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA,…</span>
-<span class="co">#&gt; $ quoted_description_sender        &lt;chr&gt; NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA,…</span>
-<span class="co">#&gt; $ quoted_verified_sender           &lt;lgl&gt; NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA,…</span>
-<span class="co">#&gt; $ retweet_status_id_sender         &lt;chr&gt; "1453003310131294219", "1461432541181849606", "1461…</span>
-<span class="co">#&gt; $ retweet_text_sender              &lt;chr&gt; "Join us for the ETC Research Lab's 2021 Speakers S…</span>
-<span class="co">#&gt; $ retweet_created_at_sender        &lt;dttm&gt; 2021-10-26 14:19:19, 2021-11-18 20:34:04, 2021-11-…</span>
-<span class="co">#&gt; $ retweet_source_sender            &lt;chr&gt; "Twitter Web App", "Sprout Social", "Sprout Social"…</span>
-<span class="co">#&gt; $ retweet_favorite_count_sender    &lt;int&gt; 3, 18, 18, 18, 18, 18, 9, NA, NA, NA, NA, NA, NA, N…</span>
-<span class="co">#&gt; $ retweet_retweet_count_sender     &lt;int&gt; 6, 4, 4, 4, 4, 4, 2, NA, NA, NA, NA, NA, NA, NA, 11…</span>
-<span class="co">#&gt; $ retweet_user_id_sender           &lt;chr&gt; NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA,…</span>
-<span class="co">#&gt; $ retweet_screen_name_sender       &lt;chr&gt; NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA,…</span>
-<span class="co">#&gt; $ retweet_name_sender              &lt;chr&gt; NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA,…</span>
-<span class="co">#&gt; $ retweet_followers_count_sender   &lt;int&gt; NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA,…</span>
-<span class="co">#&gt; $ retweet_friends_count_sender     &lt;int&gt; NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA,…</span>
-<span class="co">#&gt; $ retweet_statuses_count_sender    &lt;int&gt; NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA,…</span>
-<span class="co">#&gt; $ retweet_location_sender          &lt;chr&gt; NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA,…</span>
-<span class="co">#&gt; $ retweet_description_sender       &lt;chr&gt; NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA,…</span>
-<span class="co">#&gt; $ retweet_verified_sender          &lt;lgl&gt; NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA,…</span>
-<span class="co">#&gt; $ place_url_sender                 &lt;chr&gt; NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA,…</span>
-<span class="co">#&gt; $ place_name_sender                &lt;chr&gt; NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA,…</span>
-<span class="co">#&gt; $ place_full_name_sender           &lt;chr&gt; NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA,…</span>
-<span class="co">#&gt; $ place_type_sender                &lt;chr&gt; NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA,…</span>
-<span class="co">#&gt; $ country_sender                   &lt;chr&gt; NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA,…</span>
-<span class="co">#&gt; $ country_code_sender              &lt;chr&gt; NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA,…</span>
-<span class="co">#&gt; $ geo_coords_sender                &lt;list&gt; &lt;NA, NA&gt;, &lt;NA, NA&gt;, &lt;NA, NA&gt;, &lt;NA, NA&gt;, &lt;NA, NA&gt;, …</span>
-<span class="co">#&gt; $ coords_coords_sender             &lt;list&gt; &lt;NA, NA&gt;, &lt;NA, NA&gt;, &lt;NA, NA&gt;, &lt;NA, NA&gt;, &lt;NA, NA&gt;, …</span>
-<span class="co">#&gt; $ bbox_coords_sender               &lt;list&gt; &lt;NA, NA, NA, NA, NA, NA, NA, NA&gt;, &lt;NA, NA, NA, NA,…</span>
-<span class="co">#&gt; $ status_url_sender                &lt;chr&gt; "https://twitter.com/NA/status/1453003605691314182"…</span>
-<span class="co">#&gt; $ name_sender                      &lt;chr&gt; "Ayodeji Ibukun", "Dr. Bret Staudt Willet", "Dr. Br…</span>
-<span class="co">#&gt; $ location_sender                  &lt;chr&gt; "Oklahoma, USA", "Tallahassee, FL", "Tallahassee, F…</span>
-<span class="co">#&gt; $ description_sender               &lt;chr&gt; "B.Engrg MS MNSE", "(he/him) Assistant Professor @I…</span>
-<span class="co">#&gt; $ url_sender                       &lt;chr&gt; "https://t.co/kVfuPQQfYs", "https://t.co/9lV9hWdb9F…</span>
-<span class="co">#&gt; $ protected_sender                 &lt;lgl&gt; FALSE, FALSE, FALSE, FALSE, FALSE, FALSE, FALSE, FA…</span>
-<span class="co">#&gt; $ followers_count_sender           &lt;int&gt; 45, 2100, 2100, 2100, 2100, 2100, 4398, 2796, 7926,…</span>
-<span class="co">#&gt; $ friends_count_sender             &lt;int&gt; 475, 2678, 2678, 2678, 2678, 2678, 555, 2299, 3868,…</span>
-<span class="co">#&gt; $ listed_count_sender              &lt;int&gt; 0, 55, 55, 55, 55, 55, 125, 26, 200, 5, 5, 5, 5, 5,…</span>
-<span class="co">#&gt; $ statuses_count_sender            &lt;int&gt; 131, 7007, 7007, 7007, 7007, 7007, 3076, 589, 20509…</span>
-<span class="co">#&gt; $ favourites_count_sender          &lt;int&gt; 609, 9678, 9678, 9678, 9678, 9678, 3425, 7868, 3570…</span>
-<span class="co">#&gt; $ account_created_at_sender        &lt;dttm&gt; 2014-12-29 12:06:33, 2009-07-02 19:51:43, 2009-07-…</span>
-<span class="co">#&gt; $ verified_sender                  &lt;lgl&gt; FALSE, FALSE, FALSE, FALSE, FALSE, FALSE, FALSE, FA…</span>
-<span class="co">#&gt; $ profile_url_sender               &lt;chr&gt; "https://t.co/kVfuPQQfYs", "https://t.co/9lV9hWdb9F…</span>
-<span class="co">#&gt; $ profile_expanded_url_sender      &lt;chr&gt; "http://www.ayoibukun.com", "http://bretsw.com", "h…</span>
-<span class="co">#&gt; $ account_lang_sender              &lt;lgl&gt; NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA,…</span>
-<span class="co">#&gt; $ profile_banner_url_sender        &lt;chr&gt; "https://pbs.twimg.com/profile_banners/2950104673/1…</span>
-<span class="co">#&gt; $ profile_background_url_sender    &lt;chr&gt; "http://abs.twimg.com/images/themes/theme1/bg.png",…</span>
-<span class="co">#&gt; $ profile_image_url_sender         &lt;chr&gt; "http://pbs.twimg.com/profile_images/10862752062748…</span>
-<span class="co">#&gt; $ user_id_receiver                 &lt;chr&gt; "2950104673", "53167706", "4130346912", "53167706",…</span>
-<span class="co">#&gt; $ status_id_receiver               &lt;chr&gt; "1453003605691314182", "1461476051587063811", "1187…</span>
-<span class="co">#&gt; $ created_at_receiver              &lt;dttm&gt; 2021-10-26 14:20:29, 2021-11-18 23:26:58, 2019-10-…</span>
-<span class="co">#&gt; $ text_receiver                    &lt;chr&gt; "Join us for the ETC Research Lab's 2021 Speakers S…</span>
-<span class="co">#&gt; $ source_receiver                  &lt;chr&gt; "Twitter for Android", "Twitter for iPhone", "Twitt…</span>
-<span class="co">#&gt; $ display_text_width_receiver      &lt;int&gt; NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA,…</span>
-<span class="co">#&gt; $ reply_to_status_id_receiver      &lt;chr&gt; NA, NA, NA, NA, "1461701211699261462", NA, NA, NA, …</span>
-<span class="co">#&gt; $ reply_to_user_id_receiver        &lt;chr&gt; NA, NA, NA, NA, "918747876", NA, NA, NA, "126059707…</span>
-<span class="co">#&gt; $ reply_to_screen_name_receiver    &lt;chr&gt; NA, NA, NA, NA, "eromerohall", NA, NA, NA, "The_MoB…</span>
-<span class="co">#&gt; $ is_quote_receiver                &lt;lgl&gt; FALSE, FALSE, FALSE, FALSE, FALSE, FALSE, FALSE, FA…</span>
-<span class="co">#&gt; $ is_retweet_receiver              &lt;lgl&gt; TRUE, TRUE, FALSE, TRUE, FALSE, TRUE, TRUE, FALSE, …</span>
-<span class="co">#&gt; $ favorite_count_receiver          &lt;int&gt; 0, 0, 3, 0, 4, 0, 0, 0, 1, 0, 3, 0, 2, 0, 4, 0, 0, …</span>
-<span class="co">#&gt; $ retweet_count_receiver           &lt;int&gt; 6, 4, 1, 4, 1, 4, 4, 0, 0, 16, 0, 0, 0, 0, 1, 2, 0,…</span>
-<span class="co">#&gt; $ quote_count_receiver             &lt;int&gt; NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA,…</span>
-<span class="co">#&gt; $ reply_count_receiver             &lt;int&gt; NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA,…</span>
-<span class="co">#&gt; $ hashtags_receiver                &lt;list&gt; NA, NA, "aect19", NA, NA, NA, NA, &lt;"adultliteracy"…</span>
-<span class="co">#&gt; $ symbols_receiver                 &lt;list&gt; NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA…</span>
-<span class="co">#&gt; $ urls_url_receiver                &lt;list&gt; NA, NA, NA, NA, "twitter.com/i/web/status/1…", NA,…</span>
-<span class="co">#&gt; $ urls_t.co_receiver               &lt;list&gt; NA, NA, NA, NA, "https://t.co/NBBR2LQ78Z", NA, "ht…</span>
-<span class="co">#&gt; $ urls_expanded_url_receiver       &lt;list&gt; NA, NA, NA, NA, "https://twitter.com/i/web/status/…</span>
-<span class="co">#&gt; $ media_url_receiver               &lt;list&gt; NA, NA, "http://pbs.twimg.com/tweet_video_thumb/EH…</span>
-<span class="co">#&gt; $ media_t.co_receiver              &lt;list&gt; NA, NA, "https://t.co/oOFVcSXkQB", NA, NA, NA, NA,…</span>
-<span class="co">#&gt; $ media_expanded_url_receiver      &lt;list&gt; NA, NA, "https://twitter.com/FakeBobGagne/status/1…</span>
-<span class="co">#&gt; $ media_type_receiver              &lt;list&gt; NA, NA, "photo", NA, NA, NA, NA, NA, NA, NA, NA, N…</span>
-<span class="co">#&gt; $ ext_media_url_receiver           &lt;list&gt; NA, NA, "http://pbs.twimg.com/tweet_video_thumb/EH…</span>
-<span class="co">#&gt; $ ext_media_t.co_receiver          &lt;list&gt; NA, NA, "https://t.co/oOFVcSXkQB", NA, NA, NA, NA,…</span>
-<span class="co">#&gt; $ ext_media_expanded_url_receiver  &lt;list&gt; NA, NA, "https://twitter.com/FakeBobGagne/status/1…</span>
-<span class="co">#&gt; $ ext_media_type_receiver          &lt;chr&gt; NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA,…</span>
-<span class="co">#&gt; $ mentions_user_id_receiver        &lt;list&gt; "1613204671", &lt;"17659421", "1156290361951756288"&gt;,…</span>
-<span class="co">#&gt; $ mentions_screen_name_receiver    &lt;list&gt; "okstate_etc", &lt;"fsueducation", "2020FLTOY"&gt;, NA, …</span>
-<span class="co">#&gt; $ lang_receiver                    &lt;chr&gt; "en", "en", "en", "en", "en", "en", "en", "en", "en…</span>
-<span class="co">#&gt; $ quoted_status_id_receiver        &lt;chr&gt; NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA,…</span>
-<span class="co">#&gt; $ quoted_text_receiver             &lt;chr&gt; NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA,…</span>
-<span class="co">#&gt; $ quoted_created_at_receiver       &lt;dttm&gt; NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA…</span>
-<span class="co">#&gt; $ quoted_source_receiver           &lt;chr&gt; NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA,…</span>
-<span class="co">#&gt; $ quoted_favorite_count_receiver   &lt;int&gt; NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA,…</span>
-<span class="co">#&gt; $ quoted_retweet_count_receiver    &lt;int&gt; NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA,…</span>
-<span class="co">#&gt; $ quoted_user_id_receiver          &lt;chr&gt; NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA,…</span>
-<span class="co">#&gt; $ quoted_screen_name_receiver      &lt;chr&gt; NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA,…</span>
-<span class="co">#&gt; $ quoted_name_receiver             &lt;chr&gt; NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA,…</span>
-<span class="co">#&gt; $ quoted_followers_count_receiver  &lt;int&gt; NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA,…</span>
-<span class="co">#&gt; $ quoted_friends_count_receiver    &lt;int&gt; NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA,…</span>
-<span class="co">#&gt; $ quoted_statuses_count_receiver   &lt;int&gt; NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA,…</span>
-<span class="co">#&gt; $ quoted_location_receiver         &lt;chr&gt; NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA,…</span>
-<span class="co">#&gt; $ quoted_description_receiver      &lt;chr&gt; NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA,…</span>
-<span class="co">#&gt; $ quoted_verified_receiver         &lt;lgl&gt; NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA,…</span>
-<span class="co">#&gt; $ retweet_status_id_receiver       &lt;chr&gt; "1453003310131294219", "1461432541181849606", NA, "…</span>
-<span class="co">#&gt; $ retweet_text_receiver            &lt;chr&gt; "Join us for the ETC Research Lab's 2021 Speakers S…</span>
-<span class="co">#&gt; $ retweet_created_at_receiver      &lt;dttm&gt; 2021-10-26 14:19:19, 2021-11-18 20:34:04, NA, 2021…</span>
-<span class="co">#&gt; $ retweet_source_receiver          &lt;chr&gt; "Twitter Web App", "Sprout Social", NA, "Sprout Soc…</span>
-<span class="co">#&gt; $ retweet_favorite_count_receiver  &lt;int&gt; 3, 18, NA, 18, NA, 18, 13, NA, NA, 45, NA, NA, NA, …</span>
-<span class="co">#&gt; $ retweet_retweet_count_receiver   &lt;int&gt; 6, 4, NA, 4, NA, 4, 4, NA, NA, 16, NA, NA, NA, NA, …</span>
-<span class="co">#&gt; $ retweet_user_id_receiver         &lt;chr&gt; NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA,…</span>
-<span class="co">#&gt; $ retweet_screen_name_receiver     &lt;chr&gt; NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA,…</span>
-<span class="co">#&gt; $ retweet_name_receiver            &lt;chr&gt; NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA,…</span>
-<span class="co">#&gt; $ retweet_followers_count_receiver &lt;int&gt; NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA,…</span>
-<span class="co">#&gt; $ retweet_friends_count_receiver   &lt;int&gt; NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA,…</span>
-<span class="co">#&gt; $ retweet_statuses_count_receiver  &lt;int&gt; NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA,…</span>
-<span class="co">#&gt; $ retweet_location_receiver        &lt;chr&gt; NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA,…</span>
-<span class="co">#&gt; $ retweet_description_receiver     &lt;chr&gt; NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA,…</span>
-<span class="co">#&gt; $ retweet_verified_receiver        &lt;lgl&gt; NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA,…</span>
-<span class="co">#&gt; $ place_url_receiver               &lt;chr&gt; NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA,…</span>
-<span class="co">#&gt; $ place_name_receiver              &lt;chr&gt; NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA,…</span>
-<span class="co">#&gt; $ place_full_name_receiver         &lt;chr&gt; NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA,…</span>
-<span class="co">#&gt; $ place_type_receiver              &lt;chr&gt; NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA,…</span>
-<span class="co">#&gt; $ country_receiver                 &lt;chr&gt; NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA,…</span>
-<span class="co">#&gt; $ country_code_receiver            &lt;chr&gt; NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA,…</span>
-<span class="co">#&gt; $ geo_coords_receiver              &lt;list&gt; &lt;NA, NA&gt;, &lt;NA, NA&gt;, &lt;NA, NA&gt;, &lt;NA, NA&gt;, &lt;NA, NA&gt;, …</span>
-<span class="co">#&gt; $ coords_coords_receiver           &lt;list&gt; &lt;NA, NA&gt;, &lt;NA, NA&gt;, &lt;NA, NA&gt;, &lt;NA, NA&gt;, &lt;NA, NA&gt;, …</span>
-<span class="co">#&gt; $ bbox_coords_receiver             &lt;list&gt; &lt;NA, NA, NA, NA, NA, NA, NA, NA&gt;, &lt;NA, NA, NA, NA,…</span>
-<span class="co">#&gt; $ status_url_receiver              &lt;chr&gt; "https://twitter.com/NA/status/1453003605691314182"…</span>
-<span class="co">#&gt; $ name_receiver                    &lt;chr&gt; "Ayodeji Ibukun", "Dr. Bret Staudt Willet", "FakeBo…</span>
-<span class="co">#&gt; $ location_receiver                &lt;chr&gt; "Oklahoma, USA", "Tallahassee, FL", "", "Tallahasse…</span>
-<span class="co">#&gt; $ description_receiver             &lt;chr&gt; "B.Engrg MS MNSE", "(he/him) Assistant Professor @I…</span>
-<span class="co">#&gt; $ url_receiver                     &lt;chr&gt; "https://t.co/kVfuPQQfYs", "https://t.co/9lV9hWdb9F…</span>
-<span class="co">#&gt; $ protected_receiver               &lt;lgl&gt; FALSE, FALSE, FALSE, FALSE, FALSE, FALSE, FALSE, FA…</span>
-<span class="co">#&gt; $ followers_count_receiver         &lt;int&gt; 45, 2100, 95, 2100, 1515, 2100, 667, 590, 1393, 559…</span>
-<span class="co">#&gt; $ friends_count_receiver           &lt;int&gt; 475, 2678, 116, 2678, 1125, 2678, 620, 529, 1482, 9…</span>
-<span class="co">#&gt; $ listed_count_receiver            &lt;int&gt; 0, 55, 2, 55, 90, 55, 72, 14, 108, 0, 0, 54, 18, 9,…</span>
-<span class="co">#&gt; $ statuses_count_receiver          &lt;int&gt; 131, 7007, 251, 7007, 341, 7007, 2894, 2688, 18991,…</span>
-<span class="co">#&gt; $ favourites_count_receiver        &lt;int&gt; 609, 9678, 133, 9678, 7073, 9678, 2053, 1790, 24298…</span>
-<span class="co">#&gt; $ account_created_at_receiver      &lt;dttm&gt; 2014-12-29 12:06:33, 2009-07-02 19:51:43, 2015-11-…</span>
-<span class="co">#&gt; $ verified_receiver                &lt;lgl&gt; FALSE, FALSE, FALSE, FALSE, FALSE, FALSE, FALSE, FA…</span>
-<span class="co">#&gt; $ profile_url_receiver             &lt;chr&gt; "https://t.co/kVfuPQQfYs", "https://t.co/9lV9hWdb9F…</span>
-<span class="co">#&gt; $ profile_expanded_url_receiver    &lt;chr&gt; "http://www.ayoibukun.com", "http://bretsw.com", NA…</span>
-<span class="co">#&gt; $ account_lang_receiver            &lt;lgl&gt; NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA,…</span>
-<span class="co">#&gt; $ profile_banner_url_receiver      &lt;chr&gt; "https://pbs.twimg.com/profile_banners/2950104673/1…</span>
-<span class="co">#&gt; $ profile_background_url_receiver  &lt;chr&gt; "http://abs.twimg.com/images/themes/theme1/bg.png",…</span>
-<span class="co">#&gt; $ profile_image_url_receiver       &lt;chr&gt; "http://pbs.twimg.com/profile_images/10862752062748…</span></code></pre></div>
-</div>
-<div class="section level2">
-<h2 id="getting-help">Getting help<a class="anchor" aria-label="anchor" href="#getting-help"></a>
-</h2>
-<p>{tidytags} is still a work in progress, so we fully expect that there are still some bugs to work out and functions to document better. If you find an issue, have a question, or think of something that you really wish {tidytags} would do for you, don’t hesitate to <a href="mailto:bret@bretsw.com">email Bret</a> or reach out on Twitter: <a href="https://twitter.com/bretsw" class="external-link">@bretsw</a> and <a href="https://twitter.com/jrosenberg6432" class="external-link">@jrosenberg6432</a>.</p>
-<p>You can also <a href="https://github.com/ropensci/tidytags/issues/" class="external-link">submit an issue on Github</a>.</p>
-<p>You may also wish to try some general troubleshooting strategies:</p>
-<ul>
-<li>Try to find out what the specific problem is
-<ul>
-<li>Identify what is <em>not</em> causing the problem</li>
-</ul>
-</li>
-<li>“Unplug and plug it back in” - restart R, close and reopen R</li>
-<li>Reach out to others! Sharing what is causing an issue can often help to clarify the problem.
-<ul>
-<li>RStudio Community - <a href="https://community.rstudio.com/" class="external-link uri">https://community.rstudio.com/</a> (highly recommended!)</li>
-<li>Twitter hashtag: #rstats</li>
-</ul>
-</li>
-<li>General strategies on learning more: <a href="https://datascienceineducation.com/c17.html" class="external-link uri">https://datascienceineducation.com/c17.html</a>
-</li>
-</ul>
+<p>After <code><a href="../reference/pull_tweet_data.html">pull_tweet_data()</a></code> is used to collect additional
+information from TAGS tweet IDs (in this case, the
+<code>example_after_rtweet</code> dataframe), the
+<strong>tidytags</strong> function <code><a href="../reference/process_tweets.html">process_tweets()</a></code> can be
+used to add user information about the tweeters through
+<code><a href="https://docs.ropensci.org/rtweet/reference/users_data.html" class="external-link">rtweet::users_data()</a></code>. <code><a href="../reference/process_tweets.html">process_tweets()</a></code> also
+calculates additional attributes and adds these to the dataframe as new
+columns. Specifically, five new variables are added: mentions_count,
+hashtags_count, urls_count, tweet_type, and is_self_reply. This results
+in 71 variables associated with the collected tweets.</p>
 </div>
   </div>
 
@@ -687,7 +399,7 @@
 
 <div class="pkgdown">
   <p></p>
-<p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.0.2.</p>
+<p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.0.6.</p>
 </div>
 
       </footer>

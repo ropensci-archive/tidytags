@@ -77,9 +77,16 @@ aect_tweets_processed <- process_tweets(aect_tweets_full)
 5. Analyze hyperlinks and web domains in tweets using the function `get_url_domain()`.
 
 ```{r}
-tweet_urls <- purrr::flatten_chr(aect_tweets_processed$urls_url)
-tweet_urls <- tweet_urls[!is.na(tweet_urls)]  # Remove NA values
-tweet_domains <- get_url_domain(tweet_urls)
+example_urls <- dplyr::filter(example_processed, urls_count > 0)
+urls_list <- list()
+for(i in 1:nrow(example_urls)) {
+  urls_list[[i]] <- example_urls$entities[[i]]$urls$expanded_url
+}
+urls_vector <- unlist(urls_list)
+example_domains <- get_url_domain(urls_vector)
+domain_table <- tibble::as_tibble(table(example_domains))
+domain_table_sorted <- dplyr::arrange(domain_table, desc(n))
+head(domain_table_sorted, 20)
 ```
 
 6. Analyze the social network of tweeters using the function `create_edgelist()`.

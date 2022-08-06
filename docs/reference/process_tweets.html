@@ -17,7 +17,7 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">tidytags</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="">0.3.0</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="">1.0.0</span>
       </span>
     </div>
 
@@ -29,7 +29,7 @@
   <a href="../reference/index.html">Reference</a>
 </li>
 <li class="dropdown">
-  <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
+  <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
     Articles
      
     <span class="caret"></span>
@@ -69,7 +69,7 @@
     </div>
 
     <div id="ref-usage">
-    <div class="sourceCode"><pre class="sourceCode r"><code><span class="fu">process_tweets</span><span class="op">(</span><span class="va">df</span><span class="op">)</span></code></pre></div>
+    <div class="sourceCode"><pre class="sourceCode r"><code><span><span class="fu">process_tweets</span><span class="op">(</span><span class="va">df</span><span class="op">)</span></span></code></pre></div>
     </div>
 
     <div id="arguments">
@@ -77,24 +77,26 @@
     <dl><dt>df</dt>
 <dd><p>A dataframe of statuses and full metadata from the Twitter API as
 returned by <code><a href="pull_tweet_data.html">pull_tweet_data()</a></code></p></dd>
+
 </dl></div>
     <div id="value">
     <h2>Value</h2>
-    <p>A dataframe with several additional columns: word_count,
-character_count, mentions_count, hashtags_count_api, hashtags_count_regex,
-has_hashtags, urls_count_api, urls_count_regex, is_reply, is_self_reply</p>
+    
+
+<p>A dataframe with several additional columns: mentions_count,
+hashtags_count, urls_count, tweet_type, is_self_reply</p>
     </div>
 
     <div id="ref-examples">
     <h2>Examples</h2>
-    <div class="sourceCode"><pre class="sourceCode r"><code><span class="r-in"></span>
-<span class="r-in"><span class="kw">if</span> <span class="op">(</span><span class="cn">FALSE</span><span class="op">)</span> <span class="op">{</span></span>
-<span class="r-in"></span>
-<span class="r-in"><span class="va">example_url</span> <span class="op">&lt;-</span> <span class="st">"18clYlQeJOc6W5QRuSlJ6_v3snqKJImFhU42bRkM_OX8"</span></span>
-<span class="r-in"><span class="va">tmp_df</span> <span class="op">&lt;-</span> <span class="fu"><a href="pull_tweet_data.html">pull_tweet_data</a></span><span class="op">(</span><span class="fu"><a href="read_tags.html">read_tags</a></span><span class="op">(</span><span class="va">example_url</span><span class="op">)</span><span class="op">)</span></span>
-<span class="r-in"><span class="va">tmp_processed</span> <span class="op">&lt;-</span> <span class="fu">process_tweets</span><span class="op">(</span><span class="va">tmp_df</span><span class="op">)</span></span>
-<span class="r-in"><span class="va">tmp_processed</span></span>
-<span class="r-in"><span class="op">}</span></span>
+    <div class="sourceCode"><pre class="sourceCode r"><code><span class="r-in"><span></span></span>
+<span class="r-in"><span><span class="kw">if</span> <span class="op">(</span><span class="cn">FALSE</span><span class="op">)</span> <span class="op">{</span></span></span>
+<span class="r-in"><span></span></span>
+<span class="r-in"><span><span class="va">example_url</span> <span class="op">&lt;-</span> <span class="st">"18clYlQeJOc6W5QRuSlJ6_v3snqKJImFhU42bRkM_OX8"</span></span></span>
+<span class="r-in"><span><span class="va">tmp_df</span> <span class="op">&lt;-</span> <span class="fu"><a href="pull_tweet_data.html">pull_tweet_data</a></span><span class="op">(</span><span class="fu"><a href="read_tags.html">read_tags</a></span><span class="op">(</span><span class="va">example_url</span><span class="op">)</span><span class="op">)</span></span></span>
+<span class="r-in"><span><span class="va">tmp_processed</span> <span class="op">&lt;-</span> <span class="fu">process_tweets</span><span class="op">(</span><span class="va">tmp_df</span><span class="op">)</span></span></span>
+<span class="r-in"><span><span class="va">tmp_processed</span></span></span>
+<span class="r-in"><span><span class="op">}</span></span></span>
 </code></pre></div>
     </div>
   </div>
@@ -109,7 +111,7 @@ has_hashtags, urls_count_api, urls_count_regex, is_reply, is_self_reply</p>
 </div>
 
 <div class="pkgdown">
-  <p></p><p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.0.2.</p>
+  <p></p><p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.0.6.</p>
 </div>
 
       </footer></div>
