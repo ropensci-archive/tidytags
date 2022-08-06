@@ -12,7 +12,7 @@ create_edgelist(df, type = "all")
 
 \item{type}{The specific kind of statuses used to define the interactions
 around which the edgelist will be built. Choices include "reply",
-"retweet", "quote", or "mention." Defaults to "all."}
+"retweet", or "quote". Defaults to "all".}
 }
 \value{
 A dataframe edgelist defined by interactions through the type of
@@ -22,12 +22,11 @@ statuses specified. The dataframe has three columns: \code{sender},
 \description{
 Starting with a dataframe of Twitter data imported to R with
 \code{read_tags()} and additional metadata retrieved by
-\code{pull_tweet_data()}, \code{create_edgelist()} processes the
-statuses by calling \code{process_tweets()} and then removes any statuses
-that are not of the requested type (e.g., replies, retweets, quote tweets,
-and mentions) by calling \code{filter_by_tweet_type()}. Finally,
-\code{create_edgelist()} pulls out senders and receivers of the specified
-type of statuses, and then adds a new column called \code{edge_type}.
+\code{pull_tweet_data()}, \code{create_edgelist()} removes any statuses
+that are not of the requested type (e.g., replies, retweets, and quote
+tweets) by calling \code{filter_by_tweet_type()}. Finally, \code{create_edgelist()}
+pulls out senders and receivers of the specified type of statuses, and then
+adds a new column called \code{edge_type}.
 }
 \examples{
 
@@ -42,6 +41,5 @@ full_edgelist
 reply_edgelist <- create_edgelist(tmp_df, type = "reply")
 retweet_edgelist <- create_edgelist(tmp_df, type = "retweet")
 quote_edgelist <- create_edgelist(tmp_df, type = "quote")
-mention_edgelist <- create_edgelist(tmp_df, type = "mention")
 }
 }

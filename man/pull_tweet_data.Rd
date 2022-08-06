@@ -32,11 +32,9 @@ With a TAGS archive imported into R, \code{pull_tweet_data()} uses the
 API keys associated with an approved developer account. Fortunately, the
 rtweet vignette,
 \href{https://docs.ropensci.org/rtweet/articles/auth.html}{Authentication},
-provides a thorough guide to obtaining Twitter API keys. Following these
-directions, you will run the \code{rtweet::create_token()} function, which
-saves your Twitter API keys to the \code{.Renviron} file. You can also edit
-this file directly using the \code{usethis::edit_r_environ(scope='user')}
-function.
+provides a thorough guide to obtaining Twitter API keys and authenticating
+access to the Twitter API. Following the directions for "Apps," you will
+run the \code{rtweet::rtweet_app()} function.
 }
 \details{
 This function requires authentication; please see

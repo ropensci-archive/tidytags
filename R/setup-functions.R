@@ -3,7 +3,7 @@
 #' Keep in mind that `read_tags()` uses the **googlesheets4** package,
 #'   and one requirement is that your TAGS tracker has been "published to the
 #'   web." To do this, with the TAGS page open in a web browser, navigate to
-#'   `File >> Publish to the web`. The `Link` field should be
+#'   `File >> Share >> Publish to the web`. The `Link` field should be
 #'   'Entire document' and the `Embed` field should be 'Web page.' If
 #'   everything looks right, then click the `Publish` button. Next, click
 #'   the `Share` button in the top right corner of the Google Sheets
@@ -12,14 +12,9 @@
 #' @param tags_id A Google Sheet identifier (i.e., the alphanumeric string
 #'    following "https://docs.google.com/spreadsheets/d/" in the TAGS tracker's
 #'    URL.)
-#' @param google_key A Google API key for accessing Google Sheets.
 #' @return A tibble of the TAGS archive of Twitter statuses
-#' @details This function requires authentication; please see
-#'   `vignette("setup", package = "tidytags")`
 #' @seealso Read more about `library(googlesheets4)`
-#'   [here](https://github.com/tidyverse/googlesheets4). If you need help
-#'   obtaining and setting up a Google API key, please see
-#'   `vignette("setup", package = "tidytags")`
+#'   [here](https://github.com/tidyverse/googlesheets4).
 #' @examples
 #'
 #' \dontrun{
@@ -29,8 +24,7 @@
 #' }
 #' @export
 read_tags <-
-  function(tags_id, google_key = Sys.getenv("GOOGLE_API_KEY")) {
-    googlesheets4::gs4_auth_configure(api_key = google_key)
+  function(tags_id) {
     googlesheets4::gs4_deauth()
     tweet_sheet <- googlesheets4::range_read(tags_id, sheet = 2)
     tweet_sheet
@@ -81,11 +75,9 @@ get_char_tweet_ids <-
 #'   API keys associated with an approved developer account. Fortunately, the
 #'   rtweet vignette,
 #'   [Authentication](https://docs.ropensci.org/rtweet/articles/auth.html),
-#'   provides a thorough guide to obtaining Twitter API keys. Following these
-#'   directions, you will run the `rtweet::create_token()` function, which
-#'   saves your Twitter API keys to the `.Renviron` file. You can also edit
-#'   this file directly using the `usethis::edit_r_environ(scope='user')`
-#'   function.
+#'   provides a thorough guide to obtaining Twitter API keys and authenticating
+#'   access to the Twitter API. Following the directions for "Apps," you will
+#'   run the `rtweet::rtweet_app()` function.
 #' @param df A dataframe of containing the column name 'status_url'
 #'   (i.e., the hyperlink to specific statuses), such as that returned by
 #'   `read_tags()`
@@ -238,24 +230,107 @@ lookup_many_tweets <-
     new_df
   }
 
-#' Count the number of items in a list, with an NA entry returning 0
+#' Count the number of mentions in a status
 #'
-#' @param x A list
-#' @return The number of items in the list
+#' @param df A dataframe of statuses and full metadata from the Twitter API as
+#'   returned by `pull_tweet_data()`
+#' @return A vector of the number of mentions in each status in the dataframe
 #' @keywords internal
 #' @noRd
-length_with_na <-
-  function(x) {
-    ifelse(is.na(x), 0, purrr::map_int(x, length))
+get_mentions_count <-
+  function(df) {
+    mentions_count <- integer()
+    for(i in 1:nrow(df)) {
+      mentions_list <- df$entities[[i]]$user_mentions$screen_name
+      mentions_count[i] <-
+        ifelse(is.na(mentions_list[1]),
+               0,
+               length(mentions_list)
+        )
+    }
+    mentions_count
+  }
+
+#' Count the number of hashtags in a status
+#'
+#' @param df A dataframe of statuses and full metadata from the Twitter API as
+#'   returned by `pull_tweet_data()`
+#' @return A vector of the number of hashtags in each status in the dataframe
+#' @keywords internal
+#' @noRd
+get_hashtags_count <-
+  function(df) {
+    hashtags_count <- integer()
+    for(i in 1:nrow(df)) {
+      hashtags_list <- df$entities[[i]]$hashtags$text
+      hashtags_n <-
+        ifelse(is.na(hashtags_list[1]),
+               0,
+               as.numeric(length(hashtags_list))
+        )
+      hashtags_count <- c(hashtags_count, hashtags_n)
+    }
+    hashtags_count
+  }
+
+#' Count the number of URLs in a status
+#'
+#' @param df A dataframe of statuses and full metadata from the Twitter API as
+#'   returned by `pull_tweet_data()`
+#' @return A vector of the number of URLs in each status in the dataframe
+#' @keywords internal
+#' @noRd
+get_urls_count <-
+  function(df) {
+    urls_count <- integer()
+    for(i in 1:nrow(df)) {
+      urls_list <- df$entities[[i]]$urls$expanded_url
+      urls_n <-
+        ifelse(is.na(urls_list[1]),
+               0,
+               as.numeric(length(urls_list))
+        )
+      urls_count <- c(urls_count, urls_n)
+    }
+    urls_count
+  }
+
+#' Determine the tweet type for each status
+#'
+#' @param df A dataframe of statuses and full metadata from the Twitter API as
+#'   returned by `pull_tweet_data()`
+#' @return A vector of tweet types of each status in the dataframe
+#' @keywords internal
+#' @noRd
+get_tweet_type <-
+  function(df) {
+    mentions_vector <- get_mentions_count(df)
+    tweet_type <- character()
+    for(i in 1:nrow(df)) {
+      tweet_type[i] <-
+        ifelse(!is.na(df$retweeted_status[[i]]$id_str),
+               "retweet",
+               ifelse(!is.na(df$quoted_status_id_str[i]),
+                      "quote",
+                      ifelse(!is.na(df$in_reply_to_status_id_str[i]),
+                             "reply",
+                             ifelse(mentions_vector[i] > 0,
+                                    "mention",
+                                    "original"
+                             )
+                      )
+               )
+        )
+    }
+    tweet_type
   }
 
 #' Calculate additional information using status metadata
 #'
 #' @param df A dataframe of statuses and full metadata from the Twitter API as
 #'   returned by `pull_tweet_data()`
-#' @return A dataframe with several additional columns: word_count,
-#'   character_count, mentions_count, hashtags_count_api, hashtags_count_regex,
-#'   has_hashtags, urls_count_api, urls_count_regex, is_reply, is_self_reply
+#' @return A dataframe with several additional columns: mentions_count,
+#'   hashtags_count, urls_count, tweet_type, is_self_reply
 #' @examples
 #'
 #' \dontrun{
@@ -269,87 +344,23 @@ length_with_na <-
 #' @export
 process_tweets <-
   function(df) {
-    url_regex_a <- "http[s]?://(?:[a-zA-Z]|[0-9]|[$-_@.&+]|[!*\\(\\),]|"
-    url_regex_b <- "(?:%[0-9a-fA-F][0-9a-fA-F]))+"
-    url_regex <- paste0(url_regex_a, url_regex_b)
-    hashtag_regex <- "#([0-9]|[a-zA-Z])+"
+    df <- cbind(df, rtweet::users_data(df))
+    names(df)[c(44, 45, 55, 63, 65, 66)] <-
+      c("user_id", "user_id_str", "user_created_at",
+        "user_withheld_in_countries", "user_withheld_scope", "user_entities")
+    df$mentions_count <- get_mentions_count(df)
+    df$hashtags_count <-  get_hashtags_count(df)
+    df$urls_count <- get_urls_count(df)
+    df$tweet_type <- get_tweet_type(df)
     df <-
       dplyr::mutate(df,
-        word_count = stringr::str_count(.data$text, "\\s+") + 1,
-        character_count = stringr::str_length(.data$text),
-        mentions_count = length_with_na(.data$mentions_screen_name),
-        hashtags_count_api = length_with_na(.data$hashtags),
-        hashtags_count_regex = stringr::str_count(.data$text, hashtag_regex),
-        has_hashtags = dplyr::if_else(.data$hashtags_count_regex != 0,
-                                      TRUE,
-                                      FALSE),
-        urls_count_api = length_with_na(.data$urls_url),
-        urls_count_regex = stringr::str_count(.data$text, url_regex),
-        is_reply = dplyr::if_else(!is.na(.data$reply_to_status_id),
-                                  TRUE,
-                                  FALSE),
         is_self_reply =
           ifelse(
-            .data$is_reply & .data$user_id == .data$reply_to_user_id,
-            TRUE, FALSE
+            .data$tweet_type == "reply" &
+              .data$user_id_str == .data$in_reply_to_user_id_str,
+            TRUE,
+            FALSE
           )
       )
     df
-  }
-
-
-#' Retrieve the fullest extent of tweet metadata for more than 90,000 users
-#'
-#' This function calls `rtweet::lookup_users()`, but has a built-in delay
-#'   of 15 minutes to allow the Twitter API to reset after looking up 90,000
-#'   users.
-#' @param x A list or vector of user ID numbers
-#' @param alarm An audible notification that a batch of 90,000 users has been
-#'   completed
-#' @return A dataframe of tweets and full user metadata from the Twitter API
-#' @details This function requires authentication; please see
-#'   `vignette("setup", package = "tidytags")`
-#' @seealso Read more about rtweet authentication setup at
-#'   `vignette("auth", package = "rtweet")`
-#' @examples
-#' \dontrun{
-#'
-#' example_url <- "18clYlQeJOc6W5QRuSlJ6_v3snqKJImFhU42bRkM_OX8"
-#' tmp_df <- pull_tweet_data(read_tags(example_url))
-#' users <- lookup_many_users(tmp_df$screen_name, alarm = TRUE)
-#' users
-#'
-#' lookup_many_users("AECT")
-#' lookup_many_tweets("12030342", alarm = TRUE)
-#' }
-#' @export
-lookup_many_users <-
-  function(x, alarm = FALSE) {
-    x_unique <- unique(x)
-    n_batches <- ceiling(length(x_unique) / 90000)
-    new_df <- data.frame()
-    for (i in 1:n_batches) {
-      min_id <- 90000 * i - 89999
-      max_id <- ifelse(90000 * i < length(x), 90000 * i, length(x_unique))
-      tmp_df <- rtweet::lookup_users(x_unique[min_id:max_id])
-      new_df <- rbind(new_df, tmp_df)
-      if (alarm == TRUE) {
-        if (!requireNamespace("beepr", quietly = TRUE)) {
-          stop(
-            "Please install the {beepr} package to use this function",
-            call. = FALSE
-          )
-        }
-        beepr::beep(2)
-      }
-      if (n_batches > 1) {
-        message("I've finished processing batch: ", i, " of ", n_batches)
-      }
-      if (i != n_batches) {
-        message("Hold on, I need to nap for about 15 minutes...")
-        Sys.sleep(901)
-        message("I'm awake and back to work!")
-      }
-    }
-    new_df
   }

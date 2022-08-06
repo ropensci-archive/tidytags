@@ -11,7 +11,7 @@ filter_by_tweet_type(df, type)
 
 \item{type}{The specific kind of statuses that will be kept in the dataset
 after filtering the rest. Choices for \code{type}include "reply",
-"retweet", "quote", or "mention."}
+"retweet", "quote", and "original".}
 }
 \value{
 A dataframe of processed statuses and fewer rows that the input
@@ -22,9 +22,9 @@ Starting with a dataframe of Twitter data imported to R with
 \code{read_tags()} and additional metadata retrieved by
 \code{pull_tweet_data()}, \code{filter_by_tweet_type()} processes the
 statuses by calling \code{process_tweets()} and then removes any statuses
-that are not of the requested type (e.g., replies, retweets, quote tweets,
-and mentions). \code{filter_by_tweet_type()} is a useful function in
-itself, but it is also used in \code{create_edgelist()}.
+that are not of the requested type (e.g., replies, retweets, and quote
+tweets). \code{filter_by_tweet_type()} is a useful function in itself, but it is
+also used in \code{create_edgelist()}.
 }
 \examples{
 
@@ -36,6 +36,6 @@ tmp_df <- pull_tweet_data(read_tags(example_url))
 only_replies <- filter_by_tweet_type(tmp_df, "reply")
 only_retweets <- filter_by_tweet_type(tmp_df, "retweet")
 only_quote_tweets <- filter_by_tweet_type(tmp_df, "quote")
-only_mentions <- filter_by_tweet_type(tmp_df, "mention")
+only_originals <- filter_by_tweet_type(tmp_df, "original")
 }
 }

@@ -1,6 +1,6 @@
 #' Flag any upstream statuses not already in a dataset
 #'
-#' Because the Twitter API offers a `reply_to_status_id` column, it is
+#' Because the Twitter API offers a `in_reply_to_status_id_str` column, it is
 #'   possible to iteratively reconstruct reply threads in an *upstream*
 #'   direction, that is, retrieving statuses composed earlier than replies in
 #'   the dataset. The `flag_unknown_upstream()` function identifies which
@@ -16,15 +16,16 @@ flag_unknown_upstream <-
   function(df) {
     unknown_upstream <-
       dplyr::filter(df,
-                    !is.na(.data$reply_to_status_id) &
-                      !(.data$reply_to_status_id %in% df$status_id)
+                    !is.na(.data$in_reply_to_status_id_str) &
+                      !(.data$in_reply_to_status_id_str %in%
+                          df$id_str)
       )
     unknown_upstream
   }
 
 #' Collect upstream statuses and add to dataset
 #'
-#' Because the Twitter API offers a `reply_to_status_id` column, it is
+#' Because the Twitter API offers a `in_reply_to_status_id_str` column, it is
 #'   possible to iteratively reconstruct reply threads in an *upstream*
 #'   direction, that is, retrieving statuses composed earlier than replies in
 #'   the dataset. The `get_upstream_tweets()` function collects upstream
@@ -57,7 +58,7 @@ get_upstream_tweets <-
     } else {
       searchable_replies <-
         nrow(pull_tweet_data(id_vector =
-                               unknown_upstream$reply_to_status_id))
+                               unknown_upstream$in_reply_to_status_id_str))
 
       if (searchable_replies > 0) {
         i <- 0
@@ -66,7 +67,8 @@ get_upstream_tweets <-
           i <- i + 1
           message("Iteration: ", i)
           new_tweets <-
-            pull_tweet_data(id_vector = unknown_upstream$reply_to_status_id)
+            pull_tweet_data(id_vector =
+                              unknown_upstream$in_reply_to_status_id_str)
           n <- n + nrow(new_tweets)
           df <- rbind(df, new_tweets)
 
@@ -74,7 +76,7 @@ get_upstream_tweets <-
 
           searchable_replies <-
             nrow(pull_tweet_data(id_vector =
-                                   unknown_upstream$reply_to_status_id))
+                                   unknown_upstream$in_reply_to_status_id_str))
 
           message(
             "New statuses added to the dataset: ",

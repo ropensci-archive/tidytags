@@ -1,6 +1,6 @@
 Package: tidytags
 Title: Importing and Analyzing Twitter Data Collected with Twitter Archiving Google Sheets
-Version: 0.3.0
+Version: 1.0.0
 License: MIT + file LICENSE
 Authors@R: c(
     person("K. Bret", "Staudt Willet", , 
@@ -30,16 +30,16 @@ Description: The 'tidytags' package coordinates the simplicity of collecting twe
 Language: en-US
 URL: https://docs.ropensci.org/tidytags/ (website) https://github.com/ropensci/tidytags
 Depends: 
-    R (>= 4.1)
+    R (>= 4.2)
 Imports:
     dplyr (>= 1.0),
     googlesheets4 (>= 1.0),
     purrr (>= 0.3),
-    rlang (>= 0.4),
-    rtweet (>= 0.7),
+    rlang (>= 1.0),
+    rtweet (>= 1.0),
     stringr (>= 1.4),
     tibble (>= 3.1), 
-    tidyr (>= 1.1)
+    tidyr (>= 1.2)
 Suggests:
     beepr,
     covr,
@@ -47,11 +47,8 @@ Suggests:
     ggraph,
     knitr,
     longurl,
-    mapview,
-    opencage (>= 0.2),
     readr,
     rmarkdown,
-    sf,
     testthat,
     tidygraph,
     urltools,
@@ -59,5 +56,5 @@ Suggests:
 Encoding: UTF-8
 BugReports: https://github.com/ropensci/tidytags/issues
 VignetteBuilder: knitr
-RoxygenNote: 7.1.2
+RoxygenNote: 7.2.1
 Roxygen: list(markdown = TRUE)

@@ -11,9 +11,8 @@ process_tweets(df)
 returned by \code{pull_tweet_data()}}
 }
 \value{
-A dataframe with several additional columns: word_count,
-character_count, mentions_count, hashtags_count_api, hashtags_count_regex,
-has_hashtags, urls_count_api, urls_count_regex, is_reply, is_self_reply
+A dataframe with several additional columns: mentions_count,
+hashtags_count, urls_count, tweet_type, is_self_reply
 }
 \description{
 Calculate additional information using status metadata

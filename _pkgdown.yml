@@ -32,12 +32,10 @@ reference:
       - read_tags
       - pull_tweet_data
       - lookup_many_tweets
-      - lookup_many_users
   - title: "Processing data"
     desc: Functions related to processing data for subsequent analysis.
     contents:
       - process_tweets
-      - geocode_tags
       - get_char_tweet_ids
       - get_upstream_tweets
       - get_url_domain

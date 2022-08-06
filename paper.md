@@ -37,16 +37,14 @@ Accessing historical content from Twitter can be difficult and expensive; it is 
 
 Even when not navigating the challenges of retrieving historical Twitter data, the task of collecting in-the-moment social media data often requires an extent of technical skill that may dissuade social scientists from even getting started. However, for those interested in Twitter data, a relatively straightforward and beginner-level solution is to use a **Twitter Archiving Google Sheet** [TAGS](https://tags.hawksey.info/) tweet collector [@hawksey2016] . Getting started with TAGS is as simple as setting up a new Google Sheet, which will then automatically query the Twitter API with a keyword search every hour going forward. However, although TAGS provides several advantages for **data collection**, it has important limitations related to **data analysis**. First, Google Sheets are not an environment conducive to statistical analysis beyond a few basic calculations, Additionally, TAGS returns limited metadata compared to what is available from the Twitter API: approximately 20% of all categories of information. Specifically, a TAGS tweet collector returns the time, sender, and text of tweets, but not many additional details such as a list of the hashtags or hyperlinks contained in a tweet. 
 
-We introduce the **tidytags** package as an approach that allows for both simple data collection through TAGS and rigorous data analysis in the R statistical computing environment. In short, **tidytags** first uses TAGS to easily and automatically collect tweet ID numbers and then provides a wrapper to the **rtweet** R package [@kearney2019] to re-query the Twitter API to collect additional metadata. **tidytags** then offers several functions to clean the data and perform additional calculations such as geolocation and social network analysis.
+We introduce the **tidytags** package as an approach that allows for both simple data collection through TAGS and rigorous data analysis in the R statistical computing environment. In short, **tidytags** first uses TAGS to easily and automatically collect tweet ID numbers and then provides a wrapper to the **rtweet** R package [@kearney2019] to re-query the Twitter API to collect additional metadata. **tidytags** then offers several functions to clean the data and perform additional calculations including social network analysis.
 
 # Getting started with **tidytags**
 
-For help with initial **tidytags** setup, see the [Getting started with tidytags](https://docs.ropensci.org/tidytags/articles/setup.html) guide on the **tidytags** website. Specifically, this guide offers help for four key tasks:
+For help with initial **tidytags** setup, see the [Getting started with tidytags](https://docs.ropensci.org/tidytags/articles/setup.html) guide on the **tidytags** website. Specifically, this guide offers help for two key tasks:
 
 1. Making sure your TAGS tweet collector can be accessed
-2. Getting and storing a Google API key
-3. Getting and storing Twitter API tokens
-4. Getting and storing an OpenCage Geocoding API key (optional; required only for geocoding)
+2. Getting and storing Twitter API tokens
 
 For a walkthrough of numerous additional **tidytags** functions, see the [Using tidytags with a conference hashtag](https://docs.ropensci.org/tidytags/articles/tidytags-with-conf-hashtags.html) guide.
 
@@ -84,24 +82,13 @@ tweet_urls <- tweet_urls[!is.na(tweet_urls)]  # Remove NA values
 tweet_domains <- get_url_domain(tweet_urls)
 ```
 
-6. Geocode tweeter locations and creating map visualizations using the function `geocode_tags()`.
-
-```{r}
-aect_places <- dplyr::distinct(aect_tweets_processed, location, .keep_all = TRUE)
-aect_geo_coords <- geocode_tags(aect_places)
-
-if (requireNamespace("mapview", quietly = TRUE)) {
-  mapview::mapview(aect_geo_coords)
-}
-```
-
-7. Analyze the social network of tweeters using the function `create_edgelist()`.
+6. Analyze the social network of tweeters using the function `create_edgelist()`.
 
 ```{r}
 aect_edgelist <- create_edgelist(aect_tweets_processed)
 ```
 
-8. Append additional tweeter information to the edgelist using the function `add_users_data()`.
+7. Append additional tweeter information to the edgelist using the function `add_users_data()`.
 
 ```{r}
 aect_senders_receivers_data <- add_users_data(aect_edgelist)
