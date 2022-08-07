@@ -41,7 +41,7 @@ Checks
 </tr>
 <tr class="even">
 <td align="left">
-<a href="https://cran.r-project.org/"><img src="https://img.shields.io/badge/R%3E%3D-4.1.0-blue.svg" alt="Minimal R Version"></a>
+<a href="https://cran.r-project.org/"><img src="https://img.shields.io/badge/R%3E%3D-4.2.0-blue.svg" alt="Minimal R Version"></a>
 </td>
 <td align="left">
 <a href="https://cran.r-project.org/package=tidytags"><img src="https://www.r-pkg.org/badges/version/tidytags" alt="CRAN"></a>
@@ -223,7 +223,7 @@ The following diagram represents how the functions included in the
 figure below.
 
 <p align="center">
-<img src="man/figures/tidytags-workflow.jpg" alt="TAGS workflow" width="600">
+<img src="man/figures/tidytags-workflow.jpg" alt="tidytags workflow" width="600">
 </p>
 
 ------------------------------------------------------------------------

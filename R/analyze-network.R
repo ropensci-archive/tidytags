@@ -85,6 +85,9 @@ create_edgelist <-
     }
 
     filtered_df <- dplyr::rename(filtered_df, sender = .data$screen_name)
+    el_reply <- NULL
+    el_retweet <- NULL
+    el_quote <- NULL
 
     if(nrow(dplyr::filter(filtered_df, .data$tweet_type == "reply")) > 0) {
       filtered_df_reply <-
