@@ -1,32 +1,26 @@
 {
-  "@context": [
-    "https://doi.org/10.5063/schema/codemeta-2.0",
-    "http://schema.org"
-  ],
+  "@context": "https://doi.org/10.5063/schema/codemeta-2.0",
   "@type": "SoftwareSourceCode",
   "identifier": "tidytags",
-  "description": "The {tidytags} package coordinates the simplicity of collecting tweets \n    over time with a Twitter Archiving Google Sheet (TAGS; <https://tags.hawksey.info/>) \n    and the utility of the {rtweet} package (<https://docs.ropensci.org/rtweet/>) \n    for processing and preparing additional Twitter metadata. {tidytags} also \n    introduces functions developed to facilitate systematic yet flexible analyses \n    of data from Twitter.",
+  "description": "The 'tidytags' package coordinates the simplicity of collecting tweets over time with a 'Twitter Archiving Google Sheet' (TAGS; <https://tags.hawksey.info/>) and the utility of the 'rtweet' package (<https://docs.ropensci.org/rtweet/>) for processing and preparing additional Twitter metadata. 'tidytags' also introduces functions developed to facilitate systematic yet flexible analyses of data from Twitter.",
   "name": "tidytags: Importing and Analyzing Twitter Data Collected with Twitter Archiving Google Sheets",
+  "relatedLink": "https://docs.ropensci.org/tidytags/",
   "codeRepository": "https://github.com/ropensci/tidytags",
-  "relatedLink": [
-    "https://bretsw.github.io/tidytags/",
-    "https://docs.ropensci.org/tidytags/"
-  ],
   "issueTracker": "https://github.com/ropensci/tidytags/issues",
   "license": "https://spdx.org/licenses/MIT",
-  "version": "0.2.1",
+  "version": "1.0",
   "programmingLanguage": {
     "@type": "ComputerLanguage",
     "name": "R",
     "url": "https://r-project.org"
   },
-  "runtimePlatform": "R version 4.1.2 (2021-11-01)",
+  "runtimePlatform": "R version 4.2.1 (2022-06-23)",
   "author": [
     {
       "@type": "Person",
       "givenName": "K. Bret",
       "familyName": "Staudt Willet",
-      "email": "bret@bretsw.com",
+      "email": "bret.staudtwillet@fsu.edu",
       "@id": "https://orcid.org/0000-0002-6984-416X"
     },
     {
@@ -36,15 +30,12 @@
       "@id": "https://orcid.org/0000-0003-2170-0447"
     }
   ],
-  "contributor": {},
-  "copyrightHolder": {},
-  "funder": {},
   "maintainer": [
     {
       "@type": "Person",
       "givenName": "K. Bret",
       "familyName": "Staudt Willet",
-      "email": "bret@bretsw.com",
+      "email": "bret.staudtwillet@fsu.edu",
       "@id": "https://orcid.org/0000-0002-6984-416X"
     }
   ],
@@ -123,31 +114,6 @@
     },
     {
       "@type": "SoftwareApplication",
-      "identifier": "mapview",
-      "name": "mapview",
-      "provider": {
-        "@id": "https://cran.r-project.org",
-        "@type": "Organization",
-        "name": "Comprehensive R Archive Network (CRAN)",
-        "url": "https://cran.r-project.org"
-      },
-      "sameAs": "https://CRAN.R-project.org/package=mapview"
-    },
-    {
-      "@type": "SoftwareApplication",
-      "identifier": "opencage",
-      "name": "opencage",
-      "version": ">= 0.2",
-      "provider": {
-        "@id": "https://cran.r-project.org",
-        "@type": "Organization",
-        "name": "Comprehensive R Archive Network (CRAN)",
-        "url": "https://cran.r-project.org"
-      },
-      "sameAs": "https://CRAN.R-project.org/package=opencage"
-    },
-    {
-      "@type": "SoftwareApplication",
       "identifier": "readr",
       "name": "readr",
       "provider": {
@@ -169,18 +135,6 @@
         "url": "https://cran.r-project.org"
       },
       "sameAs": "https://CRAN.R-project.org/package=rmarkdown"
-    },
-    {
-      "@type": "SoftwareApplication",
-      "identifier": "sf",
-      "name": "sf",
-      "provider": {
-        "@id": "https://cran.r-project.org",
-        "@type": "Organization",
-        "name": "Comprehensive R Archive Network (CRAN)",
-        "url": "https://cran.r-project.org"
-      },
-      "sameAs": "https://CRAN.R-project.org/package=sf"
     },
     {
       "@type": "SoftwareApplication",
@@ -232,14 +186,14 @@
       "sameAs": "https://CRAN.R-project.org/package=vcr"
     }
   ],
-  "softwareRequirements": [
-    {
+  "softwareRequirements": {
+    "1": {
       "@type": "SoftwareApplication",
       "identifier": "R",
       "name": "R",
-      "version": ">= 4.1"
+      "version": ">= 4.2"
     },
-    {
+    "2": {
       "@type": "SoftwareApplication",
       "identifier": "dplyr",
       "name": "dplyr",
@@ -252,7 +206,7 @@
       },
       "sameAs": "https://CRAN.R-project.org/package=dplyr"
     },
-    {
+    "3": {
       "@type": "SoftwareApplication",
       "identifier": "googlesheets4",
       "name": "googlesheets4",
@@ -265,24 +219,11 @@
       },
       "sameAs": "https://CRAN.R-project.org/package=googlesheets4"
     },
-    {
-      "@type": "SoftwareApplication",
-      "identifier": "purrr",
-      "name": "purrr",
-      "version": ">= 0.3",
-      "provider": {
-        "@id": "https://cran.r-project.org",
-        "@type": "Organization",
-        "name": "Comprehensive R Archive Network (CRAN)",
-        "url": "https://cran.r-project.org"
-      },
-      "sameAs": "https://CRAN.R-project.org/package=purrr"
-    },
-    {
+    "4": {
       "@type": "SoftwareApplication",
       "identifier": "rlang",
       "name": "rlang",
-      "version": ">= 0.4",
+      "version": ">= 1.0",
       "provider": {
         "@id": "https://cran.r-project.org",
         "@type": "Organization",
@@ -291,11 +232,11 @@
       },
       "sameAs": "https://CRAN.R-project.org/package=rlang"
     },
-    {
+    "5": {
       "@type": "SoftwareApplication",
       "identifier": "rtweet",
       "name": "rtweet",
-      "version": ">= 0.7",
+      "version": ">= 1.0",
       "provider": {
         "@id": "https://cran.r-project.org",
         "@type": "Organization",
@@ -304,7 +245,7 @@
       },
       "sameAs": "https://CRAN.R-project.org/package=rtweet"
     },
-    {
+    "6": {
       "@type": "SoftwareApplication",
       "identifier": "stringr",
       "name": "stringr",
@@ -317,7 +258,7 @@
       },
       "sameAs": "https://CRAN.R-project.org/package=stringr"
     },
-    {
+    "7": {
       "@type": "SoftwareApplication",
       "identifier": "tibble",
       "name": "tibble",
@@ -330,40 +271,13 @@
       },
       "sameAs": "https://CRAN.R-project.org/package=tibble"
     },
-    {
-      "@type": "SoftwareApplication",
-      "identifier": "tidyr",
-      "name": "tidyr",
-      "version": ">= 1.1",
-      "provider": {
-        "@id": "https://cran.r-project.org",
-        "@type": "Organization",
-        "name": "Comprehensive R Archive Network (CRAN)",
-        "url": "https://cran.r-project.org"
-      },
-      "sameAs": "https://CRAN.R-project.org/package=tidyr"
-    }
-  ],
-  "releaseNotes": "https://github.com/ropensci/tidytags/blob/master/NEWS.md",
-  "readme": "https://github.com/ropensci/tidytags/blob/main/README.md",
-  "fileSize": "123037.756KB",
-  "contIntegration": ["https://github.com/ropensci/tidytags/actions", "https://codecov.io/gh/ropensci/tidytags?branch=main"],
-  "developmentStatus": ["https://www.repostatus.org/#active", "https://www.tidyverse.org/lifecycle/#maturing"],
-  "review": {
-    "@type": "Review",
-    "url": "https://github.com/ropensci/software-review/issues/382",
-    "provider": "https://ropensci.org"
+    "SystemRequirements": null
   },
-  "keywords": [
-    "r-package",
-    "twitter",
-    "rstats",
-    "r"
-  ],
+  "fileSize": "23451.788KB",
   "citation": [
     {
       "@type": "SoftwareSourceCode",
-      "datePublished": "2021",
+      "datePublished": "2022",
       "author": [
         {
           "@type": "Person",
@@ -376,8 +290,17 @@
           "familyName": "Rosenberg"
         }
       ],
-      "name": "tidytags: Importing and analyzing Twitter data collected with Twitter Archiving Google Sheets",
-      "description": "R package version 0.2.1"
+      "name": "tidytags: Importing and analyzing Twitter data collected with Twitter Archiving Google Sheets"
     }
-  ]
+  ],
+  "releaseNotes": "https://github.com/ropensci/tidytags/blob/master/NEWS.md",
+  "readme": "https://github.com/ropensci/tidytags/blob/main/README.md",
+  "contIntegration": ["https://github.com/ropensci/tidytags/actions/", "https://app.codecov.io/gh/ropensci/tidytags?branch=main"],
+  "developmentStatus": ["https://www.repostatus.org/#active/", "https://lifecycle.r-lib.org/articles/stages.html#stable"],
+  "review": {
+    "@type": "Review",
+    "url": "https://github.com/ropensci/software-review/issues/382",
+    "provider": "https://ropensci.org"
+  },
+  "keywords": ["r-package", "twitter", "rstats", "r"]
 }

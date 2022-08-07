@@ -1,0 +1,142 @@
+http_interactions:
+- request:
+    method: head
+    uri: https://www.tidyverse.org/
+    body:
+      encoding: ''
+      string: ''
+    headers:
+      Accept: application/json, text/xml, application/xml, */*
+  response:
+    status:
+      status_code: 200
+      category: Success
+      reason: OK
+      message: 'Success: (200) OK'
+    headers:
+      age: '0'
+      cache-control: public, max-age=0, must-revalidate
+      content-encoding: gzip
+      content-type: text/html; charset=UTF-8
+      date: Sun, 07 Aug 2022 06:36:19 GMT
+      etag: '"8ddb8ea435d9543b9143e8f7368d4e4a-ssl-df"'
+      server: Netlify
+      strict-transport-security: max-age=31536000
+      vary: Accept-Encoding
+      x-nf-request-id: 01G9VG9KJB60NXP65G4T5PAGZ6
+    body:
+      encoding: UTF-8
+      file: no
+      string: ''
+  recorded_at: 2022-08-07 06:36:20 GMT
+  recorded_with: vcr/1.0.2, webmockr/0.8.0
+- request:
+    method: head
+    uri: https://www.tidyverse.org/packages/
+    body:
+      encoding: ''
+      string: ''
+    headers:
+      Accept: application/json, text/xml, application/xml, */*
+  response:
+    status:
+      status_code: 200
+      category: Success
+      reason: OK
+      message: 'Success: (200) OK'
+    headers:
+      age: '0'
+      cache-control: public, max-age=0, must-revalidate
+      content-encoding: gzip
+      content-type: text/html; charset=UTF-8
+      date: Sun, 07 Aug 2022 06:36:20 GMT
+      etag: '"5203b80b4561281461fafd4f6544105e-ssl-df"'
+      server: Netlify
+      strict-transport-security: max-age=31536000
+      vary: Accept-Encoding
+      x-nf-request-id: 01G9VG9KQHZ3HA6B9G0R4R4XN3
+    body:
+      encoding: UTF-8
+      file: no
+      string: ''
+  recorded_at: 2022-08-07 06:36:20 GMT
+  recorded_with: vcr/1.0.2, webmockr/0.8.0
+- request:
+    method: head
+    uri: https://dplyr.tidyverse.org/
+    body:
+      encoding: ''
+      string: ''
+    headers:
+      Accept: application/json, text/xml, application/xml, */*
+  response:
+    status:
+      status_code: 200
+      category: Success
+      reason: OK
+      message: 'Success: (200) OK'
+    headers:
+      server: GitHub.com
+      content-type: text/html; charset=utf-8
+      last-modified: Wed, 03 Aug 2022 14:00:05 GMT
+      access-control-allow-origin: '*'
+      etag: W/"62ea7f65-63df"
+      expires: Sun, 07 Aug 2022 00:39:18 GMT
+      cache-control: max-age=600
+      content-encoding: gzip
+      x-proxy-cache: MISS
+      x-github-request-id: 3216:5D26:24C0E8:446324:62EF075E
+      accept-ranges: bytes
+      date: Sun, 07 Aug 2022 06:36:20 GMT
+      via: 1.1 varnish
+      age: '0'
+      x-served-by: cache-iad-kiad7000049-IAD
+      x-cache: HIT
+      x-cache-hits: '1'
+      x-timer: S1659854180.466346,VS0,VE5
+      vary: Accept-Encoding
+      x-fastly-request-id: e44071ed2e448318847f1b792ae309ce45bd1c3b
+      content-length: '6355'
+    body:
+      encoding: UTF-8
+      file: no
+      string: ''
+  recorded_at: 2022-08-07 06:36:20 GMT
+  recorded_with: vcr/1.0.2, webmockr/0.8.0
+- request:
+    method: head
+    uri: https://www.npr.org/sections/technology/
+    body:
+      encoding: ''
+      string: ''
+    headers:
+      Accept: application/json, text/xml, application/xml, */*
+  response:
+    status:
+      status_code: 200
+      category: Success
+      reason: OK
+      message: 'Success: (200) OK'
+    headers:
+      content-type: text/html; charset=UTF-8
+      x-cache-npr: HIT
+      access-control-allow-origin: '*'
+      access-control-allow-credentials: 'true'
+      x-npr-trace-id: ren9ASuZkc8
+      x-content-type-options: nosniff
+      x-xss-protection: 1; mode=block
+      x-served-by: pod-www-render-nginx-f756665cb-2l4cd
+      referrer-policy: no-referrer-when-downgrade
+      strict-transport-security: max-age=15724800; includeSubDomains
+      vary: Accept-Encoding
+      content-encoding: gzip
+      cache-control: no-cache
+      expires: Sun, 07 Aug 2022 06:36:20 GMT
+      date: Sun, 07 Aug 2022 06:36:20 GMT
+      content-length: '20'
+    body:
+      encoding: UTF-8
+      file: no
+      string: ''
+  recorded_at: 2022-08-07 06:36:20 GMT
+  recorded_with: vcr/1.0.2, webmockr/0.8.0

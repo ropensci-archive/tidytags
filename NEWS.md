@@ -47,7 +47,7 @@ tidytags 1.0 (2022-08-05)
   * Removed the lookup_many_users() function. With the rtweet 1.0 update, user information can be accessed with the rtweet::users_data() function.
   * Updated flag_unknown_upstream() and get_upstream_tweets() to align with new variable names used in rtweet 1.0.
   * Updated filter_by_tweet_type(), create_edgelist(), and add_users_data() to align with new variable names used in rtweet 1.0.
-  * Removed the geocodetags() function because rtweet 1.0 changed how location data is available and also added a new rtweet::lookup_coords() function. Note that at this time, rtweet::lookup_coords() requires a Google Maps API key rather than the OpenCage API we had recommended in earlier versions of tidytags. We still recommend the sf and mapview R packages for working with locations and geocding.
+  * Removed the geocode_tags() function because rtweet 1.0 changed how location data is available and also added a new rtweet::lookup_coords() function. Note that at this time, rtweet::lookup_coords() requires a Google Maps API key rather than the OpenCage API we had recommended in earlier versions of tidytags. We still recommend the sf and mapview R packages for working with locations and geocoding.
  
 ### NEW FEATURES
 
