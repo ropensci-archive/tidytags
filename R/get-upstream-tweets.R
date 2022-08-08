@@ -56,6 +56,7 @@ get_upstream_tweets <-
     if (nrow(unknown_upstream) == 0) {
       message("There are no upstream replies to get.")
     } else {
+
       searchable_replies <-
         nrow(pull_tweet_data(id_vector =
                                unknown_upstream$in_reply_to_status_id_str))
