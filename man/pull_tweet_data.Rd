@@ -4,7 +4,7 @@
 \alias{pull_tweet_data}
 \title{Retrieve the fullest extent of status metadata available from the Twitter API}
 \usage{
-pull_tweet_data(df, url_vector = NULL, id_vector = NULL, n = NULL)
+pull_tweet_data(df = NULL, url_vector = NULL, id_vector = NULL, n = NULL)
 }
 \arguments{
 \item{df}{A dataframe of containing the column name 'status_url'
