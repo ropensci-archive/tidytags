@@ -25,7 +25,7 @@ knitr::opts_chunk$set(
 ```
 
 ```{r}
-#library(tidytags)
+library(tidytags)
 ```
 
 This vignette serves as an introduction to how to use many **tidytags** functions through the example of analyzing tweets associated with the 2019 annual convention of the [Association for Educational Communications & Technology](https://aect.org/) (AECT): `#aect19`, `#aect2019`, or `#aect19inspired`. The information in this vignette is available scattered throughout the R documentation for the **tidytags** package. This vignette conveniently brings it all together in one place.
