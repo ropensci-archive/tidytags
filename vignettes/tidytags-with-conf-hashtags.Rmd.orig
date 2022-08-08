@@ -175,12 +175,6 @@ head(domain_table_sorted, 20)
 
 Unsurprisingly, in this dataset, by far the most common domain (as of August 5, 2022) was "twitter.com", meaning that AECT 2019 tweeters were linking most often to other Twitter content. Other common domains included "convention2.allacademic.com" (i.e., the host of the conference website, including the schedule and session information) as well as "instagram.com" and "youtube.com", where tweeters likely shared conference-related content.
 
-## filter_by_tweet_type()
-
-This function quickly subsets the data, returning just the tweets of the type indicated (e.g., `filter_by_tweet_type(df, "reply")` returns only reply tweets). The `filter_by_tweet_type()` function can also be used to look at how many tweets of each type are present in the dataset.
-
-In the dataset of `r nrow(example_processed)` tweets, there are `r nrow(filter_by_tweet_type(example_processed, "reply"))` replies, `r nrow(filter_by_tweet_type(example_processed "retweet"))` retweets, `r nrow(filter_by_tweet_type(example_processed, "quote"))` quote tweets, and `r nrow(filter_by_tweet_type(example_processed, "mention"))` tweets containing mentions.
-
 ## get_upstream_tweets()
 
 If your research questions conceptualize your tweet dataset as a conversation or affinity space, it may be useful to retrieve and add additional tweets. Specifically, TAGS collects tweets that contain one or more keywords or text strings. For example, the TAGS tracker we have been working with in this vignette collected tweets containing the keywords: `#aect19` OR `#aect2019` OR `#aect19inspired`. This is a reasonable approach, from a researchers' point of view. However, participants who have been following or contributing to these hashtags would also see additional tweets in these "conversations" because Twitter connects together tweets that reply to other tweets into potentially lengthy *reply threads*. Tweets in a reply thread are all displayed to a user viewing tweets on Twitter's platform, but because some tweets in a thread may not contain the hashtag of interest, not all tweets in a user's experience of a conversation would be collected by TAGS. Additionally, tweets contained in a reply thread but composed before the TAGS tracker was initiated would also be left out of the dataset.
@@ -188,12 +182,19 @@ If your research questions conceptualize your tweet dataset as a conversation or
 There is a solution to this problem. Because the Twitter API offers a `in_reply_to_status_id_str` column, it is possible to iteratively reconstruct reply threads in an *upstream* direction, that is, retrieving tweets composed earlier than replies in the dataset. We include the `get_upstream_tweets()` function in **tidytags** to streamline this process. We also print output at each iteration to demonstrate how the process is progressing.
 
 ```{r upstream-replies}
-example_with_upstream <- get_upstream_tweets(example_processed)
+example_with_upstream <-
+  get_upstream_tweets(example_processed)
 ```
 
-The dataset contained `r nrow(example_processed)` tweets at the start. Running `get_upstream_tweets()` added `r nrow(example_with_upstream) - nrow(example_processed)` new tweets.
+The dataset contained `r nrow(example_after_rtweet)` tweets at the start. Running `get_upstream_tweets()` added `r nrow(example_with_upstream) - nrow(example_after_rtweet)` new tweets.
 
 Unfortunately, due to limitations in what information is provided by the Twitter API, it is not practical to retrieve *downstream* replies, or those tweets in a reply thread that follow a tweet in the dataset but neglect to include the hashtag or keyword.
+
+## filter_by_tweet_type()
+
+This function quickly subsets the data, returning just the tweets of the type indicated (e.g., `filter_by_tweet_type(df, "reply")` returns only reply tweets). The `filter_by_tweet_type()` function can also be used to look at how many tweets of each type are present in the dataset.
+
+In the dataset of `r nrow(example_processed)` tweets, there are `r nrow(filter_by_tweet_type(example_processed, "reply"))` replies, `r nrow(filter_by_tweet_type(example_processed, "retweet"))` retweets, `r nrow(filter_by_tweet_type(example_processed, "quote"))` quote tweets, and `r nrow(filter_by_tweet_type(example_processed, "original"))` tweets that are not replies, retweets, or quote tweets.
 
 ## create_edgelist()
 
@@ -202,7 +203,8 @@ Another useful approach to social media research is *social network analysis*. G
 Run `create_edgelist()` after completing `get_upstream_tweets()` for a complete picture of the interactions.
 
 ```{r edgelist}
-example_edgelist <- create_edgelist(example_with_upstream)
+example_edgelist <-
+  create_edgelist(example_with_upstream)
 head(example_edgelist, 20)
 ```
 

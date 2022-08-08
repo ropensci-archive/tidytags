@@ -174,6 +174,17 @@ pull_tweet_data <-
       )
     )
 
+    if(nrow(new_df) > 0) {
+    new_df <- cbind(new_df, rtweet::users_data(new_df))
+    names(new_df)[c(44, 45, 55, 63, 65, 66)] <-
+      c("user_id", "user_id_str", "user_created_at",
+        "user_withheld_in_countries", "user_withheld_scope", "user_entities")
+    } else {
+      new_df <- df
+      message("pull_tweet_data() was unable to retrieve any additional data
+              and the original input has been returned")
+    }
+
     new_df
   }
 
@@ -344,10 +355,6 @@ get_tweet_type <-
 #' @export
 process_tweets <-
   function(df) {
-    df <- cbind(df, rtweet::users_data(df))
-    names(df)[c(44, 45, 55, 63, 65, 66)] <-
-      c("user_id", "user_id_str", "user_created_at",
-        "user_withheld_in_countries", "user_withheld_scope", "user_entities")
     df$mentions_count <- get_mentions_count(df)
     df$hashtags_count <-  get_hashtags_count(df)
     df$urls_count <- get_urls_count(df)
