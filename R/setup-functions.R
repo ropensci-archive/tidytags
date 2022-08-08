@@ -122,7 +122,7 @@ get_char_tweet_ids <-
 #' }
 #' @export
 pull_tweet_data <-
-  function(df, url_vector = NULL, id_vector = NULL, n = NULL) {
+  function(df = NULL, url_vector = NULL, id_vector = NULL, n = NULL) {
     ifelse(!is.null(url_vector),
       {
         if (is.null(n)) {
@@ -180,9 +180,8 @@ pull_tweet_data <-
       c("user_id", "user_id_str", "user_created_at",
         "user_withheld_in_countries", "user_withheld_scope", "user_entities")
     } else {
-      new_df <- df
-      message("pull_tweet_data() was unable to retrieve any additional data
-              and the original input has been returned")
+      message("pull_tweet_data() was unable to retrieve any additional data")
+      new_df <- NULL
     }
 
     new_df

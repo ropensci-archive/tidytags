@@ -58,13 +58,14 @@ get_upstream_tweets <-
     } else {
 
       searchable_replies <-
-        nrow(pull_tweet_data(id_vector =
-                               unknown_upstream$in_reply_to_status_id_str))
+        pull_tweet_data(id_vector = unknown_upstream$in_reply_to_status_id_str)
+      searchable_n <-
+        ifelse(is.null(searchable_replies), 0, nrow(searchable_replies))
 
-      if (searchable_replies > 0) {
+      if (searchable_n > 0) {
         i <- 0
         n <- 0
-        while (searchable_replies > 0) {
+        while (searchable_n > 0) {
           i <- i + 1
           message("Iteration: ", i)
           new_tweets <-
@@ -76,8 +77,10 @@ get_upstream_tweets <-
           unknown_upstream <- flag_unknown_upstream(df)
 
           searchable_replies <-
-            nrow(pull_tweet_data(id_vector =
-                                   unknown_upstream$in_reply_to_status_id_str))
+            pull_tweet_data(id_vector =
+                              unknown_upstream$in_reply_to_status_id_str)
+          searchable_n <-
+            ifelse(is.null(searchable_replies), 0, nrow(searchable_replies))
 
           message(
             "New statuses added to the dataset: ",
@@ -85,7 +88,7 @@ get_upstream_tweets <-
             "; reply statuses that were not able to be retrieved: ",
             nrow(unknown_upstream),
             "; newly added replies where we can still go further upstream: ",
-            searchable_replies
+            nrow(searchable_replies)
           )
         }
 
