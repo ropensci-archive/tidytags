@@ -23,7 +23,7 @@ jobs:
           - {os: windows-latest, r: 'release'}
           - {os: ubuntu-latest,   r: 'devel', http-user-agent: 'release'}
           - {os: ubuntu-latest,   r: 'release'}
-          - {os: ubuntu-latest,   r: '4.1'} # defined min dependent version of R
+          - {os: ubuntu-latest,   r: '4.2'} # defined min dependent version of R
 
     env:
       GITHUB_PAT: ${{ secrets.GITHUB_TOKEN }}
