@@ -272,6 +272,9 @@ get_hashtags_count <-
   function(df) {
     hashtags_count <- integer()
     for(i in 1:nrow(df)) {
+
+      if(df$entities[[i]])
+
       hashtags_list <- df$entities[[i]]$hashtags$text
       hashtags_n <-
         ifelse(is.na(hashtags_list[1]),
@@ -318,7 +321,7 @@ get_tweet_type <-
     tweet_type <- character()
     for(i in 1:nrow(df)) {
       tweet_type[i] <-
-        ifelse(!is.na(df$retweeted_status[[i]]$id_str),
+        ifelse(grepl("^RT", df$full_text[i]),
                "retweet",
                ifelse(!is.na(df$quoted_status_id_str[i]),
                       "quote",
