@@ -270,20 +270,17 @@ get_mentions_count <-
 #' @noRd
 get_hashtags_count <-
   function(df) {
-    hashtags_count <- integer()
+    hashtags_count_vector <- integer()
     for(i in 1:nrow(df)) {
-
-      if(df$entities[[i]])
-
       hashtags_list <- df$entities[[i]]$hashtags$text
       hashtags_n <-
         ifelse(is.na(hashtags_list[1]),
                0,
                as.numeric(length(hashtags_list))
         )
-      hashtags_count <- c(hashtags_count, hashtags_n)
+      hashtags_count_vector[i] <- hashtags_n
     }
-    hashtags_count
+    hashtags_count_vector
   }
 
 #' Count the number of URLs in a status
