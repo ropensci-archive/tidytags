@@ -213,7 +213,7 @@ We can then easily visualize the edgelist as a sociogram using the **tidygraph**
 First, create a graph object using **tidygraph**:
 
 ```{r}
-if (requireNamespace("tidygraph", quietly = TRUE) {
+if (requireNamespace("tidygraph", quietly = TRUE)) {
   example_graph <-
     tidygraph::as_tbl_graph(example_edgelist)
   example_graph <-
@@ -242,7 +242,7 @@ if (requireNamespace("ggraph", quietly = TRUE) &
 Running `create_edgelist()` also provides a simple way to re-look at how many tweets of each type are present in the dataset, using the `count()` function from **dplyr**.
 
 ```{r edge-table}
-dplyr::count(example_edgelist, edge_type, sort = TRUE)
+dplyr::count(example_edgelist, tweet_type, sort = TRUE)
 ```
 
 Note that `create_edgelist()` does not yet accept `type = "mention"` or `type = "like"` parameters due to the complicated ways mentions are included in tweets as well as limitations of the information provided by the Twitter API.

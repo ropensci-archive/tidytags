@@ -84,7 +84,7 @@ example_after_rtweet_A <- pull_tweet_data(id_vector = example_df_all$id_str)
 example_after_rtweet_B <- pull_tweet_data(url_vector = example_df_all$status_url)
 ```
 
-When this vignette was run on Aug 08 22, the TAGS tracker had collected 18 variables associated with 2564 tweets. The first method searching with `id_str` collected 66 variables associated with 2225 tweets. The second method using 'tidytags::get_char_tweet_ids()' collected 66 variables associated with 2225 tweets.
+When this vignette was run on Aug 09 22, the TAGS tracker had collected 18 variables associated with 2564 tweets. The first method searching with `id_str` collected 66 variables associated with 2195 tweets. The second method using 'tidytags::get_char_tweet_ids()' collected 66 variables associated with 2195 tweets.
 
 Notice how many more variables are in the dataset after using `pull_tweet_data()`, and how many more tweets are in the dataset when using the second method. We have found that in the process of storing and retrieving tweet IDs, the long string of numbers can sometimes be interpreted as an object of type double (i.e., numeric) and subsequently converted into scientific notation form. This loses the specific identifying use of the string of numerical digits. Therefore, we strongly recommend the second method, obtaining tweet IDs from the tweet URL, which is why we have included `get_char_tweet_ids()` as an internal function in the **tidytags** package.
 
@@ -94,7 +94,7 @@ The built-in default of `pull_tweet_data()` is to simply enter the dataframe ret
 ```r
 example_after_rtweet <- pull_tweet_data(read_tags(tags_url))
 dplyr::glimpse(example_after_rtweet)
-#> Rows: 2,225
+#> Rows: 2,195
 #> Columns: 66
 #> $ created_at                    <dttm> 2020-04-19 15:22:23, 2020-03-01 15:00:41, 2020…
 #> $ id                            <dbl> 1.251954e+18, 1.234207e+18, 1.229405e+18, 1.225…
@@ -147,13 +147,13 @@ dplyr::glimpse(example_after_rtweet)
 #> $ description                   <chr> "Love educational technology, online learning a…
 #> $ url                           <chr> "https://t.co/ztRaRj9BLo", "https://t.co/OpLrmt…
 #> $ protected                     <lgl> FALSE, FALSE, FALSE, FALSE, FALSE, FALSE, FALSE…
-#> $ followers_count               <int> 7, 789, 452, 2051, 2253, 452, 861, 1553, 1719, …
+#> $ followers_count               <int> 7, 789, 452, 2050, 2253, 452, 861, 1553, 1719, …
 #> $ friends_count                 <int> 17, 1325, 47, 15, 1362, 47, 482, 714, 728, 0, 1…
-#> $ listed_count                  <int> 0, 78, 4, 57, 178, 4, 6, 61, 149, 98, 124, 12, …
+#> $ listed_count                  <int> 0, 0, 4, 57, 178, 4, 6, 0, 149, 98, 124, 12, 12…
 #> $ user_created_at               <chr> "Sun Apr 19 19:12:33 +0000 2020", "Sun Jul 26 0…
 #> $ favourites_count              <int> 9, 5096, 147, 772, 4252, 147, 254, 4681, 6669, …
 #> $ verified                      <lgl> FALSE, FALSE, FALSE, FALSE, FALSE, FALSE, FALSE…
-#> $ statuses_count                <int> 9, 7313, 2351, 1388, 12143, 2351, 261, 4980, 11…
+#> $ statuses_count                <int> 9, 7313, 2351, 1388, 12144, 2351, 261, 4980, 11…
 #> $ profile_image_url_https       <chr> "https://pbs.twimg.com/profile_images/125195195…
 #> $ profile_banner_url            <chr> "https://pbs.twimg.com/profile_banners/12519518…
 #> $ default_profile               <lgl> TRUE, FALSE, TRUE, TRUE, FALSE, TRUE, FALSE, FA…
@@ -194,7 +194,7 @@ example_with_upstream <-
   get_upstream_tweets(example_after_rtweet)
 ```
 
-The dataset contained 2225 tweets at the start. Running `get_upstream_tweets()` added 34 new tweets.
+The dataset contained 2195 tweets at the start. Running `get_upstream_tweets()` added 29 new tweets.
 
 Unfortunately, due to limitations in what information is provided by the Twitter API, it is not practical to retrieve *downstream* replies, or those tweets in a reply thread that follow a tweet in the dataset but neglect to include the hashtag or keyword.
 
@@ -207,7 +207,7 @@ After `pull_tweet_data()` is used to collect additional information from TAGS tw
 example_processed <- process_tweets(example_after_rtweet)
 ```
 
-Notice that you now have 71 variables associated 2225 tweets.
+Notice that you now have 71 variables associated 2195 tweets.
 
 At this point, depending on your research questions, you may wish to calculate some descriptive statistics associated with this tweet data. For instance, the mean and standard deviation of *hashtags per tweet*:
 
@@ -217,7 +217,7 @@ mean_hash <- round(mean(example_processed$hashtags_count), 2)
 sd_hash <- round(sd(example_processed$hashtags_count), 2)
 ```
 
-This shows that the mean number of hashtags per tweet is 1.49 with a standard deviation of SD = 1.36.
+This shows that the mean number of hashtags per tweet is 1.48 with a standard deviation of SD = 1.36.
 
 Or, perhaps, the mean, median, and max number of *mentions per tweet* would be useful to know:
 
@@ -229,7 +229,7 @@ median_mentions <- median(example_processed$mentions_count)
 max_mentions <- max(example_processed$mentions_count)
 ```
 
-The mean number of mentions per tweet is 1.37 (SD = 1.34). The median is 1, and the maximum number of mentions in a tweet is 14.
+The mean number of mentions per tweet is 1.35 (SD = 1.31). The median is 1, and the maximum number of mentions in a tweet is 14.
 
 ## get_url_domain()
 
@@ -273,8 +273,8 @@ head(domain_table_sorted, 20)
 #>  8 caranorth.com                   7
 #>  9 nodexlgraphgallery.org          7
 #> 10 sites.google.com                7
-#> 11 litnet.co.za                    6
-#> 12 apps.apple.com                  5
+#> 11 apps.apple.com                  6
+#> 12 litnet.co.za                    6
 #> 13 isfsu.blogspot.com              5
 #> 14 tecfa.unige.ch                  5
 #> 15 viral-notebook.com              5
@@ -291,7 +291,7 @@ Unsurprisingly, in this dataset, by far the most common domain (as of August 5, 
 
 This function quickly subsets the data, returning just the tweets of the type indicated (e.g., `filter_by_tweet_type(df, "reply")` returns only reply tweets). The `filter_by_tweet_type()` function can also be used to look at how many tweets of each type are present in the dataset.
 
-In the dataset of 2225 tweets, there are 75 replies, 1157 retweets, 102 quote tweets, and 457 tweets that are not replies, retweets, or quote tweets.
+In the dataset of 2195 tweets, there are 62 replies, 1146 retweets, 100 quote tweets, and 457 tweets that are not replies, retweets, or quote tweets.
 
 ## create_edgelist()
 
@@ -300,13 +300,154 @@ Another useful approach to social media research is *social network analysis*. G
 Run `create_edgelist()` after completing `get_upstream_tweets()` and `process_tweets()` for a complete picture of the interactions.
 
 
+```r
+example_edgelist <-
+  create_edgelist(process_tweets(example_with_upstream))
+head(example_edgelist, 20)
+#>    tweet_type         sender        receiver
+#> 1       reply  nicolapallitt     eromerohall
+#> 2       reply       jeroen69         vdennen
+#> 3       reply    jmenglund03        bonni208
+#> 4       reply          DKSch           DKSch
+#> 5       reply          DKSch           DKSch
+#> 6       reply      _valeriei     eromerohall
+#> 7       reply    jmenglund03       SBarksway
+#> 8       reply       DrTerriC       mete_akca
+#> 9       reply       pazureka       SBarksway
+#> 10      reply       pazureka       SBarksway
+#> 11      reply    TAmankwatia     TAmankwatia
+#> 12      reply PaulineMuljana       robmoore3
+#> 13      reply          yinbk    DrVirtuality
+#> 14      reply    arasbozkurt     arasbozkurt
+#> 15      reply    arasbozkurt     arasbozkurt
+#> 16      reply    arasbozkurt     eromerohall
+#> 17      reply      correia65   AnnaRoseLeach
+#> 18      reply    jmenglund03  PaulineMuljana
+#> 19      reply PaulineMuljana AmyLomellini_ID
+#> 20      reply  teacherrogers   teacherrogers
+```
+
+We can then easily visualize the edgelist as a sociogram using the **tidygraph** and **ggraph** packages.
+
+First, create a graph object using **tidygraph**:
 
 
+```r
+if (requireNamespace("tidygraph", quietly = TRUE)) {
+  example_graph <-
+    tidygraph::as_tbl_graph(example_edgelist)
+  example_graph <-
+    dplyr::mutate(example_graph,
+                  popularity = tidygraph::centrality_degree(mode = 'in'))
+}
+```
+
+Then plot using **ggraph**:
 
 
+```r
+if (requireNamespace("ggraph", quietly = TRUE) &
+    requireNamespace("ggplot2", quietly = TRUE)
+) {
+  ggraph::ggraph(example_graph, layout = 'kk') +
+    ggraph::geom_edge_arc(alpha = .2,
+                          width = .5,
+                          strength = .5,
+                          edge_colour = 'steelblue'
+    ) +
+    ggraph::geom_node_point(alpha = .4, ggplot2::aes(size = popularity)) +
+    ggplot2::scale_size(range = c(1,10))
+}
+```
+
+<img src="vignette-network-visualization-1.png" title="plot of chunk network-visualization" alt="plot of chunk network-visualization" width="100%" />
+
+Running `create_edgelist()` also provides a simple way to re-look at how many tweets of each type are present in the dataset, using the `count()` function from **dplyr**.
 
 
+```r
+dplyr::count(example_edgelist, tweet_type, sort = TRUE)
+#>   tweet_type    n
+#> 1    retweet 1146
+#> 2      quote  108
+#> 3      reply   71
+```
+
+Note that `create_edgelist()` does not yet accept `type = "mention"` or `type = "like"` parameters due to the complicated ways mentions are included in tweets as well as limitations of the information provided by the Twitter API.
+
+## add_users_data()
+
+Finally, **tidytags** also has functionality to add user-level data to an edgelist through the function `add_users_data()`. These additional features are very useful when taking an inferential approach to social network analysis, such as building *influence* or *selection* models.
 
 
+```r
+example_senders_receivers_data <- add_users_data(example_edgelist)
+dplyr::glimpse(example_senders_receivers_data)
+#> Rows: 1,325
+#> Columns: 47
+#> $ tweet_type                       <chr> "reply", "reply", "reply", "reply", "reply",…
+#> $ sender                           <chr> "nicolapallitt", "jeroen69", "jmenglund03", …
+#> $ receiver                         <chr> "eromerohall", "vdennen", "bonni208", "DKSch…
+#> $ sender_id                        <dbl> 1.183683e+08, 6.848632e+06, 6.476904e+07, 3.…
+#> $ sender_id_str                    <chr> "118368334", "6848632", "64769037", "3865781…
+#> $ sender_name                      <chr> "Dr Nicola Pallitt", "Jeroen", "jennιғer eng…
+#> $ sender_location                  <chr> "Grahamstown, South Africa", "Boise, ID", "S…
+#> $ sender_description               <chr> "EdTech @Rhodes_Uni working in @CHERTL_RU & …
+#> $ sender_url                       <chr> "https://t.co/p1veXbw0pP", "https://t.co/GEk…
+#> $ sender_protected                 <lgl> FALSE, FALSE, FALSE, FALSE, FALSE, FALSE, FA…
+#> $ sender_followers_count           <int> 1753, 378, 663, 290, 290, 6324, 663, 5297, 1…
+#> $ sender_friends_count             <int> 1924, 379, 627, 86, 86, 6280, 627, 5825, 461…
+#> $ sender_listed_count              <int> 127, 7, 72, 15, 15, 416, 72, 261, 44, 44, 33…
+#> $ sender_created_at                <dttm> 2010-02-28 08:13:53, 2007-06-16 03:10:38, 2…
+#> $ sender_favourites_count          <int> 2040, 2847, 2052, 228, 228, 15749, 2052, 946…
+#> $ sender_verified                  <lgl> FALSE, FALSE, FALSE, FALSE, FALSE, FALSE, FA…
+#> $ sender_statuses_count            <int> 7157, 1537, 2918, 643, 643, 57099, 2918, 269…
+#> $ sender_profile_image_url_https   <chr> "https://pbs.twimg.com/profile_images/122079…
+#> $ sender_profile_banner_url        <chr> "https://pbs.twimg.com/profile_banners/11836…
+#> $ sender_default_profile           <lgl> FALSE, FALSE, FALSE, FALSE, FALSE, FALSE, FA…
+#> $ sender_default_profile_image     <lgl> FALSE, FALSE, FALSE, FALSE, FALSE, FALSE, FA…
+#> $ sender_withheld_in_countries     <list> [], [], [], [], [], [], [], [], [], [], [],…
+#> $ sender_derived                   <chr> NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, …
+#> $ sender_withheld_scope            <lgl> NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, …
+#> $ sender_entities                  <list> [[<data.frame[1 x 5]>], [<data.frame[1 x 5]…
+#> $ receiver_id                      <dbl> 9.187479e+08, 1.423597e+08, 1.477788e+07, 3.…
+#> $ receiver_id_str                  <chr> "918747876", "142359679", "14777884", "38657…
+#> $ receiver_name                    <chr> "Dr. Enilda Romero-Hall (She/Her)", "Vanessa…
+#> $ receiver_location                <chr> "🇵🇦🇨🇦🇺🇸", "Tallahassee, FL", "Orange County,…
+#> $ receiver_description             <chr> "Associate Professor @UTKnoxville | Learning…
+#> $ receiver_url                     <chr> "https://t.co/bIbSToCw8t", "https://t.co/2br…
+#> $ receiver_protected               <lgl> FALSE, FALSE, FALSE, FALSE, FALSE, FALSE, FA…
+#> $ receiver_followers_count         <int> 1773, 1151, 7415, 290, 290, 1773, 329, 764, …
+#> $ receiver_friends_count           <int> 1345, 759, 3538, 86, 86, 1345, 480, 501, 480…
+#> $ receiver_listed_count            <int> 87, 40, 294, 15, 15, 87, 5, 28, 5, 5, 33, 57…
+#> $ receiver_created_at              <dttm> 2012-11-01 06:56:04, 2010-05-10 13:39:35, 2…
+#> $ receiver_favourites_count        <int> 7326, 1097, 23383, 228, 228, 7326, 2160, 196…
+#> $ receiver_verified                <lgl> FALSE, FALSE, FALSE, FALSE, FALSE, FALSE, FA…
+#> $ receiver_statuses_count          <int> 422, 2102, 20642, 643, 643, 422, 428, 1942, …
+#> $ receiver_profile_image_url_https <chr> "https://pbs.twimg.com/profile_images/141641…
+#> $ receiver_profile_banner_url      <chr> "https://pbs.twimg.com/profile_banners/91874…
+#> $ receiver_default_profile         <lgl> FALSE, TRUE, TRUE, FALSE, FALSE, FALSE, TRUE…
+#> $ receiver_default_profile_image   <lgl> FALSE, FALSE, FALSE, FALSE, FALSE, FALSE, FA…
+#> $ receiver_withheld_in_countries   <list> [], [], [], [], [], [], [], [], [], [], [],…
+#> $ receiver_derived                 <chr> NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, …
+#> $ receiver_withheld_scope          <lgl> NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, …
+#> $ receiver_entities                <list> [[<data.frame[1 x 5]>], [<data.frame[1 x 5]…
+```
 
+## Getting help
+
+
+{tidytags} is still a work in progress, so we fully expect that there are still some bugs to work out and functions to document better. If you find an issue, have a question, or think of something that you really wish {tidytags} would do for you, don't hesitate to [email Bret](mailto:bret@bretsw.com) or reach out on Twitter: [\@bretsw](https://twitter.com/bretsw) and [\@jrosenberg6432](https://twitter.com/jrosenberg6432).
+
+You can also [submit an issue on GitHub](https://github.com/ropensci/tidytags/issues/).
+
+You may also wish to try some general troubleshooting strategies:
+
+- Try to find out what the specific problem is
+  -  Identify what is *not* causing the problem
+- "Unplug and plug it back in" - restart R, close and reopen R
+- Reach out to others! Sharing what is causing an issue can often help to clarify the problem.
+  - RStudio Community - https://community.rstudio.com/ (highly recommended!)
+  - Twitter hashtag: #rstats
+- General strategies on learning more: https://datascienceineducation.com/c17.html
 

@@ -8,7 +8,7 @@
   "codeRepository": "https://github.com/ropensci/tidytags",
   "issueTracker": "https://github.com/ropensci/tidytags/issues",
   "license": "https://spdx.org/licenses/MIT",
-  "version": "1.0",
+  "version": "1.0.0",
   "programmingLanguage": {
     "@type": "ComputerLanguage",
     "name": "R",
@@ -273,7 +273,7 @@
     },
     "SystemRequirements": null
   },
-  "fileSize": "23451.788KB",
+  "fileSize": "37343.932KB",
   "citation": [
     {
       "@type": "SoftwareSourceCode",
