@@ -16,3 +16,4 @@ tidytags-logo.png
 ^Meta$
 ^\.github$
 ^codemeta\.json$
+^CRAN-SUBMISSION$

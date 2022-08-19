@@ -1,16 +1,16 @@
 test_that("get_upstream_tweets() finds additional tweets", {
 
   vcr::use_cassette("sample_tags", {
-    sample_tags <- read_tags("18clYlQeJOc6W5QRuSlJ6_v3snqKJImFhU42bRkM_OX8")
+    example_url <- "18clYlQeJOc6W5QRuSlJ6_v3snqKJImFhU42bRkM_OX8"
+    sample_tags <- head(read_tags(example_url), 200)
+    sample_tags <- sample_tags[,1:(length(sample_tags)-1)]
   })
 
   vcr::use_cassette("upstream_tweets", {
     app <- rtweet::rtweet_app(bearer_token = Sys.getenv("TWITTER_BEARER_TOKEN"))
     rtweet::auth_as(app)
     more_info <- pull_tweet_data(sample_tags)
-    replies <-
-      head(dplyr::filter(more_info, !is.na(in_reply_to_status_id_str)), 10)
-    replies_plus <- get_upstream_tweets(replies)
+    replies_plus <- get_upstream_tweets(more_info)
   })
 
   testthat::expect_equal(is.data.frame(replies_plus), TRUE)
@@ -27,7 +27,8 @@ test_that("get_upstream_tweets() finds additional tweets", {
   testthat::expect_true("friends_count" %in% names(replies_plus))
   testthat::expect_gt(ncol(replies_plus), ncol(sample_tags))
   testthat::expect_lte(nrow(replies_plus), nrow(sample_tags))
-  testthat::expect_gte(nrow(replies_plus), nrow(replies))
+  testthat::expect_equal(ncol(replies_plus), ncol(more_info))
+  testthat::expect_gte(nrow(replies_plus), nrow(more_info))
 })
 
 

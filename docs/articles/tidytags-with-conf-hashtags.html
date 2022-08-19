@@ -40,7 +40,7 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">tidytags</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="">1.0.0</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="">1.0.1</span>
       </span>
     </div>
 
@@ -180,7 +180,8 @@ window, select <code>Get shareable link</code>, and set the permissions
 to ‘Anyone with the link can view.’ The input needed for the
 <code><a href="../reference/read_tags.html">tidytags::read_tags()</a></code> function is either the entire URL
 from the top of the web browser when opened to a TAGS tracker, or a
-Google Sheet identifier (i.e., the alphanumeric string following “<a href="https://docs.google.com/spreadsheets/d/" class="external-link uri">https://docs.google.com/spreadsheets/d/</a>” in the TAGS
+Google Sheet identifier (i.e., the alphanumeric string following
+<code>https://docs.google.com/spreadsheets/d/</code> in the TAGS
 tracker’s URL). Be sure to put quotations marks around the URL or sheet
 identifier when entering it into <code><a href="../reference/read_tags.html">read_tags()</a></code> function.</p>
 <p>Again, if you’re having trouble setting up or publishing the TAGS
@@ -470,10 +471,10 @@ combines the <code>expand_urls()</code> function from the
 from the <strong>urltools</strong> package to easily return the domain
 names of any hyperlinks including in tweets.</p>
 <p>As an example, <code><a href="../reference/get_url_domain.html">get_url_domain()</a></code> finds that the domain in
-the shortened URL “<a href="http://bit.ly/2SfWO3K" class="external-link uri">http://bit.ly/2SfWO3K</a>” is “aect.org”:</p>
+the shortened URL <code>bit.ly/2SfWO3K</code> is
+<code>aect.org</code>:</p>
 <div class="sourceCode" id="cb11"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="va">short_url</span> <span class="op">&lt;-</span> <span class="st">"http://bit.ly/2SfWO3K"</span></span>
-<span><span class="fu"><a href="../reference/get_url_domain.html">get_url_domain</a></span><span class="op">(</span><span class="va">short_url</span><span class="op">)</span></span>
+<code class="sourceCode R"><span><span class="fu"><a href="../reference/get_url_domain.html">get_url_domain</a></span><span class="op">(</span><span class="st">"bit.ly/2SfWO3K"</span><span class="op">)</span></span>
 <span><span class="co">#&gt; [1] "aect.org"</span></span></code></pre></div>
 <p>It may also be of interest to examine which websites are linked to
 most often in your dataset. <code><a href="../reference/get_url_domain.html">get_url_domain()</a></code> can be

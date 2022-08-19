@@ -1,5 +1,9 @@
 # CRAN comments
 
+This is a revised submission from tidytags v1.0.1, originally submitted on 08/18/2022. Broken URLs have been fixed and the tarball size has been reduced to under 5MB.
+
+---
+
 ## R CMD check results
 
 `devtools::check()` result:
