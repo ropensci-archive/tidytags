@@ -195,23 +195,206 @@ rtweet::auth_as(app)
 
 expanded_metadata <- pull_tweet_data(tags_data, n = 10)
 expanded_metadata
-#> # A tibble: 7 × 43
-#>   created_at               id id_str        full_text truncated display_text_ra…
-#>   <dttm>                <dbl> <chr>         <chr>     <lgl>                <dbl>
-#> 1 2020-04-19 15:22:23 1.25e18 125195431277… "RT @Rou… FALSE                  140
-#> 2 2020-03-01 15:00:41 1.23e18 123420694673… "RT @vel… FALSE                  140
-#> 3 2020-02-17 09:00:51 1.23e18 122940535017… "RT @tad… FALSE                  140
-#> 4 2020-02-05 14:23:27 1.23e18 122513787992… "RT @tad… FALSE                  140
-#> 5 2020-02-05 13:21:36 1.23e18 122512231784… "Many th… FALSE                  268
-#> 6 2020-01-21 18:07:15 1.22e18 121975838643… "RT @AEC… FALSE                  140
-#> 7 2020-01-19 18:46:51 1.22e18 121904357455… "RT @AEC… FALSE                  140
-#> # … with 37 more variables: entities <list>, source <chr>,
-#> #   in_reply_to_status_id <lgl>, in_reply_to_status_id_str <lgl>,
-#> #   in_reply_to_user_id <lgl>, in_reply_to_user_id_str <lgl>,
-#> #   in_reply_to_screen_name <lgl>, geo <list>, coordinates <list>,
-#> #   place <list>, contributors <lgl>, is_quote_status <lgl>,
-#> #   retweet_count <int>, favorite_count <int>, favorited <lgl>,
-#> #   retweeted <lgl>, possibly_sensitive <lgl>, lang <chr>, …
+#>            created_at           id              id_str
+#> 1 2020-04-19 15:22:23 1.251954e+18 1251954312772812801
+#> 2 2020-03-01 15:00:41 1.234207e+18 1234206946732830720
+#> 3 2020-02-17 09:00:51 1.229405e+18 1229405350178127872
+#> 4 2020-02-05 14:23:27 1.225138e+18 1225137879921385472
+#> 5 2020-02-05 13:21:36 1.225122e+18 1225122317849657345
+#> 6 2020-01-21 18:07:15 1.219758e+18 1219758386436165633
+#> 7 2020-01-19 18:46:51 1.219044e+18 1219043574555299840
+#>                                                                                                                                                                                                                                                                      full_text
+#> 1                                                                                                                                 RT @RoutledgeEd: Congrats to authors Joseph Rene Corbeil, Maria Elena Corbeil, and (not pictured) Badrul Khan, who received the Outstanding…
+#> 2                                                                                                                               RT @veletsianos: Reminder: Call for Chapter Proposals: Critical Digital Pedagogy – Broadening Horizons, Bridging Theory and Practice: \n\nhtt…
+#> 3                                                                                                                                 RT @tadousay: Many thanks to @AECTTechTrends for supporting our @gsa_aect with the Grad Member Musings column! The latest guest author is #…
+#> 4                                                                                                                                 RT @tadousay: Many thanks to @AECTTechTrends for supporting our @gsa_aect with the Grad Member Musings column! The latest guest author is #…
+#> 5 Many thanks to @AECTTechTrends for supporting our @gsa_aect with the Grad Member Musings column! The latest guest author is #uidaho's Ken Cox, a first year doc student in our C&amp;I program and a member of my #UISTEMEdRG. https://t.co/8MuP9Mza8f #aect #aect20 #aect19
+#> 6                                                                                                                                 RT @AECT: The #AECT19 convention proceedings are available! The papers published in these volumes were presented at the annual AECT Convent…
+#> 7                                                                                                                                 RT @AECT: The #AECT19 convention proceedings are available! The papers published in these volumes were presented at the annual AECT Convent…
+#>   truncated display_text_range
+#> 1     FALSE                140
+#> 2     FALSE                140
+#> 3     FALSE                140
+#> 4     FALSE                140
+#> 5     FALSE                268
+#> 6     FALSE                140
+#> 7     FALSE                140
+#>                                                                                                                                                                                                                                                                                                                                              entities
+#> 1                                                                                                                                                                                                                                               NA, NA, NA, NA, RoutledgeEd, Routledge Education Books, 27606068, 27606068, 3, 15, NA, NA, NA, NA, NA
+#> 2                                                                                                                                                                                                                                                 NA, NA, NA, NA, veletsianos, George Veletsianos, PhD, 17883918, 17883918, 3, 15, NA, NA, NA, NA, NA
+#> 3                                                                                                                   NA, NA, NA, NA, tadousay, AECTTechTrends, gsa_aect, Dr. Tonia A. Dousay, TechTrends Editor, AECT GSA, 14215524, 804807943, 922536306437181440, 14215524, 804807943, 922536306437181440, 3, 29, 64, 12, 44, 73, NA, NA, NA, NA, NA
+#> 4                                                                                                                   NA, NA, NA, NA, tadousay, AECTTechTrends, gsa_aect, Dr. Tonia A. Dousay, TechTrends Editor, AECT GSA, 14215524, 804807943, 922536306437181440, 14215524, 804807943, 922536306437181440, 3, 29, 64, 12, 44, 73, NA, NA, NA, NA, NA
+#> 5 uidaho, UISTEMEdRG, aect, aect20, aect19, 124, 131, 210, 221, 247, 252, 253, 260, 261, 268, NA, NA, AECTTechTrends, gsa_aect, TechTrends Editor, AECT GSA, 804807943, 922536306437181440, 804807943, 922536306437181440, 15, 50, 30, 59, https://t.co/8MuP9Mza8f, https://doi.org/10.1007/s11528-020-00477-5, doi.org/10.1007/s11528…, 223, 246, NA
+#> 6                                                                                                                                                                                                                                                                AECT19, 14, 21, NA, NA, AECT, ✵ AECT ✵, 12030342, 12030342, 3, 8, NA, NA, NA, NA, NA
+#> 7                                                                                                                                                                                                                                                                AECT19, 14, 21, NA, NA, AECT, ✵ AECT ✵, 12030342, 12030342, 3, 8, NA, NA, NA, NA, NA
+#>                                                                                 source
+#> 1              <a href="https://mobile.twitter.com" rel="nofollow">Twitter Web App</a>
+#> 2    <a href="http://twitter.com/#!/download/ipad" rel="nofollow">Twitter for iPad</a>
+#> 3  <a href="https://about.twitter.com/products/tweetdeck" rel="nofollow">TweetDeck</a>
+#> 4 <a href="http://twitter.com/download/android" rel="nofollow">Twitter for Android</a>
+#> 5  <a href="https://about.twitter.com/products/tweetdeck" rel="nofollow">TweetDeck</a>
+#> 6  <a href="https://about.twitter.com/products/tweetdeck" rel="nofollow">TweetDeck</a>
+#> 7              <a href="https://mobile.twitter.com" rel="nofollow">Twitter Web App</a>
+#>   in_reply_to_status_id in_reply_to_status_id_str in_reply_to_user_id
+#> 1                    NA                        NA                  NA
+#> 2                    NA                        NA                  NA
+#> 3                    NA                        NA                  NA
+#> 4                    NA                        NA                  NA
+#> 5                    NA                        NA                  NA
+#> 6                    NA                        NA                  NA
+#> 7                    NA                        NA                  NA
+#>   in_reply_to_user_id_str in_reply_to_screen_name geo coordinates
+#> 1                      NA                      NA  NA  NA, NA, NA
+#> 2                      NA                      NA  NA  NA, NA, NA
+#> 3                      NA                      NA  NA  NA, NA, NA
+#> 4                      NA                      NA  NA  NA, NA, NA
+#> 5                      NA                      NA  NA  NA, NA, NA
+#> 6                      NA                      NA  NA  NA, NA, NA
+#> 7                      NA                      NA  NA  NA, NA, NA
+#>                        place contributors is_quote_status retweet_count
+#> 1 NA, NA, NA, NA, NA, NA, NA           NA           FALSE             4
+#> 2 NA, NA, NA, NA, NA, NA, NA           NA           FALSE            28
+#> 3 NA, NA, NA, NA, NA, NA, NA           NA           FALSE             2
+#> 4 NA, NA, NA, NA, NA, NA, NA           NA           FALSE             2
+#> 5 NA, NA, NA, NA, NA, NA, NA           NA           FALSE             2
+#> 6 NA, NA, NA, NA, NA, NA, NA           NA           FALSE             9
+#> 7 NA, NA, NA, NA, NA, NA, NA           NA           FALSE             9
+#>   favorite_count favorited retweeted possibly_sensitive lang
+#> 1              0     FALSE     FALSE                 NA   en
+#> 2              0     FALSE     FALSE                 NA   en
+#> 3              0     FALSE     FALSE                 NA   en
+#> 4              0     FALSE     FALSE                 NA   en
+#> 5              8     FALSE     FALSE              FALSE   en
+#> 6              0     FALSE     FALSE                 NA   en
+#> 7              0     FALSE     FALSE                 NA   en
+#>                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                     retweeted_status
+#> 1 Wed Oct 23 21:58:17 +0000 2019, 1187126122376392704, 1187126122376392704, Congrats to authors Joseph Rene Corbeil, Maria Elena Corbeil, and (not pictured) Badrul Khan, who received the Outstanding Book Award from #AECT2019’s Culture, Learning, and Technology division — a global treatment of #learninganalytics and #educationaldatamining. https://t.co/aG1kf7a5ew, FALSE, 0, 264, AECT2019, learninganalytics, educationaldatamining, 139, 148, 218, 236, 241, 263, 1187126100159164416, 1187126100159164416, 265, 288, http://pbs.twimg.com/media/EHmE5f-U8AA6_mM.jpg, https://pbs.twimg.com/media/EHmE5f-U8AA6_mM.jpg, https://t.co/aG1kf7a5ew, pic.twitter.com/aG1kf7a5ew, https://twitter.com/RoutledgeEd/status/1187126122376392704/photo/1, photo, 150, 150, crop, 1536, 2048, fit, 900, 1200, fit, 510, 680, fit, 1187126100159164416, 1187126100159164416, 265, 288, http://pbs.twimg.com/media/EHmE5f-U8AA6_mM.jpg, https://pbs.twimg.com/media/EHmE5f-U8AA6_mM.jpg, https://t.co/aG1kf7a5ew, pic.twitter.com/aG1kf7a5ew, https://twitter.com/RoutledgeEd/status/1187126122376392704/photo/1, photo, 150, 150, crop, 1536, 2048, fit, 900, 1200, fit, 510, 680, fit, NA, <a href="http://twitter.com/download/iphone" rel="nofollow">Twitter for iPhone</a>, NA, NA, NA, NA, NA, 27606068, 27606068, Routledge Education Books, RoutledgeEd, Global, Supporting educators, teachers, scholars and students with informative and practical books based on leading research and classroom practice., http://t.co/j4LZK9ypti, http://t.co/j4LZK9ypti, http://www.routledge.com/education, routledge.com/education, 0, 22, FALSE, 13847, 3280, 230, Mon Mar 30 08:33:32 +0000 2009, 2663, NA, NA, TRUE, FALSE, 10118, NA, FALSE, FALSE, FALSE, 6A9ADA, http://abs.twimg.com/images/themes/theme15/bg.png, https://abs.twimg.com/images/themes/theme15/bg.png, FALSE, http://pbs.twimg.com/profile_images/461891534913167362/Uo2i4Z3P_normal.jpeg, https://pbs.twimg.com/profile_images/461891534913167362/Uo2i4Z3P_normal.jpeg, https://pbs.twimg.com/profile_banners/27606068/1629726175, NA, NA, 6A9ADA, FFFFFF, C0DFEC, 333333, TRUE, FALSE, FALSE, FALSE, NA, NA, NA, none, NA, NA, NA, NA, FALSE, 4, 5, FALSE, FALSE, FALSE, en
+#> 2                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                      Tue Nov 12 14:01:12 +0000 2019, 1194253817304498176, 1194253817304498177, Reminder: Call for Chapter Proposals: Critical Digital Pedagogy – Broadening Horizons, Bridging Theory and Practice: \n\nhttps://t.co/IFksBMs8MV #edtech #oer20 #opened #aect19 #digped, FALSE, 0, 181, edtech, oer20, opened, aect19, digped, 143, 150, 151, 157, 158, 165, 166, 173, 174, 181, https://t.co/IFksBMs8MV, https://www.veletsianos.com/2019/10/09/call-for-chapter-proposals-critical-digital-pedagogy-broadening-horizons-bridging-theory-and-practice/, veletsianos.com/2019/10/09/cal…, 119, 142, <a href="https://about.twitter.com/products/tweetdeck" rel="nofollow">TweetDeck</a>, NA, NA, NA, NA, NA, 17883918, 17883918, George Veletsianos, PhD, veletsianos, 🇨🇦🇨🇾🇪🇺, Professor. Canada Research Chair in Learning & Tech @royalroads. Online & flexible learning, equity, futures, networked scholarship. 🌱for the animals, https://t.co/g2hQX7soEy, https://t.co/g2hQX7soEy, http://www.veletsianos.com, veletsianos.com, 0, 23, FALSE, 8400, 6009, 0, Thu Dec 04 23:58:32 +0000 2008, 6774, NA, NA, FALSE, FALSE, 2821, NA, FALSE, FALSE, FALSE, 000000, http://abs.twimg.com/images/themes/theme2/bg.gif, https://abs.twimg.com/images/themes/theme2/bg.gif, FALSE, http://pbs.twimg.com/profile_images/1336398184814321664/Mj1SlnuQ_normal.jpg, https://pbs.twimg.com/profile_images/1336398184814321664/Mj1SlnuQ_normal.jpg, https://pbs.twimg.com/profile_banners/17883918/1609951015, NA, NA, 1B95E0, 000000, 000000, 000000, FALSE, TRUE, FALSE, FALSE, NA, NA, NA, none, NA, NA, NA, NA, FALSE, 28, 30, FALSE, FALSE, FALSE, en
+#> 3                                                                                                                                                                                                                                                                                                                                                                                                                                                                                       Wed Feb 05 18:21:36 +0000 2020, 1225122317849657344, 1225122317849657345, Many thanks to @AECTTechTrends for supporting our @gsa_aect with the Grad Member Musings column! The latest guest author is #uidaho's Ken Cox, a first year doc student in our C&amp;I program and a member of my #UISTEMEdRG. https://t.co/8MuP9Mza8f #aect #aect20 #aect19, FALSE, 0, 268, uidaho, UISTEMEdRG, aect, aect20, aect19, 124, 131, 210, 221, 247, 252, 253, 260, 261, 268, AECTTechTrends, gsa_aect, TechTrends Editor, AECT GSA, 804807943, 922536306437181440, 804807943, 922536306437181440, 15, 30, 50, 59, https://t.co/8MuP9Mza8f, https://doi.org/10.1007/s11528-020-00477-5, doi.org/10.1007/s11528…, 223, 246, <a href="https://about.twitter.com/products/tweetdeck" rel="nofollow">TweetDeck</a>, NA, NA, NA, NA, NA, 14215524, 14215524, Dr. Tonia A. Dousay, tadousay, Moscow, ID, ❖ @UAAnchorage Professor ⋄ Director of #UAASOE ⋄ @TAMU BS '98 MS '00 ⋄ @UniversityofGA PhD '13 ⋄ #disted ⋄ #edtech ⋄ #teachered ⋄ #instructionaldesign ❖, https://t.co/mNe8apZBwK, https://t.co/mNe8apZBwK, http://about.me/tadousay, about.me/tadousay, 0, 23, FALSE, 2254, 1365, 0, Tue Mar 25 13:56:07 +0000 2008, 4254, NA, NA, TRUE, FALSE, 12153, NA, FALSE, FALSE, FALSE, 000000, http://abs.twimg.com/images/themes/theme9/bg.gif, https://abs.twimg.com/images/themes/theme9/bg.gif, FALSE, http://pbs.twimg.com/profile_images/1559787243090284544/8NHIaaKU_normal.jpg, https://pbs.twimg.com/profile_images/1559787243090284544/8NHIaaKU_normal.jpg, https://pbs.twimg.com/profile_banners/14215524/1657302769, NA, NA, FAB81E, 000000, 000000, 000000, FALSE, TRUE, FALSE, FALSE, NA, NA, NA, none, NA, NA, NA, NA, FALSE, 2, 8, FALSE, FALSE, FALSE, en
+#> 4                                                                                                                                                                                                                                                                                                                                                                                                                                                                                       Wed Feb 05 18:21:36 +0000 2020, 1225122317849657344, 1225122317849657345, Many thanks to @AECTTechTrends for supporting our @gsa_aect with the Grad Member Musings column! The latest guest author is #uidaho's Ken Cox, a first year doc student in our C&amp;I program and a member of my #UISTEMEdRG. https://t.co/8MuP9Mza8f #aect #aect20 #aect19, FALSE, 0, 268, uidaho, UISTEMEdRG, aect, aect20, aect19, 124, 131, 210, 221, 247, 252, 253, 260, 261, 268, AECTTechTrends, gsa_aect, TechTrends Editor, AECT GSA, 804807943, 922536306437181440, 804807943, 922536306437181440, 15, 30, 50, 59, https://t.co/8MuP9Mza8f, https://doi.org/10.1007/s11528-020-00477-5, doi.org/10.1007/s11528…, 223, 246, <a href="https://about.twitter.com/products/tweetdeck" rel="nofollow">TweetDeck</a>, NA, NA, NA, NA, NA, 14215524, 14215524, Dr. Tonia A. Dousay, tadousay, Moscow, ID, ❖ @UAAnchorage Professor ⋄ Director of #UAASOE ⋄ @TAMU BS '98 MS '00 ⋄ @UniversityofGA PhD '13 ⋄ #disted ⋄ #edtech ⋄ #teachered ⋄ #instructionaldesign ❖, https://t.co/mNe8apZBwK, https://t.co/mNe8apZBwK, http://about.me/tadousay, about.me/tadousay, 0, 23, FALSE, 2254, 1365, 0, Tue Mar 25 13:56:07 +0000 2008, 4254, NA, NA, TRUE, FALSE, 12153, NA, FALSE, FALSE, FALSE, 000000, http://abs.twimg.com/images/themes/theme9/bg.gif, https://abs.twimg.com/images/themes/theme9/bg.gif, FALSE, http://pbs.twimg.com/profile_images/1559787243090284544/8NHIaaKU_normal.jpg, https://pbs.twimg.com/profile_images/1559787243090284544/8NHIaaKU_normal.jpg, https://pbs.twimg.com/profile_banners/14215524/1657302769, NA, NA, FAB81E, 000000, 000000, 000000, FALSE, TRUE, FALSE, FALSE, NA, NA, NA, none, NA, NA, NA, NA, FALSE, 2, 8, FALSE, FALSE, FALSE, en
+#> 5                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                 NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA
+#> 6                                                                                                                                 Sat Jan 18 15:00:08 +0000 2020, 1218548635333545984, 1218548635333545984, The #AECT19 convention proceedings are available! The papers published in these volumes were presented at the annual AECT Convention in Las Vegas last October. https://t.co/YWd4W72eEn https://t.co/gGnVfbJ7vu, FALSE, 0, 183, AECT19, 4, 11, https://t.co/YWd4W72eEn, http://bit.ly/AECT19proceedings, bit.ly/AECT19proceedi…, 160, 183, 1218548626764587008, 1218548626764587008, 184, 207, http://pbs.twimg.com/media/EOknhRfX4AAM1M2.jpg, https://pbs.twimg.com/media/EOknhRfX4AAM1M2.jpg, https://t.co/gGnVfbJ7vu, pic.twitter.com/gGnVfbJ7vu, https://twitter.com/AECT/status/1218548635333545984/photo/1, photo, 150, 150, crop, 1200, 628, fit, 680, 356, fit, 1200, 628, fit, 1218548626764587008, 1218548626764587008, 184, 207, http://pbs.twimg.com/media/EOknhRfX4AAM1M2.jpg, https://pbs.twimg.com/media/EOknhRfX4AAM1M2.jpg, https://t.co/gGnVfbJ7vu, pic.twitter.com/gGnVfbJ7vu, https://twitter.com/AECT/status/1218548635333545984/photo/1, photo, 150, 150, crop, 1200, 628, fit, 680, 356, fit, 1200, 628, fit, NA, <a href="https://mobile.twitter.com" rel="nofollow">Twitter Web App</a>, NA, NA, NA, NA, NA, 12030342, 12030342, ✵ AECT ✵, AECT, Worldwide, [Association for Educational Communications & Technology] Supporting #educators & #professionals dedicated to improving #instruction through #technology., https://t.co/s2f9IMQQQ6, https://t.co/s2f9IMQQQ6, http://aect.org, aect.org, 0, 23, FALSE, 4716, 557, 125, Wed Jan 09 15:38:18 +0000 2008, 3577, NA, NA, TRUE, FALSE, 3179, NA, FALSE, FALSE, FALSE, C0DEED, http://abs.twimg.com/images/themes/theme1/bg.png, https://abs.twimg.com/images/themes/theme1/bg.png, FALSE, http://pbs.twimg.com/profile_images/1057649830879748096/-gzHp1_5_normal.jpg, https://pbs.twimg.com/profile_images/1057649830879748096/-gzHp1_5_normal.jpg, https://pbs.twimg.com/profile_banners/12030342/1640037645, NA, NA, 1DA1F2, C0DEED, DDEEF6, 333333, TRUE, FALSE, TRUE, FALSE, NA, NA, NA, none, NA, NA, NA, NA, FALSE, 9, 21, FALSE, FALSE, FALSE, en
+#> 7                                                                                                                                 Sat Jan 18 15:00:08 +0000 2020, 1218548635333545984, 1218548635333545984, The #AECT19 convention proceedings are available! The papers published in these volumes were presented at the annual AECT Convention in Las Vegas last October. https://t.co/YWd4W72eEn https://t.co/gGnVfbJ7vu, FALSE, 0, 183, AECT19, 4, 11, https://t.co/YWd4W72eEn, http://bit.ly/AECT19proceedings, bit.ly/AECT19proceedi…, 160, 183, 1218548626764587008, 1218548626764587008, 184, 207, http://pbs.twimg.com/media/EOknhRfX4AAM1M2.jpg, https://pbs.twimg.com/media/EOknhRfX4AAM1M2.jpg, https://t.co/gGnVfbJ7vu, pic.twitter.com/gGnVfbJ7vu, https://twitter.com/AECT/status/1218548635333545984/photo/1, photo, 150, 150, crop, 1200, 628, fit, 680, 356, fit, 1200, 628, fit, 1218548626764587008, 1218548626764587008, 184, 207, http://pbs.twimg.com/media/EOknhRfX4AAM1M2.jpg, https://pbs.twimg.com/media/EOknhRfX4AAM1M2.jpg, https://t.co/gGnVfbJ7vu, pic.twitter.com/gGnVfbJ7vu, https://twitter.com/AECT/status/1218548635333545984/photo/1, photo, 150, 150, crop, 1200, 628, fit, 680, 356, fit, 1200, 628, fit, NA, <a href="https://mobile.twitter.com" rel="nofollow">Twitter Web App</a>, NA, NA, NA, NA, NA, 12030342, 12030342, ✵ AECT ✵, AECT, Worldwide, [Association for Educational Communications & Technology] Supporting #educators & #professionals dedicated to improving #instruction through #technology., https://t.co/s2f9IMQQQ6, https://t.co/s2f9IMQQQ6, http://aect.org, aect.org, 0, 23, FALSE, 4716, 557, 125, Wed Jan 09 15:38:18 +0000 2008, 3577, NA, NA, TRUE, FALSE, 3179, NA, FALSE, FALSE, FALSE, C0DEED, http://abs.twimg.com/images/themes/theme1/bg.png, https://abs.twimg.com/images/themes/theme1/bg.png, FALSE, http://pbs.twimg.com/profile_images/1057649830879748096/-gzHp1_5_normal.jpg, https://pbs.twimg.com/profile_images/1057649830879748096/-gzHp1_5_normal.jpg, https://pbs.twimg.com/profile_banners/12030342/1640037645, NA, NA, 1DA1F2, C0DEED, DDEEF6, 333333, TRUE, FALSE, TRUE, FALSE, NA, NA, NA, none, NA, NA, NA, NA, FALSE, 9, 21, FALSE, FALSE, FALSE, en
+#>   quoted_status
+#> 1            NA
+#> 2            NA
+#> 3            NA
+#> 4            NA
+#> 5            NA
+#> 6            NA
+#> 7            NA
+#>                                                                                                                                                                                                                                                                           text
+#> 1                                                                                                                                 RT @RoutledgeEd: Congrats to authors Joseph Rene Corbeil, Maria Elena Corbeil, and (not pictured) Badrul Khan, who received the Outstanding…
+#> 2                                                                                                                               RT @veletsianos: Reminder: Call for Chapter Proposals: Critical Digital Pedagogy – Broadening Horizons, Bridging Theory and Practice: \n\nhtt…
+#> 3                                                                                                                                 RT @tadousay: Many thanks to @AECTTechTrends for supporting our @gsa_aect with the Grad Member Musings column! The latest guest author is #…
+#> 4                                                                                                                                 RT @tadousay: Many thanks to @AECTTechTrends for supporting our @gsa_aect with the Grad Member Musings column! The latest guest author is #…
+#> 5 Many thanks to @AECTTechTrends for supporting our @gsa_aect with the Grad Member Musings column! The latest guest author is #uidaho's Ken Cox, a first year doc student in our C&amp;I program and a member of my #UISTEMEdRG. https://t.co/8MuP9Mza8f #aect #aect20 #aect19
+#> 6                                                                                                                                 RT @AECT: The #AECT19 convention proceedings are available! The papers published in these volumes were presented at the annual AECT Convent…
+#> 7                                                                                                                                 RT @AECT: The #AECT19 convention proceedings are available! The papers published in these volumes were presented at the annual AECT Convent…
+#>   favorited_by scopes display_text_width quoted_status_id quoted_status_id_str
+#> 1           NA     NA                 NA               NA                   NA
+#> 2           NA     NA                 NA               NA                   NA
+#> 3           NA     NA                 NA               NA                   NA
+#> 4           NA     NA                 NA               NA                   NA
+#> 5           NA     NA                 NA               NA                   NA
+#> 6           NA     NA                 NA               NA                   NA
+#> 7           NA     NA                 NA               NA                   NA
+#>   quoted_status_permalink quote_count timestamp_ms reply_count filter_level
+#> 1                      NA          NA           NA          NA           NA
+#> 2                      NA          NA           NA          NA           NA
+#> 3                      NA          NA           NA          NA           NA
+#> 4                      NA          NA           NA          NA           NA
+#> 5                      NA          NA           NA          NA           NA
+#> 6                      NA          NA           NA          NA           NA
+#> 7                      NA          NA           NA          NA           NA
+#>   metadata query withheld_scope withheld_copyright withheld_in_countries
+#> 1       NA    NA             NA                 NA                    NA
+#> 2       NA    NA             NA                 NA                    NA
+#> 3       NA    NA             NA                 NA                    NA
+#> 4       NA    NA             NA                 NA                    NA
+#> 5       NA    NA             NA                 NA                    NA
+#> 6       NA    NA             NA                 NA                    NA
+#> 7       NA    NA             NA                 NA                    NA
+#>   possibly_sensitive_appealable      user_id         user_id_str
+#> 1                            NA 1.251952e+18 1251951804398669825
+#> 2                            NA 3.294167e+09          3294167372
+#> 3                            NA 9.225363e+17  922536306437181440
+#> 4                            NA 8.048079e+08           804807943
+#> 5                            NA 1.421552e+07            14215524
+#> 6                            NA 9.225363e+17  922536306437181440
+#> 7                            NA 1.088189e+18 1088189033266798598
+#>                                 name     screen_name                 location
+#> 1                    Harriet Watkins Harriet96152202                         
+#> 2                            Augusta      ELTAugusta British Columbia, Canada
+#> 3                           AECT GSA        gsa_aect                         
+#> 4                  TechTrends Editor  AECTTechTrends                         
+#> 5                Dr. Tonia A. Dousay        tadousay               Moscow, ID
+#> 6                           AECT GSA        gsa_aect                         
+#> 7 AECT Division of Distance Learning         aectddl                         
+#>                                                                                                                                                description
+#> 1                                                                        Love educational technology, online learning and just all the things … higher ed!
+#> 2                                                                                                                                                         
+#> 3                                    The official account of the Graduate Student Assembly for the Association of EducationalCommunications and Technology
+#> 4                                                                                                    Tweets from the Editor of TechTrends, an AECT journal
+#> 5 ❖ @UAAnchorage Professor ⋄ Director of #UAASOE ⋄ @TAMU BS '98 MS '00 ⋄ @UniversityofGA PhD '13 ⋄ #disted ⋄ #edtech ⋄ #teachered ⋄ #instructionaldesign ❖
+#> 6                                    The official account of the Graduate Student Assembly for the Association of EducationalCommunications and Technology
+#> 7                   The Division of Distance Learning is a special interest group of the Association for Educational Communications and Technology (AECT).
+#>                       url protected followers_count friends_count listed_count
+#> 1 https://t.co/ztRaRj9BLo     FALSE               7            17            0
+#> 2                    <NA>     FALSE             790          1324           78
+#> 3                    <NA>     FALSE             452            47            4
+#> 4                    <NA>     FALSE            2057            15           57
+#> 5 https://t.co/mNe8apZBwK     FALSE            2254          1365            0
+#> 6                    <NA>     FALSE             452            47            4
+#> 7 https://t.co/Rg9uXQTkSM     FALSE             864           485            6
+#>                  user_created_at favourites_count verified statuses_count
+#> 1 Sun Apr 19 19:12:33 +0000 2020                9    FALSE              9
+#> 2 Sun Jul 26 02:40:59 +0000 2015             5097    FALSE           7314
+#> 3 Mon Oct 23 18:52:50 +0000 2017              147    FALSE           2358
+#> 4 Wed Sep 05 15:17:03 +0000 2012              772    FALSE           1389
+#> 5 Tue Mar 25 13:56:07 +0000 2008             4254    FALSE          12153
+#> 6 Mon Oct 23 18:52:50 +0000 2017              147    FALSE           2358
+#> 7 Wed Jan 23 21:37:37 +0000 2019              254    FALSE            261
+#>                                                        profile_image_url_https
+#> 1 https://pbs.twimg.com/profile_images/1251951950163255299/cxSX369n_normal.jpg
+#> 2 https://pbs.twimg.com/profile_images/1557585747116339200/G6HGSCGS_normal.jpg
+#> 3 https://pbs.twimg.com/profile_images/1025847363615641600/1UylGRlO_normal.jpg
+#> 4  https://pbs.twimg.com/profile_images/817129539809714177/Px0jTTcg_normal.jpg
+#> 5 https://pbs.twimg.com/profile_images/1559787243090284544/8NHIaaKU_normal.jpg
+#> 6 https://pbs.twimg.com/profile_images/1025847363615641600/1UylGRlO_normal.jpg
+#> 7 https://pbs.twimg.com/profile_images/1371865688034451461/12PtxK7K_normal.png
+#>                                                     profile_banner_url
+#> 1 https://pbs.twimg.com/profile_banners/1251951804398669825/1587323939
+#> 2          https://pbs.twimg.com/profile_banners/3294167372/1660190623
+#> 3  https://pbs.twimg.com/profile_banners/922536306437181440/1531449088
+#> 4           https://pbs.twimg.com/profile_banners/804807943/1483653902
+#> 5            https://pbs.twimg.com/profile_banners/14215524/1657302769
+#> 6  https://pbs.twimg.com/profile_banners/922536306437181440/1531449088
+#> 7 https://pbs.twimg.com/profile_banners/1088189033266798598/1548280679
+#>   default_profile default_profile_image user_withheld_in_countries derived
+#> 1            TRUE                 FALSE                       NULL    <NA>
+#> 2           FALSE                 FALSE                       NULL    <NA>
+#> 3            TRUE                 FALSE                       NULL    <NA>
+#> 4            TRUE                 FALSE                       NULL    <NA>
+#> 5           FALSE                 FALSE                       NULL    <NA>
+#> 6            TRUE                 FALSE                       NULL    <NA>
+#> 7           FALSE                 FALSE                       NULL    <NA>
+#>   user_withheld_scope
+#> 1                  NA
+#> 2                  NA
+#> 3                  NA
+#> 4                  NA
+#> 5                  NA
+#> 6                  NA
+#> 7                  NA
+#>                                                                                             user_entities
+#> 1 NA, NA, NA, NA, NA, https://t.co/ztRaRj9BLo, https://harrietwatkins.com/, harrietwatkins.com, 0, 23, NA
+#> 2                                                                  NA, NA, NA, NA, NA, NA, NA, NA, NA, NA
+#> 3                                                                  NA, NA, NA, NA, NA, NA, NA, NA, NA, NA
+#> 4                                                                  NA, NA, NA, NA, NA, NA, NA, NA, NA, NA
+#> 5     NA, NA, NA, NA, NA, https://t.co/mNe8apZBwK, http://about.me/tadousay, about.me/tadousay, 0, 23, NA
+#> 6                                                                  NA, NA, NA, NA, NA, NA, NA, NA, NA, NA
+#> 7      NA, NA, NA, NA, NA, https://t.co/Rg9uXQTkSM, https://aect.org/ddl.php, aect.org/ddl.php, 0, 23, NA
 ```
 
 ------------------------------------------------------------------------
@@ -240,16 +423,16 @@ vignette
 
 ## Getting Help
 
-{tidytags} is still a work in progress, so we fully expect that there
+**tidytags** is still a work in progress, so we fully expect that there
 are still some bugs to work out and functions to document better. If you
 find an issue, have a question, or think of something that you really
-wish {tidytags} would do for you, don’t hesitate to [email
+wish **tidytags** would do for you, don’t hesitate to [email
 Bret](mailto:bret@bretsw.com) or reach out on Twitter:
 [@bretsw](https://twitter.com/bretsw) and
 [@jrosenberg6432](https://twitter.com/jrosenberg6432).
 
 You can also [submit an issue on
-Github](https://github.com/ropensci/tidytags/issues/).
+GitHub](https://github.com/ropensci/tidytags/issues/).
 
 You may also wish to try some general troubleshooting strategies:
 
@@ -268,23 +451,22 @@ You may also wish to try some general troubleshooting strategies:
 
 ## Considerations Related to Ethics, Data Privacy, and Human Subjects Research
 
-**{tidytags} should be used in strict accordance with Twitter’s
-[developer
+**tidytags should be used in strict accordance with Twitter’s [developer
 terms](https://developer.twitter.com/en/developer-terms/more-on-restricted-use-cases).**
 
 Although most Institutional Review Boards (IRBs) consider the Twitter
-data that {tidytags} analyzes to *not* necessarily be human subjects
+data that **tidytags** analyzes to *not* necessarily be human subjects
 research, there remain ethical considerations pertaining to the use of
-the {tidytags} package that should be discussed.
+the **tidytags** package that should be discussed.
 
-Even if {tidytags} use is not for research purposes (or if an IRB
+Even if **tidytags** use is not for research purposes (or if an IRB
 determines that a study is not human subjects research), “the release of
 personally identifiable or sensitive data is potentially harmful,” as
 noted in the [rOpenSci Packages
 guide](https://devguide.ropensci.org/policies.html#ethics-data-privacy-and-human-subjects-research).
 Therefore, although you *can* collect Twitter data (and you *can* use
-{tidytags} to analyze it), we urge care and thoughtfulness regarding how
-you analyze the data and communicate the results. In short, please
+**tidytags** to analyze it), we urge care and thoughtfulness regarding
+how you analyze the data and communicate the results. In short, please
 remember that most (if not all) of the data you collect may be about
 people—and [those people may not like the idea of their data being
 analyzed or included in
