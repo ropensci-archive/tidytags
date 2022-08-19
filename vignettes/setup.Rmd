@@ -65,7 +65,7 @@ Next, click the `Share` button in the top right corner of the Google Sheets wind
 
 <p align="center"><img src="files/share-anyone-with-link.png" alt="share-anyone-with-link" width="480"></p>
 
-The input needed for the `tidytags::read_tags()` function is either the entire URL from the top of the web browser when opened to a TAGS tracker, or a Google Sheet identifier (i.e., the alphanumeric string following "https://docs.google.com/spreadsheets/d/" in the TAGS tracker's URL). 
+The input needed for the `tidytags::read_tags()` function is either the entire URL from the top of the web browser when opened to a TAGS tracker, or a Google Sheet identifier (i.e., the alphanumeric string following `https://docs.google.com/spreadsheets/d/` in the TAGS tracker's URL). 
 
 <p align="center"><img src="files/TAGS-identifier-from-browser.png" alt="TAGS-identifier-from-browser" width="480"></p>
 

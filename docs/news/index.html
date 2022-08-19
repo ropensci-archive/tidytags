@@ -17,7 +17,7 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">tidytags</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="">1.0.0</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="">1.0.1</span>
       </span>
     </div>
 
@@ -64,26 +64,14 @@
     </div>
 
     <div class="section level2">
-<h2 class="page-header" data-toc-text="1.0.1" id="tidytags-101-2022-08-06">tidytags 1.0.1 (2022-08-06)<a class="anchor" aria-label="anchor" href="#tidytags-101-2022-08-06"></a></h2>
-<div class="section level4">
-<h4 id="breaking-changes-1-0-1">BREAKING CHANGES<a class="anchor" aria-label="anchor" href="#breaking-changes-1-0-1"></a></h4>
-<ul><li>
-</li></ul></div>
-<div class="section level4">
-<h4 id="new-features-1-0-1">NEW FEATURES<a class="anchor" aria-label="anchor" href="#new-features-1-0-1"></a></h4>
-<ul><li>
-</li></ul></div>
-<div class="section level4">
-<h4 id="bug-fixes-1-0-1">BUG FIXES<a class="anchor" aria-label="anchor" href="#bug-fixes-1-0-1"></a></h4>
-<ul><li>
-</li></ul><p>### DOCUMENTATION FIXES</p>
-<ul><li>
-</li></ul></div>
-</div>
+<h2 class="page-header" data-toc-text="1.0.1" id="tidytags-101-2022-08-18">tidytags 1.0.1 (2022-08-18)<a class="anchor" aria-label="anchor" href="#tidytags-101-2022-08-18"></a></h2>
+<p>### DOCUMENTATION FIXES</p>
+<ul><li>Cleaned up documentation in preparation for CRAN submission.</li>
+</ul></div>
     <div class="section level2">
-<h2 class="page-header" data-toc-text="1.0" id="tidytags-10-2022-08-05">tidytags 1.0 (2022-08-05)<a class="anchor" aria-label="anchor" href="#tidytags-10-2022-08-05"></a></h2>
+<h2 class="page-header" data-toc-text="1.0.0" id="tidytags-100-2022-08-05">tidytags 1.0.0 (2022-08-05)<a class="anchor" aria-label="anchor" href="#tidytags-100-2022-08-05"></a></h2>
 <div class="section level4">
-<h4 id="breaking-changes-1-0">BREAKING CHANGES<a class="anchor" aria-label="anchor" href="#breaking-changes-1-0"></a></h4>
+<h4 id="breaking-changes-1-0-0">BREAKING CHANGES<a class="anchor" aria-label="anchor" href="#breaking-changes-1-0-0"></a></h4>
 <ul><li>Updated Twitter authentication process to align with breaking changes caused by the rtweet 1.0 release.</li>
 <li>Updated the process_tweets() function to align with changes in available metadata and new variable names used in rtweet 1.0.</li>
 <li>Removed the lookup_many_users() function. With the rtweet 1.0 update, user information can be accessed with the rtweet::users_data() function.</li>
@@ -92,7 +80,7 @@
 <li>Removed the geocode_tags() function because rtweet 1.0 changed how location data is available and also added a new rtweet::lookup_coords() function. Note that at this time, rtweet::lookup_coords() requires a Google Maps API key rather than the OpenCage API we had recommended in earlier versions of tidytags. We still recommend the sf and mapview R packages for working with locations and geocoding.</li>
 </ul></div>
 <div class="section level4">
-<h4 id="new-features-1-0">NEW FEATURES<a class="anchor" aria-label="anchor" href="#new-features-1-0"></a></h4>
+<h4 id="new-features-1-0-0">NEW FEATURES<a class="anchor" aria-label="anchor" href="#new-features-1-0-0"></a></h4>
 <ul><li>Updated the read_tags() function so that a Google API key is no longer needed to pull tweet data from publicly shared Google Sheets.</li>
 <li>The process_tweets() function now also adds user information associated with the creator of each status. process_tweets() also now returns a column for the tweet type of each status.</li>
 </ul></div>
