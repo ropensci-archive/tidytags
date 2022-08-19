@@ -93,8 +93,10 @@ create_edgelist <-
       filtered_df_reply <-
         dplyr::filter(filtered_df, .data$tweet_type == "reply")
       receiver <- filtered_df_reply$in_reply_to_screen_name
-      el_reply <- dplyr::select(filtered_df_reply, .data$tweet_type, .data$sender)
-      el_reply <- dplyr::bind_cols(el_reply, receiver = receiver)
+      el_reply <-
+        dplyr::select(filtered_df_reply, .data$tweet_type, .data$sender)
+      el_reply <-
+        dplyr::bind_cols(el_reply, receiver = receiver)
     }
 
     if(nrow(dplyr::filter(filtered_df, .data$tweet_type == "retweet")) > 0) {
@@ -105,8 +107,10 @@ create_edgelist <-
         receiver[i] <-
           filtered_df_retweet$retweeted_status[[1]]$user$screen_name
       }
-      el_retweet <- dplyr::select(filtered_df_retweet, .data$tweet_type, .data$sender)
-      el_retweet <- dplyr::bind_cols(el_retweet, receiver = receiver)
+      el_retweet <-
+        dplyr::select(filtered_df_retweet, .data$tweet_type, .data$sender)
+      el_retweet <-
+        dplyr::bind_cols(el_retweet, receiver = receiver)
     }
 
     if(nrow(dplyr::filter(filtered_df, .data$tweet_type == "quote")) > 0) {
@@ -117,8 +121,10 @@ create_edgelist <-
         receiver[i] <-
           filtered_df_quote$quoted_status[[1]]$user$screen_name
       }
-      el_quote <- dplyr::select(filtered_df_quote, .data$tweet_type, .data$sender)
-      el_quote <- dplyr::bind_cols(el_quote, receiver = receiver)
+      el_quote <-
+        dplyr::select(filtered_df_quote, .data$tweet_type, .data$sender)
+      el_quote <-
+        dplyr::bind_cols(el_quote, receiver = receiver)
     }
 
     if(type == "all") {
