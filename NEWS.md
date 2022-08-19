@@ -17,6 +17,15 @@ tidytags development version
 
   * 
 
+
+tidytags 1.0.2 (2022-08-19)
+=========================
+
+ ### DOCUMENTATION FIXES
+
+  * Fixed broken URLs and reduced tarball size in preparation for CRAN resubmission.
+
+
 tidytags 1.0.1 (2022-08-18)
 =========================
 
