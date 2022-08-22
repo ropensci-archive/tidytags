@@ -19,11 +19,15 @@ Calculate additional information using status metadata
 }
 \examples{
 
-\dontrun{
-
+\donttest{
 example_url <- "18clYlQeJOc6W5QRuSlJ6_v3snqKJImFhU42bRkM_OX8"
-tmp_df <- pull_tweet_data(read_tags(example_url))
-tmp_processed <- process_tweets(tmp_df)
-tmp_processed
+tags_content <- read_tags(example_url)
+
+if (rtweet::auth_has_default()) {
+  tweets_data <- lookup_many_tweets(tags_content)
+  tweets_processed <- process_tweets(tweets_data)
+  tweets_processed
 }
+}
+
 }

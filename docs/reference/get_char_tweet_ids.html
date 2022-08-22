@@ -22,7 +22,7 @@ from the URL linking to specific statuses."><meta property="og:image" content="h
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">tidytags</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="">1.0.1</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="">1.0.2</span>
       </span>
     </div>
 
@@ -102,14 +102,26 @@ in the 'status_url' column of a dataframe returned by
     <div id="ref-examples">
     <h2>Examples</h2>
     <div class="sourceCode"><pre class="sourceCode r"><code><span class="r-in"><span></span></span>
-<span class="r-in"><span><span class="kw">if</span> <span class="op">(</span><span class="cn">FALSE</span><span class="op">)</span> <span class="op">{</span></span></span>
+<span class="r-in"><span><span class="co"># \donttest{</span></span></span>
 <span class="r-in"><span><span class="va">example_url</span> <span class="op">&lt;-</span> <span class="st">"18clYlQeJOc6W5QRuSlJ6_v3snqKJImFhU42bRkM_OX8"</span></span></span>
 <span class="r-in"><span><span class="va">tags_content</span> <span class="op">&lt;-</span> <span class="fu"><a href="read_tags.html">read_tags</a></span><span class="op">(</span><span class="va">example_url</span><span class="op">)</span></span></span>
+<span class="r-msg co"><span class="r-pr">#&gt;</span> <span style="color: #00BB00;">✔</span> Reading from "<span style="color: #00BBBB;">#aect19 tweet collector</span>".</span>
+<span class="r-msg co"><span class="r-pr">#&gt;</span> <span style="color: #00BB00;">✔</span> Range '<span style="color: #BBBB00;">'Archive'</span>'.</span>
 <span class="r-in"><span><span class="fu">get_char_tweet_ids</span><span class="op">(</span><span class="va">tags_content</span><span class="op">[</span><span class="fl">1</span><span class="op">:</span><span class="fl">10</span>, <span class="op">]</span><span class="op">)</span></span></span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  [1] "1251954312772812801" "1248064163211096064" "1234206946732830720"</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  [4] "1229405350178127872" "1227652243870097408" "1225505187453964288"</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  [7] "1225137879921385472" "1225122317849657345" "1219758386436165633"</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [10] "1219043574555299840"</span>
 <span class="r-in"><span><span class="fu">get_char_tweet_ids</span><span class="op">(</span><span class="va">tags_content</span><span class="op">$</span><span class="va">status_url</span><span class="op">[</span><span class="fl">1</span><span class="op">:</span><span class="fl">10</span><span class="op">]</span><span class="op">)</span></span></span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  [1] "1251954312772812801" "1248064163211096064" "1234206946732830720"</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  [4] "1229405350178127872" "1227652243870097408" "1225505187453964288"</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  [7] "1225137879921385472" "1225122317849657345" "1219758386436165633"</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [10] "1219043574555299840"</span>
 <span class="r-in"><span><span class="fu">get_char_tweet_ids</span><span class="op">(</span></span></span>
 <span class="r-in"><span>  <span class="st">"https://twitter.com/tweet__example/status/1176592704647716864"</span><span class="op">)</span></span></span>
-<span class="r-in"><span><span class="op">}</span></span></span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [1] "1176592704647716864"</span>
+<span class="r-in"><span><span class="co"># }</span></span></span>
+<span class="r-in"><span></span></span>
 </code></pre></div>
     </div>
   </div>

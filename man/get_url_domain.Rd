@@ -25,12 +25,10 @@ URLs shortened with services such as bit.ly and t.co
 }
 \examples{
 
-\dontrun{
-
 get_url_domain("https://www.tidyverse.org/packages/")
 get_url_domain("https://dplyr.tidyverse.org/")
 get_url_domain("http://bit.ly/2SfWO3K")
-}
+
 }
 \seealso{
 Read the documentation for \code{longurl::expand_urls()} and

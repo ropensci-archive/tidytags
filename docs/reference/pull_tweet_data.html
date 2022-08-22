@@ -24,7 +24,7 @@ run the rtweet::rtweet_app() function.'><meta property="og:image" content="https
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">tidytags</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="">1.0.1</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="">1.0.2</span>
       </span>
     </div>
 
@@ -132,29 +132,36 @@ limitations.</p></dd>
     <div id="ref-examples">
     <h2>Examples</h2>
     <div class="sourceCode"><pre class="sourceCode r"><code><span class="r-in"><span></span></span>
-<span class="r-in"><span><span class="kw">if</span> <span class="op">(</span><span class="cn">FALSE</span><span class="op">)</span> <span class="op">{</span></span></span>
-<span class="r-in"><span></span></span>
+<span class="r-in"><span><span class="co"># \donttest{</span></span></span>
 <span class="r-in"><span><span class="co">## Import data from a TAGS tracker:</span></span></span>
 <span class="r-in"><span><span class="va">example_tags_tracker</span> <span class="op">&lt;-</span> <span class="st">"18clYlQeJOc6W5QRuSlJ6_v3snqKJImFhU42bRkM_OX8"</span></span></span>
 <span class="r-in"><span><span class="va">tags_content</span> <span class="op">&lt;-</span> <span class="fu"><a href="read_tags.html">read_tags</a></span><span class="op">(</span><span class="va">example_tags_tracker</span><span class="op">)</span></span></span>
+<span class="r-msg co"><span class="r-pr">#&gt;</span> <span style="color: #00BB00;">✔</span> Reading from "<span style="color: #00BBBB;">#aect19 tweet collector</span>".</span>
+<span class="r-msg co"><span class="r-pr">#&gt;</span> <span style="color: #00BB00;">✔</span> Range '<span style="color: #BBBB00;">'Archive'</span>'.</span>
 <span class="r-in"><span></span></span>
-<span class="r-in"><span><span class="co">## Use any of three input parameters (TAGS dataframe, `status_url`</span></span></span>
-<span class="r-in"><span><span class="co">##   column, or `id_str` column)</span></span></span>
-<span class="r-in"><span><span class="fu">pull_tweet_data</span><span class="op">(</span><span class="va">tags_content</span><span class="op">)</span></span></span>
-<span class="r-in"><span><span class="fu">pull_tweet_data</span><span class="op">(</span>url_vector <span class="op">=</span> <span class="va">tags_content</span><span class="op">$</span><span class="va">status_url</span><span class="op">)</span></span></span>
-<span class="r-in"><span><span class="fu">pull_tweet_data</span><span class="op">(</span>id_vector <span class="op">=</span> <span class="va">tags_content</span><span class="op">$</span><span class="va">id_str</span><span class="op">)</span></span></span>
+<span class="r-in"><span><span class="kw">if</span> <span class="op">(</span><span class="fu">rtweet</span><span class="fu">::</span><span class="fu"><a href="https://docs.ropensci.org/rtweet/reference/auth_setup_default.html" class="external-link">auth_has_default</a></span><span class="op">(</span><span class="op">)</span><span class="op">)</span> <span class="op">{</span></span></span>
+<span class="r-in"><span>  <span class="co">## Use any of three input parameters (TAGS dataframe, `status_url`</span></span></span>
+<span class="r-in"><span>  <span class="co">##   column, or `id_str` column)</span></span></span>
+<span class="r-in"><span>  <span class="va">tweets_data_from_df</span> <span class="op">&lt;-</span> <span class="fu">pull_tweet_data</span><span class="op">(</span><span class="va">tags_content</span><span class="op">)</span></span></span>
+<span class="r-in"><span>  <span class="va">tweets_data_from_url</span> <span class="op">&lt;-</span></span></span>
+<span class="r-in"><span>    <span class="fu">pull_tweet_data</span><span class="op">(</span>url_vector <span class="op">=</span> <span class="va">tags_content</span><span class="op">$</span><span class="va">status_url</span><span class="op">)</span></span></span>
+<span class="r-in"><span>  <span class="va">tweets_data_from_ids</span> <span class="op">&lt;-</span> <span class="fu">pull_tweet_data</span><span class="op">(</span>id_vector <span class="op">=</span> <span class="va">tags_content</span><span class="op">$</span><span class="va">id_str</span><span class="op">)</span></span></span>
 <span class="r-in"><span></span></span>
-<span class="r-in"><span><span class="co">## Specifying the parameter `n` clarifies how many statuses to look up,</span></span></span>
-<span class="r-in"><span><span class="co">##   but the returned values may be less than `n` because some statuses</span></span></span>
-<span class="r-in"><span><span class="co">##   may have been deleted or made protected since the TAGS tracker</span></span></span>
-<span class="r-in"><span><span class="co">##   originally recorded them.</span></span></span>
-<span class="r-in"><span><span class="fu">pull_tweet_data</span><span class="op">(</span><span class="va">tags_content</span>, n <span class="op">=</span> <span class="fl">10</span><span class="op">)</span></span></span>
+<span class="r-in"><span>  <span class="co">## Specifying the parameter `n` clarifies how many statuses to look up,</span></span></span>
+<span class="r-in"><span>  <span class="co">##   but the returned values may be less than `n` because some statuses</span></span></span>
+<span class="r-in"><span>  <span class="co">##   may have been deleted or made protected since the TAGS tracker</span></span></span>
+<span class="r-in"><span>  <span class="co">##   originally recorded them.</span></span></span>
+<span class="r-in"><span>  <span class="va">tweets_data_10</span> <span class="op">&lt;-</span> <span class="fu">pull_tweet_data</span><span class="op">(</span><span class="va">tags_content</span>, n <span class="op">=</span> <span class="fl">10</span><span class="op">)</span></span></span>
 <span class="r-in"><span></span></span>
-<span class="r-in"><span><span class="co">## Note that the following two examples will return the same thing:</span></span></span>
-<span class="r-in"><span><span class="fu">pull_tweet_data</span><span class="op">(</span>url_vector <span class="op">=</span></span></span>
-<span class="r-in"><span>  <span class="st">"https://twitter.com/tweet__example/status/1176592704647716864"</span><span class="op">)</span></span></span>
-<span class="r-in"><span><span class="fu">pull_tweet_data</span><span class="op">(</span>id_vector <span class="op">=</span> <span class="st">"1176592704647716864"</span><span class="op">)</span></span></span>
+<span class="r-in"><span>  <span class="co">## Note that the following two examples will return the same thing:</span></span></span>
+<span class="r-in"><span>  <span class="va">one_tweet_data</span> <span class="op">&lt;-</span></span></span>
+<span class="r-in"><span>    <span class="fu">pull_tweet_data</span><span class="op">(</span>url_vector <span class="op">=</span></span></span>
+<span class="r-in"><span>      <span class="st">"https://twitter.com/tweet__example/status/1176592704647716864"</span><span class="op">)</span></span></span>
+<span class="r-in"><span>  <span class="va">one_tweet_data</span> <span class="op">&lt;-</span> <span class="fu">pull_tweet_data</span><span class="op">(</span>id_vector <span class="op">=</span> <span class="st">"1176592704647716864"</span><span class="op">)</span></span></span>
+<span class="r-in"><span>  <span class="va">one_tweet_data</span></span></span>
 <span class="r-in"><span><span class="op">}</span></span></span>
+<span class="r-in"><span><span class="co"># }</span></span></span>
+<span class="r-in"><span></span></span>
 </code></pre></div>
     </div>
   </div>

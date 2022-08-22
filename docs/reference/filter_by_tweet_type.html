@@ -23,7 +23,7 @@ also used in create_edgelist()."><meta property="og:image" content="https://docs
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">tidytags</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="">1.0.1</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="">1.0.2</span>
       </span>
     </div>
 
@@ -107,16 +107,21 @@ dataframe. Only the statuses of the specified type will remain.</p>
     <div id="ref-examples">
     <h2>Examples</h2>
     <div class="sourceCode"><pre class="sourceCode r"><code><span class="r-in"><span></span></span>
-<span class="r-in"><span><span class="kw">if</span> <span class="op">(</span><span class="cn">FALSE</span><span class="op">)</span> <span class="op">{</span></span></span>
-<span class="r-in"><span></span></span>
+<span class="r-in"><span><span class="co"># \donttest{</span></span></span>
 <span class="r-in"><span><span class="va">example_url</span> <span class="op">&lt;-</span> <span class="st">"18clYlQeJOc6W5QRuSlJ6_v3snqKJImFhU42bRkM_OX8"</span></span></span>
-<span class="r-in"><span><span class="va">tmp_df</span> <span class="op">&lt;-</span> <span class="fu"><a href="pull_tweet_data.html">pull_tweet_data</a></span><span class="op">(</span><span class="fu"><a href="read_tags.html">read_tags</a></span><span class="op">(</span><span class="va">example_url</span><span class="op">)</span><span class="op">)</span></span></span>
+<span class="r-in"><span><span class="va">tags_content</span> <span class="op">&lt;-</span> <span class="fu"><a href="read_tags.html">read_tags</a></span><span class="op">(</span><span class="va">example_url</span><span class="op">)</span></span></span>
+<span class="r-msg co"><span class="r-pr">#&gt;</span> <span style="color: #00BB00;">✔</span> Reading from "<span style="color: #00BBBB;">#aect19 tweet collector</span>".</span>
+<span class="r-msg co"><span class="r-pr">#&gt;</span> <span style="color: #00BB00;">✔</span> Range '<span style="color: #BBBB00;">'Archive'</span>'.</span>
 <span class="r-in"><span></span></span>
-<span class="r-in"><span><span class="va">only_replies</span> <span class="op">&lt;-</span> <span class="fu">filter_by_tweet_type</span><span class="op">(</span><span class="va">tmp_df</span>, <span class="st">"reply"</span><span class="op">)</span></span></span>
-<span class="r-in"><span><span class="va">only_retweets</span> <span class="op">&lt;-</span> <span class="fu">filter_by_tweet_type</span><span class="op">(</span><span class="va">tmp_df</span>, <span class="st">"retweet"</span><span class="op">)</span></span></span>
-<span class="r-in"><span><span class="va">only_quote_tweets</span> <span class="op">&lt;-</span> <span class="fu">filter_by_tweet_type</span><span class="op">(</span><span class="va">tmp_df</span>, <span class="st">"quote"</span><span class="op">)</span></span></span>
-<span class="r-in"><span><span class="va">only_originals</span> <span class="op">&lt;-</span> <span class="fu">filter_by_tweet_type</span><span class="op">(</span><span class="va">tmp_df</span>, <span class="st">"original"</span><span class="op">)</span></span></span>
+<span class="r-in"><span><span class="kw">if</span> <span class="op">(</span><span class="fu">rtweet</span><span class="fu">::</span><span class="fu"><a href="https://docs.ropensci.org/rtweet/reference/auth_setup_default.html" class="external-link">auth_has_default</a></span><span class="op">(</span><span class="op">)</span><span class="op">)</span> <span class="op">{</span></span></span>
+<span class="r-in"><span>  <span class="va">tweets_data</span> <span class="op">&lt;-</span> <span class="fu"><a href="lookup_many_tweets.html">lookup_many_tweets</a></span><span class="op">(</span><span class="va">tags_content</span><span class="op">)</span></span></span>
+<span class="r-in"><span>  <span class="va">only_replies</span> <span class="op">&lt;-</span> <span class="fu">filter_by_tweet_type</span><span class="op">(</span><span class="va">tweets_data</span>, <span class="st">"reply"</span><span class="op">)</span></span></span>
+<span class="r-in"><span>  <span class="va">only_retweets</span> <span class="op">&lt;-</span> <span class="fu">filter_by_tweet_type</span><span class="op">(</span><span class="va">tweets_data</span>, <span class="st">"retweet"</span><span class="op">)</span></span></span>
+<span class="r-in"><span>  <span class="va">only_quote_tweets</span> <span class="op">&lt;-</span> <span class="fu">filter_by_tweet_type</span><span class="op">(</span><span class="va">tweets_data</span>, <span class="st">"quote"</span><span class="op">)</span></span></span>
+<span class="r-in"><span>  <span class="va">only_originals</span> <span class="op">&lt;-</span> <span class="fu">filter_by_tweet_type</span><span class="op">(</span><span class="va">tweets_data</span>, <span class="st">"original"</span><span class="op">)</span></span></span>
 <span class="r-in"><span><span class="op">}</span></span></span>
+<span class="r-in"><span><span class="co"># }</span></span></span>
+<span class="r-in"><span></span></span>
 </code></pre></div>
     </div>
   </div>

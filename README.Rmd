@@ -16,7 +16,7 @@ knitr::opts_chunk$set(
 
 # tidytags <a href='https://docs.ropensci.org/tidytags/'><img src='man/figures/logo.png' align="right" height="138" /></a>
 
-##### *Importing and Analyzing Twitter Data Collected with Twitter Archiving Google Sheets*
+##### *Importing and Analyzing 'Twitter' Data Collected with 'Twitter Archiving Google Sheets'*
 
 <!-- badges: start -->
 
