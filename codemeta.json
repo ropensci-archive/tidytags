@@ -2,8 +2,8 @@
   "@context": "https://doi.org/10.5063/schema/codemeta-2.0",
   "@type": "SoftwareSourceCode",
   "identifier": "tidytags",
-  "description": "The 'tidytags' package coordinates the simplicity of collecting tweets over time with a 'Twitter Archiving Google Sheet' (TAGS; <https://tags.hawksey.info/>) and the utility of the 'rtweet' package (<https://docs.ropensci.org/rtweet/>) for processing and preparing additional Twitter metadata. 'tidytags' also introduces functions developed to facilitate systematic yet flexible analyses of data from Twitter.",
-  "name": "tidytags: Importing and Analyzing Twitter Data Collected with Twitter Archiving Google Sheets",
+  "description": "The 'tidytags' package coordinates the simplicity of collecting tweets over time with a 'Twitter Archiving Google Sheet' (TAGS; <https://tags.hawksey.info/>) and the utility of the 'rtweet' package (<https://docs.ropensci.org/rtweet/>) for processing and preparing additional 'Twitter' metadata. 'tidytags' also introduces functions developed to facilitate systematic yet flexible analyses of data from 'Twitter'.",
+  "name": "tidytags: Importing and Analyzing 'Twitter' Data Collected with 'Twitter Archiving Google Sheets'",
   "relatedLink": "https://docs.ropensci.org/tidytags/",
   "codeRepository": "https://github.com/ropensci/tidytags",
   "issueTracker": "https://github.com/ropensci/tidytags/issues",
@@ -272,7 +272,7 @@
     },
     "SystemRequirements": null
   },
-  "fileSize": "25209.196KB",
+  "fileSize": "25211.335KB",
   "citation": [
     {
       "@type": "SoftwareSourceCode",
