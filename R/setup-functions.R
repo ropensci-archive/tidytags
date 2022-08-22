@@ -16,10 +16,12 @@
 #' @seealso Read more about `library(googlesheets4)`
 #'   [here](https://github.com/tidyverse/googlesheets4).
 #' @examples
-
+#'
+#' \donttest{
 #' example_tags <- "18clYlQeJOc6W5QRuSlJ6_v3snqKJImFhU42bRkM_OX8"
 #' read_tags(example_tags)
-
+#' }
+#'
 #' @export
 read_tags <-
   function(tags_id) {

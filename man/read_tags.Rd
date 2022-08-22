@@ -26,8 +26,12 @@ browser window, select \verb{Get shareable link}, and set the permissions
 to 'Anyone with the link can view.'
 }
 \examples{
+
+\donttest{
 example_tags <- "18clYlQeJOc6W5QRuSlJ6_v3snqKJImFhU42bRkM_OX8"
 read_tags(example_tags)
+}
+
 }
 \seealso{
 Read more about \code{library(googlesheets4)}
