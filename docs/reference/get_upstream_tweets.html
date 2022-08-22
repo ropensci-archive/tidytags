@@ -24,7 +24,7 @@ the Twitter API rate limit of 90,000 statuses in a 15-minute period."><meta prop
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">tidytags</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="">1.0.1</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="">1.0.2</span>
       </span>
     </div>
 
@@ -105,16 +105,28 @@ replies</p>
     <p>This function requires authentication; please see
 <code><a href="../articles/setup.html">vignette("setup", package = "tidytags")</a></code></p>
     </div>
+    <div id="see-also">
+    <h2>See also</h2>
+    <div class="dont-index"><p>Read more about rtweet authentication setup at
+<code><a href="https://docs.ropensci.org/rtweet/articles/auth.html" class="external-link">vignette("auth", package = "rtweet")</a></code></p></div>
+    </div>
 
     <div id="ref-examples">
     <h2>Examples</h2>
     <div class="sourceCode"><pre class="sourceCode r"><code><span class="r-in"><span></span></span>
-<span class="r-in"><span><span class="kw">if</span> <span class="op">(</span><span class="cn">FALSE</span><span class="op">)</span> <span class="op">{</span></span></span>
+<span class="r-in"><span><span class="co"># \donttest{</span></span></span>
 <span class="r-in"><span><span class="va">example_url</span> <span class="op">&lt;-</span> <span class="st">"18clYlQeJOc6W5QRuSlJ6_v3snqKJImFhU42bRkM_OX8"</span></span></span>
-<span class="r-in"><span><span class="va">tmp_df</span> <span class="op">&lt;-</span> <span class="fu"><a href="pull_tweet_data.html">pull_tweet_data</a></span><span class="op">(</span><span class="fu"><a href="read_tags.html">read_tags</a></span><span class="op">(</span><span class="va">example_url</span><span class="op">)</span><span class="op">)</span></span></span>
-<span class="r-in"><span><span class="va">more_replies_df</span> <span class="op">&lt;-</span> <span class="fu">get_upstream_tweets</span><span class="op">(</span><span class="va">tmp_df</span><span class="op">)</span></span></span>
-<span class="r-in"><span><span class="va">more_replies_df</span></span></span>
+<span class="r-in"><span><span class="va">tags_content</span> <span class="op">&lt;-</span> <span class="fu"><a href="read_tags.html">read_tags</a></span><span class="op">(</span><span class="va">example_url</span><span class="op">)</span></span></span>
+<span class="r-msg co"><span class="r-pr">#&gt;</span> <span style="color: #00BB00;">✔</span> Reading from "<span style="color: #00BBBB;">#aect19 tweet collector</span>".</span>
+<span class="r-msg co"><span class="r-pr">#&gt;</span> <span style="color: #00BB00;">✔</span> Range '<span style="color: #BBBB00;">'Archive'</span>'.</span>
+<span class="r-in"><span></span></span>
+<span class="r-in"><span><span class="kw">if</span> <span class="op">(</span><span class="fu">rtweet</span><span class="fu">::</span><span class="fu"><a href="https://docs.ropensci.org/rtweet/reference/auth_setup_default.html" class="external-link">auth_has_default</a></span><span class="op">(</span><span class="op">)</span><span class="op">)</span> <span class="op">{</span></span></span>
+<span class="r-in"><span>  <span class="va">tweets_data</span> <span class="op">&lt;-</span> <span class="fu"><a href="lookup_many_tweets.html">lookup_many_tweets</a></span><span class="op">(</span><span class="va">tags_content</span><span class="op">)</span></span></span>
+<span class="r-in"><span>  <span class="va">more_replies_df</span> <span class="op">&lt;-</span> <span class="fu">get_upstream_tweets</span><span class="op">(</span><span class="va">tweets_data</span><span class="op">)</span></span></span>
+<span class="r-in"><span>  <span class="va">more_replies_df</span></span></span>
 <span class="r-in"><span><span class="op">}</span></span></span>
+<span class="r-in"><span><span class="co"># }</span></span></span>
+<span class="r-in"><span></span></span>
 </code></pre></div>
     </div>
   </div>

@@ -1,5 +1,5 @@
 Package: tidytags
-Title: Importing and Analyzing Twitter Data Collected with Twitter Archiving Google Sheets
+Title: Importing and Analyzing 'Twitter' Data Collected with 'Twitter Archiving Google Sheets'
 Version: 1.0.2
 License: MIT + file LICENSE
 Authors@R: c(
@@ -24,9 +24,9 @@ Authors@R: c(
 Description: The 'tidytags' package coordinates the simplicity of collecting tweets 
     over time with a 'Twitter Archiving Google Sheet' (TAGS; <https://tags.hawksey.info/>) 
     and the utility of the 'rtweet' package (<https://docs.ropensci.org/rtweet/>) 
-    for processing and preparing additional Twitter metadata. 'tidytags' also 
+    for processing and preparing additional 'Twitter' metadata. 'tidytags' also 
     introduces functions developed to facilitate systematic yet flexible analyses 
-    of data from Twitter.
+    of data from 'Twitter'.
 Language: en-US
 URL: https://docs.ropensci.org/tidytags/ (website) https://github.com/ropensci/tidytags
 Depends: 

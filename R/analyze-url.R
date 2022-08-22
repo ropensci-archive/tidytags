@@ -14,12 +14,10 @@
 #'   `urltools::domain()`.
 #' @examples
 #'
-#' \dontrun{
-#'
 #' get_url_domain("https://www.tidyverse.org/packages/")
 #' get_url_domain("https://dplyr.tidyverse.org/")
 #' get_url_domain("http://bit.ly/2SfWO3K")
-#' }
+#'
 #' @export
 get_url_domain <-
   function(x, wait = 10) {

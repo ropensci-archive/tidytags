@@ -26,7 +26,7 @@ from the URL linking to specific statuses.
 }
 \examples{
 
-\dontrun{
+\donttest{
 example_url <- "18clYlQeJOc6W5QRuSlJ6_v3snqKJImFhU42bRkM_OX8"
 tags_content <- read_tags(example_url)
 get_char_tweet_ids(tags_content[1:10, ])
@@ -34,4 +34,5 @@ get_char_tweet_ids(tags_content$status_url[1:10])
 get_char_tweet_ids(
   "https://twitter.com/tweet__example/status/1176592704647716864")
 }
+
 }

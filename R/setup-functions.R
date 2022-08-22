@@ -16,12 +16,10 @@
 #' @seealso Read more about `library(googlesheets4)`
 #'   [here](https://github.com/tidyverse/googlesheets4).
 #' @examples
-#'
-#' \dontrun{
-#'
+
 #' example_tags <- "18clYlQeJOc6W5QRuSlJ6_v3snqKJImFhU42bRkM_OX8"
 #' read_tags(example_tags)
-#' }
+
 #' @export
 read_tags <-
   function(tags_id) {
@@ -47,7 +45,7 @@ read_tags <-
 #'
 #' @examples
 #'
-#' \dontrun{
+#' \donttest{
 #' example_url <- "18clYlQeJOc6W5QRuSlJ6_v3snqKJImFhU42bRkM_OX8"
 #' tags_content <- read_tags(example_url)
 #' get_char_tweet_ids(tags_content[1:10, ])
@@ -55,6 +53,7 @@ read_tags <-
 #' get_char_tweet_ids(
 #'   "https://twitter.com/tweet__example/status/1176592704647716864")
 #' }
+#'
 #' @importFrom rlang .data
 #' @export
 get_char_tweet_ids <-
@@ -97,29 +96,34 @@ get_char_tweet_ids <-
 #'   `vignette("auth", package = "rtweet")`
 #' @examples
 #'
-#' \dontrun{
-#'
+#' \donttest{
 #' ## Import data from a TAGS tracker:
 #' example_tags_tracker <- "18clYlQeJOc6W5QRuSlJ6_v3snqKJImFhU42bRkM_OX8"
 #' tags_content <- read_tags(example_tags_tracker)
 #'
-#' ## Use any of three input parameters (TAGS dataframe, `status_url`
-#' ##   column, or `id_str` column)
-#' pull_tweet_data(tags_content)
-#' pull_tweet_data(url_vector = tags_content$status_url)
-#' pull_tweet_data(id_vector = tags_content$id_str)
+#' if (rtweet::auth_has_default()) {
+#'   ## Use any of three input parameters (TAGS dataframe, `status_url`
+#'   ##   column, or `id_str` column)
+#'   tweets_data_from_df <- pull_tweet_data(tags_content)
+#'   tweets_data_from_url <-
+#'     pull_tweet_data(url_vector = tags_content$status_url)
+#'   tweets_data_from_ids <- pull_tweet_data(id_vector = tags_content$id_str)
 #'
-#' ## Specifying the parameter `n` clarifies how many statuses to look up,
-#' ##   but the returned values may be less than `n` because some statuses
-#' ##   may have been deleted or made protected since the TAGS tracker
-#' ##   originally recorded them.
-#' pull_tweet_data(tags_content, n = 10)
+#'   ## Specifying the parameter `n` clarifies how many statuses to look up,
+#'   ##   but the returned values may be less than `n` because some statuses
+#'   ##   may have been deleted or made protected since the TAGS tracker
+#'   ##   originally recorded them.
+#'   tweets_data_10 <- pull_tweet_data(tags_content, n = 10)
 #'
-#' ## Note that the following two examples will return the same thing:
-#' pull_tweet_data(url_vector =
-#'   "https://twitter.com/tweet__example/status/1176592704647716864")
-#' pull_tweet_data(id_vector = "1176592704647716864")
+#'   ## Note that the following two examples will return the same thing:
+#'   one_tweet_data <-
+#'     pull_tweet_data(url_vector =
+#'       "https://twitter.com/tweet__example/status/1176592704647716864")
+#'   one_tweet_data <- pull_tweet_data(id_vector = "1176592704647716864")
+#'   one_tweet_data
 #' }
+#' }
+#'
 #' @export
 pull_tweet_data <-
   function(df = NULL, url_vector = NULL, id_vector = NULL, n = NULL) {
@@ -201,14 +205,19 @@ pull_tweet_data <-
 #' @seealso Read more about rtweet authentication setup at
 #'   `vignette("auth", package = "rtweet")`
 #' @examples
-#' \dontrun{
 #'
+#' \donttest{
 #' example_url <- "18clYlQeJOc6W5QRuSlJ6_v3snqKJImFhU42bRkM_OX8"
 #' tags_content <- read_tags(example_url)
-#' lookup_many_tweets(tags_content$id_str)
-#' lookup_many_tweets("1176592704647716864")
-#' lookup_many_tweets("1176592704647716864", alarm = TRUE)
+#'
+#' if (rtweet::auth_has_default()) {
+#'   tweets_data <- lookup_many_tweets(tags_content$id_str)
+#'   one_tweet_data <- lookup_many_tweets("1176592704647716864")
+#'   one_tweet_data <- lookup_many_tweets("1176592704647716864", alarm = TRUE)
+#'   one_tweet_data
 #' }
+#' }
+#'
 #' @export
 lookup_many_tweets <-
   function(x, alarm = FALSE) {
@@ -343,13 +352,17 @@ get_tweet_type <-
 #'   hashtags_count, urls_count, tweet_type, is_self_reply
 #' @examples
 #'
-#' \dontrun{
-#'
+#' \donttest{
 #' example_url <- "18clYlQeJOc6W5QRuSlJ6_v3snqKJImFhU42bRkM_OX8"
-#' tmp_df <- pull_tweet_data(read_tags(example_url))
-#' tmp_processed <- process_tweets(tmp_df)
-#' tmp_processed
+#' tags_content <- read_tags(example_url)
+#'
+#' if (rtweet::auth_has_default()) {
+#'   tweets_data <- lookup_many_tweets(tags_content)
+#'   tweets_processed <- process_tweets(tweets_data)
+#'   tweets_processed
 #' }
+#' }
+#'
 #' @importFrom rlang .data
 #' @export
 process_tweets <-

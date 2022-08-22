@@ -39,14 +39,21 @@ flag_unknown_upstream <-
 #'   replies
 #' @details This function requires authentication; please see
 #'   `vignette("setup", package = "tidytags")`
+#' @seealso Read more about rtweet authentication setup at
+#'   `vignette("auth", package = "rtweet")`
 #' @examples
 #'
-#' \dontrun{
+#' \donttest{
 #' example_url <- "18clYlQeJOc6W5QRuSlJ6_v3snqKJImFhU42bRkM_OX8"
-#' tmp_df <- pull_tweet_data(read_tags(example_url))
-#' more_replies_df <- get_upstream_tweets(tmp_df)
-#' more_replies_df
+#' tags_content <- read_tags(example_url)
+#'
+#' if (rtweet::auth_has_default()) {
+#'   tweets_data <- lookup_many_tweets(tags_content)
+#'   more_replies_df <- get_upstream_tweets(tweets_data)
+#'   more_replies_df
 #' }
+#' }
+#'
 #' @importFrom rlang .data
 #' @export
 get_upstream_tweets <-

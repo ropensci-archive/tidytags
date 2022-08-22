@@ -30,16 +30,19 @@ adds a new column called \code{edge_type}.
 }
 \examples{
 
-\dontrun{
-
+\donttest{
 example_url <- "18clYlQeJOc6W5QRuSlJ6_v3snqKJImFhU42bRkM_OX8"
-tmp_df <- pull_tweet_data(read_tags(example_url))
+tags_content <- read_tags(example_url)
 
-full_edgelist <- create_edgelist(tmp_df)
-full_edgelist
+if (rtweet::auth_has_default()) {
+  tweets_data <- lookup_many_tweets(tags_content)
+  full_edgelist <- create_edgelist(tweets_data)
+  full_edgelist
 
-reply_edgelist <- create_edgelist(tmp_df, type = "reply")
-retweet_edgelist <- create_edgelist(tmp_df, type = "retweet")
-quote_edgelist <- create_edgelist(tmp_df, type = "quote")
+  reply_edgelist <- create_edgelist(tweets_data, type = "reply")
+  retweet_edgelist <- create_edgelist(tweets_data, type = "retweet")
+  quote_edgelist <- create_edgelist(tweets_data, type = "quote")
 }
+}
+
 }

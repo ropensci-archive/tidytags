@@ -15,16 +15,19 @@
 #'   dataframe. Only the statuses of the specified type will remain.
 #' @examples
 #'
-#' \dontrun{
-#'
+#' \donttest{
 #' example_url <- "18clYlQeJOc6W5QRuSlJ6_v3snqKJImFhU42bRkM_OX8"
-#' tmp_df <- pull_tweet_data(read_tags(example_url))
+#' tags_content <- read_tags(example_url)
 #'
-#' only_replies <- filter_by_tweet_type(tmp_df, "reply")
-#' only_retweets <- filter_by_tweet_type(tmp_df, "retweet")
-#' only_quote_tweets <- filter_by_tweet_type(tmp_df, "quote")
-#' only_originals <- filter_by_tweet_type(tmp_df, "original")
+#' if (rtweet::auth_has_default()) {
+#'   tweets_data <- lookup_many_tweets(tags_content)
+#'   only_replies <- filter_by_tweet_type(tweets_data, "reply")
+#'   only_retweets <- filter_by_tweet_type(tweets_data, "retweet")
+#'   only_quote_tweets <- filter_by_tweet_type(tweets_data, "quote")
+#'   only_originals <- filter_by_tweet_type(tweets_data, "original")
 #' }
+#' }
+#'
 #' @importFrom rlang .data
 #' @export
 filter_by_tweet_type <-
@@ -57,18 +60,21 @@ filter_by_tweet_type <-
 #'   `receiver`, and `edge_type`.
 #' @examples
 #'
-#' \dontrun{
-#'
+#' \donttest{
 #' example_url <- "18clYlQeJOc6W5QRuSlJ6_v3snqKJImFhU42bRkM_OX8"
-#' tmp_df <- pull_tweet_data(read_tags(example_url))
+#' tags_content <- read_tags(example_url)
 #'
-#' full_edgelist <- create_edgelist(tmp_df)
-#' full_edgelist
+#' if (rtweet::auth_has_default()) {
+#'   tweets_data <- lookup_many_tweets(tags_content)
+#'   full_edgelist <- create_edgelist(tweets_data)
+#'   full_edgelist
 #'
-#' reply_edgelist <- create_edgelist(tmp_df, type = "reply")
-#' retweet_edgelist <- create_edgelist(tmp_df, type = "retweet")
-#' quote_edgelist <- create_edgelist(tmp_df, type = "quote")
+#'   reply_edgelist <- create_edgelist(tweets_data, type = "reply")
+#'   retweet_edgelist <- create_edgelist(tweets_data, type = "retweet")
+#'   quote_edgelist <- create_edgelist(tweets_data, type = "quote")
 #' }
+#' }
+#'
 #' @importFrom rlang .data
 #' @export
 create_edgelist <-

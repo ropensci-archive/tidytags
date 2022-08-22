@@ -42,29 +42,34 @@ This function requires authentication; please see
 }
 \examples{
 
-\dontrun{
-
+\donttest{
 ## Import data from a TAGS tracker:
 example_tags_tracker <- "18clYlQeJOc6W5QRuSlJ6_v3snqKJImFhU42bRkM_OX8"
 tags_content <- read_tags(example_tags_tracker)
 
-## Use any of three input parameters (TAGS dataframe, `status_url`
-##   column, or `id_str` column)
-pull_tweet_data(tags_content)
-pull_tweet_data(url_vector = tags_content$status_url)
-pull_tweet_data(id_vector = tags_content$id_str)
+if (rtweet::auth_has_default()) {
+  ## Use any of three input parameters (TAGS dataframe, `status_url`
+  ##   column, or `id_str` column)
+  tweets_data_from_df <- pull_tweet_data(tags_content)
+  tweets_data_from_url <-
+    pull_tweet_data(url_vector = tags_content$status_url)
+  tweets_data_from_ids <- pull_tweet_data(id_vector = tags_content$id_str)
 
-## Specifying the parameter `n` clarifies how many statuses to look up,
-##   but the returned values may be less than `n` because some statuses
-##   may have been deleted or made protected since the TAGS tracker
-##   originally recorded them.
-pull_tweet_data(tags_content, n = 10)
+  ## Specifying the parameter `n` clarifies how many statuses to look up,
+  ##   but the returned values may be less than `n` because some statuses
+  ##   may have been deleted or made protected since the TAGS tracker
+  ##   originally recorded them.
+  tweets_data_10 <- pull_tweet_data(tags_content, n = 10)
 
-## Note that the following two examples will return the same thing:
-pull_tweet_data(url_vector =
-  "https://twitter.com/tweet__example/status/1176592704647716864")
-pull_tweet_data(id_vector = "1176592704647716864")
+  ## Note that the following two examples will return the same thing:
+  one_tweet_data <-
+    pull_tweet_data(url_vector =
+      "https://twitter.com/tweet__example/status/1176592704647716864")
+  one_tweet_data <- pull_tweet_data(id_vector = "1176592704647716864")
+  one_tweet_data
 }
+}
+
 }
 \seealso{
 Read more about rtweet authentication setup at

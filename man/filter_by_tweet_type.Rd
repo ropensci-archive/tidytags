@@ -28,14 +28,17 @@ also used in \code{create_edgelist()}.
 }
 \examples{
 
-\dontrun{
-
+\donttest{
 example_url <- "18clYlQeJOc6W5QRuSlJ6_v3snqKJImFhU42bRkM_OX8"
-tmp_df <- pull_tweet_data(read_tags(example_url))
+tags_content <- read_tags(example_url)
 
-only_replies <- filter_by_tweet_type(tmp_df, "reply")
-only_retweets <- filter_by_tweet_type(tmp_df, "retweet")
-only_quote_tweets <- filter_by_tweet_type(tmp_df, "quote")
-only_originals <- filter_by_tweet_type(tmp_df, "original")
+if (rtweet::auth_has_default()) {
+  tweets_data <- lookup_many_tweets(tags_content)
+  only_replies <- filter_by_tweet_type(tweets_data, "reply")
+  only_retweets <- filter_by_tweet_type(tweets_data, "retweet")
+  only_quote_tweets <- filter_by_tweet_type(tweets_data, "quote")
+  only_originals <- filter_by_tweet_type(tweets_data, "original")
 }
+}
+
 }

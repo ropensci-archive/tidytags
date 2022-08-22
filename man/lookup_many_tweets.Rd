@@ -25,14 +25,19 @@ This function requires authentication; please see
 \code{vignette("setup", package = "tidytags")}
 }
 \examples{
-\dontrun{
 
+\donttest{
 example_url <- "18clYlQeJOc6W5QRuSlJ6_v3snqKJImFhU42bRkM_OX8"
 tags_content <- read_tags(example_url)
-lookup_many_tweets(tags_content$id_str)
-lookup_many_tweets("1176592704647716864")
-lookup_many_tweets("1176592704647716864", alarm = TRUE)
+
+if (rtweet::auth_has_default()) {
+  tweets_data <- lookup_many_tweets(tags_content$id_str)
+  one_tweet_data <- lookup_many_tweets("1176592704647716864")
+  one_tweet_data <- lookup_many_tweets("1176592704647716864", alarm = TRUE)
+  one_tweet_data
 }
+}
+
 }
 \seealso{
 Read more about rtweet authentication setup at
