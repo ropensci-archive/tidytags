@@ -127,7 +127,13 @@ Two vignettes illustrate the setup and use of the package:
 
 ## Installation
 
-You can install **tidytags** through R-universe:
+To get the current released version of **tidytags** from CRAN:
+
+```{r, eval=FALSE}
+install.packages("tidytags")
+```
+
+Or you can install the development version of **tidytags** from GitHub:
 
 ```{r, eval=FALSE}
 install.packages("tidytags", repos = "https://ropensci.r-universe.dev")
