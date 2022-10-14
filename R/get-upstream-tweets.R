@@ -79,7 +79,7 @@ get_upstream_tweets <-
             pull_tweet_data(id_vector =
                               unknown_upstream$in_reply_to_status_id_str)
           n <- n + nrow(new_tweets)
-          df <- rbind(df, new_tweets)
+          df <- dplyr::bind_rows(df, new_tweets)
 
           unknown_upstream <- flag_unknown_upstream(df)
 

@@ -181,10 +181,34 @@ pull_tweet_data <-
     )
 
     if(nrow(new_df) > 0) {
-    new_df <- cbind(new_df, rtweet::users_data(new_df))
-    names(new_df)[c(44, 45, 55, 63, 65, 66)] <-
-      c("user_id", "user_id_str", "user_created_at",
-        "user_withheld_in_countries", "user_withheld_scope", "user_entities")
+      user_info <- rtweet::users_data(new_df)
+      duplicate_index <- which(colnames(user_info) %in% colnames(new_df))
+      colnames(user_info)[duplicate_index] <-
+        paste0("user_", colnames(user_info)[duplicate_index])
+      new_df <- cbind(new_df, user_info)
+
+      tweets_col_order <-
+        c("created_at", "id", "id_str", "text", "full_text", "truncated",
+          "entities", "source", "in_reply_to_status_id",
+          "in_reply_to_status_id_str", "in_reply_to_user_id",
+          "in_reply_to_user_id_str", "in_reply_to_screen_name", "geo",
+          "coordinates", "place", "contributors", "is_quote_status",
+          "retweet_count", "favorite_count", "favorited", "favorited_by",
+          "retweeted", "scopes", "lang", "possibly_sensitive",
+          "display_text_width", "display_text_range", "retweeted_status",
+          "quoted_status", "quoted_status_id", "quoted_status_id_str",
+          "quoted_status_permalink", "quote_count", "timestamp_ms",
+          "reply_count","filter_level", "metadata", "query", "withheld_scope",
+          "withheld_copyright", "withheld_in_countries",
+          "possibly_sensitive_appealable", "user_id", "user_id_str", "name",
+          "screen_name", "location", "description", "url", "protected",
+          "followers_count", "friends_count", "listed_count", "user_created_at",
+          "favourites_count", "verified", "statuses_count",
+          "profile_image_url_https", "profile_banner_url", "default_profile",
+          "default_profile_image", "user_withheld_in_countries", "derived",
+          "user_withheld_scope", "user_entities")
+      new_df <- new_df[, tweets_col_order]
+
     } else {
       message("pull_tweet_data() was unable to retrieve any additional data")
       new_df <- NULL
