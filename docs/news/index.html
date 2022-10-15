@@ -17,7 +17,7 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">tidytags</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="">1.0.2</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="">1.0.3</span>
       </span>
     </div>
 
@@ -64,16 +64,27 @@
     </div>
 
     <div class="section level2">
+<h2 class="page-header" data-toc-text="1.0.3" id="tidytags-103-2022-10-14">tidytags 1.0.3 (2022-10-14)<a class="anchor" aria-label="anchor" href="#tidytags-103-2022-10-14"></a></h2>
+<div class="section level4">
+<h4 id="bug-fixes-1-0-3">BUG FIXES<a class="anchor" aria-label="anchor" href="#bug-fixes-1-0-3"></a></h4>
+<ul><li>Fixed a bug in <code><a href="../reference/get_upstream_tweets.html">get_upstream_tweets()</a></code> where column names were out of order and caused an error</li>
+</ul></div>
+</div>
+    <div class="section level2">
 <h2 class="page-header" data-toc-text="1.0.2" id="tidytags-102-2022-08-19">tidytags 1.0.2 (2022-08-19)<small>2022-08-23</small><a class="anchor" aria-label="anchor" href="#tidytags-102-2022-08-19"></a></h2>
-<p>### DOCUMENTATION FIXES</p>
+<div class="section level4">
+<h4 id="documentation-fixes-1-0-2">DOCUMENTATION FIXES<a class="anchor" aria-label="anchor" href="#documentation-fixes-1-0-2"></a></h4>
 <ul><li>Fixed broken URLs and reduced tarball size in preparation for CRAN resubmission.</li>
 <li>In function documentation,  instances have been updated to .</li>
 </ul></div>
+</div>
     <div class="section level2">
 <h2 class="page-header" data-toc-text="1.0.1" id="tidytags-101-2022-08-18">tidytags 1.0.1 (2022-08-18)<a class="anchor" aria-label="anchor" href="#tidytags-101-2022-08-18"></a></h2>
-<p>### DOCUMENTATION FIXES</p>
+<div class="section level4">
+<h4 id="documentation-fixes-1-0-1">DOCUMENTATION FIXES<a class="anchor" aria-label="anchor" href="#documentation-fixes-1-0-1"></a></h4>
 <ul><li>Cleaned up documentation in preparation for CRAN submission.</li>
 </ul></div>
+</div>
     <div class="section level2">
 <h2 class="page-header" data-toc-text="1.0.0" id="tidytags-100-2022-08-05">tidytags 1.0.0 (2022-08-05)<a class="anchor" aria-label="anchor" href="#tidytags-100-2022-08-05"></a></h2>
 <div class="section level4">
@@ -93,11 +104,15 @@
 </div>
     <div class="section level2">
 <h2 class="page-header" data-toc-text="0.3.0" id="tidytags-030-2022-02-04">tidytags 0.3.0 (2022-02-04)<a class="anchor" aria-label="anchor" href="#tidytags-030-2022-02-04"></a></h2>
-<p>### BUG FIXES</p>
+<div class="section level4">
+<h4 id="bug-fixes-0-3-0">BUG FIXES<a class="anchor" aria-label="anchor" href="#bug-fixes-0-3-0"></a></h4>
 <ul><li>Updated to most recent versions of CI tests for R-CMD-check and test coverage.</li>
-</ul><p>### DOCUMENTATION FIXES</p>
+</ul></div>
+<div class="section level4">
+<h4 id="documentation-fixes-0-3-0">DOCUMENTATION FIXES<a class="anchor" aria-label="anchor" href="#documentation-fixes-0-3-0"></a></h4>
 <ul><li>Updated paper.md and paper.bib to coincide with submission for peer review at Journal of Open Source Software (JOSS).</li>
 </ul></div>
+</div>
     <div class="section level2">
 <h2 class="page-header" data-toc-text="0.2.1" id="tidytags-021-2021-12-14">tidytags 0.2.1 (2021-12-14)<a class="anchor" aria-label="anchor" href="#tidytags-021-2021-12-14"></a></h2>
 <div class="section level4">
@@ -111,11 +126,15 @@
 <div class="section level4">
 <h4 id="new-features-0-2-0">NEW FEATURES<a class="anchor" aria-label="anchor" href="#new-features-0-2-0"></a></h4>
 <ul><li>Added a new function lookup_many_users() to automatically iterate through the Twitter API limit of pulling metadata for only 90,000 users at one time</li>
-</ul><p>### BUG FIXES</p>
+</ul></div>
+<div class="section level4">
+<h4 id="bug-fixes-0-2-0">BUG FIXES<a class="anchor" aria-label="anchor" href="#bug-fixes-0-2-0"></a></h4>
 <ul><li>Updated several function names so as not to mask newer functions imported from {rtweet}, for example, get_mentions() is now create_mentions_edgelist(), and similar updates have been made for function building edgelists from quotes, replies, and retweets</li>
 <li>Updated tests to work with latest version of {vcr}</li>
 <li>Made fixes so CI tests would again work with real requests in addition to pre-recorded {vcr} data</li>
-</ul><p>### DOCUMENTATION FIXES</p>
+</ul></div>
+<div class="section level4">
+<h4 id="documentation-fixes-0-2-0">DOCUMENTATION FIXES<a class="anchor" aria-label="anchor" href="#documentation-fixes-0-2-0"></a></h4>
 <ul><li>Extensively updated the README doc and Setup vignette to help scaffold {tidytags} setup</li>
 </ul></div>
 </div>
@@ -126,7 +145,9 @@
 <ul><li>CI tests now work with real requests in addition to pre-recorded vcr data</li>
 <li>Added a Google API key for accessing a Google Sheet with <code><a href="../reference/read_tags.html">read_tags()</a></code>
 </li>
-</ul><p>### DOCUMENTATION FIXES</p>
+</ul></div>
+<div class="section level4">
+<h4 id="documentation-fixes-0-1-2">DOCUMENTATION FIXES<a class="anchor" aria-label="anchor" href="#documentation-fixes-0-1-2"></a></h4>
 <ul><li>Clarified process for obtaining an setting up API keys and tokens for Google, Twitter, and OpenCage</li>
 </ul></div>
 </div>

@@ -1,11 +1,6 @@
 # CRAN comments
 
-This is a revised submission from tidytags v1.0.2 submitted on 08/20/2022. 
-- Syntax for package and software names has been fixed in title and descrption.
-- In function documentation, \dontrun{} instances have been updated to \donttest{}.
-
-This is a revised submission from tidytags v1.0.1, submitted on 08/18/2022. 
-- Broken URLs have been fixed and the tarball size has been reduced to under 5MB.
+This is a revised submission from tidytags v1.0.2 submitted on 08/19/2022. This version fixes a bug causing an error in the `get_upstream_tweets()` function.
 
 ---
 
