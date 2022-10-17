@@ -30,9 +30,12 @@ This is a revised submission from tidytags v1.0.2 submitted on 08/19/2022. This 
 
 `rhub::check_for_cran()` result:
 
-**Test environment:** Windows Server 2022, R-release, 32/64 bit
+**Test environment:** Fedora Linux, R-devel, clang, gfortran
 
-**0 errors ✔ | 0 warnings ✔ | 0 notes ✔ **
+**0 errors ✔ | 0 warnings ✔ | 1 note ✔ **
+
+- checking HTML version of manual ... NOTE: Skipping checking HTML validation: no command 'tidy' found
+  - Explanation: As noted in an [r-source check](https://github.com/wch/r-source/blob/trunk/src/library/tools/R/check.R), this seems like an issue related to macOS's old version of HTML Tidy and not related to the package being checked.
 
 ---
 
@@ -40,36 +43,15 @@ This is a revised submission from tidytags v1.0.2 submitted on 08/19/2022. This 
 
 **Test environment:** Windows Server 2022, R-devel, 64 bit
 
-**0 errors ✔ | 0 warnings ✔ | 2 notes ✖ **
+**0 errors ✔ | 0 warnings ✔ | 1 note ✖ **
 
-- checking CRAN incoming feasibility ... [18s] 
-  - NOTE: Maintainer: 'K. Bret Staudt Willet <bret.staudtwillet@fsu.edu>' New submission
-  - Explanation: This is my first time submitting **tidytags** to CRAN.
-
-- checking for detritus in the temp directory ... 
-  - NOTE: Found the following files/directories: 'lastMiKTeXException'
+- checking for detritus in the temp directory ... NOTE: Found the following files/directories: 'lastMiKTeXException'
   - Explanation: As noted in [R-hub issue #503](https://github.com/r-hub/rhub/issues/503), this could be due to a bug/crash in MiKTeX and can likely be ignored.
-  
----
-
-`rhub::check_for_cran()` result:
-
-**Test environment:** Fedora Linux, R-devel, clang, gfortran
-
-**0 errors ✔ | 0 warnings ✔ | 2 notes ✖ **
-
-- checking CRAN incoming feasibility ... [4s/12s]
-  - NOTE: Maintainer: 'K. Bret Staudt Willet <bret.staudtwillet@fsu.edu>' New submission
-  - Explanation: This is my first time submitting **tidytags** to CRAN.
-
-- checking HTML version of manual ...
-  - NOTE: Skipping checking HTML validation: no command 'tidy' found
-  - Explanation: As noted in an [r-source check](https://github.com/wch/r-source/blob/trunk/src/library/tools/R/check.R), this seems like an issue related to macOS's old version of HTML Tidy and not related to the package being checked.
 
 ---
 
-`rhub::check(platform = 'debian-gcc-devel')` result:
+`rhub::check_on_windows()` result: 
 
-**Test environment:** Debian Linux, R-devel, GCC
+**Test environment:** Windows Server 2022, R-release, 32/64 bit
 
 **0 errors ✔ | 0 warnings ✔ | 0 notes ✔ **
