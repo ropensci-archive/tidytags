@@ -4,17 +4,23 @@
   "identifier": "tidytags",
   "description": "The 'tidytags' package coordinates the simplicity of collecting tweets over time with a 'Twitter Archiving Google Sheet' (TAGS; <https://tags.hawksey.info/>) and the utility of the 'rtweet' package (<https://docs.ropensci.org/rtweet/>) for processing and preparing additional 'Twitter' metadata. 'tidytags' also introduces functions developed to facilitate systematic yet flexible analyses of data from 'Twitter'.",
   "name": "tidytags: Importing and Analyzing 'Twitter' Data Collected with 'Twitter Archiving Google Sheets'",
-  "relatedLink": "https://docs.ropensci.org/tidytags/",
+  "relatedLink": ["https://docs.ropensci.org/tidytags/", "https://CRAN.R-project.org/package=tidytags"],
   "codeRepository": "https://github.com/ropensci/tidytags",
   "issueTracker": "https://github.com/ropensci/tidytags/issues",
   "license": "https://spdx.org/licenses/MIT",
-  "version": "1.0.2",
+  "version": "1.0.3",
   "programmingLanguage": {
     "@type": "ComputerLanguage",
     "name": "R",
     "url": "https://r-project.org"
   },
   "runtimePlatform": "R version 4.2.1 (2022-06-23)",
+  "provider": {
+    "@id": "https://cran.r-project.org",
+    "@type": "Organization",
+    "name": "Comprehensive R Archive Network (CRAN)",
+    "url": "https://cran.r-project.org"
+  },
   "author": [
     {
       "@type": "Person",
@@ -272,7 +278,7 @@
     },
     "SystemRequirements": null
   },
-  "fileSize": "25211.335KB",
+  "fileSize": "25276.699KB",
   "citation": [
     {
       "@type": "SoftwareSourceCode",
@@ -301,5 +307,5 @@
     "url": "https://github.com/ropensci/software-review/issues/382",
     "provider": "https://ropensci.org"
   },
-  "keywords": ["r-package", "twitter", "rstats", "r"]
+  "keywords": ["r-package", "twitter", "rstats", "r", "data-analysis", "data-collection"]
 }
