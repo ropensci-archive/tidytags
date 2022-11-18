@@ -28,7 +28,6 @@
 #' }
 #' }
 #'
-#' @importFrom rlang .data
 #' @export
 filter_by_tweet_type <-
   function(df, type) {

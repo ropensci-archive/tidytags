@@ -20,7 +20,8 @@ test_that("pull_tweet_data() is able to retrieve additional metadata starting
             testthat::expect_true("id_str" %in% names(from_df))
             testthat::expect_true("full_text" %in% names(from_df))
             testthat::expect_true("entities" %in% names(from_df))
-            testthat::expect_true("in_reply_to_status_id_str" %in% names(from_df))
+            testthat::expect_true("in_reply_to_status_id_str" %in%
+                                    names(from_df))
             testthat::expect_true("user_id_str" %in% names(from_df))
             testthat::expect_true("screen_name" %in% names(from_df))
             testthat::expect_true("location" %in% names(from_df))

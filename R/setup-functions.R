@@ -56,7 +56,6 @@ read_tags <-
 #'   "https://twitter.com/tweet__example/status/1176592704647716864")
 #' }
 #'
-#' @importFrom rlang .data
 #' @export
 get_char_tweet_ids <-
   function(x) {
