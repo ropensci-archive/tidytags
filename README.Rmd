@@ -63,7 +63,7 @@ Checks
 </td>
 
 <td align="left">
-<a href="https://github.com/ropensci/tidytags/actions/"><img src="https://github.com/ropensci/tidytags/workflows/R-CMD-check/badge.svg" alt="Check"></a>
+<a href="https://github.com/ropensci/software-review/issues/382"><img src="https://badges.ropensci.org/382_status.svg" alt="rOpenSci Peer Review"></a>
 </td>
 
 </tr>
@@ -75,7 +75,7 @@ Checks
 </td>
 
 <td align="left">
-<a href="https://cran.r-project.org/package=tidytags"><img src="https://cranlogs.r-pkg.org/badges/tidytags" alt="Downloads"></a>
+<a href="https://cran.r-project.org/package=tidytags"><img src="https://cranlogs.r-pkg.org/badges/tidytags" alt="Monthly Downloads"></a>
 </td>
 
 <td align="left">
@@ -83,7 +83,7 @@ Checks
 </td>
 
 <td align="left">
-<a href="https://app.codecov.io/gh/ropensci/tidytags?branch=main"><img src="https://codecov.io/gh/ropensci/tidytags/coverage.svg?branch=main" alt="Codecov"></a>
+<a href="https://github.com/ropensci/tidytags/actions/"><img src="https://github.com/ropensci/tidytags/workflows/R-CMD-check/badge.svg" alt="Check"></a>
 </td>
 
 </tr>
@@ -94,7 +94,7 @@ Checks
 </td>
 
 <td align="left">
-<a href="https://github.com/ropensci/software-review/issues/382"><img src="https://badges.ropensci.org/382_status.svg" alt="rOpenSci Peer Review"></a>
+<a href="https://cran.r-project.org/package=tidytags"><img src="https://cranlogs.r-pkg.org/badges/grand-total/tidytags" alt="Total Downloads"></a>
 </td>
 
 <td align="left">
@@ -102,6 +102,7 @@ Checks
 </td>
 
 <td align="left">
+<a href="https://app.codecov.io/gh/ropensci/tidytags?branch=main"><img src="https://codecov.io/gh/ropensci/tidytags/coverage.svg?branch=main" alt="Codecov"></a>
 </td>
 
 </tr>

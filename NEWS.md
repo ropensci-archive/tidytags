@@ -18,7 +18,7 @@ tidytags development version
 
   * 
 
-tidytags 1.1 (2022-11-18)
+tidytags 1.1.0 (2022-11-18)
 =========================
 
 ### BUG FIXES
