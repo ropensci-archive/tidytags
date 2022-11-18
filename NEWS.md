@@ -18,7 +18,15 @@ tidytags development version
 
   * 
 
+tidytags 1.1 (2022-11-18)
+=========================
 
+### BUG FIXES
+
+  * Fixed another bug in `get_upstream_tweets()` where the column `possibly_sensitive` was sometimes read in as a list, other times as a logical type.
+  * Addressed a bug in **vcr v1.1** that was causing **tidytags** tests to error in the CRAN logs (https://cran.r-project.org/web/checks/check_results_tidytags.html).
+  * The `setup-vcr.R` file was renamed to `helper-vcr.R` so that it will not be loaded when someone simply installs tidytags, only when package developers compile and test. 
+  * In addition, the vcr bug has been addressed by the developers of that package, so **vcr v1.2** is now the minimum suggested version for tidytags. 
 
 tidytags 1.0.3 (2022-10-14)
 =========================

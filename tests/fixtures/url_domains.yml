@@ -14,23 +14,23 @@ http_interactions:
       reason: OK
       message: 'Success: (200) OK'
     headers:
-      age: '49981'
+      age: '32082'
       cache-control: public, max-age=0, must-revalidate
       content-encoding: gzip
       content-type: text/html; charset=UTF-8
-      date: Fri, 14 Oct 2022 10:50:55 GMT
-      etag: '"4ceeed1dd9df37c94a6df795e94be99a-ssl-df"'
+      date: Fri, 18 Nov 2022 07:13:10 GMT
+      etag: '"5d5e024adab9e7cb8f4d3b65449e25a8-ssl-df"'
       server: Netlify
       strict-transport-security: max-age=31536000
       vary: Accept-Encoding
-      x-nf-request-id: 01GFCHHXP60C3JF9BET87K84M8
+      x-nf-request-id: 01GJ5QY5CNQQXJ9JDEC6J88B2W
       content-length: '3888'
     body:
-      encoding: UTF-8
+      encoding: ''
       file: no
       string: ''
-  recorded_at: 2022-10-15 00:43:56 GMT
-  recorded_with: vcr/1.0.2, webmockr/0.8.0
+  recorded_at: 2022-11-18 16:07:53 GMT
+  recorded_with: vcr/1.2.0, webmockr/0.8.2
 - request:
     method: head
     uri: https://www.tidyverse.org/packages/
@@ -46,23 +46,23 @@ http_interactions:
       reason: OK
       message: 'Success: (200) OK'
     headers:
-      age: '36594'
+      age: '9005'
       cache-control: public, max-age=0, must-revalidate
       content-encoding: gzip
       content-type: text/html; charset=UTF-8
-      date: Fri, 14 Oct 2022 14:34:01 GMT
-      etag: '"6673899d0f3b4e1bf4a8040b61179313-ssl-df"'
+      date: Fri, 18 Nov 2022 13:37:47 GMT
+      etag: '"276cfee2709432c21354b0ee05cc3ebf-ssl-df"'
       server: Netlify
       strict-transport-security: max-age=31536000
       vary: Accept-Encoding
-      x-nf-request-id: 01GFCHHXSCYAGNB02Y12FRGY57
+      x-nf-request-id: 01GJ5QY5ESA5135EEPV8RM4EBM
       content-length: '6941'
     body:
-      encoding: UTF-8
+      encoding: ''
       file: no
       string: ''
-  recorded_at: 2022-10-15 00:43:56 GMT
-  recorded_with: vcr/1.0.2, webmockr/0.8.0
+  recorded_at: 2022-11-18 16:07:53 GMT
+  recorded_with: vcr/1.2.0, webmockr/0.8.2
 - request:
     method: head
     uri: https://dplyr.tidyverse.org/
@@ -80,31 +80,31 @@ http_interactions:
     headers:
       server: GitHub.com
       content-type: text/html; charset=utf-8
-      last-modified: Fri, 14 Oct 2022 13:56:34 GMT
+      last-modified: Fri, 18 Nov 2022 15:57:18 GMT
       access-control-allow-origin: '*'
-      etag: W/"63496a92-6555"
-      expires: Fri, 14 Oct 2022 14:17:07 GMT
+      etag: W/"6377ab5e-6555"
+      expires: Fri, 18 Nov 2022 16:17:52 GMT
       cache-control: max-age=600
       content-encoding: gzip
       x-proxy-cache: MISS
-      x-github-request-id: 0804:67FE:7DEBD3:B4F388:63496D0B
+      x-github-request-id: 14CC:015B:E62548:13F971E:6377ADD8
       accept-ranges: bytes
-      date: Sat, 15 Oct 2022 00:43:55 GMT
+      date: Fri, 18 Nov 2022 16:07:52 GMT
       via: 1.1 varnish
       age: '0'
-      x-served-by: cache-iad-kiad7000070-IAD
-      x-cache: HIT
-      x-cache-hits: '1'
-      x-timer: S1665794636.807752,VS0,VE8
+      x-served-by: cache-mia11328-MIA
+      x-cache: MISS
+      x-cache-hits: '0'
+      x-timer: S1668787673.731997,VS0,VE32
       vary: Accept-Encoding
-      x-fastly-request-id: d70b432a541863c9564e3efcd767eadeea57d787
+      x-fastly-request-id: af0951ff7fc1bebdc66bc7138ba45848dad01297
       content-length: '6262'
     body:
-      encoding: UTF-8
+      encoding: ''
       file: no
       string: ''
-  recorded_at: 2022-10-15 00:43:56 GMT
-  recorded_with: vcr/1.0.2, webmockr/0.8.0
+  recorded_at: 2022-11-18 16:07:53 GMT
+  recorded_with: vcr/1.2.0, webmockr/0.8.2
 - request:
     method: head
     uri: https://www.npr.org/sections/technology/
@@ -124,21 +124,21 @@ http_interactions:
       x-cache-npr: HIT
       access-control-allow-origin: '*'
       access-control-allow-credentials: 'true'
-      x-npr-trace-id: renfV8PK2gX
+      x-npr-trace-id: renX7ensdiY
       x-content-type-options: nosniff
       x-xss-protection: 1; mode=block
-      x-served-by: pod-www-render-nginx-cfb458458-qzhrj
+      x-served-by: pod-www-render-nginx-6cdbf7dd46-snpwr
       referrer-policy: no-referrer-when-downgrade
       strict-transport-security: max-age=15724800; includeSubDomains
       vary: Accept-Encoding
       content-encoding: gzip
       cache-control: no-cache
-      expires: Sat, 15 Oct 2022 00:43:56 GMT
-      date: Sat, 15 Oct 2022 00:43:56 GMT
+      expires: Fri, 18 Nov 2022 16:07:53 GMT
+      date: Fri, 18 Nov 2022 16:07:53 GMT
       content-length: '20'
     body:
-      encoding: UTF-8
+      encoding: ''
       file: no
       string: ''
-  recorded_at: 2022-10-15 00:43:56 GMT
-  recorded_with: vcr/1.0.2, webmockr/0.8.0
+  recorded_at: 2022-11-18 16:07:53 GMT
+  recorded_with: vcr/1.2.0, webmockr/0.8.2

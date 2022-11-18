@@ -1,6 +1,6 @@
 Package: tidytags
 Title: Importing and Analyzing 'Twitter' Data Collected with 'Twitter Archiving Google Sheets'
-Version: 1.0.3
+Version: 1.1
 License: MIT + file LICENSE
 Authors@R: c(
     person("K. Bret", "Staudt Willet", , 
@@ -50,7 +50,7 @@ Suggests:
     tibble,
     tidygraph,
     urltools,
-    vcr (>= 1.0)
+    vcr (>= 1.2)
 Encoding: UTF-8
 BugReports: https://github.com/ropensci/tidytags/issues
 VignetteBuilder: knitr

@@ -10,6 +10,7 @@
 #' @return A new, filtered dataframe which only includes any reply statuses that
 #'   are not responses to statuses already in the dataset (i.e., upstream
 #'   replies)
+#' @importFrom rlang .data
 #' @keywords internal
 #' @noRd
 flag_unknown_upstream <-
@@ -54,7 +55,6 @@ flag_unknown_upstream <-
 #' }
 #' }
 #'
-#' @importFrom rlang .data
 #' @export
 get_upstream_tweets <-
   function(df) {

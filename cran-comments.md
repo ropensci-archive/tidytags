@@ -1,6 +1,10 @@
 # CRAN comments
 
-This is a revised submission from tidytags v1.0.2 submitted on 08/19/2022. This version fixes a bug causing an error in the `get_upstream_tweets()` function.
+## tidytags v1.1
+
+**11/18/2022**
+
+This is an update from tidytags v1.0.3 submitted on 10/14/2022. This version fixes a bug causing an error in the `get_upstream_tweets()` function and requires an updated version of the vcr package (>= 1.2).
 
 ---
 
@@ -30,23 +34,20 @@ This is a revised submission from tidytags v1.0.2 submitted on 08/19/2022. This 
 
 `rhub::check_for_cran()` result:
 
-**Test environment:** Fedora Linux, R-devel, clang, gfortran
+**Test environment:** Windows Server 2022, R-devel, 64 bit
 
-**0 errors ✔ | 0 warnings ✔ | 1 note ✔ **
-
-- checking HTML version of manual ... NOTE: Skipping checking HTML validation: no command 'tidy' found
-  - Explanation: As noted in an [r-source check](https://github.com/wch/r-source/blob/trunk/src/library/tools/R/check.R), this seems like an issue related to macOS's old version of HTML Tidy and not related to the package being checked.
+**0 errors ✔ | 0 warnings ✔ | 0 notes ✔ **
 
 ---
 
 `rhub::check_for_cran()` result:
 
-**Test environment:** Windows Server 2022, R-devel, 64 bit
+**Test environment:** Fedora Linux, R-devel, clang, gfortran
 
-**0 errors ✔ | 0 warnings ✔ | 1 note ✖ **
+**0 errors ✔ | 0 warnings ✔ | 1 note * **
 
-- checking for detritus in the temp directory ... NOTE: Found the following files/directories: 'lastMiKTeXException'
-  - Explanation: As noted in [R-hub issue #503](https://github.com/r-hub/rhub/issues/503), this could be due to a bug/crash in MiKTeX and can likely be ignored.
+- checking HTML version of manual ... NOTE: Skipping checking HTML validation: no command 'tidy' found
+  - Explanation: As noted in an [r-source check](https://github.com/wch/r-source/blob/trunk/src/library/tools/R/check.R), this seems like an issue related to macOS's old version of HTML Tidy and not related to the package being checked.
 
 ---
 
