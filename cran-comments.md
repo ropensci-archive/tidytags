@@ -1,6 +1,6 @@
 # CRAN comments
 
-## tidytags v1.1
+## tidytags v1.1.0
 
 **11/18/2022**
 

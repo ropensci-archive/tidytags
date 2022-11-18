@@ -17,7 +17,7 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">tidytags</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="">1.0.3</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="">1.1.0</span>
       </span>
     </div>
 
@@ -63,6 +63,16 @@
       <small>Source: <a href="https://github.com/ropensci/tidytags/blob/HEAD/NEWS.md" class="external-link"><code>NEWS.md</code></a></small>
     </div>
 
+    <div class="section level2">
+<h2 class="page-header" data-toc-text="1.1.0" id="tidytags-110-2022-11-18">tidytags 1.1.0 (2022-11-18)<a class="anchor" aria-label="anchor" href="#tidytags-110-2022-11-18"></a></h2>
+<div class="section level4">
+<h4 id="bug-fixes-1-1-0">BUG FIXES<a class="anchor" aria-label="anchor" href="#bug-fixes-1-1-0"></a></h4>
+<ul><li>Fixed another bug in <code><a href="../reference/get_upstream_tweets.html">get_upstream_tweets()</a></code> where the column <code>possibly_sensitive</code> was sometimes read in as a list, other times as a logical type.</li>
+<li>Addressed a bug in <strong>vcr v1.1</strong> that was causing <strong>tidytags</strong> tests to error in the CRAN logs (<a href="https://cran.r-project.org/web/checks/check_results_tidytags.html" class="external-link uri">https://cran.r-project.org/web/checks/check_results_tidytags.html</a>).</li>
+<li>The <code>setup-vcr.R</code> file was renamed to <code>helper-vcr.R</code> so that it will not be loaded when someone simply installs tidytags, only when package developers compile and test.</li>
+<li>In addition, the vcr bug has been addressed by the developers of that package, so <strong>vcr v1.2</strong> is now the minimum suggested version for tidytags.</li>
+</ul></div>
+</div>
     <div class="section level2">
 <h2 class="page-header" data-toc-text="1.0.3" id="tidytags-103-2022-10-14">tidytags 1.0.3 (2022-10-14)<small>2022-10-18</small><a class="anchor" aria-label="anchor" href="#tidytags-103-2022-10-14"></a></h2>
 <div class="section level4">
