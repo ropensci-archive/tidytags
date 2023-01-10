@@ -28,11 +28,11 @@ knitr::opts_chunk$set(
 <tr class="header">
 
 <th align="left">
-Usage
+Release
 </th>
 
 <th align="left">
-Release
+Usage
 </th>
 
 <th align="left">
