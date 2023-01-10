@@ -11,12 +11,19 @@ tidytags development version
 
 ### BUG FIXES
 
-  * Fixed a bug in `get_upstream_tweets()` where the column `possibly_sensitive` is sometimes read in as a list, other times as a logical type.
+  * 
 
 
 ### DOCUMENTATION FIXES
 
   * 
+
+tidytags 1.1.1 (2023-01-09)
+=========================
+
+### BUG FIXES
+
+  * Fixed a bug with **vcr** testing prompted by the **rtweet** update to v1.1 (https://github.com/ropensci/tidytags/issues/90)
 
 tidytags 1.1.0 (2022-11-18)
 =========================

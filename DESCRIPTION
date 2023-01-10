@@ -1,6 +1,6 @@
 Package: tidytags
 Title: Importing and Analyzing 'Twitter' Data Collected with 'Twitter Archiving Google Sheets'
-Version: 1.1.0
+Version: 1.1.1
 License: MIT + file LICENSE
 Authors@R: c(
     person("K. Bret", "Staudt Willet", , 
@@ -35,7 +35,7 @@ Imports:
     dplyr (>= 1.0),
     googlesheets4 (>= 1.0),
     rlang (>= 1.0),
-    rtweet (>= 1.0),
+    rtweet (>= 1.1),
     stringr (>= 1.4)
 Suggests:
     beepr,
@@ -54,5 +54,5 @@ Suggests:
 Encoding: UTF-8
 BugReports: https://github.com/ropensci/tidytags/issues
 VignetteBuilder: knitr
-RoxygenNote: 7.2.1
+RoxygenNote: 7.2.3
 Roxygen: list(markdown = TRUE)
