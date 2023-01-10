@@ -63,7 +63,7 @@ Checks
 </td>
 
 <td align="left">
-<a href="https://cran.r-project.org/web/checks/check_results_dplyr.html"><img src="https://badges.cranchecks.info/worst/tidytags.svg" alt="CRAN checks"></a>
+<a href="https://cran.r-project.org/web/checks/check_results_tidytags.html"><img src="https://badges.cranchecks.info/worst/tidytags.svg" alt="CRAN checks"></a>
 </td>
 
 </tr>
