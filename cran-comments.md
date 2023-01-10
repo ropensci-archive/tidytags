@@ -1,6 +1,6 @@
 # CRAN comments
 
-## tidytags v1.1.0
+## tidytags v1.1.1
 
 **11/18/2022**
 
@@ -12,7 +12,7 @@ This is an update from tidytags v1.0.3 submitted on 10/14/2022. This version fix
 
 `devtools::check()` result:
 
-**Test environment:** local MacOS Version 11.6 install, R 4.2.1
+**Test environment:** local MacOS Version 11.7 install, R 4.2.1
 
 **0 errors ✔ | 0 warnings ✔ | 0 notes ✔ **
 
