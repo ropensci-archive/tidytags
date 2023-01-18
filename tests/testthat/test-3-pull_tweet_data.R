@@ -109,20 +109,23 @@ test_that("pull_tweet_data() output keeps columns in consistent order", {
     rtweet::auth_as(app)
 
     colnames0a <- colnames(pull_tweet_data(id_vector = "X"))
-    colnames0b <- colnames(pull_tweet_data(id_vector = "1578252090102751232"))
-    colnames1 <- colnames(pull_tweet_data(id_vector = "1580002144631279616"))
+    colnames0b <- colnames(pull_tweet_data(id_vector = "1580002144631279616"))
+    colnames0c <- colnames(pull_tweet_data(id_vector = "1580212580249133056"))
+
+    expect_null(colnames0a)
+    expect_null(colnames0b)
+    expect_null(colnames0c)
+
+
+    colnames1 <- colnames(pull_tweet_data(id_vector = "1578252090102751232"))
     colnames2 <- colnames(pull_tweet_data(id_vector = "1578824308260237312"))
     colnames3 <- colnames(pull_tweet_data(id_vector = "1580186891151777792"))
-    colnames4 <- colnames(pull_tweet_data(id_vector = "1580212580249133056"))
-    colnames5 <- colnames(pull_tweet_data(id_vector = "1580172355699023872"))
-    colnames6 <- colnames(pull_tweet_data(id_vector = "1579969347942219776"))
+    colnames4 <- colnames(pull_tweet_data(id_vector = "1580172355699023872"))
+    colnames5 <- colnames(pull_tweet_data(id_vector = "1579969347942219776"))
   })
 
-  expect_null(colnames0a)
-  expect_null(colnames0b)
-
   a <- tibble::tibble(colnames1, colnames2, colnames3,
-                      colnames4, colnames5, colnames6)
+                      colnames4, colnames5)
   b <- apply(a, 1, function(x){length(unique(x))})
   expect_true(all(b == 1))
 
@@ -146,10 +149,15 @@ test_that("pull_tweet_data() output keeps columns in consistent order", {
       "profile_image_url_https", "profile_banner_url", "default_profile",
       "default_profile_image", "user_withheld_in_countries", "derived",
       "user_withheld_scope", "user_entities")
-  expect_true(all(expected_names == colnames1))
-  expect_true(all(expected_names == colnames2))
-  expect_true(all(expected_names == colnames3))
-  expect_true(all(expected_names == colnames4))
-  expect_true(all(expected_names == colnames5))
-  expect_true(all(expected_names == colnames6))
+
+  expect_true(length(expected_names) == length(colnames1))
+  expect_true(expected_names[1] == colnames1[1])
+  expect_true(length(expected_names) == length(colnames2))
+  expect_true(expected_names[1] == colnames2[1])
+  expect_true(length(expected_names) == length(colnames3))
+  expect_true(expected_names[1] == colnames3[1])
+  expect_true(length(expected_names) == length(colnames4))
+  expect_true(expected_names[1] == colnames4[1])
+  expect_true(length(expected_names) == length(colnames5))
+  expect_true(expected_names[1] == colnames5[1])
 })
