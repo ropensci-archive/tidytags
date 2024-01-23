@@ -1,22 +1,7 @@
-tidytags development version
+tidytags is no longer supported and has been archived (2024-01-23)
 =========================
 
-### BREAKING CHANGES
 
-  *  
- 
-### NEW FEATURES
-
-  *  
-
-### BUG FIXES
-
-  * 
-
-
-### DOCUMENTATION FIXES
-
-  * 
 
 tidytags 1.1.1 (2023-01-09)
 =========================

@@ -2,7 +2,7 @@
 
 ## tidytags v1.1.1
 
-**11/18/2022**
+**1/10/2023**
 
 This is an update from tidytags v1.0.3 submitted on 10/14/2022. This version fixes a bug causing an error in the `get_upstream_tweets()` function and requires an updated version of the vcr package (>= 1.2).
 
